@@ -35,7 +35,7 @@ const Navbar = () => {
             boxShadow: scrolled ? '0 4px 20px rgba(0,0,0,0.4)' : 'none'
         }}>
             <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '100%' }}>
-                <a href="#" className="dev-logo" style={{
+                <a href="#" className="dev-logo notranslate" translate="no" style={{
                     fontSize: '1.2rem',
                     fontWeight: '700',
                     fontFamily: "'JetBrains Mono', monospace", // Code font
@@ -204,8 +204,8 @@ const Navbar = () => {
 
                 @media (max-width: 900px) {
                     .desktop-nav { display: none; }
-                    .mobile-toggle { display: block; position: absolute; right: 2rem; }
-                    .container { justify-content: center !important; }
+                    .mobile-toggle { display: block; }
+                    /* .container { justify-content: center !important; } Removed to fix overlap */
                 }
             `}</style>
         </nav>
