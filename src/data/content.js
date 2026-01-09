@@ -202,5 +202,28 @@ export const portfolioContent = {
     title: "Vamos Conectar?",
     text: "Aberto a parcerias, mentorias, palestras, projetos educacionais e iniciativas em tecnologia e inovação.",
     cta: "Vamos Conversar?"
+  },
+
+  testimonials: {
+    title: "O que as pessoas dizem",
+    subtitle: "Feedbacks & Depoimentos",
+    description: "Acredito que educação de verdade gera impacto real. Aqui estão alguns feedbacks de pessoas que já participaram de conteúdos, eventos, mentorias ou projetos.",
+    list: [
+      {
+        quote: "O conteúdo do Alexsander é direto, prático e muito acessível. Me ajudou a entender melhor os primeiros passos na carreira de TI.",
+        author: "Participante do evento",
+        role: "Carreira em TI do Zero"
+      },
+      {
+        quote: "Didática clara e visão real de mercado. Excelente para quem está começando na tecnologia.",
+        author: "Aluno / Mentorando",
+        role: "Formação em Tecnologia"
+      }
+    ],
+    cta: {
+      text: "Já participou de algum conteúdo ou projeto? 👉 Deixe seu feedback aqui",
+      buttonLabel: "Deixar Feedback",
+      link: "#feedback" // Placeholder until user provides link
+    }
   }
 };
