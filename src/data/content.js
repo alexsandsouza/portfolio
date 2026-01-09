@@ -44,36 +44,39 @@ export const portfolioContent = {
     { title: "Desenvolvimento Full Stack", icon: "code", desc: "Sistemas Web, Arquitetura e UX." }
   ],
 
+  projectsHeadline: "Aqui estão alguns projetos reais que desenvolvi ou liderei, unindo desenvolvimento web, educação em tecnologia e impacto prático, com soluções publicadas e em uso.",
   projects: [
     {
-      title: "AD Academy (Site Institucional)",
-      context: "Desenvolvimento Full Stack",
-      objective: "Plataforma própria de educação e tecnologia.",
-      role: "Fundador & Desenvolvedor",
-      impact: "Desenvolvimento completo aplicando boas práticas de arquitetura de software, UX e usabilidade.",
-      tech: ["React", "Full Stack", "UX/UI"],
-      architecture: "Arquitetura Web Moderna",
-      links: { demo: "#", github: "#" }
+      title: "AD Academy - Plataforma Educacional",
+      context: "Plataforma criada para formação de iniciantes em tecnologia, com foco em certificações oficiais Cisco e carreira em TI.",
+      role: "Fundador, Tech Educator e Desenvolvedor Full Stack.",
+      description: "Site institucional, páginas educacionais, estrutura de divulgação de cursos e eventos.",
+      impact: "Projeto educacional ativo, com conteúdos, eventos e formação de alunos.",
+      link: "https://ad-academy-treinamentos.vercel.app/"
     },
     {
-      title: "Eunomia - Nexus Minds",
-      context: "Desafio Liga Jovem Sebrae",
-      objective: "Projeto de Empreendedorismo Digital.",
-      role: "Mentor da Equipe",
-      impact: "Classificação até a Semifinal Nacional, representando o Amazonas e a Fametro.",
-      tech: ["Mentoria", "Inovação", "Startup"],
-      architecture: "Modelagem de Negócios",
-      links: { demo: "#", github: "#" }
+      title: "AD Academy One",
+      context: "Plataforma complementar focada em centralizar conteúdos, produtos educacionais e experiências de aprendizado.",
+      role: "Idealizador e Desenvolvedor Full Stack.",
+      description: "Aplicação web moderna, focada em experiência do usuário e conversão educacional.",
+      impact: "Ambiente digital de apoio à formação e produtos educacionais.",
+      link: "https://ad-academy-one.vercel.app/"
     },
     {
-      title: "Desafio Saul Benchimol",
-      context: "Inovação Universitária",
-      objective: "Fomentar soluções inovadoras acadêmicas.",
-      role: "Orientador",
-      impact: "Alunos classificados em 2º lugar com projeto de destaque.",
-      tech: ["Orientação", "Empreendedorismo"],
-      architecture: "Mentoria Acadêmica",
-      links: { demo: "#", github: "#" }
+      title: "Projeto Profissional - Suellem Abreu",
+      context: "Site profissional desenvolvido para posicionamento digital e presença online.",
+      role: "Desenvolvedor Full Stack.",
+      description: "Site institucional responsivo, layout moderno e estrutura de apresentação profissional.",
+      impact: "Presença digital profissional publicada e em uso.",
+      link: "https://suellemabreu.vercel.app/"
+    },
+    {
+      title: "Alexsander Farias – Portfólio & Autoridade",
+      context: "Meu próprio hub de autoridade digital, educação em tecnologia e serviços profissionais.",
+      role: "Criador, Educador e Desenvolvedor.",
+      description: "Portfólio, área educacional, projetos reais, produtos digitais e interação com usuários.",
+      impact: "Plataforma central de relacionamento, autoridade e negócios.",
+      link: "https://alexsanderfarias.vercel.app/"
     }
   ],
 

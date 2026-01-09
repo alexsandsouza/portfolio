@@ -3,7 +3,7 @@ import { portfolioContent } from '../data/content';
 import { Reveal } from '../components/Reveal';
 import { useHoverCard } from '../hooks/useHoverCard';
 
-const ProjectCard = ({ project, index }) => {
+const ProjectCard = ({ project }) => {
     const { ref, style } = useHoverCard({ maxRotation: 5, scale: 1.02 });
 
     return (
@@ -43,29 +43,20 @@ const ProjectCard = ({ project, index }) => {
                         </span>
                         <h3 style={{ fontSize: '1.5rem', margin: '0', lineHeight: 1.2 }}>{project.title}</h3>
                     </div>
-                    <div style={{
-                        background: 'rgba(255,255,255,0.1)',
-                        width: '40px',
-                        height: '40px',
-                        borderRadius: '50%',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        fontSize: '1.2rem'
-                    }}>
-                        🚀
-                    </div>
                 </div>
 
                 <div style={{ marginBottom: '1rem' }}>
-                    <span style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', borderLeft: '2px solid var(--primary-color)', paddingLeft: '0.8rem' }}>
-                        {project.role}
+                    <span style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', borderLeft: '2px solid var(--primary-color)', paddingLeft: '0.8rem', display: 'block' }}>
+                        <strong style={{ color: '#fff' }}>Meu papel:</strong> {project.role}
                     </span>
                 </div>
 
-                <p style={{ color: 'var(--text-primary)', marginBottom: '1.5rem', flex: 1, lineHeight: 1.6 }}>
-                    {project.objective}
-                </p>
+                <div style={{ marginBottom: '1rem' }}>
+                    <h4 style={{ fontSize: '1rem', color: '#fff', marginBottom: '0.5rem' }}>O que foi desenvolvido:</h4>
+                    <p style={{ color: 'var(--text-primary)', fontSize: '0.95rem', lineHeight: 1.6, margin: 0 }}>
+                        {project.description}
+                    </p>
+                </div>
 
                 <div style={{
                     background: 'rgba(99, 102, 241, 0.1)',
@@ -75,37 +66,21 @@ const ProjectCard = ({ project, index }) => {
                     border: '1px solid rgba(99, 102, 241, 0.2)'
                 }}>
                     <p style={{ fontSize: '0.9rem', fontStyle: 'italic', marginBottom: '0', color: '#fff' }}>
-                        <span style={{ marginRight: '0.5rem' }}>💡</span> {project.impact}
+                        <span style={{ marginRight: '0.5rem' }}>💡</span> <strong>Impacto:</strong> {project.impact}
                     </p>
                 </div>
 
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginTop: 'auto' }}>
-                    {project.tech.map((t, i) => (
-                        <span key={i} style={{
-                            fontSize: '0.8rem',
-                            padding: '0.4rem 1rem',
-                            borderRadius: '50px',
-                            background: 'rgba(255,255,255,0.05)',
-                            color: '#fff',
-                            border: '1px solid rgba(255,255,255,0.1)',
-                            transition: 'all 0.2s'
-                        }}>
-                            {t}
-                        </span>
-                    ))}
+                <div style={{ marginTop: 'auto' }}>
+                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="btn btn-outline" style={{ width: '100%', textAlign: 'center', display: 'block' }}>
+                        Ver Projeto Online 🔗
+                    </a>
                 </div>
             </div>
 
             <style>{`
                 @media (max-width: 768px) {
-                    .card-glass > div { align-items: center !important; text-align: center !important; }
-                    .card-glass > div > div:first-child { flex-direction: column-reverse; gap: 1rem; align-items: center !important; } /* Icon on top, Title below */
-                    .card-glass h3 { text-align: center; }
-                    .card-glass h4 { text-align: center; }
-                    .card-glass p { text-align: center; }
-                    .card-glass span[style*="borderLeft"] { border-left: none !important; border-bottom: 2px solid var(--primary-color); padding-left: 0 !important; padding-bottom: 0.5rem; display: inline-block; }
-                    .card-glass div[style*="justify-content: space-between"] { justify-content: center !important; }
-                    .card-glass div[style*="flex-wrap: wrap"] { justify-content: center !important; }
+                    .card-glass > div { text-align: left !important; }
+                    .card-glass h3 { text-align: left; }
                 }
             `}</style>
         </div>
@@ -113,26 +88,40 @@ const ProjectCard = ({ project, index }) => {
 };
 
 const Projects = () => {
-    const { projects } = portfolioContent;
+    const { projects, projectsHeadline } = portfolioContent;
 
     return (
         <section id="projects" className="section">
             <div className="container">
                 <Reveal>
                     <div className="section-header">
-                        <span className="section-subtitle">Portfólio</span>
-                        <h2>Projetos em Destaque</h2>
+                        <span className="section-subtitle">Portfólio Profissional</span>
+                        <h2>Projetos Reais & Iniciativas em Tecnologia</h2>
+                        <p style={{ maxWidth: '800px', margin: '1rem auto 0', color: 'var(--text-secondary)' }}>
+                            {projectsHeadline}
+                        </p>
                     </div>
                 </Reveal>
 
-                <div className="grid-3">
+                <div className="grid-2">
                     {projects.map((project, index) => (
                         <Reveal key={index} delay={index * 100}>
-                            <ProjectCard project={project} index={index} />
+                            <ProjectCard project={project} />
                         </Reveal>
                     ))}
                 </div>
             </div>
+
+            <style>{`
+                .grid-2 {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 2rem;
+                }
+                @media (max-width: 900px) {
+                    .grid-2 { grid-template-columns: 1fr; }
+                }
+            `}</style>
         </section>
     );
 };
