@@ -4,6 +4,7 @@ import Hero from './sections/Hero';
 import About from './sections/About';
 import Areas from './sections/Areas';
 import Experience from './sections/Trajectory';
+import BackendExpertise from './sections/BackendExpertise';
 import Education from './sections/Education';
 import Projects from './sections/Projects';
 import Services from './sections/Services';
@@ -18,6 +19,7 @@ function App() {
       <Hero />
       <About />
       <Areas />
+      <BackendExpertise />
       <Experience />
       <Projects />
       <Services />
@@ -25,10 +27,6 @@ function App() {
       <Education />
       <Highlights />
       <Contact />
-
-      <footer style={{ textAlign: 'center', padding: '2rem', background: 'var(--bg-color)', color: 'var(--text-secondary)', fontSize: '0.9rem', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-        © {new Date().getFullYear()} Alexsander Farias. Todos os direitos reservados.
-      </footer>
     </div>
   );
 }

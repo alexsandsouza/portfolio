@@ -1,17 +1,35 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
 
 :root {
-  --primary-color: #646cff;
-  --primary-hover: #535bf2;
-  --secondary-color: #ff4081;
+  /* --- Colors --- */
+  --primary-color: #6366f1;
+  /* Indigo */
+  --secondary-color: #ec4899;
+  /* Pink */
+  --accent-color: #14b8a6;
+  /* Teal */
+
   --bg-color: #0f172a;
+  --bg-secondary: #0b1120;
+  /* Slightly darker/richer */
   --surface-color: #1e293b;
+
   --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
-  --font-main: 'Inter', sans-serif;
-  --font-heading: 'Outfit', sans-serif;
+
   --max-width: 1200px;
-  --section-padding: 5rem 1rem;
+  --section-padding: 8rem 0;
+
+  /* --- Spacing --- */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 6rem;
+
+  /* --- Fonts --- */
+  --font-body: 'Inter', sans-serif;
+  --font-heading: 'Plus Jakarta Sans', sans-serif;
 }
 
 * {
@@ -20,90 +38,232 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--bg-color);
   color: var(--text-primary);
-  font-family: var(--font-main);
-  line-height: 1.6;
+  font-family: var(--font-body);
+  line-height: 1.7;
+  /* Increased line-height for better readability */
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading);
-  line-height: 1.2;
-  color: #fff;
-}
-
-h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 1rem; }
-h2 { font-size: 2.5rem; font-weight: 700; margin-bottom: 2rem; text-align: center; }
-h3 { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem; }
-
+/* --- Global Links (Fixing Underline Issue) --- */
 a {
-  color: var(--primary-color);
   text-decoration: none;
-  transition: all 0.3s ease;
+  color: inherit;
+  /* Inherit color by default, specific components override this */
+  transition: color 0.3s ease;
 }
 
-a:hover {
-  color: var(--primary-hover);
-}
-
+/* --- Global Standard Layout --- */
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 1.5rem;
+  width: 100%;
 }
 
 .section {
   padding: var(--section-padding);
+  position: relative;
+  width: 100%;
 }
 
+/* Alternating Backgrounds */
+.section:nth-child(odd) {
+  background-color: var(--bg-color);
+}
+
+.section:nth-child(even) {
+  background-color: var(--bg-secondary);
+  border-top: 1px solid rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+/* --- Typography Upgrade --- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  color: #fff;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  /* Tight tracking for modern look */
+}
+
+h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+}
+
+h2 {
+  font-size: 2.75rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: var(--space-xs);
+}
+
+h3 {
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+/* Section Header Wrapper */
+.section-header {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-subtitle {
+  color: var(--primary-color);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 0.85rem;
+  display: block;
+  margin-bottom: 1rem;
+  font-family: var(--font-heading);
+}
+
+/* Grid Systems */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+  align-items: center;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  /* Slightly wider cards */
+  gap: var(--space-md);
+}
+
+/* Components */
 .btn {
-  display: inline-block;
-  padding: 0.8rem 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2.5rem;
   border-radius: 50px;
   font-weight: 600;
+  font-family: var(--font-heading);
+  transition: all 0.3s ease;
   cursor: pointer;
   border: none;
-  transition: transform 0.2s, box-shadow 0.2s;
+  font-size: 1rem;
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  background: var(--primary-color);
   color: white;
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px -10px var(--primary-color);
+  background: #4f46e5;
+  box-shadow: 0 8px 30px rgba(99, 102, 241, 0.5);
 }
 
 .btn-secondary {
   background: transparent;
-  border: 2px solid var(--primary-color);
-  color: var(--text-primary);
-  margin-left: 1rem;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .btn-secondary:hover {
-  background: var(--primary-color);
-  color: white;
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.05);
 }
 
-.grid {
-  display: grid;
-  gap: 2rem;
-}
-
-.card {
-  background: var(--surface-color);
-  padding: 2rem;
-  border-radius: 16px;
+/* Card Styles - Premium Glass */
+.card-glass {
+  background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: transform 0.3s;
+  border-radius: 20px;
+  /* More rounded */
+  padding: 2.5rem;
+  /* More padding */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.card:hover {
+.card-glass:hover {
   transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.04);
   border-color: var(--primary-color);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+}
+
+/* Timeline specific overrides to match new typography */
+.timeline-item h3 {
+  font-size: 1.4rem;
+}
+
+.timeline-item h4 {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  letter-spacing: 0;
+}
+
+/* Text Gradient */
+.text-gradient {
+  background: linear-gradient(135deg, #fff 40%, var(--primary-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-gradient-primary {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .grid-2 {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  .section {
+    padding: 5rem 0;
+  }
+
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
 }
