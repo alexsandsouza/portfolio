@@ -1,16 +1,32 @@
-# React + Vite
+# Portfólio Prof. Alexsander Farias
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Bem-vindo ao repositório oficial do meu Portfólio Profissional. Este projeto foi desenvolvido com foco em **Alta Performance**, **Design Cyber Tech** e **Experiência do Usuário (UX)**, utilizando tecnologias modernas do ecossistema React.
 
-Currently, two official plugins are available:
+### 🚀 [Acesse Online: alexsanderfarias.vercel.app](https://alexsanderfarias.vercel.app)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![Preview](./public/Alex_.png)
 
-## React Compiler
+## 🛠️ Tecnologias Utilizadas
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Core:** React.js, Vite
+- **Estilização:** CSS3 Moderno (Glassmorphism, Neon Glows, Grids)
+- **Interatividade:** Hooks personalizados (`useHoverCard`, `Reveal`), Animações CSS Keyframes
+- **Deploy:** Vercel
 
-## Expanding the ESLint configuration
+## ✨ Destaques de Design
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Cyber Aesthetic:** Tema escuro profundo com acentos em neon (Indigo, Cyan, Emerald).
+- **Interatividade 3D:** Cards com efeitos de tilt, brilho e profundidade baseados no movimento do mouse.
+- **Micro-interações:** Ícones pulsantes, cursores de terminal, barras de progresso animadas.
+- **Responsividade:** Layout fluido que se adapta de grandes desktops a dispositivos móveis com harmonização perfeita.
+
+## 📂 Estrutura do Projeto
+
+- `src/components`: Componentes reutilizáveis (Navbar, Reveal, etc).
+- `src/sections`: Seções da página (Hero, About, Projects, Skills, etc).
+- `src/data`: Centralização de conteúdo textual (fácil manutenção).
+- `src/hooks`: Lógica de UI isolada (ex: efeitos de mouse).
+
+---
+
+Desenvolvido por **Alexsander Farias** - *Tech Educator & Full Stack Developer*
