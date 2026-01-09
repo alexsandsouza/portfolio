@@ -233,16 +233,65 @@ export const portfolioContent = {
     description: "Quer iniciar na tecnologia? Comece sua jornada aqui. Cada passo te aproxima do mercado de TI. Complete os passos e desbloqueie um presente exclusivo.",
     steps: [
       { id: 1, label: "Conhecer o caminho da carreira em TI" },
-      { id: 2, label: "Baixar o ebook gratuito" },
+      { id: 2, label: "Assistir o podcast Routing Friends" },
       { id: 3, label: "Participar do evento online" },
       { id: 4, label: "Conhecer a AD Academy" },
       { id: 5, label: "Agendar uma mentoria" }
     ],
     reward: {
       title: "🎉 Parabéns! Jornada Completa.",
-      description: "Você mostrou compromisso com seu futuro. Aqui está seu acesso exclusivo a materiais avançados.",
-      buttonLabel: "Baixar Ebook Exclusivo",
-      link: "/ebook-exclusivo.pdf" // Placeholder, user will upload file
+      description: "Você completou o checklist! Mas para ganhar o ebook, você precisa passar no Desafio Final.",
+      buttonLabel: "Iniciar Desafio Final",
+      link: "#challenge" // Triggers the modal
+    }
+  },
+
+  quiz: {
+    title: "Desafio Final: Escape da Forca",
+    instructions: "Para desbloquear o Ebook Exclusivo, você precisa comprovar os conhecimentos adquiridos. Acesse o site da AD Academy Treinamentos, Faça seu login, leia o Capítulo 1 free e responda corretamente às questões do desafio!",
+    externalLink: "https://ad-academy-treinamentos.vercel.app/",
+    questions: [
+      {
+        id: 1,
+        question: "Qual é o primeiro pilar fundamental mencionado para quem quer iniciar na tecnologia?",
+        options: ["Lógica de Programação", "Aprender React e Node.js", "Criar um Portfólio bonito", "Comprar um computador caro"],
+        correctAnswer: 0
+      },
+      {
+        id: 2,
+        question: "Segundo o material, o que é mais importante que decorar códigos?",
+        options: ["Ter muitos seguidores", "Entender como resolver problemas", "Saber digitar rápido", "Usar Linux"],
+        correctAnswer: 1
+      },
+      {
+        id: 3,
+        question: "Qual ferramenta é citada como essencial para versionamento de código?",
+        options: ["Dropbox", "Google Drive", "Git & GitHub", "Pen Drive"],
+        correctAnswer: 2
+      },
+      {
+        id: 4,
+        question: "Sobre o mercado de trabalho, o que é destacado no podcast do Capítulo 1?",
+        options: ["Só contratam sêniores", "Não há vagas", "A prática e projetos reais são diferenciais", "Precisa de faculdade federal"],
+        correctAnswer: 2
+      },
+      {
+        id: 5,
+        question: "Para finalizar: Qual o objetivo principal da AD Academy?",
+        options: ["Vender cursos caros", "Formar profissionais preparados para o mercado real", "Ensinar apenas teoria", "Criar jogos"],
+        correctAnswer: 1
+      }
+    ],
+    success: {
+      title: "🏆 VOCÊ VENCEU!",
+      subtitle: "Sabedoria confirmada.",
+      downloadMatch: "Baixar Ebook Agora",
+      link: "/ebook-exclusivo.pdf"
+    },
+    failure: {
+      title: "☠️ GAME OVER",
+      subtitle: "Você não escapou da forca.",
+      retry: "Tentar Novamente"
     }
   }
 };

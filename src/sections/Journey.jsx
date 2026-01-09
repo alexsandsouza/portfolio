@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { portfolioContent } from '../data/content';
 import { Reveal } from '../components/Reveal';
 import confetti from 'canvas-confetti';
-import { CheckCircle2, Circle, Trophy, Lock, Unlock, ArrowRight } from 'lucide-react';
+import { CheckCircle2, Circle, Trophy, Lock, Unlock, ArrowRight, Swords } from 'lucide-react';
+import HangmanGame from '../components/HangmanGame';
 
 const Journey = () => {
     const { journey } = portfolioContent;
     const [completedSteps, setCompletedSteps] = useState([]);
-    const [showReward, setShowReward] = useState(false);
+    const [rewardUnlocked, setRewardUnlocked] = useState(false);
+    const [showGame, setShowGame] = useState(false);
 
     // Initial Load
     useEffect(() => {
@@ -21,9 +23,9 @@ const Journey = () => {
     useEffect(() => {
         localStorage.setItem('user_journey_progress', JSON.stringify(completedSteps));
         if (completedSteps.length === journey.steps.length) {
-            setShowReward(true);
+            setRewardUnlocked(true);
         } else {
-            setShowReward(false);
+            setRewardUnlocked(false);
         }
     }, [completedSteps, journey.steps.length]);
 
@@ -38,18 +40,16 @@ const Journey = () => {
         } else {
             setCompletedSteps(prev => {
                 const newSteps = [...prev, id];
-                // Trigger confetti only if becoming 100% just now
                 if (newSteps.length === steps.length) {
                     confetti({
-                        particleCount: 200,
-                        spread: 120,
+                        particleCount: 150,
+                        spread: 100,
                         origin: { y: 0.6 },
-                        colors: ['#6366f1', '#10b981', '#fbbf24']
+                        colors: ['#6366f1', '#fbbf24']
                     });
                 }
                 return newSteps;
             });
-            // Haptic Feedback
             if (navigator.vibrate) navigator.vibrate(15);
         }
     };
@@ -59,6 +59,8 @@ const Journey = () => {
             background: 'linear-gradient(180deg, rgba(30, 41, 59, 0.3) 0%, var(--bg-color) 100%)',
             borderTop: '1px solid rgba(255,255,255,0.05)'
         }}>
+            {showGame && <HangmanGame onClose={() => setShowGame(false)} />}
+
             <div className="container">
                 <Reveal>
                     <div className="section-header">
@@ -107,7 +109,6 @@ const Journey = () => {
                                         <div className="step-text">
                                             {step.label}
                                         </div>
-                                        {/* Connecting Line */}
                                         {index !== steps.length - 1 && (
                                             <div className={`step-line ${isDone && completedSteps.includes(steps[index + 1]?.id) ? 'active' : ''}`} />
                                         )}
@@ -117,26 +118,26 @@ const Journey = () => {
                         })}
                     </div>
 
-                    {/* Reward Column */}
+                    {/* Reward Column (Gate to the Game) */}
                     <div className="reward-container">
                         <Reveal delay={400}>
-                            <div className={`reward-card ${showReward ? 'unlocked' : 'locked'}`}>
+                            <div className={`reward-card ${rewardUnlocked ? 'unlocked' : 'locked'}`}>
                                 <div className="reward-icon-wrapper">
-                                    {showReward ? <Unlock size={40} className="unlock-icon" /> : <Lock size={40} />}
+                                    {rewardUnlocked ? <Swords size={40} className="unlock-icon" /> : <Lock size={40} />}
                                 </div>
 
-                                {showReward ? (
+                                {rewardUnlocked ? (
                                     <>
-                                        <h3>{journey.reward.title}</h3>
+                                        <h3>Desafio Final Disponível!</h3>
                                         <p>{journey.reward.description}</p>
-                                        <a href={journey.reward.link} target="_blank" rel="noopener noreferrer" className="btn btn-primary reward-btn">
-                                            {journey.reward.buttonLabel} <ArrowRight size={18} />
-                                        </a>
+                                        <button onClick={() => setShowGame(true)} className="btn btn-primary reward-btn glow-pulse">
+                                            {journey.reward.buttonLabel} <Swords size={18} />
+                                        </button>
                                     </>
                                 ) : (
                                     <>
                                         <h3>Conteúdo Bloqueado</h3>
-                                        <p>Complete todos os passos ao lado para desbloquear um material exclusivo.</p>
+                                        <p>Complete todos os passos ao lado para habilitar o Desafio Final.</p>
                                         <div className="locked-Overlay" />
                                     </>
                                 )}
@@ -254,7 +255,7 @@ const Journey = () => {
                 }
 
                 .unlocked .reward-icon-wrapper {
-                    background: #10b981;
+                    background: #6366f1;
                     color: #fff;
                 }
 
@@ -270,6 +271,8 @@ const Journey = () => {
                     margin-top: 1.5rem;
                 }
 
+                .glow-pulse { animation: pulse 2s infinite; }
+
                 @keyframes pop {
                     0% { transform: scale(0.5); }
                     50% { transform: scale(1.4); }
@@ -280,6 +283,12 @@ const Journey = () => {
                     0% { transform: scale(0.95); opacity: 0.8; }
                     50% { transform: scale(1.02); opacity: 1; }
                     100% { transform: scale(1); }
+                }
+
+                @keyframes pulse {
+                    0% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7); }
+                    70% { box-shadow: 0 0 0 10px rgba(99, 102, 241, 0); }
+                    100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); }
                 }
             `}</style>
         </section>
