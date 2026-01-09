@@ -39,22 +39,18 @@ const Skills = () => {
                 <div>
                     <h2>Hard Skills</h2>
                     <div style={{ display: 'grid', gap: '2rem', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}>
-                        <div className="card">
-                            <h3 style={{ borderBottom: '1px solid var(--text-secondary)', paddingBottom: '0.5rem', marginBottom: '1rem' }}>Frontend</h3>
-                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                                {hardSkills.frontend.map((s, i) => (
-                                    <span key={i} className="btn-secondary" style={{ fontSize: '0.8rem', padding: '0.4rem 1rem', margin: 0 }}>{s}</span>
-                                ))}
+                        {Object.entries(hardSkills).map(([category, skills], index) => (
+                            <div key={index} className="card">
+                                <h3 style={{ borderBottom: '1px solid var(--text-secondary)', paddingBottom: '0.5rem', marginBottom: '1rem', textTransform: 'capitalize' }}>
+                                    {category === 'infra' ? 'Infraestrutura & Redes' : category}
+                                </h3>
+                                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                                    {skills.map((s, i) => (
+                                        <span key={i} className="btn-secondary" style={{ fontSize: '0.8rem', padding: '0.4rem 1rem', margin: 0 }}>{s}</span>
+                                    ))}
+                                </div>
                             </div>
-                        </div>
-                        <div className="card">
-                            <h3 style={{ borderBottom: '1px solid var(--text-secondary)', paddingBottom: '0.5rem', marginBottom: '1rem' }}>Ferramentas & Metodologias</h3>
-                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                                {[...hardSkills.tools, ...hardSkills.methodologies].map((s, i) => (
-                                    <span key={i} className="btn-secondary" style={{ fontSize: '0.8rem', padding: '0.4rem 1rem', margin: 0 }}>{s}</span>
-                                ))}
-                            </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </div>

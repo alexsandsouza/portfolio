@@ -1,15 +1,16 @@
 import React from 'react';
 import { portfolioContent } from '../data/content';
 
-const Trajectory = () => {
-    const { trajectory } = portfolioContent;
+const Experience = () => {
+    const { experience } = portfolioContent;
 
     return (
-        <section id="trajectory" className="section">
+        <section id="experience" className="section">
             <div className="container">
-                <h2>Minha Trajetória</h2>
-                <div style={{ maxWidth: '800px', margin: '0 auto', position: 'relative' }}>
-                    {/* Vertical Line */}
+                <h2>Experiência Profissional</h2>
+                <div style={{ maxWidth: '900px', margin: '0 auto', position: 'relative' }}>
+
+                    {/* Linha vertical centralizada em telas grandes */}
                     <div style={{
                         position: 'absolute',
                         left: '0',
@@ -20,10 +21,10 @@ const Trajectory = () => {
                         opacity: 0.3
                     }}></div>
 
-                    {trajectory.map((item, index) => (
+                    {experience.map((job, index) => (
                         <div key={index} style={{
-                            paddingLeft: '2rem',
-                            paddingBottom: '3rem',
+                            paddingLeft: '2.5rem',
+                            paddingBottom: '4rem',
                             position: 'relative'
                         }}>
                             {/* Dot */}
@@ -38,18 +39,25 @@ const Trajectory = () => {
                                 border: '4px solid var(--primary-color)'
                             }}></div>
 
-                            <span style={{
-                                color: 'var(--primary-color)',
-                                fontWeight: 'bold',
-                                display: 'block',
-                                marginBottom: '0.5rem'
-                            }}>
-                                {item.year}
-                            </span>
-                            <h3 style={{ marginBottom: '0.5rem' }}>{item.role}</h3>
-                            <p style={{ color: 'var(--text-secondary)' }}>
-                                {item.description}
-                            </p>
+                            <div className="card" style={{ padding: '1.5rem', borderLeft: 'none' }}>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', marginBottom: '1rem' }}>
+                                    <h3 style={{ color: 'var(--primary-color)', margin: 0 }}>{job.role}</h3>
+                                    <span style={{
+                                        background: 'rgba(255,255,255,0.1)',
+                                        padding: '0.2rem 0.8rem',
+                                        borderRadius: '20px',
+                                        fontSize: '0.8rem'
+                                    }}>{job.type}</span>
+                                </div>
+                                <h4 style={{ fontSize: '1.1rem', marginBottom: '0.5rem' }}>{job.institution}</h4>
+                                <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: '1rem' }}>{job.period}</p>
+
+                                <ul style={{ paddingLeft: '1.2rem', color: 'var(--text-text-primary)' }}>
+                                    {job.responsibilities.map((resp, i) => (
+                                        <li key={i} style={{ marginBottom: '0.5rem' }}>{resp}</li>
+                                    ))}
+                                </ul>
+                            </div>
                         </div>
                     ))}
                 </div>
@@ -58,4 +66,4 @@ const Trajectory = () => {
     );
 };
 
-export default Trajectory;
+export default Experience;
