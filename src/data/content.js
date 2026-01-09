@@ -223,7 +223,26 @@ export const portfolioContent = {
     cta: {
       text: "Já participou de algum conteúdo ou projeto? 👉 Deixe seu feedback aqui",
       buttonLabel: "Deixar Feedback",
-      link: "#feedback" // Placeholder until user provides link
+      link: "#feedback"
+    }
+  },
+
+  journey: {
+    title: "Sua Jornada na Tecnologia",
+    subtitle: "Experiência Interativa",
+    description: "Quer iniciar na tecnologia? Comece sua jornada aqui. Cada passo te aproxima do mercado de TI. Complete os passos e desbloqueie um presente exclusivo.",
+    steps: [
+      { id: 1, label: "Conhecer o caminho da carreira em TI" },
+      { id: 2, label: "Baixar o ebook gratuito" },
+      { id: 3, label: "Participar do evento online" },
+      { id: 4, label: "Conhecer a AD Academy" },
+      { id: 5, label: "Agendar uma mentoria" }
+    ],
+    reward: {
+      title: "🎉 Parabéns! Jornada Completa.",
+      description: "Você mostrou compromisso com seu futuro. Aqui está seu acesso exclusivo a materiais avançados.",
+      buttonLabel: "Baixar Ebook Exclusivo",
+      link: "/ebook-exclusivo.pdf" // Placeholder, user will upload file
     }
   }
 };

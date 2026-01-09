@@ -8,6 +8,7 @@ import BackendExpertise from './sections/BackendExpertise';
 import Education from './sections/Education';
 import Projects from './sections/Projects';
 import Testimonials from './sections/Testimonials';
+import Journey from './sections/Journey';
 import Services from './sections/Services';
 import Skills from './sections/Skills';
 import Highlights from './sections/Highlights';
@@ -26,6 +27,7 @@ const Home = () => (
     <Experience />
     <Projects />
     <Testimonials />
+    <Journey />
     <Services />
     <Skills />
     <Education />
