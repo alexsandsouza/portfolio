@@ -4,6 +4,7 @@ import { Reveal } from '../components/Reveal';
 import confetti from 'canvas-confetti';
 import { CheckCircle2, Circle, Trophy, Lock, Unlock, ArrowRight, Swords } from 'lucide-react';
 import HangmanGame from '../components/HangmanGame';
+import Ranking from '../components/Ranking';
 
 const Journey = () => {
     const { journey } = portfolioContent;
@@ -145,6 +146,13 @@ const Journey = () => {
                         </Reveal>
                     </div>
                 </div>
+
+                {/* Ranking Section */}
+                <Reveal delay={600}>
+                    <div style={{ marginTop: '5rem' }}>
+                        <Ranking />
+                    </div>
+                </Reveal>
             </div>
 
             <style>{`

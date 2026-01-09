@@ -1,16 +1,41 @@
 import React, { useState, useEffect } from 'react';
-import { X, ExternalLink } from 'lucide-react';
+import { X, ExternalLink, Timer, Save } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { portfolioContent } from '../data/content';
+import { db } from '../firebase';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 const HangmanGame = ({ onClose }) => {
     const { quiz } = portfolioContent;
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [mistakes, setMistakes] = useState(0);
-    const [gameState, setGameState] = useState('intro'); // intro, playing, won, lost
+    const [gameState, setGameState] = useState('intro'); // intro, playing, won, saving, saved, lost
+
+    // Timer State
+    const [startTime, setStartTime] = useState(null);
+    const [elapsedTime, setElapsedTime] = useState(0);
+    const [playerName, setPlayerName] = useState('');
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const maxMistakes = 6;
     const questions = quiz.questions;
+
+    // Timer Logic
+    useEffect(() => {
+        let interval;
+        if (gameState === 'playing') {
+            interval = setInterval(() => {
+                setElapsedTime(Math.floor((Date.now() - startTime) / 1000));
+            }, 1000);
+        }
+        return () => clearInterval(interval);
+    }, [gameState, startTime]);
+
+    const handleStart = () => {
+        setStartTime(Date.now());
+        setGameState('playing');
+        setElapsedTime(0);
+    };
 
     const handleAnswer = (optionIndex) => {
         if (gameState !== 'playing') return;
@@ -21,6 +46,7 @@ const HangmanGame = ({ onClose }) => {
             if (currentQuestion + 1 < questions.length) {
                 setCurrentQuestion(prev => prev + 1);
             } else {
+                // Game Won
                 setGameState('won');
                 confetti({
                     particleCount: 300,
@@ -31,41 +57,57 @@ const HangmanGame = ({ onClose }) => {
         } else {
             const newMistakes = mistakes + 1;
             setMistakes(newMistakes);
-            // Brief visual shake or error feedback could go here
             if (newMistakes >= maxMistakes) {
                 setGameState('lost');
             }
         }
     };
 
+    const handleSaveScore = async (e) => {
+        e.preventDefault();
+        if (!playerName.trim()) return;
+        setIsSubmitting(true);
+
+        try {
+            await addDoc(collection(db, "quiz_results"), {
+                name: playerName,
+                timeSeconds: elapsedTime,
+                createdAt: serverTimestamp()
+            });
+            setGameState('saved');
+        } catch (error) {
+            console.error("Error saving score:", error);
+            alert("Erro ao salvar recorde. Verifique sua conexão.");
+        }
+        setIsSubmitting(false);
+    };
+
     const restartGame = () => {
         setMistakes(0);
         setCurrentQuestion(0);
         setGameState('playing');
+        setStartTime(Date.now());
+        setElapsedTime(0);
     };
 
-    // Draw Hangman Parts
     const renderHangman = () => {
+        // ... (Same drawing logic as before) ...
         const parts = [
-            <circle cx="100" cy="50" r="20" stroke="white" strokeWidth="4" fill="transparent" />, // Head
-            <line x1="100" y1="70" x2="100" y2="150" stroke="white" strokeWidth="4" />, // Body
-            <line x1="100" y1="90" x2="60" y2="120" stroke="white" strokeWidth="4" />, // L Arm
-            <line x1="100" y1="90" x2="140" y2="120" stroke="white" strokeWidth="4" />, // R Arm
-            <line x1="100" y1="150" x2="60" y2="190" stroke="white" strokeWidth="4" />, // L Leg
-            <line x1="100" y1="150" x2="140" y2="190" stroke="white" strokeWidth="4" /> // R Leg
+            <circle cx="100" cy="50" r="20" stroke="white" strokeWidth="4" fill="transparent" />,
+            <line x1="100" y1="70" x2="100" y2="150" stroke="white" strokeWidth="4" />,
+            <line x1="100" y1="90" x2="60" y2="120" stroke="white" strokeWidth="4" />,
+            <line x1="100" y1="90" x2="140" y2="120" stroke="white" strokeWidth="4" />,
+            <line x1="100" y1="150" x2="60" y2="190" stroke="white" strokeWidth="4" />,
+            <line x1="100" y1="150" x2="140" y2="190" stroke="white" strokeWidth="4" />
         ];
 
         return (
             <svg width="200" height="220" viewBox="0 0 200 220" style={{ overflow: 'visible' }}>
-                {/* Gallows */}
                 <line x1="10" y1="210" x2="150" y2="210" stroke="#6366f1" strokeWidth="4" />
                 <line x1="40" y1="210" x2="40" y2="10" stroke="#6366f1" strokeWidth="4" />
                 <line x1="40" y1="10" x2="100" y2="10" stroke="#6366f1" strokeWidth="4" />
                 <line x1="100" y1="10" x2="100" y2="30" stroke="#6366f1" strokeWidth="4" />
-
-                {/* Render parts based on mistakes */}
                 {parts.slice(0, mistakes).map((part, i) => React.cloneElement(part, { key: i, className: 'hangman-part' }))}
-
                 <style>{`
                     .hangman-part { animation: draw 0.5s ease forwards; }
                     @keyframes draw { from { stroke-dasharray: 100; stroke-dashoffset: 100; } to { stroke-dashoffset: 0; } }
@@ -86,7 +128,7 @@ const HangmanGame = ({ onClose }) => {
                         <a href={quiz.externalLink} target="_blank" rel="noopener noreferrer" className="btn btn-outline" style={{ marginBottom: '2rem', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
                             Acessar Material de Estudo <ExternalLink size={16} />
                         </a>
-                        <button onClick={() => setGameState('playing')} className="btn btn-primary glow">
+                        <button onClick={handleStart} className="btn btn-primary glow">
                             Começar Desafio
                         </button>
                     </div>
@@ -99,6 +141,9 @@ const HangmanGame = ({ onClose }) => {
                             <div className="stats">
                                 <span className="mistakes-count" style={{ color: mistakes > 3 ? '#ef4444' : '#fff' }}>
                                     Erros: {mistakes} / {maxMistakes}
+                                </span>
+                                <span className="time-count" style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+                                    <Timer size={16} /> {elapsedTime}s
                                 </span>
                                 <span className="question-count">Questão {currentQuestion + 1} de {questions.length}</span>
                             </div>
@@ -121,11 +166,41 @@ const HangmanGame = ({ onClose }) => {
                     </div>
                 )}
 
+                {/* Won Screen with Leaderboard Input */}
                 {gameState === 'won' && (
                     <div className="game-content won">
                         <div style={{ fontSize: '4rem' }}>🏆</div>
                         <h2>{quiz.success.title}</h2>
                         <p>{quiz.success.subtitle}</p>
+                        <p className="final-time">Tempo Total: <strong>{elapsedTime} segundos</strong></p>
+
+                        <form onSubmit={handleSaveScore} className="save-score-form">
+                            <label>Digite seu nome para o Ranking:</label>
+                            <div className="input-group">
+                                <input
+                                    type="text"
+                                    value={playerName}
+                                    onChange={(e) => setPlayerName(e.target.value)}
+                                    placeholder="Seu Nome"
+                                    required
+                                />
+                                <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
+                                    {isSubmitting ? 'Salvando...' : <Save size={18} />}
+                                </button>
+                            </div>
+                        </form>
+                        <div style={{ marginTop: '1rem', opacity: 0.7, fontSize: '0.9rem' }}>
+                            (Salve para liberar o download)
+                        </div>
+                    </div>
+                )}
+
+                {/* Final Success Screen (Post-Save) */}
+                {gameState === 'saved' && (
+                    <div className="game-content saved">
+                        <div style={{ fontSize: '4rem' }}>🌟</div>
+                        <h2>Ranking Atualizado!</h2>
+                        <p>Seu nome está no Hall da Fama.</p>
                         <a href={quiz.success.link} target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ marginTop: '2rem' }}>
                             {quiz.success.downloadMatch}
                         </a>
@@ -146,6 +221,43 @@ const HangmanGame = ({ onClose }) => {
             </div>
 
             <style>{`
+                /* Keep previous styles... */
+                /* Updates for new elements */
+                .stats {
+                    display: flex;
+                    gap: 1.5rem; /* Adjusted for extra item */
+                    margin-top: 1rem;
+                    font-weight: 500;
+                    color: rgba(255,255,255,0.8);
+                    flex-wrap: wrap; /* Mobile friendly */
+                    justify-content: center;
+                }
+                .final-time {
+                    font-size: 1.2rem;
+                    color: #fbbf24;
+                    margin: 1rem 0;
+                }
+                .save-score-form {
+                    background: rgba(255,255,255,0.05);
+                    padding: 1.5rem;
+                    border-radius: 12px;
+                    margin-top: 1.5rem;
+                }
+                .input-group {
+                    display: flex;
+                    gap: 0.5rem;
+                    margin-top: 0.5rem;
+                }
+                .input-group input {
+                    flex: 1;
+                    padding: 0.8rem;
+                    border-radius: 8px;
+                    border: 1px solid rgba(255,255,255,0.2);
+                    background: rgba(0,0,0,0.3);
+                    color: #fff;
+                }
+                
+                /* Previous styles below */
                 .game-overlay {
                     position: fixed;
                     top: 0; left: 0; right: 0; bottom: 0;
@@ -167,6 +279,8 @@ const HangmanGame = ({ onClose }) => {
                     position: relative;
                     box-shadow: 0 0 50px rgba(99, 102, 241, 0.3);
                     animation: zoomIn 0.3s ease;
+                    max-height: 90vh; /* Scroll if tall */
+                    overflow-y: auto;
                 }
                 .close-btn {
                     position: absolute;
@@ -187,13 +301,6 @@ const HangmanGame = ({ onClose }) => {
                     background: rgba(255,255,255,0.05);
                     padding: 1rem;
                     border-radius: 12px;
-                }
-                .stats {
-                    display: flex;
-                    gap: 2rem;
-                    margin-top: 1rem;
-                    font-weight: 500;
-                    color: rgba(255,255,255,0.8);
                 }
                 .question-area h3 {
                     margin-bottom: 1.5rem;
@@ -222,6 +329,7 @@ const HangmanGame = ({ onClose }) => {
                 }
                 @media (max-width: 500px) {
                     .options-grid { grid-template-columns: 1fr; }
+                    .stats { gap: 1rem; font-size: 0.9rem; }
                 }
                 @keyframes zoomIn {
                     from { transform: scale(0.9); opacity: 0; }
