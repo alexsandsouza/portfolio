@@ -59,7 +59,7 @@ const Contact = () => {
     const { contact } = portfolioContent;
 
     return (
-        <section id="contact" className="section" style={{ position: 'relative', paddingBottom: '2rem', overflow: 'hidden' }}>
+        <section id="contact" className="section" style={{ position: 'relative', paddingBottom: '10rem', overflow: 'hidden' }}>
             {/* Cyber Grid Floor */}
             <div style={{
                 position: 'absolute', bottom: 0, left: 0, right: 0, height: '100%',

@@ -91,8 +91,13 @@ const ProjectCard = ({ project }) => {
 
             <style>{`
                 @media (max-width: 768px) {
-                    .card-glass > div { text-align: left !important; }
-                    .card-glass h3 { text-align: left; }
+                    .card-glass, .card-glass > div { 
+                        text-align: left !important; 
+                        align-items: flex-start !important;
+                    }
+                    .card-glass h3, .card-glass p, .card-glass span, .card-glass div { 
+                        text-align: left !important; 
+                    }
                 }
             `}</style>
         </div>

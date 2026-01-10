@@ -85,7 +85,8 @@ const TestimonialCard = ({ item }) => {
                         color: 'var(--text-secondary)',
                         marginBottom: '2rem',
                         fontStyle: 'italic',
-                        position: 'relative'
+                        position: 'relative',
+                        textAlign: 'left' // Fix mobile alignment
                     }}>
                         "{item.quote}"
                     </p>
