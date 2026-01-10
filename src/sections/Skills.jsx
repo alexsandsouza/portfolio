@@ -9,11 +9,11 @@ const SoftSkillItem = ({ skill, index }) => {
     return (
         <div ref={ref} className="soft-skill-item" style={{
             ...style.transform ? { transform: style.transform, transition: style.transition } : {},
-            background: 'linear-gradient(90deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
-            border: '1px solid rgba(255,255,255,0.05)',
+            background: 'var(--bg-color)',
+            border: '1px solid var(--border-color)',
             borderLeft: `3px solid var(--secondary-color)`,
             padding: '1.2rem',
-            borderRadius: '0 12px 12px 0',
+            borderRadius: '12px',
             display: 'flex',
             alignItems: 'center',
             gap: '1rem',
@@ -39,7 +39,7 @@ const SoftSkillItem = ({ skill, index }) => {
                 0{index + 1}
             </div>
 
-            <span style={{ fontSize: '1rem', color: '#e2e8f0', fontWeight: '500' }}>
+            <span style={{ fontSize: '1rem', color: 'var(--text-heading)', fontWeight: 'bold' }}>
                 {skill}
             </span>
 
@@ -53,11 +53,11 @@ const SoftSkillItem = ({ skill, index }) => {
 const HardSkillChip = ({ skill }) => (
     <span style={{
         padding: '0.6rem 1.2rem',
-        background: 'rgba(15, 23, 42, 0.6)',
-        border: '1px solid rgba(56, 189, 248, 0.3)',
-        borderRadius: '4px',
+        background: 'var(--bg-color)',
+        border: '1px solid var(--border-color)',
+        borderRadius: '50px',
         fontSize: '0.85rem',
-        color: '#38bdf8',
+        color: 'var(--text-primary)',
         fontWeight: '500',
         display: 'inline-flex',
         alignItems: 'center',
@@ -66,14 +66,18 @@ const HardSkillChip = ({ skill }) => (
         transition: 'all 0.3s ease'
     }}
         onMouseEnter={(e) => {
-            e.currentTarget.style.background = 'rgba(56, 189, 248, 0.2)';
-            e.currentTarget.style.boxShadow = '0 0 15px rgba(56, 189, 248, 0.3)';
+            e.currentTarget.style.background = 'var(--primary-color)';
+            e.currentTarget.style.color = '#fff';
+            e.currentTarget.style.boxShadow = '0 5px 15px rgba(99, 102, 241, 0.3)';
             e.currentTarget.style.transform = 'translateY(-2px)';
+            e.currentTarget.style.borderColor = 'transparent';
         }}
         onMouseLeave={(e) => {
-            e.currentTarget.style.background = 'rgba(15, 23, 42, 0.6)';
-            e.currentTarget.style.boxShadow = '0 0 10px rgba(56, 189, 248, 0.1)';
+            e.currentTarget.style.background = 'var(--bg-color)';
+            e.currentTarget.style.color = 'var(--text-primary)';
+            e.currentTarget.style.boxShadow = 'none';
             e.currentTarget.style.transform = 'translateY(0)';
+            e.currentTarget.style.borderColor = 'var(--border-color)';
         }}
     >
         <span style={{ width: '6px', height: '6px', background: 'currentColor', borderRadius: '50%' }}></span>
@@ -113,9 +117,9 @@ const Skills = () => {
 
                     {/* Panel 1: Human Interface (Soft Skills) */}
                     <div className="glass-panel" style={{
-                        background: 'rgba(15, 23, 42, 0.4)',
-                        border: '1px solid rgba(99, 102, 241, 0.3)', // Highlighted border
-                        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(99, 102, 241, 0.1)', // Depth and glow
+                        background: 'var(--card-bg)',
+                        border: '1px solid var(--card-border)', // Highlighted border
+                        boxShadow: 'var(--card-shadow)', // Depth and glow
                         borderRadius: '24px',
                         padding: '2.5rem',
                         backdropFilter: 'blur(10px)',
@@ -124,7 +128,7 @@ const Skills = () => {
                         height: '100%'
                     }}>
                         <Reveal>
-                            <div className="panel-header" style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '1rem' }}>
+                            <div className="panel-header" style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem', borderBottom: '1px solid var(--border-color)', paddingBottom: '1rem' }}>
                                 <div style={{ width: '40px', height: '40px', background: 'var(--secondary-color)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem' }}>🧠</div>
                                 <h3 style={{ margin: 0, fontSize: '1.5rem' }}>Soft Skills</h3>
                             </div>
@@ -141,9 +145,9 @@ const Skills = () => {
 
                     {/* Panel 2: System Core (Hard Skills) */}
                     <div className="glass-panel" style={{
-                        background: 'rgba(15, 23, 42, 0.4)',
-                        border: '1px solid rgba(99, 102, 241, 0.3)', // Highlighted border
-                        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(99, 102, 241, 0.1)', // Depth and glow
+                        background: 'var(--card-bg)',
+                        border: '1px solid var(--card-border)', // Highlighted border
+                        boxShadow: 'var(--card-shadow)', // Depth and glow
                         borderRadius: '24px',
                         padding: '2.5rem',
                         backdropFilter: 'blur(10px)',
@@ -152,7 +156,7 @@ const Skills = () => {
                         height: '100%'
                     }}>
                         <Reveal>
-                            <div className="panel-header" style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '1rem' }}>
+                            <div className="panel-header" style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem', borderBottom: '1px solid var(--border-color)', paddingBottom: '1rem' }}>
                                 <div style={{ width: '40px', height: '40px', background: 'var(--primary-color)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem' }}>💻</div>
                                 <h3 style={{ margin: 0, fontSize: '1.5rem' }}>Hard Skills</h3>
                             </div>

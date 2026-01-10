@@ -57,8 +57,8 @@ const Journey = () => {
 
     return (
         <section id="journey" className="section" style={{
-            background: 'linear-gradient(180deg, rgba(30, 41, 59, 0.3) 0%, var(--bg-color) 100%)',
-            borderTop: '1px solid rgba(255,255,255,0.05)'
+            background: 'var(--bg-secondary)', // Theme aware background
+            borderTop: '1px solid var(--border-color)'
         }}>
             {showGame && <HangmanGame onClose={() => setShowGame(false)} />}
 
@@ -83,7 +83,7 @@ const Journey = () => {
                             <span>Progresso</span>
                             <span>{progress}%</span>
                         </div>
-                        <div style={{ width: '100%', height: '10px', background: 'rgba(255,255,255,0.1)', borderRadius: '10px', overflow: 'hidden' }}>
+                        <div style={{ width: '100%', height: '10px', background: 'var(--border-color)', borderRadius: '10px', overflow: 'hidden' }}>
                             <div style={{
                                 width: `${progress}%`, height: '100%',
                                 background: progress === 100 ? '#10b981' : 'linear-gradient(90deg, var(--primary-color), var(--secondary-color))',
@@ -183,8 +183,8 @@ const Journey = () => {
                     align-items: center;
                     gap: 1rem;
                     padding: 1.5rem;
-                    background: rgba(255, 255, 255, 0.03);
-                    border: 1px solid rgba(255, 255, 255, 0.05);
+                    background: var(--card-bg);
+                    border: 1px solid var(--card-border);
                     border-radius: 12px;
                     cursor: pointer;
                     transition: all 0.3s ease;
@@ -214,7 +214,7 @@ const Journey = () => {
 
                 .step-text {
                     font-size: 1.05rem;
-                    color: #fff;
+                    color: var(--text-heading);
                     font-weight: 500;
                     opacity: 0.9;
                     transition: opacity 0.3s;
@@ -227,11 +227,12 @@ const Journey = () => {
                 }
 
                 .reward-card {
-                    background: rgba(15, 23, 42, 0.8);
+                    background: var(--card-bg);
                     border-radius: 20px;
                     padding: 3rem;
                     text-align: center;
-                    border: 2px dashed rgba(255,255,255,0.1);
+                    border: 2px dashed var(--card-border);
+                    box-shadow: var(--card-shadow);
                     transition: all 0.5s ease;
                     position: relative;
                     overflow: hidden;
@@ -268,7 +269,7 @@ const Journey = () => {
                 }
 
                 .reward-card h3 {
-                    color: #fff;
+                    color: var(--text-heading);
                     margin-bottom: 1rem;
                 }
 

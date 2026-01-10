@@ -14,7 +14,8 @@ const ProjectCard = ({ project }) => {
             flexDirection: 'column',
             position: 'relative',
             overflow: 'hidden',
-            border: '1px solid rgba(255,255,255,0.05)'
+            border: '1px solid var(--card-border)',
+            boxShadow: 'var(--card-shadow)' // Ensure shadow
         }}>
             {/* Ambient Glow */}
             {style.glow !== 'none' && (
@@ -47,12 +48,12 @@ const ProjectCard = ({ project }) => {
 
                 <div style={{ marginBottom: '1rem' }}>
                     <span style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', borderLeft: '2px solid var(--primary-color)', paddingLeft: '0.8rem', display: 'block' }}>
-                        <strong style={{ color: '#fff' }}>Meu papel:</strong> {project.role}
+                        <strong style={{ color: 'var(--text-heading)' }}>Meu papel:</strong> {project.role}
                     </span>
                 </div>
 
                 <div style={{ marginBottom: '1rem' }}>
-                    <h4 style={{ fontSize: '1rem', color: '#fff', marginBottom: '0.5rem' }}>O que foi desenvolvido:</h4>
+                    <h4 style={{ fontSize: '1rem', color: 'var(--text-heading)', marginBottom: '0.5rem' }}>O que foi desenvolvido:</h4>
                     <p style={{ color: 'var(--text-primary)', fontSize: '0.95rem', lineHeight: 1.6, margin: 0 }}>
                         {project.description}
                     </p>
@@ -65,15 +66,26 @@ const ProjectCard = ({ project }) => {
                     marginBottom: '1.5rem',
                     border: '1px solid rgba(99, 102, 241, 0.2)'
                 }}>
-                    <p style={{ fontSize: '0.9rem', fontStyle: 'italic', marginBottom: '0', color: '#fff' }}>
+                    <p style={{ fontSize: '0.9rem', fontStyle: 'italic', marginBottom: '0', color: 'var(--text-primary)' }}>
                         <span style={{ marginRight: '0.5rem' }}>💡</span> <strong>Impacto:</strong> {project.impact}
                     </p>
                 </div>
 
                 <div style={{ marginTop: 'auto' }}>
-                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="btn btn-outline" style={{ width: '100%', textAlign: 'center', display: 'block' }}>
-                        Ver Projeto Online 🔗
-                    </a>
+                    {project.link ? (
+                        <a href={project.link} target="_blank" rel="noopener noreferrer" className="btn btn-outline" style={{ width: '100%', textAlign: 'center', display: 'block' }}>
+                            Ver Projeto Online 🔗
+                        </a>
+                    ) : (
+                        <div style={{
+                            width: '100%', textAlign: 'center', padding: '0.8rem',
+                            background: 'rgba(16, 185, 129, 0.1)', color: '#10b981',
+                            borderRadius: '8px', border: '1px solid rgba(16, 185, 129, 0.2)',
+                            fontSize: '0.9rem', fontWeight: 'bold'
+                        }}>
+                            Você está navegando neste projeto 📍
+                        </div>
+                    )}
                 </div>
             </div>
 

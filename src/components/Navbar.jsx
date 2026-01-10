@@ -1,8 +1,16 @@
 import React, { useState, useEffect } from 'react';
 
-const Navbar = () => {
+const Navbar = ({ triggerMatrix }) => {
     const [scrolled, setScrolled] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const handleResize = () => setIsMobile(window.innerWidth <= 900);
+        handleResize(); // Initial check
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -20,22 +28,20 @@ const Navbar = () => {
     ];
 
     return (
-        <nav style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            zIndex: 9999,
-            height: '80px',
-            display: 'flex',
-            alignItems: 'center',
-            background: scrolled ? '#0f172a' : 'transparent',
-            borderBottom: scrolled ? '1px solid rgba(255,255,255,0.1)' : 'none',
-            transition: 'background 0.3s ease, border-color 0.3s ease',
-            boxShadow: scrolled ? '0 4px 20px rgba(0,0,0,0.4)' : 'none'
-        }}>
+        <nav
+            className={`navbar ${scrolled ? 'scrolled' : ''}`}
+            style={{
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                right: 0,
+                zIndex: 9999,
+                height: '80px',
+                display: 'flex',
+                alignItems: 'center'
+            }}>
             <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '100%' }}>
-                <a href="#" className="dev-logo notranslate" translate="no" style={{
+                <a href="#" onDoubleClick={(e) => { e.preventDefault(); if (triggerMatrix) triggerMatrix(); }} className="dev-logo notranslate" translate="no" style={{
                     fontSize: '1.2rem',
                     fontWeight: '700',
                     fontFamily: "'JetBrains Mono', monospace", // Code font
@@ -48,7 +54,7 @@ const Navbar = () => {
                     alignItems: 'center',
                     gap: '8px',
                     padding: '8px 16px',
-                    background: 'rgba(30, 41, 59, 0.5)',
+                    background: '#1e293b', // Solid dark for code look
                     border: '1px solid rgba(255, 255, 255, 0.1)',
                     borderRadius: '8px',
                     transition: 'all 0.3s ease'
@@ -66,6 +72,24 @@ const Navbar = () => {
                 </a>
 
                 <style>{`
+                    .navbar {
+                        background: transparent;
+                        transition: all 0.3s ease;
+                        border-bottom: 1px solid transparent;
+                    }
+                    .navbar.scrolled {
+                        background: rgba(15, 23, 42, 0.85); /* Semitransparent body color */
+                        border-bottom: none;
+                        box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+                        backdrop-filter: blur(10px);
+                    }
+                    [data-theme="light"] .navbar.scrolled {
+                        background: #ffffff !important;
+                        backdrop-filter: none !important;
+                        border-bottom: 1px solid rgba(0, 0, 0, 0.15) !important;
+                        box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1) !important;
+                    }
+
                     .dev-logo:hover {
                         background: rgba(30, 41, 59, 0.9) !important;
                         border-color: rgba(99, 102, 241, 0.5) !important;
@@ -117,16 +141,24 @@ const Navbar = () => {
                 `}</style>
 
                 {/* Desktop Nav */}
-                <div className="desktop-nav">
-                    {navLinks.map((link) => (
-                        <a key={link.name} href={link.href} className="nav-link">
-                            {link.name}
-                        </a>
-                    ))}
-                    <a href="#contact" className="btn btn-primary" style={{ padding: '0.6rem 1.5rem', fontSize: '0.9rem', marginLeft: '1rem', whiteSpace: 'nowrap' }}>
-                        Contato
-                    </a>
-                </div>
+                {/* Desktop Nav - JS Guard */}
+                {
+                    !isMobile && (
+                        <div className="desktop-nav">
+                            {navLinks.map((link) => (
+                                <a key={link.name} href={link.href} className="nav-link">
+                                    {link.name}
+                                </a>
+                            ))}
+                            <a href="/resume.pdf" target="_blank" className="nav-link" style={{ fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                                CV <span style={{ fontSize: '1.1em' }}>↓</span>
+                            </a>
+                            <a href="#contact" className="btn btn-primary" style={{ padding: '0.6rem 1.5rem', fontSize: '0.9rem', marginLeft: '1rem', whiteSpace: 'nowrap' }}>
+                                Contato
+                            </a>
+                        </div>
+                    )
+                }
 
                 {/* Mobile Toggle Button */}
                 <button
@@ -134,9 +166,9 @@ const Navbar = () => {
                     onClick={() => setIsOpen(!isOpen)}
                     aria-label="Menu"
                 >
-                    <div style={{ width: '24px', height: '2px', background: '#fff', marginBottom: '6px', transform: isOpen ? 'rotate(45deg) translate(5px, 6px)' : 'none', transition: '0.3s' }}></div>
-                    <div style={{ width: '24px', height: '2px', background: '#fff', opacity: isOpen ? 0 : 1, transition: '0.3s' }}></div>
-                    <div style={{ width: '24px', height: '2px', background: '#fff', marginTop: '6px', transform: isOpen ? 'rotate(-45deg) translate(5px, -6px)' : 'none', transition: '0.3s' }}></div>
+                    <div style={{ width: '24px', height: '2px', background: 'var(--text-heading)', marginBottom: '6px', transform: isOpen ? 'rotate(45deg) translate(5px, 6px)' : 'none', transition: '0.3s' }}></div>
+                    <div style={{ width: '24px', height: '2px', background: 'var(--text-heading)', opacity: isOpen ? 0 : 1, transition: '0.3s' }}></div>
+                    <div style={{ width: '24px', height: '2px', background: 'var(--text-heading)', marginTop: '6px', transform: isOpen ? 'rotate(-45deg) translate(5px, -6px)' : 'none', transition: '0.3s' }}></div>
                 </button>
 
                 {/* Mobile Menu Overlay */}
@@ -169,41 +201,52 @@ const Navbar = () => {
                     text-decoration: none;
                 }
                 .nav-link:hover {
-                    color: #fff;
+                    color: var(--text-heading);
                 }
                 .mobile-toggle {
                     display: none;
                     background: none;
                     border: none;
                     cursor: pointer;
-                    z-index: 1001;
+                    z-index: 10001; /* Above mobile menu (10000) */
                     padding: 0.5rem;
                 }
                 .mobile-menu {
+                    display: none; /* Hide on desktop */
                     position: fixed;
                     top: 0; left: 0; right: 0; bottom: 0;
-                    background: var(--bg-color);
-                    display: flex;
+                    background: #0f172a !important; /* Force solid dark background */
+                    height: 100vh; /* Ensure full height */
                     flex-direction: column;
                     justify-content: center;
                     align-items: center;
                     gap: 2rem;
                     transform: translateY(-100%);
-                    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-                    z-index: 1000;
+                    opacity: 0;
+                    visibility: hidden;
+                    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+                    z-index: 10000;
+                }
+                @media (max-width: 900px) {
+                    .mobile-menu { display: flex; }
+                }
+                [data-theme="light"] .mobile-menu {
+                    background: #f8fafc !important;
                 }
                 .mobile-menu.open {
                     transform: translateY(0);
+                    opacity: 1;
+                    visibility: visible;
                 }
                 .mobile-link {
                     font-size: 1.5rem;
                     font-weight: bold;
-                    color: #fff;
+                    color: var(--text-heading);
                     text-decoration: none;
                 }
 
                 @media (max-width: 900px) {
-                    .desktop-nav { display: none; }
+                    .desktop-nav { display: none !important; }
                     .mobile-toggle { display: block; }
                     /* .container { justify-content: center !important; } Removed to fix overlap */
                 }

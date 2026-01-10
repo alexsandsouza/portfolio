@@ -46,8 +46,10 @@ const TestimonialCard = ({ item }) => {
             }}
         >
             <div className="card-inner" style={{
-                background: 'rgba(15, 23, 42, 0.9)', // Deep dark slate
-                borderRadius: '15px', // Slightly smaller to reveal border
+                background: 'var(--card-bg)', // Adapts to theme
+                border: '1px solid var(--card-border)',
+                boxShadow: 'var(--card-shadow)',
+                borderRadius: '15px',
                 padding: '2rem',
                 height: '100%',
                 position: 'relative',
@@ -107,7 +109,7 @@ const TestimonialCard = ({ item }) => {
                             {item.author[0]}
                         </div>
                         <div>
-                            <h4 style={{ margin: 0, color: '#fff', fontSize: '1rem' }}>{item.author}</h4>
+                            <h4 style={{ margin: 0, color: 'var(--text-heading)', fontSize: '1rem' }}>{item.author}</h4>
                             <span style={{ fontSize: '0.85rem', color: 'var(--primary-color)' }}>{item.role}</span>
                         </div>
                     </div>
@@ -173,7 +175,7 @@ const Testimonials = () => {
                 <Reveal delay={300}>
                     <div className="feedback-cta" style={{ position: 'relative', overflow: 'hidden' }}>
                         <div style={{ position: 'relative', zIndex: 1 }}>
-                            <p style={{ fontSize: '1.1rem', marginBottom: '1.5rem', color: '#fff' }}>
+                            <p style={{ fontSize: '1.1rem', marginBottom: '1.5rem', color: 'var(--text-primary)' }}>
                                 {staticData.cta.text}
                             </p>
                             <Link to="/feedback" className="btn btn-primary glow-button">
@@ -201,10 +203,11 @@ const Testimonials = () => {
                 }
                 .feedback-cta {
                     text-align: center;
-                    background: rgba(30, 41, 59, 0.5);
+                    background: var(--card-bg);
                     padding: 3rem;
-                    border-radius: 20px;
-                    border: 1px solid rgba(99, 102, 241, 0.3);
+                    borderRadius: 20px;
+                    border: 1px solid var(--card-border);
+                    box-shadow: var(--card-shadow);
                     backdrop-filter: blur(10px);
                 }
                 .glow-button {

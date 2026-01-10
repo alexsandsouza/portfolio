@@ -74,8 +74,9 @@ const Ranking = () => {
 
             <style>{`
                 .ranking-container {
-                    background: rgba(15, 23, 42, 0.6);
-                    border: 1px solid rgba(255, 255, 255, 0.1);
+                    background: var(--card-bg);
+                    border: 1px solid var(--card-border);
+                    box-shadow: var(--card-shadow);
                     border-radius: 16px;
                     padding: 1.5rem;
                     max-width: 400px;
@@ -91,7 +92,7 @@ const Ranking = () => {
                 }
                 .ranking-header h3 {
                     margin: 0;
-                    color: #fff;
+                    color: var(--text-heading);
                     font-size: 1.2rem;
                 }
                 .ranking-header p {
@@ -112,7 +113,7 @@ const Ranking = () => {
                     width: 4px;
                 }
                 .ranking-list::-webkit-scrollbar-thumb {
-                    background: rgba(255,255,255,0.2);
+                    background: var(--border-color);
                     border-radius: 4px;
                 }
 
@@ -120,7 +121,7 @@ const Ranking = () => {
                     display: flex;
                     align-items: center;
                     padding: 0.8rem;
-                    background: rgba(255,255,255,0.03);
+                    background: var(--bg-color);
                     border-radius: 8px;
                     transition: transform 0.2s;
                     border: 1px solid transparent;
@@ -141,7 +142,7 @@ const Ranking = () => {
                     justify-content: center;
                     margin-right: 1rem;
                     font-weight: bold;
-                    color: #fff;
+                    color: var(--text-heading);
                 }
                 .rank-number {
                     color: var(--text-secondary);
@@ -155,7 +156,7 @@ const Ranking = () => {
                 }
                 .rank-name {
                     font-weight: 500;
-                    color: #fff;
+                    color: var(--text-heading);
                     font-size: 0.95rem;
                 }
                 .rank-time {

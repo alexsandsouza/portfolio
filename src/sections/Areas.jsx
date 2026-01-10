@@ -46,8 +46,8 @@ const CircuitCard = ({ area, index, total }) => {
                 <div className="card-glass" style={{
                     padding: '2rem 1.5rem',
                     textAlign: 'center',
-                    border: '1px solid rgba(255,255,255,0.05)',
-                    background: 'linear-gradient(180deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.4) 100%)',
+                    border: '1px solid var(--card-border)',
+                    background: 'var(--card-bg)',
                     borderRadius: '16px',
                     height: '100%',
                     display: 'flex',
@@ -106,7 +106,7 @@ const CircuitCard = ({ area, index, total }) => {
                     left: 50%; /* Start from center of this card */
                     width: 100%; /* Stretch to next card center roughly */
                     height: 4px;
-                    background: rgba(255, 255, 255, 0.05);
+                    background: var(--border-color);
                     transform: translateY(-50%);
                     z-index: 0;
                     overflow: hidden;
@@ -164,7 +164,7 @@ const Areas = () => {
                 }}>
                     {/* Horizontal Guide Line for Desktop */}
                     <div style={{
-                        position: 'absolute', top: '50%', left: '10%', right: '10%', height: '2px', background: 'rgba(255,255,255,0.05)', zIndex: 0,
+                        position: 'absolute', top: '50%', left: '10%', right: '10%', height: '2px', background: 'var(--border-color)', zIndex: 0,
                         display: window.innerWidth > 768 ? 'block' : 'none'
                     }}></div>
 

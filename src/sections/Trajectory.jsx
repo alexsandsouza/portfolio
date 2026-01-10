@@ -41,15 +41,22 @@ const TimelineCard = ({ job, index }) => {
             {/* Date Bubble (Opposite side) */}
             <div style={{
                 position: 'absolute',
-                left: '50%',
                 top: '0',
-                transform: `translateX(${isEven ? '30px' : '-130px'})`,
-                color: 'var(--primary-color)',
-                fontWeight: 'bold',
-                fontFamily: 'monospace',
-                fontSize: '1rem',
-                opacity: 0.8,
-                paddingTop: '3px'
+                left: isEven ? '50%' : 'auto',
+                right: isEven ? 'auto' : '50%',
+                marginLeft: isEven ? '35px' : '0',
+                marginRight: isEven ? '0' : '35px',
+                color: 'var(--text-heading)',
+                fontWeight: '700',
+                fontSize: '0.85rem',
+                opacity: 1,
+                padding: '3px 10px',
+                background: 'var(--bg-color)',
+                border: '1px solid var(--primary-color)',
+                borderRadius: '12px',
+                zIndex: 20,
+                whiteSpace: 'nowrap',
+                boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
             }}>
                 {job.period}
             </div>
@@ -59,8 +66,8 @@ const TimelineCard = ({ job, index }) => {
                 width: '45%',
                 padding: '2rem',
                 position: 'relative',
-                border: '1px solid rgba(255,255,255,0.05)',
-                background: 'linear-gradient(145deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.4) 100%)',
+                border: '1px solid var(--card-border)',
+                background: 'var(--card-bg)',
                 borderRadius: '16px',
                 boxShadow: '0 10px 30px rgba(0,0,0,0.3)',
                 marginRight: isEven ? '50px' : '0',
@@ -74,7 +81,7 @@ const TimelineCard = ({ job, index }) => {
                 }}></div>
 
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '0.5rem' }}>
-                    <h3 style={{ color: '#fff', margin: 0, fontSize: '1.4rem', fontWeight: 'bold' }}>{job.role}</h3>
+                    <h3 style={{ color: 'var(--text-heading)', margin: 0, fontSize: '1.4rem', fontWeight: 'bold' }}>{job.role}</h3>
                 </div>
 
                 <h4 style={{ fontSize: '1rem', marginBottom: '1.2rem', color: 'var(--primary-color)', fontWeight: '600', letterSpacing: '0.5px' }}>
@@ -91,7 +98,7 @@ const TimelineCard = ({ job, index }) => {
                         borderLeft: '3px solid #10b981',
                         borderRadius: '0 8px 8px 0'
                     }}>
-                        <p style={{ fontSize: '0.9rem', color: '#e2e8f0', fontStyle: 'italic', margin: 0, display: 'flex', gap: '0.8rem', alignItems: 'center' }}>
+                        <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', fontStyle: 'italic', margin: 0, display: 'flex', gap: '0.8rem', alignItems: 'center' }}>
                             <span style={{ fontSize: '1.2rem' }}>🏆</span>
                             {job.results}
                         </p>
@@ -164,7 +171,17 @@ const Experience = () => {
                     .timeline-item { flex-direction: column !important; align-items: center !important; margin-left: 0 !important; border-left: none !important; padding-left: 0 !important; margin-bottom: 3rem; }
                     .timeline-item .card-glass { width: 100% !important; margin: 0 !important; text-align: center !important; }
                     .timeline-item > div:first-child { display: none !important; } /* Hide Dot on mobile */
-                    .timeline-item > div:nth-child(2) { position: relative !important; text-align: center !important; transform: none !important; left: 0 !important; margin-bottom: 0.5rem; width: 100%; } /* Date */
+                    .timeline-item > div:nth-child(2) { 
+                        position: relative !important; 
+                        text-align: center !important; 
+                        transform: none !important; 
+                        left: 0 !important; 
+                        margin-bottom: 0.5rem; 
+                        width: 100%;
+                        margin-left: 0 !important; /* Fix Alignment */
+                        margin-right: 0 !important; /* Fix Alignment */
+                        right: auto !important;
+                    } /* Date */
                      /* Hide central line on mobile and use per-item border */
                      div[style*="left: 50%"][style*="background: rgba(99, 102, 241, 0.3)"] { display: none; }
                      /* Center header inside card */

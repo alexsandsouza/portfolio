@@ -10,10 +10,11 @@ const TrophyCard = ({ highlight, index }) => {
         <div ref={ref} className="card-glass" style={{
             ...style.transform ? { transform: style.transform, transition: style.transition } : {},
             padding: '2.5rem',
-            background: 'linear-gradient(145deg, rgba(20, 20, 20, 0.9) 0%, rgba(30, 30, 30, 0.8) 100%)',
+            background: 'var(--card-bg)', // Adapts to theme
             borderRadius: '24px',
             textAlign: 'center',
-            border: '1px solid rgba(255, 215, 0, 0.15)', // Gold border subtle
+            border: '1px solid rgba(255, 215, 0, 0.4)', // Gold border
+            boxShadow: 'var(--card-shadow)',
             position: 'relative',
             overflow: 'hidden',
             height: '100%',
@@ -56,7 +57,7 @@ const TrophyCard = ({ highlight, index }) => {
                 <h3 style={{
                     fontSize: '1.5rem',
                     marginBottom: '1rem',
-                    color: '#fff',
+                    color: 'var(--text-heading)',
                     fontFamily: 'var(--font-heading)'
                 }}>
                     {highlight.title}
@@ -78,7 +79,7 @@ const TrophyCard = ({ highlight, index }) => {
                     {highlight.result}
                 </div>
 
-                <p style={{ color: '#ccc', fontStyle: 'italic', fontSize: '1rem', flex: 1 }}>
+                <p style={{ color: 'var(--text-secondary)', fontStyle: 'italic', fontSize: '1rem', flex: 1 }}>
                     {highlight.desc}
                 </p>
             </div>
