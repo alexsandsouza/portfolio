@@ -22,7 +22,6 @@ import Feedback from './pages/Feedback';
 
 import { useKonamiCode } from './hooks/useKonamiCode';
 import MatrixEffect from './components/MatrixEffect';
-// Duplicate import removed
 
 import { usePageTitle } from './hooks/usePageTitle';
 import { useSecurity } from './hooks/useSecurity'; // Import Security
