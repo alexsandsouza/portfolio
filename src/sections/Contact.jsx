@@ -18,13 +18,13 @@ const SocialNode = ({ platform, url, icon }) => {
         }}>
             <div style={{
                 width: '60px', height: '60px',
-                background: 'rgba(15, 23, 42, 0.8)',
-                border: '1px solid rgba(255,255,255,0.1)',
+                background: 'var(--card-bg)',
+                border: '1px solid var(--card-border)',
                 borderRadius: '50%',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 fontSize: '1.5rem',
-                color: '#fff',
-                boxShadow: '0 0 20px rgba(0,0,0,0.3)',
+                color: 'var(--text-primary)',
+                boxShadow: 'var(--card-shadow)',
                 position: 'relative',
                 overflow: 'hidden'
             }}>
@@ -51,7 +51,7 @@ const SocialNode = ({ platform, url, icon }) => {
             }}>
                 {platform}
             </div>
-        </a>
+        </a >
     );
 };
 
@@ -63,7 +63,7 @@ const Contact = () => {
             {/* Cyber Grid Floor */}
             <div style={{
                 position: 'absolute', bottom: 0, left: 0, right: 0, height: '100%',
-                background: 'linear-gradient(to top, #020617 0%, var(--bg-color) 100%)',
+                background: 'var(--contact-gradient)',
                 zIndex: -2
             }}></div>
 
@@ -82,7 +82,7 @@ const Contact = () => {
                     <div className="section-header" style={{ marginBottom: '3rem' }}>
                         {/* Signal Icon */}
                         <div style={{ fontSize: '3rem', marginBottom: '1rem', animation: 'pulseSignal 2s infinite' }}>📡</div>
-                        <h2 style={{ fontSize: '3.5rem', marginBottom: '1rem', background: 'linear-gradient(to right, #fff, #94a3b8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                        <h2 style={{ fontSize: '3.5rem', marginBottom: '1rem', color: 'var(--text-heading)' }}>
                             {contact.title}
                         </h2>
                         <p style={{ fontSize: '1.25rem', marginBottom: '3rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
@@ -132,9 +132,9 @@ const Contact = () => {
 
                     {/* Integrated Footer content */}
                     <div style={{
-                        borderTop: '1px solid rgba(255,255,255,0.05)',
+                        borderTop: '1px solid var(--border-color)',
                         paddingTop: '2rem',
-                        color: 'rgba(148, 163, 184, 0.6)',
+                        color: 'var(--text-secondary)',
                         fontSize: '0.9rem'
                     }}>
                         <p>© {new Date().getFullYear()} Prof. Alexsander Farias. Todos os direitos reservados.</p>

@@ -84,7 +84,7 @@ const HolographicStats = ({ stats }) => {
             display: 'grid',
             gridTemplateColumns: 'repeat(3, 1fr)',
             gap: '1px', // Separation for grid lines
-            background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)', // Top border illusion
+            background: 'linear-gradient(90deg, transparent, var(--border-color), transparent)', // Top border illusion
             marginBottom: '2rem',
             paddingTop: '1px',
             position: 'relative'
@@ -100,15 +100,17 @@ const HolographicStats = ({ stats }) => {
                 <div key={i} style={{
                     textAlign: 'center',
                     padding: '1.5rem 0.5rem',
-                    background: 'rgba(15, 23, 42, 0.4)',
-                    backdropFilter: 'blur(4px)'
+                    background: 'var(--card-bg)', // Glass effect
+                    backdropFilter: 'blur(4px)',
+                    boxShadow: 'var(--card-shadow)', // Added shadow
+                    border: '1px solid var(--card-border)' // Added border
                 }}>
                     <strong style={{
                         display: 'block',
                         fontSize: '2rem',
                         fontWeight: '800',
                         lineHeight: 1,
-                        background: i === 0 ? 'linear-gradient(to bottom, #fff, var(--primary-color))' : i === 1 ? 'linear-gradient(to bottom, #fff, var(--secondary-color))' : 'linear-gradient(to bottom, #fff, var(--accent-color))',
+                        background: i === 0 ? 'linear-gradient(to bottom, var(--text-heading), var(--primary-color))' : i === 1 ? 'linear-gradient(to bottom, var(--text-heading), var(--secondary-color))' : 'linear-gradient(to bottom, var(--text-heading), var(--accent-color))',
                         WebkitBackgroundClip: 'text',
                         WebkitTextFillColor: 'transparent'
                     }}>{stat.value}</strong>
@@ -150,9 +152,10 @@ const About = () => {
                                     marginBottom: '1.5rem',
                                     fontSize: '1.25rem',
                                     fontWeight: '500',
-                                    borderLeft: '3px solid var(--accent-color)',
+                                    borderLeft: '3px solid var(--secondary-color)', // Pink border as requested
                                     paddingLeft: '1rem',
-                                    lineHeight: 1.4
+                                    lineHeight: 1.6,
+                                    whiteSpace: 'pre-line' // Respond to \n
                                 }}>
                                     {about.headline}
                                 </h3>
@@ -168,15 +171,16 @@ const About = () => {
 
                             <div className="card-glass" style={{
                                 padding: '1.25rem',
-                                border: '1px solid rgba(20, 184, 166, 0.2)',
-                                background: 'linear-gradient(90deg, rgba(20, 184, 166, 0.05) 0%, transparent 100%)',
+                                border: '1px solid var(--card-border)',
+                                background: 'linear-gradient(90deg, var(--card-bg) 0%, transparent 100%)',
+                                boxShadow: 'var(--card-shadow)',
                                 borderRadius: '12px',
                                 display: 'flex',
                                 alignItems: 'center',
                                 gap: '1rem'
                             }}>
                                 <span style={{ fontSize: '1.2rem' }}>🚀</span>
-                                <p style={{ fontStyle: 'italic', color: '#e2e8f0', margin: 0, fontSize: '0.95rem', fontWeight: '500' }}>
+                                <p style={{ fontStyle: 'italic', color: 'var(--text-secondary)', margin: 0, fontSize: '0.95rem', fontWeight: '500' }}>
                                     "{about.resume_focus}"
                                 </p>
                             </div>

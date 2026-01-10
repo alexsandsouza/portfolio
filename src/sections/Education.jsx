@@ -17,8 +17,9 @@ const EduCard = ({ edu, index }) => {
             gap: '1.5rem',
             alignItems: 'center',
             padding: '2rem',
-            background: 'linear-gradient(90deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
-            border: '1px solid rgba(255,255,255,0.05)',
+            background: 'var(--card-bg)',
+            border: '1px solid var(--card-border)',
+            boxShadow: 'var(--card-shadow)',
             position: 'relative',
             overflow: 'hidden',
             marginBottom: '1.5rem',
@@ -44,13 +45,13 @@ const EduCard = ({ edu, index }) => {
             {/* Icon Box */}
             <div style={{
                 width: '80px', height: '80px',
-                background: 'rgba(15, 23, 42, 0.6)',
-                borderRadius: '16px',
+                background: isInProgress ? 'rgba(245, 158, 11, 0.1)' : 'rgba(16, 185, 129, 0.1)',
+                borderRadius: '50%',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 fontSize: '2rem',
-                border: '1px solid rgba(255,255,255,0.1)',
+                border: `1px solid ${statusColor}40`,
                 color: statusColor,
-                boxShadow: `0 0 15px ${statusColor}40` // semi-transparent shadow
+                boxShadow: `0 0 20px ${statusColor}20` // soft glow
             }}>
                 {isInProgress ? '⏳' : '🎓'}
             </div>
@@ -85,11 +86,11 @@ const EduCard = ({ edu, index }) => {
             {/* Badge (Desktop only mostly) */}
             <div className="edu-badge" style={{
                 padding: '0.5rem 1rem',
-                background: 'rgba(255,255,255,0.05)',
-                border: '1px solid rgba(255,255,255,0.1)',
+                background: 'var(--bg-color)',
+                border: '1px solid var(--border-color)',
                 borderRadius: '50px',
                 fontSize: '0.85rem',
-                color: 'var(--text-primary)',
+                color: 'var(--text-secondary)',
                 whiteSpace: 'nowrap',
                 textAlign: 'center'
             }}>

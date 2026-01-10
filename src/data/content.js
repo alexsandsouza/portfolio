@@ -8,7 +8,7 @@ export const portfolioContent = {
 
   hero: {
     name: "Prof. Alexsander Farias",
-    title: "Professor Universitário | Mentor | Desenvolvedor Full Stack | Especialista em Educação Tecnológica",
+    title: "Professor Universitário\nDev Full Stack\nAvaliador de TCC e Projetos",
     positioning: "Atuação consolidada na formação de talentos, projetos inovadores e soluções tecnológicas reais.",
     ctaPrimary: "Ver Atuação",
     ctaSecondary: "Entrar em Contato"
@@ -16,8 +16,8 @@ export const portfolioContent = {
 
   about: {
     title: "Sobre Mim",
-    headline: "Formando a Próxima Geração da Tecnologia",
-    description: "Sou Professor Universitário, Mentor e Desenvolvedor Full Stack, com forte atuação na formação de talentos em TI e desenvolvimento de projetos educacionais inovadores. Minha experiência abrange desde a docência em cursos de Computação (Engenharia de Software, Redes, Cibersegurança) até a atuação prática no mercado como Desenvolvedor e Consultor.\n\nAtuo fortemente na capacitação de profissionais em Redes e Cibersegurança (Cisco CCNA, CyberOPS) e sou Fundador da AD Academy. Minha visão é integrada e sistêmica, conectando teoria, prática e as demandas atuais da transformação digital.",
+    headline: "Professor Universitário\nDev Full Stack\nAvaliador de TCC e Projetos",
+    description: "Sou Professor Universitário, Dev Full Stack e Avaliador de TCC e Projetos, com forte atuação na formação de talentos em TI e desenvolvimento de projetos educacionais inovadores. Minha experiência abrange desde a docência em cursos de Computação (Engenharia de Software, Redes, Cibersegurança) até a atuação prática no mercado como Desenvolvedor e Consultor.\n\nAtuo fortemente na capacitação de profissionais em Redes e Cibersegurança (Cisco CCNA, CyberOPS) e sou Fundador da AD Academy. Minha visão é integrada e sistêmica, conectando teoria, prática e as demandas atuais da transformação digital.",
     resume_focus: "Foco em: Educação Tecnológica, Desenvolvimento Full Stack, Cibersegurança e Mentoria de Carreira.",
     stats: [
       { label: "Anos de Ensino", value: "14+" },
@@ -48,35 +48,34 @@ export const portfolioContent = {
   projects: [
     {
       title: "AD Academy - Plataforma Educacional",
-      context: "Plataforma criada para formação de iniciantes em tecnologia, com foco em certificações oficiais Cisco e carreira em TI.",
-      role: "Fundador, Tech Educator e Desenvolvedor Full Stack.",
-      description: "Site institucional, páginas educacionais, estrutura de divulgação de cursos e eventos.",
-      impact: "Projeto educacional ativo, com conteúdos, eventos e formação de alunos.",
+      context: "PLATAFORMA EDUCACIONAL TECH",
+      role: "Fundador & Full Stack.",
+      description: "Ambiente completo para formação em TI, certificações Cisco e carreira.",
+      impact: "Educação ativa e formação de talentos em tecnologia.",
       link: "https://ad-academy-treinamentos.vercel.app/"
     },
     {
       title: "AD Academy One",
-      context: "Plataforma complementar focada em centralizar conteúdos, produtos educacionais e experiências de aprendizado.",
-      role: "Idealizador e Desenvolvedor Full Stack.",
-      description: "Aplicação web moderna, focada em experiência do usuário e conversão educacional.",
-      impact: "Ambiente digital de apoio à formação e produtos educacionais.",
+      context: "HUB DE EXPERIÊNCIA DO ALUNO",
+      role: "Idealizador & Full Stack.",
+      description: "Centralização de conteúdos, produtos digitais e jornada de aprendizado.",
+      impact: "Ecossistema digital focado em conversão e engajamento.",
       link: "https://ad-academy-one.vercel.app/"
     },
     {
       title: "Projeto Profissional - Suellem Abreu",
-      context: "Site profissional desenvolvido para posicionamento digital e presença online.",
+      context: "POSICIONAMENTO DIGITAL",
       role: "Desenvolvedor Full Stack.",
-      description: "Site institucional responsivo, layout moderno e estrutura de apresentação profissional.",
-      impact: "Presença digital profissional publicada e em uso.",
+      description: "Site institucional moderno, focado em autoridade e apresentação profissional.",
+      impact: "Presença digital consolidada e profissional.",
       link: "https://suellemabreu.vercel.app/"
     },
     {
       title: "Alexsander Farias – Portfólio & Autoridade",
-      context: "Meu próprio hub de autoridade digital, educação em tecnologia e serviços profissionais.",
-      role: "Criador, Educador e Desenvolvedor.",
-      description: "Portfólio, área educacional, projetos reais, produtos digitais e interação com usuários.",
-      impact: "Plataforma central de relacionamento, autoridade e negócios.",
-      link: "https://alexsanderfarias.vercel.app/"
+      context: "PLATAFORMA PESSOAL & HUB DIGITAL",
+      role: "Tech Lead & Full Stack.",
+      description: "Ecossistema digital integrando portfólio, cursos e serviços profissionais.",
+      impact: "Centralização de presença digital, autoridade e negócios."
     }
   ],
 
@@ -191,10 +190,10 @@ export const portfolioContent = {
     hard: {
       tech: ["React.js", "Node.js", "Full Stack Development", "UX/UI"],
       infra: ["Redes de Computadores", "Cibersegurança", "Cisco CCNA", "CyberOPS"],
-      base: ["Engenharia de Software", "Sistemas Distribuídos", "Banco de Dados", "Sistemas Operacionais"]
+      base: ["Engenharia de Software", "Sistemas Distribuídos", "Banco de Dados", "Sistemas Operacionais", "Lógica de Programação", "Estrutura de Dados I e II", "Análise e Modelagem de Sistemas", "Programação Estruturada e Orientada a Objetos"]
     },
     soft: [
-      "Docência Superior", "Mentoria de Equipes", "Comunicação Técnica", "Liderança de Projetos", "Inovação Educacional"
+      "Comunicação Eficaz", "Inteligência Emocional", "Resiliência e Adaptabilidade", "Pensamento Crítico e Analítico", "Resolução de Problemas", "Liderança", "Criatividade e Inovação"
     ]
   },
 

@@ -121,6 +121,14 @@ const GlowingProfile = () => {
 
 const Hero = () => {
     const { hero } = portfolioContent;
+    const [greeting, setGreeting] = useState('Olá');
+
+    useEffect(() => {
+        const hour = new Date().getHours();
+        if (hour < 12) setGreeting('Bom dia');
+        else if (hour < 18) setGreeting('Boa tarde');
+        else setGreeting('Boa noite');
+    }, []);
 
     return (
         <section className="section" style={{
@@ -152,9 +160,9 @@ const Hero = () => {
                                 position: 'relative',
                                 display: 'flex', alignItems: 'center', gap: '10px',
                                 padding: '0.8rem 1.8rem',
-                                background: '#0f172a',
+                                background: 'var(--surface-color)',
                                 borderRadius: '50px',
-                                border: '1px solid rgba(255,255,255,0.1)'
+                                border: '1px solid var(--border-color)'
                             }}>
                                 <span style={{
                                     display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -166,14 +174,11 @@ const Hero = () => {
                                 }}></span>
 
                                 <span style={{
-                                    color: '#fff',
+                                    color: 'var(--text-primary)',
                                     fontWeight: '700',
                                     letterSpacing: '1.5px',
                                     textTransform: 'uppercase',
                                     fontSize: '0.85rem',
-                                    background: 'linear-gradient(to right, #e2e8f0, #94a3b8)',
-                                    WebkitBackgroundClip: 'text',
-                                    WebkitTextFillColor: 'transparent',
                                     fontFamily: 'monospace'
                                 }}>
                                     {hero.positioning}
@@ -188,7 +193,7 @@ const Hero = () => {
 
                     <Reveal delay={200}>
                         <h1 style={{ marginBottom: '1.5rem', lineHeight: '1.1', fontSize: 'clamp(2.5rem, 5vw, 4rem)' }}>
-                            <span style={{ display: 'block', fontSize: '0.5em', color: 'var(--text-secondary)', fontWeight: '400', marginBottom: '0.5rem' }}>Olá, eu sou o</span>
+                            <span style={{ display: 'block', fontSize: '0.5em', color: 'var(--text-secondary)', fontWeight: '400', marginBottom: '0.5rem' }}>{greeting}, eu sou o</span>
                             <span className="text-gradient" style={{
                                 backgroundSize: '200% auto',
                                 animation: 'shine 5s linear infinite'
@@ -200,13 +205,13 @@ const Hero = () => {
                             fontSize: 'clamp(1.2rem, 2vw, 1.8rem)',
                             textAlign: 'left',
                             fontWeight: '400',
-                            color: '#fff',
+                            color: 'var(--text-heading)',
                             opacity: 0.9,
                             borderLeft: '4px solid var(--secondary-color)',
                             paddingLeft: '1.5rem',
                             marginBottom: '2.5rem'
                         }}>
-                            {hero.title.split('|').map((item, i) => (
+                            {hero.title.split('\n').map((item, i) => (
                                 <span key={i} style={{ display: 'block', marginBottom: '0.5rem' }}>{item.trim()}</span>
                             ))}
                         </h2>

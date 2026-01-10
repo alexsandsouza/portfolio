@@ -93,12 +93,12 @@ const HangmanGame = ({ onClose }) => {
     const renderHangman = () => {
         // ... (Same drawing logic as before) ...
         const parts = [
-            <circle cx="100" cy="50" r="20" stroke="white" strokeWidth="4" fill="transparent" />,
-            <line x1="100" y1="70" x2="100" y2="150" stroke="white" strokeWidth="4" />,
-            <line x1="100" y1="90" x2="60" y2="120" stroke="white" strokeWidth="4" />,
-            <line x1="100" y1="90" x2="140" y2="120" stroke="white" strokeWidth="4" />,
-            <line x1="100" y1="150" x2="60" y2="190" stroke="white" strokeWidth="4" />,
-            <line x1="100" y1="150" x2="140" y2="190" stroke="white" strokeWidth="4" />
+            <circle cx="100" cy="50" r="20" stroke="var(--text-heading)" strokeWidth="4" fill="transparent" />,
+            <line x1="100" y1="70" x2="100" y2="150" stroke="var(--text-heading)" strokeWidth="4" />,
+            <line x1="100" y1="90" x2="60" y2="120" stroke="var(--text-heading)" strokeWidth="4" />,
+            <line x1="100" y1="90" x2="140" y2="120" stroke="var(--text-heading)" strokeWidth="4" />,
+            <line x1="100" y1="150" x2="60" y2="190" stroke="var(--text-heading)" strokeWidth="4" />,
+            <line x1="100" y1="150" x2="140" y2="190" stroke="var(--text-heading)" strokeWidth="4" />
         ];
 
         return (
@@ -139,7 +139,7 @@ const HangmanGame = ({ onClose }) => {
                         <div className="game-header">
                             {renderHangman()}
                             <div className="stats">
-                                <span className="mistakes-count" style={{ color: mistakes > 3 ? '#ef4444' : '#fff' }}>
+                                <span className="mistakes-count" style={{ color: mistakes > 3 ? '#ef4444' : 'var(--text-heading)' }}>
                                     Erros: {mistakes} / {maxMistakes}
                                 </span>
                                 <span className="time-count" style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
@@ -223,13 +223,14 @@ const HangmanGame = ({ onClose }) => {
             <style>{`
                 /* Keep previous styles... */
                 /* Updates for new elements */
+                /* Theme Aware Updates */
                 .stats {
                     display: flex;
-                    gap: 1.5rem; /* Adjusted for extra item */
+                    gap: 1.5rem;
                     margin-top: 1rem;
                     font-weight: 500;
-                    color: rgba(255,255,255,0.8);
-                    flex-wrap: wrap; /* Mobile friendly */
+                    color: var(--text-secondary); /* Dynamic */
+                    flex-wrap: wrap;
                     justify-content: center;
                 }
                 .final-time {
@@ -238,7 +239,7 @@ const HangmanGame = ({ onClose }) => {
                     margin: 1rem 0;
                 }
                 .save-score-form {
-                    background: rgba(255,255,255,0.05);
+                    background: var(--card-bg); /* Dynamic */
                     padding: 1.5rem;
                     border-radius: 12px;
                     margin-top: 1.5rem;
@@ -252,12 +253,11 @@ const HangmanGame = ({ onClose }) => {
                     flex: 1;
                     padding: 0.8rem;
                     border-radius: 8px;
-                    border: 1px solid rgba(255,255,255,0.2);
-                    background: rgba(0,0,0,0.3);
-                    color: #fff;
+                    border: 1px solid var(--border-color);
+                    background: var(--bg-secondary);
+                    color: var(--text-primary);
                 }
                 
-                /* Previous styles below */
                 .game-overlay {
                     position: fixed;
                     top: 0; left: 0; right: 0; bottom: 0;
@@ -279,7 +279,7 @@ const HangmanGame = ({ onClose }) => {
                     position: relative;
                     box-shadow: 0 0 50px rgba(99, 102, 241, 0.3);
                     animation: zoomIn 0.3s ease;
-                    max-height: 90vh; /* Scroll if tall */
+                    max-height: 90vh;
                     overflow-y: auto;
                 }
                 .close-btn {
@@ -288,23 +288,23 @@ const HangmanGame = ({ onClose }) => {
                     right: 1rem;
                     background: none;
                     border: none;
-                    color: rgba(255,255,255,0.5);
+                    color: var(--text-secondary);
                     cursor: pointer;
                 }
-                .close-btn:hover { color: #fff; }
+                .close-btn:hover { color: var(--text-primary); }
                 .game-content { text-align: center; }
                 .game-header { 
                     display: flex; 
                     flex-direction: column; 
                     align-items: center; 
                     margin-bottom: 2rem; 
-                    background: rgba(255,255,255,0.05);
+                    background: var(--bg-secondary);
                     padding: 1rem;
                     border-radius: 12px;
                 }
                 .question-area h3 {
                     margin-bottom: 1.5rem;
-                    color: #fff;
+                    color: var(--text-heading); /* Dynamic */
                     font-size: 1.2rem;
                 }
                 .options-grid {
@@ -313,11 +313,11 @@ const HangmanGame = ({ onClose }) => {
                     gap: 1rem;
                 }
                 .option-btn {
-                    background: rgba(255,255,255,0.05);
-                    border: 1px solid rgba(255,255,255,0.1);
+                    background: var(--card-bg);
+                    border: 1px solid var(--border-color);
                     padding: 1rem;
-                    color: #fff;
-                    border-radius: 8px;
+                    color: var(--text-primary); /* Dynamic */
+                    border-radius: 12px; /* Rounded as requested */
                     cursor: pointer;
                     transition: all 0.2s;
                     text-align: left;
@@ -325,6 +325,7 @@ const HangmanGame = ({ onClose }) => {
                 .option-btn:hover {
                     background: var(--primary-color);
                     border-color: var(--primary-color);
+                    color: white; /* Always white on hover */
                     transform: translateY(-2px);
                 }
                 @media (max-width: 500px) {
