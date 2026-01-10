@@ -50,6 +50,7 @@ const CircuitCard = ({ area, index, total }) => {
                     background: 'var(--card-bg)',
                     borderRadius: '16px',
                     height: '100%',
+                    minHeight: '320px', // Force consistent size
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',

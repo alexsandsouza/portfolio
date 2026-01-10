@@ -170,6 +170,15 @@ const Journey = () => {
                         grid-template-columns: 1fr;
                         gap: 3rem;
                     }
+                    .journey-step {
+                        flex-direction: column;
+                        text-align: center;
+                        justify-content: center;
+                        padding: 2rem;
+                    }
+                    .step-text {
+                        text-align: center;
+                    }
                 }
 
                 .steps-container {
