@@ -69,17 +69,30 @@ const HangmanGame = ({ onClose }) => {
         setIsSubmitting(true);
 
         try {
-            await addDoc(collection(db, "quiz_results"), {
-                name: playerName,
-                timeSeconds: elapsedTime,
-                createdAt: serverTimestamp()
-            });
+            // Create a timeout promise to prevent infinite hanging
+            const timeout = new Promise((_, reject) =>
+                setTimeout(() => reject(new Error("Tempo de espera excedido")), 5000)
+            );
+
+            // Race the addDoc against the timeout
+            await Promise.race([
+                addDoc(collection(db, "quiz_results"), {
+                    name: playerName,
+                    timeSeconds: elapsedTime,
+                    createdAt: serverTimestamp()
+                }),
+                timeout
+            ]);
+
             setGameState('saved');
         } catch (error) {
             console.error("Error saving score:", error);
-            alert("Erro ao salvar recorde. Verifique sua conexão.");
+            // Even if saving fails, we proceed to let the user download the reward
+            alert("Não foi possível salvar no Ranking agora, mas seu prêmio está liberado!");
+            setGameState('saved');
+        } finally {
+            setIsSubmitting(false);
         }
-        setIsSubmitting(false);
     };
 
     const restartGame = () => {
