@@ -182,7 +182,7 @@ const HangmanGame = ({ onClose }) => {
                 {gameState === 'won' && (
                     <div className="game-content won">
                         <div style={{ fontSize: '4rem' }}>🏆</div>
-                        <h2>{quiz.success.title}</h2>
+                        <h2>PARABÉNS, CAMPEÃO!</h2>
                         <p>{quiz.success.subtitle}</p>
                         <p className="final-time">Tempo Total: <strong>{elapsedTime} segundos</strong></p>
 
