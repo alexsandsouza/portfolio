@@ -180,7 +180,7 @@ const HangmanGame = ({ onClose }) => {
 
                 {/* Won Screen with Leaderboard Input */}
                 {gameState === 'won' && (
-                    <div className="game-content won" style={{ border: '4px solid gold', borderRadius: '16px', padding: '1rem' }}>
+                    <div className="game-content won">
                         <div style={{ fontSize: '4rem' }}>🏆</div>
                         <h2>{quiz.success.title}</h2>
                         <p>{quiz.success.subtitle}</p>
