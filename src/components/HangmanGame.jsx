@@ -16,6 +16,7 @@ const HangmanGame = ({ onClose }) => {
     const [elapsedTime, setElapsedTime] = useState(0);
     const [playerName, setPlayerName] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [saveFailed, setSaveFailed] = useState(false);
 
     const maxMistakes = 6;
     const questions = quiz.questions;
@@ -69,12 +70,11 @@ const HangmanGame = ({ onClose }) => {
         setIsSubmitting(true);
 
         try {
-            // Create a timeout promise to prevent infinite hanging
+            // Aumentei o timeout para 15s para ser mais resiliente
             const timeout = new Promise((_, reject) =>
-                setTimeout(() => reject(new Error("Tempo de espera excedido")), 5000)
+                setTimeout(() => reject(new Error("Timeout")), 15000)
             );
 
-            // Race the addDoc against the timeout
             await Promise.race([
                 addDoc(collection(db, "quiz_results"), {
                     name: playerName,
@@ -86,9 +86,8 @@ const HangmanGame = ({ onClose }) => {
 
             setGameState('saved');
         } catch (error) {
-            console.error("Error saving score:", error);
-            // Even if saving fails, we proceed to let the user download the reward
-            alert("Não foi possível salvar no Ranking agora, mas seu prêmio está liberado!");
+            console.error("Erro ao salvar ranking:", error);
+            setSaveFailed(true);
             setGameState('saved');
         } finally {
             setIsSubmitting(false);
@@ -198,7 +197,7 @@ const HangmanGame = ({ onClose }) => {
                                     required
                                 />
                                 <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
-                                    {isSubmitting ? 'Salvando...' : <Save size={18} />}
+                                    {isSubmitting ? 'Salvando Conquista...' : <Save size={18} />}
                                 </button>
                             </div>
                         </form>
@@ -211,9 +210,12 @@ const HangmanGame = ({ onClose }) => {
                 {/* Final Success Screen (Post-Save) */}
                 {gameState === 'saved' && (
                     <div className="game-content saved">
-                        <div style={{ fontSize: '4rem' }}>🌟</div>
-                        <h2>Ranking Atualizado!</h2>
-                        <p>Seu nome está no Hall da Fama.</p>
+                        <div style={{ fontSize: '4rem' }}>{saveFailed ? '�' : '�🌟'}</div>
+                        <h2>{saveFailed ? 'Parabéns!' : 'Ranking Atualizado!'}</h2>
+                        <p>{saveFailed
+                            ? 'Não conseguimos salvar no ranking agora, mas seu prêmio está garantido.'
+                            : 'Seu nome está no Hall da Fama.'}
+                        </p>
                         <a href={quiz.success.link} target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ marginTop: '2rem' }}>
                             {quiz.success.downloadMatch}
                         </a>
