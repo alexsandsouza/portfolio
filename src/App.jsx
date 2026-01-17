@@ -22,6 +22,7 @@ import Feedback from './pages/Feedback';
 import MentorshipPage from './pages/MentorshipPage';
 import MentorshipRegistration from './pages/MentorshipRegistration';
 import MentorshipContract from './pages/MentorshipContract';
+import MentorshipSuccess from './pages/MentorshipSuccess';
 
 import { useKonamiCode } from './hooks/useKonamiCode';
 import MatrixEffect from './components/MatrixEffect';
@@ -80,6 +81,7 @@ function App() {
         <Route path="/mentoria" element={<MentorshipPage />} />
         <Route path="/mentoria/matricula" element={<MentorshipRegistration />} />
         <Route path="/mentoria/contrato" element={<MentorshipContract />} />
+        <Route path="/mentoria/sucesso" element={<MentorshipSuccess />} />
       </Routes>
     </div>
   );

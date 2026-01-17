@@ -26,7 +26,7 @@ const MentorshipContract = () => {
             alert("Por favor, aceite os termos do contrato para continuar.");
             return;
         }
-        window.location.href = checkoutLink;
+        navigate('/mentoria/sucesso');
     };
 
     return (
