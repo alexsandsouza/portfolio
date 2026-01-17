@@ -71,7 +71,12 @@ const Contact = () => {
 
                     {/* Left Column: Info & Socials */}
                     <Reveal width="100%">
-                        <div style={{ textAlign: 'left' }}>
+                        <div style={{
+                            textAlign: 'center',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center'
+                        }}>
                             <div style={{ fontSize: '3rem', marginBottom: '1rem', animation: 'pulseSignal 2s infinite', display: 'inline-block' }}>📡</div>
                             <h2 style={{ fontSize: '3rem', marginBottom: '1rem', color: 'var(--text-heading)' }}>
                                 {contact.title}
