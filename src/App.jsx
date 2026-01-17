@@ -20,6 +20,8 @@ import ScrollProgress from './components/ScrollProgress';
 import { Routes, Route } from 'react-router-dom';
 import Feedback from './pages/Feedback';
 import MentorshipPage from './pages/MentorshipPage';
+import MentorshipRegistration from './pages/MentorshipRegistration';
+import MentorshipContract from './pages/MentorshipContract';
 
 import { useKonamiCode } from './hooks/useKonamiCode';
 import MatrixEffect from './components/MatrixEffect';
@@ -76,6 +78,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/feedback" element={<Feedback />} />
         <Route path="/mentoria" element={<MentorshipPage />} />
+        <Route path="/mentoria/matricula" element={<MentorshipRegistration />} />
+        <Route path="/mentoria/contrato" element={<MentorshipContract />} />
       </Routes>
     </div>
   );

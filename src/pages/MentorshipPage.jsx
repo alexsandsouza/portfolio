@@ -17,7 +17,7 @@ const MentorshipPage = () => {
             <Navbar />
 
             {/* Custom Floating Cart for this page */}
-            <a href={checkoutLink} target="_blank" rel="noopener noreferrer" className="floating-cart btn btn-primary" style={{ borderRadius: '50%', width: '60px', height: '60px', padding: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 20px rgba(99, 102, 241, 0.6)' }}>
+            <a href="/mentoria/matricula" className="floating-cart btn btn-primary" style={{ borderRadius: '50%', width: '60px', height: '60px', padding: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 20px rgba(99, 102, 241, 0.6)' }}>
                 <ShoppingCart size={24} />
             </a>
 
@@ -55,7 +55,7 @@ const MentorshipPage = () => {
                         <p style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', marginBottom: '3rem', maxWidth: '700px', margin: '0 auto 3rem auto' }}>
                             Dois meses de clareza valem anos de tentativas.
                         </p>
-                        <a href={checkoutLink} target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ padding: '1.2rem 3rem', fontSize: '1.2rem' }}>
+                        <a href="/mentoria/matricula" className="btn btn-primary" style={{ padding: '1.2rem 3rem', fontSize: '1.2rem' }}>
                             👉 Quero garantir minha vaga
                         </a>
                     </div>
@@ -213,7 +213,7 @@ const MentorshipPage = () => {
                             <p style={{ fontSize: '0.9rem' }}>Apenas 10 vagas. Quando fechar, encerra.</p>
                         </div>
 
-                        <a href={checkoutLink} target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ width: '100%', padding: '1.5rem', fontSize: '1.3rem' }}>
+                        <a href="/mentoria/matricula" className="btn btn-primary" style={{ width: '100%', padding: '1.5rem', fontSize: '1.3rem' }}>
                             Quero garantir minha vaga
                         </a>
                     </div>
@@ -224,7 +224,7 @@ const MentorshipPage = () => {
             <section className="section" style={{ background: 'var(--bg-secondary)', textAlign: 'center' }}>
                 <div className="container">
                     <h2 style={{ marginBottom: '2rem' }}>Quem tem direção, avança.</h2>
-                    <a href={checkoutLink} target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ padding: '1.5rem 3rem', fontSize: '1.2rem' }}>
+                    <a href="/mentoria/matricula" className="btn btn-primary" style={{ padding: '1.5rem 3rem', fontSize: '1.2rem' }}>
                         👉 Quero garantir minha vaga agora
                     </a>
                 </div>
