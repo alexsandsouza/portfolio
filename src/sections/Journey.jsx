@@ -42,12 +42,30 @@ const Journey = () => {
             setCompletedSteps(prev => {
                 const newSteps = [...prev, id];
                 if (newSteps.length === steps.length) {
-                    confetti({
-                        particleCount: 150,
-                        spread: 100,
-                        origin: { y: 0.6 },
-                        colors: ['#6366f1', '#fbbf24']
-                    });
+                    // Celebration fireworks
+                    const end = Date.now() + 3000;
+                    const colors = ['#6366f1', '#10b981', '#fbbf24', '#ef4444'];
+
+                    (function frame() {
+                        confetti({
+                            particleCount: 3,
+                            angle: 60,
+                            spread: 55,
+                            origin: { x: 0 },
+                            colors: colors
+                        });
+                        confetti({
+                            particleCount: 3,
+                            angle: 120,
+                            spread: 55,
+                            origin: { x: 1 },
+                            colors: colors
+                        });
+
+                        if (Date.now() < end) {
+                            requestAnimationFrame(frame);
+                        }
+                    }());
                 }
                 return newSteps;
             });

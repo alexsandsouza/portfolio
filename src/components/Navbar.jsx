@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { QrCode, X } from 'lucide-react';
 
 const Navbar = ({ triggerMatrix }) => {
     const [scrolled, setScrolled] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
+    const [showQR, setShowQR] = useState(false);
 
     useEffect(() => {
         const handleResize = () => setIsMobile(window.innerWidth <= 900);
@@ -156,6 +158,14 @@ const Navbar = ({ triggerMatrix }) => {
                             <a href="#contact" className="btn btn-primary" style={{ padding: '0.6rem 1.5rem', fontSize: '0.9rem', marginLeft: '1rem', whiteSpace: 'nowrap' }}>
                                 Contato
                             </a>
+                            <button
+                                onClick={() => setShowQR(true)}
+                                className="nav-link"
+                                style={{ background: 'transparent', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center' }}
+                                title="Gerar QR Code"
+                            >
+                                <QrCode size={20} />
+                            </button>
                         </div>
                     )
                 }
@@ -187,7 +197,42 @@ const Navbar = ({ triggerMatrix }) => {
                         CV <span style={{ fontSize: '0.8em' }}>↓</span>
                     </a>
                     <a href="#contact" onClick={() => setIsOpen(false)} className="mobile-link" style={{ color: 'var(--primary-color)' }}>Contato</a>
+                    <button onClick={() => { setShowQR(true); setIsOpen(false); }} className="mobile-link" style={{ background: 'transparent', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-heading)' }}>
+                        <QrCode size={24} /> Compartilhar
+                    </button>
                 </div>
+
+                {/* QR Code Modal */}
+                {showQR && (
+                    <div style={{
+                        position: 'fixed', inset: 0, zIndex: 10002,
+                        background: 'rgba(0,0,0,0.8)', backdropFilter: 'blur(5px)',
+                        display: 'flex', alignItems: 'center', justifyContent: 'center'
+                    }} onClick={() => setShowQR(false)}>
+                        <div style={{
+                            background: '#fff', padding: '2rem', borderRadius: '20px',
+                            textAlign: 'center', position: 'relative', maxWidth: '90%', width: '300px'
+                        }} onClick={e => e.stopPropagation()}>
+                            <button onClick={() => setShowQR(false)} style={{
+                                position: 'absolute', top: '10px', right: '10px',
+                                background: 'transparent', border: 'none', cursor: 'pointer', color: '#333'
+                            }}>
+                                <X size={24} />
+                            </button>
+                            <h3 style={{ color: '#333', marginBottom: '1rem' }}>Scan Me! 📱</h3>
+                            <div style={{ background: '#fff', padding: '10px', borderRadius: '10px', display: 'inline-block' }}>
+                                <img
+                                    src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://alexsander-farias.vercel.app"
+                                    alt="QR Code"
+                                    style={{ display: 'block' }}
+                                />
+                            </div>
+                            <p style={{ color: '#666', marginTop: '1rem', fontSize: '0.9rem' }}>
+                                Compartilhe o portfólio facilmente.
+                            </p>
+                        </div>
+                    </div>
+                )}
             </div>
 
             <style>{`
