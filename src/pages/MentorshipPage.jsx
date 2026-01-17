@@ -259,6 +259,32 @@ const MentorshipPage = () => {
                 </div>
             </section>
 
+            {/* SEÇÃO 11.5 - PERGUNTAS FREQUENTES (FAQ) */}
+            <section className="section">
+                <div className="container" style={{ maxWidth: '800px' }}>
+                    <h2 style={{ marginBottom: '3rem', textAlign: 'center' }}>Perguntas Frequentes</h2>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                        {[
+                            { q: "Preciso saber programar para participar?", a: "Não. A mentoria é focada em estratégia de carreira, cobrindo desde quem está começando do zero até quem já estuda mas se sente perdido." },
+                            { q: "Como funcionam os encontros?", a: "São 8 encontros ao vivo, todos os sábados, via Google Meet/Zoom. Cada sessão tem duração média de 1h30 com conteúdo e tira-dúvidas." },
+                            { q: "E se eu perder uma aula ao vivo?", a: "Fique tranquilo! Todos os encontros são gravados e disponibilizados na área de membros para você assistir quando quiser." },
+                            { q: "Quais as formas de pagamento?", a: "Você pode pagar à vista via Pix com desconto ou parcelar em até 12x no cartão de crédito." },
+                            { q: "Tem garantia?", a: "Sim! Você tem garantia incondicional de 7 dias. Se achar que não é para você, devolvemos seu investimento." }
+                        ].map((item, i) => (
+                            <details key={i} className="card-glass" style={{ cursor: 'pointer', padding: '1.5rem' }}>
+                                <summary style={{ fontSize: '1.1rem', fontWeight: 'bold', display: 'flex', justifyContent: 'space-between', alignItems: 'center', listStyle: 'none' }}>
+                                    {item.q}
+                                    <span style={{ color: 'var(--primary-color)' }}>+</span>
+                                </summary>
+                                <p style={{ marginTop: '1rem', color: 'var(--text-secondary)', lineHeight: '1.6' }}>
+                                    {item.a}
+                                </p>
+                            </details>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
             {/* SEÇÃO 12 – CTA FINAL */}
             <section className="section" style={{ background: 'var(--bg-secondary)', textAlign: 'center' }}>
                 <div className="container">
