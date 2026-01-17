@@ -62,7 +62,7 @@ const AcademyHub = () => {
                                 </p>
                                 <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
                                     {/* Botão de Download do Ebook */}
-                                    <a href="https://drive.google.com/file/d/1f2Yh5vPDFhVaE-EgRQopnrx3j15i7Z__/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                    <a href="https://drive.google.com/file/d/1obzUUG7yXT0iZfpkyBtiUgGJg5Mrbnix/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                                         <Download size={20} /> Baixar Ebook do Evento
                                     </a>
                                 </div>
