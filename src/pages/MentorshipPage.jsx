@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import WhatsAppButton from '../components/WhatsAppButton';
+import Countdown from '../components/Countdown';
 import { Check, ShoppingCart, Clock, Calendar, Users, Target, BookOpen, Star, AlertTriangle, ArrowRight, QrCode, X } from 'lucide-react';
 
 const MentorshipPage = () => {
@@ -249,6 +250,7 @@ const MentorshipPage = () => {
 
                         <div style={{ background: 'rgba(236, 72, 153, 0.1)', padding: '1rem', borderRadius: '8px', marginBottom: '2rem', border: '1px dashed var(--secondary-color)' }}>
                             <p style={{ color: 'var(--secondary-color)', fontWeight: 'bold' }}>🔥 Oferta válida até 07/02</p>
+                            <Countdown targetDate="2026-02-07T23:59:59" />
                             <p style={{ fontSize: '0.9rem' }}>Apenas 10 vagas. Quando fechar, encerra.</p>
                         </div>
 
