@@ -32,6 +32,7 @@ import { usePageTitle } from './hooks/usePageTitle';
 import { useSecurity } from './hooks/useSecurity'; // Import Security
 import WhatsAppButton from './components/WhatsAppButton'; // Chat
 import { ScrollToTop } from './components/ScrollToTop';
+import TopBanner from './components/TopBanner';
 
 const Home = () => {
   usePageTitle();
@@ -49,6 +50,7 @@ const Home = () => {
 
   return (
     <>
+      <TopBanner />
       {showMatrix && <MatrixEffect onClose={() => setShowMatrix(false)} />}
       <MouseSpotlight />
       <ScrollProgress />

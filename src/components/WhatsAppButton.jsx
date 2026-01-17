@@ -1,9 +1,13 @@
 import React from 'react';
 
-const WhatsAppButton = () => {
+const WhatsAppButton = ({ message }) => {
+    const defaultMessage = "Olá, vi seu portfólio e gostaria de conversar!";
+    const finalMessage = message ? message : defaultMessage;
+    const encodedMessage = encodeURIComponent(finalMessage);
+
     return (
         <a
-            href="https://wa.me/5592999999999?text=Olá,%20vi%20seu%20portfólio%20e%20gostaria%20de%20conversar!"
+            href={`https://wa.me/5592999999999?text=${encodedMessage}`}
             target="_blank"
             rel="noopener noreferrer"
             className="whatsapp-float"

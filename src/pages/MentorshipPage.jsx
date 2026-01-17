@@ -230,7 +230,7 @@ const MentorshipPage = () => {
                 </div>
             </section>
 
-            <WhatsAppButton />
+            <WhatsAppButton message="Olá Alex, estou na página da Mentoria Carreira TI e tenho algumas dúvidas antes de me matricular." />
         </div>
     );
 };
