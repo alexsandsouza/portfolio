@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import WhatsAppButton from '../components/WhatsAppButton';
 import Countdown from '../components/Countdown';
+import SEO from '../components/SEO';
 import { Check, ShoppingCart, Clock, Calendar, Users, Target, BookOpen, Star, AlertTriangle, ArrowRight, QrCode, X } from 'lucide-react';
 
 const MentorshipPage = () => {
@@ -15,6 +16,11 @@ const MentorshipPage = () => {
 
     return (
         <div className="mentorship-page">
+            <SEO
+                title="Mentoria Carreira TI do Zero | Inscrições Abertas"
+                description="Garanta sua vaga na Mentoria Estratégica. 8 encontros ao vivo, roadmap personalizado e acompanhamento para entrar na área de TI em 2026."
+                image="https://alexsander-farias.vercel.app/Marketing_Mentoria/Slide1.JPG"
+            />
             <Navbar />
 
             {/* Custom Floating Cart for this page */}
