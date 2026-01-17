@@ -229,6 +229,30 @@ const Hero = () => {
                     </Reveal>
 
                     <Reveal delay={200}>
+                        <div style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '8px',
+                            padding: '6px 12px',
+                            background: 'rgba(34, 197, 94, 0.1)',
+                            border: '1px solid rgba(34, 197, 94, 0.3)',
+                            borderRadius: '20px',
+                            fontSize: '0.8rem',
+                            color: '#22c55e',
+                            fontWeight: '600',
+                            marginBottom: '1.5rem'
+                        }}>
+                            <span style={{
+                                width: '8px', height: '8px',
+                                background: '#22c55e',
+                                borderRadius: '50%',
+                                boxShadow: '0 0 10px #22c55e',
+                                animation: 'pulseGreen 2s infinite'
+                            }}></span>
+                            Disponível para Projetos
+                        </div>
+                        <style>{`@keyframes pulseGreen { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }`}</style>
+
                         <h1 style={{ marginBottom: '1.5rem', lineHeight: '1.1', fontSize: 'clamp(2.5rem, 5vw, 4rem)' }}>
                             <span style={{ display: 'block', fontSize: '0.5em', color: 'var(--text-secondary)', fontWeight: '400', marginBottom: '0.5rem' }}>{greeting}, eu sou o</span>
                             <span className="text-gradient" style={{

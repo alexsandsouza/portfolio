@@ -183,6 +183,9 @@ const Navbar = ({ triggerMatrix }) => {
                             {link.name}
                         </a>
                     ))}
+                    <a href="/resume.pdf" target="_blank" className="mobile-link" style={{ fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        CV <span style={{ fontSize: '0.8em' }}>↓</span>
+                    </a>
                     <a href="#contact" onClick={() => setIsOpen(false)} className="mobile-link" style={{ color: 'var(--primary-color)' }}>Contato</a>
                 </div>
             </div>
