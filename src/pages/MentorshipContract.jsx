@@ -30,7 +30,7 @@ const MentorshipContract = () => {
     };
 
     return (
-        <div className="contract-page" style={{ minHeight: '100vh', paddingTop: '100px', paddingBottom: '50px' }}>
+        <div className="contract-page" style={{ minHeight: '100vh', paddingTop: '140px', paddingBottom: '50px' }}>
             <Navbar />
 
             <div className="container">

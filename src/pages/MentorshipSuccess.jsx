@@ -36,7 +36,7 @@ const MentorshipSuccess = () => {
     }, []);
 
     return (
-        <div className="success-page" style={{ minHeight: '100vh', paddingTop: '120px', paddingBottom: '50px', textAlign: 'center' }}>
+        <div className="success-page" style={{ minHeight: '100vh', paddingTop: '140px', paddingBottom: '50px', textAlign: 'center' }}>
             <Navbar />
 
             <div className="container" style={{ maxWidth: '700px' }}>

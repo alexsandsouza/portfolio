@@ -29,7 +29,7 @@ const MentorshipRegistration = () => {
     };
 
     return (
-        <div className="registration-page" style={{ minHeight: '100vh', paddingTop: '100px', paddingBottom: '50px' }}>
+        <div className="registration-page" style={{ minHeight: '100vh', paddingTop: '140px', paddingBottom: '50px' }}>
             <Navbar />
 
             <div className="container" style={{ maxWidth: '600px' }}>
