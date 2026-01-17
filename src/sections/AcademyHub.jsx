@@ -39,13 +39,16 @@ const AcademyHub = () => {
                                 justifyContent: 'center',
                                 position: 'relative'
                             }}>
-                                {/* You can replace this iframe with the actual YouTube/Vimeo embed */}
-                                <div style={{ textAlign: 'center', opacity: 0.8 }}>
-                                    <PlayCircle size={64} color="white" style={{ marginBottom: '1rem', opacity: 0.8 }} />
-                                    <p style={{ color: 'white' }}>Replay do Evento</p>
-                                </div>
-                                {/* Exemplo de Iframe (Comentado para não quebrar sem link) */}
-                                {/* <iframe width="100%" height="100%" src="https://www.youtube.com/embed/SEU_VIDEO_ID" title="Evento TI" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe> */}
+                                <iframe
+                                    width="100%"
+                                    height="100%"
+                                    src="https://www.youtube.com/embed/MAv9jIVklZk"
+                                    title="Evento TI"
+                                    frameBorder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowFullScreen
+                                    style={{ position: 'absolute', top: 0, left: 0 }}
+                                ></iframe>
                             </div>
 
                             {/* Content Area */}
@@ -66,7 +69,7 @@ const AcademyHub = () => {
                                 </p>
                                 <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
                                     {/* Botão de Download do Ebook */}
-                                    <a href="#" className="btn btn-primary" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                    <a href="https://drive.google.com/file/d/1f2Yh5vPDFhVaE-EgRQopnrx3j15i7Z__/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                                         <Download size={20} /> Baixar Ebook do Evento
                                     </a>
                                 </div>
