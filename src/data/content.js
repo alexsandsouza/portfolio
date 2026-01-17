@@ -173,6 +173,17 @@ export const portfolioContent = {
 
   highlights: [
     {
+      title: "Facilitador Google Cloud Arcade",
+      result: "Selecionado 2026",
+      desc: "Aprovado como Facilitador Oficial do Google Cloud Arcade 2026, apoiando a comunidade tech em desafios de Cloud Computing e inovação."
+    },
+    {
+      title: "Podcast Routing Friends",
+      result: "Convidado Especial",
+      desc: "Debate sobre 'O Futuro da Carreira de TI' com Tomy Tim. Visão estratégica, mercado de trabalho e mentoria tech.",
+      link: "https://www.youtube.com/live/G8lZCTndNV8?si=kOfQ7RC1XV9RVPbc"
+    },
+    {
       title: "Liga Jovem Sebrae",
       result: "Semifinalista",
       desc: "Representando o Estado do Amazonas e o Centro Universitário Fametro no Evento Nacional em Belém-PA."

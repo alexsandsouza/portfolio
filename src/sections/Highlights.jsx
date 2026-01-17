@@ -82,6 +82,30 @@ const TrophyCard = ({ highlight, index }) => {
                 <p style={{ color: 'var(--text-secondary)', fontStyle: 'italic', fontSize: '1rem', flex: 1 }}>
                     {highlight.desc}
                 </p>
+
+                {highlight.link && (
+                    <a href={highlight.link} target="_blank" rel="noopener noreferrer" className="highlight-link">
+                        Assistir / Ver Mais 🔗
+                    </a>
+                )}
+
+                <style>{`
+                    .highlight-link {
+                        margin-top: 1.5rem;
+                        display: inline-block;
+                        padding: 0.5rem 1rem;
+                        color: #FDB931;
+                        border: 1px solid rgba(253, 185, 49, 0.3);
+                        border-radius: 8px;
+                        text-decoration: none;
+                        font-weight: bold;
+                        transition: all 0.3s ease;
+                    }
+                    .highlight-link:hover {
+                        background: rgba(253, 185, 49, 0.1);
+                        transform: translateY(-2px);
+                    }
+                `}</style>
             </div>
 
             <style>{`
