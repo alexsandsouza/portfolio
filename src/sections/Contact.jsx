@@ -103,7 +103,7 @@ const Contact = () => {
                             </a>
 
                             <h3 style={{ fontSize: '1.2rem', color: 'var(--text-primary)', marginBottom: '1rem' }}>Conecte-se comigo:</h3>
-                            <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
+                            <div className="social-links" style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
                                 <SocialNode platform="LinkedIn" url="https://www.linkedin.com/in/alexsandfarias" icon="👔" />
                                 <SocialNode platform="Lattes" url="http://lattes.cnpq.br/2107081536584079" icon="🎓" />
                                 <SocialNode platform="GitHub" url="https://github.com/alexsandsouza" icon="🐙" />
@@ -132,7 +132,7 @@ const Contact = () => {
                                 <input type="hidden" name="_captcha" value="false" />
                                 <input type="hidden" name="_next" value="https://alexsander-farias.vercel.app/" /> {/* Redireciona de volta após envio */}
 
-                                <div style={{ marginBottom: '1.5rem' }}>
+                                <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
                                     <label style={{ display: 'block', color: 'var(--text-secondary)', marginBottom: '0.5rem', fontSize: '0.9rem' }}>Seu Nome</label>
                                     <input type="text" name="name" required style={{
                                         width: '100%',
@@ -146,7 +146,7 @@ const Contact = () => {
                                     }} placeholder="Ex: João Silva" />
                                 </div>
 
-                                <div style={{ marginBottom: '1.5rem' }}>
+                                <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
                                     <label style={{ display: 'block', color: 'var(--text-secondary)', marginBottom: '0.5rem', fontSize: '0.9rem' }}>Seu E-mail</label>
                                     <input type="email" name="email" required style={{
                                         width: '100%',
@@ -160,7 +160,7 @@ const Contact = () => {
                                     }} placeholder="Ex: joao@email.com" />
                                 </div>
 
-                                <div style={{ marginBottom: '1.5rem' }}>
+                                <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
                                     <label style={{ display: 'block', color: 'var(--text-secondary)', marginBottom: '0.5rem', fontSize: '0.9rem' }}>Mensagem</label>
                                     <textarea name="message" required rows="4" style={{
                                         width: '100%',
@@ -216,10 +216,21 @@ const Contact = () => {
                 .cyber-button-small:hover { transform: translateY(-3px); filter: brightness(1.1); }
                 input:focus, textarea:focus { border-color: var(--primary-color) !important; box-shadow: 0 0 10px rgba(99, 102, 241, 0.3); }
                 
+                .contact-left-col { text-align: left; }
+                
                 @media (max-width: 768px) {
                     .contact-grid {
                         grid-template-columns: 1fr !important;
                         gap: 3rem !important;
+                    }
+                    .contact-left-col {
+                        text-align: center !important;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                    }
+                    .social-links {
+                        justify-content: center !important;
                     }
                 }
             `}</style>
