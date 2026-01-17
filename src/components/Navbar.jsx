@@ -155,6 +155,19 @@ const Navbar = ({ triggerMatrix }) => {
                             <a href="/resume.pdf" target="_blank" className="nav-link" style={{ fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '4px' }}>
                                 CV <span style={{ fontSize: '1.1em' }}>↓</span>
                             </a>
+                            <a href="/mentoria" className="btn" style={{
+                                padding: '0.6rem 1.5rem',
+                                fontSize: '0.9rem',
+                                marginLeft: '1rem',
+                                whiteSpace: 'nowrap',
+                                background: 'linear-gradient(90deg, #ec4899, #8b5cf6)',
+                                color: 'white',
+                                border: 'none',
+                                fontWeight: 'bold',
+                                boxShadow: '0 4px 15px rgba(236, 72, 153, 0.4)'
+                            }}>
+                                Mentoria 🚀
+                            </a>
                             <a href="#contact" className="btn btn-primary" style={{ padding: '0.6rem 1.5rem', fontSize: '0.9rem', marginLeft: '1rem', whiteSpace: 'nowrap' }}>
                                 Contato
                             </a>
@@ -196,6 +209,7 @@ const Navbar = ({ triggerMatrix }) => {
                     <a href="/resume.pdf" target="_blank" className="mobile-link" style={{ fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '8px' }}>
                         CV <span style={{ fontSize: '0.8em' }}>↓</span>
                     </a>
+                    <a href="/mentoria" onClick={() => setIsOpen(false)} className="mobile-link" style={{ color: '#ec4899' }}>Mentoria 🚀</a>
                     <a href="#contact" onClick={() => setIsOpen(false)} className="mobile-link" style={{ color: 'var(--primary-color)' }}>Contato</a>
                     <button onClick={() => { setShowQR(true); setIsOpen(false); }} className="mobile-link" style={{ background: 'transparent', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-heading)' }}>
                         <QrCode size={24} /> Compartilhar

@@ -19,6 +19,7 @@ import ScrollProgress from './components/ScrollProgress';
 
 import { Routes, Route } from 'react-router-dom';
 import Feedback from './pages/Feedback';
+import MentorshipPage from './pages/MentorshipPage';
 
 import { useKonamiCode } from './hooks/useKonamiCode';
 import MatrixEffect from './components/MatrixEffect';
@@ -74,6 +75,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/feedback" element={<Feedback />} />
+        <Route path="/mentoria" element={<MentorshipPage />} />
       </Routes>
     </div>
   );

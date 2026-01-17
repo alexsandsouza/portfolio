@@ -286,6 +286,15 @@ const Hero = () => {
 
                     <Reveal delay={400}>
                         <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
+                            <a href="/mentoria" className="btn" style={{
+                                background: 'linear-gradient(90deg, #ec4899, #8b5cf6)',
+                                color: 'white',
+                                border: 'none',
+                                fontWeight: 'bold',
+                                boxShadow: '0 4px 15px rgba(236, 72, 153, 0.4)'
+                            }}>
+                                Mentoria: Iniciar em TI 🚀
+                            </a>
                             <a href="#projects" className="btn btn-primary" style={{ position: 'relative', overflow: 'hidden' }}>
                                 <span style={{ position: 'relative', zIndex: 1 }}>{hero.ctaPrimary}</span>
                                 <div style={{
