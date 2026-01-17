@@ -170,6 +170,23 @@ const MentorshipRegistration = () => {
                 @media (max-width: 600px) {
                     .grid-2-mobile { grid-template-columns: 1fr !important; }
                 }
+                
+                /* Config for text visibility in Select */
+                select {
+                    appearance: none; /* Remove default arrow */
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                }
+                select option {
+                    background-color: var(--surface-color); /* Dark background for options */
+                    color: var(--text-primary) !important; /* Visible text color */
+                    padding: 10px;
+                }
+                /* Specific fix for light theme if needed, though variables handle it */
+                [data-theme="light"] select option {
+                    background-color: #ffffff;
+                    color: #333333 !important;
+                }
             `}</style>
         </div>
     );
