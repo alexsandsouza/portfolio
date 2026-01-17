@@ -68,7 +68,7 @@ export const portfolioContent = {
       role: "Desenvolvedor Full Stack.",
       description: "Site institucional moderno, focado em autoridade e apresentação profissional.",
       impact: "Presença digital consolidada e profissional.",
-      link: "https://suellemabreu.vercel.app/"
+      link: "https://suellemabreu.netlify.app/"
     },
     {
       title: "Alexsander Farias – Portfólio & Autoridade",
