@@ -47,6 +47,22 @@ export const portfolioContent = {
   projectsHeadline: "Aqui estão alguns projetos reais que desenvolvi ou liderei, unindo desenvolvimento web, educação em tecnologia e impacto prático, com soluções publicadas e em uso.",
   projects: [
     {
+      title: "DNA Nexus - Ecossistema SaaS",
+      context: "GESTÃO EMPRESARIAL ALL-IN-ONE",
+      role: "Arquiteto de Software & Full Stack.",
+      description: "Plataforma unificada integrando ERP, CRM e GED. Foco em UX, conformidade fiscal e alta escalabilidade para empresas.",
+      impact: "Democratização da gestão de alta performance.",
+      link: "https://dnanexus.netlify.app/"
+    },
+    {
+      title: "Viver da Palavra - Web App",
+      context: "EDTECH & ESPIRITUALIDADE",
+      role: "Idealizador & Desenvolvedor.",
+      description: "Aplicação progressiva de estudo bíblico, guiando o usuário do contexto à prática através de um método estruturado.",
+      impact: "Transformação do estudo bíblico em jornada interativa.",
+      link: "https://viverdapalavra.vercel.app/"
+    },
+    {
       title: "AD Academy - Plataforma Educacional",
       context: "PLATAFORMA EDUCACIONAL TECH",
       role: "Fundador & Full Stack.",
