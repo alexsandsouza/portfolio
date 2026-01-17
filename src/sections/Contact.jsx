@@ -124,7 +124,7 @@ const Contact = () => {
                         display: 'flex', justifyContent: 'center', gap: '3rem',
                         marginBottom: '4rem'
                     }}>
-                        <SocialNode platform="LinkedIn" url="#" icon="👔" />
+                        <SocialNode platform="LinkedIn" url="https://www.linkedin.com/in/alexsandfarias" icon="👔" />
                         <SocialNode platform="GitHub" url="#" icon="🐙" />
                         <SocialNode platform="Instagram" url="#" icon="📸" />
                         <SocialNode platform="Email" url="mailto:contato@alexsander.com" icon="📧" />
