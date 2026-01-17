@@ -22,15 +22,8 @@ const AcademyHub = () => {
                 {/* DESTAQUE: EVENTO E REPLAY */}
                 <div style={{ marginBottom: '5rem' }}>
                     <Reveal>
-                        <div className="card-glass" style={{
-                            padding: '0',
-                            overflow: 'hidden',
-                            display: 'grid',
-                            gridTemplateColumns: '1.2fr 1fr',
-                            borderColor: 'var(--primary-color)',
-                            boxShadow: '0 0 30px rgba(99, 102, 241, 0.1)'
-                        }}>
-                            {/* Video Area (Placeholder) */}
+                        <div className="card-glass event-card-grid">
+                            {/* Video Area */}
                             <div style={{
                                 background: '#000',
                                 minHeight: '300px',
@@ -140,17 +133,34 @@ const AcademyHub = () => {
             </div>
 
             <style>{`
+                /* REFACTORED CSS FOR ROBUST MOBILE LAYOUT */
+                .event-card-grid {
+                    display: grid;
+                    grid-template-columns: 1.2fr 1fr;
+                    padding: 0;
+                    overflow: hidden;
+                    border-color: var(--primary-color);
+                    box-shadow: 0 0 30px rgba(99, 102, 241, 0.1);
+                }
+
                 .hover-card:hover {
                     transform: translateY(-5px);
                     border-color: var(--primary-color);
                 }
+
                 @media (max-width: 900px) {
-                    .card-glass[style*="grid-template-columns"] {
+                    .event-card-grid {
                         grid-template-columns: 1fr !important;
+                        grid-template-rows: auto auto;
                     }
-                    /* Reorder video to top on mobile */
-                    .card-glass[style*="grid-template-columns"] > div:first-child {
-                        min-height: 200px;
+                    /* Ensure video is on top and has good height */
+                    .event-card-grid > div:first-child {
+                        min-height: 250px;
+                        width: 100%;
+                    }
+                    /* Adjust padding for content on mobile */
+                    .event-card-grid > div:last-child {
+                        padding: 2rem !important;
                     }
                 }
             `}</style>
