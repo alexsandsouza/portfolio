@@ -186,7 +186,8 @@ export const portfolioContent = {
     {
       title: "Liga Jovem Sebrae",
       result: "Semifinalista",
-      desc: "Representando o Estado do Amazonas e o Centro Universitário Fametro no Evento Nacional em Belém-PA."
+      desc: "Representando o Estado do Amazonas e o Centro Universitário Fametro no Evento Nacional em Belém-PA.",
+      link: "https://noticias.fametro.edu.br/engenharia-de-software-da-fametro-se-destaca-nacionalmente-academicos-ficam-entre-os-quatro-melhores-do-brasil-em-competicao-com-60-mil-inscritos/"
     },
     {
       title: "Desafio Saul Benchimol",
