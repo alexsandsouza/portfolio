@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import WhatsAppButton from '../components/WhatsAppButton';
-import { Check, ShoppingCart, Clock, Calendar, Users, Target, BookOpen, Star, AlertTriangle, ArrowRight } from 'lucide-react';
+import { Check, ShoppingCart, Clock, Calendar, Users, Target, BookOpen, Star, AlertTriangle, ArrowRight, QrCode, X } from 'lucide-react';
 
 const MentorshipPage = () => {
-
+    const [showQR, setShowQR] = useState(false);
     const checkoutLink = "https://checkout.nubank.com.br/838c10MWr63yhajw";
 
     // Scroll to top on mount
@@ -55,12 +55,51 @@ const MentorshipPage = () => {
                         <p style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', marginBottom: '3rem', maxWidth: '700px', margin: '0 auto 3rem auto' }}>
                             Dois meses de clareza valem anos de tentativas.
                         </p>
-                        <a href="/mentoria/matricula" className="btn btn-primary" style={{ padding: '1.2rem 3rem', fontSize: '1.2rem' }}>
-                            👉 Quero garantir minha vaga
-                        </a>
+                        <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                            <a href="/mentoria/matricula" className="btn btn-primary" style={{ padding: '1.2rem 3rem', fontSize: '1.2rem' }}>
+                                👉 Quero garantir minha vaga
+                            </a>
+                            <button onClick={() => setShowQR(true)} className="btn btn-secondary" style={{ padding: '1.2rem 2rem', fontSize: '1rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                <QrCode size={20} /> Compartilhar
+                            </button>
+                        </div>
                     </div>
                 </div>
             </section>
+
+            {/* QR Code Modal for Mentorship */}
+            {showQR && (
+                <div style={{
+                    position: 'fixed', inset: 0, zIndex: 10002,
+                    background: 'rgba(0,0,0,0.8)', backdropFilter: 'blur(5px)',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center'
+                }} onClick={() => setShowQR(false)}>
+                    <div style={{
+                        background: '#fff', padding: '2rem', borderRadius: '20px',
+                        textAlign: 'center', position: 'relative', maxWidth: '90%', width: '320px'
+                    }} onClick={e => e.stopPropagation()}>
+                        <button onClick={() => setShowQR(false)} style={{
+                            position: 'absolute', top: '10px', right: '10px',
+                            background: 'transparent', border: 'none', cursor: 'pointer', color: '#333'
+                        }}>
+                            <X size={24} />
+                        </button>
+                        <h3 style={{ color: '#333', marginBottom: '0.5rem' }}>Convide Amigos! 🚀</h3>
+                        <p style={{ color: '#666', fontSize: '0.9rem', marginBottom: '1.5rem' }}>Escaneie para acessar a Mentoria</p>
+
+                        <div style={{ background: '#f0f0f0', padding: '15px', borderRadius: '15px', display: 'inline-block', marginBottom: '1rem' }}>
+                            <img
+                                src={`https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://alexsander-farias.vercel.app/mentoria`}
+                                alt="QR Code Mentoria"
+                                style={{ display: 'block', width: '200px', height: '200px' }}
+                            />
+                        </div>
+                        <p style={{ color: 'var(--primary-color)', fontWeight: 'bold', fontSize: '0.8rem' }}>
+                            alexsander-farias.vercel.app/mentoria
+                        </p>
+                    </div>
+                </div>
+            )}
 
             {/* SEÇÃO 2 – IDENTIFICAÇÃO */}
             <section className="section" style={{ background: 'var(--bg-secondary)' }}>
