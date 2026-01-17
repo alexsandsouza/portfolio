@@ -10,6 +10,7 @@ import Projects from './sections/Projects';
 import Testimonials from './sections/Testimonials';
 import Journey from './sections/Journey';
 import AcademyHub from './sections/AcademyHub';
+import MentorshipShowcase from './sections/MentorshipShowcase';
 import Services from './sections/Services';
 import Skills from './sections/Skills';
 import Highlights from './sections/Highlights';
@@ -63,6 +64,7 @@ const Home = () => {
       <Experience />
       <Projects />
       <Testimonials />
+      <MentorshipShowcase />
       <AcademyHub />
       <Journey />
       <Services />
