@@ -119,6 +119,43 @@ const GlowingProfile = () => {
     );
 };
 
+const Typewriter = ({ text, speed = 100, delay = 1000 }) => {
+    const [currentText, setCurrentText] = useState('');
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [isDeleting, setIsDeleting] = useState(false);
+    const [loopNum, setLoopNum] = useState(0);
+
+    useEffect(() => {
+        const i = loopNum % text.length;
+        const fullText = text[i];
+
+        const handleType = () => {
+            setCurrentText(isDeleting
+                ? fullText.substring(0, currentText.length - 1)
+                : fullText.substring(0, currentText.length + 1)
+            );
+
+            if (!isDeleting && currentText === fullText) {
+                setTimeout(() => setIsDeleting(true), delay);
+            } else if (isDeleting && currentText === '') {
+                setIsDeleting(false);
+                setLoopNum(loopNum + 1);
+            }
+        };
+
+        const timer = setTimeout(handleType, isDeleting ? 30 : speed);
+
+        return () => clearTimeout(timer);
+    }, [currentText, isDeleting, loopNum, text, speed, delay]);
+
+    return (
+        <span>
+            {currentText}
+            <span className="cursor" style={{ color: 'var(--accent-color)' }}>|</span>
+        </span>
+    );
+};
+
 const Hero = () => {
     const { hero } = portfolioContent;
     const [greeting, setGreeting] = useState('Olá');
@@ -209,13 +246,19 @@ const Hero = () => {
                             opacity: 0.9,
                             borderLeft: '4px solid var(--secondary-color)',
                             paddingLeft: '1.5rem',
-                            marginBottom: '2.5rem'
+                            marginBottom: '2.5rem',
+                            minHeight: '2em', // Prevent layout shift
+                            display: 'flex',
+                            alignItems: 'center'
                         }}>
-                            {hero.title.split('\n').map((item, i) => (
-                                <span key={i} style={{ display: 'block', marginBottom: '0.5rem' }}>{item.trim()}</span>
-                            ))}
+                            <Typewriter text={hero.title.split('\n')} speed={50} delay={1500} />
                         </h2>
                     </Reveal>
+
+                    <style>{`
+                        @keyframes blink { 50% { opacity: 0; } }
+                        .cursor { animation: blink 1s step-end infinite; }
+                    `}</style>
 
                     <Reveal delay={400}>
                         <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
