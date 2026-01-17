@@ -26,6 +26,7 @@ import MatrixEffect from './components/MatrixEffect';
 import { usePageTitle } from './hooks/usePageTitle';
 import { useSecurity } from './hooks/useSecurity'; // Import Security
 import WhatsAppButton from './components/WhatsAppButton'; // Chat
+import { ScrollToTop } from './components/ScrollToTop';
 
 const Home = () => {
   usePageTitle();
@@ -62,6 +63,7 @@ const Home = () => {
       <Highlights />
       <Contact />
       <WhatsAppButton />
+      <ScrollToTop />
     </>
   );
 };
