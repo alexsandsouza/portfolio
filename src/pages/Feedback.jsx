@@ -72,13 +72,13 @@ const Feedback = () => {
                         <form onSubmit={handleSubmit} style={{
                             maxWidth: '600px',
                             margin: '0 auto',
-                            background: 'rgba(255, 255, 255, 0.03)',
+                            background: 'var(--card-bg)',
                             padding: '2rem',
                             borderRadius: '16px',
-                            border: '1px solid rgba(255, 255, 255, 0.05)'
+                            border: '1px solid var(--border-color)'
                         }}>
                             <div className="form-group" style={{ marginBottom: '1.5rem' }}>
-                                <label style={{ display: 'block', color: '#fff', marginBottom: '0.5rem' }}>Seu Nome</label>
+                                <label style={{ display: 'block', color: 'var(--text-primary)', marginBottom: '0.5rem' }}>Seu Nome</label>
                                 <input
                                     type="text"
                                     required
@@ -89,17 +89,17 @@ const Feedback = () => {
                                     style={{
                                         width: '100%',
                                         padding: '12px',
-                                        background: 'rgba(15, 23, 42, 0.6)',
-                                        border: '1px solid rgba(255, 255, 255, 0.1)',
+                                        background: 'var(--bg-secondary)',
+                                        border: '1px solid var(--border-color)',
                                         borderRadius: '8px',
-                                        color: '#fff',
+                                        color: 'var(--text-primary)',
                                         fontSize: '1rem'
                                     }}
                                 />
                             </div>
 
                             <div className="form-group" style={{ marginBottom: '1.5rem' }}>
-                                <label style={{ display: 'block', color: '#fff', marginBottom: '0.5rem' }}>Sua Ocupação / Papel</label>
+                                <label style={{ display: 'block', color: 'var(--text-primary)', marginBottom: '0.5rem' }}>Sua Ocupação / Papel</label>
                                 <input
                                     type="text"
                                     required
@@ -110,17 +110,17 @@ const Feedback = () => {
                                     style={{
                                         width: '100%',
                                         padding: '12px',
-                                        background: 'rgba(15, 23, 42, 0.6)',
-                                        border: '1px solid rgba(255, 255, 255, 0.1)',
+                                        background: 'var(--bg-secondary)',
+                                        border: '1px solid var(--border-color)',
                                         borderRadius: '8px',
-                                        color: '#fff',
+                                        color: 'var(--text-primary)',
                                         fontSize: '1rem'
                                     }}
                                 />
                             </div>
 
                             <div className="form-group" style={{ marginBottom: '1.5rem' }}>
-                                <label style={{ display: 'block', color: '#fff', marginBottom: '0.5rem' }}>Seu Depoimento</label>
+                                <label style={{ display: 'block', color: 'var(--text-primary)', marginBottom: '0.5rem' }}>Seu Depoimento</label>
                                 <textarea
                                     required
                                     rows="4"
@@ -131,10 +131,10 @@ const Feedback = () => {
                                     style={{
                                         width: '100%',
                                         padding: '12px',
-                                        background: 'rgba(15, 23, 42, 0.6)',
-                                        border: '1px solid rgba(255, 255, 255, 0.1)',
+                                        background: 'var(--bg-secondary)',
+                                        border: '1px solid var(--border-color)',
                                         borderRadius: '8px',
-                                        color: '#fff',
+                                        color: 'var(--text-primary)',
                                         fontSize: '1rem',
                                         fontFamily: 'inherit',
                                         resize: 'vertical'

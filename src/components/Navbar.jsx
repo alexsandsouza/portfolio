@@ -320,10 +320,12 @@ const Navbar = ({ triggerMatrix }) => {
                 .desktop-nav {
                     display: flex;
                     align-items: center;
-                    gap: 2rem;
+                    gap: 1rem; /* Reduced Gap */
+                    margin-left: 3rem; /* Force separation from Logo */
+                    flex-shrink: 0; /* Prevent shrinking too much */
                 }
                 .nav-link {
-                    font-size: 0.95rem;
+                    font-size: 0.9rem;
                     color: var(--text-secondary);
                     font-weight: 500;
                     transition: color 0.2s;
@@ -356,7 +358,7 @@ const Navbar = ({ triggerMatrix }) => {
                     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
                     z-index: 10000;
                 }
-                @media (max-width: 900px) {
+                @media (max-width: 1024px) {
                     .mobile-menu { display: flex; }
                 }
                 [data-theme="light"] .mobile-menu {
@@ -374,10 +376,9 @@ const Navbar = ({ triggerMatrix }) => {
                     text-decoration: none;
                 }
 
-                @media (max-width: 900px) {
+                @media (max-width: 1024px) {
                     .desktop-nav { display: none !important; }
                     .mobile-toggle { display: block; }
-                    /* .container { justify-content: center !important; } Removed to fix overlap */
                 }
             `}</style>
         </nav >
