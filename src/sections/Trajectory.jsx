@@ -8,115 +8,46 @@ const TimelineCard = ({ job, index }) => {
     const isEven = index % 2 === 0;
 
     return (
-        <div
-            className={`timeline-item ${isEven ? 'left' : 'right'}`}
-            style={{
-                display: 'flex',
-                justifyContent: isEven ? 'flex-end' : 'flex-start',
-                position: 'relative',
-                marginBottom: '4rem',
-                width: '100%'
-            }}
-        >
+        <div className={`timeline-item ${isEven ? 'even' : 'odd'}`}>
             {/* Center Node */}
-            <div style={{
-                position: 'absolute',
-                left: '50%',
-                top: '0',
-                transform: 'translateX(-50%)',
-                width: '20px',
-                height: '20px',
-                background: 'var(--bg-color)',
-                border: '3px solid var(--primary-color)',
-                borderRadius: '50%',
-                zIndex: 10,
-                boxShadow: '0 0 15px var(--primary-color)'
-            }}>
-                <div style={{
-                    position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
-                    width: '6px', height: '6px', background: '#fff', borderRadius: '50%'
-                }}></div>
+            <div className="timeline-node">
+                <div className="timeline-node-inner"></div>
             </div>
 
-            {/* Date Bubble (Opposite side) */}
-            <div style={{
-                position: 'absolute',
-                top: '0',
-                left: isEven ? '50%' : 'auto',
-                right: isEven ? 'auto' : '50%',
-                marginLeft: isEven ? '35px' : '0',
-                marginRight: isEven ? '0' : '35px',
-                color: 'var(--text-heading)',
-                fontWeight: '700',
-                fontSize: '0.85rem',
-                opacity: 1,
-                padding: '3px 10px',
-                background: 'var(--bg-color)',
-                border: '1px solid var(--primary-color)',
-                borderRadius: '12px',
-                zIndex: 20,
-                whiteSpace: 'nowrap',
-                boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
-            }}>
+            {/* Date Bubble */}
+            <div className="timeline-date">
                 {job.period}
             </div>
 
-            <div ref={ref} className="card-glass" style={{
+            <div ref={ref} className="card-glass timeline-content" style={{
                 ...style.transform ? { transform: style.transform, transition: style.transition } : {},
-                width: '45%',
-                padding: '2rem',
-                position: 'relative',
-                border: '1px solid var(--card-border)',
-                background: 'var(--card-bg)',
-                borderRadius: '16px',
-                boxShadow: '0 10px 30px rgba(0,0,0,0.3)',
-                marginRight: isEven ? '50px' : '0',
-                marginLeft: isEven ? '0' : '50px',
-                textAlign: 'left' // Always left align text inside card
             }}>
                 {/* Decorative Top Line */}
-                <div style={{
-                    position: 'absolute', top: 0, left: 0, width: '100%', height: '2px',
-                    background: 'linear-gradient(90deg, transparent, var(--secondary-color), transparent)'
-                }}></div>
+                <div className="card-deco-line"></div>
 
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '0.5rem' }}>
-                    <h3 style={{ color: 'var(--text-heading)', margin: 0, fontSize: '1.4rem', fontWeight: 'bold' }}>{job.role}</h3>
+                {/* Content Wrapper */}
+                <div className="text-content-wrapper">
+                    <h3 className="timeline-role-title role-title">{job.role}</h3>
+
+                    <h4 className="institution-subtitle">
+                        @{job.institution} <span style={{ color: 'var(--text-secondary)', fontWeight: '400' }}>• {job.type}</span>
+                    </h4>
+
+                    <p className="timeline-desc job-desc">{job.description}</p>
+
+                    {job.results && (
+                        <div className="results-box">
+                            <p className="results-text">
+                                <span className="trophy-icon">🏆</span>
+                                {job.results}
+                            </p>
+                        </div>
+                    )}
                 </div>
-
-                <h4 style={{ fontSize: '1rem', marginBottom: '1.2rem', color: 'var(--primary-color)', fontWeight: '600', letterSpacing: '0.5px' }}>
-                    @{job.institution} <span style={{ color: 'var(--text-secondary)', fontWeight: '400' }}>• {job.type}</span>
-                </h4>
-
-                <p style={{ marginBottom: '1.2rem', color: 'var(--text-secondary)', lineHeight: 1.7 }}>{job.description}</p>
-
-                {job.results && (
-                    <div style={{
-                        marginTop: '1rem',
-                        padding: '0.8rem 1rem',
-                        background: 'rgba(16, 185, 129, 0.05)',
-                        borderLeft: '3px solid #10b981',
-                        borderRadius: '0 8px 8px 0'
-                    }}>
-                        <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', fontStyle: 'italic', margin: 0, display: 'flex', gap: '0.8rem', alignItems: 'center' }}>
-                            <span style={{ fontSize: '1.2rem' }}>🏆</span>
-                            {job.results}
-                        </p>
-                    </div>
-                )}
             </div>
 
-            {/* Connector Line to Card */}
-            <div style={{
-                position: 'absolute',
-                top: '10px',
-                left: '50%',
-                width: '50px',
-                height: '2px',
-                background: 'linear-gradient(90deg, var(--primary-color), transparent)',
-                transform: isEven ? 'translateX(-50px)' : 'translateX(0)',
-                zIndex: 0
-            }}></div>
+            {/* Connector Line */}
+            <div className="timeline-connector"></div>
         </div>
     );
 };
@@ -131,29 +62,15 @@ const Experience = () => {
             <div className="container">
                 <Reveal>
                     <div className="section-header">
-                        <span className="section-subtitle">Minha Trajetória</span>
+                        <span className="section-subtitle">Minha Jornada Profissional</span>
                         <h2>Experiência Profissional</h2>
                     </div>
                 </Reveal>
 
-                <div style={{ maxWidth: '1000px', margin: '4rem auto 0', position: 'relative' }}>
+                <div className="timeline-wrapper">
                     {/* Central Laser Line */}
-                    <div style={{
-                        position: 'absolute',
-                        left: '50%',
-                        top: 0,
-                        bottom: 0,
-                        width: '2px',
-                        background: 'rgba(99, 102, 241, 0.3)',
-                        transform: 'translateX(-50%)',
-                        zIndex: 0
-                    }}>
-                        {/* Moving Pulse */}
-                        <div style={{
-                            position: 'absolute', top: 0, left: 0, width: '100%', height: '50vh',
-                            background: 'linear-gradient(to bottom, transparent, var(--primary-color), transparent)',
-                            animation: 'laserFlow 3s linear infinite'
-                        }}></div>
+                    <div className="timeline-center-line">
+                        <div className="timeline-laser"></div>
                     </div>
 
                     {professionalExperience.map((job, index) => (
@@ -165,29 +82,209 @@ const Experience = () => {
             </div>
 
             <style>{`
-                @keyframes laserFlow { 0% { top: -50vh; } 100% { top: 100%; } }
+                .timeline-wrapper {
+                    max-width: 1000px;
+                    margin: 4rem auto 0;
+                    position: relative;
+                }
                 
-                @media (max-width: 768px) {
-                    .timeline-item { flex-direction: column !important; align-items: center !important; margin-left: 0 !important; border-left: none !important; padding-left: 0 !important; margin-bottom: 3rem; }
-                    .timeline-item .card-glass { width: 100% !important; margin: 0 !important; text-align: center !important; }
-                    .timeline-item > div:first-child { display: none !important; } /* Hide Dot on mobile */
-                    .timeline-item > div:nth-child(2) { 
-                        position: relative !important; 
-                        text-align: center !important; 
-                        transform: none !important; 
-                        left: 0 !important; 
-                        margin-bottom: 0.5rem; 
-                        width: 100%;
-                        margin-left: 0 !important; /* Fix Alignment */
-                        margin-right: 0 !important; /* Fix Alignment */
-                        right: auto !important;
-                    } /* Date */
-                     /* Hide central line on mobile and use per-item border */
-                     div[style*="left: 50%"][style*="background: rgba(99, 102, 241, 0.3)"] { display: none; }
-                     /* Center header inside card */
-                     .timeline-item h3, .timeline-item h4 { justify-content: center; text-align: center; }
-                     .timeline-item div[style*="display: flex"] { justify-content: center; }
-                     .timeline-item p[style*="fontStyle: italic"] { justify-content: center; }
+                .timeline-center-line {
+                    position: absolute; left: 50%; top: 0; bottom: 0;
+                    width: 2px; background: rgba(99, 102, 241, 0.3);
+                    transform: translateX(-50%); z-index: 0;
+                }
+                
+                .timeline-laser {
+                    position: absolute; top: 0; left: 0; width: 100%; height: 50vh;
+                    background: linear-gradient(to bottom, transparent, var(--primary-color), transparent);
+                    animation: laserFlow 3s linear infinite;
+                }
+                @keyframes laserFlow { 0% { top: -50vh; } 100% { top: 100%; } }
+
+                /* Item Structure */
+                .timeline-item {
+                    display: flex;
+                    position: relative;
+                    margin-bottom: 4rem;
+                    width: 100%;
+                }
+                
+                .timeline-item.even { justify-content: flex-end; }
+                .timeline-item.odd { justify-content: flex-start; }
+
+                /* Content Card */
+                .timeline-content {
+                    width: 45%;
+                    padding: 2rem;
+                    position: relative;
+                    border: 1px solid var(--card-border);
+                    background: var(--card-bg);
+                    border-radius: 16px;
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                    text-align: left;
+                    z-index: 1;
+                }
+                .timeline-item.even .timeline-content { margin-left: 0; margin-right: 50px; }
+                .timeline-item.odd .timeline-content { margin-right: 0; margin-left: 50px; }
+                
+                .card-deco-line {
+                    position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+                    background: linear-gradient(90deg, transparent, var(--secondary-color), transparent);
+                }
+
+                /* Node (Circle) */
+                .timeline-node {
+                    position: absolute; left: 50%; top: 0; transform: translateX(-50%);
+                    width: 20px; height: 20px;
+                    background: var(--bg-color);
+                    border: 3px solid var(--primary-color);
+                    borderRadius: 50%;
+                    zIndex: 10;
+                    box-shadow: 0 0 15px var(--primary-color);
+                }
+                .timeline-node-inner {
+                    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+                    width: 6px; height: 6px; background: #fff; borderRadius: 50%;
+                }
+
+                /* Date Bubble */
+                .timeline-date {
+                    position: absolute; top: 0;
+                    padding: 3px 10px;
+                    background: var(--bg-color);
+                    border: 1px solid var(--primary-color);
+                    border-radius: 12px;
+                    font-weight: 700; font-size: 0.85rem; color: var(--text-heading);
+                    z-index: 20;
+                    white-space: nowrap;
+                    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+                }
+                .timeline-item.even .timeline-date { left: 50%; margin-left: 35px; }
+                .timeline-item.odd .timeline-date { right: 50%; margin-right: 35px; }
+
+                /* Connector */
+                .timeline-connector {
+                    position: absolute; top: 10px; left: 50%;
+                    width: 50px; height: 2px;
+                    background: linear-gradient(90deg, var(--primary-color), transparent);
+                    z-index: 0;
+                }
+                .timeline-item.even .timeline-connector { transform: translateX(-50px); }
+                .timeline-item.odd .timeline-connector { transform: translateX(0); }
+
+                /* Styles for elements */
+                .role-title {
+                    color: var(--text-heading);
+                    margin: 0 0 0.5rem 0;
+                    font-size: 1.4rem;
+                    font-weight: bold;
+                }
+                .institution-subtitle {
+                    font-size: 1rem;
+                    margin-bottom: 1.2rem;
+                    color: var(--primary-color);
+                    font-weight: 600;
+                    letter-spacing: 0.5px;
+                }
+                .job-desc {
+                    margin-bottom: 1.2rem;
+                    color: var(--text-secondary);
+                    line-height: 1.7;
+                }
+                
+                .results-box {
+                    margin-top: 1rem;
+                    padding: 0.8rem 1rem;
+                    background: rgba(16, 185, 129, 0.05);
+                    border-left: 3px solid #10b981;
+                    border-radius: 0 8px 8px 0;
+                }
+                
+                .results-text {
+                    font-size: 0.9rem;
+                    color: var(--text-secondary);
+                    font-style: italic;
+                    margin: 0;
+                    display: flex;
+                    align-items: center;
+                    gap: 0.8rem;
+                }
+                .trophy-icon {
+                    font-size: 1.2rem;
+                }
+
+                /* --- MOBILE ORIENTED FIX --- */
+                @media (max-width: 900px) {
+                    /* Reset structure for mobile stack */
+                    .timeline-item { 
+                        flex-direction: column !important; 
+                        padding-left: 50px; 
+                        margin-bottom: 3rem; 
+                    }
+                    .timeline-connector { display: none; }
+                    .timeline-node { left: 11px; top: 0; transform: none; }
+                    .timeline-date {
+                        position: relative; top: auto; right: auto; left: auto;
+                        margin: 0 auto 1rem auto !important;
+                        display: inline-block; 
+                        align-self: center !important;
+                    }
+                    .timeline-center-line { left: 20px; transform: none; }
+
+                    /* Card Container overrides */
+                    #experience .timeline-content {
+                        width: 100% !important;
+                        margin: 0 !important;
+                        padding: 2rem !important;
+                        text-align: center !important;
+                    }
+
+                    /* 
+                       CRITICAL CENTERING RULES 
+                       Using Flexbox Column traversal for guaranteed centering
+                    */
+                    #experience .text-content-wrapper {
+                        display: flex !important;
+                        flex-direction: column !important;
+                        align-items: center !important;
+                        justify-content: center !important;
+                        text-align: center !important;
+                        width: 100% !important;
+                    }
+
+                    /* Text Children Resets */
+                    #experience .role-title, 
+                    #experience .institution-subtitle, 
+                    #experience .job-desc {
+                        text-align: center !important;
+                        width: 100% !important;
+                        margin-left: 0 !important;
+                        margin-right: 0 !important;
+                    }
+                    
+                    /* Subtitle inline helpers */
+                    #experience .institution-subtitle span {
+                        display: inline !important;
+                    }
+
+                    /* Results Box - Mobile style */
+                    #experience .results-box {
+                        border-left: none !important;
+                        border-bottom: 3px solid #10b981 !important;
+                        border-radius: 8px !important;
+                        width: 100% !important;
+                        display: flex !important;
+                        flex-direction: column !important;
+                        align-items: center !important;
+                        padding: 1rem !important;
+                    }
+                    
+                    /* Results Text - allow wrapping */
+                    #experience .results-text {
+                        justify-content: center !important;
+                        flex-wrap: wrap !important;
+                        text-align: center !important;
+                    }
                 }
             `}</style>
         </section>

@@ -322,32 +322,381 @@ p {
     grid-template-columns: 1fr;
   }
 }
-.reveal-hidden { opacity: 0; transform: translateY(50px); filter: blur(5px); }
-.reveal-visible { opacity: 1; transform: translateY(0); filter: blur(0); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+
+.reveal-hidden {
+  opacity: 0;
+  transform: translateY(50px);
+  filter: blur(5px);
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
 
 
 /* --- Global Rounding --- */
-img { border-radius: 16px; }
-input, textarea, select { border-radius: 12px; }
-::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: var(--bg-color); }
-::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 10px; }
-::-webkit-scrollbar-thumb:hover { background: var(--primary-color); }
+img {
+  border-radius: 16px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+input,
+textarea,
+select {
+  border-radius: 12px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
+}
 
 
 /* Glitch Effect */
-.glitch { position: relative; color: var(--text-heading); }
-.glitch::before, .glitch::after { content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.8; }
-.glitch::before { color: #0ff; z-index: -1; animation: glitch-effect 3s infinite; }
-.glitch::after { color: #f0f; z-index: -2; animation: glitch-effect 2s infinite reverse; }
-@keyframes glitch-effect { 0% { clip-path: inset(20% 0 80% 0); transform: translate(-2px, 1px); } 20% { clip-path: inset(60% 0 10% 0); transform: translate(2px, -1px); } 40% { clip-path: inset(40% 0 50% 0); transform: translate(-2px, 2px); } 60% { clip-path: inset(80% 0 5% 0); transform: translate(2px, -2px); } 80% { clip-path: inset(10% 0 60% 0); transform: translate(-1px, 1px); } 100% { clip-path: inset(30% 0 50% 0); transform: translate(1px, -1px); } }
+.glitch {
+  position: relative;
+  color: var(--text-heading);
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+}
+
+.glitch::before {
+  color: #0ff;
+  z-index: -1;
+  animation: glitch-effect 3s infinite;
+}
+
+.glitch::after {
+  color: #f0f;
+  z-index: -2;
+  animation: glitch-effect 2s infinite reverse;
+}
+
+@keyframes glitch-effect {
+  0% {
+    clip-path: inset(20% 0 80% 0);
+    transform: translate(-2px, 1px);
+  }
+
+  20% {
+    clip-path: inset(60% 0 10% 0);
+    transform: translate(2px, -1px);
+  }
+
+  40% {
+    clip-path: inset(40% 0 50% 0);
+    transform: translate(-2px, 2px);
+  }
+
+  60% {
+    clip-path: inset(80% 0 5% 0);
+    transform: translate(2px, -2px);
+  }
+
+  80% {
+    clip-path: inset(10% 0 60% 0);
+    transform: translate(-1px, 1px);
+  }
+
+  100% {
+    clip-path: inset(30% 0 50% 0);
+    transform: translate(1px, -1px);
+  }
+}
 
 
-@media (max-width: 900px) { .desktop-nav { display: none !important; } .mobile-toggle { display: block !important; } }
+@media (max-width: 900px) {
+  .desktop-nav {
+    display: none !important;
+  }
+
+  .mobile-toggle {
+    display: block !important;
+  }
+}
 
 
 /* Security: Disable Selection */
-body { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
-input, textarea { -webkit-user-select: text; user-select: text; }
+body {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+input,
+textarea {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
 /* Try to hide from print */
-@media print { body { display: none; } }
+@media print {
+  body {
+    display: none;
+  }
+}
+
+/* --- Utility Classes for Alignment & Layout --- */
+
+/* Responsive Grid System that unifies behavior */
+.grid-responsive {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  width: 100%;
+}
+
+.grid-2-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+/* Flex Container for centering or spacing */
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Mobile & Tablet Optimization */
+@media (max-width: 900px) {
+  .grid-2-col {
+    grid-template-columns: 1fr;
+    /* Force stack */
+    gap: 2.5rem;
+    text-align: center;
+    /* Default to center on mobile for aesthetics */
+  }
+
+  .grid-2-col .text-left-mobile {
+    text-align: left;
+    /* Override if needed */
+  }
+
+  /* Force cards to have consistent spacing on mobile */
+  .card-glass {
+    padding: 1.5rem !important;
+    /* Smaller padding on mobile */
+  }
+
+  /* Adjust Typography for Mobile */
+  h1 {
+    font-size: 2.5rem !important;
+  }
+
+  h2 {
+    font-size: 2rem !important;
+  }
+
+  p {
+    font-size: 1rem !important;
+  }
+
+  /* Ensure container padding is safe */
+  .container {
+    padding: 0 1.25rem;
+  }
+}
+
+/* Standardize Icon Sizes and Alignments */
+.icon-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+@media (max-width: 900px) {
+
+  .project-card,
+  .project-card * {
+    text-align: center !important;
+  }
+
+  .project-header {
+    justify-content: center !important;
+    width: 100%;
+  }
+
+  .role-container span {
+    border-left: none !important;
+    padding-left: 0 !important;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+    display: inline-block !important;
+  }
+
+  .project-card p {
+    text-align: center !important;
+  }
+
+  /* Trajectory / Experience Card Mobile Center */
+  .timeline-content {
+    text-align: center !important;
+    align-items: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .timeline-content>div:first-of-type {
+    /* Header div for Title */
+    justify-content: center !important;
+    width: 100%;
+  }
+
+  .timeline-content h3,
+  .timeline-content h4,
+  .timeline-content p {
+    text-align: center !important;
+    width: 100%;
+  }
+
+  .results-box {
+    border-left: none !important;
+    border-bottom: 3px solid #10b981 !important;
+    border-radius: 8px !important;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .results-box p {
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  /* Backend Expertise / Cyber Card Mobile Center */
+  .cyber-card {
+    text-align: center !important;
+    align-items: center !important;
+  }
+
+  .cyber-card p,
+  .cyber-card h3 {
+    text-align: center !important;
+  }
+
+  /* Testimonials Mobile Center */
+  .testimonial-card,
+  .testimonial-card .testimonial-text {
+    text-align: center !important;
+  }
+
+  .testimonial-author {
+    justify-content: center !important;
+    text-align: center !important;
+    flex-direction: column;
+    gap: 0.5rem !important;
+  }
+
+  .testimonial-author>div {
+    text-align: center !important;
+  }
+
+  /* About Highlight Card Mobile Center */
+  .about-highlight-card {
+    justify-content: center !important;
+    text-align: center !important;
+    flex-direction: column;
+    gap: 0.5rem !important;
+  }
+
+  .about-highlight-card p {
+    text-align: center !important;
+  }
+
+  /* Universal Mobile Text Center Utility */
+  .mobile-text-center {
+    text-align: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* Flex Override for Results Text */
+  p.results-text.mobile-text-center {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+  }
+}
+
+/* --- OVERRIDE: TRAJECTORY MOBILE CENTERING --- */
+@media (max-width: 900px) {
+
+  /* FORCE TRAJECTORY CENTERING - CORRECTED GOD MODE */
+  #experience .timeline-content,
+  #experience .timeline-content .text-content-wrapper {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+  }
+
+  /* Text Elements must be BLOCK to support text-align properly */
+  #experience .timeline-role-title,
+  #experience .role-title,
+  #experience .institution-subtitle,
+  #experience .job-desc,
+  #experience .timeline-desc,
+  #experience .timeline-content h3,
+  #experience .timeline-content h4,
+  #experience .timeline-content p {
+    display: block !important;
+    text-align: center !important;
+    width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* Exception for icon+text row */
+  #experience .results-text,
+  #experience .timeline-content .results-text {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 0.5rem !important;
+    width: 100% !important;
+  }
+}

@@ -45,7 +45,7 @@ const TestimonialCard = ({ item }) => {
                 transition: 'background 0.3s ease',
             }}
         >
-            <div className="card-inner" style={{
+            <div className="card-inner testimonial-card" style={{
                 background: 'var(--card-bg)', // Adapts to theme
                 border: '1px solid var(--card-border)',
                 boxShadow: 'var(--card-shadow)',
@@ -86,7 +86,7 @@ const TestimonialCard = ({ item }) => {
                         marginBottom: '2rem',
                         fontStyle: 'italic',
                         position: 'relative',
-                        textAlign: 'left' // Fix mobile alignment
+                        // textAlign: 'left' Removed to allow CSS control
                     }}>
                         "{item.quote}"
                     </p>

@@ -63,10 +63,10 @@ const ServiceCard = ({ service, index }) => {
                 </div>
             </div>
             <style>{`
-                @media (max-width: 768px) {
+                @media (max-width: 900px) {
                     .card-glass { text-align: center !important; align-items: center !important; }
                     .card-glass > div { align-items: center !important; }
-                    .card-glass h3, .card-glass p, .card-glass a { text-align: center; justify-content: center; }
+                    .card-glass h3, .card-glass p, .card-glass a { text-align: center !important; justify-content: center !important; }
                 }
             `}</style>
         </div>

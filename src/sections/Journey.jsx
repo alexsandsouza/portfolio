@@ -183,7 +183,7 @@ const Journey = () => {
                     margin: 0 auto;
                 }
                 
-                @media (max-width: 768px) {
+                @media (max-width: 900px) {
                     .journey-grid {
                         grid-template-columns: 1fr;
                         gap: 3rem;

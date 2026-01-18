@@ -178,8 +178,8 @@ const Hero = () => {
         }}>
             <TechBackground />
 
-            <div className="container" style={{ position: 'relative', zIndex: 1, display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '2rem', alignItems: 'center' }}>
-                <div style={{ textAlign: 'left' }}>
+            <div className="container grid-2-col hero-container" style={{ position: 'relative', zIndex: 1 }}>
+                <div style={{ textAlign: 'left' }} className="hero-content">
                     <Reveal>
                         <div style={{ position: 'relative', display: 'inline-block', marginBottom: '2rem' }}>
                             {/* Animated Gradient Border */}
@@ -262,7 +262,7 @@ const Hero = () => {
                                 {hero.name}
                             </span>
                         </h1>
-                        <h2 style={{
+                        <h2 className="hero-subtitle" style={{
                             fontSize: 'clamp(1.2rem, 2vw, 1.8rem)',
                             textAlign: 'left',
                             fontWeight: '400',
@@ -285,7 +285,7 @@ const Hero = () => {
                     `}</style>
 
                     <Reveal delay={400}>
-                        <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
+                        <div className="hero-buttons" style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
                             <a href="/mentoria" className="btn" style={{
                                 background: 'linear-gradient(90deg, #ec4899, #8b5cf6)',
                                 color: 'white',
@@ -310,7 +310,7 @@ const Hero = () => {
                     </Reveal>
                 </div>
 
-                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <div className="flex-center">
                     <Reveal delay={600}>
                         <GlowingProfile />
                     </Reveal>
@@ -321,11 +321,41 @@ const Hero = () => {
                 @keyframes shine {
                     to { background-position: 200% center; }
                 }
+                
+                /* Mobile Specific Overrides controlled by class logic */
                 @media (max-width: 900px) {
-                    .container { grid-template-columns: 1fr !important; text-align: center; }
-                    .container > div:first-child { text-align: center !important; order: 2; margin-top: 2rem; }
-                    .container > div:last-child { order: 1; }
-                    h2 { border-left: none !important; padding-left: 0 !important; border-bottom: 4px solid var(--secondary-color); padding-bottom: 1.5rem; display: inline-block; text-align: center !important; }
+                    .hero-container {
+                        /* grid-2-col handles column stack */
+                         /* We want to center text on mobile for Hero usually */
+                        text-align: center !important;
+                    }
+                    .hero-content {
+                        order: 2;
+                        text-align: center !important;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                    }
+                    .hero-container > div:last-child {
+                        order: 1;
+                        margin-bottom: 2rem;
+                    }
+                    
+                    .hero-subtitle {
+                        border-left: none !important;
+                        padding-left: 0 !important;
+                        border-bottom: 4px solid var(--secondary-color);
+                        padding-bottom: 1rem;
+                        justify-content: center;
+                        text-align: center !important;
+                        margin-left: auto;
+                        margin-right: auto;
+                        display: inline-flex;
+                    }
+                    
+                    .hero-buttons {
+                        justify-content: center;
+                    }
                     .btn { width: 100%; margin: 0.5rem 0; }
                 }
             `}</style>

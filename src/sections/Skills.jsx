@@ -193,7 +193,7 @@ const Skills = () => {
                 </div>
             </div>
             <style>{`
-                @media (max-width: 768px) {
+                @media (max-width: 900px) {
                     .glass-panel { padding: 1.5rem !important; }
                     .panel-header { justify-content: center; }
                     .skill-category h4 { justify-content: center; }
@@ -209,7 +209,12 @@ const Skills = () => {
                         border-radius: 12px !important;
                         padding: 1.5rem !important;
                     }
-                    .soft-skill-item > div:nth-child(2) { margin-bottom: 0.5rem; }
+                    .soft-skill-item > div { margin-bottom: 0.5rem; } /* Icon box */
+                    .soft-skill-item span { /* Skill text */
+                        text-align: center !important;
+                        width: 100% !important;
+                        display: block !important;
+                    }
                 }
             `}</style>
         </section>

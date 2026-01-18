@@ -42,7 +42,7 @@ const CyberCard = ({ feature, index }) => {
                 zIndex: 0
             }}></div>
 
-            <div className="card-glass" style={{
+            <div className="card-glass cyber-card" style={{
                 height: '100%',
                 padding: '2.5rem 1.5rem',
                 display: 'flex',
@@ -124,6 +124,15 @@ const CyberCard = ({ feature, index }) => {
                     div[style*="marginBottom: 40px"] { margin-bottom: 0 !important; }
                     /* Hide connection lines on mobile */
                     div[style*="height: 40px"][style*="background: linear-gradient"] { display: none; }
+                    
+                    /* Force Center Content */
+                    .cyber-card {
+                        text-align: center !important;
+                        align-items: center !important;
+                    }
+                    .cyber-card p, .cyber-card h3 {
+                        text-align: center !important;
+                    }
                 }
             `}</style>
         </div>

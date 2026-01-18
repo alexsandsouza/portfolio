@@ -223,7 +223,7 @@ const Contact = () => {
                 
                 .contact-left-col { text-align: left; }
                 
-                @media (max-width: 768px) {
+                @media (max-width: 900px) {
                     .contact-grid {
                         grid-template-columns: 1fr !important;
                         gap: 3rem !important;
@@ -237,6 +237,9 @@ const Contact = () => {
                     .social-links {
                         justify-content: center !important;
                     }
+                    
+                    /* Force center text for all headers and paragraphs on mobile left col */
+                    h2, h3, p { text-align: center !important; }
                 }
             `}</style>
         </section>

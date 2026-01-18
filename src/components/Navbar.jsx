@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { QrCode, X } from 'lucide-react';
+import { QrCode, X, Grid } from 'lucide-react';
 
 const Navbar = ({ triggerMatrix }) => {
     const [scrolled, setScrolled] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
     const [showQR, setShowQR] = useState(false);
+    const [showApps, setShowApps] = useState(false);
 
     useEffect(() => {
         const handleResize = () => setIsMobile(window.innerWidth <= 900);
@@ -179,6 +180,56 @@ const Navbar = ({ triggerMatrix }) => {
                             >
                                 <QrCode size={20} />
                             </button>
+
+                            <div style={{ position: 'relative' }}>
+                                <button
+                                    onClick={() => setShowApps(!showApps)}
+                                    className="nav-link"
+                                    style={{ background: 'transparent', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', marginLeft: '0.5rem' }}
+                                    title="Ecossistema Alexsander"
+                                >
+                                    <Grid size={20} />
+                                </button>
+                                {showApps && (
+                                    <div style={{
+                                        position: 'absolute',
+                                        top: '140%',
+                                        right: '-10px',
+                                        width: '280px',
+                                        background: 'var(--bg-secondary)',
+                                        border: '1px solid var(--border-color)',
+                                        borderRadius: '12px',
+                                        boxShadow: '0 10px 30px rgba(0,0,0,0.5)',
+                                        padding: '1rem',
+                                        zIndex: 10005,
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        gap: '0.8rem'
+                                    }}>
+                                        <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', fontWeight: 'bold', textTransform: 'uppercase', marginBottom: '0.5rem', borderBottom: '1px solid var(--border-color)', paddingBottom: '0.5rem' }}>
+                                            Navegar no Ecossistema
+                                        </div>
+
+                                        <a href="https://ad-academy-one.vercel.app" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '0.8rem', borderRadius: '8px', textDecoration: 'none', transition: 'background 0.2s' }} className="app-link">
+                                            <div style={{ width: '36px', height: '36px', background: '#0ea5e9', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 'bold' }}>AO</div>
+                                            <div>
+                                                <div style={{ color: 'var(--text-heading)', fontWeight: '600', fontSize: '0.9rem' }}>Academy One</div>
+                                                <div style={{ color: 'var(--text-secondary)', fontSize: '0.75rem' }}>Formação Cisco</div>
+                                            </div>
+                                        </a>
+
+                                        <a href="https://ad-academy-treinamentos.vercel.app" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '0.8rem', borderRadius: '8px', textDecoration: 'none', transition: 'background 0.2s' }} className="app-link">
+                                            <div style={{ width: '36px', height: '36px', background: '#ec4899', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 'bold' }}>TR</div>
+                                            <div>
+                                                <div style={{ color: 'var(--text-heading)', fontWeight: '600', fontSize: '0.9rem' }}>Treinamentos</div>
+                                                <div style={{ color: 'var(--text-secondary)', fontSize: '0.75rem' }}>Livraria Digital</div>
+                                            </div>
+                                        </a>
+
+                                        <style>{`.app-link:hover { background: rgba(255,255,255,0.05); }`}</style>
+                                    </div>
+                                )}
+                            </div>
                         </div>
                     )
                 }
@@ -211,7 +262,23 @@ const Navbar = ({ triggerMatrix }) => {
                     </a>
                     <a href="/mentoria" onClick={() => setIsOpen(false)} className="mobile-link" style={{ color: '#ec4899' }}>Mentoria 🚀</a>
                     <a href="#contact" onClick={() => setIsOpen(false)} className="mobile-link" style={{ color: 'var(--primary-color)' }}>Contato</a>
-                    <button onClick={() => { setShowQR(true); setIsOpen(false); }} className="mobile-link" style={{ background: 'transparent', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-heading)' }}>
+
+                    {/* Mobile Apps Section */}
+                    <div style={{ width: '100%', padding: '0 2rem', marginTop: '1rem', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '1.5rem' }}>
+                        <span style={{ display: 'block', fontSize: '0.8rem', color: 'var(--text-secondary)', textTransform: 'uppercase', marginBottom: '1rem', textAlign: 'center' }}>Ecossistema</span>
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                            <a href="https://ad-academy-one.vercel.app" target="_blank" className="mobile-app-card" style={{ background: 'var(--bg-secondary)', padding: '1rem', borderRadius: '12px', textAlign: 'center', textDecoration: 'none', border: '1px solid var(--border-color)' }}>
+                                <div style={{ width: '30px', height: '30px', background: '#0ea5e9', borderRadius: '6px', margin: '0 auto 0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '0.8rem', fontWeight: 'bold' }}>AO</div>
+                                <span style={{ display: 'block', color: 'var(--text-heading)', fontSize: '0.8rem', fontWeight: 'bold' }}>Academy One</span>
+                            </a>
+                            <a href="https://ad-academy-treinamentos.vercel.app" target="_blank" className="mobile-app-card" style={{ background: 'var(--bg-secondary)', padding: '1rem', borderRadius: '12px', textAlign: 'center', textDecoration: 'none', border: '1px solid var(--border-color)' }}>
+                                <div style={{ width: '30px', height: '30px', background: '#ec4899', borderRadius: '6px', margin: '0 auto 0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '0.8rem', fontWeight: 'bold' }}>TR</div>
+                                <span style={{ display: 'block', color: 'var(--text-heading)', fontSize: '0.8rem', fontWeight: 'bold' }}>Treinamentos</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <button onClick={() => { setShowQR(true); setIsOpen(false); }} className="mobile-link" style={{ background: 'transparent', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-heading)', marginTop: '1rem' }}>
                         <QrCode size={24} /> Compartilhar
                     </button>
                 </div>
@@ -313,7 +380,7 @@ const Navbar = ({ triggerMatrix }) => {
                     /* .container { justify-content: center !important; } Removed to fix overlap */
                 }
             `}</style>
-        </nav>
+        </nav >
     );
 };
 

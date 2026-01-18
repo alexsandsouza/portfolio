@@ -101,15 +101,15 @@ const EduCard = ({ edu, index }) => {
                 .pulse-dot { animation: pulseFast 1.5s infinite; }
                 @keyframes pulseFast { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
                 
-                @media (max-width: 768px) {
+                @media (max-width: 900px) {
                     .card-glass { grid-template-columns: 1fr !important; text-align: center; justify-items: center; gap: 1.5rem !important; padding: 2.5rem 1.5rem !important; }
                     .edu-badge { width: auto !important; display: inline-block !important; margin-top: 0.5rem; padding: 0.6rem 2rem !important; align-self: center !important; }
                     div[style*="left: 0"][style*="width: 4px"] { width: 100% !important; height: 4px !important; bottom: auto !important; top: 0 !important; }
                     /* Center Icon box margins just in case */
                     div[style*="width: '80px'"] { margin: 0 auto; }
                     /* Ensure headers wrap nicely */
-                    h3 { font-size: 1.4rem !important; line-height: 1.4; }
-                    h4 { justify-content: center; }
+                    h3 { font-size: 1.4rem !important; line-height: 1.4; text-align: center !important; }
+                    h4 { justify-content: center; text-align: center !important; }
                     span[style*="display: flex"] { justify-content: center; }
                 }
             `}</style>

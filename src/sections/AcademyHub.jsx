@@ -161,6 +161,34 @@ const AcademyHub = () => {
                     /* Adjust padding for content on mobile */
                     .event-card-grid > div:last-child {
                         padding: 2rem !important;
+                        text-align: center !important;
+                        align-items: center !important;
+                        display: flex !important;
+                        flex-direction: column !important;
+                    }
+                    /* Center buttons and tags in Highlight card */
+                    .event-card-grid > div:last-child > div {
+                        justify-content: center !important;
+                    }
+
+                    /* Center Portals Cards */
+                    h3[style*="marginBottom: '2rem'"] { /* "Portais de Aprendizado" header */
+                        justify-content: center !important;
+                    }
+                    
+                    .hover-card {
+                        text-align: center !important;
+                    }
+                    .hover-card > div:first-child { /* Icon wrapper */
+                        justify-content: center !important; /* Force icon center but keep external link invisible if needed or centered too? */
+                        position: relative;
+                        width: 100%;
+                    }
+                    .hover-card > div:first-child > div { /* The icon box itself */
+                         margin: 0 auto;
+                    }
+                    .hover-card span { /* "Acessar Portal" */
+                        justify-content: center !important;
                     }
                 }
             `}</style>

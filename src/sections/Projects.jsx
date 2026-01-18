@@ -7,7 +7,7 @@ const ProjectCard = ({ project }) => {
     const { ref, style } = useHoverCard({ maxRotation: 5, scale: 1.02 });
 
     return (
-        <div ref={ref} className="card-glass" style={{
+        <div ref={ref} className="card-glass project-card" style={{
             ...style.transform ? { transform: style.transform, transition: style.transition } : {},
             height: '100%',
             display: 'flex',
@@ -29,7 +29,7 @@ const ProjectCard = ({ project }) => {
             )}
 
             <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', height: '100%' }}>
-                <div style={{ marginBottom: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                <div className="project-header" style={{ marginBottom: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                     <div>
                         <span style={{
                             fontSize: '0.75rem',
@@ -46,7 +46,7 @@ const ProjectCard = ({ project }) => {
                     </div>
                 </div>
 
-                <div style={{ marginBottom: '1rem' }}>
+                <div className="role-container" style={{ marginBottom: '1rem' }}>
                     <span style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', borderLeft: '2px solid var(--primary-color)', paddingLeft: '0.8rem', display: 'block' }}>
                         <strong style={{ color: 'var(--text-heading)' }}>Meu papel:</strong> {project.role}
                     </span>
@@ -54,7 +54,7 @@ const ProjectCard = ({ project }) => {
 
                 <div style={{ marginBottom: '1rem' }}>
                     <h4 style={{ fontSize: '1rem', color: 'var(--text-heading)', marginBottom: '0.5rem' }}>O que foi desenvolvido:</h4>
-                    <p style={{ color: 'var(--text-primary)', fontSize: '0.95rem', lineHeight: 1.6, margin: 0 }}>
+                    <p style={{ color: 'var(--text-primary)', fontSize: '0.95rem', lineHeight: 1.6, margin: 0, textAlign: 'left' }}>
                         {project.description}
                     </p>
                 </div>
@@ -89,17 +89,7 @@ const ProjectCard = ({ project }) => {
                 </div>
             </div>
 
-            <style>{`
-                @media (max-width: 768px) {
-                    .card-glass, .card-glass > div { 
-                        text-align: left !important; 
-                        align-items: flex-start !important;
-                    }
-                    .card-glass h3, .card-glass p, .card-glass span, .card-glass div { 
-                        text-align: left !important; 
-                    }
-                }
-            `}</style>
+
         </div>
     );
 };
@@ -120,7 +110,7 @@ const Projects = () => {
                     </div>
                 </Reveal>
 
-                <div className="grid-2">
+                <div className="grid-responsive">
                     {projects.map((project, index) => (
                         <Reveal key={index} delay={index * 100}>
                             <ProjectCard project={project} />
@@ -130,13 +120,60 @@ const Projects = () => {
             </div>
 
             <style>{`
-                .grid-2 {
-                    display: grid;
-                    grid-template-columns: repeat(2, 1fr);
-                    gap: 2rem;
-                }
                 @media (max-width: 900px) {
-                    .grid-2 { grid-template-columns: 1fr; }
+                    .project-header, 
+                    .project-header > div {
+                        justify-content: center !important;
+                        text-align: center !important;
+                        width: 100% !important;
+                        display: flex !important;
+                        flex-direction: column !important;
+                        align-items: center !important;
+                    }
+                    
+                    .project-header span, .project-header h3 {
+                        text-align: center !important;
+                        justify-content: center !important;
+                        display: block !important;
+                        width: 100% !important; /* Ensure full width for centering */
+                    }
+
+                    .role-container {
+                        text-align: center !important;
+                        justify-content: center !important;
+                        display: flex !important;
+                        width: 100%;
+                    }
+
+                    .role-container span {
+                        border-left: none !important;
+                        padding-left: 0 !important;
+                        border-bottom: 2px solid var(--primary-color) !important;
+                        padding-bottom: 0.5rem !important;
+                        display: inline-block !important;
+                        width: auto !important;
+                    }
+
+                    .project-card h4 {
+                        text-align: center !important;
+                        width: 100% !important;
+                    }
+
+                    .project-card p {
+                        text-align: center !important;
+                    }
+                    
+                     /* Impact Box */
+                    .project-card > div > div:nth-last-of-type(2) {
+                        text-align: center !important;
+                    }
+                    .project-card > div > div:nth-last-of-type(2) p {
+                        justify-content: center !important;
+                        display: flex !important;
+                        align-items: center !important;
+                         gap: 0.5rem;
+                         flex-wrap: wrap; /* Permitir quebra se icon e texto forem longos */
+                    }
                 }
             `}</style>
         </section>

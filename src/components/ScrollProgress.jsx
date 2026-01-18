@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
 
 const ScrollProgress = () => {
-    const [progress, setProgress] = useState(0);
+    const [scrollWidth, setScrollWidth] = useState(0);
+
+    const handleScroll = () => {
+        const scrollTop = document.documentElement.scrollTop;
+        const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const updateScroll = (scrollTop / windowHeight) * 100;
+
+        setScrollWidth(updateScroll);
+    };
 
     useEffect(() => {
-        const handleScroll = () => {
-            const totalScroll = document.documentElement.scrollTop;
-            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scroll = `${totalScroll / windowHeight}`;
-            setProgress(Number(scroll));
-        };
-
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
@@ -20,22 +21,19 @@ const ScrollProgress = () => {
             position: 'fixed',
             top: 0,
             left: 0,
+            height: '4px',
             width: '100%',
-            height: '3px',
-            zIndex: 10002, // Above Navbar (Navbar is 9999)
-            background: 'transparent'
+            background: 'transparent',
+            zIndex: 10000
         }}>
             <div style={{
-                width: `${progress * 100}%`,
                 height: '100%',
-                background: 'linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color))',
-                backgroundSize: '200% 100%',
-                animation: 'gradientMove 2s linear infinite',
-                boxShadow: '0 0 10px var(--primary-color)'
+                width: `${scrollWidth}%`,
+                background: 'linear-gradient(90deg, #6366f1, #d946ef, #10b981)', // Indigo -> Pink -> Emerald
+                boxShadow: '0 0 10px rgba(99, 102, 241, 0.5)',
+                transition: 'width 0.1s ease-out',
+                borderRadius: '0 2px 2px 0'
             }} />
-            <style>{`
-                @keyframes gradientMove { 0% { background-position: 100% 0; } 100% { background-position: 0 0; } }
-            `}</style>
         </div>
     );
 };

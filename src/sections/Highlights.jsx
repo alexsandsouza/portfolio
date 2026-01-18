@@ -7,7 +7,7 @@ const TrophyCard = ({ highlight, index }) => {
     const { ref, style } = useHoverCard({ maxRotation: 5, scale: 1.03 });
 
     return (
-        <div ref={ref} className="card-glass" style={{
+        <div ref={ref} className="card-glass trophy-card" style={{
             ...style.transform ? { transform: style.transform, transition: style.transition } : {},
             padding: '2.5rem',
             background: 'var(--card-bg)', // Adapts to theme
@@ -111,6 +111,20 @@ const TrophyCard = ({ highlight, index }) => {
             <style>{`
                 @keyframes floatTrophy { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
                 @keyframes shine { 100% { left: 200%; } }
+                
+                @media (max-width: 900px) {
+                    .trophy-card {
+                        text-align: center !important;
+                        align-items: center !important;
+                    }
+                    .trophy-card > div {
+                        align-items: center !important;
+                        text-align: center !important;
+                    }
+                    .trophy-card h3, .trophy-card p, .trophy-card a {
+                        text-align: center !important;
+                    }
+                }
             `}</style>
         </div>
     );

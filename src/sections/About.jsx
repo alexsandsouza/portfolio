@@ -135,32 +135,30 @@ const About = () => {
     return (
         <section id="about" className="section" style={{ position: 'relative', overflow: 'visible' }}>
             <div className="container">
-                <div className="grid-2" style={{ alignItems: 'stretch', gap: '4rem' }}>
+                <div className="grid-2-col" style={{ alignItems: 'stretch' }}>
                     {/* Image Column */}
                     <Reveal>
                         <CyberFrame />
                     </Reveal>
 
                     {/* Content Column */}
-                    <div style={{ paddingLeft: '0', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                    <div className="text-left-mobile" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                         <Reveal delay={200}>
                             <div style={{ marginBottom: '2rem' }}>
                                 <span className="section-subtitle">Minha Jornada</span>
-                                <h2 style={{ textAlign: 'left', marginBottom: '1rem', fontSize: '2.5rem' }}>{about.title}</h2>
-                                <h3 style={{
+                                <h2 style={{ marginBottom: '1rem', fontSize: '2.5rem' }}>{about.title}</h2>
+                                <h3 className="about-headline" style={{
                                     color: 'var(--primary-color)',
                                     marginBottom: '1.5rem',
                                     fontSize: '1.25rem',
                                     fontWeight: '500',
-                                    borderLeft: '3px solid var(--secondary-color)', // Pink border as requested
-                                    paddingLeft: '1rem',
                                     lineHeight: 1.6,
                                     whiteSpace: 'pre-line' // Respond to \n
                                 }}>
                                     {about.headline}
                                 </h3>
 
-                                <p style={{ marginBottom: '2rem', color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: 1.8, textAlign: 'justify' }}>
+                                <p style={{ marginBottom: '2rem', color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: 1.8 }}>
                                     {about.description.replace(/\*\*/g, '')}
                                 </p>
                             </div>
@@ -169,7 +167,7 @@ const About = () => {
                         <Reveal delay={400}>
                             {about.stats && <HolographicStats stats={about.stats} />}
 
-                            <div className="card-glass" style={{
+                            <div className="card-glass about-highlight-card" style={{
                                 padding: '1.25rem',
                                 border: '1px solid var(--card-border)',
                                 background: 'linear-gradient(90deg, var(--card-bg) 0%, transparent 100%)',
@@ -188,6 +186,44 @@ const About = () => {
                     </div>
                 </div>
             </div>
+
+            <style>{`
+                /* Desktop default for headline */
+                .about-headline {
+                    border-left: 3px solid var(--secondary-color);
+                    padding-left: 1rem;
+                    text-align: left;
+                }
+                
+                @media (max-width: 900px) {
+                    /* Force Center Everything on Mobile */
+                    .text-left-mobile {
+                        text-align: center !important;
+                        align-items: center !important;
+                    }
+                    .text-left-mobile h2, 
+                    .text-left-mobile p {
+                        text-align: center !important;
+                    }
+                    
+                    /* Adjust Headline Border */
+                    .about-headline {
+                        border-left: none !important;
+                        padding-left: 0 !important;
+                        border-bottom: 3px solid var(--secondary-color);
+                        padding-bottom: 1rem;
+                        text-align: center !important;
+                        width: 100%;
+                    }
+                    
+                    /* Adjust Highlight Card */
+                    .about-highlight-card {
+                        justify-content: center !important;
+                        text-align: center !important;
+                        flex-direction: column;
+                    }
+                }
+            `}</style>
         </section>
     );
 };
