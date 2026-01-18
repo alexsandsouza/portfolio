@@ -124,22 +124,37 @@ const Testimonials = () => {
     const { testimonials: staticData } = portfolioContent;
     const [dynamicFeedbacks, setDynamicFeedbacks] = useState([]);
 
+    const [error, setError] = useState(null);
+
     useEffect(() => {
         try {
-            const q = query(collection(db, "feedbacks"), orderBy("createdAt", "desc"));
+            // Removing orderBy("createdAt", "desc") to avoid "Missing Index" errors for now
+            // We will sort client-side
+            const q = query(collection(db, "feedbacks"));
+
             const unsubscribe = onSnapshot(q, (snapshot) => {
                 const feeds = snapshot.docs.map(doc => ({
                     id: doc.id,
                     ...doc.data()
                 }));
-                // Show all feedbacks for now
+
+                // Client-side sort
+                feeds.sort((a, b) => {
+                    const tA = a.createdAt?.seconds || 0;
+                    const tB = b.createdAt?.seconds || 0;
+                    return tB - tA;
+                });
+
                 setDynamicFeedbacks(feeds);
-            }, (error) => {
-                console.log("Firestore sync disabled/error");
+                setError(null);
+            }, (err) => {
+                console.error("Firestore Error:", err);
+                setError("Erro de conexão com banco de dados. Verifique as Regras no Firebase Console.");
             });
             return () => unsubscribe();
         } catch (e) {
             console.log("Firebase not initialized");
+            setError("Firebase não inicializado.");
         }
     }, []);
 
@@ -164,6 +179,20 @@ const Testimonials = () => {
                         </p>
                     </div>
                 </Reveal>
+
+                {error && (
+                    <div style={{
+                        textAlign: 'center',
+                        padding: '1rem',
+                        background: 'rgba(239, 68, 68, 0.2)',
+                        color: '#fca5a5',
+                        borderRadius: '8px',
+                        marginBottom: '2rem',
+                        border: '1px solid rgba(239, 68, 68, 0.5)'
+                    }}>
+                        ⚠️ {error}
+                    </div>
+                )}
 
                 <div className="testimonials-grid">
                     {displayList.map((item, index) => (
