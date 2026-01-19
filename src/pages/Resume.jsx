@@ -53,49 +53,49 @@ const Resume = () => {
             }}>
 
                 {/* === LEFT COLUMN (MAIN CONTENT) === */}
-                <main style={{ padding: '40px 30px', color: '#333' }}>
+                <main style={{ padding: '20px 20px', color: '#333' }}>
 
                     {/* Header: Photo + Name */}
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '2.5rem' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '1.5rem' }}>
                         <div style={{
-                            width: '100px', height: '100px', flexShrink: 0,
+                            width: '70px', height: '70px', flexShrink: 0,
                             borderRadius: '50%', overflow: 'hidden',
                             boxShadow: '0 4px 10px rgba(0,0,0,0.1)'
                         }}>
                             <img src="/Foto_Perfil_Round.png" alt="Profile" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                         </div>
                         <div>
-                            <h1 style={{ fontSize: '2.2rem', fontWeight: '800', color: '#000', lineHeight: 1, marginBottom: '0.3rem', textTransform: 'uppercase' }}>
-                                {hero.name}
+                            <h1 style={{ fontSize: '1.6rem', fontWeight: '800', color: '#000', lineHeight: 1, marginBottom: '0.1rem', textTransform: 'uppercase' }}>
+                                Alexsand Farias de Souza
                             </h1>
-                            <h2 style={{ fontSize: '0.9rem', color: '#555', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '2px' }}>
-                                Professor & Full Stack Dev
+                            <h2 style={{ fontSize: '0.75rem', color: '#555', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                                Prof. Universitário | Dev Full Stack | Avaliador TCC & Projetos
                             </h2>
                         </div>
                     </div>
 
-                    {/* Resumo Profissional */}
-                    <section style={{ marginBottom: '2.5rem' }}>
+                    {/* Resumo Profissional (Encurtado) */}
+                    <section style={{ marginBottom: '1rem' }}>
                         <h3 className="section-title">Resumo Profissional</h3>
-                        <p style={{ fontSize: '0.9rem', lineHeight: 1.6, textAlign: 'justify', color: '#444' }}>
-                            {about.description}
+                        <p style={{ fontSize: '0.75rem', lineHeight: 1.3, textAlign: 'justify', color: '#444' }}>
+                            Professor Universitário e Desenvolvedor Full Stack com sólida experiência em formação de talentos em TI (Engenharia de Software, Redes, Cibersegurança). Atuo como Avaliador de Projetos/TCC e consultor técnico, conectando teoria acadêmica à prática de mercado com foco em inovação e transformação digital. Fundador da AD Academy.
                         </p>
                     </section>
 
                     {/* Experiência Profissional */}
-                    <section style={{ marginBottom: '2.5rem' }}>
+                    <section style={{ marginBottom: '1rem' }}>
                         <h3 className="section-title">Experiência Profissional</h3>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
                             {latestExperience.map((exp, idx) => (
-                                <div key={idx} style={{ pageBreakInside: 'avoid' }}>
-                                    <h4 style={{ fontSize: '1.1rem', fontWeight: 'bold', color: '#000', marginBottom: '2px' }}>
+                                <div key={idx} style={{ pageBreakInside: 'avoid', marginBottom: '0.4rem' }}>
+                                    <h4 style={{ fontSize: '0.85rem', fontWeight: 'bold', color: '#000', marginBottom: '1px' }}>
                                         {exp.role}, {exp.institution}
                                     </h4>
-                                    <div style={{ fontSize: '0.75rem', fontWeight: '700', color: '#888', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>
+                                    <div style={{ fontSize: '0.75rem', fontWeight: '700', color: '#888', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '4px' }}>
                                         {exp.period}
                                     </div>
-                                    <ul style={{ margin: 0, paddingLeft: '1.2rem', fontSize: '0.9rem', color: '#444', lineHeight: 1.5 }}>
-                                        <li style={{ marginBottom: '4px' }}>{exp.description}</li>
+                                    <ul style={{ margin: 0, paddingLeft: '1rem', marginTop: '2px', fontSize: '0.75rem', color: '#444', lineHeight: 1.3 }}>
+                                        <li style={{ marginBottom: '1px' }}>{exp.description}</li>
                                         {exp.results && <li>{exp.results}</li>}
                                     </ul>
                                 </div>
@@ -106,16 +106,16 @@ const Resume = () => {
                     {/* Formação */}
                     <section>
                         <h3 className="section-title">Formação</h3>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
                             {education.slice(0, 4).map((edu, idx) => ( // Showing top 4 education
                                 <div key={idx} style={{ pageBreakInside: 'avoid' }}>
-                                    <div style={{ fontWeight: 'bold', fontSize: '1rem', color: '#000' }}>
+                                    <div style={{ fontWeight: 'bold', fontSize: '0.85rem', color: '#000' }}>
                                         {edu.course}
                                     </div>
-                                    <div style={{ fontSize: '0.9rem', color: '#444' }}>
-                                        {edu.institution}, <span style={{ fontSize: '0.8rem', color: '#666' }}>{edu.level}</span>
+                                    <div style={{ fontSize: '0.75rem', color: '#444' }}>
+                                        {edu.institution}, <span style={{ fontSize: '0.7rem', color: '#666' }}>{edu.level}</span>
                                     </div>
-                                    <div style={{ fontSize: '0.75rem', color: '#888', textTransform: 'uppercase' }}>
+                                    <div style={{ fontSize: '0.65rem', color: '#888', textTransform: 'uppercase' }}>
                                         {edu.period}
                                     </div>
                                 </div>
@@ -127,12 +127,12 @@ const Resume = () => {
 
 
                 {/* === RIGHT COLUMN (SIDEBAR) === */}
-                <aside style={{ background: '#0B2545', color: '#fff', padding: '40px 25px', display: 'flex', flexDirection: 'column', gap: '3rem', printColorAdjust: 'exact', WebkitPrintColorAdjust: 'exact' }}>
+                <aside style={{ background: '#0B2545', color: '#fff', padding: '20px 15px', display: 'flex', flexDirection: 'column', gap: '1.2rem', printColorAdjust: 'exact', WebkitPrintColorAdjust: 'exact' }}>
 
                     {/* Dados Pessoais */}
                     <section>
                         <h3 className="sidebar-title">Dados Pessoais</h3>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', fontSize: '0.85rem' }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem', fontSize: '0.75rem' }}>
                             <div>
                                 <strong style={{ display: 'block', marginBottom: '2px', opacity: 0.7 }}>Endereço</strong>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><MapPin size={14} /> Manaus, AM, Brasil</div>
@@ -143,7 +143,7 @@ const Resume = () => {
                             </div>
                             <div>
                                 <strong style={{ display: 'block', marginBottom: '2px', opacity: 0.7 }}>LinkedIn</strong>
-                                <a href="https://linkedin.com/in/alexsandfarias" target="_blank" style={{ color: '#fff', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' }}><Linkedin size={14} /> /in/alexsandfarias</a>
+                                <a href="https://www.linkedin.com/in/alexsandfarias/" target="_blank" style={{ color: '#fff', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' }}><Linkedin size={14} /> /in/alexsandfarias</a>
                             </div>
                             <div>
                                 <strong style={{ display: 'block', marginBottom: '2px', opacity: 0.7 }}>Portfólio / Site</strong>
