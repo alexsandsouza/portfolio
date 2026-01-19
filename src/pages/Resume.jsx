@@ -293,16 +293,17 @@ const Resume = () => {
                 @media print {
                     @page { 
                         size: A4 portrait; 
-                        margin: 0 !important; /* CRITICAL: Attempts to remove browser margins */
+                        margin: 0 !important; 
                     }
                     
+                    /* FIXED: Do NOT use overflow:hidden on body as it clips content in some browsers */
                     html, body {
                         width: 210mm !important;
                         height: 297mm !important;
                         margin: 0 !important;
                         padding: 0 !important;
-                        overflow: hidden !important; /* Force hide overflow to prevent 2nd page */
                         background: #fff !important;
+                        overflow: visible !important;
                     }
 
                     .no-print { display: none !important; }
@@ -310,12 +311,13 @@ const Resume = () => {
                     .resume-paper {
                         visibility: visible;
                         display: grid !important;
-                        position: absolute; /* Absolute positioning to force top-left */
+                        position: absolute;
                         left: 0 !important;
                         top: 0 !important;
+                        z-index: 9999; /* Ensure it stays on top */
                         
                         width: 210mm !important;
-                         height: 296mm !important; /* 1mm buffer to prevent 2nd page spill */
+                        height: 296mm !important; /* Keep slight buffer */
                         max-height: 296mm !important;
                         
                         margin: 0 !important;
@@ -325,7 +327,7 @@ const Resume = () => {
                         background-color: #fff !important;
                         -webkit-print-color-adjust: exact;
                         print-color-adjust: exact;
-                        overflow: hidden;
+                        overflow: hidden; /* Only clip the paper itself, not the body */
                     }
 
                     .resume-paper * { 
@@ -335,13 +337,13 @@ const Resume = () => {
                     
                     /* Main Content */
                     main { 
-                        padding: 12px 15px !important; /* Reduced Top Padding to 12px */
+                        padding: 12px 15px !important; 
                         color: #000 !important; 
                     }
                     
                     /* Header */
                     div[style*="width: 60px"] { 
-                        width: 48px !important; height: 48px !important; /* Slightly smaller */
+                        width: 48px !important; height: 48px !important; 
                     }
                     
                     h1 { 
@@ -385,7 +387,7 @@ const Resume = () => {
                     }
                     
                     div[style*="gap: 1.2rem"] {
-                         gap: 0.8rem !important; /* Sidebar gap reduction */
+                         gap: 0.8rem !important; 
                     }
                     
                     div[style*="pageBreakInside: avoid"] {
@@ -396,7 +398,7 @@ const Resume = () => {
 
                     /* Sidebar */
                     aside { 
-                        padding: 12px 10px !important; /* Reduced Top Padding to 12px */
+                        padding: 12px 10px !important; 
                         gap: 0.8rem !important; 
                         background-color: #0B2545 !important; 
                         color: #fff !important;
