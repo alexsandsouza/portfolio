@@ -231,48 +231,64 @@ const Resume = () => {
                 .progress-bar { width: 100%; height: 4px; background: rgba(255,255,255,0.2); border-radius: 2px; }
                 .progress-bar div { height: 100%; background: #fff; border-radius: 2px; }
 
+                /* === PRINT STYLES === */
                 @media print {
+                    /* 1. Global Reset */
                     @page { margin: 0; size: auto; }
-                    body { background: white !important; margin: 0; padding: 0; -webkit-print-color-adjust: exact; }
                     
+                    /* 2. Hide EVERYTHING initially */
+                    body {
+                        visibility: hidden;
+                        background: #fff !important;
+                        margin: 0 !important;
+                        padding: 0 !important;
+                    }
+
+                    /* 3. Hide floating controls explicitly */
                     .no-print { display: none !important; }
 
-                    .resume-wrapper {
-                        display: block !important;
-                        background: none !important;
-                        padding: 0 !important;
-                        height: auto !important;
-                        min-height: auto !important;
-                    }
-
+                    /* 4. Position the paper properly */
                     .resume-paper {
-                        box-shadow: none !important;
+                        visibility: visible; /* Show only this */
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        width: 210mm !important;
+                        min-height: 297mm !important;
                         margin: 0 !important;
-                        width: 100% !important;
-                        min-height: auto !important;
+                        padding: 0 !important;
+                        
+                        /* Layout fixes */
                         display: grid !important; 
                         grid-template-columns: 65% 35% !important;
-                        print-color-adjust: exact;
+                        box-shadow: none !important;
+                        
+                        /* Color forcing */
+                        background-color: #fff !important;
                         -webkit-print-color-adjust: exact;
+                        print-color-adjust: exact;
+                        z-index: 9999;
                     }
 
-                    /* Sidebar color fix for print */
+                    /* 5. Ensure children of paper are visible */
+                    .resume-paper * {
+                        visibility: visible;
+                    }
+
+                    /* 6. Specific Color Fixes */
                     aside { 
                         background-color: #0B2545 !important; 
                         color: #fff !important;
-                        -webkit-print-color-adjust: exact;
+                        -webkit-print-color-adjust: exact; 
                         print-color-adjust: exact;
                     }
                     aside * { 
                         color: #fff !important; 
                         border-color: rgba(255,255,255,0.3) !important;
                     }
-                    aside a { color: #fff !important; text-decoration: none; }
-                    .progress-bar { background: rgba(255,255,255,0.2) !important; }
-                    .progress-bar div { background: #fff !important; }
-
-                    /* Main content black text fix */
-                    main, main * { color: #000 !important; }
+                    
+                    main { color: #000 !important; }
+                    main * { color: #000 !important; }
                     .section-title { border-color: #000 !important; }
                 }
             `}</style>
