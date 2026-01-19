@@ -90,7 +90,7 @@ const Links = () => {
                         </h1>
                         <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
                             Prof. Universitário | Dev Full Stack | Avaliador TCC e Projetos<br />
-                            Transformando carreiras através de mentoriais na área da tecnologia da Informação - TI.
+                            Transformando carreiras através de mentorias na área da tecnologia da Informação - TI.
                         </p>
                     </div>
                 </Reveal>
