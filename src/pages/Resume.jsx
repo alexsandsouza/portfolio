@@ -304,13 +304,14 @@ const Resume = () => {
                         margin: 0 !important; 
                     }
                     
-                    /* FIXED: Do NOT use overflow:hidden on body as it clips content in some browsers */
+                    /* FIXED: Allow natural flow, just hide non-print elements */
                     html, body {
                         width: 210mm !important;
                         height: 297mm !important;
                         margin: 0 !important;
                         padding: 0 !important;
                         background: #fff !important;
+                        -webkit-print-color-adjust: exact; 
                         overflow: visible !important;
                     }
 
@@ -319,14 +320,13 @@ const Resume = () => {
                     .resume-paper {
                         visibility: visible;
                         display: grid !important;
-                        position: absolute;
+                        position: relative; /* Changed from absolute to relative to avoid off-canvas issues */
                         left: 0 !important;
                         top: 0 !important;
-                        z-index: 9999; /* Ensure it stays on top */
+                        z-index: 9999;
                         
                         width: 210mm !important;
-                        height: 296mm !important; /* Keep slight buffer */
-                        max-height: 296mm !important;
+                        min-height: 296mm !important;
                         
                         margin: 0 !important;
                         padding: 0 !important;
@@ -335,7 +335,6 @@ const Resume = () => {
                         background-color: #fff !important;
                         -webkit-print-color-adjust: exact;
                         print-color-adjust: exact;
-                        overflow: hidden; /* Only clip the paper itself, not the body */
                     }
 
                     .resume-paper * { 

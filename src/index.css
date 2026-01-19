@@ -457,11 +457,7 @@ textarea {
 }
 
 /* Try to hide from print */
-@media print {
-  body {
-    display: none;
-  }
-}
+
 
 /* --- Utility Classes for Alignment & Layout --- */
 
