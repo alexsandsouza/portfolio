@@ -320,13 +320,16 @@ const Resume = () => {
                     .resume-paper {
                         visibility: visible;
                         display: grid !important;
-                        position: relative; /* Changed from absolute to relative to avoid off-canvas issues */
+                        position: relative; 
                         left: 0 !important;
                         top: 0 !important;
                         z-index: 9999;
                         
                         width: 210mm !important;
-                        min-height: 296mm !important;
+                        /* CRITICAL FIX: Reduce height significantly to 292mm to act as a safety buffer */
+                        /* The browser adds its own margins, so 297mm almost always spills over */
+                        height: 292mm !important; 
+                        max-height: 292mm !important;
                         
                         margin: 0 !important;
                         padding: 0 !important;
@@ -335,6 +338,7 @@ const Resume = () => {
                         background-color: #fff !important;
                         -webkit-print-color-adjust: exact;
                         print-color-adjust: exact;
+                        overflow: hidden !important; /* Cut off anything that dares to spill */
                     }
 
                     .resume-paper * { 
@@ -348,9 +352,8 @@ const Resume = () => {
                         color: #000 !important; 
                     }
                     
-                    /* Header */
                     div[style*="width: 60px"] { 
-                        width: 48px !important; height: 48px !important; 
+                        width: 45px !important; height: 45px !important; 
                     }
                     
                     h1 { 
@@ -360,7 +363,7 @@ const Resume = () => {
                         letter-spacing: 0 !important;
                     }
 
-                    section { margin-bottom: 0.5rem !important; } 
+                    section { margin-bottom: 0.4rem !important; } 
                     
                     .section-title { 
                         font-size: 13px !important; 
@@ -378,7 +381,7 @@ const Resume = () => {
                     /* Text Body */
                     p, li, div, span, a { 
                         font-size: 10px !important; 
-                        line-height: 1.2 !important;
+                        line-height: 1.15 !important; /* Slightly tighter line height */
                     }
                     
                     p, li { text-align: justify !important; }
@@ -390,15 +393,15 @@ const Resume = () => {
                     
                     /* Gaps */
                     div[style*="gap: 0.4rem"], div[style*="gap: 0.5rem"], div[style*="gap: 0.3rem"] { 
-                        gap: 0.2rem !important; 
+                        gap: 0.15rem !important; 
                     }
                     
                     div[style*="gap: 1.2rem"] {
-                         gap: 0.8rem !important; 
+                         gap: 0.6rem !important; 
                     }
                     
                     div[style*="pageBreakInside: avoid"] {
-                         margin-bottom: 0.2rem !important;
+                         margin-bottom: 0.15rem !important;
                     }
 
                     ul { padding-left: 1rem !important; margin-top: 0 !important; }
@@ -406,7 +409,7 @@ const Resume = () => {
                     /* Sidebar */
                     aside { 
                         padding: 12px 10px !important; 
-                        gap: 0.8rem !important; 
+                        gap: 0.6rem !important; /* Tighter sidebar gap */
                         background-color: #0B2545 !important; 
                         color: #fff !important;
                         height: 100% !important;
