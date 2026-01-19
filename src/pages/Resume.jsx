@@ -293,30 +293,34 @@ const Resume = () => {
                 @media print {
                     @page { 
                         size: A4 portrait; 
-                        margin: 0 !important; 
+                        margin: 0 !important; /* CRITICAL: Attempts to remove browser margins */
                     }
                     
-                    body {
-                        display: block !important; 
-                        visibility: hidden; 
-                        background: #fff !important;
+                    html, body {
+                        width: 210mm !important;
+                        height: 297mm !important;
                         margin: 0 !important;
                         padding: 0 !important;
-                        -webkit-print-color-adjust: exact;
-                        min-width: 210mm !important; 
+                        overflow: hidden !important; /* Force hide overflow to prevent 2nd page */
+                        background: #fff !important;
                     }
+
+                    .no-print { display: none !important; }
 
                     .resume-paper {
                         visibility: visible;
                         display: grid !important;
-                        position: absolute;
-                        left: 0;
-                        top: 0;
+                        position: absolute; /* Absolute positioning to force top-left */
+                        left: 0 !important;
+                        top: 0 !important;
+                        
                         width: 210mm !important;
-                        height: 297mm !important;
-                        max-height: 297mm !important;
+                         height: 296mm !important; /* 1mm buffer to prevent 2nd page spill */
+                        max-height: 296mm !important;
+                        
                         margin: 0 !important;
                         padding: 0 !important;
+                        
                         grid-template-columns: 68% 32% !important;
                         background-color: #fff !important;
                         -webkit-print-color-adjust: exact;
@@ -331,13 +335,13 @@ const Resume = () => {
                     
                     /* Main Content */
                     main { 
-                        padding: 15px 15px !important;
+                        padding: 12px 15px !important; /* Reduced Top Padding to 12px */
                         color: #000 !important; 
                     }
                     
                     /* Header */
                     div[style*="width: 60px"] { 
-                        width: 50px !important; height: 50px !important; /* Smaller photo */
+                        width: 48px !important; height: 48px !important; /* Slightly smaller */
                     }
                     
                     h1 { 
@@ -364,7 +368,7 @@ const Resume = () => {
 
                     /* Text Body */
                     p, li, div, span, a { 
-                        font-size: 10px !important; /* "12-like" readable size for high density */
+                        font-size: 10px !important; 
                         line-height: 1.2 !important;
                     }
                     
@@ -372,12 +376,16 @@ const Resume = () => {
 
                     h4 { 
                         font-size: 11px !important; 
-                        margin-bottom: 1px !important; 
+                        margin-bottom: 0 !important; 
                     }
                     
                     /* Gaps */
                     div[style*="gap: 0.4rem"], div[style*="gap: 0.5rem"], div[style*="gap: 0.3rem"] { 
                         gap: 0.2rem !important; 
+                    }
+                    
+                    div[style*="gap: 1.2rem"] {
+                         gap: 0.8rem !important; /* Sidebar gap reduction */
                     }
                     
                     div[style*="pageBreakInside: avoid"] {
@@ -388,10 +396,11 @@ const Resume = () => {
 
                     /* Sidebar */
                     aside { 
-                        padding: 15px 10px !important;
+                        padding: 12px 10px !important; /* Reduced Top Padding to 12px */
                         gap: 0.8rem !important; 
                         background-color: #0B2545 !important; 
                         color: #fff !important;
+                        height: 100% !important;
                     }
                     
                     aside p, aside li, aside div, aside span, aside a {
