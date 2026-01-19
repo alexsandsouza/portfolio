@@ -89,8 +89,8 @@ const Links = () => {
                             Prof. Alexsander Farias
                         </h1>
                         <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
-                            Educação Tecnológica & Full Stack Dev.<br />
-                            Transformando carreiras através da tecnologia.
+                            Prof. Universitário | Dev Full Stack | Avaliador TCC e Projetos<br />
+                            Transformando carreiras através de mentoriais na área da tecnologia da Informação - TI.
                         </p>
                     </div>
                 </Reveal>
