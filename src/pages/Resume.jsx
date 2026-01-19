@@ -18,7 +18,7 @@ const Resume = () => {
     const latestExperience = professionalExperience.slice(0, 3);
 
     return (
-        <div style={{ background: '#525659', minHeight: '100vh', padding: '2rem 0', display: 'flex', justifyContent: 'center', fontFamily: "'Roboto', sans-serif" }}>
+        <div className="resume-wrapper" style={{ background: '#525659', minHeight: '100vh', padding: '2rem 0', display: 'flex', justifyContent: 'center', fontFamily: "'Roboto', sans-serif" }}>
 
             {/* Floating Controls */}
             <div className="no-print" style={{
@@ -87,7 +87,7 @@ const Resume = () => {
                         <h3 className="section-title">Experiência Profissional</h3>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
                             {latestExperience.map((exp, idx) => (
-                                <div key={idx}>
+                                <div key={idx} style={{ pageBreakInside: 'avoid' }}>
                                     <h4 style={{ fontSize: '1.1rem', fontWeight: 'bold', color: '#000', marginBottom: '2px' }}>
                                         {exp.role}, {exp.institution}
                                     </h4>
@@ -108,7 +108,7 @@ const Resume = () => {
                         <h3 className="section-title">Formação</h3>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                             {education.slice(0, 4).map((edu, idx) => ( // Showing top 4 education
-                                <div key={idx}>
+                                <div key={idx} style={{ pageBreakInside: 'avoid' }}>
                                     <div style={{ fontWeight: 'bold', fontSize: '1rem', color: '#000' }}>
                                         {edu.course}
                                     </div>
@@ -127,7 +127,7 @@ const Resume = () => {
 
 
                 {/* === RIGHT COLUMN (SIDEBAR) === */}
-                <aside style={{ background: '#0B2545', color: '#fff', padding: '40px 25px', display: 'flex', flexDirection: 'column', gap: '3rem' }}>
+                <aside style={{ background: '#0B2545', color: '#fff', padding: '40px 25px', display: 'flex', flexDirection: 'column', gap: '3rem', printColorAdjust: 'exact', WebkitPrintColorAdjust: 'exact' }}>
 
                     {/* Dados Pessoais */}
                     <section>
@@ -233,18 +233,47 @@ const Resume = () => {
 
                 @media print {
                     @page { margin: 0; size: auto; }
-                    body { background: white; -webkit-print-color-adjust: exact; }
+                    body { background: white !important; margin: 0; padding: 0; -webkit-print-color-adjust: exact; }
+                    
                     .no-print { display: none !important; }
+
+                    .resume-wrapper {
+                        display: block !important;
+                        background: none !important;
+                        padding: 0 !important;
+                        height: auto !important;
+                        min-height: auto !important;
+                    }
+
                     .resume-paper {
                         box-shadow: none !important;
                         margin: 0 !important;
                         width: 100% !important;
-                        min-height: 100vh !important;
+                        min-height: auto !important;
                         display: grid !important; 
                         grid-template-columns: 65% 35% !important;
+                        print-color-adjust: exact;
+                        -webkit-print-color-adjust: exact;
                     }
-                    /* Ensure links are white in sidebar */
+
+                    /* Sidebar color fix for print */
+                    aside { 
+                        background-color: #0B2545 !important; 
+                        color: #fff !important;
+                        -webkit-print-color-adjust: exact;
+                        print-color-adjust: exact;
+                    }
+                    aside * { 
+                        color: #fff !important; 
+                        border-color: rgba(255,255,255,0.3) !important;
+                    }
                     aside a { color: #fff !important; text-decoration: none; }
+                    .progress-bar { background: rgba(255,255,255,0.2) !important; }
+                    .progress-bar div { background: #fff !important; }
+
+                    /* Main content black text fix */
+                    main, main * { color: #000 !important; }
+                    .section-title { border-color: #000 !important; }
                 }
             `}</style>
         </div>
