@@ -307,7 +307,7 @@ const Resume = () => {
                         margin: 0 !important;
                         padding: 0 !important;
                         
-                        grid-template-columns: 65% 35% !important; /* Restore columns */
+                        grid-template-columns: 66% 34% !important; /* Slight adjust */
                         box-shadow: none !important;
                         
                         background-color: #fff !important;
@@ -333,46 +333,69 @@ const Resume = () => {
                     
                     /* Reduce Main Content Padding */
                     main { 
-                        padding: 25px 20px !important;
+                        padding: 20px 20px !important; /* Aggressive padding reduction */
                         color: #000 !important; 
                         visibility: visible !important;
                     }
                     
-                    /* Reduce Title Sizes */
-                    h1 { 
-                        font-size: 1.8rem !important; 
-                        margin-bottom: 0.2rem !important; 
-                        line-height: 1 !important;
-                        word-wrap: normal !important; /* Prevent wrapping */
-                    }
-                    h2 { font-size: 0.8rem !important; margin-bottom: 0.5rem !important; }
-                    
                     /* Header Profile Image */
-                    .resume-paper img {
-                        width: 80px !important;
-                        height: 80px !important;
+                    div[style*="width: 100px"] { /* Target wrapper */
+                        width: 70px !important;
+                        height: 70px !important;
                     }
+                    .resume-paper img {
+                        width: 100% !important;
+                        height: 100% !important;
+                    }
+                    
+                    /* Header Text */
+                    div[style*="marginBottom: 2.5rem"] { margin-bottom: 1.5rem !important; } /* Header margin */
+
+                    h1 { 
+                        font-size: 1.6rem !important; 
+                        margin-bottom: 0.1rem !important; 
+                        line-height: 1 !important;
+                    }
+                    h2 { font-size: 0.75rem !important; margin-bottom: 0 !important; }
 
                     /* Reduce Section Spacing */
-                    section { margin-bottom: 1.2rem !important; } /* Further reduced */
+                    section { margin-bottom: 1rem !important; } 
                     .section-title { 
-                        font-size: 1rem !important; 
-                        margin-bottom: 0.5rem !important; 
-                        padding-bottom: 0.3rem !important;
+                        font-size: 0.95rem !important; 
+                        margin-bottom: 0.4rem !important; 
+                        padding-bottom: 0.2rem !important;
+                        border-bottom-width: 1px !important;
                     }
                     
                     /* Compact Descriptions */
-                    p, li { font-size: 0.8rem !important; line-height: 1.35 !important; }
-                    h4 { font-size: 0.95rem !important; margin-bottom: 2px !important; }
+                    p, li { 
+                        font-size: 0.75rem !important; 
+                        line-height: 1.3 !important; 
+                    }
+                    h4 { 
+                        font-size: 0.85rem !important; 
+                        margin-bottom: 1px !important; 
+                    }
                     
                     /* Experience/Education Gap */
-                    div[style*="gap: 2rem"] { gap: 0.8rem !important; }
-                    div[style*="gap: 1rem"] { gap: 0.5rem !important; }
+                    div[style*="gap: 2rem"] { gap: 0.6rem !important; } /* Major reduction */
+                    div[style*="gap: 1rem"] { gap: 0.4rem !important; }
+
+                    /* Experience Items */
+                    div[style*="pageBreakInside: avoid"] {
+                        margin-bottom: 0.4rem !important;
+                    }
+                    
+                    ul { 
+                        padding-left: 1rem !important; 
+                        margin-top: 2px !important;
+                    }
+                    li { margin-bottom: 1px !important; }
 
                     /* --- SIDEBAR COMPACT --- */
                     aside { 
-                        padding: 25px 15px !important;
-                        gap: 1.5rem !important; 
+                        padding: 20px 15px !important;
+                        gap: 1.2rem !important; 
                         background-color: #0B2545 !important; 
                         color: #fff !important;
                         height: 100% !important;
@@ -381,18 +404,16 @@ const Resume = () => {
                     }
                     
                     aside h3.sidebar-title {
-                        font-size: 0.9rem !important;
-                        margin-bottom: 0.6rem !important;
-                        padding-bottom: 0.3rem !important;
+                        font-size: 0.85rem !important;
+                        margin-bottom: 0.5rem !important;
+                        padding-bottom: 0.2rem !important;
                     }
 
                     aside strong, aside span, aside div, aside a, aside li {
-                        font-size: 0.75rem !important;
+                        font-size: 0.7rem !important;
                     }
                     
-                    aside section { margin-bottom: 0 !important; }
-                    
-                    .skill-item { margin-bottom: 0.5rem !important; }
+                    .skill-item { margin-bottom: 0.4rem !important; }
 
                     aside * { 
                         color: #fff !important; 
