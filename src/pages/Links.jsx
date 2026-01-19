@@ -23,6 +23,11 @@ const Links = () => {
             icon: <Youtube size={20} />,
         },
         {
+            label: 'Currículo Lattes (CNPq)',
+            url: 'http://lattes.cnpq.br/2107081536584079',
+            icon: <ExternalLink size={20} />,
+        },
+        {
             label: 'Portfólio Completo',
             url: '/',
             icon: <ExternalLink size={20} />,

@@ -226,6 +226,14 @@ const Navbar = ({ triggerMatrix }) => {
                                             </div>
                                         </a>
 
+                                        <a href="/links" style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '0.8rem', borderRadius: '8px', textDecoration: 'none', transition: 'background 0.2s' }} className="app-link">
+                                            <div style={{ width: '36px', height: '36px', background: '#8b5cf6', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 'bold' }}>🔗</div>
+                                            <div>
+                                                <div style={{ color: 'var(--text-heading)', fontWeight: '600', fontSize: '0.9rem' }}>Meus Links</div>
+                                                <div style={{ color: 'var(--text-secondary)', fontSize: '0.75rem' }}>Bio / Redes Sociais</div>
+                                            </div>
+                                        </a>
+
                                         <style>{`.app-link:hover { background: rgba(255,255,255,0.05); }`}</style>
                                     </div>
                                 )}
@@ -274,6 +282,10 @@ const Navbar = ({ triggerMatrix }) => {
                             <a href="https://ad-academy-treinamentos.vercel.app" target="_blank" className="mobile-app-card" style={{ background: 'var(--bg-secondary)', padding: '1rem', borderRadius: '12px', textAlign: 'center', textDecoration: 'none', border: '1px solid var(--border-color)' }}>
                                 <div style={{ width: '30px', height: '30px', background: '#ec4899', borderRadius: '6px', margin: '0 auto 0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '0.8rem', fontWeight: 'bold' }}>TR</div>
                                 <span style={{ display: 'block', color: 'var(--text-heading)', fontSize: '0.8rem', fontWeight: 'bold' }}>Treinamentos</span>
+                            </a>
+                            <a href="/links" onClick={() => setIsOpen(false)} className="mobile-app-card" style={{ background: 'var(--bg-secondary)', padding: '1rem', borderRadius: '12px', textAlign: 'center', textDecoration: 'none', border: '1px solid var(--border-color)', gridColumn: '1 / -1' }}>
+                                <div style={{ width: '30px', height: '30px', background: '#8b5cf6', borderRadius: '6px', margin: '0 auto 0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '0.8rem', fontWeight: 'bold' }}>🔗</div>
+                                <span style={{ display: 'block', color: 'var(--text-heading)', fontSize: '0.8rem', fontWeight: 'bold' }}>Meus Links (Bio)</span>
                             </a>
                         </div>
                     </div>

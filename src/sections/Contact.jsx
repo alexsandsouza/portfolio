@@ -209,6 +209,9 @@ const Contact = () => {
                     textAlign: 'center'
                 }}>
                     <p>© {new Date().getFullYear()} Prof. Alexsander Farias. Todos os direitos reservados.</p>
+                    <p>
+                        <a href="/links" style={{ color: 'var(--text-secondary)', textDecoration: 'underline', fontSize: '0.85rem' }}>Links Úteis (Bio)</a>
+                    </p>
                     <p style={{ fontSize: '0.8rem', marginTop: '0.5rem' }}>
                         Desenvolvido com <span style={{ color: '#ef4444' }}>❤</span> e Tecnologia Vite + React
                     </p>
