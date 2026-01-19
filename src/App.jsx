@@ -36,24 +36,36 @@ import WhatsAppButton from './components/WhatsAppButton'; // Chat
 import { ScrollToTop } from './components/ScrollToTop';
 import TopBanner from './components/TopBanner';
 
+import Terminal from './components/Terminal'; // Import Terminal
+
 const Home = () => {
   usePageTitle();
   useSecurity(); // Activate Shield
   const konamiTriggered = useKonamiCode();
   const [showMatrix, setShowMatrix] = useState(false);
+  const [showTerminal, setShowTerminal] = useState(false); // Terminal State
 
   useEffect(() => {
     if (konamiTriggered) setShowMatrix(true);
 
     const handleManualTrigger = () => setShowMatrix(true);
+    const handleTerminalTrigger = () => setShowTerminal(true); // Listen for footer click
+
     window.addEventListener('trigger-matrix', handleManualTrigger);
-    return () => window.removeEventListener('trigger-matrix', handleManualTrigger);
+    window.addEventListener('open-terminal', handleTerminalTrigger); // event listener
+
+    return () => {
+      window.removeEventListener('trigger-matrix', handleManualTrigger);
+      window.removeEventListener('open-terminal', handleTerminalTrigger);
+    };
   }, [konamiTriggered]);
 
   return (
     <>
       <TopBanner />
       {showMatrix && <MatrixEffect onClose={() => setShowMatrix(false)} />}
+      <Terminal isOpen={showTerminal} onClose={() => setShowTerminal(false)} triggerMatrix={() => setShowMatrix(true)} />
+
       <MouseSpotlight />
       <ScrollProgress />
       <ThemeToggle /> {/* Added Toggle */}

@@ -212,8 +212,22 @@ const Contact = () => {
                     <p>
                         <a href="/links" style={{ color: 'var(--text-secondary)', textDecoration: 'underline', fontSize: '0.85rem' }}>Links Úteis (Bio)</a>
                     </p>
-                    <p style={{ fontSize: '0.8rem', marginTop: '0.5rem' }}>
+                    <p style={{ fontSize: '0.8rem', marginTop: '0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
                         Desenvolvido com <span style={{ color: '#ef4444' }}>❤</span> e Tecnologia Vite + React
+                        <button
+                            onClick={() => window.dispatchEvent(new Event('open-terminal'))}
+                            style={{
+                                background: 'transparent', border: '1px solid rgba(255,255,255,0.1)',
+                                color: 'var(--text-secondary)', borderRadius: '4px', padding: '2px 6px',
+                                cursor: 'pointer', fontFamily: 'monospace', fontSize: '0.7rem',
+                                opacity: 0.5, transition: 'all 0.3s'
+                            }}
+                            title="Terminal Mode"
+                            onMouseEnter={(e) => { e.target.style.opacity = '1'; e.target.style.borderColor = '#4ade80'; e.target.style.color = '#4ade80' }}
+                            onMouseLeave={(e) => { e.target.style.opacity = '0.5'; e.target.style.borderColor = 'rgba(255,255,255,0.1)'; e.target.style.color = 'var(--text-secondary)' }}
+                        >
+                            &gt;_
+                        </button>
                     </p>
                 </div>
             </div>
