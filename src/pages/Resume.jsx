@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { portfolioContent } from '../data/content';
-import { Printer, ArrowLeft, Mail, Linkedin, MapPin, Globe } from 'lucide-react';
+import { Printer, ArrowLeft, Mail, Linkedin, MapPin, Globe, Phone, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Resume = () => {
@@ -154,7 +154,15 @@ const Resume = () => {
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem', fontSize: '0.7rem' }}>
                             <div>
                                 <strong style={{ display: 'block', marginBottom: '2px', opacity: 0.7 }}>Endereço</strong>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><MapPin size={12} /> Manaus, AM, Brasil</div>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><MapPin size={12} /> Rua Severiano Nunes nº 943 - Aleixo - CEP: 69060-660</div>
+                            </div>
+                            <div>
+                                <strong style={{ display: 'block', marginBottom: '2px', opacity: 0.7 }}>Contato</strong>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><Phone size={12} /> (92) 98142-5690</div>
+                            </div>
+                            <div>
+                                <strong style={{ display: 'block', marginBottom: '2px', opacity: 0.7 }}>Estado Civil</strong>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><Users size={12} /> Casado - 02 filhos</div>
                             </div>
                             <div>
                                 <strong style={{ display: 'block', marginBottom: '2px', opacity: 0.7 }}>E-mail</strong>
