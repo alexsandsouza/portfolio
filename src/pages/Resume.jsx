@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { portfolioContent } from '../data/content';
-import { Printer, ArrowLeft, Mail, Linkedin, MapPin, Globe, Star } from 'lucide-react';
+import { Printer, ArrowLeft, Mail, Linkedin, MapPin, Globe } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Resume = () => {
-    const { hero, about, professionalExperience, education, skills, highlights } = portfolioContent;
+    const { hero, about, professionalExperience, education, skills } = portfolioContent;
 
     useEffect(() => {
         document.title = "Currículo - Prof. Alexsander Farias";
@@ -14,8 +14,11 @@ const Resume = () => {
         window.print();
     };
 
+    // Filtra apenas as 3 últimas experiências
+    const latestExperience = professionalExperience.slice(0, 3);
+
     return (
-        <div style={{ background: '#525659', minHeight: '100vh', padding: '2rem 0', display: 'flex', justifyContent: 'center' }}>
+        <div style={{ background: '#525659', minHeight: '100vh', padding: '2rem 0', display: 'flex', justifyContent: 'center', fontFamily: "'Roboto', sans-serif" }}>
 
             {/* Floating Controls */}
             <div className="no-print" style={{
@@ -29,9 +32,9 @@ const Resume = () => {
                     <ArrowLeft size={24} />
                 </Link>
                 <button onClick={handlePrint} style={{
-                    background: '#e76f51', color: '#fff', padding: '1rem 2rem', borderRadius: '50px',
+                    background: '#0F172A', color: '#fff', padding: '1rem 2rem', borderRadius: '50px',
                     border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.8rem',
-                    boxShadow: '0 4px 12px rgba(231, 111, 81, 0.4)', fontWeight: 'bold', fontSize: '1rem'
+                    boxShadow: '0 4px 12px rgba(15, 23, 42, 0.4)', fontWeight: 'bold', fontSize: '1rem'
                 }}>
                     <Printer size={20} /> Imprimir / Salvar PDF
                 </button>
@@ -43,135 +46,55 @@ const Resume = () => {
                 width: '210mm',
                 minHeight: '297mm',
                 display: 'grid',
-                gridTemplateColumns: '32% 68%', // Left Sidebar / Right Main
+                gridTemplateColumns: '65% 35%', // Main Content (Left) / Sidebar (Right)
                 boxShadow: '0 0 20px rgba(0,0,0,0.5)',
-                fontFamily: "'Roboto', 'Inter', sans-serif",
                 position: 'relative',
                 overflow: 'hidden'
             }}>
 
-                {/* === LEFT COLUMN (SIDEBAR) === */}
-                <aside style={{ background: '#084c61', color: '#fff', padding: '30px 20px', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+                {/* === LEFT COLUMN (MAIN CONTENT) === */}
+                <main style={{ padding: '40px 30px', color: '#333' }}>
 
-                    {/* Photo */}
-                    <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
+                    {/* Header: Photo + Name */}
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '2.5rem' }}>
                         <div style={{
-                            width: '120px', height: '120px', margin: '0 auto',
-                            borderRadius: '12px', overflow: 'hidden', border: '3px solid rgba(255,255,255,0.2)',
-                            boxShadow: '0 4px 15px rgba(0,0,0,0.3)'
+                            width: '100px', height: '100px', flexShrink: 0,
+                            borderRadius: '50%', overflow: 'hidden',
+                            boxShadow: '0 4px 10px rgba(0,0,0,0.1)'
                         }}>
                             <img src="/Foto_Perfil_Round.png" alt="Profile" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                         </div>
+                        <div>
+                            <h1 style={{ fontSize: '2.2rem', fontWeight: '800', color: '#000', lineHeight: 1, marginBottom: '0.3rem', textTransform: 'uppercase' }}>
+                                {hero.name}
+                            </h1>
+                            <h2 style={{ fontSize: '0.9rem', color: '#555', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '2px' }}>
+                                Professor & Full Stack Dev
+                            </h2>
+                        </div>
                     </div>
 
-                    {/* Conquistas Chave */}
-                    <section>
-                        <h3 className="sidebar-title">Conquistas Chave</h3>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
-                            {highlights.map((item, idx) => (
-                                <div key={idx}>
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#e9c46a', fontWeight: 'bold', fontSize: '0.9rem', marginBottom: '4px' }}>
-                                        <Star size={14} fill="#e9c46a" /> {item.title}
-                                    </div>
-                                    <p style={{ fontSize: '0.8rem', opacity: 0.9, lineHeight: 1.4, margin: 0 }}>
-                                        {item.desc}
-                                    </p>
-                                </div>
-                            ))}
-                        </div>
-                    </section>
-
-                    <div style={{ width: '100%', height: '1px', background: 'rgba(255,255,255,0.1)' }}></div>
-
-                    {/* Habilidades */}
-                    <section>
-                        <h3 className="sidebar-title">Habilidades</h3>
-
-                        <div style={{ marginBottom: '1.5rem' }}>
-                            <h4 style={{ fontSize: '0.85rem', color: '#e9c46a', marginBottom: '0.5rem', textTransform: 'uppercase' }}>Tech Stack</h4>
-                            <ul className="sidebar-list">
-                                {[...skills.hard.tech, "Git/GitHub", "Database SQL/NoSQL"].map(s => <li key={s}>{s}</li>)}
-                            </ul>
-                        </div>
-
-                        <div>
-                            <h4 style={{ fontSize: '0.85rem', color: '#e9c46a', marginBottom: '0.5rem', textTransform: 'uppercase' }}>Infra & Security</h4>
-                            <ul className="sidebar-list">
-                                {skills.hard.infra.map(s => <li key={s}>{s}</li>)}
-                            </ul>
-                        </div>
-                    </section>
-
-                    <div style={{ width: '100%', height: '1px', background: 'rgba(255,255,255,0.1)' }}></div>
-
-                    {/* Idiomas */}
-                    <section>
-                        <h3 className="sidebar-title">Idiomas</h3>
-                        <div style={{ fontSize: '0.85rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                <span>Português</span> <span style={{ opacity: 0.7 }}>Nativo</span>
-                            </div>
-                            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                <span>Inglês</span> <span style={{ opacity: 0.7 }}>Téc. / Interm.</span>
-                            </div>
-                        </div>
-                    </section>
-
-                </aside>
-
-
-                {/* === RIGHT COLUMN (MAIN CONTENT) === */}
-                <main style={{ padding: '40px 30px', background: '#fff' }}>
-
-                    {/* Header */}
-                    <header style={{ marginBottom: '2.5rem' }}>
-                        <h1 style={{ fontSize: '2.2rem', fontWeight: '900', color: '#264653', textTransform: 'uppercase', lineHeight: 1, marginBottom: '0.5rem' }}>
-                            {hero.name}
-                        </h1>
-                        <h2 style={{ fontSize: '1.1rem', color: '#e76f51', fontWeight: '500', marginBottom: '1rem' }}>
-                            {hero.title.replace(/\n/g, " | ")}
-                        </h2>
-
-                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', fontSize: '0.85rem', color: '#666' }}>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-                                <Mail size={14} /> alexsandfarias@gmail.com
-                            </div>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-                                <Linkedin size={14} /> linkedin.com/in/alexsandfarias
-                            </div>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-                                <Globe size={14} /> alexsander-farias.vercel.app
-                            </div>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-                                <MapPin size={14} /> Manaus, Brasil
-                            </div>
-                        </div>
-                    </header>
-
-
-                    {/* Resumo */}
-                    <section className="main-section">
-                        <h3 className="section-header">Resumo</h3>
-                        <p style={{ fontSize: '0.9rem', lineHeight: 1.6, color: '#4a4a4a', textAlign: 'justify' }}>
+                    {/* Resumo Profissional */}
+                    <section style={{ marginBottom: '2.5rem' }}>
+                        <h3 className="section-title">Resumo Profissional</h3>
+                        <p style={{ fontSize: '0.9rem', lineHeight: 1.6, textAlign: 'justify', color: '#444' }}>
                             {about.description}
                         </p>
                     </section>
 
-
-                    {/* Experiência */}
-                    <section className="main-section">
-                        <h3 className="section-header">Experiência</h3>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-                            {professionalExperience.map((exp, idx) => (
+                    {/* Experiência Profissional */}
+                    <section style={{ marginBottom: '2.5rem' }}>
+                        <h3 className="section-title">Experiência Profissional</h3>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+                            {latestExperience.map((exp, idx) => (
                                 <div key={idx}>
-                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '4px' }}>
-                                        <h4 style={{ fontSize: '1.05rem', fontWeight: 'bold', color: '#333' }}>{exp.role}</h4>
-                                        <span style={{ fontSize: '0.8rem', fontWeight: 'bold', color: '#333' }}>{exp.period}</span>
+                                    <h4 style={{ fontSize: '1.1rem', fontWeight: 'bold', color: '#000', marginBottom: '2px' }}>
+                                        {exp.role}, {exp.institution}
+                                    </h4>
+                                    <div style={{ fontSize: '0.75rem', fontWeight: '700', color: '#888', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>
+                                        {exp.period}
                                     </div>
-                                    <div style={{ fontSize: '0.9rem', color: '#e76f51', fontWeight: '500', marginBottom: '6px' }}>
-                                        {exp.institution} <span style={{ color: '#aaa', fontWeight: '400' }}>| {exp.type}</span>
-                                    </div>
-                                    <ul style={{ margin: 0, paddingLeft: '1.2rem', fontSize: '0.85rem', color: '#555', lineHeight: 1.5 }}>
+                                    <ul style={{ margin: 0, paddingLeft: '1.2rem', fontSize: '0.9rem', color: '#444', lineHeight: 1.5 }}>
                                         <li style={{ marginBottom: '4px' }}>{exp.description}</li>
                                         {exp.results && <li>{exp.results}</li>}
                                     </ul>
@@ -180,19 +103,20 @@ const Resume = () => {
                         </div>
                     </section>
 
-                    {/* Educação */}
-                    <section className="main-section">
-                        <h3 className="section-header">Educação</h3>
+                    {/* Formação */}
+                    <section>
+                        <h3 className="section-title">Formação</h3>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                            {education.map((edu, idx) => (
-                                <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                                    <div>
-                                        <div style={{ fontSize: '0.95rem', fontWeight: 'bold', color: '#333' }}>{edu.course}</div>
-                                        <div style={{ fontSize: '0.85rem', color: '#e76f51' }}>{edu.institution}</div>
+                            {education.slice(0, 4).map((edu, idx) => ( // Showing top 4 education
+                                <div key={idx}>
+                                    <div style={{ fontWeight: 'bold', fontSize: '1rem', color: '#000' }}>
+                                        {edu.course}
                                     </div>
-                                    <div style={{ fontSize: '0.8rem', textAlign: 'right', color: '#666' }}>
-                                        <div style={{ whiteSpace: 'nowrap' }}>{edu.period}</div>
-                                        <div style={{ fontSize: '0.75rem', opacity: 0.8 }}>{edu.level}</div>
+                                    <div style={{ fontSize: '0.9rem', color: '#444' }}>
+                                        {edu.institution}, <span style={{ fontSize: '0.8rem', color: '#666' }}>{edu.level}</span>
+                                    </div>
+                                    <div style={{ fontSize: '0.75rem', color: '#888', textTransform: 'uppercase' }}>
+                                        {edu.period}
                                     </div>
                                 </div>
                             ))}
@@ -201,6 +125,80 @@ const Resume = () => {
 
                 </main>
 
+
+                {/* === RIGHT COLUMN (SIDEBAR) === */}
+                <aside style={{ background: '#0B2545', color: '#fff', padding: '40px 25px', display: 'flex', flexDirection: 'column', gap: '3rem' }}>
+
+                    {/* Dados Pessoais */}
+                    <section>
+                        <h3 className="sidebar-title">Dados Pessoais</h3>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', fontSize: '0.85rem' }}>
+                            <div>
+                                <strong style={{ display: 'block', marginBottom: '2px', opacity: 0.7 }}>Endereço</strong>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><MapPin size={14} /> Manaus, AM, Brasil</div>
+                            </div>
+                            <div>
+                                <strong style={{ display: 'block', marginBottom: '2px', opacity: 0.7 }}>E-mail</strong>
+                                <a href="mailto:alexsandfarias@gmail.com" style={{ color: '#fff', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' }}><Mail size={14} /> alexsandfarias@gmail.com</a>
+                            </div>
+                            <div>
+                                <strong style={{ display: 'block', marginBottom: '2px', opacity: 0.7 }}>LinkedIn</strong>
+                                <a href="https://linkedin.com/in/alexsandfarias" target="_blank" style={{ color: '#fff', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' }}><Linkedin size={14} /> /in/alexsandfarias</a>
+                            </div>
+                            <div>
+                                <strong style={{ display: 'block', marginBottom: '2px', opacity: 0.7 }}>Portfólio / Site</strong>
+                                <a href="https://alexsander-farias.vercel.app" target="_blank" style={{ color: '#fff', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' }}><Globe size={14} /> alexsander-farias.vercel.app</a>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Competências / Habilidades */}
+                    <section>
+                        <h3 className="sidebar-title">Competências</h3>
+
+                        <div style={{ marginBottom: '1.5rem' }}>
+                            <div className="skill-item">
+                                <span>Desenvolvimento Full Stack</span>
+                                <div className="progress-bar"><div style={{ width: '95%' }}></div></div>
+                            </div>
+                            <div className="skill-item">
+                                <span>Docência & Educação Tech</span>
+                                <div className="progress-bar"><div style={{ width: '100%' }}></div></div>
+                            </div>
+                            <div className="skill-item">
+                                <span>Cibersegurança & Redes</span>
+                                <div className="progress-bar"><div style={{ width: '90%' }}></div></div>
+                            </div>
+                            <div className="skill-item">
+                                <span>Gestão de Projetos</span>
+                                <div className="progress-bar"><div style={{ width: '85%' }}></div></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 style={{ fontSize: '0.85rem', color: '#fff', marginBottom: '0.8rem', opacity: 0.8, textTransform: 'uppercase' }}>Ferramentas & Tech</h4>
+                            <ul style={{ paddingLeft: '1rem', fontSize: '0.85rem', lineHeight: '1.6' }}>
+                                <li>React.js & Node.js</li>
+                                <li>Javascript / Python / Java</li>
+                                <li>Git & GitHub</li>
+                                <li>SQL & NoSQL Databases</li>
+                                <li>Figma (UX/UI)</li>
+                                <li>Metodologias Ágeis</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    {/* Idiomas */}
+                    <section>
+                        <h3 className="sidebar-title">Idiomas</h3>
+                        <div style={{ fontSize: '0.85rem' }}>
+                            <div style={{ marginBottom: '0.5rem' }}>Português (Nativo)</div>
+                            <div>Inglês (Técnico / Leitura Avançada)</div>
+                        </div>
+                    </section>
+
+                </aside>
+
             </div>
 
             <style>{`
@@ -208,45 +206,30 @@ const Resume = () => {
                 
                 .resume-paper * { box-sizing: border-box; }
 
+                .section-title {
+                    font-size: 1.2rem;
+                    font-weight: 800;
+                    color: #000;
+                    border-bottom: 2px solid #000;
+                    padding-bottom: 0.5rem;
+                    margin-bottom: 1.2rem;
+                }
+
                 .sidebar-title {
                     font-size: 1rem;
+                    font-weight: 700;
+                    color: #fff;
+                    border-bottom: 1px solid rgba(255,255,255,0.3);
+                    padding-bottom: 0.5rem;
+                    margin-bottom: 1.2rem;
                     text-transform: uppercase;
                     letter-spacing: 1px;
-                    border-bottom: 1px solid rgba(255,255,255,0.3);
-                    padding-bottom: 8px;
-                    margin-bottom: 1rem;
-                    color: #fff;
-                    font-weight: 700;
                 }
 
-                .sidebar-list {
-                    margin: 0; padding: 0; list-style: none;
-                }
-                .sidebar-list li {
-                    font-size: 0.85rem;
-                    margin-bottom: 6px;
-                    display: flex;
-                    align-items: center;
-                    gap: 6px;
-                }
-                .sidebar-list li::before {
-                    content: '•'; color: #e76f51; font-weight: bold;
-                }
-
-                .main-section {
-                    margin-bottom: 2rem;
-                }
-
-                .section-header {
-                    font-size: 1rem;
-                    text-transform: uppercase;
-                    color: #666;
-                    letter-spacing: 1.5px;
-                    font-weight: 700;
-                    margin-bottom: 1.2rem;
-                    padding-bottom: 0.5rem;
-                    border-bottom: 2px solid #eee;
-                }
+                .skill-item { margin-bottom: 1rem; }
+                .skill-item span { display: block; font-size: 0.85rem; margin-bottom: 0.3rem; }
+                .progress-bar { width: 100%; height: 4px; background: rgba(255,255,255,0.2); border-radius: 2px; }
+                .progress-bar div { height: 100%; background: #fff; border-radius: 2px; }
 
                 @media print {
                     @page { margin: 0; size: auto; }
@@ -258,8 +241,10 @@ const Resume = () => {
                         width: 100% !important;
                         min-height: 100vh !important;
                         display: grid !important; 
-                        grid-template-columns: 32% 68% !important;
+                        grid-template-columns: 65% 35% !important;
                     }
+                    /* Ensure links are white in sidebar */
+                    aside a { color: #fff !important; text-decoration: none; }
                 }
             `}</style>
         </div>
