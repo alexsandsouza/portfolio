@@ -35,7 +35,7 @@ const Links = () => {
         },
         {
             label: 'LinkedIn Profissional',
-            url: 'https://linkedin.com/in/alexsander-farias', // Ajuste se necessário
+            url: 'https://linkedin.com/in/alexsandfarias',
             icon: <Linkedin size={20} />,
         },
         {
@@ -45,7 +45,7 @@ const Links = () => {
         },
         {
             label: 'Instagram',
-            url: 'https://instagram.com/prof.alexsanderfarias', // Ajuste se necessário
+            url: 'https://www.instagram.com/alexsandsouza/',
             icon: <Instagram size={20} />,
         }
     ];
