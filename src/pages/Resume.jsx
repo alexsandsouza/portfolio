@@ -231,7 +231,47 @@ const Resume = () => {
                 .progress-bar { width: 100%; height: 4px; background: rgba(255,255,255,0.2); border-radius: 2px; }
                 .progress-bar div { height: 100%; background: #fff; border-radius: 2px; }
 
-                /* === PRINT STYLES === */
+                /* === RESPONSIVE SCREEN STYLES (MOBILE) === */
+                @media screen and (max-width: 768px) {
+                    .resume-paper {
+                        width: 100% !important;
+                        min-height: auto !important;
+                        height: auto !important;
+                        display: flex !important; /* Stack vertically on mobile screen */
+                        flex-direction: column-reverse !important; /* Content first, then profile/sidebar at bottom (or swap if preferred) */
+                        margin: 0 !important;
+                        box-shadow: none !important;
+                    }
+                    
+                    /* Re-order for Mobile: Header/Sidebar Top, Main Content Bottom */
+                     .resume-paper {
+                        flex-direction: column !important;
+                    }
+
+                    .resume-paper > aside {
+                        width: 100% !important;
+                        padding: 2rem !important;
+                    }
+
+                    .resume-paper > main {
+                        width: 100% !important;
+                        padding: 2rem !important;
+                    }
+
+                    /* Adjust header on mobile screen */
+                    h1 { font-size: 2rem !important; }
+                    h2 { font-size: 1rem !important; }
+                    
+                    /* Hide floating buttons partially if needed or adjust position */
+                    .no-print {
+                        width: 100%;
+                        justify-content: center;
+                        bottom: 1rem;
+                        right: 0;
+                    }
+                }
+
+                /* === PRINT STYLES (Force A4 Desktop Layout even on Mobile) === */
                 @media print {
                     @page { 
                         size: A4 portrait; 
@@ -246,13 +286,16 @@ const Resume = () => {
                         padding: 0 !important;
                         overflow: visible !important;
                         -webkit-print-color-adjust: exact;
+                        
+                        /* FORCE DESKTOP WIDTH FOR PRINT RENDERER */
+                        min-width: 210mm !important; 
                     }
 
                     .no-print { display: none !important; }
 
                     .resume-paper {
                         visibility: visible;
-                        display: grid !important;
+                        display: grid !important; /* FORCE GRID (2 Columns) back on print */
                         position: absolute;
                         left: 0;
                         top: 0;
@@ -264,7 +307,7 @@ const Resume = () => {
                         margin: 0 !important;
                         padding: 0 !important;
                         
-                        grid-template-columns: 65% 35% !important;
+                        grid-template-columns: 65% 35% !important; /* Restore columns */
                         box-shadow: none !important;
                         
                         background-color: #fff !important;
@@ -272,23 +315,36 @@ const Resume = () => {
                         print-color-adjust: exact;
                         z-index: 9999;
                         overflow: hidden;
+                        
+                        /* Reset Mobile Flex/Stacking overrides */
+                        flex-direction: row !important; 
                     }
 
                     .resume-paper * {
                         visibility: visible;
+                    }
+                    
+                    /* Ensure Sidebar and Main width are reset for grid */
+                    .resume-paper > aside, .resume-paper > main {
+                        width: auto !important;
                     }
 
                     /* --- COMPACT LAYOUT FOR PRINT --- */
                     
                     /* Reduce Main Content Padding */
                     main { 
-                        padding: 25px 20px !important; /* Reduced from 40px 30px */
+                        padding: 25px 20px !important;
                         color: #000 !important; 
                         visibility: visible !important;
                     }
                     
                     /* Reduce Title Sizes */
-                    h1 { font-size: 1.8rem !important; margin-bottom: 0.2rem !important; }
+                    h1 { 
+                        font-size: 1.8rem !important; 
+                        margin-bottom: 0.2rem !important; 
+                        line-height: 1 !important;
+                        word-wrap: normal !important; /* Prevent wrapping */
+                    }
                     h2 { font-size: 0.8rem !important; margin-bottom: 0.5rem !important; }
                     
                     /* Header Profile Image */
@@ -298,25 +354,25 @@ const Resume = () => {
                     }
 
                     /* Reduce Section Spacing */
-                    section { margin-bottom: 1.5rem !important; }
+                    section { margin-bottom: 1.2rem !important; } /* Further reduced */
                     .section-title { 
                         font-size: 1rem !important; 
-                        margin-bottom: 0.6rem !important; 
+                        margin-bottom: 0.5rem !important; 
                         padding-bottom: 0.3rem !important;
                     }
                     
                     /* Compact Descriptions */
-                    p, li { font-size: 0.8rem !important; line-height: 1.4 !important; }
-                    h4 { font-size: 0.95rem !important; }
+                    p, li { font-size: 0.8rem !important; line-height: 1.35 !important; }
+                    h4 { font-size: 0.95rem !important; margin-bottom: 2px !important; }
                     
                     /* Experience/Education Gap */
-                    div[style*="gap: 2rem"] { gap: 1rem !important; }
-                    div[style*="gap: 1rem"] { gap: 0.6rem !important; }
+                    div[style*="gap: 2rem"] { gap: 0.8rem !important; }
+                    div[style*="gap: 1rem"] { gap: 0.5rem !important; }
 
                     /* --- SIDEBAR COMPACT --- */
                     aside { 
-                        padding: 25px 15px !important; /* Reduced from 40px 25px */
-                        gap: 2rem !important; /* Reduced gap */
+                        padding: 25px 15px !important;
+                        gap: 1.5rem !important; 
                         background-color: #0B2545 !important; 
                         color: #fff !important;
                         height: 100% !important;
@@ -326,7 +382,7 @@ const Resume = () => {
                     
                     aside h3.sidebar-title {
                         font-size: 0.9rem !important;
-                        margin-bottom: 0.8rem !important;
+                        margin-bottom: 0.6rem !important;
                         padding-bottom: 0.3rem !important;
                     }
 
@@ -334,9 +390,9 @@ const Resume = () => {
                         font-size: 0.75rem !important;
                     }
                     
-                    aside section { margin-bottom: 0 !important; } /* Let flex gap handle spacing */
+                    aside section { margin-bottom: 0 !important; }
                     
-                    .skill-item { margin-bottom: 0.6rem !important; }
+                    .skill-item { margin-bottom: 0.5rem !important; }
 
                     aside * { 
                         color: #fff !important; 
