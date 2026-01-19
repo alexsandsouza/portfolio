@@ -233,13 +233,11 @@ const Resume = () => {
 
                 /* === PRINT STYLES === */
                 @media print {
-                    /* 1. Global Reset & Override */
                     @page { 
                         size: A4 portrait; 
                         margin: 0 !important; 
                     }
                     
-                    /* CRITICAL FIX: Override global 'display: none' on print */
                     body {
                         display: block !important; 
                         visibility: hidden; 
@@ -250,10 +248,8 @@ const Resume = () => {
                         -webkit-print-color-adjust: exact;
                     }
 
-                    /* 2. Hide floating controls explicitly */
                     .no-print { display: none !important; }
 
-                    /* 3. Position the paper properly */
                     .resume-paper {
                         visibility: visible;
                         display: grid !important;
@@ -261,9 +257,8 @@ const Resume = () => {
                         left: 0;
                         top: 0;
                         
-                        /* ENFORCE EXACT A4 DIMENSIONS */
                         width: 210mm !important;
-                        height: 297mm !important; /* Fixed height for 1 page */
+                        height: 297mm !important;
                         max-height: 297mm !important;
                         
                         margin: 0 !important;
@@ -276,31 +271,78 @@ const Resume = () => {
                         -webkit-print-color-adjust: exact;
                         print-color-adjust: exact;
                         z-index: 9999;
-                        overflow: hidden; /* Prevent spillover */
+                        overflow: hidden;
                     }
 
-                    /* 4. Ensure children of paper are visible */
                     .resume-paper * {
                         visibility: visible;
                     }
 
-                    /* 5. Specific Color Fixes */
+                    /* --- COMPACT LAYOUT FOR PRINT --- */
+                    
+                    /* Reduce Main Content Padding */
+                    main { 
+                        padding: 25px 20px !important; /* Reduced from 40px 30px */
+                        color: #000 !important; 
+                        visibility: visible !important;
+                    }
+                    
+                    /* Reduce Title Sizes */
+                    h1 { font-size: 1.8rem !important; margin-bottom: 0.2rem !important; }
+                    h2 { font-size: 0.8rem !important; margin-bottom: 0.5rem !important; }
+                    
+                    /* Header Profile Image */
+                    .resume-paper img {
+                        width: 80px !important;
+                        height: 80px !important;
+                    }
+
+                    /* Reduce Section Spacing */
+                    section { margin-bottom: 1.5rem !important; }
+                    .section-title { 
+                        font-size: 1rem !important; 
+                        margin-bottom: 0.6rem !important; 
+                        padding-bottom: 0.3rem !important;
+                    }
+                    
+                    /* Compact Descriptions */
+                    p, li { font-size: 0.8rem !important; line-height: 1.4 !important; }
+                    h4 { font-size: 0.95rem !important; }
+                    
+                    /* Experience/Education Gap */
+                    div[style*="gap: 2rem"] { gap: 1rem !important; }
+                    div[style*="gap: 1rem"] { gap: 0.6rem !important; }
+
+                    /* --- SIDEBAR COMPACT --- */
                     aside { 
+                        padding: 25px 15px !important; /* Reduced from 40px 25px */
+                        gap: 2rem !important; /* Reduced gap */
                         background-color: #0B2545 !important; 
                         color: #fff !important;
+                        height: 100% !important;
                         -webkit-print-color-adjust: exact; 
                         print-color-adjust: exact;
-                        height: 100% !important; /* Full height sidebar */
                     }
+                    
+                    aside h3.sidebar-title {
+                        font-size: 0.9rem !important;
+                        margin-bottom: 0.8rem !important;
+                        padding-bottom: 0.3rem !important;
+                    }
+
+                    aside strong, aside span, aside div, aside a, aside li {
+                        font-size: 0.75rem !important;
+                    }
+                    
+                    aside section { margin-bottom: 0 !important; } /* Let flex gap handle spacing */
+                    
+                    .skill-item { margin-bottom: 0.6rem !important; }
+
                     aside * { 
                         color: #fff !important; 
                         border-color: rgba(255,255,255,0.3) !important;
                     }
                     
-                    main, main * { 
-                        color: #000 !important; 
-                        visibility: visible !important;
-                    }
                     .section-title { border-color: #000 !important; }
                 }
             `}</style>
