@@ -234,16 +234,20 @@ const Resume = () => {
                 /* === PRINT STYLES === */
                 @media print {
                     /* 1. Global Reset & Override */
-                    @page { margin: 0; size: auto; }
+                    @page { 
+                        size: A4 portrait; 
+                        margin: 0 !important; 
+                    }
                     
                     /* CRITICAL FIX: Override global 'display: none' on print */
                     body {
-                        display: block !important; /* Force display back on */
-                        visibility: hidden; /* Hide by default, rely on child visibility */
+                        display: block !important; 
+                        visibility: hidden; 
                         background: #fff !important;
                         margin: 0 !important;
                         padding: 0 !important;
                         overflow: visible !important;
+                        -webkit-print-color-adjust: exact;
                     }
 
                     /* 2. Hide floating controls explicitly */
@@ -256,8 +260,12 @@ const Resume = () => {
                         position: absolute;
                         left: 0;
                         top: 0;
+                        
+                        /* ENFORCE EXACT A4 DIMENSIONS */
                         width: 210mm !important;
-                        min-height: 297mm !important;
+                        height: 297mm !important; /* Fixed height for 1 page */
+                        max-height: 297mm !important;
+                        
                         margin: 0 !important;
                         padding: 0 !important;
                         
@@ -268,9 +276,10 @@ const Resume = () => {
                         -webkit-print-color-adjust: exact;
                         print-color-adjust: exact;
                         z-index: 9999;
+                        overflow: hidden; /* Prevent spillover */
                     }
 
-                    /* 4. Ensure children of paper are visible and colored correctly */
+                    /* 4. Ensure children of paper are visible */
                     .resume-paper * {
                         visibility: visible;
                     }
@@ -281,10 +290,11 @@ const Resume = () => {
                         color: #fff !important;
                         -webkit-print-color-adjust: exact; 
                         print-color-adjust: exact;
+                        height: 100% !important; /* Full height sidebar */
                     }
                     aside * { 
                         color: #fff !important; 
-                        border-color: rgba(255,b255,255,0.3) !important;
+                        border-color: rgba(255,255,255,0.3) !important;
                     }
                     
                     main, main * { 
