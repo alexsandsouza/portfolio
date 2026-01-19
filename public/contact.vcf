@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:Prof. Alexsander Farias
+N:Farias;Alexsander;;Prof.;
+TITLE:Tech Educator & Full Stack Developer
+ORG:AD Academy One
+EMAIL;TYPE=INTERNET,WORK:alexsandfarias@gmail.com
+URL:https://alexsander-farias.vercel.app/
+URL;type=LinkedIn:https://linkedin.com/in/alexsandfarias
+URL;type=Instagram:https://instagram.com/alexsandsouza
+NOTE:Transformando carreiras através da tecnologia.
+END:VCARD

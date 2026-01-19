@@ -88,12 +88,38 @@ const Links = () => {
                         <h1 style={{ fontSize: '1.5rem', marginBottom: '0.5rem', color: 'var(--text-heading)' }}>
                             Prof. Alexsander Farias
                         </h1>
-                        <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
+                        <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', marginBottom: '1.5rem' }}>
                             Prof. Universitário | Dev Full Stack | Avaliador TCC e Projetos<br />
                             Transformando carreiras através de mentorias na área da tecnologia da Informação - TI.
                         </p>
+
+                        <a href="/contact.vcf" download="Alexsander_Farias.vcf" className="vcard-btn">
+                            <span style={{ fontSize: '1.2rem' }}>📇</span> Salvar Contato
+                        </a>
                     </div>
                 </Reveal>
+
+                <style>{`
+                    .vcard-btn {
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 8px;
+                        padding: 8px 16px;
+                        background: rgba(255, 255, 255, 0.1);
+                        border: 1px solid rgba(255, 255, 255, 0.2);
+                        border-radius: 20px;
+                        color: var(--text-primary);
+                        text-decoration: none;
+                        font-size: 0.9rem;
+                        font-weight: 500;
+                        transition: all 0.3s ease;
+                    }
+                    .vcard-btn:hover {
+                        background: rgba(255, 255, 255, 0.2);
+                        transform: translateY(-2px);
+                        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+                    }
+                `}</style>
 
                 {/* Links Stack */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
