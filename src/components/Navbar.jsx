@@ -153,7 +153,7 @@ const Navbar = ({ triggerMatrix }) => {
                                     {link.name}
                                 </a>
                             ))}
-                            <a href="/resume.pdf" target="_blank" className="nav-link" style={{ fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                            <a href="/cv" target="_blank" className="nav-link" style={{ fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '4px' }}>
                                 CV <span style={{ fontSize: '1.1em' }}>↓</span>
                             </a>
                             <a href="/mentoria" className="btn" style={{
@@ -265,7 +265,7 @@ const Navbar = ({ triggerMatrix }) => {
                             {link.name}
                         </a>
                     ))}
-                    <a href="/resume.pdf" target="_blank" className="mobile-link" style={{ fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <a href="/cv" target="_blank" className="mobile-link" style={{ fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '8px' }}>
                         CV <span style={{ fontSize: '0.8em' }}>↓</span>
                     </a>
                     <a href="/mentoria" onClick={() => setIsOpen(false)} className="mobile-link" style={{ color: '#ec4899' }}>Mentoria 🚀</a>

@@ -91,6 +91,10 @@ const Home = () => {
   );
 };
 
+import Resume from './pages/Resume'; // Import Resume
+
+// ... existing imports
+
 function App() {
   return (
     <div className="App">
@@ -102,6 +106,7 @@ function App() {
         <Route path="/mentoria/contrato" element={<MentorshipContract />} />
         <Route path="/mentoria/sucesso" element={<MentorshipSuccess />} />
         <Route path="/links" element={<Links />} />
+        <Route path="/cv" element={<Resume />} />
       </Routes>
     </div>
   );

@@ -34,6 +34,12 @@ const Links = () => {
             internal: true
         },
         {
+            label: 'Currículo Web (Live)',
+            url: '/cv',
+            icon: <ExternalLink size={20} />,
+            internal: true
+        },
+        {
             label: 'LinkedIn Profissional',
             url: 'https://linkedin.com/in/alexsandfarias',
             icon: <Linkedin size={20} />,
