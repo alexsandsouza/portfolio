@@ -233,23 +233,26 @@ const Resume = () => {
 
                 /* === PRINT STYLES === */
                 @media print {
-                    /* 1. Global Reset */
+                    /* 1. Global Reset & Override */
                     @page { margin: 0; size: auto; }
                     
-                    /* 2. Hide EVERYTHING initially */
+                    /* CRITICAL FIX: Override global 'display: none' on print */
                     body {
-                        visibility: hidden;
+                        display: block !important; /* Force display back on */
+                        visibility: hidden; /* Hide by default, rely on child visibility */
                         background: #fff !important;
                         margin: 0 !important;
                         padding: 0 !important;
+                        overflow: visible !important;
                     }
 
-                    /* 3. Hide floating controls explicitly */
+                    /* 2. Hide floating controls explicitly */
                     .no-print { display: none !important; }
 
-                    /* 4. Position the paper properly */
+                    /* 3. Position the paper properly */
                     .resume-paper {
-                        visibility: visible; /* Show only this */
+                        visibility: visible;
+                        display: grid !important;
                         position: absolute;
                         left: 0;
                         top: 0;
@@ -258,24 +261,21 @@ const Resume = () => {
                         margin: 0 !important;
                         padding: 0 !important;
                         
-                        /* Layout fixes */
-                        display: grid !important; 
                         grid-template-columns: 65% 35% !important;
                         box-shadow: none !important;
                         
-                        /* Color forcing */
                         background-color: #fff !important;
                         -webkit-print-color-adjust: exact;
                         print-color-adjust: exact;
                         z-index: 9999;
                     }
 
-                    /* 5. Ensure children of paper are visible */
+                    /* 4. Ensure children of paper are visible and colored correctly */
                     .resume-paper * {
                         visibility: visible;
                     }
 
-                    /* 6. Specific Color Fixes */
+                    /* 5. Specific Color Fixes */
                     aside { 
                         background-color: #0B2545 !important; 
                         color: #fff !important;
@@ -284,11 +284,13 @@ const Resume = () => {
                     }
                     aside * { 
                         color: #fff !important; 
-                        border-color: rgba(255,255,255,0.3) !important;
+                        border-color: rgba(255,b255,255,0.3) !important;
                     }
                     
-                    main { color: #000 !important; }
-                    main * { color: #000 !important; }
+                    main, main * { 
+                        color: #000 !important; 
+                        visibility: visible !important;
+                    }
                     .section-title { border-color: #000 !important; }
                 }
             `}</style>
