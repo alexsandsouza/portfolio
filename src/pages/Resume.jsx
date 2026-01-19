@@ -104,17 +104,28 @@ const Resume = () => {
                     {/* Formação */}
                     <section style={{ marginBottom: '0.8rem' }}>
                         <h3 className="section-title">Formação</h3>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.3rem' }}>
-                            {education.slice(0, 4).map((edu, idx) => (
-                                <div key={idx} style={{ pageBreakInside: 'avoid' }}>
-                                    <div style={{ fontWeight: 'bold', fontSize: '0.75rem', color: '#000' }}>
-                                        {edu.course}
-                                    </div>
-                                    <div style={{ fontSize: '0.7rem', color: '#333' }}>
-                                        {edu.institution}
-                                    </div>
-                                </div>
-                            ))}
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
+                            {/* Static List per User Request */}
+                            <div style={{ pageBreakInside: 'avoid' }}>
+                                <div style={{ fontWeight: 'bold', fontSize: '11px', color: '#000', fontFamily: 'Arial, sans-serif' }}>Pós Graduação Lato Sensu em Gestão da Educação Profissional e Tecnológica</div>
+                                <div style={{ fontSize: '11px', color: '#000', fontFamily: 'Arial, sans-serif' }}>Instituto Federal de Educação, Ciência e Tecnologia do Paraná - IFPR <span style={{ fontSize: '10px', color: '#444' }}>- Em andamento</span></div>
+                            </div>
+                            <div style={{ pageBreakInside: 'avoid' }}>
+                                <div style={{ fontWeight: 'bold', fontSize: '11px', color: '#000', fontFamily: 'Arial, sans-serif' }}>Pós Graduação Lato Sensu em Inteligência Artificial</div>
+                                <div style={{ fontSize: '11px', color: '#000', fontFamily: 'Arial, sans-serif' }}>Faculdade Facuminas <span style={{ fontSize: '10px', color: '#444' }}>- Concluído</span></div>
+                            </div>
+                            <div style={{ pageBreakInside: 'avoid' }}>
+                                <div style={{ fontWeight: 'bold', fontSize: '11px', color: '#000', fontFamily: 'Arial, sans-serif' }}>Pós Graduação Lato Sensu em Educação Digital</div>
+                                <div style={{ fontSize: '11px', color: '#000', fontFamily: 'Arial, sans-serif' }}>Centro Universitário SENAI-SC <span style={{ fontSize: '10px', color: '#444' }}>- Concluído</span></div>
+                            </div>
+                            <div style={{ pageBreakInside: 'avoid' }}>
+                                <div style={{ fontWeight: 'bold', fontSize: '11px', color: '#000', fontFamily: 'Arial, sans-serif' }}>Graduação em Análise e Desenvolvimento de Sistemas</div>
+                                <div style={{ fontSize: '11px', color: '#000', fontFamily: 'Arial, sans-serif' }}>Universidade Paulista - UNIP <span style={{ fontSize: '10px', color: '#444' }}>- Concluído</span></div>
+                            </div>
+                            <div style={{ pageBreakInside: 'avoid' }}>
+                                <div style={{ fontWeight: 'bold', fontSize: '11px', color: '#000', fontFamily: 'Arial, sans-serif' }}>Técnico em Desenvolvimento de Sistemas</div>
+                                <div style={{ fontSize: '11px', color: '#000', fontFamily: 'Arial, sans-serif' }}>Instituto Federal de Educação, Ciência e Tecnologia do Sul de Minas Gerais - IFSULDEMINAS</div>
+                            </div>
                         </div>
                     </section>
 
@@ -291,126 +302,111 @@ const Resume = () => {
                         background: #fff !important;
                         margin: 0 !important;
                         padding: 0 !important;
-                        overflow: visible !important;
                         -webkit-print-color-adjust: exact;
-                        
-                        /* FORCE DESKTOP WIDTH FOR PRINT RENDERER */
                         min-width: 210mm !important; 
                     }
 
-                    .no-print { display: none !important; }
-
                     .resume-paper {
                         visibility: visible;
-                        display: grid !important; /* FORCE GRID (2 Columns) back on print */
+                        display: grid !important;
                         position: absolute;
                         left: 0;
                         top: 0;
-                        
                         width: 210mm !important;
                         height: 297mm !important;
                         max-height: 297mm !important;
-                        
                         margin: 0 !important;
                         padding: 0 !important;
-                        
-                        grid-template-columns: 66% 34% !important; /* Slight adjust */
-                        box-shadow: none !important;
-                        
+                        grid-template-columns: 68% 32% !important;
                         background-color: #fff !important;
                         -webkit-print-color-adjust: exact;
                         print-color-adjust: exact;
-                        z-index: 9999;
                         overflow: hidden;
-                        
-                        /* Reset Mobile Flex/Stacking overrides */
-                        flex-direction: row !important; 
                     }
 
-                    .resume-paper * {
-                        visibility: visible;
+                    .resume-paper * { 
+                        visibility: visible; 
+                        font-family: Arial, sans-serif !important; 
                     }
                     
-                    /* Ensure Sidebar and Main width are reset for grid */
-                    .resume-paper > aside, .resume-paper > main {
-                        width: auto !important;
-                    }
-
-                    /* --- COMPACT LAYOUT FOR PRINT --- */
-                    
-                    /* Reduce Main Content Padding */
+                    /* Main Content */
                     main { 
-                        padding: 20px 20px !important;
+                        padding: 15px 15px !important;
                         color: #000 !important; 
                     }
                     
-                    /* Header Profile Image */
-                    div[style*="width: 100px"], div[style*="width: 70px"], div[style*="width: 60px"] { 
-                        width: 60px !important; height: 60px !important; /* Smaller photo */
+                    /* Header */
+                    div[style*="width: 60px"] { 
+                        width: 50px !important; height: 50px !important; /* Smaller photo */
                     }
                     
-                    /* Header Text */
-                    div[style*="marginBottom: 2.5rem"], div[style*="marginBottom: 1.5rem"], div[style*="marginBottom: 1.2rem"] { 
-                        margin-bottom: 1rem !important; 
-                    }
-
                     h1 { 
-                        font-size: 1.4rem !important; 
-                        margin-bottom: 0 !important; 
+                        font-family: Arial, sans-serif !important;
+                        font-size: 16px !important; 
+                        margin-bottom: 2px !important; 
+                        letter-spacing: 0 !important;
                     }
 
-                    /* Reduce Section Spacing */
-                    section { margin-bottom: 0.8rem !important; } 
+                    section { margin-bottom: 0.5rem !important; } 
+                    
                     .section-title { 
-                        font-size: 0.9rem !important; 
-                        margin-bottom: 0.3rem !important; 
-                        padding-bottom: 0.2rem !important;
-                        border-bottom-width: 1px !important;
+                        font-size: 13px !important; 
+                        margin-bottom: 0.2rem !important; 
+                        padding-bottom: 0.1rem !important;
+                        border-bottom: 2px solid #000 !important;
                     }
                     
-                    /* Compact Descriptions */
-                    p, li, strong, span, div, a { 
-                        font-size: 0.7rem !important; 
-                        line-height: 1.25 !important; 
+                    .sidebar-title {
+                        font-size: 12px !important;
+                        margin-bottom: 0.3rem !important;
+                        border-bottom: 1px solid rgba(255,255,255,0.4) !important;
                     }
+
+                    /* Text Body */
+                    p, li, div, span, a { 
+                        font-size: 10px !important; /* "12-like" readable size for high density */
+                        line-height: 1.2 !important;
+                    }
+                    
+                    p, li { text-align: justify !important; }
+
                     h4 { 
-                        font-size: 0.8rem !important; 
+                        font-size: 11px !important; 
                         margin-bottom: 1px !important; 
                     }
                     
-                    /* Experience/Education Gap */
-                    div[style*="gap: 2rem"], div[style*="gap: 1rem"], div[style*="gap: 0.6rem"], div[style*="gap: 0.5rem"], div[style*="gap: 0.8rem"] { 
-                        gap: 0.4rem !important; 
-                    }
-
-                    /* Experience Items */
-                    div[style*="pageBreakInside: avoid"] {
-                        margin-bottom: 0.3rem !important;
+                    /* Gaps */
+                    div[style*="gap: 0.4rem"], div[style*="gap: 0.5rem"], div[style*="gap: 0.3rem"] { 
+                        gap: 0.2rem !important; 
                     }
                     
-                    ul { padding-left: 1rem !important; margin-top: 1px !important; }
+                    div[style*="pageBreakInside: avoid"] {
+                         margin-bottom: 0.2rem !important;
+                    }
 
-                    /* --- SIDEBAR COMPACT --- */
+                    ul { padding-left: 1rem !important; margin-top: 0 !important; }
+
+                    /* Sidebar */
                     aside { 
-                        padding: 20px 15px !important;
-                        gap: 1rem !important; 
+                        padding: 15px 10px !important;
+                        gap: 0.8rem !important; 
                         background-color: #0B2545 !important; 
                         color: #fff !important;
                     }
                     
-                    aside h3.sidebar-title {
-                        font-size: 0.8rem !important;
-                        margin-bottom: 0.4rem !important;
-                        padding-bottom: 0.2rem !important;
+                    aside p, aside li, aside div, aside span, aside a {
+                        text-align: left !important;
                     }
 
-                    .skill-item { margin-bottom: 0.3rem !important; }
+                    .skill-item { margin-bottom: 0.2rem !important; }
+                    .progress-bar { height: 3px !important; }
 
                     aside * { 
                         color: #fff !important; 
                         border-color: rgba(255,255,255,0.3) !important;
                     }
                     .section-title { border-color: #000 !important; }
+                    .no-print { display: none !important; }
                 }
             `}</style>
         </div>
