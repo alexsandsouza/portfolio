@@ -304,14 +304,25 @@ const Resume = () => {
                         margin: 0 !important; 
                     }
                     
-                    /* FIXED: Allow natural flow, just hide non-print elements */
-                    html, body {
+                    /* FIXED: Reset specific parent containers that might be inducing scroll/overflow */
+                    html, body, #root {
                         width: 210mm !important;
                         height: 297mm !important;
                         margin: 0 !important;
                         padding: 0 !important;
                         background: #fff !important;
                         -webkit-print-color-adjust: exact; 
+                        overflow: visible !important;
+                    }
+                    
+                    /* CRITICAL: Override the inline styles of the wrapper */
+                    .resume-wrapper {
+                        display: block !important;
+                        background: none !important;
+                        padding: 0 !important;
+                        margin: 0 !important;
+                        height: auto !important; /* Let content dictate or match paper */
+                        min-height: 0 !important;
                         overflow: visible !important;
                     }
 
@@ -326,10 +337,8 @@ const Resume = () => {
                         z-index: 9999;
                         
                         width: 210mm !important;
-                        /* CRITICAL FIX: Reduce height significantly to 292mm to act as a safety buffer */
-                        /* The browser adds its own margins, so 297mm almost always spills over */
-                        height: 292mm !important; 
-                        max-height: 292mm !important;
+                        height: 296mm !important; /* Safety buffer */
+                        max-height: 296mm !important;
                         
                         margin: 0 !important;
                         padding: 0 !important;
@@ -338,7 +347,7 @@ const Resume = () => {
                         background-color: #fff !important;
                         -webkit-print-color-adjust: exact;
                         print-color-adjust: exact;
-                        overflow: hidden !important; /* Cut off anything that dares to spill */
+                        overflow: hidden !important; 
                     }
 
                     .resume-paper * { 
