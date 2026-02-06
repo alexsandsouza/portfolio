@@ -2,7 +2,7 @@
 
 Bem-vindo ao repositório oficial do meu Portfólio Profissional. Este projeto foi desenvolvido com foco em **Alta Performance**, **Design Cyber Tech** e **Experiência do Usuário (UX)**, utilizando tecnologias modernas do ecossistema React.
 
-### 🚀 [Acesse Online: alexsanderfarias.vercel.app](https://alexsanderfarias.vercel.app)
+### 🚀 [Acesse Online: alexsander-farias.vercel.app](https://alexsander-farias.vercel.app)
 
 ![Preview](./public/Alex_.png)
 
