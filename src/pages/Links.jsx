@@ -4,12 +4,12 @@ import { Github, Linkedin, Instagram, Youtube, ExternalLink, ArrowRight } from '
 import { Reveal } from '../components/Reveal';
 
 const Links = () => {
-    const socialLinks = [
+    const mainLinks = [
         {
             label: 'Matrícula Mentoria Tech',
             url: '/mentoria',
-            icon: <ArrowRight size={20} />,
-            highlight: true, // Estilo de destaque
+            icon: <ArrowRight size={22} />,
+            highlight: true,
             internal: true
         },
         {
@@ -23,11 +23,6 @@ const Links = () => {
             icon: <Youtube size={20} />,
         },
         {
-            label: 'Currículo Lattes (CNPq)',
-            url: 'http://lattes.cnpq.br/2107081536584079',
-            icon: <ExternalLink size={20} />,
-        },
-        {
             label: 'Portfólio Completo',
             url: '/',
             icon: <ExternalLink size={20} />,
@@ -38,21 +33,29 @@ const Links = () => {
             url: '/cv',
             icon: <ExternalLink size={20} />,
             internal: true
-        },
+        }
+    ];
+
+    const footerLinks = [
         {
-            label: 'LinkedIn Profissional',
+            label: 'LinkedIn',
             url: 'https://linkedin.com/in/alexsandfarias',
-            icon: <Linkedin size={20} />,
+            icon: <Linkedin size={24} />,
         },
         {
             label: 'GitHub',
             url: 'https://github.com/alexsandsouza',
-            icon: <Github size={20} />,
+            icon: <Github size={24} />,
         },
         {
             label: 'Instagram',
             url: 'https://www.instagram.com/alexsandsouza/',
-            icon: <Instagram size={20} />,
+            icon: <Instagram size={24} />,
+        },
+        {
+            label: 'Lattes',
+            url: 'http://lattes.cnpq.br/2107081536584079',
+            icon: <span style={{ fontWeight: 'bold', fontSize: '14px' }}>Lattes</span>,
         }
     ];
 
@@ -79,7 +82,7 @@ const Links = () => {
                 zIndex: 0, pointerEvents: 'none', filter: 'blur(50px)'
             }} />
 
-            <div style={{ zIndex: 1, width: '100%', maxWidth: '400px', textAlign: 'center' }}>
+            <div style={{ zIndex: 1, width: '100%', maxWidth: '400px', textAlign: 'center', display: 'flex', flexDirection: 'column', height: '100%' }}>
 
                 {/* Profile Section */}
                 <Reveal>
@@ -127,8 +130,8 @@ const Links = () => {
                     }
 
                     .profile-wrapper {
-                        width: 200px; /* Increased to 200px as requested */
-                        height: 200px;
+                        width: 180px;
+                        height: 180px;
                         margin: 0 auto 1.5rem;
                         padding: 6px;
                         border-radius: 50%;
@@ -173,19 +176,68 @@ const Links = () => {
                         font-weight: 700;
                         font-size: 1.15rem;
                         padding: 1.4rem 1.5rem;
-                        box-shadow: 0 10px 20px rgba(99, 102, 241, 0.4);
-                        animation: pulse-border 2s infinite;
+                        overflow: hidden;
+                        position: relative;
+                        box-shadow: 0 10px 25px rgba(99, 102, 241, 0.5);
+                    }
+
+                    /* Shimmer Effect */
+                    .bio-link.highlight::before {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: -100%;
+                        width: 100%;
+                        height: 100%;
+                        background: linear-gradient(
+                            90deg,
+                            transparent,
+                            rgba(255, 255, 255, 0.2),
+                            transparent
+                        );
+                        transition: 0.5s;
+                        animation: shimmer 3s infinite;
+                    }
+
+                    @keyframes shimmer {
+                        0% { left: -100%; }
+                        20% { left: 100%; }
+                        100% { left: 100%; }
                     }
 
                     .bio-link.highlight:hover {
-                        box-shadow: 0 15px 35px rgba(99, 102, 241, 0.6);
+                        box-shadow: 0 15px 40px rgba(99, 102, 241, 0.7);
                         transform: translateY(-4px) scale(1.03);
                     }
 
-                    .icon-wrapper {
+                    .social-row {
+                        display: flex;
+                        justify-content: center;
+                        gap: 1.5rem;
+                        margin-top: 2.5rem;
+                        margin-bottom: 2rem;
+                    }
+
+                    .social-btn {
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 50%;
                         display: flex;
                         align-items: center;
-                        opacity: 0.9;
+                        justify-content: center;
+                        background: rgba(255, 255, 255, 0.05);
+                        border: 1px solid rgba(255, 255, 255, 0.1);
+                        color: var(--text-secondary);
+                        transition: all 0.3s ease;
+                        backdrop-filter: blur(5px);
+                    }
+
+                    .social-btn:hover {
+                        background: var(--surface-color);
+                        color: var(--primary-color);
+                        transform: translateY(-5px);
+                        border-color: var(--primary-color);
+                        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
                     }
                     
                     @media (min-width: 600px) {
@@ -193,9 +245,9 @@ const Links = () => {
                     }
                 `}</style>
 
-                {/* Links Stack - RESTORED */}
+                {/* Main Links Stack */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '100%', marginTop: '1rem' }}>
-                    {socialLinks.map((link, index) => (
+                    {mainLinks.map((link, index) => (
                         <Reveal key={index} delay={index * 100} width="100%">
                             {link.internal ? (
                                 <Link to={link.url} className={`bio-link ${link.highlight ? 'highlight' : ''}`}>
@@ -212,8 +264,26 @@ const Links = () => {
                     ))}
                 </div>
 
+                {/* Footer Socials */}
+                <Reveal delay={500}>
+                    <div className="social-row">
+                        {footerLinks.map((link, index) => (
+                            <a
+                                key={index}
+                                href={link.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="social-btn"
+                                aria-label={link.label}
+                            >
+                                {link.icon}
+                            </a>
+                        ))}
+                    </div>
+                </Reveal>
+
                 <Reveal delay={600}>
-                    <footer style={{ marginTop: '3rem', color: 'var(--text-secondary)', fontSize: '0.8rem', opacity: 0.7 }}>
+                    <footer style={{ marginTop: '1rem', color: 'var(--text-secondary)', fontSize: '0.8rem', opacity: 0.7 }}>
                         © 2026 Alexsander Farias
                     </footer>
                 </Reveal>
