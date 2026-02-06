@@ -127,13 +127,13 @@ const Links = () => {
                     }
 
                     .profile-wrapper {
-                        width: 160px;
-                        height: 160px;
+                        width: 200px; /* Increased to 200px as requested */
+                        height: 200px;
                         margin: 0 auto 1.5rem;
-                        padding: 5px;
+                        padding: 6px;
                         border-radius: 50%;
                         background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-                        box-shadow: 0 0 30px rgba(99, 102, 241, 0.4);
+                        box-shadow: 0 0 40px rgba(99, 102, 241, 0.5);
                         transition: transform 0.3s ease;
                     }
                     .profile-wrapper:hover {
@@ -171,8 +171,8 @@ const Links = () => {
                         border: none;
                         color: white;
                         font-weight: 700;
-                        font-size: 1.1rem;
-                        padding: 1.3rem 1.5rem;
+                        font-size: 1.15rem;
+                        padding: 1.4rem 1.5rem;
                         box-shadow: 0 10px 20px rgba(99, 102, 241, 0.4);
                         animation: pulse-border 2s infinite;
                     }
@@ -192,6 +192,31 @@ const Links = () => {
                         .bio-link { padding: 1.4rem 2rem; font-size: 1.1rem; }
                     }
                 `}</style>
+
+                {/* Links Stack - RESTORED */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '100%', marginTop: '1rem' }}>
+                    {socialLinks.map((link, index) => (
+                        <Reveal key={index} delay={index * 100} width="100%">
+                            {link.internal ? (
+                                <Link to={link.url} className={`bio-link ${link.highlight ? 'highlight' : ''}`}>
+                                    <span>{link.label}</span>
+                                    <span className="icon-wrapper">{link.icon}</span>
+                                </Link>
+                            ) : (
+                                <a href={link.url} target="_blank" rel="noopener noreferrer" className={`bio-link ${link.highlight ? 'highlight' : ''}`}>
+                                    <span>{link.label}</span>
+                                    <span className="icon-wrapper">{link.icon}</span>
+                                </a>
+                            )}
+                        </Reveal>
+                    ))}
+                </div>
+
+                <Reveal delay={600}>
+                    <footer style={{ marginTop: '3rem', color: 'var(--text-secondary)', fontSize: '0.8rem', opacity: 0.7 }}>
+                        © 2026 Alexsander Farias
+                    </footer>
+                </Reveal>
             </div>
         </div>
     );
