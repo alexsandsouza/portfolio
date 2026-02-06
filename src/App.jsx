@@ -37,6 +37,7 @@ import { ScrollToTop } from './components/ScrollToTop';
 import TopBanner from './components/TopBanner';
 
 import Terminal from './components/Terminal'; // Import Terminal
+import SecretChallenge from './components/SecretChallenge';
 
 const Home = () => {
   usePageTitle();
@@ -44,19 +45,23 @@ const Home = () => {
   const konamiTriggered = useKonamiCode();
   const [showMatrix, setShowMatrix] = useState(false);
   const [showTerminal, setShowTerminal] = useState(false); // Terminal State
+  const [showChallenge, setShowChallenge] = useState(false); // Bug Hunter Challenge State
 
   useEffect(() => {
     if (konamiTriggered) setShowMatrix(true);
 
     const handleManualTrigger = () => setShowMatrix(true);
     const handleTerminalTrigger = () => setShowTerminal(true); // Listen for footer click
+    const handleChallengeTrigger = () => setShowChallenge(true); // Listen for secret trigger
 
     window.addEventListener('trigger-matrix', handleManualTrigger);
-    window.addEventListener('open-terminal', handleTerminalTrigger); // event listener
+    window.addEventListener('open-terminal', handleTerminalTrigger);
+    window.addEventListener('trigger-challenge', handleChallengeTrigger);
 
     return () => {
       window.removeEventListener('trigger-matrix', handleManualTrigger);
       window.removeEventListener('open-terminal', handleTerminalTrigger);
+      window.removeEventListener('trigger-challenge', handleChallengeTrigger);
     };
   }, [konamiTriggered]);
 
@@ -64,6 +69,7 @@ const Home = () => {
     <>
       <TopBanner />
       {showMatrix && <MatrixEffect onClose={() => setShowMatrix(false)} />}
+      {showChallenge && <SecretChallenge onClose={() => setShowChallenge(false)} />}
       <Terminal isOpen={showTerminal} onClose={() => setShowTerminal(false)} triggerMatrix={() => setShowMatrix(true)} />
 
       <MouseSpotlight />

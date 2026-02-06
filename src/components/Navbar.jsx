@@ -44,24 +44,43 @@ const Navbar = ({ triggerMatrix }) => {
                 alignItems: 'center'
             }}>
             <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '100%' }}>
-                <a href="#" onDoubleClick={(e) => { e.preventDefault(); if (triggerMatrix) triggerMatrix(); }} className="dev-logo notranslate" translate="no" style={{
-                    fontSize: '1.2rem',
-                    fontWeight: '700',
-                    fontFamily: "'JetBrains Mono', monospace", // Code font
-                    color: '#fff',
-                    letterSpacing: '-0.03em',
-                    position: 'relative',
-                    zIndex: 1001,
-                    textDecoration: 'none',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '8px',
-                    padding: '8px 16px',
-                    background: '#1e293b', // Solid dark for code look
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
-                    borderRadius: '8px',
-                    transition: 'all 0.3s ease'
-                }}>
+                <a href="#"
+                    onClick={(e) => {
+                        e.preventDefault();
+                        // Easter Egg Trigger Logic
+                        if (!window.clickCount) window.clickCount = 0;
+                        window.clickCount++;
+
+                        if (window.clickTimer) clearTimeout(window.clickTimer);
+                        window.clickTimer = setTimeout(() => { window.clickCount = 0; }, 1000);
+
+                        if (window.clickCount >= 5) {
+                            window.dispatchEvent(new Event('trigger-challenge'));
+                            window.clickCount = 0;
+                        }
+
+                        if (triggerMatrix && window.clickCount === 2) triggerMatrix(); // Keep double click behavior mostly
+                    }}
+                    className="dev-logo notranslate" translate="no" style={{
+                        fontSize: '1.2rem',
+                        fontWeight: '700',
+                        fontFamily: "'JetBrains Mono', monospace", // Code font
+                        color: '#fff',
+                        letterSpacing: '-0.03em',
+                        position: 'relative',
+                        zIndex: 1001,
+                        textDecoration: 'none',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '8px',
+                        padding: '8px 16px',
+                        background: '#1e293b', // Solid dark for code look
+                        border: '1px solid rgba(255, 255, 255, 0.1)',
+                        borderRadius: '8px',
+                        transition: 'all 0.3s ease',
+                        cursor: 'pointer',
+                        userSelect: 'none'
+                    }}>
                     <span style={{ color: '#c678dd' }}>const</span> {/* Purple for const */}
                     <span style={{ color: '#e5c07b' }}>Prof</span> {/* Yellow/Gold for Variable */}
                     <span style={{ color: '#abb2bf' }}>=</span>
@@ -70,7 +89,7 @@ const Navbar = ({ triggerMatrix }) => {
 
                     {/* Tooltip on Hover */}
                     <div className="logo-tooltip">
-                        <span style={{ color: '#61afef' }}>role:</span> <span style={{ color: '#98c379' }}>'Tech Educator'</span>
+                        <span style={{ color: '#61afef' }}>role:</span> <span style={{ color: '#98c379' }}>'Bug Hunter?'</span>
                     </div>
                 </a>
 
