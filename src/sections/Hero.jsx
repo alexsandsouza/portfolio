@@ -199,24 +199,24 @@ const Hero = () => {
                                 position: 'relative',
                                 display: 'flex', alignItems: 'center', gap: '12px',
                                 padding: '10px 24px',
-                                background: 'rgba(255, 255, 255, 0.03)',
+                                background: 'var(--card-bg)', // Use CSS variable for theme awareness
                                 backdropFilter: 'blur(10px)',
                                 borderRadius: '50px',
-                                border: '1px solid rgba(255, 255, 255, 0.1)',
-                                boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.3)'
+                                border: '1px solid var(--card-border)', // Use CSS variable
+                                boxShadow: 'var(--card-shadow)' // Use CSS variable
                             }}>
                                 <span style={{
                                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                                     width: '8px', height: '8px',
-                                    background: '#00ff88',
+                                    background: 'var(--accent-color)', // Use theme accent
                                     borderRadius: '50%',
-                                    boxShadow: '0 0 12px #00ff88',
+                                    boxShadow: '0 0 12px var(--accent-color)',
                                     animation: 'pulseFast 2s infinite'
                                 }}></span>
 
                                 <span style={{
-                                    color: 'rgba(255, 255, 255, 0.9)',
-                                    fontWeight: '500',
+                                    color: 'var(--text-heading)', // Use theme text color
+                                    fontWeight: '600',
                                     letterSpacing: '1px',
                                     fontSize: '0.85rem',
                                     fontFamily: 'monospace'
@@ -303,13 +303,13 @@ const Hero = () => {
                                 alignItems: 'center',
                                 gap: '8px'
                             }}
-                            onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 20px 35px -5px rgba(168, 85, 247, 0.6)'; }}
-                            onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 10px 25px -5px rgba(168, 85, 247, 0.5)'; }}
+                                onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 20px 35px -5px rgba(168, 85, 247, 0.6)'; }}
+                                onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 10px 25px -5px rgba(168, 85, 247, 0.5)'; }}
                             >
                                 Mentoria: Iniciar em TI 🚀
                             </a>
-                            
-                            <a href="#projects" style={{ 
+
+                            <a href="#projects" style={{
                                 color: 'var(--text-secondary)',
                                 textDecoration: 'none',
                                 padding: '10px 20px',
@@ -317,8 +317,8 @@ const Hero = () => {
                                 borderBottom: '1px solid transparent',
                                 transition: 'all 0.3s'
                             }}
-                            onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--text-primary)'; e.currentTarget.style.borderBottomColor = 'var(--text-primary)'; }}
-                            onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--text-secondary)'; e.currentTarget.style.borderBottomColor = 'transparent'; }}
+                                onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--text-primary)'; e.currentTarget.style.borderBottomColor = 'var(--text-primary)'; }}
+                                onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--text-secondary)'; e.currentTarget.style.borderBottomColor = 'transparent'; }}
                             >
                                 {hero.ctaPrimary}
                             </a>
