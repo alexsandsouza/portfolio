@@ -21,6 +21,18 @@ const TechBackground = () => (
             maskImage: 'radial-gradient(circle at center, black, transparent 80%)'
         }}></div>
 
+        {/* Ambient Glow */}
+        <div style={{
+            position: 'absolute',
+            top: '-20%', right: '-10%',
+            width: '600px', height: '600px',
+            background: 'radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%)',
+            filter: 'blur(80px)',
+            opacity: 0.8,
+            animation: 'pulseGlow 8s ease-in-out infinite alternate'
+        }}></div>
+        <style>{`@keyframes pulseGlow { 0% { transform: scale(1); opacity: 0.5; } 100% { transform: scale(1.2); opacity: 0.8; } }`}</style>
+
         {/* Moving Tech Lines */}
         <div className="tech-line" style={{ top: '20%', left: '-10%', animationDelay: '0s' }}></div>
         <div className="tech-line" style={{ top: '60%', left: '-10%', animationDelay: '2s' }}></div>
@@ -182,39 +194,30 @@ const Hero = () => {
                 <div style={{ textAlign: 'left' }} className="hero-content">
                     <Reveal>
                         <div style={{ position: 'relative', display: 'inline-block', marginBottom: '2rem' }}>
-                            {/* Animated Gradient Border */}
-                            <div style={{
-                                position: 'absolute', inset: -2, borderRadius: '50px',
-                                background: 'linear-gradient(90deg, var(--primary-color), var(--accent-color), var(--secondary-color), var(--primary-color))',
-                                backgroundSize: '300% 100%',
-                                animation: 'borderFlow 4s linear infinite',
-                                filter: 'blur(3px)',
-                                opacity: 0.7
-                            }}></div>
-
-                            {/* Inner Content */}
+                            {/* Glassmorphism Card */}
                             <div style={{
                                 position: 'relative',
-                                display: 'flex', alignItems: 'center', gap: '10px',
-                                padding: '0.8rem 1.8rem',
-                                background: 'var(--surface-color)',
+                                display: 'flex', alignItems: 'center', gap: '12px',
+                                padding: '10px 24px',
+                                background: 'rgba(255, 255, 255, 0.03)',
+                                backdropFilter: 'blur(10px)',
                                 borderRadius: '50px',
-                                border: '1px solid var(--border-color)'
+                                border: '1px solid rgba(255, 255, 255, 0.1)',
+                                boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.3)'
                             }}>
                                 <span style={{
                                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                    width: '10px', height: '10px',
-                                    background: 'var(--accent-color)',
+                                    width: '8px', height: '8px',
+                                    background: '#00ff88',
                                     borderRadius: '50%',
-                                    boxShadow: '0 0 10px var(--accent-color)',
-                                    animation: 'pulseFast 1.5s infinite'
+                                    boxShadow: '0 0 12px #00ff88',
+                                    animation: 'pulseFast 2s infinite'
                                 }}></span>
 
                                 <span style={{
-                                    color: 'var(--text-primary)',
-                                    fontWeight: '700',
-                                    letterSpacing: '1.5px',
-                                    textTransform: 'uppercase',
+                                    color: 'rgba(255, 255, 255, 0.9)',
+                                    fontWeight: '500',
+                                    letterSpacing: '1px',
                                     fontSize: '0.85rem',
                                     fontFamily: 'monospace'
                                 }}>
@@ -222,8 +225,7 @@ const Hero = () => {
                                 </span>
                             </div>
                             <style>{`
-                                @keyframes borderFlow { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
-                                @keyframes pulseFast { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } 100% { opacity: 1; transform: scale(1); } }
+                                @keyframes pulseFast { 0% { opacity: 0.6; transform: scale(1); } 50% { opacity: 1; transform: scale(1.2); } 100% { opacity: 0.6; transform: scale(1); } }
                             `}</style>
                         </div>
                     </Reveal>
@@ -285,26 +287,40 @@ const Hero = () => {
                     `}</style>
 
                     <Reveal delay={400}>
-                        <div className="hero-buttons" style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
+                        <div className="hero-buttons" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'center' }}>
                             <a href="/mentoria" className="btn" style={{
-                                background: 'linear-gradient(90deg, #ec4899, #8b5cf6)',
+                                background: 'linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%)',
+                                borderRadius: '30px',
+                                padding: '12px 32px',
                                 color: 'white',
                                 border: 'none',
-                                fontWeight: 'bold',
-                                boxShadow: '0 4px 15px rgba(236, 72, 153, 0.4)'
-                            }}>
+                                fontWeight: '600',
+                                fontSize: '1rem',
+                                letterSpacing: '0.5px',
+                                boxShadow: '0 10px 25px -5px rgba(168, 85, 247, 0.5)',
+                                transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: '8px'
+                            }}
+                            onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 20px 35px -5px rgba(168, 85, 247, 0.6)'; }}
+                            onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 10px 25px -5px rgba(168, 85, 247, 0.5)'; }}
+                            >
                                 Mentoria: Iniciar em TI 🚀
                             </a>
-                            <a href="#projects" className="btn btn-primary" style={{ position: 'relative', overflow: 'hidden' }}>
-                                <span style={{ position: 'relative', zIndex: 1 }}>{hero.ctaPrimary}</span>
-                                <div style={{
-                                    position: 'absolute', top: 0, left: '-100%', width: '100%', height: '100%',
-                                    background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)',
-                                    animation: 'slideRight 3s infinite'
-                                }}></div>
-                            </a>
-                            <a href="#contact" className="btn btn-secondary">
-                                {hero.ctaSecondary}
+                            
+                            <a href="#projects" style={{ 
+                                color: 'var(--text-secondary)',
+                                textDecoration: 'none',
+                                padding: '10px 20px',
+                                fontWeight: '500',
+                                borderBottom: '1px solid transparent',
+                                transition: 'all 0.3s'
+                            }}
+                            onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--text-primary)'; e.currentTarget.style.borderBottomColor = 'var(--text-primary)'; }}
+                            onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--text-secondary)'; e.currentTarget.style.borderBottomColor = 'transparent'; }}
+                            >
+                                {hero.ctaPrimary}
                             </a>
                         </div>
                     </Reveal>
