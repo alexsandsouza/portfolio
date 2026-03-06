@@ -140,6 +140,12 @@ export const portfolioContent = {
 
   education: [
     {
+      institution: "UFAM",
+      course: "Mestrado no Programa de Pós-Graduação em Engenharia Elétrica (PPGEE) da Universidade Federal do Amazonas",
+      level: "Pós-graduação stricto sensu",
+      period: "Em andamento"
+    },
+    {
       institution: "IFPR",
       course: "Gestão da Educação Profissional e Tecnológica",
       level: "Pós-graduação",
