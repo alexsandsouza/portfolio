@@ -309,6 +309,27 @@ const Hero = () => {
                                 Mentoria: Iniciar em TI 🚀
                             </a>
 
+                            <a href="/hackersdobem" className="btn" style={{
+                                background: 'linear-gradient(135deg, #0ea5e9 0%, #10b981 100%)',
+                                borderRadius: '30px',
+                                padding: '12px 32px',
+                                color: 'white',
+                                border: 'none',
+                                fontWeight: '600',
+                                fontSize: '1rem',
+                                letterSpacing: '0.5px',
+                                boxShadow: '0 10px 25px -5px rgba(16, 185, 129, 0.5)',
+                                transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: '8px'
+                            }}
+                                onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 20px 35px -5px rgba(16, 185, 129, 0.6)'; }}
+                                onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 10px 25px -5px rgba(16, 185, 129, 0.5)'; }}
+                            >
+                                Hackers do Bem 🛡️
+                            </a>
+
                             <a href="#projects" style={{
                                 color: 'var(--text-secondary)',
                                 textDecoration: 'none',

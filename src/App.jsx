@@ -98,6 +98,8 @@ const Home = () => {
 };
 
 import Resume from './pages/Resume'; // Import Resume
+import AtividadeHackersDoBem from './pages/hackersdobem/atividade_hackers_do_bem';
+import RankingHackersDoBem from './pages/hackersdobem/ranking_hackers_do_bem';
 
 // ... existing imports
 
@@ -113,6 +115,8 @@ function App() {
         <Route path="/mentoria/sucesso" element={<MentorshipSuccess />} />
         <Route path="/links" element={<Links />} />
         <Route path="/cv" element={<Resume />} />
+        <Route path="/hackersdobem" element={<AtividadeHackersDoBem />} />
+        <Route path="/hackersdobem/ranking" element={<RankingHackersDoBem />} />
       </Routes>
     </div>
   );
