@@ -53,10 +53,13 @@ export default function RankingHackersDoBem() {
   useEffect(() => {
     const q = query(collection(db, "hackersdobem_ranking"));
     const unsubscribe = onSnapshot(q, (snapshot) => {
-      const loaded = snapshot.docs.map(doc => ({
+      let loaded = snapshot.docs.map(doc => ({
         id: doc.id,
         ...doc.data()
       }));
+
+      // Filter out other modules (M04A03), older entries don't have a module field
+      loaded = loaded.filter(doc => !doc.module || doc.module !== "M04A03");
 
       // Sort by score desc, then by time asc (faster wins ties)
       loaded.sort((a, b) => (b.score - a.score) || (a.duration - b.duration));
@@ -79,9 +82,9 @@ export default function RankingHackersDoBem() {
     try {
       const q = query(collection(db, "hackersdobem_ranking"));
       const snapshot = await getDocs(q);
-      const deletePromises = snapshot.docs.map(document => 
-        deleteDoc(doc(db, "hackersdobem_ranking", document.id))
-      );
+      const deletePromises = snapshot.docs
+        .filter(document => !document.data().module || document.data().module !== "M04A03")
+        .map(document => deleteDoc(doc(db, "hackersdobem_ranking", document.id)));
       await Promise.all(deletePromises);
       setShowClear(false);
     } catch {}

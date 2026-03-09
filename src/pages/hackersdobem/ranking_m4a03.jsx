@@ -51,12 +51,15 @@ export default function RankingHackersDoBemM4A03() {
 
   // Read data from Firestore
   useEffect(() => {
-    const q = query(collection(db, "hackersdobem_m4a03_ranking"));
+    const q = query(collection(db, "hackersdobem_ranking"));
     const unsubscribe = onSnapshot(q, (snapshot) => {
-      const loaded = snapshot.docs.map(doc => ({
+      let loaded = snapshot.docs.map(doc => ({
         id: doc.id,
         ...doc.data()
       }));
+
+      // Filter only this module's scores
+      loaded = loaded.filter(doc => doc.module === "M04A03");
 
       // Sort by score desc, then by time asc (faster wins ties)
       loaded.sort((a, b) => (b.score - a.score) || (a.duration - b.duration));
@@ -77,11 +80,11 @@ export default function RankingHackersDoBemM4A03() {
 
   async function clearAll() {
     try {
-      const q = query(collection(db, "hackersdobem_m4a03_ranking"));
+      const q = query(collection(db, "hackersdobem_ranking"));
       const snapshot = await getDocs(q);
-      const deletePromises = snapshot.docs.map(document => 
-        deleteDoc(doc(db, "hackersdobem_m4a03_ranking", document.id))
-      );
+      const deletePromises = snapshot.docs
+        .filter(document => document.data().module === "M04A03")
+        .map(document => deleteDoc(doc(db, "hackersdobem_ranking", document.id)));
       await Promise.all(deletePromises);
       setShowClear(false);
     } catch {}
