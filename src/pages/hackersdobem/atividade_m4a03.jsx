@@ -3,6 +3,17 @@ import { db } from '../../firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 // ─── DATA ────────────────────────────────────────────────────────────────────
+const LEVEL_CONFIG = [
+  { min: 90, label: "LENDÁRIO", color: "#FFD700", icon: "👑" },
+  { min: 75, label: "ESPECIALISTA", color: "#00E676", icon: "⚡" },
+  { min: 60, label: "PROFICIENTE", color: "#40C4FF", icon: "🔷" },
+  { min: 40, label: "APRENDIZ", color: "#FFB300", icon: "🔶" },
+  { min: 0,  label: "INICIANTE",  color: "#FF5252", icon: "🔰" },
+];
+
+function getLevel(score) {
+  return LEVEL_CONFIG.find(l => score >= l.min);
+}
 
 const STAGES = [
   {
@@ -463,34 +474,57 @@ export default function AtividadeHackersDoBemM4A03() {
       }}>
         
         {screen === "welcome" && (
-          <div style={{ padding: 40, textAlign: "center" }}>
-            <div style={{ fontSize: 60, marginBottom: 20 }}>🔐</div>
-            <h1 style={{ margin: "0 0 10px", color: "#4ade80", fontSize: 24, textTransform: "uppercase" }}>Módulo 04 • Aula 03</h1>
-            <h2 style={{ margin: "0 0 20px", fontSize: 28 }}>Tecnologias de Autenticação</h2>
-            <p style={{ color: "#aaa", fontSize: 16, lineHeight: 1.6, marginBottom: 30 }}>
-              Sua missão é provar seu domínio sobre os conceitos de controle de acesso.
-              Identifique as tecnologias ideais e defina os fatores de autenticação com exatidão.
+          <div style={{ maxWidth: 540, margin: "0 auto", textAlign: "center", padding: "40px 20px" }}>
+            <div style={{ fontSize: 64, marginBottom: 16 }}>🔐</div>
+            <div style={{ fontSize: 11, letterSpacing: 4, color: "#00E676", fontFamily: "'Space Mono', monospace", marginBottom: 8 }}>HACKERS DO BEM — MÓDULO 04</div>
+            <h1 style={{ fontSize: 32, fontWeight: 900, color: "#fff", margin: "0 0 8px", lineHeight: 1.2, fontFamily: "'DM Sans', sans-serif" }}>
+              Missão: Proteja a<br /><span style={{ color: "#40C4FF" }}>Autenticação da TechSafe</span>
+            </h1>
+            <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 15, margin: "12px 0 32px", lineHeight: 1.6 }}>
+              Domine Smart-Cards, RADIUS, IEEE 802.1X, HOTP, TOTP e 2FA. Complete as 5 etapas e descubra seu nível!
             </p>
+
+            <div style={{ display: "flex", justifyContent: "center", gap: 24, marginBottom: 36, flexWrap: "wrap" }}>
+              {[["⏱", "20 min"], ["🎯", "5 etapas"], ["🏆", "100 pts"]].map(([ic, lb]) => (
+                <div key={lb} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
+                  <span style={{ fontSize: 24 }}>{ic}</span>
+                  <span style={{ fontSize: 13, color: "#40C4FF", fontFamily: "'Space Mono', monospace" }}>{lb}</span>
+                </div>
+              ))}
+            </div>
+
             <input
               type="text"
-              placeholder="Digite seu nome completo"
+              placeholder="Digite seu nome completo..."
               value={studentName}
               onChange={e => setStudentName(e.target.value)}
+              onFocus={e => e.target.style.borderColor = "#40C4FF"}
+              onBlur={e => e.target.style.borderColor = "rgba(255,255,255,0.15)"}
               style={{
-                width: "100%", padding: 15, borderRadius: 8, border: "1px solid #30363D",
-                background: "#0D1117", color: "#fff", fontSize: 16, marginBottom: 20, boxSizing: "border-box", outline: "none"
+                width: "100%", padding: "14px 18px", borderRadius: 10,
+                border: "1.5px solid rgba(255,255,255,0.15)", background: "rgba(255,255,255,0.06)",
+                color: "#fff", fontSize: 15, outline: "none", boxSizing: "border-box",
+                fontFamily: "'DM Sans', sans-serif", marginBottom: 16,
+                transition: "border 0.2s"
               }}
             />
+            
             <button
-              onClick={() => start(studentName)}
+              onClick={() => start(studentName.trim())}
               disabled={studentName.trim().length < 3}
               style={{
-                width: "100%", padding: 16, borderRadius: 8, border: "none", background: studentName.trim().length < 3 ? "#30363D" : "#4ade80",
-                color: studentName.trim().length < 3 ? "#888" : "#000", fontWeight: "bold", fontSize: 18, cursor: studentName.trim().length < 3 ? "not-allowed" : "pointer"
+                width: "100%", padding: "14px", borderRadius: 10, border: "none",
+                background: "#40C4FF", color: "#000", fontSize: 15, fontWeight: 700, cursor: studentName.trim().length < 3 ? "not-allowed" : "pointer",
+                fontFamily: "'DM Sans', sans-serif", letterSpacing: 0.5,
+                boxShadow: `0 4px 20px #40C4FF60`, transition: "transform 0.15s, box-shadow 0.15s",
+                opacity: studentName.trim().length < 3 ? 0.4 : 1
               }}
             >
-              Iniciar Verificação de Sistemas
+              Iniciar Missão →
             </button>
+            <p style={{ marginTop: 24, fontSize: 12, color: "rgba(255,255,255,0.3)" }}>
+               Prof. Alexsander Farias · Aula 03 · Tecnologias de Autenticação
+            </p>
           </div>
         )}
 
@@ -526,14 +560,24 @@ export default function AtividadeHackersDoBemM4A03() {
             <h1 style={{ margin: "0 0 5px", color: "#4ade80", fontSize: 14, letterSpacing: 2 }}>MISSÃO CUMPRIDA</h1>
             <h2 style={{ margin: "0 0 30px", fontSize: 24 }}>{studentName}</h2>
             
-            <div style={{ background: "rgba(74, 222, 128, 0.1)", border: "1px solid rgba(74, 222, 128, 0.3)", padding: 30, borderRadius: 16, marginBottom: 30 }}>
-              <div style={{ fontSize: 48, fontWeight: "900", color: "#4ade80", lineHeight: 1 }}>
-                {Math.round(scores.reduce((a, b) => a + b, 0))}
-              </div>
-              <div style={{ color: "#4ade80", opacity: 0.8, fontSize: 14, marginTop: 5, textTransform: "uppercase", letterSpacing: 1 }}>
-                / 100 pontos
-              </div>
-            </div>
+            {(() => {
+              const totalScore = Math.round(scores.reduce((a, b) => a + b, 0));
+              const level = getLevel(totalScore);
+              return (
+                <div style={{ background: "rgba(74, 222, 128, 0.1)", border: "1px solid rgba(74, 222, 128, 0.3)", padding: 30, borderRadius: 16, marginBottom: 30 }}>
+                  <div style={{ fontSize: 32, marginBottom: 10 }}>{level.icon}</div>
+                  <div style={{ color: level.color, fontSize: 18, fontWeight: "bold", letterSpacing: 2, marginBottom: 15 }}>
+                    CLASSIFICAÇÃO: {level.label}
+                  </div>
+                  <div style={{ fontSize: 48, fontWeight: "900", color: "#4ade80", lineHeight: 1 }}>
+                    {totalScore}
+                  </div>
+                  <div style={{ color: "#4ade80", opacity: 0.8, fontSize: 14, marginTop: 5, textTransform: "uppercase", letterSpacing: 1 }}>
+                    / 100 pontos
+                  </div>
+                </div>
+              );
+            })()}
 
             <div style={{ textAlign: "left", background: "#0D1117", padding: 20, borderRadius: 12, border: "1px solid #30363D" }}>
               <h3 style={{ margin: "0 0 15px", color: "#aaa", fontSize: 12, textTransform: "uppercase", letterSpacing: 1 }}>Desempenho por Etapa</h3>
