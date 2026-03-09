@@ -101,6 +101,8 @@ import Resume from './pages/Resume'; // Import Resume
 import HackersDoBemHub from './pages/hackersdobem/HackersDoBemHub';
 import AtividadeHackersDoBem from './pages/hackersdobem/atividade_hackers_do_bem';
 import RankingHackersDoBem from './pages/hackersdobem/ranking_hackers_do_bem';
+import AtividadeHackersDoBemM4A03 from './pages/hackersdobem/atividade_m4a03';
+import RankingHackersDoBemM4A03 from './pages/hackersdobem/ranking_m4a03';
 // ... existing imports
 
 function App() {
@@ -118,6 +120,8 @@ function App() {
         <Route path="/hackersdobem" element={<HackersDoBemHub />} />
         <Route path="/hackersdobem/atividade" element={<AtividadeHackersDoBem />} />
         <Route path="/hackersdobem/ranking" element={<RankingHackersDoBem />} />
+        <Route path="/hackersdobem/atividade-m4a03" element={<AtividadeHackersDoBemM4A03 />} />
+        <Route path="/hackersdobem/ranking-m4a03" element={<RankingHackersDoBemM4A03 />} />
       </Routes>
     </div>
   );

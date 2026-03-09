@@ -35,12 +35,35 @@ export default function HackersDoBemHub() {
       id: 3,
       title: 'Desafio Web Application',
       module: 'Módulo 06',
-      description: 'Em breve: Uma nova simulação de vulnerabilidades web para você explorar e resolver.',
+      description: 'Uma nova simulação de vulnerabilidades web para você explorar e resolver.',
       path: '#',
       icon: <Lock size={24} color="#94a3b8" />,
       buttonText: 'Bloqueado',
       status: 'locked',
       accentColor: '#64748b',
+    },
+    {
+      id: 4,
+      title: 'Controles e Autenticação',
+      module: 'Módulo 04 · Aula 03',
+      description: 'Identifique as tecnologias ideais de autenticação e seus fatores.',
+      path: '/hackersdobem/atividade-m4a03',
+      icon: <Shield size={24} color="#3b82f6" />,
+      buttonText: 'Iniciar Missão',
+      status: 'active',
+      accentColor: '#3b82f6',
+      badges: ['15 min', '100 pts']
+    },
+    {
+      id: 5,
+      title: 'Ranking: Módulo 04',
+      module: 'Resultados Ao Vivo',
+      description: 'Acompanhe as maiores pontuações na missão de autenticação.',
+      path: '/hackersdobem/ranking-m4a03',
+      icon: <Trophy size={24} color="#8b5cf6" />,
+      buttonText: 'Ver Ranking',
+      status: 'active',
+      accentColor: '#8b5cf6',
     }
   ];
 
