@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef } from "react";
+import { db } from '../../firebase';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 // ─── DATA ────────────────────────────────────────────────────────────────────
 
@@ -819,16 +821,15 @@ export default function AtividadeHackersDoBem() {
   async function saveToLeaderboard(name, allScores, duration) {
     try {
       const total = allScores.reduce((a, b) => a + b, 0);
-      const id = `hdb_score:${Date.now()}_${Math.random().toString(36).slice(2, 7)}`;
       const entry = {
-        id,
         name,
         score: total,
         stageScores: allScores,
         duration,
         timestamp: Date.now(),
+        createdAt: serverTimestamp(),
       };
-      await window.storage.set(id, JSON.stringify(entry), true);
+      await addDoc(collection(db, "hackersdobem_ranking"), entry);
     } catch (e) {
       console.warn("Não foi possível salvar no ranking:", e);
     }

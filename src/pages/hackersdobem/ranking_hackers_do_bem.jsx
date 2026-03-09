@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef } from "react";
+import { db } from '../../firebase';
+import { collection, query, onSnapshot, getDocs, deleteDoc, doc } from 'firebase/firestore';
 
 // ─── MOCK DATA for demonstration ─────────────────────────────────────────────
 const LEVEL_CONFIG = [
@@ -42,59 +44,45 @@ export default function RankingHackersDoBem() {
     return () => clearInterval(t);
   }, []);
 
-  // Load from storage on mount
+  const entriesRef = useRef([]);
   useEffect(() => {
-    loadEntries();
-  }, []);
+    entriesRef.current = entries;
+  }, [entries]);
 
-  // Poll storage every 5 seconds for new submissions
+  // Read data from Firestore
   useEffect(() => {
-    const t = setInterval(loadEntries, 5000);
-    return () => clearInterval(t);
-  }, []);
-
-  async function loadEntries() {
-    try {
-      const result = await window.storage.list("hdb_score:", true);
-      if (!result || !result.keys) return;
-
-      const loaded = [];
-      for (const key of result.keys) {
-        try {
-          const r = await window.storage.get(key, true);
-          if (r && r.value) {
-            const entry = JSON.parse(r.value);
-            loaded.push(entry);
-          }
-        } catch {}
-      }
+    const q = query(collection(db, "hackersdobem_ranking"));
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const loaded = snapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      }));
 
       // Sort by score desc, then by time asc (faster wins ties)
-      loaded.sort((a, b) => b.score - a.score || a.duration - b.duration);
+      loaded.sort((a, b) => (b.score - a.score) || (a.duration - b.duration));
 
-      // Detect new entries
-      if (loaded.length > prevCount.current) {
-        const newest = loaded.filter(e =>
-          !entries.find(ex => ex.id === e.id)
-        );
+      const oldEntries = entriesRef.current;
+      if (loaded.length > oldEntries.length && oldEntries.length !== 0) {
+        const newest = loaded.filter(e => !oldEntries.find(ex => ex.id === e.id));
         if (newest.length > 0) {
           setFlash(newest[0].id);
           setTimeout(() => setFlash(null), 3000);
         }
       }
-      prevCount.current = loaded.length;
       setEntries(loaded);
-    } catch {}
-  }
+    });
+    
+    return () => unsubscribe();
+  }, []);
 
   async function clearAll() {
     try {
-      const result = await window.storage.list("hdb_score:", true);
-      if (!result || !result.keys) return;
-      for (const key of result.keys) {
-        await window.storage.delete(key, true);
-      }
-      setEntries([]);
+      const q = query(collection(db, "hackersdobem_ranking"));
+      const snapshot = await getDocs(q);
+      const deletePromises = snapshot.docs.map(document => 
+        deleteDoc(doc(db, "hackersdobem_ranking", document.id))
+      );
+      await Promise.all(deletePromises);
       setShowClear(false);
     } catch {}
   }
