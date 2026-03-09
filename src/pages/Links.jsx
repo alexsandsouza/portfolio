@@ -13,7 +13,14 @@ const Links = () => {
             internal: true
         },
         {
-            label: 'AD Academy One (Hub)',
+            label: 'Hackers do Bem (Hub)',
+            url: '/hackersdobem',
+            icon: <ArrowRight size={22} />,
+            highlight: true,
+            internal: true
+        },
+        {
+            label: 'AD Academy One',
             url: 'https://ad-academy-one.vercel.app',
             icon: <ExternalLink size={20} />,
         },
