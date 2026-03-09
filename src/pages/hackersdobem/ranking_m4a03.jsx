@@ -149,7 +149,7 @@ export default function RankingHackersDoBemM4A03() {
               }}>🛡️</div>
               <div>
                 <div style={{ fontSize: 10, letterSpacing: 4, color: "#00E676", fontFamily: "'Space Mono', monospace" }}>
-                  HACKERS DO BEM · MÓDULO 05
+                  HACKERS DO BEM · MÓDULO 04
                 </div>
                 <h1 style={{ margin: 0, fontSize: 20, fontWeight: 900, color: "#fff", lineHeight: 1.1 }}>
                   Ranking ao Vivo
@@ -176,7 +176,7 @@ export default function RankingHackersDoBemM4A03() {
 
           {/* Professor info */}
           <div style={{ marginTop: 10, fontSize: 12, color: "rgba(255,255,255,0.3)" }}>
-            Prof. Alexsander Farias · Aula 01: Tipos de Contas e Identidades · 09/03/2026
+            Prof. Alexsander Farias · Aula 03: Tecnologias de Autenticação · 09/03/2026
           </div>
         </div>
       </div>
