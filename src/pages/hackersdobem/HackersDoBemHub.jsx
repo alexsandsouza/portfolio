@@ -14,11 +14,10 @@ export default function HackersDoBemHub() {
       module: 'Módulo 05 · Aula 01',
       description: 'Identifique contas e classifique as fases de onboarding e offboarding em um ambiente simulado.',
       path: '/hackersdobem/atividade',
-      icon: <Shield size={24} className="text-green-400" />,
+      icon: <Shield size={24} color="#4ade80" />, 
       buttonText: 'Iniciar Missão',
       status: 'active',
-      color: 'from-green-500/10 to-emerald-900/30',
-      border: 'border-green-500/20',
+      accentColor: '#4ade80',
       badges: ['20 min', '100 pts']
     },
     {
@@ -27,11 +26,10 @@ export default function HackersDoBemHub() {
       module: 'Resultados Ao Vivo',
       description: 'Acompanhe as maiores pontuações e o tempo de conclusão da turma.',
       path: '/hackersdobem/ranking',
-      icon: <Trophy size={24} className="text-yellow-400" />,
+      icon: <Trophy size={24} color="#facc15" />, 
       buttonText: 'Ver Ranking',
       status: 'active',
-      color: 'from-yellow-500/10 to-orange-900/20',
-      border: 'border-yellow-500/20'
+      accentColor: '#facc15',
     },
     {
       id: 3,
@@ -39,53 +37,88 @@ export default function HackersDoBemHub() {
       module: 'Módulo 06',
       description: 'Em breve: Uma nova simulação de vulnerabilidades web para você explorar e resolver.',
       path: '#',
-      icon: <Lock size={24} className="text-gray-500" />,
+      icon: <Lock size={24} color="#94a3b8" />,
       buttonText: 'Bloqueado',
       status: 'locked',
-      color: 'from-gray-800/30 to-gray-900/30',
-      border: 'border-gray-700/50'
+      accentColor: '#64748b',
     }
   ];
 
   return (
-    <div className="min-h-screen bg-[#0A0F1C] text-slate-300 pt-24 pb-16 px-4 md:px-8 font-sans selection:bg-green-500/30">
-      
+    <div style={{
+      minHeight: '100vh',
+      backgroundColor: '#0f172a',
+      color: '#cbd5e1',
+      padding: '8rem 1.5rem 4rem',
+      fontFamily: 'system-ui, -apple-system, sans-serif',
+      position: 'relative',
+      overflow: 'hidden'
+    }}>
       {/* Background Effects */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-green-600/10 blur-[120px] rounded-full mix-blend-screen"></div>
-        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-600/10 blur-[120px] rounded-full mix-blend-screen"></div>
-      </div>
+      <div style={{
+        position: 'absolute', top: '-10%', left: '-10%', width: '40%', height: '40%',
+        backgroundColor: 'rgba(22, 163, 74, 0.15)', borderRadius: '50%', filter: 'blur(100px)', zIndex: 0, pointerEvents: 'none'
+      }}></div>
+      <div style={{
+        position: 'absolute', bottom: '-10%', right: '-10%', width: '40%', height: '40%',
+        backgroundColor: 'rgba(37, 99, 235, 0.15)', borderRadius: '50%', filter: 'blur(100px)', zIndex: 0, pointerEvents: 'none'
+      }}></div>
 
-      <div className="max-w-4xl mx-auto relative z-10 pt-8">
+      <div style={{ maxWidth: '900px', margin: '0 auto', position: 'relative', zIndex: 10 }}>
         {/* Header Section */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center justify-center p-3 sm:p-4 bg-green-500/5 rounded-2xl mb-6 border border-green-500/20 shadow-[0_0_30px_rgba(34,197,94,0.1)]">
-            <Terminal size={32} className="text-green-400" />
+        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+          <div style={{
+            display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: '1rem',
+            backgroundColor: 'rgba(34, 197, 94, 0.1)', borderRadius: '16px', marginBottom: '1.5rem',
+            border: '1px solid rgba(34, 197, 94, 0.2)', boxShadow: '0 0 30px rgba(34, 197, 94, 0.1)'
+          }}>
+            <Terminal size={32} color="#4ade80" />
           </div>
-          <h1 className="text-4xl md:text-5xl font-black text-white tracking-tight mb-4">
-            Portal <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600 relative after:content-[''] after:absolute after:bottom-1 after:left-0 after:w-full after:h-2 after:bg-green-500/20 after:-z-10">Hackers do Bem</span>
+          <h1 style={{
+            fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', fontWeight: '900', color: '#fff', margin: '0 0 1rem', letterSpacing: '-0.02em'
+          }}>
+            Portal <span style={{
+              background: 'linear-gradient(to right, #4ade80, #059669)',
+              WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+              position: 'relative'
+            }}>Hackers do Bem</span>
           </h1>
-          <p className="text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed mt-6">
+          <p style={{
+            fontSize: '1.125rem', color: '#94a3b8', maxWidth: '600px', margin: '0 auto', lineHeight: '1.6'
+          }}>
             Seja bem-vindo ao hub de atividades interativas. Complete as missões propostas em sala de aula, teste seus conhecimentos e dispute pelas melhores colocações no ranking oficial.
           </p>
         </div>
 
         {/* Missions Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
           {missions.map((mission) => (
-            <div 
-              key={mission.id}
-              className={`group flex flex-col relative overflow-hidden rounded-2xl border bg-gradient-to-br ${mission.color} ${mission.border} p-6 sm:p-8 transition-all duration-300 ${mission.status === 'active' ? 'hover:-translate-y-1 hover:shadow-2xl hover:shadow-green-500/5 z-10 bg-slate-900/80 backdrop-blur-sm' : 'opacity-80 grayscale-[30%] bg-slate-900/40 backdrop-blur-sm'}`}
-            >
+            <div key={mission.id} className="hub-card" style={{
+              display: 'flex', flexDirection: 'column', padding: '2.5rem 2rem', borderRadius: '16px',
+              backgroundColor: mission.status === 'active' ? 'rgba(30, 41, 59, 0.7)' : 'rgba(15, 23, 42, 0.6)',
+              border: `1px solid ${mission.status === 'active' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(255, 255, 255, 0.05)'}`,
+              backdropFilter: 'blur(10px)',
+              transition: 'all 0.3s ease',
+              position: 'relative', overflow: 'hidden',
+              filter: mission.status === 'locked' ? 'grayscale(0.5)' : 'none',
+              opacity: mission.status === 'locked' ? 0.7 : 1
+            }}>
               {/* Card Header */}
-              <div className="flex justify-between items-start mb-6 w-full">
-                <div className="p-3 rounded-lg bg-black/40 backdrop-blur-md border border-white/5 shadow-inner inline-flex items-center justify-center">
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1.5rem' }}>
+                <div style={{
+                  padding: '0.75rem', borderRadius: '12px', backgroundColor: 'rgba(0, 0, 0, 0.3)',
+                  border: '1px solid rgba(255, 255, 255, 0.05)', display: 'inline-flex'
+                }}>
                   {mission.icon}
                 </div>
                 {mission.badges && (
-                  <div className="flex gap-2">
+                  <div style={{ display: 'flex', gap: '0.5rem' }}>
                     {mission.badges.map(badge => (
-                      <span key={badge} className="text-[10px] sm:text-xs font-bold font-mono tracking-wider px-2 py-1 bg-black/40 text-green-300 rounded-md border border-green-500/20 shadow-[0_0_10px_rgba(34,197,94,0.1)]">
+                      <span key={badge} style={{
+                        fontSize: '0.75rem', fontWeight: 'bold', fontFamily: 'monospace', padding: '0.25rem 0.5rem',
+                        backgroundColor: 'rgba(0,0,0,0.5)', color: mission.accentColor, borderRadius: '6px',
+                        border: `1px solid ${mission.accentColor}40`
+                      }}>
                         {badge}
                       </span>
                     ))}
@@ -94,44 +127,87 @@ export default function HackersDoBemHub() {
               </div>
 
               {/* Card Content */}
-              <div className="flex-1 w-full">
-                <div className="text-[11px] font-mono tracking-widest text-slate-400 mb-2 uppercase">{mission.module}</div>
-                <h3 className="text-xl font-bold text-white mb-3 leading-tight">{mission.title}</h3>
-                <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
+              <div style={{ flex: 1 }}>
+                <div style={{ fontSize: '0.75rem', fontFamily: 'monospace', letterSpacing: '0.1em', color: '#94a3b8', marginBottom: '0.5rem', textTransform: 'uppercase' }}>
+                  {mission.module}
+                </div>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#fff', margin: '0 0 0.75rem', lineHeight: '1.3' }}>
+                  {mission.title}
+                </h3>
+                <p style={{ fontSize: '0.875rem', color: '#cbd5e1', lineHeight: '1.5' }}>
                   {mission.description}
                 </p>
               </div>
 
               {/* Action Button */}
-              <div className="mt-8 pt-6 border-t border-white/5 w-full">
+              <div style={{ marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
                 {mission.status === 'active' ? (
-                  <Link 
-                    to={mission.path}
-                    className="group/btn flex items-center justify-between w-full py-3 sm:py-3.5 px-4 sm:px-5 rounded-xl bg-slate-800/80 text-white font-semibold text-sm transition-all duration-300 hover:bg-green-500 hover:text-black border border-slate-700/50 hover:border-green-400 shadow-sm"
-                  >
+                  <Link to={mission.path} className="hub-btn" style={{
+                    display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', boxSizing: 'border-box',
+                    padding: '0.875rem 1.25rem', borderRadius: '12px', backgroundColor: 'rgba(15, 23, 42, 0.8)',
+                    color: '#fff', fontWeight: '600', fontSize: '0.875rem', textDecoration: 'none',
+                    border: '1px solid rgba(255,255,255,0.1)', transition: 'all 0.2s',
+                    '--hover-bg': mission.accentColor
+                  }}>
                     <span>{mission.buttonText}</span>
-                    <ChevronRight size={18} className="opacity-70 group-hover/btn:opacity-100 group-hover/btn:translate-x-1 transition-all" />
+                    <ChevronRight size={18} className="btn-icon" />
                   </Link>
                 ) : (
-                  <button 
-                    disabled
-                    className="flex justify-between w-full py-3.5 px-5 rounded-xl bg-slate-900/50 text-slate-500 font-semibold text-sm cursor-not-allowed border border-slate-800/50"
-                  >
+                  <button disabled style={{
+                    display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', boxSizing: 'border-box',
+                    padding: '0.875rem 1.25rem', borderRadius: '12px', backgroundColor: 'rgba(0, 0, 0, 0.3)',
+                    color: '#64748b', fontWeight: '600', fontSize: '0.875rem', border: '1px solid rgba(255,255,255,0.05)',
+                    cursor: 'not-allowed'
+                  }}>
                     <span>{mission.buttonText}</span>
-                    <Lock size={16} className="opacity-50" />
+                    <Lock size={16} opacity={0.5} />
                   </button>
                 )}
               </div>
             </div>
           ))}
-          
+
           {/* Decorative Card */}
-          <div className="hidden md:flex flex-col items-center justify-center rounded-2xl border border-dashed border-slate-700/50 bg-slate-800/20 p-8 text-center h-full min-h-[300px]">
-            <Rocket size={32} className="text-slate-600 mb-4" />
-            <div className="text-sm font-medium text-slate-500 max-w-[200px]">Mais desafios criptográficos e simulações de invasão serão adicionados nas próximas aulas...</div>
+          <div style={{
+            display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+            padding: '2rem', borderRadius: '16px', border: '1px dashed rgba(148, 163, 184, 0.3)',
+            backgroundColor: 'rgba(30, 41, 59, 0.2)', textAlign: 'center', minHeight: '300px'
+          }}>
+            <Rocket size={32} color="#64748b" style={{ marginBottom: '1rem' }} />
+            <p style={{ fontSize: '0.875rem', fontWeight: '500', color: '#64748b', maxWidth: '200px' }}>
+              Mais desafios criptográficos e simulações de invasão serão adicionados nas próximas aulas...
+            </p>
           </div>
         </div>
       </div>
+
+      {/* Global styles since there's no Tailwind/styled-components set up specifically for it */}
+      <style>{`
+        body { margin: 0; }
+        .hub-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+          border-color: rgba(255, 255, 255, 0.2) !important;
+        }
+        .hub-btn {
+          position: relative;
+          overflow: hidden;
+        }
+        .hub-btn:hover {
+          background-color: var(--hover-bg) !important;
+          color: #000 !important;
+          border-color: var(--hover-bg) !important;
+          box-shadow: 0 0 15px var(--hover-bg);
+        }
+        .hub-btn .btn-icon {
+          opacity: 0.7;
+          transition: all 0.2s;
+        }
+        .hub-btn:hover .btn-icon {
+          opacity: 1;
+          transform: translateX(4px);
+        }
+      `}</style>
     </div>
   );
 }
