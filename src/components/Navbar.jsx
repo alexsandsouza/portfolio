@@ -253,6 +253,14 @@ const Navbar = ({ triggerMatrix }) => {
                                             </div>
                                         </a>
 
+                                        <a href="/fametro" style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '0.8rem', borderRadius: '8px', textDecoration: 'none', transition: 'background 0.2s' }} className="app-link">
+                                            <div style={{ width: '36px', height: '36px', background: '#3b82f6', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 'bold' }}>F</div>
+                                            <div>
+                                                <div style={{ color: 'var(--text-heading)', fontWeight: '600', fontSize: '0.9rem' }}>Hub Fametro</div>
+                                                <div style={{ color: 'var(--text-secondary)', fontSize: '0.75rem' }}>Portal do Aluno</div>
+                                            </div>
+                                        </a>
+
                                         <a href="/links" style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '0.8rem', borderRadius: '8px', textDecoration: 'none', transition: 'background 0.2s' }} className="app-link">
                                             <div style={{ width: '36px', height: '36px', background: '#8b5cf6', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 'bold' }}>🔗</div>
                                             <div>
@@ -313,6 +321,10 @@ const Navbar = ({ triggerMatrix }) => {
                             <a href="/hackersdobem" onClick={() => setIsOpen(false)} className="mobile-app-card" style={{ background: 'var(--bg-secondary)', padding: '1rem', borderRadius: '12px', textAlign: 'center', textDecoration: 'none', border: '1px solid var(--border-color)' }}>
                                 <div style={{ width: '30px', height: '30px', background: '#22c55e', borderRadius: '6px', margin: '0 auto 0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '0.8rem', fontWeight: 'bold' }}>H</div>
                                 <span style={{ display: 'block', color: 'var(--text-heading)', fontSize: '0.8rem', fontWeight: 'bold' }}>Hackers do Bem</span>
+                            </a>
+                            <a href="/fametro" onClick={() => setIsOpen(false)} className="mobile-app-card" style={{ background: 'var(--bg-secondary)', padding: '1rem', borderRadius: '12px', textAlign: 'center', textDecoration: 'none', border: '1px solid var(--border-color)' }}>
+                                <div style={{ width: '30px', height: '30px', background: '#3b82f6', borderRadius: '6px', margin: '0 auto 0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '0.8rem', fontWeight: 'bold' }}>F</div>
+                                <span style={{ display: 'block', color: 'var(--text-heading)', fontSize: '0.8rem', fontWeight: 'bold' }}>Hub Fametro</span>
                             </a>
                             <a href="/links" onClick={() => setIsOpen(false)} className="mobile-app-card" style={{ background: 'var(--bg-secondary)', padding: '1rem', borderRadius: '12px', textAlign: 'center', textDecoration: 'none', border: '1px solid var(--border-color)' }}>
                                 <div style={{ width: '30px', height: '30px', background: '#8b5cf6', borderRadius: '6px', margin: '0 auto 0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '0.8rem', fontWeight: 'bold' }}>🔗</div>

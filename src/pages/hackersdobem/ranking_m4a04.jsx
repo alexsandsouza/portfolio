@@ -1,0 +1,474 @@
+import { useState, useEffect, useRef } from "react";
+import { db } from '../../firebase';
+import { collection, query, onSnapshot, getDocs, deleteDoc, doc } from 'firebase/firestore';
+
+const LEVEL_CONFIG = [
+  { min: 90, label: "LENDÁRIO", color: "#FFD700", icon: "👑" },
+  { min: 75, label: "ESPECIALISTA", color: "#00E676", icon: "⚡" },
+  { min: 60, label: "PROFICIENTE", color: "#40C4FF", icon: "🔷" },
+  { min: 40, label: "APRENDIZ", color: "#FFB300", icon: "🔶" },
+  { min: 0,  label: "INICIANTE",  color: "#FF5252", icon: "🔰" },
+];
+
+function getLevel(score) {
+  return LEVEL_CONFIG.find(l => score >= l.min);
+}
+
+function timeAgo(ts) {
+  const diff = Math.floor((Date.now() - ts) / 1000);
+  if (diff < 60) return `${diff}s atrás`;
+  if (diff < 3600) return `${Math.floor(diff / 60)}min atrás`;
+  return `${Math.floor(diff / 3600)}h atrás`;
+}
+
+function formatTime(ms) {
+  const totalSecs = Math.floor(ms / 1000);
+  const mins = Math.floor(totalSecs / 60);
+  const secs = totalSecs % 60;
+  return `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
+}
+
+export default function RankingHackersDoBemM4A04() {
+  const [entries, setEntries] = useState([]);
+  const [flash, setFlash] = useState(null);
+  const [now, setNow] = useState(Date.now());
+  const [filter, setFilter] = useState("all");
+  const [showClear, setShowClear] = useState(false);
+  const prevCount = useRef(0);
+
+  useEffect(() => {
+    const t = setInterval(() => setNow(Date.now()), 10000);
+    return () => clearInterval(t);
+  }, []);
+
+  const entriesRef = useRef([]);
+  useEffect(() => {
+    entriesRef.current = entries;
+  }, [entries]);
+
+  useEffect(() => {
+    const q = query(collection(db, "hackersdobem_ranking"));
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      let loaded = snapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+
+      // Filter only M04A04 scores
+      loaded = loaded.filter(doc => doc.module === "M04A04");
+
+      // Sort by score desc, then by time asc
+      loaded.sort((a, b) => (b.score - a.score) || (a.duration - b.duration));
+
+      const oldEntries = entriesRef.current;
+      if (loaded.length > oldEntries.length && oldEntries.length !== 0) {
+        const newest = loaded.filter(e => !oldEntries.find(ex => ex.id === e.id));
+        if (newest.length > 0) {
+          setFlash(newest[0].id);
+          setTimeout(() => setFlash(null), 3000);
+        }
+      }
+      setEntries(loaded);
+    });
+    
+    return () => unsubscribe();
+  }, []);
+
+  async function clearAll() {
+    try {
+      const q = query(collection(db, "hackersdobem_ranking"));
+      const snapshot = await getDocs(q);
+      const deletePromises = snapshot.docs
+        .filter(document => document.data().module === "M04A04")
+        .map(document => deleteDoc(doc(db, "hackersdobem_ranking", document.id)));
+      await Promise.all(deletePromises);
+      setShowClear(false);
+    } catch {}
+  }
+
+  const displayed = filter === "top"
+    ? entries.slice(0, 10)
+    : filter === "recent"
+    ? [...entries].sort((a, b) => b.timestamp - a.timestamp).slice(0, 10)
+    : entries;
+
+  const stats = {
+    total: entries.length,
+    avg: entries.length ? Math.round(entries.reduce((a, b) => a + b.score, 0) / entries.length) : 0,
+    perfect: entries.filter(e => e.score === 100).length,
+    top: entries[0] || null,
+  };
+
+  return (
+    <div style={{
+      minHeight: "100vh",
+      background: "linear-gradient(160deg, #040812 0%, #080D1F 50%, #060B18 100%)",
+      color: "#fff",
+      fontFamily: "'DM Sans', sans-serif",
+      overflowY: "auto",
+      padding: "0 0 60px"
+    }}>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;900&family=Space+Mono:wght@400;700&display=swap');
+        * { box-sizing: border-box; }
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+        @keyframes slideIn {
+          from { opacity: 0; transform: translateY(-20px) scale(0.97); }
+          to   { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        @keyframes flashBorder {
+          0%,100% { box-shadow: 0 0 0 0 rgba(0,230,118,0); }
+          50%      { box-shadow: 0 0 0 6px rgba(0,230,118,0.4); }
+        }
+        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        @keyframes countUp {
+          from { opacity:0; transform: scale(0.7); }
+          to   { opacity:1; transform: scale(1); }
+        }
+      `}</style>
+
+      {/* ── HEADER ── */}
+      <div style={{
+        background: "linear-gradient(180deg, #0A1628 0%, transparent 100%)",
+        borderBottom: "1px solid rgba(255,255,255,0.06)",
+        padding: "28px 24px 24px",
+        position: "sticky", top: 0, zIndex: 10,
+        backdropFilter: "blur(20px)"
+      }}>
+        <div style={{ maxWidth: 900, margin: "0 auto" }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+              <div style={{
+                width: 44, height: 44, borderRadius: 12,
+                background: "linear-gradient(135deg, #0D47A1, #1565C0)",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                fontSize: 22, boxShadow: "0 4px 16px #0D47A180"
+              }}>🧬</div>
+              <div>
+                <div style={{ fontSize: 10, letterSpacing: 4, color: "#00E676", fontFamily: "'Space Mono', monospace" }}>
+                  HACKERS DO BEM · MÓDULO 04
+                </div>
+                <h1 style={{ margin: 0, fontSize: 20, fontWeight: 900, color: "#fff", lineHeight: 1.1 }}>
+                  Ranking ao Vivo — Biometria
+                </h1>
+              </div>
+            </div>
+
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 6, background: "rgba(0,230,118,0.1)", border: "1px solid rgba(0,230,118,0.25)", borderRadius: 20, padding: "5px 12px" }}>
+                <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#00E676", animation: "pulse 1.5s infinite" }} />
+                <span style={{ fontSize: 11, fontFamily: "'Space Mono', monospace", color: "#00E676", letterSpacing: 1 }}>AO VIVO</span>
+              </div>
+
+              {entries.length > 0 && (
+                <button onClick={() => setShowClear(true)} style={{
+                  background: "rgba(255,82,82,0.1)", border: "1px solid rgba(255,82,82,0.25)",
+                  borderRadius: 8, padding: "6px 12px", color: "#FF5252", fontSize: 12,
+                  cursor: "pointer", fontFamily: "'DM Sans', sans-serif"
+                }}>🗑 Limpar</button>
+              )}
+            </div>
+          </div>
+
+          <div style={{ marginTop: 10, fontSize: 12, color: "rgba(255,255,255,0.3)" }}>
+            Prof. Alexsander Farias · Aula 04: Autenticação por Biometria · 11/03/2026
+          </div>
+        </div>
+      </div>
+
+      <div style={{ maxWidth: 900, margin: "0 auto", padding: "24px 20px" }}>
+
+        {/* ── STATS CARDS ── */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 12, marginBottom: 28 }}>
+          {[
+            { label: "Alunos Finalizaram", value: stats.total, icon: "👥", color: "#40C4FF" },
+            { label: "Média da Turma", value: stats.total ? `${stats.avg} pts` : "—", icon: "📊", color: "#00E676" },
+            { label: "Notas Perfeitas", value: stats.perfect, icon: "💯", color: "#FFD700" },
+            { label: "Líder Atual", value: stats.top ? stats.top.name.split(" ")[0] : "—", icon: "🏆", color: "#FF6B9D" },
+          ].map(card => (
+            <div key={card.label} style={{
+              background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)",
+              borderRadius: 14, padding: "16px 18px",
+              display: "flex", alignItems: "center", gap: 12
+            }}>
+              <span style={{ fontSize: 28 }}>{card.icon}</span>
+              <div>
+                <div style={{ fontSize: 20, fontWeight: 900, color: card.color, fontFamily: "'Space Mono', monospace", animation: "countUp 0.5s ease" }}>
+                  {card.value}
+                </div>
+                <div style={{ fontSize: 11, color: "rgba(255,255,255,0.35)", marginTop: 2 }}>{card.label}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* ── PODIUM (top 3) ── */}
+        {entries.length >= 3 && (
+          <div style={{ marginBottom: 28 }}>
+            <div style={{ fontSize: 11, letterSpacing: 3, color: "rgba(255,255,255,0.3)", fontFamily: "'Space Mono', monospace", marginBottom: 16 }}>
+              TOP 3 — PÓDIO
+            </div>
+            <div style={{ display: "flex", alignItems: "flex-end", gap: 12, justifyContent: "center" }}>
+              {[1, 0, 2].map((rankIdx, i) => {
+                const e = entries[rankIdx];
+                if (!e) return null;
+                const lvl = getLevel(e.score);
+                const heights = [160, 200, 140];
+                const podiumColors = ["#C0C0C0", "#FFD700", "#CD7F32"];
+                const rank = rankIdx + 1;
+                return (
+                  <div key={e.id} style={{
+                    flex: 1, maxWidth: 200,
+                    display: "flex", flexDirection: "column", alignItems: "center", gap: 8
+                  }}>
+                    <div style={{
+                      width: rank === 1 ? 56 : 46, height: rank === 1 ? 56 : 46,
+                      borderRadius: "50%",
+                      background: `linear-gradient(135deg, ${lvl.color}44, ${lvl.color}22)`,
+                      border: `2px solid ${podiumColors[i]}`,
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                      fontSize: rank === 1 ? 24 : 20,
+                      boxShadow: `0 0 20px ${podiumColors[i]}40`
+                    }}>
+                      {rank === 1 ? "👑" : rank === 2 ? "🥈" : "🥉"}
+                    </div>
+
+                    <div style={{ textAlign: "center" }}>
+                      <div style={{ fontSize: 13, fontWeight: 700, color: "#fff" }}>
+                        {e.name.split(" ").slice(0, 2).join(" ")}
+                      </div>
+                      <div style={{ fontSize: 18, fontWeight: 900, color: podiumColors[i], fontFamily: "'Space Mono', monospace" }}>
+                        {e.score}pts
+                      </div>
+                      <div style={{ fontSize: 10, color: "rgba(255,255,255,0.35)" }}>{formatTime(e.duration)}</div>
+                    </div>
+
+                    <div style={{
+                      width: "100%", height: heights[i],
+                      background: `linear-gradient(180deg, ${podiumColors[i]}22, ${podiumColors[i]}08)`,
+                      border: `1px solid ${podiumColors[i]}33`,
+                      borderRadius: "10px 10px 0 0",
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                      fontSize: 28, fontWeight: 900, color: podiumColors[i],
+                      fontFamily: "'Space Mono', monospace"
+                    }}>
+                      {rank}°
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {/* ── FILTER TABS ── */}
+        <div style={{ display: "flex", gap: 8, marginBottom: 16, alignItems: "center" }}>
+          <div style={{ fontSize: 11, letterSpacing: 3, color: "rgba(255,255,255,0.3)", fontFamily: "'Space Mono', monospace", marginRight: 4 }}>
+            FILTRAR:
+          </div>
+          {[
+            { key: "all", label: "Todos" },
+            { key: "top", label: "Top 10" },
+            { key: "recent", label: "Recentes" },
+          ].map(f => (
+            <button key={f.key} onClick={() => setFilter(f.key)} style={{
+              padding: "6px 14px", borderRadius: 20,
+              border: `1px solid ${filter === f.key ? "#40C4FF" : "rgba(255,255,255,0.1)"}`,
+              background: filter === f.key ? "rgba(64,196,255,0.15)" : "transparent",
+              color: filter === f.key ? "#40C4FF" : "rgba(255,255,255,0.4)",
+              fontSize: 12, fontWeight: filter === f.key ? 700 : 400,
+              cursor: "pointer", fontFamily: "'DM Sans', sans-serif", transition: "all 0.2s"
+            }}>{f.label}</button>
+          ))}
+
+          <div style={{ marginLeft: "auto", fontSize: 12, color: "rgba(255,255,255,0.25)", fontFamily: "'Space Mono', monospace" }}>
+            {entries.length} {entries.length === 1 ? "aluno" : "alunos"}
+          </div>
+        </div>
+
+        {/* ── TABLE ── */}
+        {entries.length === 0 ? (
+          <div style={{
+            textAlign: "center", padding: "60px 20px",
+            background: "rgba(255,255,255,0.02)", borderRadius: 16,
+            border: "1px solid rgba(255,255,255,0.06)"
+          }}>
+            <div style={{ fontSize: 48, marginBottom: 16 }}>⏳</div>
+            <div style={{ fontSize: 16, fontWeight: 700, color: "rgba(255,255,255,0.4)", marginBottom: 8 }}>
+              Aguardando os primeiros alunos...
+            </div>
+            <div style={{ fontSize: 13, color: "rgba(255,255,255,0.2)" }}>
+              Conforme os alunos finalizarem a atividade, os resultados aparecerão aqui automaticamente.
+            </div>
+            <div style={{ marginTop: 20, display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
+              <div style={{ width: 16, height: 16, border: "2px solid #40C4FF", borderTopColor: "transparent", borderRadius: "50%", animation: "spin 1s linear infinite" }} />
+              <span style={{ fontSize: 12, color: "#40C4FF", fontFamily: "'Space Mono', monospace" }}>Monitorando em tempo real...</span>
+            </div>
+          </div>
+        ) : (
+          <div style={{ background: "rgba(255,255,255,0.02)", borderRadius: 16, border: "1px solid rgba(255,255,255,0.06)", overflow: "hidden" }}>
+            {/* Table header */}
+            <div style={{
+              display: "grid", gridTemplateColumns: "52px 1fr 100px 90px 90px 110px",
+              padding: "12px 20px", borderBottom: "1px solid rgba(255,255,255,0.06)",
+              background: "rgba(255,255,255,0.03)"
+            }}>
+              {["#", "ALUNO", "PONTUAÇÃO", "TEMPO", "NÍVEL", "ENVIADO"].map((h, i) => (
+                <div key={h} style={{
+                  fontSize: 10, letterSpacing: 2, color: "rgba(255,255,255,0.3)",
+                  fontFamily: "'Space Mono', monospace",
+                  textAlign: i >= 2 ? "center" : "left"
+                }}>{h}</div>
+              ))}
+            </div>
+
+            {/* Rows */}
+            {displayed.map((entry, idx) => {
+              const rank = entries.indexOf(entry) + 1;
+              const lvl = getLevel(entry.score);
+              const isNew = entry.id === flash;
+              const isTop3 = rank <= 3;
+              const medalColors = ["#FFD700", "#C0C0C0", "#CD7F32"];
+
+              return (
+                <div key={entry.id} style={{
+                  display: "grid", gridTemplateColumns: "52px 1fr 100px 90px 90px 110px",
+                  padding: "14px 20px",
+                  borderBottom: "1px solid rgba(255,255,255,0.04)",
+                  background: isNew ? "rgba(0,230,118,0.06)" : isTop3 ? "rgba(255,255,255,0.02)" : "transparent",
+                  animation: isNew ? "slideIn 0.5s ease, flashBorder 1.5s ease 2" : "slideIn 0.3s ease",
+                  transition: "background 0.3s",
+                  alignItems: "center",
+                  borderLeft: isNew ? "3px solid #00E676" : isTop3 ? `3px solid ${medalColors[rank - 1]}` : "3px solid transparent"
+                }}>
+                  {/* Rank */}
+                  <div style={{ fontSize: 18, textAlign: "center" }}>
+                    {rank <= 3 ? ["🥇", "🥈", "🥉"][rank - 1] : (
+                      <span style={{ fontSize: 14, fontWeight: 700, color: "rgba(255,255,255,0.3)", fontFamily: "'Space Mono', monospace" }}>
+                        {rank}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Name */}
+                  <div>
+                    <div style={{ fontSize: 15, fontWeight: 700, color: isNew ? "#69F0AE" : "#E8EAF6", display: "flex", alignItems: "center", gap: 6 }}>
+                      {entry.name}
+                      {isNew && <span style={{ fontSize: 10, background: "#00E676", color: "#000", padding: "2px 6px", borderRadius: 10, fontFamily: "'Space Mono', monospace", letterSpacing: 1 }}>NOVO!</span>}
+                    </div>
+                    <div style={{ fontSize: 11, color: "rgba(255,255,255,0.25)", marginTop: 2 }}>
+                      {entry.stageScores && entry.stageScores.map((s, i) => `E${i + 1}:${s}`).join("  ")}
+                    </div>
+                  </div>
+
+                  {/* Score */}
+                  <div style={{ textAlign: "center" }}>
+                    <div style={{
+                      fontSize: 20, fontWeight: 900,
+                      color: entry.score >= 90 ? "#FFD700" : entry.score >= 75 ? "#00E676" : entry.score >= 60 ? "#40C4FF" : entry.score >= 40 ? "#FFB300" : "#FF5252",
+                      fontFamily: "'Space Mono', monospace"
+                    }}>{entry.score}</div>
+                    <div style={{ fontSize: 10, color: "rgba(255,255,255,0.25)" }}>/ 100</div>
+                  </div>
+
+                  {/* Time */}
+                  <div style={{ textAlign: "center", fontSize: 13, color: "rgba(255,255,255,0.5)", fontFamily: "'Space Mono', monospace" }}>
+                    {formatTime(entry.duration)}
+                  </div>
+
+                  {/* Level badge */}
+                  <div style={{ textAlign: "center" }}>
+                    <div style={{
+                      display: "inline-block",
+                      background: `${lvl.color}18`,
+                      border: `1px solid ${lvl.color}44`,
+                      borderRadius: 20, padding: "3px 10px",
+                      fontSize: 10, fontWeight: 700,
+                      color: lvl.color, fontFamily: "'Space Mono', monospace",
+                      letterSpacing: 0.5
+                    }}>
+                      {lvl.icon} {lvl.label}
+                    </div>
+                  </div>
+
+                  {/* Time ago */}
+                  <div style={{ textAlign: "center", fontSize: 11, color: "rgba(255,255,255,0.25)" }}>
+                    {timeAgo(entry.timestamp)}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
+
+        {/* ── DISTRIBUTION BAR ── */}
+        {entries.length > 0 && (
+          <div style={{ marginTop: 28, background: "rgba(255,255,255,0.02)", borderRadius: 14, border: "1px solid rgba(255,255,255,0.06)", padding: 20 }}>
+            <div style={{ fontSize: 11, letterSpacing: 3, color: "rgba(255,255,255,0.3)", fontFamily: "'Space Mono', monospace", marginBottom: 16 }}>
+              DISTRIBUIÇÃO DE NÍVEIS
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+              {LEVEL_CONFIG.map(lvl => {
+                const count = entries.filter(e => getLevel(e.score).label === lvl.label).length;
+                const pct = entries.length ? (count / entries.length) * 100 : 0;
+                return (
+                  <div key={lvl.label} style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                    <div style={{ width: 90, fontSize: 11, color: lvl.color, fontFamily: "'Space Mono', monospace", textAlign: "right", flexShrink: 0 }}>
+                      {lvl.icon} {lvl.label}
+                    </div>
+                    <div style={{ flex: 1, height: 8, background: "rgba(255,255,255,0.06)", borderRadius: 4, overflow: "hidden" }}>
+                      <div style={{
+                        height: "100%", width: `${pct}%`, borderRadius: 4,
+                        background: lvl.color, transition: "width 0.8s ease",
+                        boxShadow: `0 0 8px ${lvl.color}60`
+                      }} />
+                    </div>
+                    <div style={{ width: 30, fontSize: 12, fontWeight: 700, color: "rgba(255,255,255,0.5)", fontFamily: "'Space Mono', monospace" }}>
+                      {count}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {/* ── FOOTER ── */}
+        <div style={{ textAlign: "center", marginTop: 32, fontSize: 11, color: "rgba(255,255,255,0.15)", fontFamily: "'Space Mono', monospace" }}>
+          Atualização automática em tempo real · Prof. Alexsander Farias · Hackers do Bem
+        </div>
+      </div>
+
+      {/* ── CLEAR CONFIRM MODAL ── */}
+      {showClear && (
+        <div style={{
+          position: "fixed", inset: 0, background: "rgba(0,0,0,0.8)",
+          display: "flex", alignItems: "center", justifyContent: "center", zIndex: 100
+        }}>
+          <div style={{
+            background: "#0D1330", border: "1px solid rgba(255,82,82,0.3)",
+            borderRadius: 16, padding: 28, maxWidth: 360, textAlign: "center"
+          }}>
+            <div style={{ fontSize: 40, marginBottom: 12 }}>⚠️</div>
+            <h3 style={{ margin: "0 0 8px", color: "#fff", fontSize: 18 }}>Limpar ranking?</h3>
+            <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 14, margin: "0 0 24px" }}>
+              Todos os resultados da Aula 04 serão apagados permanentemente.
+            </p>
+            <div style={{ display: "flex", gap: 10 }}>
+              <button onClick={() => setShowClear(false)} style={{
+                flex: 1, padding: 12, borderRadius: 10, border: "1px solid rgba(255,255,255,0.15)",
+                background: "transparent", color: "#fff", fontSize: 14, cursor: "pointer"
+              }}>Cancelar</button>
+              <button onClick={clearAll} style={{
+                flex: 1, padding: 12, borderRadius: 10, border: "none",
+                background: "#FF5252", color: "#fff", fontSize: 14, fontWeight: 700, cursor: "pointer"
+              }}>Confirmar</button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}

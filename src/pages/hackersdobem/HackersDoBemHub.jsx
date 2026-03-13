@@ -14,6 +14,7 @@ export default function HackersDoBemHub() {
       module: 'Módulo 05 · Aula 01',
       description: 'Identifique contas e classifique as fases de onboarding e offboarding em um ambiente simulado.',
       path: '/hackersdobem/atividade',
+      rankingPath: '/hackersdobem/ranking',
       icon: <Shield size={24} color="#4ade80" />, 
       buttonText: 'Iniciar Missão',
       status: 'active',
@@ -26,6 +27,7 @@ export default function HackersDoBemHub() {
       module: 'Módulo 04 · Aula 03',
       description: 'Identifique as tecnologias ideais de autenticação e seus fatores.',
       path: '/hackersdobem/atividade-m4a03',
+      rankingPath: '/hackersdobem/ranking-m4a03',
       icon: <Shield size={24} color="#3b82f6" />,
       buttonText: 'Iniciar Missão',
       status: 'active',
@@ -34,6 +36,19 @@ export default function HackersDoBemHub() {
     },
     {
       id: 3,
+      title: 'Autenticação por Biometria',
+      module: 'Módulo 04 · Aula 04',
+      description: 'Explore reconhecimento facial, impressão digital, biometria comportamental e métricas como FRR, FAR e CER.',
+      path: '/hackersdobem/atividade-m4a04',
+      rankingPath: '/hackersdobem/ranking-m4a04',
+      icon: <Shield size={24} color="#06b6d4" />,
+      buttonText: 'Iniciar Missão',
+      status: 'active',
+      accentColor: '#06b6d4',
+      badges: ['20 min', '100 pts']
+    },
+    {
+      id: 4,
       title: 'Desafio Web Application',
       module: 'Módulo 06',
       description: 'Uma nova simulação de vulnerabilidades web para você explorar e resolver.',
@@ -67,7 +82,7 @@ export default function HackersDoBemHub() {
 
       <div style={{ maxWidth: '900px', margin: '0 auto', position: 'relative', zIndex: 10 }}>
         {/* Header Section */}
-        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+        <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
           <div style={{
             display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: '1rem',
             backgroundColor: 'rgba(34, 197, 94, 0.1)', borderRadius: '16px', marginBottom: '1.5rem',
@@ -85,10 +100,43 @@ export default function HackersDoBemHub() {
             }}>Hackers do Bem</span>
           </h1>
           <p style={{
-            fontSize: '1.125rem', color: '#94a3b8', maxWidth: '600px', margin: '0 auto', lineHeight: '1.6'
+            fontSize: '1.125rem', color: '#94a3b8', maxWidth: '600px', margin: '0 auto 2rem', lineHeight: '1.6'
           }}>
             Seja bem-vindo ao hub de atividades interativas. Complete as missões propostas em sala de aula, teste seus conhecimentos e dispute pelas melhores colocações no ranking oficial.
           </p>
+
+          {/* Share URL Banner */}
+          <div style={{
+            display: 'inline-flex', alignItems: 'center', gap: '0', maxWidth: '100%',
+            background: 'rgba(15, 23, 42, 0.8)', border: '1px solid rgba(74, 222, 128, 0.3)',
+            borderRadius: '12px', overflow: 'hidden', boxShadow: '0 0 20px rgba(74, 222, 128, 0.08)'
+          }}>
+            <div style={{
+              padding: '10px 16px', fontSize: '0.75rem', letterSpacing: '0.08em',
+              color: '#4ade80', fontFamily: 'monospace', fontWeight: '700',
+              borderRight: '1px solid rgba(74, 222, 128, 0.2)', whiteSpace: 'nowrap',
+              background: 'rgba(74, 222, 128, 0.06)'
+            }}>🔗 LINK DA TURMA</div>
+            <div style={{
+              padding: '10px 16px', fontSize: '0.8rem', color: '#94a3b8',
+              fontFamily: 'monospace', letterSpacing: '0.02em', whiteSpace: 'nowrap',
+              overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '300px'
+            }}>alexsander-farias.vercel.app/hackersdobem</div>
+            <button
+              onClick={() => {
+                navigator.clipboard.writeText('https://alexsander-farias.vercel.app/hackersdobem');
+                const btn = document.getElementById('copy-btn-hub');
+                if (btn) { btn.textContent = '✓ Copiado!'; btn.style.color = '#4ade80'; setTimeout(() => { btn.textContent = 'Copiar'; btn.style.color = '#94a3b8'; }, 2000); }
+              }}
+              id="copy-btn-hub"
+              style={{
+                padding: '10px 16px', fontSize: '0.75rem', fontWeight: '700',
+                background: 'rgba(74, 222, 128, 0.1)', border: 'none', borderLeft: '1px solid rgba(74, 222, 128, 0.2)',
+                color: '#94a3b8', cursor: 'pointer', transition: 'all 0.2s', whiteSpace: 'nowrap',
+                fontFamily: 'system-ui, sans-serif'
+              }}
+            >Copiar</button>
+          </div>
         </div>
 
         {/* Missions Grid */}
@@ -143,16 +191,34 @@ export default function HackersDoBemHub() {
               {/* Action Button */}
               <div style={{ marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
                 {mission.status === 'active' ? (
-                  <Link to={mission.path} className="hub-btn" style={{
-                    display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', boxSizing: 'border-box',
-                    padding: '0.875rem 1.25rem', borderRadius: '12px', backgroundColor: 'rgba(15, 23, 42, 0.8)',
-                    color: '#fff', fontWeight: '600', fontSize: '0.875rem', textDecoration: 'none',
-                    border: '1px solid rgba(255,255,255,0.1)', transition: 'all 0.2s',
-                    '--hover-bg': mission.accentColor
-                  }}>
-                    <span>{mission.buttonText}</span>
-                    <ChevronRight size={18} className="btn-icon" />
-                  </Link>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                    <Link to={mission.path} className="hub-btn" style={{
+                      display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', boxSizing: 'border-box',
+                      padding: '0.875rem 1.25rem', borderRadius: '12px', backgroundColor: 'rgba(15, 23, 42, 0.8)',
+                      color: '#fff', fontWeight: '600', fontSize: '0.875rem', textDecoration: 'none',
+                      border: '1px solid rgba(255,255,255,0.1)', transition: 'all 0.2s',
+                      '--hover-bg': mission.accentColor
+                    }}>
+                      <span>{mission.buttonText}</span>
+                      <ChevronRight size={18} className="btn-icon" />
+                    </Link>
+                    {mission.rankingPath && (
+                      <Link to={mission.rankingPath} style={{
+                        display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px',
+                        width: '100%', boxSizing: 'border-box',
+                        padding: '0.625rem 1.25rem', borderRadius: '10px',
+                        backgroundColor: `${mission.accentColor}18`,
+                        color: mission.accentColor, fontWeight: '600', fontSize: '0.8rem', textDecoration: 'none',
+                        border: `1px solid ${mission.accentColor}40`, transition: 'all 0.2s',
+                      }}
+                        onMouseEnter={e => { e.currentTarget.style.backgroundColor = `${mission.accentColor}30`; }}
+                        onMouseLeave={e => { e.currentTarget.style.backgroundColor = `${mission.accentColor}18`; }}
+                      >
+                        <Trophy size={14} />
+                        Ver Ranking ao Vivo
+                      </Link>
+                    )}
+                  </div>
                 ) : (
                   <button disabled style={{
                     display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', boxSizing: 'border-box',

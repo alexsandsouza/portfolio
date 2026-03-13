@@ -1,6 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import { db } from "../../firebase";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 // ─── DATA ────────────────────────────────────────────────────────────────────
 
@@ -683,7 +681,7 @@ function FinalResult({ name, scores }) {
   );
 }
 
-export default function AtividadeHackersDoBemM4A03() {
+export default function App() {
   const [screen, setScreen] = useState("welcome");
   const [studentName, setStudentName] = useState("");
   const [stageIdx, setStageIdx] = useState(0);
@@ -702,19 +700,10 @@ export default function AtividadeHackersDoBemM4A03() {
   async function saveToLeaderboard(name, allScores, duration) {
     try {
       const total = allScores.reduce((a, b) => a + b, 0);
-      const entry = {
-        name,
-        score: total,
-        stageScores: allScores,
-        duration,
-        timestamp: Date.now(),
-        createdAt: serverTimestamp(),
-        module: "M04A03"
-      };
-      await addDoc(collection(db, "hackersdobem_ranking"), entry);
-    } catch (e) {
-      console.warn("Não foi possível salvar no ranking:", e);
-    }
+      const id = `hdb_m04a03:${Date.now()}_${Math.random().toString(36).slice(2, 7)}`;
+      const entry = { id, name, score: total, stageScores: allScores, duration, timestamp: Date.now(), module: "M04A03" };
+      await window.storage.set(id, JSON.stringify(entry), true);
+    } catch (e) { console.warn("Não foi possível salvar no ranking:", e); }
   }
 
   function completeStage(pts) {
@@ -771,9 +760,9 @@ export default function AtividadeHackersDoBemM4A03() {
             <p style={{ margin: 0, fontSize: 14, color: "rgba(255,255,255,0.6)" }}>{stage.subtitle}</p>
           </div>
 
-          {(stage.type === "select" || stage.type === "match") && <SelectStage key={stageIdx} stage={stage} onComplete={completeStage} />}
-          {stage.type === "risk" && <RiskStage key={stageIdx} stage={stage} onComplete={completeStage} />}
-          {stage.type === "boss" && <BossStage key={stageIdx} stage={stage} onComplete={completeStage} />}
+          {(stage.type === "select" || stage.type === "match") && <SelectStage stage={stage} onComplete={completeStage} />}
+          {stage.type === "risk" && <RiskStage stage={stage} onComplete={completeStage} />}
+          {stage.type === "boss" && <BossStage stage={stage} onComplete={completeStage} />}
         </div>
       )}
 

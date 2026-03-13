@@ -894,11 +894,11 @@ export default function AtividadeHackersDoBem() {
           </div>
 
           {/* Stage content */}
-          {stage.type === "select" && <SelectStage stage={stage} onComplete={completeStage} />}
-          {stage.type === "match" && <SelectStage stage={stage} onComplete={completeStage} />}
-          {stage.type === "risk" && <RiskStage stage={stage} onComplete={completeStage} />}
-          {stage.type === "phase" && <PhaseStage stage={stage} onComplete={completeStage} />}
-          {stage.type === "boss" && <BossStage stage={stage} onComplete={completeStage} />}
+          {stage.type === "select" && <SelectStage key={stageIdx} stage={stage} onComplete={completeStage} />}
+          {stage.type === "match" && <SelectStage key={stageIdx} stage={stage} onComplete={completeStage} />}
+          {stage.type === "risk" && <RiskStage key={stageIdx} stage={stage} onComplete={completeStage} />}
+          {stage.type === "phase" && <PhaseStage key={stageIdx} stage={stage} onComplete={completeStage} />}
+          {stage.type === "boss" && <BossStage key={stageIdx} stage={stage} onComplete={completeStage} />}
         </div>
       )}
 

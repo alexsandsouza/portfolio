@@ -7,57 +7,63 @@ import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 const STAGES = [
   {
     id: 1,
-    emoji: "🔐",
-    title: "Tecnologias de Autenticação",
-    subtitle: "Identifique a tecnologia correta para cada cenário",
-    color: "#1A237E",
-    accent: "#283593",
+    emoji: "🧬",
+    title: "Fundamentos da Biometria",
+    subtitle: "Identifique os princípios corretos da autenticação biométrica",
+    color: "#0D47A1",
+    accent: "#1565C0",
     points: 20,
     time: 240,
     type: "select",
     questions: [
       {
         id: "q1_1", pts: 4,
-        text: "Maria usa um cartão com chip que exige senha para acessar o sistema do banco. O microprocessador valida internamente e gera um código único.",
-        options: ["Token USB", "Smart-Card", "TOTP", "Código Estático", "IEEE 802.1X"],
-        answer: "Smart-Card",
-        feedback: "O Smart-Card combina ownership + knowledge factor: o cartão físico (algo que possui) + a senha (algo que sabe), gerando um código único de autenticação."
+        text: "Qual princípio da biometria garante que as características físicas ou comportamentais são ÚNICAS para cada indivíduo?",
+        options: ["Universalidade", "Permanência", "Singularidade", "Coleta não invasiva", "Throughput"],
+        answer: "Singularidade",
+        feedback: "A Singularidade é o princípio que garante que as características biométricas são únicas para cada indivíduo — nenhuma pessoa possui impressão digital ou íris idênticas a de outra."
       },
       {
         id: "q1_2", pts: 4,
-        text: "O servidor da empresa armazena e distribui chaves criptográficas usadas para cifrar dados sensíveis. O dispositivo responsável é um HSM.",
-        options: ["Smart-Card", "RADIUS", "Dispositivo de Gerenciamento de Chaves", "Token USB", "IEEE 802.1X"],
-        answer: "Dispositivo de Gerenciamento de Chaves",
-        feedback: "HSMs (Hardware Security Modules) são exemplos de Dispositivos de Gerenciamento de Chaves — responsáveis por gerar, armazenar e distribuir chaves criptográficas."
+        text: "O princípio que indica que as características biométricas SEMPRE estão presentes em todos os seres humanos é chamado de:",
+        options: ["Singularidade", "Permanência", "Universalidade", "Coleta não invasiva", "Scanning"],
+        answer: "Universalidade",
+        feedback: "Universalidade significa que todos os seres humanos possuem as características biométricas utilizadas pelo sistema — como rosto, voz, impressão digital."
       },
       {
         id: "q1_3", pts: 4,
-        text: "Ao conectar o notebook à rede corporativa via cabo, o switch exige autenticação antes de liberar o acesso à rede.",
-        options: ["RADIUS", "TOTP", "IEEE 802.1X", "Smart-Card", "Código Estático"],
-        answer: "IEEE 802.1X",
-        feedback: "O IEEE 802.1X é o protocolo de controle de acesso à rede — eficaz em redes com fio e sem fio, amplamente usado em ambientes corporativos."
+        text: "A autenticação biométrica transforma características do corpo humano em representações matemáticas para comparação. Qual processo realiza essa transformação?",
+        options: ["Tokenização", "Scanning", "Hashing HMAC", "Criptografia TOTP", "Certificação Digital"],
+        answer: "Scanning",
+        feedback: "O processo de Scanning captura e digitaliza as características biométricas, convertendo-as em representações matemáticas que podem ser comparadas de forma precisa para autenticação."
       },
       {
         id: "q1_4", pts: 4,
-        text: "Um aplicativo gera um código de 6 dígitos que muda a cada 30 segundos, baseado no horário atual e numa chave secreta compartilhada.",
-        options: ["HOTP", "Código Estático", "TOTP", "Smart-Card", "Token USB"],
-        answer: "TOTP",
-        feedback: "TOTP (Time-based One-Time Password) gera senhas únicas com base no tempo atual — exige sincronia temporal entre dispositivo e servidor."
+        text: "Qual característica biométrica é classificada como física E é citada como a mais amplamente implementada?",
+        options: ["Assinatura dinâmica", "Padrão de digitação", "Impressão digital", "Comportamento com mouse", "Voz"],
+        answer: "Impressão digital",
+        feedback: "A impressão digital é o método biométrico físico mais amplamente implementado — relativamente barato, não intrusivo e de processo simples, apesar de poder ser afetado por umidade ou sujeira."
       },
       {
         id: "q1_5", pts: 4,
-        text: "Carlos usa um código PIN fixo para entrar no datacenter. Esse código não muda ao longo do tempo.",
-        options: ["HOTP", "TOTP", "Código Estático", "Smart-Card", "RADIUS"],
-        answer: "Código Estático",
-        feedback: "Códigos Estáticos são senhas ou PINs que permanecem constantes — práticos, mas com maior risco de comprometimento por reutilização."
+        text: "Qual é a diferença fundamental entre biometria FÍSICA e biometria COMPORTAMENTAL?",
+        options: [
+          "Biometria física usa câmeras; comportamental usa sensores",
+          "Biometria física mede características do corpo; comportamental mede o que o usuário FAZ",
+          "Biometria física é mais cara; comportamental é gratuita",
+          "Biometria física requer senha adicional; comportamental não",
+          "Biometria física é para acesso; comportamental é para logout"
+        ],
+        answer: "Biometria física mede características do corpo; comportamental mede o que o usuário FAZ",
+        feedback: "A biometria física utiliza características do corpo (impressão digital, rosto, íris), enquanto a biometria comportamental analisa padrões e ações do usuário (forma de digitar, assinar, usar o mouse)."
       },
     ]
   },
   {
     id: 2,
-    emoji: "📡",
-    title: "Protocolos e Componentes",
-    subtitle: "Associe cada descrição ao protocolo ou componente correto",
+    emoji: "👁️",
+    title: "Reconhecimento Facial",
+    subtitle: "Associe cada descrição ao conceito correto de reconhecimento facial",
     color: "#4A148C",
     accent: "#6A1B9A",
     points: 20,
@@ -66,38 +72,97 @@ const STAGES = [
     questions: [
       {
         id: "q2_1", pts: 5,
-        text: "Protocolo que gerencia autenticação, autorização e contabilidade (AAA) operando em modelo cliente-servidor.",
-        options: ["IEEE 802.1X", "RADIUS", "TOTP", "TPM", "EAP"],
-        answer: "RADIUS",
-        feedback: "RADIUS (Remote Authentication Dial-In User Service) gerencia o tripé AAA: autentica usuários, autoriza recursos e registra contabilidade de acesso."
+        text: "No reconhecimento facial, qual etapa converte os traços faciais capturados em dados matemáticos que formam o modelo biométrico?",
+        options: ["Scanning", "Extração de características", "Armazenamento seguro", "Comparação e autenticação", "Atualização contínua"],
+        answer: "Extração de características",
+        feedback: "A Extração de características é a etapa em que algoritmos de reconhecimento facial retiram traços-chave da imagem digitalizada e os convertem em dados matemáticos que formam o modelo biométrico."
       },
       {
         id: "q2_2", pts: 5,
-        text: "No IEEE 802.1X, qual é o papel do dispositivo que busca acesso à rede (ex: notebook do usuário)?",
-        options: ["Autenticador", "Servidor RADIUS", "Suplicante", "TPM", "HSM"],
-        answer: "Suplicante",
-        feedback: "O Suplicante (Supplicant) é o dispositivo que solicita acesso. O Autenticador é o switch/AP e o Servidor de Autenticação é geralmente o RADIUS."
+        text: "O reconhecimento facial registra indicadores como tamanho e formato do rosto, distância entre olhos e largura do nariz. Qual ponto de atenção é crítico na captura?",
+        options: [
+          "O usuário deve usar óculos escuros",
+          "Deve ser realizado sob condições ideais de iluminação",
+          "O usuário deve estar em movimento",
+          "A câmera deve ser infravermelha obrigatoriamente",
+          "A captura deve ocorrer apenas à noite"
+        ],
+        answer: "Deve ser realizado sob condições ideais de iluminação",
+        feedback: "O reconhecimento facial requer condições ideais de iluminação para capturar e extrair características com precisão. Iluminação inadequada prejudica a qualidade da imagem e pode gerar falhas de autenticação."
       },
       {
         id: "q2_3", pts: 5,
-        text: "Algoritmo baseado em HMAC que gera senhas únicas usando uma chave secreta combinada com um CONTADOR.",
-        options: ["TOTP", "HOTP", "RADIUS", "IEEE 802.1X", "TPM"],
-        answer: "HOTP",
-        feedback: "HOTP (HMAC-based OTP) usa um contador incremental. Diferente do TOTP, os códigos são válidos até serem usados — sem dependência de sincronização de tempo."
+        text: "Alguns sistemas de reconhecimento facial suportam 'aprendizado contínuo'. O que isso significa?",
+        options: [
+          "O sistema aprende novas senhas automaticamente",
+          "O sistema se ajusta às mudanças na aparência do usuário ao longo do tempo",
+          "O sistema aprende com os hackers para resistir a ataques",
+          "O sistema memoriza os rostos dos visitantes sem autorização",
+          "O sistema bloqueia novos usuários automaticamente"
+        ],
+        answer: "O sistema se ajusta às mudanças na aparência do usuário ao longo do tempo",
+        feedback: "A atualização contínua permite que sistemas de reconhecimento facial se adaptem às mudanças naturais na aparência de uma pessoa (envelhecimento, mudança de estilo), mantendo a autenticação eficaz."
       },
       {
         id: "q2_4", pts: 5,
-        text: "Qual componente do IEEE 802.1X é responsável por definir políticas de autenticação e autorização para os suplicantes?",
-        options: ["Suplicante", "Autenticador (Switch/AP)", "Servidor de Autenticação (RADIUS)", "HSM", "Token USB"],
-        answer: "Servidor de Autenticação (RADIUS)",
-        feedback: "O Servidor de Autenticação (normalmente RADIUS) define as políticas, processa as credenciais e informa ao Autenticador se o acesso deve ser liberado."
+        text: "Qual é a limitação mais crítica do reconhecimento facial em termos de segurança e ética?",
+        options: [
+          "Alto consumo de energia do dispositivo",
+          "Compatibilidade apenas com Android",
+          "Questões legais de privacidade e altas taxas de falsa aceitação/rejeição",
+          "Necessidade de conexão à internet constante",
+          "Impossibilidade de uso em smartphones"
+        ],
+        answer: "Questões legais de privacidade e altas taxas de falsa aceitação/rejeição",
+        feedback: "O reconhecimento facial apresenta desafios éticos e legais de privacidade, além de possuir altas taxas de falsa aceitação, falsa rejeição e vulnerabilidade à falsificação — limitações importantes a considerar na implementação."
       },
     ]
   },
   {
     id: 3,
+    emoji: "📊",
+    title: "Métricas Biométricas",
+    subtitle: "Identifique a métrica correta para cada situação",
+    color: "#1B5E20",
+    accent: "#2E7D32",
+    points: 20,
+    time: 240,
+    type: "select",
+    questions: [
+      {
+        id: "q3_1", pts: 5,
+        text: "João está cadastrado no sistema biométrico, mas o sistema NÃO o reconhece e nega seu acesso. Qual métrica está relacionada a este caso?",
+        options: ["FAR (False Acceptance Rate)", "CER (Equal Error Rate)", "FRR (False Rejection Rate)", "FER (Failure Enroll Rate)", "Throughput Speed"],
+        answer: "FRR (False Rejection Rate)",
+        feedback: "A FRR (Taxa de Falsos Rejeitos) mede a frequência com que usuários legítimos e cadastrados são incorretamente negados pelo sistema — exatamente o caso de João."
+      },
+      {
+        id: "q3_2", pts: 5,
+        text: "Um impostor tenta acessar o sistema biométrico usando características falsas e o sistema ACEITA a entrada. Qual métrica registra esse tipo de falha?",
+        options: ["FRR (False Rejection Rate)", "FER (Failure Enroll Rate)", "CER (Equal Error Rate)", "FAR (False Acceptance Rate)", "Throughput Speed"],
+        answer: "FAR (False Acceptance Rate)",
+        feedback: "A FAR (Taxa de Falsos Aceitos) mede a frequência com que impostores são aceitos incorretamente pelo sistema — um dos erros mais críticos em segurança biométrica."
+      },
+      {
+        id: "q3_3", pts: 5,
+        text: "O gestor de segurança precisa de uma métrica que mostre o PONTO DE EQUILÍBRIO entre os erros de falsa aceitação e falsa rejeição. Qual métrica usar?",
+        options: ["FAR", "FRR", "FER", "CER (Equal Error Rate)", "Throughput Speed"],
+        answer: "CER (Equal Error Rate)",
+        feedback: "A CER (Taxa de Erro de Equalização) indica o ponto onde FAR e FRR são iguais — quanto menor a CER, mais preciso e eficaz é o sistema biométrico. É a principal métrica de comparação entre sistemas."
+      },
+      {
+        id: "q3_4", pts: 5,
+        text: "Durante a implantação do sistema, alguns funcionários não conseguem ter suas características biométricas CADASTRADAS com sucesso. Qual métrica avalia isso?",
+        options: ["FAR", "FRR", "CER", "FER (Failure Enroll Rate)", "Throughput Speed"],
+        answer: "FER (Failure Enroll Rate)",
+        feedback: "A FER (Taxa de Erro de Falha no Cadastro) mede a porcentagem de usuários que não conseguem ter suas características biométricas cadastradas com sucesso — importante avaliar na implantação do sistema."
+      },
+    ]
+  },
+  {
+    id: 4,
     emoji: "⚠️",
-    title: "Analisando Cenários de Segurança",
+    title: "Análise de Cenários Biométricos",
     subtitle: "Cada situação representa um RISCO ou uma PRÁTICA SEGURA?",
     color: "#B71C1C",
     accent: "#C62828",
@@ -106,161 +171,111 @@ const STAGES = [
     type: "risk",
     questions: [
       {
-        id: "q3_1", pts: 4,
-        text: "O token USB de autenticação foi perdido por um funcionário, mas nenhuma medida foi tomada pois ele também precisa de senha.",
-        answer: "RISCO",
-        feedback: "RISCO! Um dispositivo comprometido (perdido/roubado) expõe a autenticação. A proteção do token deve ser imediata — revogar e emitir novo token é obrigatório."
-      },
-      {
-        id: "q3_2", pts: 4,
-        text: "A empresa implementou 2FA combinando senha + código TOTP gerado pelo Google Authenticator para acesso ao sistema.",
-        answer: "SEGURO",
-        feedback: "PRÁTICA SEGURA! A Verificação em Duas Etapas combina algo que o usuário sabe (senha) com algo que possui (TOTP), mitigando riscos de senhas comprometidas."
-      },
-      {
-        id: "q3_3", pts: 4,
-        text: "O servidor RADIUS não foi atualizado há 2 anos e não possui backup das configurações de autenticação.",
-        answer: "RISCO",
-        feedback: "RISCO! Dispositivos desatualizados acumulam vulnerabilidades. A ausência de backup e monitoramento viola as considerações básicas de segurança em gerenciamento de chaves."
-      },
-      {
-        id: "q3_4", pts: 4,
-        text: "Os certificados digitais da empresa são criados por uma HSM e armazenados com controle de acesso físico rigoroso.",
-        answer: "SEGURO",
-        feedback: "PRÁTICA SEGURA! HSMs com proteção física evitam acesso não autorizado às chaves criptográficas — implementação ideal para criação de certificados digitais."
-      },
-      {
-        id: "q3_5", pts: 4,
-        text: "O sistema usa apenas código PIN fixo (código estático) sem nenhuma camada adicional de autenticação para acesso remoto.",
-        answer: "RISCO",
-        feedback: "RISCO! Códigos estáticos sozinhos são vulneráveis a reutilização e ataques de força bruta. Devem ser combinados com outros fatores (2FA) especialmente em acesso remoto."
-      },
-    ]
-  },
-  {
-    id: 4,
-    emoji: "🔄",
-    title: "HOTP vs. TOTP — Classificação",
-    subtitle: "Classifique cada característica como HOTP, TOTP ou AMBOS",
-    color: "#004D40",
-    accent: "#00695C",
-    points: 20,
-    time: 240,
-    type: "select",
-    questions: [
-      {
         id: "q4_1", pts: 4,
-        text: "O fator de geração do código é baseado no TEMPO ATUAL, não em um contador.",
-        options: ["Apenas HOTP", "Apenas TOTP", "Ambos (HOTP e TOTP)", "Nenhum dos dois", "RADIUS"],
-        answer: "Apenas TOTP",
-        feedback: "TOTP usa o tempo como fator variável — gera um código novo a cada intervalo (ex: 30 segundos). O HOTP usa um contador incremental."
+        text: "Uma empresa usa apenas o reconhecimento facial sem nenhuma camada adicional de autenticação para acesso a dados altamente sensíveis.",
+        answer: "RISCO",
+        feedback: "RISCO! O reconhecimento facial sozinho pode sofrer falsificação e possui taxas de erro. Para dados sensíveis, deve-se combinar biometria com outros fatores (autenticação multifatorial)."
       },
       {
         id: "q4_2", pts: 4,
-        text: "Os códigos gerados são válidos SOMENTE ATÉ SEREM USADOS (não expiram por tempo).",
-        options: ["Apenas HOTP", "Apenas TOTP", "Ambos (HOTP e TOTP)", "Nenhum dos dois", "Smart-Card"],
-        answer: "Apenas HOTP",
-        feedback: "No HOTP, os códigos são válidos até serem utilizados. No TOTP, eles expiram após um curto período de tempo, mesmo sem uso."
+        text: "Os modelos biométricos dos funcionários são armazenados usando criptografia em um servidor seguro com controle de acesso físico rigoroso.",
+        answer: "SEGURO",
+        feedback: "PRÁTICA SEGURA! O armazenamento criptografado das informações biométricas com controle de acesso físico protege dados sensíveis e irreversíveis — uma vez comprometidos, não é possível alterar características biométricas."
       },
       {
         id: "q4_3", pts: 4,
-        text: "Exige SINCRONIA TEMPORAL entre o dispositivo do usuário e o servidor de autenticação.",
-        options: ["Apenas HOTP", "Apenas TOTP", "Ambos (HOTP e TOTP)", "Nenhum dos dois", "IEEE 802.1X"],
-        answer: "Apenas TOTP",
-        feedback: "O TOTP depende do horário sincronizado entre cliente e servidor. O HOTP não precisa de sincronia temporal — usa um contador compartilhado."
+        text: "Um sistema biométrico comportamental de uma empresa nunca foi atualizado e não monitora desvios no padrão de comportamento dos usuários.",
+        answer: "RISCO",
+        feedback: "RISCO! Sistemas biométricos comportamentais precisam de monitoramento contínuo para detectar desvios e comportamentos anormais. Sem atualização, o sistema não consegue identificar acessos suspeitos."
       },
       {
         id: "q4_4", pts: 4,
-        text: "Utiliza uma CHAVE SECRETA compartilhada entre o servidor e o dispositivo do usuário para gerar os códigos.",
-        options: ["Apenas HOTP", "Apenas TOTP", "Ambos (HOTP e TOTP)", "Nenhum dos dois", "Código Estático"],
-        answer: "Ambos (HOTP e TOTP)",
-        feedback: "Tanto HOTP quanto TOTP compartilham uma chave secreta entre servidor e cliente — a diferença é o fator variável: contador (HOTP) ou tempo (TOTP)."
+        text: "A empresa implementa biometria comportamental (padrão de digitação) como camada adicional de autenticação contínua em sistemas críticos.",
+        answer: "SEGURO",
+        feedback: "PRÁTICA SEGURA! A biometria comportamental como autenticação contínua é uma excelente camada adicional — monitora o comportamento durante toda a sessão, detectando acessos não autorizados mesmo após login inicial."
       },
       {
         id: "q4_5", pts: 4,
-        text: "É mais adequado quando a sincronia temporal entre dispositivos é DIFÍCIL de garantir.",
-        options: ["Apenas HOTP", "Apenas TOTP", "Ambos (HOTP e TOTP)", "Nenhum dos dois", "RADIUS"],
-        answer: "Apenas HOTP",
-        feedback: "O HOTP é recomendado quando não é possível garantir sincronia de relógio. O TOTP só funciona corretamente quando ambos os lados têm o horário sincronizado."
+        text: "Fotografias de funcionários são coletadas e usadas para alimentar o sistema de reconhecimento facial sem consentimento explícito ou política de privacidade.",
+        answer: "RISCO",
+        feedback: "RISCO! A coleta de dados biométricos sem consentimento viola leis de privacidade (como a LGPD). Dados biométricos são dados pessoais sensíveis — sua coleta e uso exigem bases legais claras e consentimento."
       },
     ]
   },
   {
     id: 5,
     emoji: "🏆",
-    title: "Boss Final: Incidente de Autenticação",
+    title: "Boss Final: Incidente Biométrico",
     subtitle: "Analise o cenário crítico e responda com seus conhecimentos",
     color: "#880E4F",
     accent: "#AD1457",
     points: 20,
     time: 240,
     type: "boss",
-    scenario: "A empresa TechSafe sofreu um incidente de segurança. Um ex-funcionário acessou o sistema remotamente usando suas credenciais antigas (usuário e senha estática). O sistema não tinha 2FA ativo. Além disso, o servidor RADIUS estava desatualizado há 18 meses e não havia backup das políticas de acesso. A rede corporativa não utilizava IEEE 802.1X para controle de acesso.",
+    scenario: "A empresa BioSec implementou um sistema de acesso biométrico para sua sede. O sistema usa apenas reconhecimento facial, sem iluminação controlada e sem camada adicional de autenticação. Os modelos biométricos são armazenados sem criptografia em um banco de dados local desatualizado há 14 meses. Um ex-funcionário conseguiu acesso usando uma foto impressa de alta resolução. O sistema nunca foi calibrado e apresenta uma FRR alta para funcionários de pele escura.",
     questions: [
       {
         id: "q5_1", pts: 5,
         text: "Quais falhas de segurança você identifica no cenário? (selecione todas que se aplicam)",
         type: "multi",
         options: [
-          { text: "Uso exclusivo de código estático (senha) sem 2FA", correct: true },
-          { text: "Credenciais não revogadas após desligamento", correct: true },
-          { text: "Servidor RADIUS desatualizado e sem backup", correct: true },
-          { text: "Ausência de controle de acesso IEEE 802.1X na rede", correct: true },
-          { text: "Uso de Smart-Card ao invés de senha", correct: false },
-          { text: "Excesso de fatores de autenticação", correct: false },
+          { text: "Uso exclusivo de reconhecimento facial sem autenticação multifatorial", correct: true },
+          { text: "Armazenamento de modelos biométricos sem criptografia", correct: true },
+          { text: "Sistema desatualizado sem manutenção", correct: true },
+          { text: "Alta FRR indicando discriminação algorítmica", correct: true },
+          { text: "Uso de impressão digital como segundo fator", correct: false },
+          { text: "Excesso de medidas de segurança biométrica", correct: false },
         ],
-        feedback: "As 4 falhas são: senha estática sem 2FA, credenciais ativas pós-demissão, RADIUS desatualizado/sem backup e ausência de IEEE 802.1X."
+        feedback: "As 4 falhas são: ausência de MFA, armazenamento sem criptografia, sistema desatualizado/sem calibração e alta FRR discriminatória para determinados grupos."
       },
       {
         id: "q5_2", pts: 5,
-        text: "Qual tecnologia, se implementada, teria impedido o acesso do ex-funcionário mesmo com a senha correta?",
+        text: "O ex-funcionário acessou o sistema usando uma foto impressa. Qual métrica reflete diretamente essa vulnerabilidade?",
         type: "single",
-        options: ["Código Estático mais complexo", "Verificação em Duas Etapas (2FA)", "Atualização do Windows", "Firewall de rede"],
-        answer: "Verificação em Duas Etapas (2FA)",
-        feedback: "O 2FA (ex: TOTP via Google Authenticator) exigiria um segundo fator além da senha — mesmo com a senha comprometida, o acesso seria bloqueado sem o token."
+        options: ["FRR (Taxa de Falsos Rejeitos)", "FER (Failure Enroll Rate)", "FAR (Taxa de Falsos Aceitos)", "Throughput Speed"],
+        answer: "FAR (Taxa de Falsos Aceitos)",
+        feedback: "A FAR (Taxa de Falsos Aceitos) mede exatamente isso — quando um impostor é aceito pelo sistema. Uma FAR alta indica que o sistema aceita características falsas ou falsificações, como uma foto."
       },
       {
         id: "q5_3", pts: 5,
-        text: "O TOTP seria mais indicado que o HOTP neste cenário corporativo. Por quê?",
+        text: "Para evitar que uma foto enganasse o sistema, qual tecnologia adicional deveria ser implementada no reconhecimento facial?",
         type: "single",
         options: [
-          "Porque o TOTP não precisa de chave secreta",
-          "Porque o HOTP não gera códigos numéricos",
-          "Porque o TOTP expira por tempo, dificultando ataques de replay",
-          "Porque o TOTP dispensa servidor de autenticação"
+          "Câmera de maior resolução apenas",
+          "Detecção de vivacidade (liveness detection)",
+          "Banco de dados maior",
+          "Tempo de exposição maior da câmera"
         ],
-        answer: "Porque o TOTP expira por tempo, dificultando ataques de replay",
-        feedback: "O TOTP expira automaticamente após um curto período — mesmo que o código seja interceptado, ele rapidamente se torna inválido, protegendo contra ataques de replay."
+        answer: "Detecção de vivacidade (liveness detection)",
+        feedback: "A detecção de vivacidade (liveness detection) verifica se o que está sendo apresentado à câmera é uma pessoa real e viva, e não uma foto, vídeo ou máscara — tecnologia essencial em sistemas robustos de reconhecimento facial."
       },
       {
         id: "q5_4", pts: 5,
-        text: "Para proteger o acesso à rede interna, qual protocolo deveria ser implementado nos switches corporativos?",
+        text: "A alta FRR para funcionários de pele escura demonstra qual problema nos sistemas biométricos?",
         type: "single",
-        options: ["RADIUS isolado", "Código PIN estático", "IEEE 802.1X com servidor RADIUS", "TOTP sem servidor"],
-        answer: "IEEE 802.1X com servidor RADIUS",
-        feedback: "O IEEE 802.1X integrado ao RADIUS é a combinação ideal: o 802.1X controla o acesso à porta de rede, enquanto o RADIUS autentica, autoriza e registra os acessos."
+        options: [
+          "O sistema foi hackeado por concorrentes",
+          "O banco de dados está desatualizado",
+          "Viés algorítmico e discriminação nos dados de treinamento",
+          "O sensor biométrico precisa de limpeza"
+        ],
+        answer: "Viés algorítmico e discriminação nos dados de treinamento",
+        feedback: "A FRR diferenciada por grupos étnicos indica viés algorítmico — quando o modelo foi treinado com dados pouco representativos, gerando discriminação. É uma das preocupações éticas mais sérias na biometria moderna."
       },
     ]
   }
 ];
 
 const LEVELS = [
-  { min: 90, label: "LENDÁRIO", title: "Hacker do Bem Master", color: "#FFD700", bg: "#1A237E", msg: "Desempenho extraordinário! Você domina completamente as tecnologias de autenticação. A TechSafe está em boas mãos!" },
-  { min: 75, label: "ESPECIALISTA", title: "Analista Sênior de Segurança", color: "#00E676", bg: "#1B5E20", msg: "Ótimo resultado! Você tem sólido conhecimento sobre protocolos e tecnologias de autenticação. Pequenos ajustes e você chega ao topo!" },
-  { min: 60, label: "PROFICIENTE", title: "Analista Pleno", color: "#40C4FF", bg: "#01579B", msg: "Bom desempenho! Você compreende os conceitos principais. Revise as diferenças entre HOTP/TOTP e os componentes do IEEE 802.1X." },
-  { min: 40, label: "APRENDIZ", title: "Analista Júnior", color: "#FFB300", bg: "#E65100", msg: "Continue estudando! Você está no caminho certo. Revise o material da Aula 03 focando em Smart-Card, RADIUS e verificação em duas etapas." },
-  { min: 0, label: "INICIANTE", title: "Estagiário de Segurança", color: "#FF5252", bg: "#B71C1C", msg: "Não desanime! Todo hacker do bem começa aqui. Releia o conteúdo completo da aula e tente novamente." },
+  { min: 90, label: "LENDÁRIO", title: "Hacker do Bem Master", color: "#FFD700", bg: "#1A237E", msg: "Desempenho extraordinário! Você domina completamente os sistemas de autenticação biométrica. Impressionante!" },
+  { min: 75, label: "ESPECIALISTA", title: "Analista Sênior de Segurança", color: "#00E676", bg: "#1B5E20", msg: "Ótimo resultado! Você tem sólido conhecimento sobre biometria e suas aplicações. Continue assim!" },
+  { min: 60, label: "PROFICIENTE", title: "Analista Pleno", color: "#40C4FF", bg: "#01579B", msg: "Bom desempenho! Você compreende os conceitos principais. Revise as métricas biométricas e os riscos de privacidade." },
+  { min: 40, label: "APRENDIZ", title: "Analista Júnior", color: "#FFB300", bg: "#E65100", msg: "Continue estudando! Revise o material da Aula 04 focando em FRR, FAR, reconhecimento facial e tecnologias comportamentais." },
+  { min: 0, label: "INICIANTE", title: "Estagiário de Segurança", color: "#FF5252", bg: "#B71C1C", msg: "Não desanime! Todo hacker do bem começa aqui. Releia o conteúdo completo sobre autenticação biométrica e tente novamente." },
 ];
 
 function getLevel(score) {
   return LEVELS.find(l => score >= l.min);
-}
-
-function timeAgo(ts) {
-  const diff = Math.floor((Date.now() - ts) / 1000);
-  if (diff < 60) return `${diff}s atrás`;
-  if (diff < 3600) return `${Math.floor(diff / 60)}min atrás`;
-  return `${Math.floor(diff / 3600)}h atrás`;
 }
 
 function useTimer(seconds, active) {
@@ -583,13 +598,13 @@ function Welcome({ onStart }) {
   const [name, setName] = useState("");
   return (
     <div style={{ maxWidth: 540, margin: "0 auto", textAlign: "center", padding: "40px 20px" }}>
-      <div style={{ fontSize: 64, marginBottom: 16 }}>🔐</div>
+      <div style={{ fontSize: 64, marginBottom: 16 }}>🧬</div>
       <div style={{ fontSize: 11, letterSpacing: 4, color: "#00E676", fontFamily: "'Space Mono', monospace", marginBottom: 8 }}>HACKERS DO BEM — MÓDULO 04</div>
       <h1 style={{ fontSize: 32, fontWeight: 900, color: "#fff", margin: "0 0 8px", lineHeight: 1.2, fontFamily: "'DM Sans', sans-serif" }}>
-        Missão: Proteja a<br /><span style={{ color: "#40C4FF" }}>Autenticação da TechSafe</span>
+        Missão: Proteja a<br /><span style={{ color: "#40C4FF" }}>BioSec com Biometria</span>
       </h1>
       <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 15, margin: "12px 0 32px", lineHeight: 1.6 }}>
-        Domine Smart-Cards, RADIUS, IEEE 802.1X, HOTP, TOTP e 2FA. Complete as 5 etapas e descubra seu nível!
+        Domine impressão digital, reconhecimento facial, biometria comportamental e métricas como FRR, FAR e CER. Complete as 5 etapas!
       </p>
       <div style={{ display: "flex", justifyContent: "center", gap: 24, marginBottom: 36, flexWrap: "wrap" }}>
         {[["⏱", "20 min"], ["🎯", "5 etapas"], ["🏆", "100 pts"]].map(([ic, lb]) => (
@@ -615,7 +630,7 @@ function Welcome({ onStart }) {
         Iniciar Missão →
       </button>
       <p style={{ marginTop: 24, fontSize: 12, color: "rgba(255,255,255,0.3)" }}>
-        Prof. Alexsander Farias · Aula 03 · Tecnologias de Autenticação
+        Prof. Alexsander Farias · Aula 04 · Autenticação por Biometria
       </p>
     </div>
   );
@@ -631,7 +646,7 @@ function FinalResult({ name, scores }) {
         <div style={{ fontSize: 64, marginBottom: 8 }}>🏆</div>
         <div style={{ fontSize: 11, letterSpacing: 4, color: "#00E676", fontFamily: "'Space Mono', monospace", marginBottom: 12 }}>RESULTADO FINAL</div>
         <h2 style={{ fontSize: 28, fontWeight: 900, color: "#fff", margin: "0 0 4px" }}>{name}</h2>
-        <p style={{ color: "rgba(255,255,255,0.4)", margin: 0, fontSize: 14 }}>Hackers do Bem — Módulo 04, Aula 03</p>
+        <p style={{ color: "rgba(255,255,255,0.4)", margin: 0, fontSize: 14 }}>Hackers do Bem — Módulo 04, Aula 04</p>
       </div>
 
       <div style={{
@@ -677,13 +692,13 @@ function FinalResult({ name, scores }) {
       </div>
 
       <p style={{ textAlign: "center", fontSize: 12, color: "rgba(255,255,255,0.3)", margin: 0 }}>
-        Prof. Alexsander Farias · Hackers do Bem · 09/03/2026
+        Prof. Alexsander Farias · Hackers do Bem · 11/03/2026
       </p>
     </div>
   );
 }
 
-export default function AtividadeHackersDoBemM4A03() {
+export default function AtividadeHackersDoBemM4A04() {
   const [screen, setScreen] = useState("welcome");
   const [studentName, setStudentName] = useState("");
   const [stageIdx, setStageIdx] = useState(0);
@@ -709,7 +724,7 @@ export default function AtividadeHackersDoBemM4A03() {
         duration,
         timestamp: Date.now(),
         createdAt: serverTimestamp(),
-        module: "M04A03"
+        module: "M04A04"
       };
       await addDoc(collection(db, "hackersdobem_ranking"), entry);
     } catch (e) {

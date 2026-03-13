@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SO Quest — Trilha de Aprendizagem Interativa</title>
+<style>
+  :root {
+    --navy: #0D1B4B; --blue: #1A56DB; --sky: #0EA5E9;
+    --lblue: #DBEAFE; --white: #FFFFFF; --dark: #1E293B;
+    --mid: #64748B; --lgray: #F1F5F9; --accent: #F59E0B;
+    --green: #065F46; --lgreen: #D1FAE5;
+    --red: #7F1D1D; --lred: #FEE2E2;
+    --teal: #0891B2; --purple: #6D28D9;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--navy); color: var(--white); min-height: 100vh; overflow-x: hidden; }
+
+  /* PARTICLES */
+  #particles { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+  .particle { position: absolute; border-radius: 50%; opacity: 0.15; animation: float linear infinite; }
+  @keyframes float { from { transform: translateY(100vh) rotate(0deg); opacity: 0; } 10% { opacity: 0.15; } 90% { opacity: 0.15; } to { transform: translateY(-10vh) rotate(360deg); opacity: 0; } }
+
+  .wrap { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 16px; }
+
+  /* HEADER */
+  .header { text-align: center; padding: 24px 0 16px; }
+  .logo { font-size: 11px; letter-spacing: 3px; color: var(--sky); font-weight: 700; text-transform: uppercase; }
+  .title { font-size: 28px; font-weight: 800; color: #fff; margin: 6px 0 2px; }
+  .subtitle { font-size: 13px; color: #93C5FD; }
+
+  /* HUD */
+  .hud { display: flex; gap: 10px; margin: 14px 0; flex-wrap: wrap; }
+  .hud-card { flex: 1; min-width: 120px; background: #0A1E5C; border: 1px solid #1E3A6E; border-radius: 10px; padding: 10px 14px; text-align: center; }
+  .hud-card .val { font-size: 22px; font-weight: 800; color: var(--sky); }
+  .hud-card .lbl { font-size: 10px; color: var(--mid); text-transform: uppercase; letter-spacing: 1px; }
+
+  /* TIMER */
+  .timer-ring { position: relative; width: 64px; height: 64px; margin: 0 auto 4px; }
+  .timer-ring svg { transform: rotate(-90deg); }
+  .timer-ring circle { fill: none; stroke: #1E3A6E; stroke-width: 5; }
+  .timer-ring .prog { stroke: var(--sky); stroke-dasharray: 175.9; stroke-linecap: round; transition: stroke-dashoffset 1s linear, stroke 0.3s; }
+  .timer-num { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800; color: var(--white); }
+
+  /* PROGRESS BAR */
+  .progress-bar { background: #1E3A6E; border-radius: 99px; height: 8px; margin: 8px 0; overflow: hidden; }
+  .progress-fill { height: 100%; border-radius: 99px; background: linear-gradient(90deg, var(--sky), var(--blue)); transition: width 0.5s ease; }
+  .step-labels { display: flex; justify-content: space-between; font-size: 10px; color: var(--mid); margin-top: 3px; }
+
+  /* TRAIL STEPS */
+  .trail { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin: 12px 0; }
+  .trail-node { width: 36px; height: 36px; border-radius: 50%; border: 2px solid #1E3A6E; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: var(--mid); transition: all 0.3s; cursor: default; }
+  .trail-node.done { background: var(--green); border-color: #10B981; color: #fff; }
+  .trail-node.active { background: var(--sky); border-color: var(--sky); color: #fff; animation: pulse 1.5s infinite; }
+  .trail-node.locked { opacity: 0.4; }
+  .trail-node.boss { border-color: var(--accent); color: var(--accent); }
+  .trail-node.boss.active { background: var(--accent); color: var(--dark); }
+  @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(14,165,233,.6); } 50% { box-shadow: 0 0 0 8px rgba(14,165,233,0); } }
+
+  /* PANELS */
+  .panel { background: #0A1E5C; border: 1px solid #1E3A6E; border-radius: 16px; padding: 20px; margin: 12px 0; }
+  .panel.green { background: #032918; border-color: #10B981; }
+  .panel.red { background: #2A0A0A; border-color: #EF4444; }
+  .panel.gold { background: #1A1000; border-color: var(--accent); }
+  .panel.hidden { display: none; }
+
+  /* QUESTION */
+  .q-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .q-badge { background: var(--sky); color: #fff; border-radius: 8px; padding: 3px 10px; font-size: 11px; font-weight: 700; }
+  .q-type { font-size: 10px; color: var(--mid); text-transform: uppercase; letter-spacing: 1px; }
+  .q-context { background: #0F2D1A; border-left: 3px solid var(--accent); padding: 10px 14px; border-radius: 0 8px 8px 0; margin-bottom: 14px; font-size: 13px; color: #FEF3C7; font-style: italic; line-height: 1.5; }
+  .q-text { font-size: 16px; font-weight: 600; color: var(--white); line-height: 1.5; margin-bottom: 16px; }
+  .options { display: grid; gap: 8px; }
+  .opt { background: #0A1540; border: 1.5px solid #1E3A6E; border-radius: 10px; padding: 12px 16px; cursor: pointer; font-size: 14px; color: var(--white); transition: all 0.2s; display: flex; align-items: center; gap: 10px; }
+  .opt:hover { border-color: var(--sky); background: #0A2060; transform: translateX(3px); }
+  .opt.selected { border-color: var(--sky); background: #0A2060; }
+  .opt.correct { border-color: #10B981; background: #032918; color: #A7F3D0; }
+  .opt.wrong { border-color: #EF4444; background: #2A0A0A; color: #FCA5A5; }
+  .opt .key { width: 28px; height: 28px; border-radius: 6px; background: #1E3A6E; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex-shrink: 0; }
+  .opt.correct .key { background: #10B981; }
+  .opt.wrong .key { background: #EF4444; }
+
+  .feedback { padding: 12px 16px; border-radius: 10px; font-size: 13px; line-height: 1.5; margin-top: 12px; }
+  .feedback.ok { background: #032918; border: 1px solid #10B981; color: #A7F3D0; }
+  .feedback.no { background: #2A0A0A; border: 1px solid #EF4444; color: #FCA5A5; }
+  .feedback.timeout { background: #1A1000; border: 1px solid var(--accent); color: #FEF3C7; }
+
+  /* BUTTONS */
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 10px; border: none; cursor: pointer; font-size: 14px; font-weight: 700; transition: all 0.2s; }
+  .btn-primary { background: linear-gradient(135deg, var(--sky), var(--blue)); color: #fff; }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(14,165,233,.4); }
+  .btn-success { background: linear-gradient(135deg, #10B981, #065F46); color: #fff; }
+  .btn-success:hover { transform: translateY(-2px); }
+  .btn-danger { background: linear-gradient(135deg, #EF4444, var(--red)); color: #fff; }
+  .btn-gold { background: linear-gradient(135deg, #F59E0B, #92400E); color: var(--dark); }
+  .btn-center { text-align: center; margin-top: 14px; }
+
+  /* RANKING */
+  .ranking { margin: 12px 0; }
+  .rank-row { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: 8px; margin-bottom: 6px; background: #0A1540; border: 1px solid #1E3A6E; transition: all 0.3s; }
+  .rank-row.me { background: #0A2060; border-color: var(--sky); }
+  .rank-row.top1 { background: linear-gradient(90deg,#1A1000,#0A1540); border-color: #F59E0B; }
+  .rank-pos { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; flex-shrink: 0; }
+  .rank-pos.gold { background: #F59E0B; color: #1A1000; }
+  .rank-pos.silver { background: #94A3B8; color: #fff; }
+  .rank-pos.bronze { background: #A87C3E; color: #fff; }
+  .rank-pos.normal { background: #1E3A6E; color: var(--mid); }
+  .rank-name { flex: 1; font-size: 13px; font-weight: 600; }
+  .rank-pts { font-size: 13px; font-weight: 700; color: var(--sky); }
+  .rank-bar { flex: 0 0 80px; }
+  .rank-bar-inner { height: 6px; border-radius: 99px; background: var(--sky); }
+
+  /* LEVEL UP */
+  .level-up { background: linear-gradient(135deg, #0A2060, #04261A); border: 2px solid var(--sky); border-radius: 16px; padding: 18px; text-align: center; margin: 10px 0; animation: glow 1.5s infinite alternate; }
+  @keyframes glow { from { box-shadow: 0 0 10px rgba(14,165,233,.3); } to { box-shadow: 0 0 25px rgba(14,165,233,.7); } }
+  .level-icon { font-size: 42px; margin-bottom: 8px; }
+  .level-name { font-size: 18px; font-weight: 800; color: var(--sky); }
+  .level-desc { font-size: 12px; color: var(--mid); margin-top: 4px; }
+
+  /* BADGE */
+  .badge-container { text-align: center; padding: 20px; }
+  .badge-svg { width: 140px; height: 140px; margin: 0 auto 12px; filter: drop-shadow(0 0 20px rgba(245,158,11,.6)); animation: badge-pop 0.5s ease-out; }
+  @keyframes badge-pop { from { transform: scale(0) rotate(-180deg); opacity: 0; } to { transform: scale(1) rotate(0deg); opacity: 1; } }
+  .badge-title { font-size: 20px; font-weight: 800; color: var(--accent); }
+  .badge-sub { font-size: 13px; color: var(--mid); margin-top: 4px; }
+  .stars { font-size: 28px; margin: 8px 0; letter-spacing: 4px; }
+
+  /* XP BAR */
+  .xp-bar-wrap { background: #1E3A6E; border-radius: 99px; height: 10px; margin: 6px 0; position: relative; overflow: hidden; }
+  .xp-fill { height: 100%; border-radius: 99px; background: linear-gradient(90deg,#F59E0B,#10B981); transition: width 0.8s ease; }
+
+  /* SECTIONS */
+  .section-title { font-size: 13px; color: var(--sky); text-transform: uppercase; letter-spacing: 2px; font-weight: 700; margin: 16px 0 8px; display: flex; align-items: center; gap: 8px; }
+  .section-title::before { content: ''; flex: 1; height: 1px; background: #1E3A6E; }
+
+  /* SCREEN MANAGER */
+  .screen { display: none; }
+  .screen.active { display: block; }
+
+  /* ANIMATIONS */
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .animate-in { animation: fadeIn 0.4s ease-out; }
+
+  @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
+  .shake { animation: shake 0.4s ease; }
+
+  /* COMBO */
+  .combo { position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 36px; font-weight: 900; color: var(--accent); z-index: 100; pointer-events: none; opacity: 0; text-shadow: 0 0 20px rgba(245,158,11,.8); }
+  .combo.show { animation: combo-anim 1s ease-out forwards; }
+  @keyframes combo-anim { 0%{opacity:1;transform:translate(-50%,-50%) scale(0.5);} 50%{opacity:1;transform:translate(-50%,-80%) scale(1.2);} 100%{opacity:0;transform:translate(-50%,-120%) scale(1);} }
+
+  /* SOUND TOGGLE */
+  .sound-btn { position: fixed; top: 12px; right: 12px; z-index: 50; background: #0A1E5C; border: 1px solid #1E3A6E; border-radius: 8px; padding: 6px 10px; cursor: pointer; font-size: 18px; color: var(--white); }
+
+  /* RESPONSIVE */
+  @media(max-width:600px) { .hud { gap: 6px; } .hud-card { min-width: 80px; } .q-text { font-size: 14px; } }
+</style>
+</head>
+<body>
+<div id="particles"></div>
+<button class="sound-btn" id="soundBtn" onclick="toggleSound()" title="Som">🔊</button>
+<div id="combo" class="combo"></div>
+
+<div class="wrap">
+
+<!-- ══ SCREEN: START ══════════════════════════════════════ -->
+<div id="screen-start" class="screen active animate-in">
+  <div class="header">
+    <div class="logo">CEUNI-FAMETRO · Sistemas Operacionais · 2026.1</div>
+    <div class="title">⚙️ SO Quest</div>
+    <div class="subtitle">Trilha de Aprendizagem Interativa — OBJ. 347 e 348</div>
+  </div>
+  <div class="panel gold" style="text-align:center;padding:24px;">
+    <div style="font-size:14px;color:#FEF3C7;margin-bottom:16px;line-height:1.6">
+      <strong style="color:var(--accent);font-size:18px">Bem-vindo à Trilha!</strong><br>
+      Você vai passar por <strong>10 etapas</strong> + 1 <strong>Boss Final</strong>.<br>
+      Cada etapa tem <strong>cronômetro de 3 minutos</strong> no máximo.<br>
+      Responda rápido para ganhar mais pontos! 🚀
+    </div>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:20px">
+      <div style="text-align:center;padding:10px 16px;background:#0A1540;border-radius:10px;border:1px solid #1E3A6E">
+        <div style="font-size:22px;font-weight:800;color:var(--sky)">10+1</div>
+        <div style="font-size:11px;color:var(--mid)">Etapas</div>
+      </div>
+      <div style="text-align:center;padding:10px 16px;background:#0A1540;border-radius:10px;border:1px solid #1E3A6E">
+        <div style="font-size:22px;font-weight:800;color:var(--accent)">3 min</div>
+        <div style="font-size:11px;color:var(--mid)">Por etapa</div>
+      </div>
+      <div style="text-align:center;padding:10px 16px;background:#0A1540;border-radius:10px;border:1px solid #1E3A6E">
+        <div style="font-size:22px;font-weight:800;color:#10B981">🏅</div>
+        <div style="font-size:11px;color:var(--mid)">Badge + Nível</div>
+      </div>
+    </div>
+    <div style="margin-bottom:16px">
+      <label style="font-size:13px;color:var(--mid);display:block;margin-bottom:6px">Seu nome:</label>
+      <input id="playerName" type="text" placeholder="Digite seu nome completo..." style="width:100%;max-width:340px;padding:10px 14px;background:#0A1540;border:1.5px solid #1E3A6E;border-radius:8px;color:#fff;font-size:14px;outline:none;text-align:center;" oninput="this.style.borderColor=this.value.length>2?'#0EA5E9':'#1E3A6E'">
+    </div>
+    <button class="btn btn-primary" onclick="startGame()" style="font-size:15px;padding:14px 36px">
+      🚀 Iniciar a Trilha
+    </button>
+  </div>
+  <div class="section-title">Ranking ao vivo</div>
+  <div id="ranking-start" class="ranking"></div>
+</div>
+
+<!-- ══ SCREEN: GAME ═══════════════════════════════════════ -->
+<div id="screen-game" class="screen">
+  <div class="header" style="padding:12px 0 6px">
+    <div class="logo" id="playerLabel">—</div>
+    <div class="title" style="font-size:20px" id="stageTitle">Etapa 1</div>
+  </div>
+
+  <div class="hud">
+    <div class="hud-card">
+      <div class="timer-ring">
+        <svg viewBox="0 0 64 64" width="64" height="64">
+          <circle cx="32" cy="32" r="28"/>
+          <circle class="prog" id="timerCircle" cx="32" cy="32" r="28" stroke-dashoffset="0"/>
+        </svg>
+        <div class="timer-num" id="timerNum">3:00</div>
+      </div>
+      <div class="lbl">Tempo</div>
+    </div>
+    <div class="hud-card">
+      <div class="val" id="hudScore">0</div>
+      <div class="lbl">Pontos</div>
+    </div>
+    <div class="hud-card">
+      <div class="val" id="hudStep">1/11</div>
+      <div class="lbl">Etapa</div>
+    </div>
+    <div class="hud-card">
+      <div class="val" id="hudCombo">×1</div>
+      <div class="lbl">Combo</div>
+    </div>
+    <div class="hud-card">
+      <div class="val" id="hudLevel">🌱</div>
+      <div class="lbl">Nível</div>
+    </div>
+  </div>
+
+  <div class="progress-bar"><div class="progress-fill" id="mainProgress" style="width:0%"></div></div>
+  <div class="trail" id="trail"></div>
+
+  <div id="questionPanel" class="panel animate-in">
+    <div class="q-header">
+      <span class="q-badge" id="qBadge">Q1</span>
+      <span class="q-type" id="qType">—</span>
+    </div>
+    <div class="q-context hidden" id="qContext"></div>
+    <div class="q-text" id="qText"></div>
+    <div class="options" id="optionsContainer"></div>
+    <div id="feedbackBox" class="hidden"></div>
+    <div class="btn-center hidden" id="nextBtnWrap">
+      <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()">Próxima Etapa →</button>
+    </div>
+  </div>
+
+  <div class="section-title">Ranking ao vivo</div>
+  <div id="ranking-game" class="ranking"></div>
+</div>
+
+<!-- ══ SCREEN: END ════════════════════════════════════════ -->
+<div id="screen-end" class="screen animate-in">
+  <div class="header"><div class="title">🏆 Trilha Concluída!</div></div>
+  <div id="endContent"></div>
+  <div class="section-title">Ranking Final</div>
+  <div id="ranking-end" class="ranking"></div>
+  <div class="btn-center" style="margin-top:16px">
+    <button class="btn btn-primary" onclick="restartGame()">🔄 Jogar Novamente</button>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+// ══════════════════════════════════════════════════════════
+// QUESTIONS DATABASE — OBJ 347 + 348
+// ══════════════════════════════════════════════════════════
+const QUESTIONS = [
+  {
+    id:1, stage:"OBJ.347 — Nível 1", type:"Conceito Fundamental",
+    context:"Você está usando seu computador quando ouve o som de notificação de um e-mail chegando. Por baixo dos panos, o sistema operacional acabou de tratar um evento importante.",
+    q:"O que é uma INTERRUPÇÃO no contexto de Sistemas Operacionais?",
+    opts:[
+      "Um erro fatal que trava o sistema e exige reinicialização",
+      "Um sinal assíncrono enviado ao processador solicitando atenção imediata, que suspende temporariamente o programa em execução",
+      "Um comando do usuário para pausar um processo em execução",
+      "Uma falha na memória RAM que corrompe dados do programa"
+    ],
+    ans:1,
+    feedback:"✅ Correto! A interrupção é o mecanismo fundamental que permite ao SO reagir a eventos externos (hardware, timer, software) sem que o programa em execução precise verificar continuamente. A CPU salva o contexto, executa a ISR e restaura o programa original.",
+    xp:100
+  },
+  {
+    id:2, stage:"OBJ.347 — Nível 2", type:"Tipos de Interrupção",
+    context:"Em um servidor Linux, um processo Java está rodando quando o disco SSD conclui uma operação de leitura de arquivo. Ao mesmo tempo, o timer do escalonador chega a zero.",
+    q:"Qual é a diferença fundamental entre uma interrupção de HARDWARE e uma interrupção de SOFTWARE (trap)?",
+    opts:[
+      "Interrupções de hardware são mais rápidas; de software são mais lentas",
+      "Hardware: gerada por dispositivos externos, assíncrona. Software: gerada por instrução do programa (ex: SYSCALL/INT), síncrona e intencional",
+      "Não há diferença — ambas funcionam exatamente da mesma forma",
+      "Hardware ocorre em modo núcleo; software ocorre em modo usuário"
+    ],
+    ans:1,
+    feedback:"✅ Exato! Interrupções de hardware são assíncronas — podem ocorrer a qualquer momento, independente do que o programa está fazendo. Traps (interrupções de software) são síncronas — são causadas por instruções específicas do programa, como ao fazer uma system call.",
+    xp:120
+  },
+  {
+    id:3, stage:"OBJ.347 — Nível 3", type:"Exceções",
+    context:"Um programador iniciante escreveu: int resultado = 100 / 0; O programa foi compilado com sucesso, mas ao executar trava instantaneamente com mensagem de erro.",
+    q:"O que acontece INTERNAMENTE no SO quando ocorre divisão por zero?",
+    opts:[
+      "O SO ignora o erro e continua a execução com resultado = 0",
+      "A CPU gera uma exceção do tipo FAULT, o SO captura via handler, registra o erro e encerra o processo com sinal (SIGFPE no Linux)",
+      "O compilador deveria ter impedido — é um erro de compilação, não de execução",
+      "O hardware da CPU simplesmente reinicia automaticamente o sistema"
+    ],
+    ans:1,
+    feedback:"✅ Perfeito! Divisão por zero é uma exceção síncrona do tipo Fault gerada pela CPU. No Linux, o handler do kernel envia o sinal SIGFPE (Floating Point Exception) ao processo. Se não tratado, o processo é encerrado. O sistema operacional continua funcionando normalmente.",
+    xp:130
+  },
+  {
+    id:4, stage:"OBJ.347 — Nível 4", type:"Técnicas de E/S",
+    context:"Engenheiro deve escolher a técnica de E/S para um sistema de sensor IoT que lê temperatura a cada 100ms. Opção A: CPU verifica o sensor constantemente. Opção B: sensor avisa a CPU quando dado está pronto.",
+    q:"Qual técnica de E/S a Opção B descreve, e por que ela é SUPERIOR à Opção A neste cenário?",
+    opts:[
+      "Opção B é E/S Programada (Polling) — a CPU precisa esperar ativamente",
+      "Opção B é E/S por DMA — sempre a melhor escolha em qualquer situação",
+      "Opção B é E/S Orientada a Interrupções — superior porque a CPU fica livre para outras tarefas durante os 100ms de espera, aumentando a eficiência",
+      "Opção B é E/S por Buffer — armazena dados temporariamente na memória"
+    ],
+    ans:2,
+    feedback:"✅ Correto! E/S por Interrupção libera a CPU durante o período de espera (100ms a cada ciclo). Com Polling, a CPU desperdiçaria processamento verificando continuamente. O sensor gera uma interrupção quando dado está pronto, e a CPU só é envolvida então.",
+    xp:140
+  },
+  {
+    id:5, stage:"OBJ.347 — Nível 5", type:"DMA",
+    context:"Um servidor precisa copiar 100MB de dados do SSD NVMe para a memória RAM. Com DMA disponível, o processador é envolvido apenas para iniciar a transferência e receber a conclusão.",
+    q:"O que torna o DMA (Direct Memory Access) superior à E/S por Interrupção para grandes transferências de dados?",
+    opts:[
+      "DMA é mais seguro porque usa criptografia automática dos dados",
+      "No DMA, o controlador transfere os dados DIRETAMENTE entre memória e dispositivo sem envolver a CPU a cada byte/bloco — a CPU só é notificada ao FINAL de toda a transferência",
+      "DMA é mais lento mas consome menos energia elétrica",
+      "No DMA, a CPU verifica cada bloco transferido para garantir integridade"
+    ],
+    ans:1,
+    feedback:"✅ Excelente! Com DMA, a CPU configura a transferência (endereço origem, destino, tamanho) e fica totalmente livre. O controlador DMA gerencia toda a transferência autonomamente, gerando apenas UMA interrupção no final. Para 100MB, isso significa milhões de operações sem envolver a CPU.",
+    xp:150
+  },
+  {
+    id:6, stage:"OBJ.347 — Nível 6", type:"Buffering vs Spooling",
+    context:"Cenário A: placa de som recebendo áudio do microfone. Cenário B: 15 funcionários enviando documentos para a impressora compartilhada do escritório.",
+    q:"Qual técnica é mais adequada para CADA cenário e por quê?",
+    opts:[
+      "Ambos usam Spooling — é sempre a melhor técnica para qualquer dispositivo",
+      "Cenário A: Buffering (absorve diferença de velocidade CPU/hardware). Cenário B: Spooling (serializa acesso de múltiplos processos a dispositivo compartilhado)",
+      "Cenário A: Polling. Cenário B: DMA",
+      "Ambos usam Buffering — Spooling não existe em sistemas modernos"
+    ],
+    ans:1,
+    feedback:"✅ Perfeito! Buffering resolve o problema de velocidades diferentes — a placa de som gera dados mais lentamente que a CPU os consome. Spooling resolve o compartilhamento — múltiplos processos não podem usar a impressora ao mesmo tempo, então cada um entrega para a fila e continua trabalhando.",
+    xp:160
+  },
+  {
+    id:7, stage:"OBJ.347 — Nível 7", type:"Reentrância",
+    context:"Um servidor Linux tem 50 processos abertos simultaneamente usando a função printf() para escrever logs. Apenas uma cópia do código de printf() existe na memória.",
+    q:"Por que isso funciona sem que os logs de um processo misturem com os de outro?",
+    opts:[
+      "O Linux copia o código de printf() para cada processo, mas otimiza com copy-on-write",
+      "printf() é uma função REENTRANTE: usa apenas variáveis locais na pilha de cada processo — cada chamada tem seu próprio conjunto de variáveis, completamente isolado",
+      "Os processos usam printf() em sequência, nunca ao mesmo tempo",
+      "O SO usa mutex global que impede qualquer execução simultânea de printf()"
+    ],
+    ans:1,
+    feedback:"✅ Exato! Código reentrante não usa variáveis globais ou estáticas modificáveis. Cada chamada usa a sua própria pilha com variáveis locais. 50 processos chamando printf() simultaneamente é completamente seguro porque cada um tem seu próprio espaço de variáveis na pilha.",
+    xp:170
+  },
+  {
+    id:8, stage:"OBJ.348 — Nível 8", type:"Funções do Kernel",
+    context:"Você abre o Spotify no Windows. Ao iniciar, o aplicativo cria threads, aloca memória, abre arquivos de cache e estabelece conexão de rede.",
+    q:"Qual componente do sistema é responsável por TODAS essas operações e por quê?",
+    opts:[
+      "O compilador do Spotify — é parte do código do aplicativo",
+      "A BIOS/UEFI — gerencia diretamente o hardware",
+      "O Kernel (Núcleo) do SO — é o único componente com privilégios para criar processos, alocar memória, acessar sistema de arquivos e controlar rede",
+      "O driver da placa de rede — gerencia todas as conexões de todos os programas"
+    ],
+    ans:2,
+    feedback:"✅ Correto! O Kernel é o árbitro central que media TODOS os acessos ao hardware. Nenhum aplicativo pode diretamente criar threads, alocar memória real, abrir arquivos ou usar a rede — tudo passa pelo kernel via system calls. Isso garante proteção e isolamento entre processos.",
+    xp:180
+  },
+  {
+    id:9, stage:"OBJ.348 — Nível 9", type:"Modo de Acesso",
+    context:"Em 2018, a vulnerabilidade Meltdown permitia que código em modo usuário lesse dados da memória do kernel — violando a barreira de proteção entre os modos de acesso.",
+    q:"Por que a separação entre Modo Usuário e Modo Núcleo é CRÍTICA para a segurança dos sistemas operacionais?",
+    opts:[
+      "É apenas uma convenção de programação — qualquer programa poderia acessar hardware diretamente se quisesse",
+      "Sem essa separação, qualquer processo poderia ler a memória de outros processos, modificar o kernel, acessar hardware livremente — sem isolamento ou proteção nenhuma",
+      "Modo Usuário e Modo Núcleo são conceitos apenas de sistemas Unix — Windows não usa isso",
+      "A separação existe apenas para melhorar a performance, não para segurança"
+    ],
+    ans:1,
+    feedback:"✅ Excelente análise! Sem a separação de modos, seria impossível garantir: (1) que um processo não leia dados de outro, (2) que um aplicativo malicioso não controle o hardware, (3) que um bug em um programa não trave o SO inteiro. A separação é implementada no HARDWARE (anéis de proteção), não apenas em software.",
+    xp:200
+  },
+  {
+    id:10, stage:"OBJ.348 — Nível 10", type:"System Calls",
+    context:"Um desenvolvedor escreveu em C: FILE *f = fopen('dados.csv', 'r'); Para executar essa linha, a aplicação precisa interagir com o kernel do SO.",
+    q:"O que acontece INTERNAMENTE quando fopen() é chamada — do modo usuário até o hardware?",
+    opts:[
+      "fopen() lê o arquivo diretamente do disco sem envolver o SO, para ser mais rápida",
+      "fopen() chama a system call open() via SYSCALL/INT, CPU muda para modo núcleo, kernel valida permissões, acessa VFS, aciona driver, lê do disco, retorna o descritor — tudo em microssegundos",
+      "fopen() é tratada exclusivamente pelo compilador C — não há interação com o SO",
+      "fopen() solicita ao BIOS que leia o arquivo, sem envolver o kernel"
+    ],
+    ans:1,
+    feedback:"✅ Perfeito! fopen() → libc wrapper → configura registradores → SYSCALL → modo núcleo → sys_open() → VFS → driver do FS → driver do dispositivo → hardware. Todo esse caminho acontece em microssegundos, completamente transparente para o desenvolvedor. A transição de modo garante que a operação ocorra com as permissões corretas.",
+    xp:200
+  },
+  {
+    id:11, stage:"⚔️ BOSS FINAL — OBJ.347+348", type:"Desafio Integrador",
+    context:"🚀 ÚLTIMO DESAFIO! Um engenheiro de software deve implementar um sistema de monitoramento em tempo real para uma UTI hospitalar. O sistema precisa: (1) receber dados dos monitores cardíacos via USB, (2) processar e exibir em telas, (3) gravar em banco de dados, (4) alertar médicos via rede se houver anomalia. O sistema roda em Linux embarcado.",
+    q:"Qual das arquiteturas abaixo representa a implementação MAIS CORRETA e SEGURA para esse sistema crítico?",
+    opts:[
+      "Polling para todos os dispositivos USB (simples e confiável), sem uso de buffers (dados em tempo real), código não-reentrante (só um médico por vez), tudo em modo usuário",
+      "E/S por DMA para USB → buffers circulares (absorvem variações de velocidade) → drivers reentrantes no kernel → alertas via system calls de rede → modo usuário para interface; modo núcleo apenas quando necessário",
+      "Gravar tudo em spool de disco antes de processar (imprime como uma impressora) e usar modo núcleo para toda a aplicação, incluindo a interface gráfica",
+      "Usar apenas system calls manuais sem biblioteca C, com código em modo núcleo para máxima velocidade"
+    ],
+    ans:1,
+    feedback:"🏆 CAMPEÃO! A arquitetura correta integra TODOS os conceitos: DMA para E/S eficiente sem gastar CPU, buffers circulares para dados de sensores (vazão constante), código reentrante para suportar múltiplos médicos, separação modo usuário/núcleo para segurança, e system calls para acessar rede. Esta é a base de qualquer sistema operacional moderno!",
+    xp:500
+  }
+];
+
+const LEVELS = [
+  { min:0,    icon:'🌱', name:'Iniciante',      desc:'Primeiros passos em SO' },
+  { min:200,  icon:'⚡', name:'Aprendiz',       desc:'Domina conceitos básicos' },
+  { min:500,  icon:'🔧', name:'Desenvolvedor',  desc:'Aplica conceitos de E/S' },
+  { min:900,  icon:'💻', name:'Analista',       desc:'Compreende o Kernel' },
+  { min:1400, icon:'🛡️', name:'Engenheiro',     desc:'Domina Modo e Syscalls' },
+  { min:2000, icon:'🏆', name:'Arquiteto de SO',desc:'Mestre em Sistemas Operacionais!' },
+];
+
+const BADGES = [
+  { score:0,    icon:'🎓', name:'Participante',    color:'#64748B', stars:1 },
+  { score:400,  icon:'⚡', name:'Estudante Ativo', color:'#0EA5E9', stars:2 },
+  { score:800,  icon:'🔧', name:'Técnico em SO',   color:'#10B981', stars:3 },
+  { score:1300, icon:'💻', name:'Analista SO',     color:'#F59E0B', stars:4 },
+  { score:1800, icon:'🏆', name:'Mestre em SO',    color:'#F59E0B', stars:5 },
+];
+
+// ── STATE ────────────────────────────────────────────────
+let state = {
+  player: '', score: 0, step: 0, combo: 1, maxCombo: 1,
+  answered: 0, correct: 0, timerVal: 180, timerInterval: null,
+  answered_steps: [], soundOn: true
+};
+
+// SIMULATED RANKING DATA
+let rankingData = [
+  { name:'Ana Carla M.', score:1850, me:false },
+  { name:'Bruno Oliveira', score:1720, me:false },
+  { name:'Carlos Eduardo', score:1540, me:false },
+  { name:'Daniela Souza', score:1380, me:false },
+  { name:'Eduardo Lima', score:1200, me:false },
+];
+
+// ── INIT ─────────────────────────────────────────────────
+createParticles();
+renderRanking('ranking-start');
+
+function createParticles(){
+  const c=document.getElementById('particles');
+  for(let i=0;i<20;i++){
+    const p=document.createElement('div');
+    p.className='particle';
+    const sz=Math.random()*6+3;
+    p.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}%;background:${['#0EA5E9','#1A56DB','#F59E0B'][Math.floor(Math.random()*3)]};animation-duration:${8+Math.random()*12}s;animation-delay:${Math.random()*15}s`;
+    c.appendChild(p);
+  }
+}
+
+function toggleSound(){
+  state.soundOn=!state.soundOn;
+  document.getElementById('soundBtn').textContent=state.soundOn?'🔊':'🔇';
+}
+
+function playSound(type){
+  if(!state.soundOn) return;
+  try {
+    const ctx=new (window.AudioContext||window.webkitAudioContext)();
+    const o=ctx.createOscillator(), g=ctx.createGain();
+    o.connect(g); g.connect(ctx.destination);
+    if(type==='correct'){ o.frequency.setValueAtTime(880,ctx.currentTime); g.gain.setValueAtTime(0.15,ctx.currentTime); g.gain.exponentialRampToValueAtTime(0.01,ctx.currentTime+0.3); o.start(); o.stop(ctx.currentTime+0.3); }
+    else if(type==='wrong'){ o.type='sawtooth'; o.frequency.setValueAtTime(220,ctx.currentTime); g.gain.setValueAtTime(0.1,ctx.currentTime); g.gain.exponentialRampToValueAtTime(0.01,ctx.currentTime+0.4); o.start(); o.stop(ctx.currentTime+0.4); }
+    else if(type==='levelup'){ [523,659,784,1047].forEach((f,i)=>{ const o2=ctx.createOscillator(),g2=ctx.createGain(); o2.connect(g2);g2.connect(ctx.destination); o2.frequency.value=f; g2.gain.setValueAtTime(0.12,ctx.currentTime+i*0.1); g2.gain.exponentialRampToValueAtTime(0.01,ctx.currentTime+i*0.1+0.15); o2.start(ctx.currentTime+i*0.1); o2.stop(ctx.currentTime+i*0.1+0.2); }); }
+    else if(type==='tick'){ o.frequency.setValueAtTime(440,ctx.currentTime); g.gain.setValueAtTime(0.05,ctx.currentTime); g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+0.05); o.start(); o.stop(ctx.currentTime+0.05); }
+  } catch(e){}
+}
+
+function startGame(){
+  const name=document.getElementById('playerName').value.trim();
+  if(name.length<2){ document.getElementById('playerName').style.borderColor='#EF4444'; document.getElementById('playerName').placeholder='Digite seu nome!'; return; }
+  state.player=name;
+  // Add player to ranking
+  const existing=rankingData.find(r=>r.name===name);
+  if(!existing) rankingData.push({name,score:0,me:true});
+  else existing.me=true;
+
+  showScreen('screen-game');
+  document.getElementById('playerLabel').textContent=`${name}  ·  Sistemas Operacionais`;
+  loadQuestion(0);
+}
+
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s=>{s.classList.remove('active');});
+  document.getElementById(id).classList.add('active');
+}
+
+function loadQuestion(idx){
+  if(idx>=QUESTIONS.length){ endGame(); return; }
+  state.step=idx;
+  const q=QUESTIONS[idx];
+  const isBoss=idx===QUESTIONS.length-1;
+
+  document.getElementById('stageTitle').textContent=q.stage;
+  document.getElementById('hudStep').textContent=`${idx+1}/11`;
+  document.getElementById('mainProgress').style.width=`${(idx/QUESTIONS.length)*100}%`;
+  document.getElementById('qBadge').textContent=isBoss?'👑 BOSS':'Q'+(idx+1);
+  document.getElementById('qBadge').style.background=isBoss?'#F59E0B':(idx<7?'#0EA5E9':'#065F46');
+  document.getElementById('qType').textContent=q.type;
+
+  // Context
+  const ctxEl=document.getElementById('qContext');
+  if(q.context){ ctxEl.textContent=q.context; ctxEl.classList.remove('hidden'); }
+  else ctxEl.classList.add('hidden');
+
+  document.getElementById('qText').textContent=q.q;
+
+  // Options
+  const optsCont=document.getElementById('optionsContainer');
+  optsCont.innerHTML='';
+  q.opts.forEach((opt,i)=>{
+    const div=document.createElement('div');
+    div.className='opt'; div.dataset.idx=i;
+    div.innerHTML=`<span class="key">${['A','B','C','D'][i]}</span>${opt}`;
+    div.onclick=()=>selectAnswer(i);
+    optsCont.appendChild(div);
+  });
+
+  document.getElementById('feedbackBox').className='hidden';
+  document.getElementById('feedbackBox').textContent='';
+  document.getElementById('nextBtnWrap').classList.add('hidden');
+
+  // Trail
+  buildTrail(idx);
+
+  // Timer
+  startTimer();
+
+  // Panel glow for boss
+  const panel=document.getElementById('questionPanel');
+  panel.style.borderColor=isBoss?'#F59E0B':'#1E3A6E';
+  panel.style.background=isBoss?'#1A0A00':'#0A1E5C';
+}
+
+function buildTrail(current){
+  const t=document.getElementById('trail');
+  t.innerHTML='';
+  QUESTIONS.forEach((_,i)=>{
+    const d=document.createElement('div');
+    d.className='trail-node'+(i===QUESTIONS.length-1?' boss':'');
+    if(state.answered_steps.includes(i)) d.classList.add('done');
+    else if(i===current) d.classList.add('active');
+    else if(i>current) d.classList.add('locked');
+    d.textContent=i===QUESTIONS.length-1?'👑':(i+1);
+    t.appendChild(d);
+  });
+}
+
+function startTimer(){
+  clearInterval(state.timerInterval);
+  state.timerVal=180;
+  updateTimerUI();
+  state.timerInterval=setInterval(()=>{
+    state.timerVal--;
+    updateTimerUI();
+    if(state.timerVal<=10) playSound('tick');
+    if(state.timerVal<=0){ clearInterval(state.timerInterval); timeOut(); }
+  },1000);
+}
+
+function updateTimerUI(){
+  const t=state.timerVal;
+  const m=Math.floor(t/60), s=t%60;
+  document.getElementById('timerNum').textContent=`${m}:${s<10?'0'+s:s}`;
+  const pct=t/180, offset=(1-pct)*175.9;
+  const circle=document.getElementById('timerCircle');
+  circle.style.strokeDashoffset=offset;
+  circle.style.stroke=t>60?'#0EA5E9':t>30?'#F59E0B':'#EF4444';
+  document.getElementById('timerNum').style.color=t>30?'#fff':'#FCA5A5';
+}
+
+function timeOut(){
+  const q=QUESTIONS[state.step];
+  // Mark correct
+  const opts=document.querySelectorAll('.opt');
+  opts.forEach(o=>{ o.onclick=null; if(parseInt(o.dataset.idx)===q.ans) o.classList.add('correct'); });
+  showFeedback(`⏱️ Tempo esgotado! A resposta correta era a opção ${['A','B','C','D'][q.ans]}. ${q.feedback}`, 'timeout');
+  state.combo=1; updateHUD();
+  state.answered_steps.push(state.step);
+  buildTrail(state.step);
+  document.getElementById('nextBtnWrap').classList.remove('hidden');
+}
+
+function selectAnswer(idx){
+  clearInterval(state.timerInterval);
+  const q=QUESTIONS[state.step];
+  const opts=document.querySelectorAll('.opt');
+  opts.forEach(o=>o.onclick=null);
+
+  const timeBonus=Math.floor(state.timerVal/180*100);
+  const isCorrect=idx===q.ans;
+
+  opts.forEach((o,i)=>{
+    if(i===idx) o.classList.add(isCorrect?'correct':'wrong');
+    if(!isCorrect && i===q.ans) o.classList.add('correct');
+  });
+
+  if(isCorrect){
+    playSound('correct');
+    const pts=Math.round(q.xp*(1+timeBonus/100)*state.combo);
+    state.score+=pts; state.correct++;
+    state.combo=Math.min(state.combo+1,5);
+    showComboText(state.combo);
+    showFeedback(q.feedback,'ok');
+    updateRankingMe(state.score);
+  } else {
+    playSound('wrong');
+    document.getElementById('questionPanel').classList.add('shake');
+    setTimeout(()=>document.getElementById('questionPanel').classList.remove('shake'),400);
+    state.combo=1;
+    showFeedback('❌ Resposta incorreta. '+q.feedback,'no');
+  }
+
+  state.answered++;
+  state.maxCombo=Math.max(state.maxCombo,state.combo);
+  state.answered_steps.push(state.step);
+  buildTrail(state.step);
+  updateHUD();
+  checkLevelUp();
+  document.getElementById('nextBtnWrap').classList.remove('hidden');
+  document.getElementById('nextBtn').textContent=state.step===QUESTIONS.length-1?'Ver Resultado 🏆':'Próxima Etapa →';
+  renderRanking('ranking-game');
+}
+
+function showFeedback(text,type){
+  const el=document.getElementById('feedbackBox');
+  el.className=`feedback ${type}`;
+  el.textContent=text;
+}
+
+function showComboText(combo){
+  if(combo<2) return;
+  const el=document.getElementById('combo');
+  el.textContent=combo===5?'🔥 MAX COMBO ×5!!':`⚡ COMBO ×${combo}`;
+  el.className='combo show';
+  setTimeout(()=>el.className='combo',1100);
+}
+
+function getLevel(score){
+  let lv=LEVELS[0];
+  LEVELS.forEach(l=>{ if(score>=l.min) lv=l; });
+  return lv;
+}
+
+function checkLevelUp(){
+  const cur=getLevel(state.score);
+  const prev=getLevel(state.score-(QUESTIONS[state.step]?.xp||0)*state.combo);
+  if(cur.name!==prev.name){ playSound('levelup'); }
+}
+
+function updateHUD(){
+  document.getElementById('hudScore').textContent=state.score.toLocaleString('pt-BR');
+  document.getElementById('hudCombo').textContent=`×${state.combo}`;
+  const lv=getLevel(state.score);
+  document.getElementById('hudLevel').textContent=lv.icon;
+}
+
+function updateRankingMe(score){
+  const me=rankingData.find(r=>r.me);
+  if(me) me.score=score;
+  rankingData.sort((a,b)=>b.score-a.score);
+}
+
+function nextQuestion(){
+  document.getElementById('nextBtnWrap').classList.add('hidden');
+  loadQuestion(state.step+1);
+}
+
+function renderRanking(containerId){
+  const container=document.getElementById(containerId);
+  if(!container) return;
+  const sorted=[...rankingData].sort((a,b)=>b.score-a.score);
+  const maxScore=sorted[0]?.score||1;
+  container.innerHTML=sorted.slice(0,8).map((r,i)=>{
+    const posClass=i===0?'gold':i===1?'silver':i===2?'bronze':'normal';
+    const pct=Math.round((r.score/maxScore)*100);
+    return `<div class="rank-row${r.me?' me':''}${i===0?' top1':''}">
+      <div class="rank-pos ${posClass}">${i===0?'👑':i+1}</div>
+      <div class="rank-name">${r.name}${r.me?' <span style="font-size:10px;color:#0EA5E9">(você)</span>':''}</div>
+      <div class="rank-bar"><div class="rank-bar-inner" style="width:${pct}%;background:${r.me?'#0EA5E9':'#1E3A6E'}"></div></div>
+      <div class="rank-pts">${r.score.toLocaleString('pt-BR')} pts</div>
+    </div>`;
+  }).join('');
+}
+
+function getBadge(score){
+  let b=BADGES[0];
+  BADGES.forEach(bg=>{ if(score>=bg.score) b=bg; });
+  return b;
+}
+
+function endGame(){
+  clearInterval(state.timerInterval);
+  document.getElementById('mainProgress').style.width='100%';
+  updateRankingMe(state.score);
+  renderRanking('ranking-end');
+
+  const lv=getLevel(state.score);
+  const badge=getBadge(state.score);
+  const accuracy=state.answered>0?Math.round((state.correct/state.answered)*100):0;
+  const nextLv=LEVELS.find(l=>l.min>state.score)||null;
+  const xpToNext=nextLv?nextLv.min-state.score:0;
+  const pctToNext=nextLv?Math.round(((state.score-lv.min)/(nextLv.min-lv.min))*100):100;
+  const stars='⭐'.repeat(badge.stars);
+  const rank=rankingData.findIndex(r=>r.me)+1;
+
+  document.getElementById('endContent').innerHTML=`
+    <div class="level-up animate-in">
+      <div class="level-icon">${lv.icon}</div>
+      <div class="level-name">${lv.name}</div>
+      <div class="level-desc">${lv.desc}</div>
+      ${nextLv?`<div style="margin-top:10px;font-size:11px;color:${state.sky||'#0EA5E9'}">Próximo nível: ${nextLv.name} — ${xpToNext} XP restantes</div>
+      <div class="xp-bar-wrap" style="margin-top:6px"><div class="xp-fill" style="width:${pctToNext}%"></div></div>`:'<div style="margin-top:8px;color:#F59E0B;font-weight:700">NÍVEL MÁXIMO ALCANÇADO! 🏆</div>'}
+    </div>
+
+    <div class="badge-container animate-in" style="margin:16px 0">
+      <svg class="badge-svg" viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="bg" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="${badge.color}" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="#0A1E5C"/>
+          </radialGradient>
+        </defs>
+        <circle cx="70" cy="70" r="65" fill="url(#bg)" stroke="${badge.color}" stroke-width="3"/>
+        <circle cx="70" cy="70" r="55" fill="none" stroke="${badge.color}" stroke-width="1.5" stroke-dasharray="8 4"/>
+        <text x="70" y="58" text-anchor="middle" font-size="32">${badge.icon}</text>
+        <text x="70" y="90" text-anchor="middle" font-size="12" fill="${badge.color}" font-weight="700" font-family="Arial">CEUNI-FAMETRO</text>
+        <text x="70" y="106" text-anchor="middle" font-size="10" fill="#93C5FD" font-family="Arial">SO · 2026.1</text>
+      </svg>
+      <div class="badge-title">${badge.name}</div>
+      <div class="stars">${stars}</div>
+      <div class="badge-sub">Badge Digital conquistado por ${state.player}</div>
+    </div>
+
+    <div class="panel" style="text-align:center">
+      <div style="font-size:28px;font-weight:800;color:var(--sky);margin-bottom:4px">${state.score.toLocaleString('pt-BR')} pts</div>
+      <div style="font-size:13px;color:var(--mid);margin-bottom:16px">Pontuação Final</div>
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+        <div style="padding:10px 16px;background:#0A1540;border-radius:10px;border:1px solid #1E3A6E;text-align:center">
+          <div style="font-size:22px;font-weight:800;color:#10B981">${accuracy}%</div>
+          <div style="font-size:10px;color:var(--mid)">Acurácia</div>
+        </div>
+        <div style="padding:10px 16px;background:#0A1540;border-radius:10px;border:1px solid #1E3A6E;text-align:center">
+          <div style="font-size:22px;font-weight:800;color:var(--accent)">×${state.maxCombo}</div>
+          <div style="font-size:10px;color:var(--mid)">Combo Máx.</div>
+        </div>
+        <div style="padding:10px 16px;background:#0A1540;border-radius:10px;border:1px solid #1E3A6E;text-align:center">
+          <div style="font-size:22px;font-weight:800;color:#A78BFA">#${rank}</div>
+          <div style="font-size:10px;color:var(--mid)">Posição</div>
+        </div>
+        <div style="padding:10px 16px;background:#0A1540;border-radius:10px;border:1px solid #1E3A6E;text-align:center">
+          <div style="font-size:22px;font-weight:800;color:var(--sky)">${state.correct}/${state.answered}</div>
+          <div style="font-size:10px;color:var(--mid)">Corretas</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel green" style="margin-top:12px">
+      <div style="font-size:14px;font-weight:700;color:#6EE7B7;margin-bottom:10px">📚 Competências Desenvolvidas:</div>
+      ${[
+        ['⚙️','Interrupções e Exceções','Mecanismos de controle assíncrono do SO'],
+        ['💾','E/S: Programada, Interrupção e DMA','Técnicas de gerenciamento de dispositivos'],
+        ['🗄️','Buffering e Spooling','Gerência de velocidade e compartilhamento'],
+        ['🔄','Reentrância','Código seguro para execução concorrente'],
+        ['🧠','Funções do Kernel','Gerenciamento central de recursos'],
+        ['🔐','Modos Usuário e Núcleo','Proteção e isolamento de processos'],
+        ['📞','System Calls','Interface entre aplicações e o kernel'],
+      ].map(([ic,t,d])=>`
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;padding:6px 8px;background:#021510;border-radius:8px">
+          <span style="font-size:16px">${ic}</span>
+          <div><div style="font-size:13px;font-weight:600;color:#fff">${t}</div><div style="font-size:11px;color:#6EE7B7">${d}</div></div>
+        </div>`).join('')}
+    </div>
+  `;
+  showScreen('screen-end');
+  playSound('levelup');
+}
+
+function restartGame(){
+  state={player:state.player,score:0,step:0,combo:1,maxCombo:1,answered:0,correct:0,timerVal:180,timerInterval:null,answered_steps:[],soundOn:state.soundOn};
+  const me=rankingData.find(r=>r.me);
+  if(me) me.score=0;
+  showScreen('screen-start');
+  renderRanking('ranking-start');
+}
+
+// Keyboard shortcuts
+document.addEventListener('keydown',e=>{
+  if(['a','b','c','d'].includes(e.key.toLowerCase())){
+    const idx={'a':0,'b':1,'c':2,'d':3}[e.key.toLowerCase()];
+    const opts=document.querySelectorAll('.opt');
+    if(opts.length>0 && document.getElementById('nextBtnWrap').classList.contains('hidden')){
+      selectAnswer(idx);
+    }
+  }
+  if(e.key==='Enter' && !document.getElementById('nextBtnWrap').classList.contains('hidden')){
+    nextQuestion();
+  }
+});
+
+// Live ranking update simulation
+setInterval(()=>{
+  rankingData.forEach(r=>{
+    if(!r.me && Math.random()>0.7) r.score+=Math.floor(Math.random()*80);
+  });
+  renderRanking('ranking-start');
+  if(document.getElementById('screen-game').classList.contains('active')) renderRanking('ranking-game');
+},4000);
+</script>
+</body>
+</html>

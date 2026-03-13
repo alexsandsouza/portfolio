@@ -330,6 +330,27 @@ const Hero = () => {
                                 Hackers do Bem 🛡️
                             </a>
 
+                            <a href="/fametro" className="btn" style={{
+                                background: 'linear-gradient(135deg, #2563eb 0%, #3b82f6 100%)',
+                                borderRadius: '30px',
+                                padding: '12px 32px',
+                                color: 'white',
+                                border: 'none',
+                                fontWeight: '600',
+                                fontSize: '1rem',
+                                letterSpacing: '0.5px',
+                                boxShadow: '0 10px 25px -5px rgba(59, 130, 246, 0.5)',
+                                transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: '8px'
+                            }}
+                                onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 20px 35px -5px rgba(59, 130, 246, 0.6)'; }}
+                                onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 10px 25px -5px rgba(59, 130, 246, 0.5)'; }}
+                            >
+                                Hub Fametro 🎓
+                            </a>
+
                             <a href="#projects" style={{
                                 color: 'var(--text-secondary)',
                                 textDecoration: 'none',

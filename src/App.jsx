@@ -103,6 +103,16 @@ import AtividadeHackersDoBem from './pages/hackersdobem/atividade_hackers_do_bem
 import RankingHackersDoBem from './pages/hackersdobem/ranking_hackers_do_bem';
 import AtividadeHackersDoBemM4A03 from './pages/hackersdobem/atividade_m4a03';
 import RankingHackersDoBemM4A03 from './pages/hackersdobem/ranking_m4a03';
+import AtividadeHackersDoBemM4A04 from './pages/hackersdobem/atividade_m4a04';
+import RankingHackersDoBemM4A04 from './pages/hackersdobem/ranking_m4a04';
+import FametroHub from './pages/fametro/FametroHub';
+import POOActivity from './pages/fametro/disciplinas/POO/POOActivity';
+import POOJavaActivity from './pages/fametro/disciplinas/POO/POOJavaActivity';
+import RankingPOO from './pages/fametro/disciplinas/POO/RankingPOO';
+import RequisitosActivity from './pages/fametro/disciplinas/Requisitos/RequisitosActivity';
+import RankingRequisitos from './pages/fametro/disciplinas/Requisitos/RankingRequisitos';
+import SOActivity from './pages/fametro/disciplinas/SO/SOActivity';
+import SORanking from './pages/fametro/disciplinas/SO/SORanking';
 // ... existing imports
 
 function App() {
@@ -122,6 +132,16 @@ function App() {
         <Route path="/hackersdobem/ranking" element={<RankingHackersDoBem />} />
         <Route path="/hackersdobem/atividade-m4a03" element={<AtividadeHackersDoBemM4A03 />} />
         <Route path="/hackersdobem/ranking-m4a03" element={<RankingHackersDoBemM4A03 />} />
+        <Route path="/hackersdobem/atividade-m4a04" element={<AtividadeHackersDoBemM4A04 />} />
+        <Route path="/hackersdobem/ranking-m4a04" element={<RankingHackersDoBemM4A04 />} />
+        <Route path="/fametro" element={<FametroHub />} />
+        <Route path="/fametro/poo/atividade" element={<POOActivity />} />
+        <Route path="/fametro/poo/java-atividade" element={<POOJavaActivity />} />
+        <Route path="/fametro/poo/ranking" element={<RankingPOO />} />
+        <Route path="/fametro/requisitos" element={<RequisitosActivity />} />
+        <Route path="/fametro/requisitos/ranking" element={<RankingRequisitos />} />
+        <Route path="/fametro/so" element={<SOActivity />} />
+        <Route path="/fametro/so/ranking" element={<SORanking />} />
       </Routes>
     </div>
   );

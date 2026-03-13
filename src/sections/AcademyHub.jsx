@@ -1,5 +1,6 @@
 import React from 'react';
-import { PlayCircle, Download, ExternalLink, BookOpen, Award, MonitorPlay, Headphones } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { PlayCircle, Download, ExternalLink, BookOpen, Award, MonitorPlay, Headphones, GraduationCap } from 'lucide-react';
 import { Reveal } from '../components/Reveal';
 
 const AcademyHub = () => {
@@ -76,7 +77,7 @@ const AcademyHub = () => {
                     <BookOpen size={24} color="var(--primary-color)" /> Portais de Aprendizado
                 </h3>
 
-                <div className="grid-2">
+                <div className="grid-3">
                     {/* Card 1: Formação Cisco */}
                     <Reveal delay={200}>
                         <a href="https://ad-academy-one.vercel.app" target="_blank" rel="noopener noreferrer" className="card-glass hover-card" style={{
@@ -103,7 +104,33 @@ const AcademyHub = () => {
                         </a>
                     </Reveal>
 
-                    {/* Card 2: Ebooks e Audiobooks */}
+                    {/* Card 2: Hub Fametro */}
+                    <Reveal delay={300}>
+                        <Link to="/fametro" className="card-glass hover-card" style={{
+                            display: 'block', padding: '2.5rem', height: '100%', textDecoration: 'none', transition: 'transform 0.3s ease'
+                        }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1.5rem' }}>
+                                <div style={{
+                                    width: '60px', height: '60px', background: 'rgba(59, 130, 246, 0.1)',
+                                    borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center'
+                                }}>
+                                    <GraduationCap size={32} color="#3b82f6" />
+                                </div>
+                                <ExternalLink size={20} color="var(--text-secondary)" />
+                            </div>
+                            <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem', color: 'var(--text-heading)' }}>
+                                Hub Fametro
+                            </h3>
+                            <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem' }}>
+                                Espaço dedicado aos alunos do Centro Universitário FAMETRO. Atividades gamificadas e materiais de apoio às aulas.
+                            </p>
+                            <span style={{ color: '#3b82f6', fontWeight: 'bold', fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: '5px' }}>
+                                Explorar Disciplinas <ExternalLink size={14} />
+                            </span>
+                        </Link>
+                    </Reveal>
+
+                    {/* Card 3: Ebooks e Audiobooks */}
                     <Reveal delay={400}>
                         <a href="https://ad-academy-treinamentos.vercel.app" target="_blank" rel="noopener noreferrer" className="card-glass hover-card" style={{
                             display: 'block', padding: '2.5rem', height: '100%', textDecoration: 'none', transition: 'transform 0.3s ease'

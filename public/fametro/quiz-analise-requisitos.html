@@ -1,0 +1,1682 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REQQUEST — Quiz de Análise de Requisitos</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #C0392B;
+    --red-dark: #96281B;
+    --red-glow: rgba(192,57,43,0.4);
+    --bg: #0A0A0F;
+    --panel: #13131A;
+    --panel2: #1C1C28;
+    --border: rgba(255,255,255,0.07);
+    --text: #F0F0F5;
+    --muted: #6B6B7F;
+    --gold: #F5A623;
+    --silver: #C0C0C8;
+    --bronze: #CD7F32;
+    --green: #27AE60;
+    --blue: #2980B9;
+    --must: #E74C3C;
+    --should: #E67E22;
+    --could: #F1C40F;
+    --wont: #95A5A6;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Syne', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-image:
+      radial-gradient(ellipse at 20% 50%, rgba(192,57,43,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(41,128,185,0.04) 0%, transparent 50%);
+  }
+
+  /* GRID TEXTURE */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── SCREENS ── */
+  .screen { display: none; position: relative; z-index: 1; }
+  .screen.active { display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+
+  /* ── INTRO SCREEN ── */
+  #intro {
+    justify-content: center;
+    padding: 40px 20px;
+    text-align: center;
+    gap: 0;
+  }
+
+  .intro-badge {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--red);
+    border: 1px solid var(--red);
+    padding: 6px 16px;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    animation: pulse-border 2s infinite;
+  }
+
+  @keyframes pulse-border {
+    0%, 100% { border-color: var(--red); box-shadow: none; }
+    50% { border-color: #ff6b6b; box-shadow: 0 0 20px var(--red-glow); }
+  }
+
+  .intro-title {
+    font-size: clamp(52px, 10vw, 100px);
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -3px;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, #fff 0%, #aaa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .intro-title span {
+    background: linear-gradient(135deg, var(--red) 0%, #ff6b6b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .intro-subtitle {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    margin-bottom: 48px;
+  }
+
+  .intro-stats {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+  }
+
+  .stat-box {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 20px 28px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stat-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--red);
+  }
+
+  .stat-value {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--red);
+    display: block;
+  }
+
+  .stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  .name-input-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    max-width: 420px;
+    margin-bottom: 32px;
+  }
+
+  .name-input-wrapper label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--muted);
+    text-transform: uppercase;
+    align-self: flex-start;
+  }
+
+  .name-input-wrapper input {
+    width: 100%;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-bottom: 2px solid var(--red);
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 14px 18px;
+    outline: none;
+    transition: all 0.2s;
+    letter-spacing: 1px;
+  }
+
+  .name-input-wrapper input:focus {
+    border-color: var(--red);
+    box-shadow: 0 0 20px var(--red-glow);
+  }
+
+  .btn-start {
+    background: var(--red);
+    color: white;
+    border: none;
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 18px 56px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.2s;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+
+  .btn-start:hover {
+    background: #e74c3c;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px var(--red-glow);
+  }
+
+  .btn-start:active { transform: translateY(0); }
+
+  /* ── QUIZ SCREEN ── */
+  #quiz {
+    padding: 0;
+    align-items: stretch;
+  }
+
+  .quiz-header {
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-brand {
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: -1px;
+  }
+
+  .header-brand span { color: var(--red); }
+
+  .header-divider { width: 1px; height: 32px; background: var(--border); }
+
+  .timer-display {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: 2px;
+    min-width: 90px;
+  }
+
+  .timer-display.warning { color: var(--gold); animation: blink 1s infinite; }
+  .timer-display.danger { color: var(--red); animation: blink 0.5s infinite; }
+
+  @keyframes blink { 50% { opacity: 0.5; } }
+
+  .progress-wrap {
+    flex: 1;
+    min-width: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .progress-info {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 1px;
+  }
+
+  .progress-bar {
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: var(--red);
+    transition: width 0.5s ease;
+    border-radius: 2px;
+  }
+
+  .score-display {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 1px;
+  }
+
+  .player-tag {
+    font-size: 13px;
+    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ── QUESTION AREA ── */
+  .quiz-body {
+    flex: 1;
+    display: flex;
+    gap: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 32px 24px;
+    gap: 32px;
+  }
+
+  .question-area { flex: 1; min-width: 0; }
+
+  .q-category {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--red);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .q-category::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--red);
+  }
+
+  .q-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 72px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.04);
+    line-height: 1;
+    margin-bottom: -20px;
+    display: block;
+  }
+
+  .q-text {
+    font-size: clamp(18px, 3vw, 26px);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 32px;
+    color: var(--text);
+  }
+
+  .answers-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  @media (max-width: 600px) {
+    .answers-grid { grid-template-columns: 1fr; }
+    .quiz-body { flex-direction: column; padding: 16px; }
+    .sidebar { width: 100% !important; }
+  }
+
+  .answer-btn {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    padding: 18px 20px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.15s;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .answer-btn:hover:not(:disabled) {
+    border-color: rgba(192,57,43,0.5);
+    background: rgba(192,57,43,0.08);
+    transform: translateX(4px);
+  }
+
+  .answer-btn:disabled { cursor: not-allowed; opacity: 0.7; }
+
+  .answer-btn.correct {
+    border-color: var(--green) !important;
+    background: rgba(39,174,96,0.15) !important;
+    animation: correct-flash 0.4s ease;
+  }
+
+  .answer-btn.wrong {
+    border-color: var(--red) !important;
+    background: rgba(192,57,43,0.15) !important;
+    animation: shake 0.4s ease;
+  }
+
+  @keyframes correct-flash {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+  }
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-6px); }
+    75% { transform: translateX(6px); }
+  }
+
+  .answer-letter {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--red);
+    min-width: 20px;
+    flex-shrink: 0;
+  }
+
+  .answer-btn.correct .answer-letter { color: var(--green); }
+  .answer-btn.wrong .answer-letter { color: var(--red); }
+
+  .feedback-box {
+    margin-top: 20px;
+    padding: 16px 20px;
+    border-left: 3px solid var(--green);
+    background: rgba(39,174,96,0.06);
+    font-size: 14px;
+    line-height: 1.6;
+    color: #ccc;
+    display: none;
+  }
+
+  .feedback-box.visible { display: block; animation: fadeIn 0.3s ease; }
+  .feedback-box.wrong-fb { border-color: var(--red); background: rgba(192,57,43,0.06); }
+
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  .next-btn {
+    margin-top: 20px;
+    background: transparent;
+    border: 1px solid var(--red);
+    color: var(--red);
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 12px 32px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: none;
+  }
+
+  .next-btn.visible { display: inline-block; animation: fadeIn 0.3s ease; }
+  .next-btn:hover { background: var(--red); color: white; }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    width: 280px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .sidebar-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 20px;
+  }
+
+  .sidebar-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .sidebar-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── BADGES ── */
+  .badges-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .badge-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 10px 6px;
+    background: var(--panel2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    transition: all 0.3s;
+    opacity: 0.3;
+    filter: grayscale(1);
+  }
+
+  .badge-item.earned {
+    opacity: 1;
+    filter: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 12px rgba(245,166,35,0.3);
+    animation: badge-pop 0.5s cubic-bezier(0.68,-0.55,0.265,1.55);
+  }
+
+  @keyframes badge-pop {
+    0% { transform: scale(0.5) rotate(-10deg); }
+    60% { transform: scale(1.2) rotate(5deg); }
+    100% { transform: scale(1) rotate(0deg); }
+  }
+
+  .badge-emoji { font-size: 24px; }
+
+  .badge-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px;
+    color: var(--muted);
+    text-align: center;
+    letter-spacing: 0.5px;
+  }
+
+  .badge-item.earned .badge-name { color: var(--gold); }
+
+  /* ── LEADERBOARD ── */
+  .leaderboard-list { display: flex; flex-direction: column; gap: 8px; }
+
+  .lb-entry {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    background: var(--panel2);
+    border: 1px solid var(--border);
+    font-size: 13px;
+    transition: all 0.3s;
+  }
+
+  .lb-entry.me {
+    border-color: var(--red);
+    background: rgba(192,57,43,0.1);
+  }
+
+  .lb-rank {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    min-width: 24px;
+    text-align: center;
+  }
+
+  .lb-rank.gold { color: var(--gold); }
+  .lb-rank.silver { color: var(--silver); }
+  .lb-rank.bronze { color: var(--bronze); }
+
+  .lb-name { flex: 1; font-weight: 600; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .lb-score {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  /* ── Q MINIMAP ── */
+  .q-map {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .q-dot {
+    width: 22px;
+    height: 22px;
+    background: var(--panel2);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    transition: all 0.2s;
+  }
+
+  .q-dot.current { border-color: var(--red); color: var(--red); }
+  .q-dot.answered-correct { background: rgba(39,174,96,0.3); border-color: var(--green); color: var(--green); }
+  .q-dot.answered-wrong { background: rgba(192,57,43,0.3); border-color: var(--red); color: var(--red); }
+
+  /* ── NOTIFICATION ── */
+  .notification {
+    position: fixed;
+    top: 80px;
+    right: 24px;
+    background: var(--panel);
+    border: 1px solid var(--gold);
+    border-left: 4px solid var(--gold);
+    padding: 14px 20px;
+    z-index: 1000;
+    max-width: 280px;
+    animation: slideIn 0.4s ease, fadeOut 0.4s ease 3s forwards;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+  }
+
+  @keyframes slideIn { from { transform: translateX(120%); } to { transform: translateX(0); } }
+  @keyframes fadeOut { to { opacity: 0; transform: translateX(120%); } }
+
+  .notif-title {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .notif-body {
+    font-size: 12px;
+    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ── RESULT SCREEN ── */
+  #result {
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    text-align: center;
+    gap: 32px;
+    min-height: 100vh;
+  }
+
+  .result-badge-main {
+    font-size: 80px;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  .result-title {
+    font-size: clamp(36px, 8vw, 72px);
+    font-weight: 800;
+    letter-spacing: -2px;
+    line-height: 1;
+    background: linear-gradient(135deg, #fff 0%, #aaa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .result-subtitle {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    color: var(--red);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  .result-score-big {
+    font-size: clamp(64px, 15vw, 120px);
+    font-weight: 800;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--gold) 0%, #ff9f00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .result-score-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 3px;
+  }
+
+  .result-stats {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .result-stat {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 16px 24px;
+    min-width: 100px;
+  }
+
+  .result-stat-v {
+    font-size: 28px;
+    font-weight: 800;
+    display: block;
+  }
+
+  .result-stat-l {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 1px;
+  }
+
+  .result-classification {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--red);
+    padding: 24px 36px;
+    max-width: 480px;
+    width: 100%;
+  }
+
+  .class-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .class-title {
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+
+  .class-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .result-badges {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .result-badge-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .result-badge-icon { font-size: 36px; }
+
+  .result-badge-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 1px;
+  }
+
+  .final-leaderboard {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 24px;
+    max-width: 480px;
+    width: 100%;
+    max-height: 280px;
+    overflow-y: auto;
+  }
+
+  .lb-full-entry {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+  }
+
+  .lb-full-entry:last-child { border-bottom: none; }
+  .lb-full-entry.me-entry { background: rgba(192,57,43,0.12); }
+
+  .btn-restart {
+    background: var(--red);
+    color: white;
+    border: none;
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 14px 40px;
+    cursor: pointer;
+    transition: all 0.2s;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+
+  .btn-restart:hover { background: #e74c3c; transform: translateY(-2px); box-shadow: 0 8px 24px var(--red-glow); }
+
+  /* BONUS POINTS FLASH */
+  .points-flash {
+    position: fixed;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--gold);
+    pointer-events: none;
+    z-index: 9999;
+    animation: pointsUp 1.2s ease forwards;
+  }
+
+  @keyframes pointsUp {
+    0% { opacity: 1; transform: translateY(0) scale(1); }
+    100% { opacity: 0; transform: translateY(-80px) scale(1.3); }
+  }
+
+  /* CONFETTI */
+  .confetti-piece {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    pointer-events: none;
+    z-index: 9998;
+    animation: confettiFall linear forwards;
+  }
+
+  @keyframes confettiFall {
+    0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+  }
+
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--panel); }
+  ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 2px; }
+</style>
+</head>
+<body>
+
+<!-- ══════════════ INTRO ══════════════ -->
+<div id="intro" class="screen active">
+  <div class="intro-badge">FAMETRO · Sistemas de Informação · 2026</div>
+  <div class="intro-title">REQ<span>QUEST</span></div>
+  <div class="intro-subtitle">// Análise de Requisitos & Modelagem Conceitual</div>
+
+  <div class="intro-stats">
+    <div class="stat-box">
+      <span class="stat-value">20</span>
+      <span class="stat-label">Questões</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-value">100</span>
+      <span class="stat-label">Pontos</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-value">1h30</span>
+      <span class="stat-label">Duração</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-value">6</span>
+      <span class="stat-label">Badges</span>
+    </div>
+  </div>
+
+  <div class="name-input-wrapper">
+    <label>Seu nome / matrícula</label>
+    <input type="text" id="playerName" placeholder="Ex: João Silva" maxlength="30" />
+  </div>
+
+  <button class="btn-start" onclick="startQuiz()">▶ INICIAR QUIZ</button>
+</div>
+
+<!-- ══════════════ QUIZ ══════════════ -->
+<div id="quiz" class="screen">
+  <div class="quiz-header">
+    <div class="header-brand">REQ<span>QUEST</span></div>
+    <div class="header-divider"></div>
+    <div class="timer-display" id="timerDisplay">1:30:00</div>
+    <div class="progress-wrap">
+      <div class="progress-info">
+        <span id="progressText">Q 1 / 20</span>
+        <span id="progressPct">0%</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill" style="width:0%"></div>
+      </div>
+    </div>
+    <div class="score-display">⬡ <span id="liveScore">0</span> pts</div>
+    <div class="player-tag" id="playerTag">—</div>
+  </div>
+
+  <div class="quiz-body">
+    <div class="question-area">
+      <div class="q-category" id="qCategory">FUNDAMENTOS</div>
+      <span class="q-number" id="qNumber">01</span>
+      <div class="q-text" id="qText">Carregando...</div>
+      <div class="answers-grid" id="answersGrid"></div>
+      <div class="feedback-box" id="feedbackBox"></div>
+      <button class="next-btn" id="nextBtn" onclick="nextQuestion()">PRÓXIMA →</button>
+    </div>
+
+    <div class="sidebar">
+      <!-- Minimap -->
+      <div class="sidebar-card">
+        <div class="sidebar-title">Progresso</div>
+        <div class="q-map" id="qMap"></div>
+      </div>
+
+      <!-- Badges -->
+      <div class="sidebar-card">
+        <div class="sidebar-title">Conquistas</div>
+        <div class="badges-grid" id="badgesGrid"></div>
+      </div>
+
+      <!-- Leaderboard -->
+      <div class="sidebar-card">
+        <div class="sidebar-title">Placar</div>
+        <div class="leaderboard-list" id="liveLeaderboard"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ RESULT ══════════════ -->
+<div id="result" class="screen"></div>
+
+<script>
+// ═══════════════════════════════════════════════════════════
+//  DATA
+// ═══════════════════════════════════════════════════════════
+
+const QUESTIONS = [
+  {
+    category: "FUNDAMENTOS",
+    text: "A construção de software começa muito antes da codificação. Qual é o primeiro passo fundamental nesse processo?",
+    answers: [
+      "Escolher a linguagem de programação",
+      "Compreender profundamente as necessidades do negócio",
+      "Definir o banco de dados",
+      "Contratar a equipe de desenvolvedores"
+    ],
+    correct: 1,
+    feedback: "Correto! A construção do SW começa com a compreensão profunda das necessidades do negócio, antes de qualquer decisão técnica.",
+    points: 5
+  },
+  {
+    category: "FUNDAMENTOS",
+    text: "A Análise de Requisitos é definida como a arte de:",
+    answers: [
+      "Programar, testar e implantar sistemas",
+      "Descobrir, documentar e gerenciar as necessidades dos stakeholders",
+      "Criar interfaces visuais para usuários",
+      "Gerenciar equipes de desenvolvimento ágil"
+    ],
+    correct: 1,
+    feedback: "A Análise de Requisitos é a arte de Descobrir, Documentar e Gerenciar as Necessidades dos stakeholders.",
+    points: 5
+  },
+  {
+    category: "MODELAGEM CONCEITUAL",
+    text: "Qual é a diferença entre Modelagem Conceitual e Casos de Uso?",
+    answers: [
+      "São a mesma coisa, apenas com nomes diferentes",
+      "A modelagem conceitual foca na estrutura (entidades), os casos de uso focam no comportamento (ações)",
+      "Casos de uso são mais detalhados que modelagem conceitual",
+      "Modelagem conceitual é usada apenas por DBAs"
+    ],
+    correct: 1,
+    feedback: "A Modelagem Conceitual foca na estrutura (entidades e relacionamentos), enquanto os Casos de Uso focam no comportamento (ações dos atores no sistema).",
+    points: 5
+  },
+  {
+    category: "ANÁLISE DE CONSISTÊNCIA",
+    text: "O que define uma Inconsistência Lógica nos requisitos?",
+    answers: [
+      "Requisitos redigidos em idiomas diferentes",
+      "Quando um requisito anula o outro — ex: 'sistema rápido' vs 'segurança máxima que o torne lento'",
+      "Requisitos duplicados com mesmo conteúdo",
+      "Requisitos sem identificador único"
+    ],
+    correct: 1,
+    feedback: "Inconsistências lógicas ocorrem quando um requisito contradiz outro, como exigir velocidade máxima e também segurança máxima que tornaria o sistema lento.",
+    points: 5
+  },
+  {
+    category: "ANÁLISE DE CONSISTÊNCIA",
+    text: "Qual é a definição de Inconsistência Semântica?",
+    answers: [
+      "Requisito com prazo impossível",
+      "Requisito fora do escopo do projeto",
+      "A mesma informação descrita de forma diferente em locais distintos",
+      "Conflito entre requisitos funcionais e não funcionais"
+    ],
+    correct: 2,
+    feedback: "Inconsistências semânticas ocorrem quando a mesma informação é descrita de forma diferente em locais distintos do documento de requisitos.",
+    points: 5
+  },
+  {
+    category: "ANÁLISE DE CONSISTÊNCIA",
+    text: "Quais ferramentas podem ser usadas para rastrear dependências e identificar conflitos entre requisitos?",
+    answers: [
+      "Photoshop, Canva e Figma",
+      "Word, Excel e PowerPoint",
+      "JIRA, Trello e IBM DOORS Next",
+      "GitHub, GitLab e Bitbucket"
+    ],
+    correct: 2,
+    feedback: "Ferramentas como JIRA, Trello e IBM DOORS Next são usadas no gerenciamento de requisitos, ajudando a rastrear dependências e identificar conflitos.",
+    points: 5
+  },
+  {
+    category: "ANÁLISE DE VIABILIDADE",
+    text: "O que a Análise de Viabilidade avalia em um projeto de software?",
+    answers: [
+      "Se o sistema terá boa interface gráfica",
+      "Se o projeto é operacionalmente factível em termos técnicos e financeiros",
+      "Se a equipe domina as tecnologias escolhidas",
+      "Se o cliente está satisfeito com os protótipos"
+    ],
+    correct: 1,
+    feedback: "A Análise de Viabilidade avalia se o projeto de SW é operacionalmente factível em termos técnicos e financeiros, auxiliando a decidir se deve prosseguir ou ser reavaliado.",
+    points: 5
+  },
+  {
+    category: "ANÁLISE DE VIABILIDADE",
+    text: "Quais são os quatro tipos de viabilidade apresentados na aula?",
+    answers: [
+      "Legal, Ética, Cultural e Tecnológica",
+      "Técnica, Financeira, Operacional e de Cronograma",
+      "Humana, Material, Financeira e Temporal",
+      "Estratégica, Tática, Operacional e de Mercado"
+    ],
+    correct: 1,
+    feedback: "Os quatro tipos são: Viabilidade Técnica (temos a tecnologia e expertise?), Financeira (benefício justifica o custo?), Operacional (fluxo de trabalho da empresa?) e de Cronograma (concluído no prazo?).",
+    points: 5
+  },
+  {
+    category: "ANÁLISE DE VIABILIDADE",
+    text: "Qual métrica financeira é frequentemente usada para justificar a decisão de seguir em frente com um projeto?",
+    answers: [
+      "NPS — Net Promoter Score",
+      "ROI — Retorno sobre o Investimento",
+      "KPI — Key Performance Indicator",
+      "SLA — Service Level Agreement"
+    ],
+    correct: 1,
+    feedback: "O ROI (Retorno sobre o Investimento) e a análise de custo-benefício são as métricas mais usadas para justificar a decisão de prosseguir com o projeto.",
+    points: 5
+  },
+  {
+    category: "ANÁLISE DE VIABILIDADE",
+    text: "Quais são os três possíveis resultados de uma Análise de Viabilidade?",
+    answers: [
+      "Aprovar, Reprovar ou Suspender",
+      "Seguir com o projeto, Redefinir o escopo ou Abortar o projeto",
+      "Iniciar, Pausar ou Cancelar",
+      "Acelerar, Manter ou Reduzir"
+    ],
+    correct: 1,
+    feedback: "Os resultados possíveis são: Seguir com o projeto, Redefinir o escopo (reduzir ou aumentar) ou Abortar o projeto.",
+    points: 5
+  },
+  {
+    category: "PRIORIZAÇÃO",
+    text: "O que significa a letra 'M' na técnica MoSCoW?",
+    answers: [
+      "Moderado — pode aguardar",
+      "Must — requisito obrigatório",
+      "Mínimo — escopo reduzido",
+      "Melhor — ideal mas não necessário"
+    ],
+    correct: 1,
+    feedback: "Na técnica MoSCoW: M = Must (Obrigatório), S = Should (Importante), C = Could (Desejável), W = Won't (Não essencial agora).",
+    points: 5
+  },
+  {
+    category: "PRIORIZAÇÃO",
+    text: "Qual afirmação sobre Priorização de Requisitos é CORRETA?",
+    answers: [
+      "É um processo feito apenas uma vez, no início do projeto",
+      "Deve ser realizada somente pelo analista de negócios",
+      "É um processo contínuo e flexível, podendo ser alterado conforme o negócio evolui",
+      "Substitui completamente a análise de viabilidade"
+    ],
+    correct: 2,
+    feedback: "A priorização NÃO é estática! Deve ser um processo contínuo e flexível, pois requisitos podem ter sua prioridade alterada à medida que as necessidades de negócio evoluem.",
+    points: 5
+  },
+  {
+    category: "PRIORIZAÇÃO",
+    text: "O Modelo Kano avalia a prioridade dos requisitos com base em qual critério?",
+    answers: [
+      "Custo de implementação",
+      "Satisfação do cliente",
+      "Complexidade técnica",
+      "Prazo de entrega"
+    ],
+    correct: 1,
+    feedback: "O Modelo Kano avalia a prioridade dos requisitos com base na satisfação do cliente, classificando-os como Essenciais ou Atraentes.",
+    points: 5
+  },
+  {
+    category: "CASO DE USO",
+    text: "O que representa o ATOR em um Diagrama de Caso de Uso?",
+    answers: [
+      "Uma tela do sistema",
+      "Um banco de dados externo",
+      "Alguém ou algo que interage com o sistema para atingir um objetivo",
+      "Uma função interna do software"
+    ],
+    correct: 2,
+    feedback: "O Ator representa alguém (usuário, sistema externo) que interage com o sistema. É representado visualmente pelo ícone de boneco (stick figure).",
+    points: 5
+  },
+  {
+    category: "CASO DE USO",
+    text: "Qual é a diferença entre os relacionamentos <<include>> e <<extend>> em Casos de Uso?",
+    answers: [
+      "Include é obrigatório (sempre acontece); Extend é opcional (acontece em condições específicas)",
+      "Include é para usuários externos; Extend é para administradores",
+      "Include representa herança; Extend representa composição",
+      "Não há diferença prática entre eles"
+    ],
+    correct: 0,
+    feedback: "<<include>> indica que o caso de uso A sempre inclui o comportamento de B (obrigatório). <<extend>> indica que B pode opcionalmente estender A em condições específicas.",
+    points: 5
+  },
+  {
+    category: "CASO DE USO",
+    text: "Quais elementos compõem a estrutura descritiva de um Caso de Uso?",
+    answers: [
+      "Diagrama ER, Tabelas e Índices",
+      "Nome claro, Ator principal, Pré-condição, Fluxo principal, Fluxos alternativos e Pós-condições",
+      "Requisitos funcionais, Não funcionais e Restrições",
+      "Wireframe, Protótipo e Mockup"
+    ],
+    correct: 1,
+    feedback: "Um Caso de Uso descritivo inclui: Nome Claro, Ator Principal, Pré-condição, Fluxo Principal, Fluxos Alternativos e Pós-condições.",
+    points: 5
+  },
+  {
+    category: "MODELAGEM CONCEITUAL",
+    text: "Quais são os três níveis da Modelagem de Dados apresentados na aula?",
+    answers: [
+      "Alto, Médio e Baixo",
+      "Interno, Conceitual e Externo",
+      "Conceitual, Lógica e Física",
+      "Funcional, Estrutural e Comportamental"
+    ],
+    correct: 2,
+    feedback: "Os três níveis são: Conceitual (visão do negócio), Lógica (independente de SGBD) e Física (específica para um SGBD).",
+    points: 5
+  },
+  {
+    category: "MODELAGEM CONCEITUAL",
+    text: "Quais ferramentas são amplamente utilizadas para criar modelos conceituais?",
+    answers: [
+      "Eclipse, IntelliJ e VSCode",
+      "MySQL Workbench, DBeaver e pgAdmin",
+      "Lucidchart, Draw.io e Microsoft Visio",
+      "Slack, Teams e Zoom"
+    ],
+    correct: 2,
+    feedback: "Ferramentas de diagramação como Lucidchart, Draw.io e Microsoft Visio são amplamente utilizadas para criar modelos conceituais.",
+    points: 5
+  },
+  {
+    category: "GESTÃO DE DEMANDAS",
+    text: "No Quadro Trello apresentado, qual é a sequência correta das colunas do fluxo de trabalho?",
+    answers: [
+      "A Fazer → Backlog → Em Andamento → Concluído",
+      "Backlog → A Fazer → Em Andamento → Concluído",
+      "Ideia → Análise → Desenvolvimento → Entrega",
+      "Concluído → Em Andamento → A Fazer → Backlog"
+    ],
+    correct: 1,
+    feedback: "A sequência correta do quadro Kanban apresentado é: Backlog → A Fazer → Em Andamento → Concluído.",
+    points: 5
+  },
+  {
+    category: "INTEGRAÇÃO",
+    text: "Qual afirmação melhor descreve a relação entre Análise de Requisitos e Modelagem Conceitual?",
+    answers: [
+      "São etapas independentes que não se relacionam",
+      "A Modelagem Conceitual substitui a Análise de Requisitos",
+      "Juntos, garantem que o SW não apenas funcione, mas resolva os problemas corretos e atenda às expectativas dos usuários",
+      "A Análise de Requisitos ocorre somente após a Modelagem Conceitual"
+    ],
+    correct: 2,
+    feedback: "Juntos, Análise de Requisitos e Modelagem Conceitual garantem que o SW não apenas funcione, mas que resolva os problemas corretos, de forma correta, atendendo às expectativas dos usuários.",
+    points: 5
+  }
+];
+
+const BADGES = [
+  { id: 'first_blood', emoji: '🎯', name: 'Primeiro Acerto', desc: 'Acertou a primeira questão', condition: (s) => s.firstCorrect },
+  { id: 'consistency', emoji: '🔥', name: 'Em Chamas', desc: '3 acertos consecutivos', condition: (s) => s.streak >= 3 },
+  { id: 'half_way', emoji: '⚡', name: 'Na Metade', desc: 'Completou 10 questões', condition: (s) => s.answered >= 10 },
+  { id: 'perfectionist', emoji: '💎', name: 'Perfeccionista', desc: '100% de acertos até agora', condition: (s) => s.answered > 0 && s.correct === s.answered },
+  { id: 'speed_demon', emoji: '🚀', name: 'Speed Demon', desc: 'Respondeu em menos de 10s', condition: (s) => s.fastAnswer },
+  { id: 'champion', emoji: '🏆', name: 'Campeão', desc: 'Completou o quiz', condition: (s) => s.finished },
+];
+
+const FAKE_PLAYERS = [
+  { name: 'Ana Lima', score: 0 },
+  { name: 'Carlos M.', score: 0 },
+  { name: 'Bruna F.', score: 0 },
+  { name: 'Diego R.', score: 0 },
+];
+
+// ═══════════════════════════════════════════════════════════
+//  STATE
+// ═══════════════════════════════════════════════════════════
+
+let state = {
+  playerName: '',
+  currentQ: 0,
+  score: 0,
+  answered: 0,
+  correct: 0,
+  streak: 0,
+  firstCorrect: false,
+  fastAnswer: false,
+  finished: false,
+  earnedBadges: [],
+  qResults: [],
+  timerInterval: null,
+  questionTimer: null,
+  timeLeft: 90 * 60,
+  qStartTime: null,
+  leaderboard: []
+};
+
+// ═══════════════════════════════════════════════════════════
+//  INIT
+// ═══════════════════════════════════════════════════════════
+
+function startQuiz() {
+  const name = document.getElementById('playerName').value.trim();
+  if (!name) {
+    document.getElementById('playerName').focus();
+    document.getElementById('playerName').style.borderColor = 'var(--red)';
+    document.getElementById('playerName').style.boxShadow = '0 0 20px var(--red-glow)';
+    return;
+  }
+  state.playerName = name;
+
+  // Init fake leaderboard
+  state.leaderboard = FAKE_PLAYERS.map(p => ({ ...p }));
+  state.leaderboard.push({ name: name, score: 0, isMe: true });
+  state.leaderboard.sort(() => Math.random() - 0.5);
+
+  showScreen('quiz');
+  document.getElementById('playerTag').textContent = name;
+  buildBadgesGrid();
+  buildQMap();
+  updateLeaderboard();
+  startTimer();
+  showQuestion();
+
+  // Fake players scoring simulation
+  simulateFakePlayers();
+}
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+// ═══════════════════════════════════════════════════════════
+//  TIMER
+// ═══════════════════════════════════════════════════════════
+
+function startTimer() {
+  updateTimerDisplay();
+  state.timerInterval = setInterval(() => {
+    state.timeLeft--;
+    updateTimerDisplay();
+    if (state.timeLeft <= 0) {
+      clearInterval(state.timerInterval);
+      endQuiz();
+    }
+  }, 1000);
+}
+
+function updateTimerDisplay() {
+  const h = Math.floor(state.timeLeft / 3600);
+  const m = Math.floor((state.timeLeft % 3600) / 60);
+  const s = state.timeLeft % 60;
+  const display = `${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  const el = document.getElementById('timerDisplay');
+  el.textContent = display;
+  el.className = 'timer-display';
+  if (state.timeLeft <= 600) el.classList.add('danger');
+  else if (state.timeLeft <= 1800) el.classList.add('warning');
+}
+
+// ═══════════════════════════════════════════════════════════
+//  QUESTION
+// ═══════════════════════════════════════════════════════════
+
+function showQuestion() {
+  const q = QUESTIONS[state.currentQ];
+  state.qStartTime = Date.now();
+
+  document.getElementById('qCategory').textContent = q.category;
+  document.getElementById('qNumber').textContent = String(state.currentQ + 1).padStart(2, '0');
+  document.getElementById('qText').textContent = q.text;
+
+  const pct = Math.round((state.currentQ / QUESTIONS.length) * 100);
+  document.getElementById('progressText').textContent = `Q ${state.currentQ + 1} / ${QUESTIONS.length}`;
+  document.getElementById('progressPct').textContent = pct + '%';
+  document.getElementById('progressFill').style.width = pct + '%';
+
+  document.getElementById('feedbackBox').className = 'feedback-box';
+  document.getElementById('nextBtn').className = 'next-btn';
+
+  const grid = document.getElementById('answersGrid');
+  grid.innerHTML = '';
+  const letters = ['A', 'B', 'C', 'D'];
+  q.answers.forEach((ans, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'answer-btn';
+    btn.innerHTML = `<span class="answer-letter">${letters[i]}</span><span>${ans}</span>`;
+    btn.onclick = () => selectAnswer(i, btn, q);
+    grid.appendChild(btn);
+  });
+
+  updateQMap();
+}
+
+function selectAnswer(index, btn, q) {
+  const elapsed = (Date.now() - state.qStartTime) / 1000;
+  if (elapsed < 10) state.fastAnswer = true;
+
+  const btns = document.querySelectorAll('.answer-btn');
+  btns.forEach(b => b.disabled = true);
+
+  const isCorrect = index === q.correct;
+  state.answered++;
+
+  if (isCorrect) {
+    btn.classList.add('correct');
+    state.correct++;
+    state.streak++;
+    state.score += q.points;
+    if (!state.firstCorrect) state.firstCorrect = true;
+    showPointsFlash(btn, `+${q.points}`);
+    playSound('correct');
+  } else {
+    btn.classList.add('wrong');
+    btns[q.correct].classList.add('correct');
+    state.streak = 0;
+    playSound('wrong');
+  }
+
+  state.qResults.push({ correct: isCorrect });
+
+  const fb = document.getElementById('feedbackBox');
+  fb.textContent = q.feedback;
+  fb.className = 'feedback-box visible' + (isCorrect ? '' : ' wrong-fb');
+
+  document.getElementById('nextBtn').className = 'next-btn visible';
+  document.getElementById('liveScore').textContent = state.score;
+
+  updateQMap(isCorrect);
+  updateLeaderboard();
+  checkBadges();
+  document.getElementById('nextBtn').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function nextQuestion() {
+  state.currentQ++;
+  if (state.currentQ >= QUESTIONS.length) {
+    endQuiz();
+  } else {
+    showQuestion();
+  }
+}
+
+// ═══════════════════════════════════════════════════════════
+//  UI COMPONENTS
+// ═══════════════════════════════════════════════════════════
+
+function buildQMap() {
+  const map = document.getElementById('qMap');
+  map.innerHTML = '';
+  QUESTIONS.forEach((_, i) => {
+    const dot = document.createElement('div');
+    dot.className = 'q-dot';
+    dot.textContent = i + 1;
+    dot.id = `qdot-${i}`;
+    map.appendChild(dot);
+  });
+}
+
+function updateQMap(lastCorrect) {
+  QUESTIONS.forEach((_, i) => {
+    const dot = document.getElementById(`qdot-${i}`);
+    if (!dot) return;
+    dot.className = 'q-dot';
+    if (i === state.currentQ) {
+      dot.classList.add('current');
+    } else if (i < state.currentQ) {
+      const r = state.qResults[i];
+      if (r) dot.classList.add(r.correct ? 'answered-correct' : 'answered-wrong');
+    }
+  });
+}
+
+function buildBadgesGrid() {
+  const grid = document.getElementById('badgesGrid');
+  grid.innerHTML = '';
+  BADGES.forEach(b => {
+    const el = document.createElement('div');
+    el.className = 'badge-item';
+    el.id = `badge-${b.id}`;
+    el.title = b.desc;
+    el.innerHTML = `<span class="badge-emoji">${b.emoji}</span><span class="badge-name">${b.name}</span>`;
+    grid.appendChild(el);
+  });
+}
+
+function checkBadges() {
+  BADGES.forEach(b => {
+    if (state.earnedBadges.includes(b.id)) return;
+    if (b.condition(state)) {
+      state.earnedBadges.push(b.id);
+      const el = document.getElementById(`badge-${b.id}`);
+      if (el) el.classList.add('earned');
+      showNotification(`🏅 Conquista Desbloqueada!`, `${b.emoji} ${b.name} — ${b.desc}`);
+    }
+  });
+}
+
+function updateLeaderboard() {
+  // Update my score
+  state.leaderboard.forEach(p => {
+    if (p.isMe) p.score = state.score;
+  });
+  state.leaderboard.sort((a, b) => b.score - a.score);
+
+  const el = document.getElementById('liveLeaderboard');
+  el.innerHTML = '';
+  const rankClasses = ['gold', 'silver', 'bronze', '', ''];
+  const rankSymbols = ['①', '②', '③', '4', '5'];
+
+  state.leaderboard.slice(0, 5).forEach((p, i) => {
+    const entry = document.createElement('div');
+    entry.className = 'lb-entry' + (p.isMe ? ' me' : '');
+    entry.innerHTML = `
+      <span class="lb-rank ${rankClasses[i]}">${rankSymbols[i]}</span>
+      <span class="lb-name">${p.isMe ? '▶ ' + p.name : p.name}</span>
+      <span class="lb-score">${p.score}</span>
+    `;
+    el.appendChild(entry);
+  });
+}
+
+function showNotification(title, body) {
+  const notif = document.createElement('div');
+  notif.className = 'notification';
+  notif.innerHTML = `<div class="notif-title">🏅 ${title}</div><div class="notif-body">${body}</div>`;
+  document.body.appendChild(notif);
+  setTimeout(() => notif.remove(), 3800);
+}
+
+function showPointsFlash(btn, text) {
+  const rect = btn.getBoundingClientRect();
+  const flash = document.createElement('div');
+  flash.className = 'points-flash';
+  flash.textContent = text;
+  flash.style.left = (rect.left + rect.width / 2) + 'px';
+  flash.style.top = rect.top + 'px';
+  document.body.appendChild(flash);
+  setTimeout(() => flash.remove(), 1300);
+}
+
+function playSound(type) {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    if (type === 'correct') {
+      osc.frequency.setValueAtTime(523, ctx.currentTime);
+      osc.frequency.setValueAtTime(659, ctx.currentTime + 0.1);
+      osc.frequency.setValueAtTime(784, ctx.currentTime + 0.2);
+    } else {
+      osc.frequency.setValueAtTime(300, ctx.currentTime);
+      osc.frequency.setValueAtTime(200, ctx.currentTime + 0.15);
+    }
+    gain.gain.setValueAtTime(0.15, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.4);
+    osc.start();
+    osc.stop(ctx.currentTime + 0.4);
+  } catch(e) {}
+}
+
+// ═══════════════════════════════════════════════════════════
+//  FAKE PLAYERS
+// ═══════════════════════════════════════════════════════════
+
+function simulateFakePlayers() {
+  const interval = setInterval(() => {
+    if (state.finished) { clearInterval(interval); return; }
+    state.leaderboard.forEach(p => {
+      if (!p.isMe && Math.random() < 0.3) {
+        p.score = Math.min(100, p.score + (Math.random() < 0.7 ? 5 : 0));
+      }
+    });
+    updateLeaderboard();
+  }, 8000);
+}
+
+// ═══════════════════════════════════════════════════════════
+//  END / RESULT
+// ═══════════════════════════════════════════════════════════
+
+function endQuiz() {
+  clearInterval(state.timerInterval);
+  state.finished = true;
+  state.earnedBadges.push('champion');
+  checkBadges();
+
+  const pct = state.score;
+  const classification = getClassification(pct);
+  const timeUsed = 90 * 60 - state.timeLeft;
+  const minutes = Math.floor(timeUsed / 60);
+  const seconds = timeUsed % 60;
+
+  // Make sure my score is final
+  state.leaderboard.forEach(p => { if (p.isMe) p.score = state.score; });
+  state.leaderboard.sort((a, b) => b.score - a.score);
+  const myRank = state.leaderboard.findIndex(p => p.isMe) + 1;
+
+  const earnedBadgesList = BADGES.filter(b => state.earnedBadges.includes(b.id));
+
+  if (state.score >= 80) launchConfetti();
+
+  const resultEl = document.getElementById('result');
+  resultEl.innerHTML = `
+    <div class="result-badge-main">${classification.emoji}</div>
+    <div>
+      <div class="result-title">${classification.title}</div>
+      <div class="result-subtitle">${classification.level}</div>
+    </div>
+    <div class="result-score-big">${state.score}</div>
+    <div class="result-score-label">PONTOS DE 100</div>
+
+    <div class="result-stats">
+      <div class="result-stat">
+        <span class="result-stat-v" style="color:var(--green)">${state.correct}</span>
+        <span class="result-stat-l">ACERTOS</span>
+      </div>
+      <div class="result-stat">
+        <span class="result-stat-v" style="color:var(--red)">${state.answered - state.correct}</span>
+        <span class="result-stat-l">ERROS</span>
+      </div>
+      <div class="result-stat">
+        <span class="result-stat-v" style="color:var(--blue)">${minutes}m${String(seconds).padStart(2,'0')}s</span>
+        <span class="result-stat-l">TEMPO USADO</span>
+      </div>
+      <div class="result-stat">
+        <span class="result-stat-v" style="color:var(--gold)">#${myRank}</span>
+        <span class="result-stat-l">RANKING</span>
+      </div>
+    </div>
+
+    <div class="result-classification">
+      <div class="class-label">// CLASSIFICAÇÃO FINAL</div>
+      <div class="class-title" style="color:${classification.color}">${classification.role}</div>
+      <div class="class-desc">${classification.desc}</div>
+    </div>
+
+    ${earnedBadgesList.length > 0 ? `
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--muted);text-align:center;margin-bottom:16px;text-transform:uppercase;">Conquistas Desbloqueadas</div>
+      <div class="result-badges">
+        ${earnedBadgesList.map(b => `
+          <div class="result-badge-item">
+            <span class="result-badge-icon">${b.emoji}</span>
+            <span class="result-badge-name">${b.name}</span>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+    ` : ''}
+
+    <div class="final-leaderboard">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--muted);margin-bottom:12px;text-transform:uppercase;">Placar Final</div>
+      ${state.leaderboard.map((p, i) => `
+        <div class="lb-full-entry ${p.isMe ? 'me-entry' : ''}">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:16px;min-width:30px;font-weight:700;color:${i===0?'var(--gold)':i===1?'var(--silver)':i===2?'var(--bronze)':'var(--muted)'}">${['🥇','🥈','🥉','4°','5°'][i]||`${i+1}°`}</span>
+          <span style="flex:1;font-weight:${p.isMe?700:400}">${p.isMe ? '▶ '+p.name : p.name}</span>
+          <span style="font-family:'JetBrains Mono',monospace;color:var(--gold);font-weight:700">${p.score} pts</span>
+        </div>
+      `).join('')}
+    </div>
+
+    <button class="btn-restart" onclick="resetQuiz()">↺ JOGAR NOVAMENTE</button>
+  `;
+
+  showScreen('result');
+}
+
+function getClassification(score) {
+  if (score >= 91) return {
+    emoji: '🏆', title: 'EXCELÊNCIA', level: 'NÍVEL MASTER',
+    role: 'Arquiteto de Requisitos', color: 'var(--gold)',
+    desc: 'Domínio completo dos conceitos de Análise de Requisitos e Modelagem Conceitual. Você está pronto para liderar projetos complexos.'
+  };
+  if (score >= 76) return {
+    emoji: '⭐', title: 'DISTINÇÃO', level: 'NÍVEL AVANÇADO',
+    role: 'Analista de Negócios Senior', color: '#9B59B6',
+    desc: 'Ótimo desempenho! Você demonstra forte compreensão dos fundamentos. Pequenos refinamentos te levarão ao próximo nível.'
+  };
+  if (score >= 61) return {
+    emoji: '✅', title: 'APROVADO', level: 'NÍVEL INTERMEDIÁRIO',
+    role: 'Analista de Sistemas', color: 'var(--blue)',
+    desc: 'Bom trabalho! Você compreende os conceitos centrais. Continue praticando para consolidar seu conhecimento.'
+  };
+  if (score >= 41) return {
+    emoji: '📚', title: 'EM DESENVOLVIMENTO', level: 'NÍVEL BÁSICO',
+    role: 'Trainee em Análise', color: 'var(--gold)',
+    desc: 'Você está no caminho certo! Revise os conceitos de Análise de Consistência e Casos de Uso para melhorar.'
+  };
+  return {
+    emoji: '🔄', title: 'PRECISA REVISAR', level: 'NÍVEL INICIANTE',
+    role: 'Estudante de Requisitos', color: 'var(--red)',
+    desc: 'Não desanime! Revise o material da Aula 04 e tente novamente. A prática leva à perfeição.'
+  };
+}
+
+function launchConfetti() {
+  const colors = ['#C0392B', '#F5A623', '#27AE60', '#2980B9', '#9B59B6', '#fff'];
+  for (let i = 0; i < 80; i++) {
+    setTimeout(() => {
+      const piece = document.createElement('div');
+      piece.className = 'confetti-piece';
+      piece.style.left = Math.random() * 100 + 'vw';
+      piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+      piece.style.width = (Math.random() * 10 + 4) + 'px';
+      piece.style.height = (Math.random() * 10 + 4) + 'px';
+      piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+      piece.style.animationDuration = (Math.random() * 2 + 2) + 's';
+      piece.style.animationDelay = Math.random() * 0.5 + 's';
+      document.body.appendChild(piece);
+      setTimeout(() => piece.remove(), 4000);
+    }, i * 30);
+  }
+}
+
+function resetQuiz() {
+  state = {
+    playerName: state.playerName,
+    currentQ: 0, score: 0, answered: 0, correct: 0,
+    streak: 0, firstCorrect: false, fastAnswer: false, finished: false,
+    earnedBadges: [], qResults: [],
+    timerInterval: null, questionTimer: null,
+    timeLeft: 90 * 60, qStartTime: null, leaderboard: []
+  };
+  document.getElementById('liveScore').textContent = '0';
+  showScreen('intro');
+}
+</script>
+</body>
+</html>
