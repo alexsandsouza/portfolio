@@ -319,8 +319,8 @@ export default function SOActivity() {
       const finalScorePct = Math.round((correctCount / QUESTIONS.length) * 100);
       await addDoc(collection(db, "fametro_ranking"), {
         name: playerName,
-        score: finalScorePct, // Using percentage for normalized ranking
-        points: score, // Total points for internal display
+        score: finalScorePct, // Usado para manter padrão com outras disciplinas
+        points: score, // XP total
         duration: Date.now() - gameStartTime,
         timestamp: Date.now(),
         activityId: "sistemas_operacionais",
