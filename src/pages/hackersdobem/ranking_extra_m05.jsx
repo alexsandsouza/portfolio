@@ -30,7 +30,7 @@ function formatTime(ms) {
 }
 
 // ─── MAIN LEADERBOARD ────────────────────────────────────────────────────────
-export default function RankingHackersDoBem() {
+export default function RankingExtraM05() {
   const [entries, setEntries] = useState([]);
   const [flash, setFlash] = useState(null); // id of newly added entry
   const [now, setNow] = useState(Date.now());
@@ -58,8 +58,8 @@ export default function RankingHackersDoBem() {
         ...doc.data()
       }));
 
-      // Filter for specific module M05A01
-      loaded = loaded.filter(doc => doc.module === "M05A01");
+      // Filter for specific module M05_EXTRA
+      loaded = loaded.filter(doc => doc.module === "M05_EXTRA");
 
       // Sort by score desc, then by time asc (faster wins ties)
       loaded.sort((a, b) => (b.score - a.score) || (a.duration - b.duration));
@@ -83,7 +83,7 @@ export default function RankingHackersDoBem() {
       const q = query(collection(db, "hackersdobem_ranking"));
       const snapshot = await getDocs(q);
       const deletePromises = snapshot.docs
-        .filter(document => document.data().module === "M05A01")
+        .filter(document => document.data().module === "M05_EXTRA")
         .map(document => deleteDoc(doc(db, "hackersdobem_ranking", document.id)));
       await Promise.all(deletePromises);
       setShowClear(false);
@@ -122,8 +122,8 @@ export default function RankingHackersDoBem() {
           to   { opacity: 1; transform: translateY(0) scale(1); }
         }
         @keyframes flashBorder {
-          0%,100% { box-shadow: 0 0 0 0 rgba(0,230,118,0); }
-          50%      { box-shadow: 0 0 0 6px rgba(0,230,118,0.4); }
+          0%,100% { box-shadow: 0 0 0 0 rgba(255,0,123,0); }
+          50%      { box-shadow: 0 0 0 6px rgba(255,0,123,0.4); }
         }
         @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
         @keyframes spin { to { transform: rotate(360deg); } }
@@ -135,8 +135,8 @@ export default function RankingHackersDoBem() {
 
       {/* ── HEADER ── */}
       <div style={{
-        background: "linear-gradient(180deg, #0A1628 0%, transparent 100%)",
-        borderBottom: "1px solid rgba(255,255,255,0.06)",
+        background: "linear-gradient(180deg, #160A18 0%, transparent 100%)",
+        borderBottom: "1px solid rgba(255,0,123,0.2)",
         padding: "28px 24px 24px",
         position: "sticky", top: 0, zIndex: 10,
         backdropFilter: "blur(20px)"
@@ -146,25 +146,25 @@ export default function RankingHackersDoBem() {
             <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
               <div style={{
                 width: 44, height: 44, borderRadius: 12,
-                background: "linear-gradient(135deg, #0D47A1, #1976D2)",
+                background: "linear-gradient(135deg, #ff007b, #7c3aed)",
                 display: "flex", alignItems: "center", justifyContent: "center",
-                fontSize: 22, boxShadow: "0 4px 16px #0D47A180"
-              }}>🛡️</div>
+                fontSize: 22, boxShadow: "0 4px 16px #ff007b80"
+              }}>⚡</div>
               <div>
-                <div style={{ fontSize: 10, letterSpacing: 4, color: "#00E676", fontFamily: "'Space Mono', monospace" }}>
-                  HACKERS DO BEM · MÓDULO 05
+                <div style={{ fontSize: 10, letterSpacing: 4, color: "#ff007b", fontFamily: "'Space Mono', monospace" }}>
+                  HACKERS DO BEM · ATIVIDADE EXTRA
                 </div>
                 <h1 style={{ margin: 0, fontSize: 20, fontWeight: 900, color: "#fff", lineHeight: 1.1 }}>
-                  Ranking ao Vivo
+                  Ranking Extra Módulo 05
                 </h1>
               </div>
             </div>
 
             <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
               {/* Live indicator */}
-              <div style={{ display: "flex", alignItems: "center", gap: 6, background: "rgba(0,230,118,0.1)", border: "1px solid rgba(0,230,118,0.25)", borderRadius: 20, padding: "5px 12px" }}>
-                <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#00E676", animation: "pulse 1.5s infinite" }} />
-                <span style={{ fontSize: 11, fontFamily: "'Space Mono', monospace", color: "#00E676", letterSpacing: 1 }}>AO VIVO</span>
+              <div style={{ display: "flex", alignItems: "center", gap: 6, background: "rgba(255,0,123,0.1)", border: "1px solid rgba(255,0,123,0.25)", borderRadius: 20, padding: "5px 12px" }}>
+                <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#ff007b", animation: "pulse 1.5s infinite" }} />
+                <span style={{ fontSize: 11, fontFamily: "'Space Mono', monospace", color: "#ff007b", letterSpacing: 1 }}>AO VIVO</span>
               </div>
 
               {entries.length > 0 && (
@@ -179,7 +179,7 @@ export default function RankingHackersDoBem() {
 
           {/* Professor info */}
           <div style={{ marginTop: 10, fontSize: 12, color: "rgba(255,255,255,0.3)" }}>
-            Prof. Alexsander Farias · Aula 01: Tipos de Contas e Identidades · 09/03/2026
+            Prof. Alexsander Farias · Reforço: Tipos de Contas e Identidades · 13/03/2026
           </div>
         </div>
       </div>
@@ -214,7 +214,7 @@ export default function RankingHackersDoBem() {
         {entries.length >= 3 && (
           <div style={{ marginBottom: 28 }}>
             <div style={{ fontSize: 11, letterSpacing: 3, color: "rgba(255,255,255,0.3)", fontFamily: "'Space Mono', monospace", marginBottom: 16 }}>
-              TOP 3 — PÓDIO
+              TOP 3 — PÓDIO EXTRA
             </div>
             <div style={{ display: "flex", alignItems: "flex-end", gap: 12, justifyContent: "center" }}>
               {[1, 0, 2].map((rankIdx, i) => {
@@ -283,9 +283,9 @@ export default function RankingHackersDoBem() {
           ].map(f => (
             <button key={f.key} onClick={() => setFilter(f.key)} style={{
               padding: "6px 14px", borderRadius: 20,
-              border: `1px solid ${filter === f.key ? "#40C4FF" : "rgba(255,255,255,0.1)"}`,
-              background: filter === f.key ? "rgba(64,196,255,0.15)" : "transparent",
-              color: filter === f.key ? "#40C4FF" : "rgba(255,255,255,0.4)",
+              border: `1px solid ${filter === f.key ? "#ff007b" : "rgba(255,255,255,0.1)"}`,
+              background: filter === f.key ? "rgba(255,0,123,0.15)" : "transparent",
+              color: filter === f.key ? "#ff007b" : "rgba(255,255,255,0.4)",
               fontSize: 12, fontWeight: filter === f.key ? 700 : 400,
               cursor: "pointer", fontFamily: "'DM Sans', sans-serif", transition: "all 0.2s"
             }}>{f.label}</button>
@@ -303,16 +303,12 @@ export default function RankingHackersDoBem() {
             background: "rgba(255,255,255,0.02)", borderRadius: 16,
             border: "1px solid rgba(255,255,255,0.06)"
           }}>
-            <div style={{ fontSize: 48, marginBottom: 16 }}>⏳</div>
+            <div style={{ fontSize: 48, marginBottom: 16 }}>⚡</div>
             <div style={{ fontSize: 16, fontWeight: 700, color: "rgba(255,255,255,0.4)", marginBottom: 8 }}>
-              Aguardando os primeiros alunos...
+              O desafio extra começou!
             </div>
             <div style={{ fontSize: 13, color: "rgba(255,255,255,0.2)" }}>
-              Conforme os alunos finalizarem a atividade, os resultados aparecerão aqui automaticamente.
-            </div>
-            <div style={{ marginTop: 20, display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
-              <div style={{ width: 16, height: 16, border: "2px solid #40C4FF", borderTopColor: "transparent", borderRadius: "50%", animation: "spin 1s linear infinite" }} />
-              <span style={{ fontSize: 12, color: "#40C4FF", fontFamily: "'Space Mono', monospace" }}>Monitorando em tempo real...</span>
+              Aguardando os primeiros resultados para o ranking extra.
             </div>
           </div>
         ) : (
@@ -345,11 +341,11 @@ export default function RankingHackersDoBem() {
                   display: "grid", gridTemplateColumns: "52px 1fr 100px 90px 90px 110px",
                   padding: "14px 20px",
                   borderBottom: "1px solid rgba(255,255,255,0.04)",
-                  background: isNew ? "rgba(0,230,118,0.06)" : isTop3 ? "rgba(255,255,255,0.02)" : "transparent",
+                  background: isNew ? "rgba(255,0,123,0.06)" : isTop3 ? "rgba(255,255,255,0.02)" : "transparent",
                   animation: isNew ? "slideIn 0.5s ease, flashBorder 1.5s ease 2" : "slideIn 0.3s ease",
                   transition: "background 0.3s",
                   alignItems: "center",
-                  borderLeft: isNew ? "3px solid #00E676" : isTop3 ? `3px solid ${medalColors[rank - 1]}` : "3px solid transparent"
+                  borderLeft: isNew ? "3px solid #ff007b" : isTop3 ? `3px solid ${medalColors[rank - 1]}` : "3px solid transparent"
                 }}>
                   {/* Rank */}
                   <div style={{ fontSize: 18, textAlign: "center" }}>
@@ -362,12 +358,9 @@ export default function RankingHackersDoBem() {
 
                   {/* Name */}
                   <div>
-                    <div style={{ fontSize: 15, fontWeight: 700, color: isNew ? "#69F0AE" : "#E8EAF6", display: "flex", alignItems: "center", gap: 6 }}>
+                    <div style={{ fontSize: 15, fontWeight: 700, color: isNew ? "#FF80AB" : "#E8EAF6", display: "flex", alignItems: "center", gap: 6 }}>
                       {entry.name}
-                      {isNew && <span style={{ fontSize: 10, background: "#00E676", color: "#000", padding: "2px 6px", borderRadius: 10, fontFamily: "'Space Mono', monospace", letterSpacing: 1 }}>NOVO!</span>}
-                    </div>
-                    <div style={{ fontSize: 11, color: "rgba(255,255,255,0.25)", marginTop: 2 }}>
-                      {entry.stageScores && entry.stageScores.map((s, i) => `E${i + 1}:${s}`).join("  ")}
+                      {isNew && <span style={{ fontSize: 10, background: "#ff007b", color: "#fff", padding: "2px 6px", borderRadius: 10, fontFamily: "'Space Mono', monospace", letterSpacing: 1 }}>NOVO!</span>}
                     </div>
                   </div>
 
@@ -411,41 +404,9 @@ export default function RankingHackersDoBem() {
           </div>
         )}
 
-        {/* ── DISTRIBUTION BAR ── */}
-        {entries.length > 0 && (
-          <div style={{ marginTop: 28, background: "rgba(255,255,255,0.02)", borderRadius: 14, border: "1px solid rgba(255,255,255,0.06)", padding: 20 }}>
-            <div style={{ fontSize: 11, letterSpacing: 3, color: "rgba(255,255,255,0.3)", fontFamily: "'Space Mono', monospace", marginBottom: 16 }}>
-              DISTRIBUIÇÃO DE NÍVEIS
-            </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-              {LEVEL_CONFIG.map(lvl => {
-                const count = entries.filter(e => getLevel(e.score).label === lvl.label).length;
-                const pct = entries.length ? (count / entries.length) * 100 : 0;
-                return (
-                  <div key={lvl.label} style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                    <div style={{ width: 90, fontSize: 11, color: lvl.color, fontFamily: "'Space Mono', monospace", textAlign: "right", flexShrink: 0 }}>
-                      {lvl.icon} {lvl.label}
-                    </div>
-                    <div style={{ flex: 1, height: 8, background: "rgba(255,255,255,0.06)", borderRadius: 4, overflow: "hidden" }}>
-                      <div style={{
-                        height: "100%", width: `${pct}%`, borderRadius: 4,
-                        background: lvl.color, transition: "width 0.8s ease",
-                        boxShadow: `0 0 8px ${lvl.color}60`
-                      }} />
-                    </div>
-                    <div style={{ width: 30, fontSize: 12, fontWeight: 700, color: "rgba(255,255,255,0.5)", fontFamily: "'Space Mono', monospace" }}>
-                      {count}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        )}
-
         {/* ── FOOTER ── */}
         <div style={{ textAlign: "center", marginTop: 32, fontSize: 11, color: "rgba(255,255,255,0.15)", fontFamily: "'Space Mono', monospace" }}>
-          Atualização automática a cada 5 segundos · Prof. Alexsander Farias · Hackers do Bem
+          Ranking Extra · Prof. Alexsander Farias · Hackers do Bem
         </div>
       </div>
 
@@ -460,9 +421,9 @@ export default function RankingHackersDoBem() {
             borderRadius: 16, padding: 28, maxWidth: 360, textAlign: "center"
           }}>
             <div style={{ fontSize: 40, marginBottom: 12 }}>⚠️</div>
-            <h3 style={{ margin: "0 0 8px", color: "#fff", fontSize: 18 }}>Limpar ranking?</h3>
+            <h3 style={{ margin: "0 0 8px", color: "#fff", fontSize: 18 }}>Limpar ranking extra?</h3>
             <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 14, margin: "0 0 24px" }}>
-              Todos os resultados serão apagados permanentemente.
+              Todos os resultados extras serão apagados permanentemente.
             </p>
             <div style={{ display: "flex", gap: 10 }}>
               <button onClick={() => setShowClear(false)} style={{

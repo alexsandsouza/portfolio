@@ -105,6 +105,8 @@ import AtividadeHackersDoBemM4A03 from './pages/hackersdobem/atividade_m4a03';
 import RankingHackersDoBemM4A03 from './pages/hackersdobem/ranking_m4a03';
 import AtividadeHackersDoBemM4A04 from './pages/hackersdobem/atividade_m4a04';
 import RankingHackersDoBemM4A04 from './pages/hackersdobem/ranking_m4a04';
+import AtividadeExtraM05 from './pages/hackersdobem/atividade_extra_m05';
+import RankingExtraM05 from './pages/hackersdobem/ranking_extra_m05';
 import FametroHub from './pages/fametro/FametroHub';
 import POOActivity from './pages/fametro/disciplinas/POO/POOActivity';
 import POOJavaActivity from './pages/fametro/disciplinas/POO/POOJavaActivity';
@@ -134,6 +136,8 @@ function App() {
         <Route path="/hackersdobem/ranking-m4a03" element={<RankingHackersDoBemM4A03 />} />
         <Route path="/hackersdobem/atividade-m4a04" element={<AtividadeHackersDoBemM4A04 />} />
         <Route path="/hackersdobem/ranking-m4a04" element={<RankingHackersDoBemM4A04 />} />
+        <Route path="/hackersdobem/atividade-extra" element={<AtividadeExtraM05 />} />
+        <Route path="/hackersdobem/ranking-extra-m05" element={<RankingExtraM05 />} />
         <Route path="/fametro" element={<FametroHub />} />
         <Route path="/fametro/poo/atividade" element={<POOActivity />} />
         <Route path="/fametro/poo/java-atividade" element={<POOJavaActivity />} />

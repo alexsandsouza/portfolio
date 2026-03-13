@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hackers do Bem – Missão: Proteja a Rede da SeguraTech</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&display=swap');
+
+  :root {
+    --bg: #050a1a;
+    --panel: #0a1628;
+    --panel2: #0d1f3c;
+    --border: #1a3a6e;
+    --cyan: #00e5ff;
+    --green: #00ff88;
+    --yellow: #ffd600;
+    --red: #ff3d3d;
+    --purple: #7c3aed;
+    --text: #e0f0ff;
+    --muted: #5a7a9a;
+    --glow-cyan: 0 0 20px #00e5ff55, 0 0 40px #00e5ff22;
+    --glow-green: 0 0 20px #00ff8855, 0 0 40px #00ff8822;
+    --glow-yellow: 0 0 20px #ffd60055, 0 0 40px #ffd60022;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Rajdhani', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 50% at 20% 20%, #0d2a5022 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 80% 80%, #00e5ff08 0%, transparent 60%);
+    pointer-events: none; z-index: 0;
+  }
+
+  /* Grid lines background */
+  .grid-bg {
+    position: fixed; inset: 0; z-index: 0; opacity: 0.06;
+    background-image:
+      linear-gradient(var(--cyan) 1px, transparent 1px),
+      linear-gradient(90deg, var(--cyan) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+  }
+
+  .container {
+    position: relative; z-index: 1;
+    max-width: 900px; margin: 0 auto;
+    padding: 20px 16px 40px;
+  }
+
+  /* HEADER */
+  .header {
+    text-align: center;
+    padding: 24px 0 20px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 24px;
+  }
+
+  .header-badge {
+    display: inline-block;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 10px; letter-spacing: 3px;
+    color: var(--cyan); text-transform: uppercase;
+    border: 1px solid var(--cyan);
+    padding: 4px 14px; border-radius: 2px;
+    margin-bottom: 12px;
+    box-shadow: var(--glow-cyan);
+  }
+
+  .header h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(18px, 4vw, 28px);
+    font-weight: 900; color: #fff;
+    line-height: 1.2;
+  }
+
+  .header h1 span { color: var(--cyan); }
+
+  .header-sub {
+    font-size: 13px; color: var(--muted);
+    margin-top: 6px; letter-spacing: 1px;
+  }
+
+  /* SCREENS */
+  .screen { display: none; animation: fadeIn .4s ease; }
+  .screen.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== START SCREEN ===== */
+  .start-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 36px 32px;
+    text-align: center;
+  }
+
+  .shield-icon {
+    width: 80px; height: 80px;
+    margin: 0 auto 20px;
+    background: linear-gradient(135deg, var(--cyan), var(--purple));
+    clip-path: polygon(50% 0%, 100% 20%, 100% 70%, 50% 100%, 0% 70%, 0% 20%);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 32px;
+    box-shadow: var(--glow-cyan);
+    animation: pulse 2.5s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.06); }
+  }
+
+  .start-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(20px, 4vw, 32px);
+    font-weight: 900; color: #fff;
+    margin-bottom: 6px;
+  }
+
+  .start-title span { color: var(--cyan); }
+
+  .start-desc {
+    color: var(--muted); font-size: 15px;
+    max-width: 480px; margin: 0 auto 28px;
+    line-height: 1.5;
+  }
+
+  .stats-row {
+    display: flex; justify-content: center; gap: 32px;
+    margin-bottom: 32px; flex-wrap: wrap;
+  }
+
+  .stat-item {
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+  }
+
+  .stat-icon { font-size: 24px; }
+
+  .stat-val {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px; color: var(--cyan); font-weight: 700;
+  }
+
+  .stat-lbl { font-size: 11px; color: var(--muted); letter-spacing: 1px; }
+
+  .input-group {
+    max-width: 360px; margin: 0 auto 24px;
+  }
+
+  .input-group label {
+    display: block; font-size: 12px; letter-spacing: 2px;
+    color: var(--muted); text-transform: uppercase; margin-bottom: 8px;
+  }
+
+  .input-group input {
+    width: 100%;
+    background: #0a1628;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 12px 16px;
+    color: var(--text);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 16px;
+    outline: none;
+    transition: border-color .2s, box-shadow .2s;
+  }
+
+  .input-group input:focus {
+    border-color: var(--cyan);
+    box-shadow: var(--glow-cyan);
+  }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    gap: 8px;
+    padding: 14px 36px;
+    border: none; border-radius: 4px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    cursor: pointer; transition: all .2s;
+  }
+
+  .btn-primary {
+    background: var(--cyan); color: #000;
+    box-shadow: var(--glow-cyan);
+  }
+
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 30px #00e5ff88; }
+  .btn-primary:disabled { opacity: .4; cursor: not-allowed; transform: none; }
+
+  .btn-outline {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+  }
+
+  .btn-outline:hover { border-color: var(--cyan); color: var(--cyan); }
+
+  /* ===== QUIZ SCREEN ===== */
+  .quiz-top {
+    display: grid; grid-template-columns: 1fr auto 1fr;
+    align-items: center; gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .player-info { font-size: 13px; color: var(--muted); }
+  .player-info strong { color: var(--cyan); font-size: 15px; }
+
+  .q-counter {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 12px; color: var(--muted);
+    text-align: center;
+  }
+
+  .q-counter span { color: var(--yellow); font-size: 20px; font-weight: 700; }
+
+  .score-display {
+    text-align: right;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 12px; color: var(--muted);
+  }
+
+  .score-display span { color: var(--green); font-size: 18px; font-weight: 700; }
+
+  /* Progress bar */
+  .progress-wrap {
+    height: 4px; background: var(--panel2);
+    border-radius: 2px; margin-bottom: 20px; overflow: hidden;
+  }
+
+  .progress-bar {
+    height: 100%; background: linear-gradient(90deg, var(--cyan), var(--green));
+    border-radius: 2px;
+    transition: width .4s ease;
+    box-shadow: var(--glow-cyan);
+  }
+
+  /* Timer */
+  .timer-wrap {
+    display: flex; align-items: center; justify-content: center;
+    gap: 10px; margin-bottom: 20px;
+  }
+
+  .timer-ring {
+    width: 56px; height: 56px; position: relative;
+  }
+
+  .timer-ring svg { transform: rotate(-90deg); }
+
+  .timer-circle-bg { stroke: var(--panel2); }
+  .timer-circle { stroke: var(--cyan); transition: stroke-dashoffset .8s linear, stroke .3s; }
+
+  .timer-num {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 16px; font-weight: 700; color: var(--cyan);
+  }
+
+  /* Prize ladder (right side on desktop) */
+  .quiz-layout {
+    display: grid;
+    grid-template-columns: 1fr 160px;
+    gap: 20px;
+  }
+
+  @media (max-width: 600px) {
+    .quiz-layout { grid-template-columns: 1fr; }
+    .prize-ladder { display: none; }
+    .quiz-top { grid-template-columns: 1fr 1fr; }
+    .q-counter { display: none; }
+  }
+
+  .prize-ladder {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px;
+    align-self: start;
+    position: sticky; top: 20px;
+  }
+
+  .prize-ladder h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 9px; letter-spacing: 2px;
+    color: var(--muted); text-align: center; margin-bottom: 10px;
+  }
+
+  .prize-item {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 4px 8px; border-radius: 3px;
+    font-size: 12px; margin-bottom: 2px;
+    transition: background .2s;
+  }
+
+  .prize-item.active {
+    background: #00e5ff18;
+    border: 1px solid var(--cyan);
+    color: var(--cyan);
+  }
+
+  .prize-item.done {
+    background: #00ff8810;
+    color: var(--green);
+  }
+
+  .prize-item.milestone {
+    color: var(--yellow);
+    font-weight: 700;
+  }
+
+  .prize-pts {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 10px;
+  }
+
+  /* Question card */
+  .q-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+
+  .q-level {
+    font-size: 10px; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--yellow);
+    margin-bottom: 10px;
+  }
+
+  .q-scenario {
+    background: var(--panel2);
+    border-left: 3px solid var(--cyan);
+    border-radius: 0 4px 4px 0;
+    padding: 12px 16px;
+    font-size: 14px; color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 16px;
+    font-style: italic;
+  }
+
+  .q-text {
+    font-size: 17px; font-weight: 600;
+    line-height: 1.5; color: var(--text);
+  }
+
+  /* Options grid */
+  .options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  @media (max-width: 500px) {
+    .options-grid { grid-template-columns: 1fr; }
+  }
+
+  .opt-btn {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px 16px;
+    color: var(--text);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14px; font-weight: 500;
+    text-align: left;
+    cursor: pointer;
+    transition: all .15s;
+    display: flex; gap: 10px; align-items: flex-start;
+    line-height: 1.4;
+  }
+
+  .opt-btn:hover:not(:disabled) {
+    border-color: var(--cyan);
+    background: #00e5ff0a;
+    box-shadow: var(--glow-cyan);
+    transform: translateY(-1px);
+  }
+
+  .opt-letter {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 12px; font-weight: 700;
+    color: var(--cyan);
+    min-width: 20px;
+    margin-top: 1px;
+  }
+
+  .opt-btn.correct {
+    border-color: var(--green);
+    background: #00ff8815;
+    box-shadow: var(--glow-green);
+  }
+
+  .opt-btn.wrong {
+    border-color: var(--red);
+    background: #ff3d3d15;
+  }
+
+  .opt-btn:disabled { cursor: default; }
+
+  /* Feedback */
+  .feedback-box {
+    background: var(--panel2);
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin-bottom: 14px;
+    font-size: 14px; line-height: 1.5;
+    border-left: 3px solid transparent;
+    display: none;
+  }
+
+  .feedback-box.show { display: block; animation: fadeIn .3s ease; }
+  .feedback-box.correct-fb { border-color: var(--green); color: var(--green); }
+  .feedback-box.wrong-fb { border-color: var(--red); color: #ff9090; }
+
+  .feedback-explanation {
+    color: var(--muted); font-size: 13px; margin-top: 6px;
+    line-height: 1.6;
+  }
+
+  /* Lifelines */
+  .lifelines {
+    display: flex; gap: 8px; justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  .lifeline-btn {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 14px;
+    color: var(--text);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 13px; font-weight: 600;
+    cursor: pointer;
+    transition: all .2s;
+    display: flex; align-items: center; gap: 6px;
+  }
+
+  .lifeline-btn:hover:not(:disabled) {
+    border-color: var(--yellow);
+    color: var(--yellow);
+  }
+
+  .lifeline-btn:disabled {
+    opacity: .3; cursor: not-allowed;
+    text-decoration: line-through;
+  }
+
+  .lifeline-icon { font-size: 16px; }
+
+  .next-btn-wrap { text-align: center; }
+
+  /* ===== RESULT SCREEN ===== */
+  .result-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 36px 28px;
+    text-align: center;
+    max-width: 600px; margin: 0 auto 24px;
+  }
+
+  .result-level {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(22px, 5vw, 38px);
+    font-weight: 900; margin: 12px 0;
+  }
+
+  .result-score-big {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(40px, 8vw, 64px);
+    font-weight: 900;
+    color: var(--cyan);
+    line-height: 1;
+    text-shadow: var(--glow-cyan);
+    margin: 8px 0;
+  }
+
+  .result-pts { color: var(--muted); font-size: 14px; margin-bottom: 20px; }
+
+  .result-stats {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 12px; margin-bottom: 24px;
+  }
+
+  .r-stat {
+    background: var(--panel2);
+    border: 1px solid var(--border);
+    border-radius: 6px; padding: 12px;
+  }
+
+  .r-stat-val {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 20px; font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .r-stat-lbl { font-size: 11px; color: var(--muted); letter-spacing: 1px; }
+
+  .result-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+  /* ===== RANKING SCREEN ===== */
+  .ranking-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    max-width: 600px; margin: 0 auto;
+  }
+
+  .ranking-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 16px; font-weight: 700;
+    color: var(--yellow); text-align: center;
+    margin-bottom: 20px; letter-spacing: 2px;
+  }
+
+  .rank-row {
+    display: grid;
+    grid-template-columns: 36px 1fr auto auto;
+    align-items: center; gap: 12px;
+    padding: 10px 12px;
+    border-radius: 6px;
+    margin-bottom: 6px;
+    border: 1px solid transparent;
+    transition: background .2s;
+  }
+
+  .rank-row:hover { background: var(--panel2); }
+
+  .rank-row.top1 { background: #ffd60012; border-color: #ffd60030; }
+  .rank-row.top2 { background: #c0c0c012; border-color: #c0c0c030; }
+  .rank-row.top3 { background: #cd7f3212; border-color: #cd7f3230; }
+  .rank-row.me   { background: #00e5ff0a; border-color: var(--cyan); }
+
+  .rank-pos {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px; font-weight: 700;
+    text-align: center;
+  }
+
+  .rank-name { font-size: 15px; font-weight: 600; }
+  .rank-pts {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 13px; color: var(--cyan); font-weight: 700;
+  }
+  .rank-acertos { font-size: 12px; color: var(--muted); text-align: right; }
+
+  .empty-rank {
+    text-align: center; color: var(--muted);
+    padding: 30px; font-size: 14px;
+  }
+
+  /* Confetti */
+  .confetti-piece {
+    position: fixed;
+    width: 8px; height: 8px;
+    opacity: 0;
+    animation: confettiFall 2.5s ease-out forwards;
+    pointer-events: none; z-index: 999;
+    border-radius: 2px;
+  }
+
+  @keyframes confettiFall {
+    0%   { opacity: 1; transform: translateY(-20px) rotate(0deg); }
+    100% { opacity: 0; transform: translateY(100vh) rotate(720deg); }
+  }
+
+  /* Tabs */
+  .tabs {
+    display: flex; gap: 4px;
+    background: var(--panel2); border-radius: 6px;
+    padding: 4px; margin-bottom: 20px;
+  }
+
+  .tab {
+    flex: 1; padding: 8px;
+    background: transparent; border: none;
+    color: var(--muted);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 13px; font-weight: 600;
+    letter-spacing: 1px; text-transform: uppercase;
+    cursor: pointer; border-radius: 4px;
+    transition: all .2s;
+  }
+
+  .tab.active {
+    background: var(--cyan); color: #000;
+  }
+
+  /* NAV */
+  .nav-row {
+    display: flex; gap: 10px; justify-content: center;
+    flex-wrap: wrap; margin-top: 16px;
+  }
+
+  /* flash animation for timer low */
+  @keyframes timerFlash {
+    0%, 100% { color: var(--red); }
+    50% { color: var(--yellow); }
+  }
+  .timer-urgent { animation: timerFlash .6s ease-in-out infinite; stroke: var(--red) !important; }
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<div class="container">
+  <header class="header">
+    <div class="header-badge">Hackers do Bem · Módulo 05</div>
+    <h1>Missão: Proteja a <span>Rede da SeguraTech</span></h1>
+    <p class="header-sub">Prof. Alexsander Farias · Aula 01 · Tipos de Contas e Identidades</p>
+  </header>
+
+  <!-- ===== START SCREEN ===== -->
+  <div id="screen-start" class="screen active">
+    <div class="start-card">
+      <div class="shield-icon">🛡️</div>
+      <h2 class="start-title">Missão: Proteja a <span>SeguraTech</span></h2>
+      <p class="start-desc">Complete as 5 etapas, acumule pontos e descubra seu nível como especialista em segurança de identidades!</p>
+      <div class="stats-row">
+        <div class="stat-item">
+          <span class="stat-icon">⏱️</span>
+          <span class="stat-val">30s</span>
+          <span class="stat-lbl">por questão</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-icon">🎯</span>
+          <span class="stat-val">5 etapas</span>
+          <span class="stat-lbl">por rodada</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-icon">🏆</span>
+          <span class="stat-val">100 pts</span>
+          <span class="stat-lbl">máximo</span>
+        </div>
+      </div>
+      <div class="input-group">
+        <label>Seu nome completo</label>
+        <input type="text" id="player-name" placeholder="Digite seu nome completo..." maxlength="40" autocomplete="off">
+      </div>
+      <button class="btn btn-primary" id="btn-start" onclick="startQuiz()" disabled>
+        Iniciar Missão →
+      </button>
+      <div style="margin-top:16px;">
+        <button class="btn btn-outline" onclick="showRanking()">🏅 Ver Ranking</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== QUIZ SCREEN ===== -->
+  <div id="screen-quiz" class="screen">
+    <div class="quiz-top">
+      <div class="player-info">Agente: <strong id="display-name"></strong></div>
+      <div class="q-counter">Etapa <span id="q-num">1</span> de 5</div>
+      <div class="score-display">Pontos: <span id="score-display">0</span></div>
+    </div>
+
+    <div class="progress-wrap">
+      <div class="progress-bar" id="progress-bar" style="width:0%"></div>
+    </div>
+
+    <div class="timer-wrap">
+      <div class="timer-ring">
+        <svg width="56" height="56" viewBox="0 0 56 56">
+          <circle class="timer-circle-bg" cx="28" cy="28" r="24" fill="none" stroke-width="4"/>
+          <circle class="timer-circle" id="timer-circle" cx="28" cy="28" r="24" fill="none" stroke-width="4"
+            stroke-dasharray="150.8" stroke-dashoffset="0" stroke-linecap="round"/>
+        </svg>
+        <div class="timer-num" id="timer-num">30</div>
+      </div>
+    </div>
+
+    <div class="quiz-layout">
+      <div>
+        <div class="q-card">
+          <div class="q-level" id="q-level">Nível 1 — Iniciante</div>
+          <div class="q-scenario" id="q-scenario"></div>
+          <div class="q-text" id="q-text"></div>
+        </div>
+
+        <div class="options-grid" id="options-grid"></div>
+
+        <div class="feedback-box" id="feedback-box">
+          <div id="feedback-title"></div>
+          <div class="feedback-explanation" id="feedback-explanation"></div>
+        </div>
+
+        <div class="lifelines">
+          <button class="lifeline-btn" id="ll-50" onclick="useLifeline50()">
+            <span class="lifeline-icon">✂️</span> 50:50
+          </button>
+          <button class="lifeline-btn" id="ll-skip" onclick="useLifelineSkip()">
+            <span class="lifeline-icon">⏭️</span> Pular
+          </button>
+          <button class="lifeline-btn" id="ll-time" onclick="useLifelineTime()">
+            <span class="lifeline-icon">⏱️</span> +10s
+          </button>
+        </div>
+
+        <div class="next-btn-wrap">
+          <button class="btn btn-primary" id="btn-next" onclick="nextQuestion()" style="display:none;">
+            Próxima Etapa →
+          </button>
+        </div>
+      </div>
+
+      <div class="prize-ladder" id="prize-ladder"></div>
+    </div>
+  </div>
+
+  <!-- ===== RESULT SCREEN ===== -->
+  <div id="screen-result" class="screen">
+    <div class="result-card">
+      <div id="result-emoji" style="font-size:56px;margin-bottom:12px;">🏆</div>
+      <div class="result-level" id="result-level"></div>
+      <div class="result-score-big" id="result-score"></div>
+      <div class="result-pts">pontos acumulados</div>
+      <div class="result-stats">
+        <div class="r-stat">
+          <div class="r-stat-val" id="res-correct" style="color:var(--green)">0</div>
+          <div class="r-stat-lbl">Acertos</div>
+        </div>
+        <div class="r-stat">
+          <div class="r-stat-val" id="res-wrong" style="color:var(--red)">0</div>
+          <div class="r-stat-lbl">Erros</div>
+        </div>
+        <div class="r-stat">
+          <div class="r-stat-val" id="res-time" style="color:var(--yellow)">0s</div>
+          <div class="r-stat-lbl">Tempo médio</div>
+        </div>
+      </div>
+      <div class="result-actions">
+        <button class="btn btn-primary" onclick="restartQuiz()">🔄 Jogar Novamente</button>
+        <button class="btn btn-outline" onclick="showRanking()">🏅 Ver Ranking</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== RANKING SCREEN ===== -->
+  <div id="screen-ranking" class="screen">
+    <div class="ranking-card">
+      <div class="ranking-title">🏅 Ranking de Especialistas</div>
+      <div id="ranking-list"></div>
+      <div class="nav-row">
+        <button class="btn btn-outline" onclick="showStart()">← Voltar</button>
+        <button class="btn btn-outline" onclick="clearRanking()" style="color:var(--red);border-color:var(--red)">🗑️ Limpar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ============================================================
+//  QUESTION BANK – 15 situação-problema questions
+// ============================================================
+const QUESTION_BANK = [
+  {
+    id: 1,
+    level: "Nível 1 — Iniciante",
+    scenario: "A SeguraTech contratou um novo analista de suporte. O gestor de TI precisa criar a conta de acesso ao sistema interno e definir as permissões adequadas ao cargo.",
+    text: "Qual abordagem está alinhada ao princípio de Menor Privilégio no processo de provisionamento dessa conta?",
+    options: [
+      { letter:"A", text:"Conceder ao analista acesso irrestrito ao sistema para evitar chamados recorrentes de suporte." },
+      { letter:"B", text:"Atribuir apenas as permissões necessárias para as funções do cargo, realizando revisão periódica." },
+      { letter:"C", text:"Criar uma conta genérica compartilhada com outros analistas para simplificar o gerenciamento." },
+      { letter:"D", text:"Replicar as permissões do analista sênior como ponto de partida, ajustando depois se necessário." },
+    ],
+    correct: 1,
+    explanation: "O princípio de Menor Privilégio determina que o usuário deve receber apenas os direitos estritamente necessários ao seu cargo, com auditorias periódicas para identificar não conformidades e revogar acessos desnecessários."
+  },
+  {
+    id: 2,
+    level: "Nível 1 — Iniciante",
+    scenario: "Um fornecedor externo precisa acessar temporariamente o servidor de arquivos da SeguraTech para entregar um relatório. O prazo é de 48 horas.",
+    text: "Qual tipo de conta é tecnicamente mais adequado para atender a essa demanda com segurança?",
+    options: [
+      { letter:"A", text:"Conta administrativa local com permissões elevadas para garantir acesso irrestrito ao servidor." },
+      { letter:"B", text:"Conta padrão permanente criada no Active Directory vinculada ao domínio corporativo." },
+      { letter:"C", text:"Conta de convidado com restrições de acesso, período de validade definido e monitoramento ativo." },
+      { letter:"D", text:"Credencial compartilhada com a equipe interna para facilitar a entrega e evitar configurações extras." },
+    ],
+    correct: 2,
+    explanation: "Contas de convidado são criadas exatamente para usuários externos ou temporários: possuem restrições de acesso, privilégios limitados, podem ter período de validade definido e devem ser monitoradas e auditadas."
+  },
+  {
+    id: 3,
+    level: "Nível 2 — Básico",
+    scenario: "Durante uma auditoria, o time de segurança da SeguraTech identificou que o mesmo colaborador autoriza e executa transferências financeiras no sistema ERP sem nenhuma revisão por terceiros.",
+    text: "Qual política de pessoal deveria ter sido implementada para mitigar esse risco operacional?",
+    options: [
+      { letter:"A", text:"Rotação de Cargos, transferindo o colaborador para outra função após determinado período." },
+      { letter:"B", text:"Licença Obrigatória, afastando o colaborador periodicamente para identificar irregularidades." },
+      { letter:"C", text:"Separação de Funções, dividindo as responsabilidades de autorização e execução entre pessoas distintas." },
+      { letter:"D", text:"Verificação de Antecedentes, checando o histórico criminal do colaborador antes da concessão do acesso." },
+    ],
+    correct: 2,
+    explanation: "A Separação de Funções determina que nenhum indivíduo deve ter controle absoluto sobre uma função crítica. Dividir autorização e execução entre pessoas distintas reduz riscos de abuso, erros e fraudes."
+  },
+  {
+    id: 4,
+    level: "Nível 2 — Básico",
+    scenario: "A SeguraTech precisa que um processo de backup rode automaticamente toda madrugada no servidor Windows, acessando recursos de rede como compartilhamentos de arquivo sem interação humana.",
+    text: "Qual categoria de conta deve ser utilizada para executar corretamente esse processo automatizado?",
+    options: [
+      { letter:"A", text:"Conta de Administrador local, pois possui privilégios suficientes para acessar todos os recursos." },
+      { letter:"B", text:"Conta de Convidado temporária criada especificamente para a janela de execução do backup." },
+      { letter:"C", text:"Conta de Serviço de Rede (Network Service Account), projetada para processos que acessam recursos de rede." },
+      { letter:"D", text:"Conta padrão de usuário com permissões elevadas manualmente para a janela noturna de execução." },
+    ],
+    correct: 2,
+    explanation: "A Conta de Serviço de Rede (Network Service Account) é exatamente o tipo projetado para executar serviços que precisam acessar recursos de rede como compartilhamentos, sem necessidade de conta administrativa ou interação humana."
+  },
+  {
+    id: 5,
+    level: "Nível 3 — Intermediário",
+    scenario: "Um analista da SeguraTech precisa autenticar-se via SSH em múltiplos servidores Linux para tarefas de manutenção. O gestor de segurança avalia qual método de autenticação adotar.",
+    text: "Considerando segurança e resistência a ataques, qual método oferece melhor proteção para esse cenário?",
+    options: [
+      { letter:"A", text:"Autenticação por senha complexa com troca mensal obrigatória em todos os servidores." },
+      { letter:"B", text:"Chaves SSH com par criptográfico público-privado, mais resistentes a força bruta e phishing." },
+      { letter:"C", text:"Token OTP gerado por provedor de identidade externo para cada sessão de acesso SSH." },
+      { letter:"D", text:"Certificado digital emitido pela AC corporativa armazenado em smart card do analista." },
+    ],
+    correct: 1,
+    explanation: "Chaves SSH usam pares criptográficos (chave pública e privada), sendo mais difíceis de comprometer por ataques de força bruta e menos suscetíveis a phishing do que senhas convencionais — vantagem técnica direta sobre os demais métodos."
+  },
+  {
+    id: 6,
+    level: "Nível 3 — Intermediário",
+    scenario: "A SeguraTech implementou um sistema de Single Sign-On (SSO) integrado a um Provedor de Identidade (IdP). Um incidente de segurança revelou que tokens de sessão foram interceptados e reutilizados.",
+    text: "Qual vulnerabilidade técnica esse incidente evidencia no modelo de autenticação por tokens?",
+    options: [
+      { letter:"A", text:"Ausência de certificado digital vinculando a identidade do usuário à infraestrutura de chaves públicas." },
+      { letter:"B", text:"Uso de conta genérica compartilhada no IdP, impossibilitando auditoria individual das sessões." },
+      { letter:"C", text:"Falha na separação de funções entre o provedor de identidade e as aplicações dependentes." },
+      { letter:"D", text:"Possibilidade de replay attack, em que um ator malicioso reproduz o token para obter acesso não autorizado." },
+    ],
+    correct: 3,
+    explanation: "O uso de tokens traz o risco de replay attack: um ator malicioso pode interceptar e reproduzir o token criptográfico, obtendo acesso não autorizado às aplicações sem precisar das credenciais originais."
+  },
+  {
+    id: 7,
+    level: "Nível 3 — Intermediário",
+    scenario: "Um gerente financeiro da SeguraTech foi promovido e acumulou, ao longo de três anos, permissões de diferentes cargos anteriores. O time de TI nunca revogou os acessos antigos.",
+    text: "Qual falha no processo de gestão de identidade esse cenário caracteriza tecnicamente?",
+    options: [
+      { letter:"A", text:"Ausência de verificação de antecedentes durante o recrutamento inicial do colaborador." },
+      { letter:"B", text:"Não aplicação do princípio de Menor Privilégio com ausência de auditoria e revogação periódica de acessos." },
+      { letter:"C", text:"Falha no processo de offboarding do cargo anterior, sem encerramento formal da conta de convidado." },
+      { letter:"D", text:"Violação da política de rotação de cargos por permanência excessiva no mesmo departamento." },
+    ],
+    correct: 1,
+    explanation: "O acúmulo de permissões viola o Menor Privilégio. A política exige auditorias periódicas para identificar não conformidades e diretrizes claras para revogação de privilégios quando o colaborador muda de função."
+  },
+  {
+    id: 8,
+    level: "Nível 4 — Avançado",
+    scenario: "A SeguraTech contratou uma empresa parceira para um projeto de 6 meses. O contrato exige que os dados estratégicos compartilhados sejam mantidos em sigilo mesmo após o término do projeto.",
+    text: "Qual instrumento jurídico-operacional deve ser formalizado durante o onboarding para garantir essa proteção?",
+    options: [
+      { letter:"A", text:"Política de Rotação de Cargos, exigindo que o parceiro alterne os profissionais envolvidos periodicamente." },
+      { letter:"B", text:"Processo de verificação de antecedentes de todos os colaboradores da empresa parceira." },
+      { letter:"C", text:"Acordo de Confidencialidade (NDA), estabelecendo termos e condições sobre a proteção das informações." },
+      { letter:"D", text:"Criação de conta administrativa para o parceiro com auditoria completa de todas as ações realizadas." },
+    ],
+    correct: 2,
+    explanation: "O Acordo de Confidencialidade (NDA) é exatamente o instrumento que estabelece termos e condições quanto à confidencialidade das informações, protegendo dados sensíveis e estratégicos mesmo após o término do projeto."
+  },
+  {
+    id: 9,
+    level: "Nível 4 — Avançado",
+    scenario: "A SeguraTech detectou que um colaborador demitido há duas semanas ainda possui credenciais ativas no sistema de e-mail corporativo e acesso à VPN da empresa.",
+    text: "Qual etapa do processo de offboarding foi negligenciada e que falha de segurança esse cenário representa?",
+    options: [
+      { letter:"A", text:"Ausência de verificação de antecedentes pós-demissão para identificar atividades suspeitas recentes." },
+      { letter:"B", text:"Falha na etapa de Gerenciamento de Contas do offboarding, com credenciais não revogadas após desligamento." },
+      { letter:"C", text:"Não aplicação da Separação de Funções durante o período de aviso prévio do colaborador." },
+      { letter:"D", text:"Ausência de licença obrigatória prévia à demissão para revisão independente das atividades do colaborador." },
+    ],
+    correct: 1,
+    explanation: "O offboarding inclui obrigatoriamente o Gerenciamento de Contas: revogar credenciais, desativar acessos e encerrar sessões ativas. Manter credenciais ativas após desligamento representa risco crítico de acesso não autorizado."
+  },
+  {
+    id: 10,
+    level: "Nível 4 — Avançado",
+    scenario: "O administrador de redes da SeguraTech identificou que a conta 'root' do servidor Linux está sendo utilizada diretamente por três analistas diferentes para tarefas cotidianas de administração.",
+    text: "Qual risco de segurança essa prática introduz e qual é a ação corretiva mais adequada?",
+    options: [
+      { letter:"A", text:"Risco de phishing nas contas individuais; a correção é habilitar autenticação multifator para o root." },
+      { letter:"B", text:"Risco de ausência de auditoria individual; cada analista deve usar sua conta padrão com escalada controlada de privilégios." },
+      { letter:"C", text:"Risco de separação de funções inadequada; deve-se criar contas de grupo de segurança para as tarefas compartilhadas." },
+      { letter:"D", text:"Risco de token replay nas sessões root; a mitigação é implementar chaves SSH exclusivas para o acesso root." },
+    ],
+    correct: 1,
+    explanation: "Contas root/Administrador devem ser monitoradas e auditadas. Compartilhá-las entre analistas elimina a rastreabilidade das ações. A correção é usar contas individuais com escalada controlada de privilégios (ex.: sudo), mantendo logs auditáveis por usuário."
+  },
+  {
+    id: 11,
+    level: "Nível 5 — Especialista",
+    scenario: "A SeguraTech está avaliando a adoção de certificados digitais para autenticar dispositivos na rede interna. A equipe discute onde armazenar os certificados emitidos pela Autoridade Certificadora (AC) interna.",
+    text: "Qual solução de armazenamento oferece maior segurança física e lógica para os certificados digitais dos dispositivos?",
+    options: [
+      { letter:"A", text:"Repositório centralizado em servidor de arquivos com permissões restritas ao grupo de administradores de TI." },
+      { letter:"B", text:"Arquivo de configuração criptografado no próprio dispositivo, protegido por senha complexa do usuário." },
+      { letter:"C", text:"Smart card ou token USB criptográfico, isolando a chave privada do ambiente computacional comum." },
+      { letter:"D", text:"Cofre de senhas corporativo com acesso auditado via autenticação multifator para os analistas." },
+    ],
+    correct: 2,
+    explanation: "Certificados digitais e suas chaves privadas podem ser armazenados em smart cards ou tokens USB criptográficos. Esse isolamento físico impede extração da chave privada do ambiente computacional, elevando significativamente a segurança."
+  },
+  {
+    id: 12,
+    level: "Nível 5 — Especialista",
+    scenario: "A SeguraTech implementou um Provedor de Identidade (IdP) federado para que colaboradores acessem sistemas internos e serviços de parceiros usando uma única identidade corporativa.",
+    text: "Qual benefício operacional direto esse modelo de federação de identidade proporciona aos usuários?",
+    options: [
+      { letter:"A", text:"Elimina a necessidade de certificados digitais, pois o IdP autentica todos os acessos via tokens OTP." },
+      { letter:"B", text:"Permite acesso a múltiplos sistemas e serviços sem criar contas separadas em cada um deles." },
+      { letter:"C", text:"Garante a separação de funções automática entre os diferentes sistemas acessados pelo colaborador." },
+      { letter:"D", text:"Substitui a verificação de antecedentes, pois o IdP valida a identidade do usuário em tempo real." },
+    ],
+    correct: 1,
+    explanation: "Provedores de Identidade federados permitem que, após autenticação única em um IdP confiável, o usuário utilize essa identidade em diferentes sites ou serviços sem precisar criar contas separadas para cada um."
+  },
+  {
+    id: 13,
+    level: "Nível 2 — Básico",
+    scenario: "Durante o processo seletivo para uma vaga de analista financeiro sênior na SeguraTech, o RH recebe o currículo de um candidato com histórico profissional extenso, mas sem referências verificáveis.",
+    text: "Qual procedimento de segurança de pessoal é mandatório para cargos com acesso a transações de alto valor?",
+    options: [
+      { letter:"A", text:"Aplicação de teste técnico eliminatório para avaliar o conhecimento em sistemas financeiros da empresa." },
+      { letter:"B", text:"Assinatura do Acordo de Confidencialidade (NDA) antes da divulgação de qualquer informação interna." },
+      { letter:"C", text:"Verificação de Antecedentes, avaliando identidade, histórico criminal e vínculos que comprometam o cargo." },
+      { letter:"D", text:"Período de experiência monitorada de 90 dias antes da concessão de acesso ao sistema financeiro." },
+    ],
+    correct: 2,
+    explanation: "Em ambientes com acesso a transações de alto valor, a Verificação de Antecedentes é mandatória. Ela avalia se o candidato é quem diz ser e se não possui vínculos, histórico criminal ou falências que o tornem inadequado ao cargo."
+  },
+  {
+    id: 14,
+    level: "Nível 3 — Intermediário",
+    scenario: "A SeguraTech identificou que um analista de infraestrutura atua no mesmo cargo há cinco anos sem rotação. Durante esse período, ele acumulou conhecimento exclusivo sobre configurações críticas de firewall.",
+    text: "Qual risco organizacional essa situação representa e qual política mitiga esse problema?",
+    options: [
+      { letter:"A", text:"Risco de falha técnica acumulada; a mitigação é licença obrigatória para revisão independente das configurações." },
+      { letter:"B", text:"Risco de dependência de indivíduo chave e potencial abuso de poder; a mitigação é a Rotação de Cargos." },
+      { letter:"C", text:"Risco de violação do Menor Privilégio por acúmulo de conhecimento; a mitigação é auditoria periódica de acessos." },
+      { letter:"D", text:"Risco de separação de funções inadequada; a mitigação é distribuir as configurações entre múltiplos analistas." },
+    ],
+    correct: 1,
+    explanation: "A Rotação de Cargos previne exatamente esse cenário: nenhuma pessoa deve permanecer no mesmo cargo por longo período, reduzindo dependência de indivíduo, prevenindo abuso de poder e aprimorando habilidades da equipe."
+  },
+  {
+    id: 15,
+    level: "Nível 4 — Avançado",
+    scenario: "O gestor de segurança da SeguraTech suspeita que um colaborador está manipulando registros financeiros. Ele solicita ao RH que o colaborador seja afastado por 15 dias para uma investigação interna.",
+    text: "Qual política de segurança de pessoal é aplicada nesse cenário e qual seu objetivo técnico-operacional?",
+    options: [
+      { letter:"A", text:"Rotação de Cargos, transferindo o colaborador para outra função durante o período de investigação." },
+      { letter:"B", text:"Verificação de Antecedentes complementar, revisando o histórico do colaborador suspeito novamente." },
+      { letter:"C", text:"Licença Obrigatória, permitindo revisão independente das atividades e identificação de irregularidades." },
+      { letter:"D", text:"Separação de Funções emergencial, redistribuindo as responsabilidades do colaborador entre a equipe." },
+    ],
+    correct: 2,
+    explanation: "A Licença Obrigatória determina que outra pessoa assuma as responsabilidades do colaborador afastado, possibilitando revisão independente das atividades e identificação de possíveis irregularidades ou manipulações."
+  }
+];
+
+// Prize ladder
+const PRIZES = [
+  { q:1, pts:5,  label:"5 pts",  milestone:false },
+  { q:2, pts:10, label:"10 pts", milestone:false },
+  { q:3, pts:20, label:"20 pts", milestone:true  },
+  { q:4, pts:40, label:"40 pts", milestone:false },
+  { q:5, pts:100,label:"100 pts",milestone:true  },
+];
+
+// ============================================================
+//  STATE
+// ============================================================
+let playerName = "";
+let questions  = [];
+let qIndex     = 0;
+let score      = 0;
+let correct    = 0;
+let wrong      = 0;
+let timerInterval = null;
+let timeLeft   = 30;
+let questionStart = 0;
+let totalTime  = 0;
+let answered   = false;
+let lifelines  = { "50":true, skip:true, time:true };
+let attemptHistory = JSON.parse(localStorage.getItem("hdb_history") || "[]");
+let ranking    = JSON.parse(localStorage.getItem("hdb_ranking") || "[]");
+
+// ============================================================
+//  UTILS
+// ============================================================
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function getUsedIds() {
+  // Last 3 attempts: avoid repeating questions
+  const recent = attemptHistory.slice(-3);
+  const used = new Set();
+  recent.forEach(att => att.ids.forEach(id => used.add(id)));
+  return used;
+}
+
+function selectQuestions() {
+  const used = getUsedIds();
+  const available = QUESTION_BANK.filter(q => !used.has(q.id));
+  // If not enough available, relax constraint
+  const pool = available.length >= 5 ? available : QUESTION_BANK;
+  return shuffle(pool).slice(0, 5);
+}
+
+// ============================================================
+//  UI HELPERS
+// ============================================================
+function showScreen(id) {
+  document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+  document.getElementById("screen-" + id).classList.add("active");
+}
+
+function showStart()   { showScreen("start"); }
+function showRanking() { renderRanking(); showScreen("ranking"); }
+
+// Enable start button only when name is typed
+document.getElementById("player-name").addEventListener("input", function() {
+  document.getElementById("btn-start").disabled = this.value.trim().length < 2;
+});
+
+document.getElementById("player-name").addEventListener("keydown", function(e) {
+  if (e.key === "Enter" && this.value.trim().length >= 2) startQuiz();
+});
+
+// ============================================================
+//  BUILD PRIZE LADDER
+// ============================================================
+function buildPrizeLadder() {
+  const el = document.getElementById("prize-ladder");
+  el.innerHTML = '<h3>📊 ETAPAS</h3>';
+  [...PRIZES].reverse().forEach(p => {
+    const div = document.createElement("div");
+    div.className = "prize-item" + (p.milestone ? " milestone" : "");
+    div.id = "prize-" + p.q;
+    div.innerHTML = `<span>Etapa ${p.q}</span><span class="prize-pts">${p.label}</span>`;
+    el.appendChild(div);
+  });
+}
+
+function updatePrizeLadder() {
+  PRIZES.forEach(p => {
+    const el = document.getElementById("prize-" + p.q);
+    if (!el) return;
+    el.classList.remove("active", "done");
+    if (p.q === qIndex + 1) el.classList.add("active");
+    else if (p.q < qIndex + 1) el.classList.add("done");
+  });
+}
+
+// ============================================================
+//  TIMER
+// ============================================================
+function startTimer() {
+  clearInterval(timerInterval);
+  timeLeft = 30;
+  questionStart = Date.now();
+  updateTimerUI();
+
+  timerInterval = setInterval(() => {
+    timeLeft--;
+    updateTimerUI();
+    if (timeLeft <= 0) {
+      clearInterval(timerInterval);
+      timeExpired();
+    }
+  }, 1000);
+}
+
+function updateTimerUI() {
+  const numEl = document.getElementById("timer-num");
+  const circle = document.getElementById("timer-circle");
+  const circumference = 150.8;
+  const offset = circumference * (1 - timeLeft / 30);
+  circle.style.strokeDashoffset = offset;
+  numEl.textContent = timeLeft;
+
+  if (timeLeft <= 8) {
+    numEl.classList.add("timer-urgent");
+    circle.style.stroke = "var(--red)";
+  } else {
+    numEl.classList.remove("timer-urgent");
+    circle.style.stroke = "var(--cyan)";
+  }
+}
+
+function timeExpired() {
+  if (answered) return;
+  answered = true;
+  wrong++;
+  const q = questions[qIndex];
+  // Mark correct answer
+  const btns = document.querySelectorAll(".opt-btn");
+  btns.forEach((b, i) => {
+    b.disabled = true;
+    if (i === q.correct) b.classList.add("correct");
+  });
+  showFeedback(false, q);
+  totalTime += 30;
+  document.getElementById("btn-next").style.display = "inline-flex";
+}
+
+// ============================================================
+//  START QUIZ
+// ============================================================
+function startQuiz() {
+  playerName = document.getElementById("player-name").value.trim();
+  if (playerName.length < 2) return;
+
+  questions = selectQuestions();
+  qIndex = 0; score = 0; correct = 0; wrong = 0; totalTime = 0;
+  answered = false;
+  lifelines = { "50":true, skip:true, time:true };
+
+  document.getElementById("display-name").textContent = playerName;
+  document.getElementById("score-display").textContent = "0";
+  buildPrizeLadder();
+
+  resetLifelineUI();
+  showScreen("quiz");
+  renderQuestion();
+}
+
+function resetLifelineUI() {
+  ["ll-50","ll-skip","ll-time"].forEach(id => {
+    document.getElementById(id).disabled = false;
+  });
+}
+
+// ============================================================
+//  RENDER QUESTION
+// ============================================================
+function renderQuestion() {
+  answered = false;
+  const q = questions[qIndex];
+
+  document.getElementById("q-num").textContent = qIndex + 1;
+  document.getElementById("q-level").textContent = q.level;
+  document.getElementById("q-scenario").textContent = q.scenario;
+  document.getElementById("q-text").textContent = q.text;
+
+  // Progress
+  const pct = (qIndex / 5) * 100;
+  document.getElementById("progress-bar").style.width = pct + "%";
+
+  // Options — shuffle option order but track correct
+  const optOrder = shuffle([0, 1, 2, 3]);
+  const letters = ["A","B","C","D"];
+  let correctDisplayIdx = 0;
+
+  const grid = document.getElementById("options-grid");
+  grid.innerHTML = "";
+  optOrder.forEach((origIdx, displayIdx) => {
+    if (origIdx === q.correct) correctDisplayIdx = displayIdx;
+    const btn = document.createElement("button");
+    btn.className = "opt-btn";
+    btn.dataset.displayIdx = displayIdx;
+    btn.dataset.origIdx = origIdx;
+    btn.innerHTML = `<span class="opt-letter">${letters[displayIdx]}</span>${q.options[origIdx].text}`;
+    btn.onclick = () => selectAnswer(displayIdx, origIdx, q, correctDisplayIdx);
+    grid.appendChild(btn);
+  });
+
+  // Store correct display idx
+  document._correctDisplayIdx = correctDisplayIdx;
+
+  // Feedback
+  const fb = document.getElementById("feedback-box");
+  fb.className = "feedback-box";
+  fb.style.display = "none";
+
+  document.getElementById("btn-next").style.display = "none";
+  updatePrizeLadder();
+  startTimer();
+}
+
+// ============================================================
+//  SELECT ANSWER
+// ============================================================
+function selectAnswer(displayIdx, origIdx, q, correctDisplayIdx) {
+  if (answered) return;
+  answered = true;
+  clearInterval(timerInterval);
+  totalTime += (30 - timeLeft);
+
+  const btns = document.querySelectorAll(".opt-btn");
+  btns.forEach(b => b.disabled = true);
+
+  const isCorrect = (origIdx === q.correct);
+
+  btns.forEach(b => {
+    if (parseInt(b.dataset.displayIdx) === correctDisplayIdx) b.classList.add("correct");
+    else if (parseInt(b.dataset.displayIdx) === displayIdx && !isCorrect) b.classList.add("wrong");
+  });
+
+  if (isCorrect) {
+    correct++;
+    score += PRIZES[qIndex].pts;
+    document.getElementById("score-display").textContent = score;
+    if (score >= 100) spawnConfetti();
+  } else {
+    wrong++;
+  }
+
+  showFeedback(isCorrect, q);
+  document.getElementById("btn-next").style.display = "inline-flex";
+}
+
+// ============================================================
+//  FEEDBACK
+// ============================================================
+function showFeedback(isCorrect, q) {
+  const fb = document.getElementById("feedback-box");
+  fb.style.display = "block";
+  fb.className = "feedback-box show " + (isCorrect ? "correct-fb" : "wrong-fb");
+  document.getElementById("feedback-title").textContent = isCorrect
+    ? "✅ Resposta correta! Excelente análise!"
+    : "❌ Resposta incorreta. Veja o fundamento:";
+  document.getElementById("feedback-explanation").textContent = q.explanation;
+}
+
+// ============================================================
+//  LIFELINES
+// ============================================================
+function useLifeline50() {
+  if (!lifelines["50"] || answered) return;
+  lifelines["50"] = false;
+  document.getElementById("ll-50").disabled = true;
+
+  const correctDI = document._correctDisplayIdx;
+  const btns = [...document.querySelectorAll(".opt-btn")];
+  const wrong50 = btns.filter(b => parseInt(b.dataset.displayIdx) !== correctDI);
+  const toHide = shuffle(wrong50).slice(0, 2);
+  toHide.forEach(b => { b.style.opacity = ".15"; b.disabled = true; });
+}
+
+function useLifelineSkip() {
+  if (!lifelines.skip || answered) return;
+  lifelines.skip = false;
+  document.getElementById("ll-skip").disabled = true;
+  answered = true;
+  clearInterval(timerInterval);
+  wrong++;
+  const q = questions[qIndex];
+  document.querySelectorAll(".opt-btn").forEach(b => b.disabled = true);
+  showFeedback(false, q);
+  document.getElementById("feedback-title").textContent = "⏭️ Questão pulada. Fundamento:";
+  document.getElementById("feedback-box").className = "feedback-box show wrong-fb";
+  document.getElementById("btn-next").style.display = "inline-flex";
+  totalTime += (30 - timeLeft);
+}
+
+function useLifelineTime() {
+  if (!lifelines.time || answered) return;
+  lifelines.time = false;
+  document.getElementById("ll-time").disabled = true;
+  timeLeft = Math.min(timeLeft + 10, 30);
+  updateTimerUI();
+}
+
+// ============================================================
+//  NEXT QUESTION
+// ============================================================
+function nextQuestion() {
+  qIndex++;
+  if (qIndex >= 5) {
+    endQuiz();
+  } else {
+    renderQuestion();
+  }
+}
+
+// ============================================================
+//  END QUIZ
+// ============================================================
+function endQuiz() {
+  clearInterval(timerInterval);
+
+  // Progress 100%
+  document.getElementById("progress-bar").style.width = "100%";
+
+  // Save to attempt history
+  attemptHistory.push({ ids: questions.map(q => q.id) });
+  if (attemptHistory.length > 10) attemptHistory.shift();
+  localStorage.setItem("hdb_history", JSON.stringify(attemptHistory));
+
+  // Save to ranking
+  const avgTime = totalTime > 0 ? Math.round(totalTime / 5) : 0;
+  ranking.push({ name: playerName, score, correct, wrong, avgTime, date: Date.now() });
+  ranking.sort((a, b) => b.score - a.score || b.correct - a.correct);
+  if (ranking.length > 20) ranking = ranking.slice(0, 20);
+  localStorage.setItem("hdb_ranking", JSON.stringify(ranking));
+
+  // Result screen
+  const levels = [
+    { min:0,   emoji:"🔰", label:"Aprendiz em Segurança",   color:"var(--muted)" },
+    { min:20,  emoji:"🛡️", label:"Analista Iniciante",      color:"var(--cyan)" },
+    { min:40,  emoji:"⚡", label:"Especialista em Acesso",  color:"var(--green)" },
+    { min:70,  emoji:"🔑", label:"Guardião de Identidades", color:"var(--yellow)" },
+    { min:100, emoji:"🏆", label:"Hacker do Bem — Elite!",  color:"var(--yellow)" },
+  ];
+  let lvl = levels[0];
+  levels.forEach(l => { if (score >= l.min) lvl = l; });
+
+  document.getElementById("result-emoji").textContent = lvl.emoji;
+  document.getElementById("result-level").textContent = lvl.label;
+  document.getElementById("result-level").style.color = lvl.color;
+  document.getElementById("result-score").textContent = score;
+  document.getElementById("res-correct").textContent = correct;
+  document.getElementById("res-wrong").textContent = wrong;
+  document.getElementById("res-time").textContent = avgTime + "s";
+
+  if (score >= 100) spawnConfetti();
+  showScreen("result");
+}
+
+// ============================================================
+//  RESTART
+// ============================================================
+function restartQuiz() {
+  document.getElementById("player-name").value = playerName;
+  document.getElementById("btn-start").disabled = false;
+  startQuiz();
+}
+
+// ============================================================
+//  RANKING
+// ============================================================
+function renderRanking() {
+  const el = document.getElementById("ranking-list");
+  if (ranking.length === 0) {
+    el.innerHTML = '<div class="empty-rank">Nenhum resultado registrado ainda.<br>Complete sua primeira missão!</div>';
+    return;
+  }
+  const medals = ["🥇","🥈","🥉"];
+  el.innerHTML = ranking.map((r, i) => {
+    const cls = i === 0 ? "top1" : i === 1 ? "top2" : i === 2 ? "top3" : "";
+    const meCls = r.name === playerName ? " me" : "";
+    const medal = medals[i] || `${i+1}º`;
+    return `<div class="rank-row ${cls}${meCls}">
+      <span class="rank-pos" style="color:${i<3?['var(--yellow)','#c0c0c0','#cd7f32'][i]:'var(--muted)'}">${medal}</span>
+      <span class="rank-name">${escapeHtml(r.name)}</span>
+      <span class="rank-pts">${r.score} pts</span>
+      <span class="rank-acertos">✅${r.correct} ❌${r.wrong}</span>
+    </div>`;
+  }).join("");
+}
+
+function clearRanking() {
+  if (!confirm("Deseja apagar todo o ranking?")) return;
+  ranking = [];
+  localStorage.removeItem("hdb_ranking");
+  renderRanking();
+}
+
+function escapeHtml(str) {
+  return str.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+}
+
+// ============================================================
+//  CONFETTI
+// ============================================================
+function spawnConfetti() {
+  const colors = ["#00e5ff","#00ff88","#ffd600","#7c3aed","#ff3d3d"];
+  for (let i = 0; i < 60; i++) {
+    setTimeout(() => {
+      const el = document.createElement("div");
+      el.className = "confetti-piece";
+      el.style.left = Math.random() * 100 + "vw";
+      el.style.top = "-10px";
+      el.style.background = colors[Math.floor(Math.random() * colors.length)];
+      el.style.animationDuration = (1.5 + Math.random() * 1.5) + "s";
+      el.style.animationDelay = (Math.random() * 0.8) + "s";
+      el.style.transform = `rotate(${Math.random()*360}deg)`;
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 3000);
+    }, i * 30);
+  }
+}
+</script>
+</body>
+</html>

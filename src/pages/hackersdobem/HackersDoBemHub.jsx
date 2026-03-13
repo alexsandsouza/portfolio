@@ -49,6 +49,19 @@ export default function HackersDoBemHub() {
     },
     {
       id: 4,
+      title: 'Atividade Extra - Módulo 05',
+      module: 'Módulo 05 · Atividade Extra',
+      description: 'Desafio extra de reforço sobre Tipos de Contas, Identidades e Gestão de Privilégios.',
+      path: '/hackersdobem/atividade-extra',
+      rankingPath: '/hackersdobem/ranking-extra-m05',
+      icon: <Terminal size={24} color="#ff007b" />,
+      buttonText: 'Iniciar Desafio',
+      status: 'active',
+      accentColor: '#ff007b',
+      badges: ['10 min', '100 pts']
+    },
+    {
+      id: 5,
       title: 'Desafio Web Application',
       module: 'Módulo 06',
       description: 'Uma nova simulação de vulnerabilidades web para você explorar e resolver.',

@@ -26,7 +26,7 @@ const QUESTION_BANK = [
     scenario: "Um fornecedor externo precisa acessar temporariamente o servidor de arquivos da SeguraTech para entregar um relatório. O prazo é de 48 horas.",
     text: "Qual tipo de conta é tecnicamente mais adequado para atender a essa demanda com segurança?",
     options: [
-      { letter: "A", text: "Conta administrativa local com permissões elevadas para garantir acesso irrestrito ao servidor." },
+      { letter: "A", text: "Conta administrativa local with permissões elevadas para garantir acesso irrestrito ao servidor." },
       { letter: "B", text: "Conta padrão permanente criada no Active Directory vinculada ao domínio corporativo." },
       { letter: "C", text: "Conta de convidado com restrições de acesso, período de validade definido e monitoramento ativo." },
       { letter: "D", text: "Credencial compartilhada com a equipe interna para facilitar a entrega e evitar configurações extras." },
@@ -152,7 +152,7 @@ const QUESTION_BANK = [
     scenario: "A SeguraTech está avaliando a adoção de certificados digitais para autenticar dispositivos na rede interna. A equipe discute onde armazenar os certificados emitidos pela Autoridade Certificadora (AC) interna.",
     text: "Qual solução de armazenamento oferece maior segurança física e lógica para os certificados digitais dos dispositivos?",
     options: [
-      { letter: "A", text: "Repositório centralizado em servidor de arquivos com permissões restritas ao grupo de administradores de TI." },
+      { letter: "A", text: "Repositório centralizado em servidor de arquivos with permissões restritas ao grupo de administradores de TI." },
       { letter: "B", text: "Arquivo de configuração criptografado no próprio dispositivo, protegido por senha complexa do usuário." },
       { letter: "C", text: "Smart card ou token USB criptográfico, isolando a chave privada do ambiente computacional comum." },
       { letter: "D", text: "Cofre de senhas corporativo com acesso auditado via autenticação multifator para os analistas." },
@@ -227,7 +227,7 @@ const PRIZES = [
   { q: 5, pts: 100, label: "100 pts", milestone: true },
 ];
 
-export default function AtividadeHackersDoBem() {
+export default function AtividadeExtraM05() {
   const [screen, setScreen] = useState("start");
   const [playerName, setPlayerName] = useState("");
   const [questions, setQuestions] = useState([]);
@@ -362,7 +362,7 @@ export default function AtividadeHackersDoBem() {
         duration: totalTime * 1000,
         timestamp: Date.now(),
         createdAt: serverTimestamp(),
-        module: "M05A01"
+        module: "M05_EXTRA"
       });
     } catch (e) {
       console.error("Erro ao salvar ranking:", e);
@@ -381,8 +381,6 @@ export default function AtividadeHackersDoBem() {
   const useLifeline50 = () => {
     if (!lifelines["50"] || answered) return;
     setLifelines(prev => ({ ...prev, "50": false }));
-    // In a real implementation, we'd hide 2 wrong options.
-    // Simplifying for React by marking which ones to hide.
   };
 
   const useLifelineSkip = () => {
@@ -437,26 +435,26 @@ export default function AtividadeHackersDoBem() {
         }
         .container { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; }
         .header { text-align: center; padding: 24px 0 20px; border-bottom: 1px solid #1a3a6e; margin-bottom: 24px; }
-        .header-badge { display: inline-block; font-family: 'Orbitron', sans-serif; font-size: 10px; letter-spacing: 3px; color: #00e5ff; text-transform: uppercase; border: 1px solid #00e5ff; padding: 4px 14px; border-radius: 2px; margin-bottom: 12px; box-shadow: 0 0 20px #00e5ff55; }
+        .header-badge { display: inline-block; font-family: 'Orbitron', sans-serif; font-size: 10px; letter-spacing: 3px; color: #ff007b; text-transform: uppercase; border: 1px solid #ff007b; padding: 4px 14px; border-radius: 2px; margin-bottom: 12px; box-shadow: 0 0 20px #ff007b55; }
         .header h1 { font-family: 'Orbitron', sans-serif; font-size: clamp(18px, 4vw, 28px); font-weight: 900; color: #fff; line-height: 1.2; }
-        .header h1 span { color: #00e5ff; }
+        .header h1 span { color: #ff007b; }
         .header-sub { font-size: 13px; color: #5a7a9a; margin-top: 6px; letter-spacing: 1px; }
         
         .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 36px; border: none; border-radius: 4px; font-family: 'Orbitron', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all .2s; }
-        .btn-primary { background: #00e5ff; color: #000; box-shadow: 0 0 20px #00e5ff55; }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 30px #00e5ff88; }
+        .btn-primary { background: #ff007b; color: #fff; box-shadow: 0 0 20px #ff007b55; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 30px #ff007b88; }
         .btn-primary:disabled { opacity: .4; cursor: not-allowed; transform: none; }
         .btn-outline { background: transparent; border: 1px solid #1a3a6e; color: #5a7a9a; }
-        .btn-outline:hover { border-color: #00e5ff; color: #00e5ff; }
+        .btn-outline:hover { border-color: #ff007b; color: #ff007b; }
 
         .q-card { background: #0a1628; border: 1px solid #1a3a6e; border-radius: 8px; padding: 24px; margin-bottom: 16px; }
         .q-level { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #ffd600; margin-bottom: 10px; }
-        .q-scenario { background: #0d1f3c; border-left: 3px solid #00e5ff; border-radius: 0 4px 4px 0; padding: 12px 16px; font-size: 14px; color: #5a7a9a; line-height: 1.6; margin-bottom: 16px; font-style: italic; }
+        .q-scenario { background: #0d1f3c; border-left: 3px solid #ff007b; border-radius: 0 4px 4px 0; padding: 12px 16px; font-size: 14px; color: #5a7a9a; line-height: 1.6; margin-bottom: 16px; font-style: italic; }
         .q-text { font-size: 17px; font-weight: 600; line-height: 1.5; color: #e0f0ff; }
         
         .opt-btn { background: #0a1628; border: 1px solid #1a3a6e; border-radius: 6px; padding: 14px 16px; color: #e0f0ff; font-family: 'Rajdhani', sans-serif; font-size: 14px; font-weight: 500; text-align: left; cursor: pointer; transition: all .15s; display: flex; gap: 10px; align-items: flex-start; line-height: 1.4; width: 100%; }
-        .opt-btn:hover:not(:disabled) { border-color: #00e5ff; background: #00e5ff0a; box-shadow: 0 0 20px #00e5ff55; transform: translateY(-1px); }
-        .opt-letter { font-family: 'Orbitron', sans-serif; font-size: 12px; font-weight: 700; color: #00e5ff; min-width: 20px; margin-top: 1px; }
+        .opt-btn:hover:not(:disabled) { border-color: #ff007b; background: #ff007b0a; box-shadow: 0 0 20px #ff007b55; transform: translateY(-1px); }
+        .opt-letter { font-family: 'Orbitron', sans-serif; font-size: 12px; font-weight: 700; color: #ff007b; min-width: 20px; margin-top: 1px; }
         .opt-btn.correct { border-color: #00ff88; background: #00ff8815; box-shadow: 0 0 20px #00ff8855; }
         .opt-btn.wrong { border-color: #ff3d3d; background: #ff3d3d15; }
 
@@ -466,7 +464,7 @@ export default function AtividadeHackersDoBem() {
 
         .prize-ladder { background: #0a1628; border: 1px solid #1a3a6e; border-radius: 6px; padding: 12px; align-self: start; }
         .prize-item { display: flex; align-items: center; justify-content: space-between; padding: 4px 8px; border-radius: 3px; font-size: 12px; margin-bottom: 2px; }
-        .prize-item.active { background: #00e5ff18; border: 1px solid #00e5ff; color: #00e5ff; }
+        .prize-item.active { background: #ff007b18; border: 1px solid #ff007b; color: #ff007b; }
         .prize-item.done { background: #00ff8810; color: #00ff88; }
         .prize-item.milestone { color: #ffd600; font-weight: 700; }
         
@@ -478,34 +476,34 @@ export default function AtividadeHackersDoBem() {
 
       <div className="container">
         <header className="header">
-          <div className="header-badge">Hackers do Bem · Módulo 05</div>
-          <h1>Missão: Proteja a <span>Rede da SeguraTech</span></h1>
-          <p className="header-sub">Prof. Alexsander Farias · Aula 01 · Tipos de Contas e Identidades</p>
+          <div className="header-badge">Atividade Extra · Módulo 05</div>
+          <h1>Missão Extra: <span>Identidades Críticas</span></h1>
+          <p className="header-sub">Prof. Alexsander Farias · Desafio de Reforço</p>
         </header>
 
         {/* START SCREEN */}
         {screen === "start" && (
           <div style={{ textAlign: "center", background: "#0a1628", border: "1px solid #1a3a6e", borderRadius: 8, padding: "36px 32px" }}>
-            <div style={{ width: 80, height: 80, margin: "0 auto 20px", background: "linear-gradient(135deg, #00e5ff, #7c3aed)", clipPath: "polygon(50% 0%, 100% 20%, 100% 70%, 50% 100%, 0% 70%, 0% 20%)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 32, boxShadow: "0 0 20px #00e5ff55" }}>🛡️</div>
-            <h2 style={{ fontFamily: "Orbitron", fontSize: "clamp(20px, 4vw, 32px)", fontWeight: 900, color: "#fff", marginBottom: 6 }}>Missão: Proteja a <span style={{ color: "#00e5ff" }}>SeguraTech</span></h2>
+            <div style={{ width: 80, height: 80, margin: "0 auto 20px", background: "linear-gradient(135deg, #ff007b, #7c3aed)", clipPath: "polygon(50% 0%, 100% 20%, 100% 70%, 50% 100%, 0% 70%, 0% 20%)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 32, boxShadow: "0 0 20px #ff007b55" }}>⚡</div>
+            <h2 style={{ fontFamily: "Orbitron", fontSize: "clamp(20px, 4vw, 32px)", fontWeight: 900, color: "#fff", marginBottom: 6 }}>Atividade <span style={{ color: "#ff007b" }}>Extra</span></h2>
             <p style={{ color: "#5a7a9a", fontSize: 15, maxWidth: 480, margin: "0 auto 28px", lineHeight: 1.5 }}>
-              Complete as 5 etapas, acumule pontos e descubra seu nível como especialista em segurança de identidades!
+              Desafio especial para reforçar os conceitos de Tipos de Contas e Gerenciamento de Identidades.
             </p>
             
             <div style={{ display: "flex", justifyContent: "center", gap: 32, marginBottom: 32, flexWrap: "wrap" }}>
               <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
                 <span style={{ fontSize: 24 }}>⏱️</span>
-                <span style={{ fontFamily: "Orbitron", fontSize: 14, color: "#00e5ff", fontWeight: 700 }}>30s</span>
+                <span style={{ fontFamily: "Orbitron", fontSize: 14, color: "#ff007b", fontWeight: 700 }}>30s</span>
                 <span style={{ fontSize: 11, color: "#5a7a9a", letterSpacing: 1 }}>por questão</span>
               </div>
               <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
                 <span style={{ fontSize: 24 }}>🎯</span>
-                <span style={{ fontFamily: "Orbitron", fontSize: 14, color: "#00e5ff", fontWeight: 700 }}>5 etapas</span>
+                <span style={{ fontFamily: "Orbitron", fontSize: 14, color: "#ff007b", fontWeight: 700 }}>5 etapas</span>
                 <span style={{ fontSize: 11, color: "#5a7a9a", letterSpacing: 1 }}>por rodada</span>
               </div>
               <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
                 <span style={{ fontSize: 24 }}>🏆</span>
-                <span style={{ fontFamily: "Orbitron", fontSize: 14, color: "#00e5ff", fontWeight: 700 }}>100 pts</span>
+                <span style={{ fontFamily: "Orbitron", fontSize: 14, color: "#ff007b", fontWeight: 700 }}>100 pts</span>
                 <span style={{ fontSize: 11, color: "#5a7a9a", letterSpacing: 1 }}>máximo</span>
               </div>
             </div>
@@ -526,7 +524,7 @@ export default function AtividadeHackersDoBem() {
               onClick={startQuiz}
               disabled={playerName.trim().length < 2}
             >
-              Iniciar Missão →
+              Iniciar Desafio →
             </button>
           </div>
         )}
@@ -535,13 +533,13 @@ export default function AtividadeHackersDoBem() {
         {screen === "quiz" && q && (
           <div>
             <div style={{ display: "grid", gridTemplateColumns: "1fr auto 1fr", alignItems: "center", marginBottom: 20 }}>
-              <div style={{ fontSize: 13, color: "#5a7a9a" }}>Agente: <strong style={{ color: "#00e5ff", fontSize: 15 }}>{playerName}</strong></div>
+              <div style={{ fontSize: 13, color: "#5a7a9a" }}>Agente: <strong style={{ color: "#ff007b", fontSize: 15 }}>{playerName}</strong></div>
               <div style={{ fontFamily: "Orbitron", fontSize: 12, color: "#5a7a9a", textAlign: "center" }}>Etapa <span style={{ color: "#ffd600", fontSize: 20, fontWeight: 700 }}>{qIndex + 1}</span> de 5</div>
               <div style={{ textAlign: "right", fontFamily: "Orbitron", fontSize: 12, color: "#5a7a9a" }}>Pontos: <span style={{ color: "#00ff88", fontSize: 18, fontWeight: 700 }}>{score}</span></div>
             </div>
 
             <div style={{ height: 4, background: "#0d1f3c", borderRadius: 2, marginBottom: 20, overflow: "hidden" }}>
-              <div style={{ height: "100%", background: "linear-gradient(90deg, #00e5ff, #00ff88)", width: `${(qIndex / 5) * 100}%`, transition: "width 0.4s ease", boxShadow: "0 0 20px #00e5ff55" }}></div>
+              <div style={{ height: "100%", background: "linear-gradient(90deg, #ff007b, #00ff88)", width: `${(qIndex / 5) * 100}%`, transition: "width 0.4s ease", boxShadow: "0 0 20px #ff007b55" }}></div>
             </div>
 
             <div className="timer-ring">
@@ -549,13 +547,13 @@ export default function AtividadeHackersDoBem() {
                 <circle cx="28" cy="28" r="24" fill="none" stroke="#0d1f3c" strokeWidth="4"/>
                 <circle 
                   className="timer-circle" 
-                  cx="28" cy="28" r="24" fill="none" stroke={timeLeft <= 8 ? "#ff3d3d" : "#00e5ff"} strokeWidth="4"
+                  cx="28" cy="28" r="24" fill="none" stroke={timeLeft <= 8 ? "#ff3d3d" : "#ff007b"} strokeWidth="4"
                   strokeDasharray="150.8" 
                   strokeDashoffset={150.8 * (1 - timeLeft / 30)} 
                   strokeLinecap="round"
                 />
               </svg>
-              <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "Orbitron", fontSize: 16, fontWeight: 700, color: timeLeft <= 8 ? "#ff3d3d" : "#00e5ff" }}>{timeLeft}</div>
+              <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "Orbitron", fontSize: 16, fontWeight: 700, color: timeLeft <= 8 ? "#ff3d3d" : "#ff007b" }}>{timeLeft}</div>
             </div>
 
             <div style={{ display: "grid", gridTemplateColumns: "1fr 160px", gap: 20 }}>
@@ -593,7 +591,7 @@ export default function AtividadeHackersDoBem() {
                   <div className={`feedback-box ${selectedDisplayIdx !== null && q.options[optOrder[selectedDisplayIdx]].letter === q.options[q.correct].letter ? "correct-fb" : "wrong-fb"}`}>
                     <div style={{ fontWeight: 700, marginBottom: 4 }}>
                       {selectedDisplayIdx === null ? "⏱️ Tempo esgotado!" : 
-                       optOrder[selectedDisplayIdx] === q.correct ? "✅ Resposta correta! Excelente análise!" : "❌ Resposta incorreta. Veja o fundamento:"}
+                       optOrder[selectedDisplayIdx] === q.correct ? "✅ Resposta correta!" : "❌ Resposta incorreta."}
                     </div>
                     <div style={{ color: "#5a7a9a", fontSize: 13 }}>{q.explanation}</div>
                   </div>
@@ -632,7 +630,7 @@ export default function AtividadeHackersDoBem() {
           <div style={{ maxWidth: 600, margin: "0 auto", background: "#0a1628", border: "1px solid #1a3a6e", borderRadius: 8, padding: "36px 28px", textAlign: "center" }}>
             <div style={{ fontSize: 56, marginBottom: 12 }}>{getLevelInfo(score).emoji}</div>
             <div style={{ fontFamily: "Orbitron", fontSize: "clamp(22px, 5vw, 38px)", fontWeight: 900, margin: "12px 0", color: getLevelInfo(score).color }}>{getLevelInfo(score).label}</div>
-            <div style={{ fontFamily: "Orbitron", fontSize: "clamp(40px, 8vw, 64px)", fontWeight: 900, color: "#00e5ff", lineHeight: 1, textShadow: "0 0 20px #00e5ff55" }}>{score}</div>
+            <div style={{ fontFamily: "Orbitron", fontSize: "clamp(40px, 8vw, 64px)", fontWeight: 900, color: "#ff007b", lineHeight: 1, textShadow: "0 0 20px #ff007b55" }}>{score}</div>
             <div style={{ color: "#5a7a9a", fontSize: 14, marginBottom: 20 }}>pontos acumulados</div>
             
             <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12, marginBottom: 24 }}>
@@ -651,7 +649,7 @@ export default function AtividadeHackersDoBem() {
             </div>
 
             <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-              <button className="btn btn-primary" onClick={restartQuiz}>🔄 Jogar Novamente</button>
+              <button className="btn btn-primary" onClick={restartQuiz}>🔄 Refazer Desafio</button>
               <button className="btn btn-outline" onClick={() => window.location.href = "/hackersdobem"}>🏠 Voltar ao Hub</button>
             </div>
           </div>
