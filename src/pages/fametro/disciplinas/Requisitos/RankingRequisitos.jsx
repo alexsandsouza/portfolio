@@ -120,8 +120,7 @@ export default function RankingRequisitos() {
         borderBottom: "1px solid rgba(192,57,43,0.2)",
         padding: "28px 24px 24px",
         position: "sticky", top: 0, zIndex: 10,
-        backdropFilter: "blur(20px)",
-        position: "relative"
+        backdropFilter: "blur(20px)"
       }}>
         <div style={{ maxWidth: 900, margin: "0 auto" }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>

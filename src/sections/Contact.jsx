@@ -51,11 +51,26 @@ const Contact = () => {
         setTimeout(() => setCopied(false), 2500);
     };
 
-    const handleSubmit = (e) => {
-        // O envio real é feito pelo action do form, aqui só gerenciamos estado visual se necessário ou validação
-        // Para este exemplo com FormSubmit, deixamos o form agir naturalmente ou usamos AJAX.
-        // Vamos deixar o form nativo para garantir o envio robusto sem JS complexo.
+    const handleSubmit = async (e) => {
+        e.preventDefault();
         setFormStatus('submitting');
+        const form = e.target;
+        const data = new FormData(form);
+        try {
+            const res = await fetch('https://formsubmit.co/ajax/alexsandfarias@gmail.com', {
+                method: 'POST',
+                headers: { 'Accept': 'application/json' },
+                body: data
+            });
+            if (res.ok) {
+                setFormStatus('success');
+                form.reset();
+            } else {
+                setFormStatus('error');
+            }
+        } catch {
+            setFormStatus('error');
+        }
     };
 
     return (
@@ -156,12 +171,29 @@ const Contact = () => {
                         }}>
                             <h3 style={{ fontSize: '1.8rem', color: 'var(--text-heading)', marginBottom: '1.5rem' }}>Envie um E-mail</h3>
 
-                            <form action="https://formsubmit.co/alexsandfarias@gmail.com" method="POST" onSubmit={() => setFormStatus('success')}>
-                                {/* Configurações do FormSubmit */}
+                            {formStatus === 'success' && (
+                                <div style={{
+                                    padding: '1.5rem', borderRadius: '12px', marginBottom: '1.5rem',
+                                    background: 'rgba(34, 197, 94, 0.1)', border: '1px solid rgba(34, 197, 94, 0.3)',
+                                    textAlign: 'center'
+                                }}>
+                                    <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>✅</div>
+                                    <p style={{ color: '#22c55e', fontWeight: '600', margin: 0 }}>Mensagem enviada com sucesso!</p>
+                                    <p style={{ color: '#94a3b8', fontSize: '0.85rem', margin: '0.5rem 0 0' }}>Responderei em breve.</p>
+                                </div>
+                            )}
+
+                            {formStatus === 'error' && (
+                                <div style={{
+                                    padding: '1rem', borderRadius: '12px', marginBottom: '1.5rem',
+                                    background: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.3)'
+                                }}>
+                                    <p style={{ color: '#ef4444', margin: 0, fontSize: '0.9rem' }}>❌ Erro ao enviar. Tente pelo WhatsApp.</p>
+                                </div>
+                            )}
+
+                            <form onSubmit={handleSubmit}>
                                 <input type="hidden" name="_subject" value="Novo contato do Portfólio!" />
-                                <input type="hidden" name="_template" value="table" />
-                                <input type="hidden" name="_captcha" value="false" />
-                                <input type="hidden" name="_next" value="https://alexsander-farias.vercel.app/" /> {/* Redireciona de volta após envio */}
 
                                 <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
                                     <label style={{ display: 'block', color: 'var(--text-secondary)', marginBottom: '0.5rem', fontSize: '0.9rem' }}>Seu Nome</label>
@@ -206,19 +238,19 @@ const Contact = () => {
                                     }} placeholder="Como posso ajudar?"></textarea>
                                 </div>
 
-                                <button type="submit" className="cyber-button" style={{
+                                <button type="submit" className="cyber-button" disabled={formStatus === 'submitting'} style={{
                                     width: '100%',
                                     padding: '1rem',
                                     fontSize: '1.1rem',
                                     fontWeight: 'bold',
                                     color: '#fff',
-                                    background: 'var(--primary-color)',
+                                    background: formStatus === 'submitting' ? 'rgba(124,111,250,0.5)' : 'var(--primary-color)',
                                     border: 'none',
                                     borderRadius: '8px',
-                                    cursor: 'pointer',
+                                    cursor: formStatus === 'submitting' ? 'not-allowed' : 'pointer',
                                     transition: 'filter 0.3s'
                                 }}>
-                                    🚀 Enviar Mensagem
+                                    {formStatus === 'submitting' ? '⏳ Enviando...' : '🚀 Enviar Mensagem'}
                                 </button>
                             </form>
                         </div>

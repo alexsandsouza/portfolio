@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /mentoria/contrato
+Disallow: /mentoria/sucesso
+Disallow: /mentoria/matricula
+
+Sitemap: https://alexsander-farias.vercel.app/sitemap.xml

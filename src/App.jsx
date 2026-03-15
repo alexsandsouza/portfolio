@@ -57,6 +57,7 @@ const RankingRequisitos = lazy(() => import('./pages/fametro/disciplinas/Requisi
 const SOActivity = lazy(() => import('./pages/fametro/disciplinas/SO/SOActivity'));
 const SORanking = lazy(() => import('./pages/fametro/disciplinas/SO/SORanking'));
 const Inovatech2026 = lazy(() => import('./pages/Inovatech2026'));
+const NotFound = lazy(() => import('./pages/NotFound'));
 
 const Home = () => {
   usePageTitle();
@@ -147,6 +148,7 @@ function App() {
           <Route path="/fametro/so" element={<SOActivity />} />
           <Route path="/fametro/so/ranking" element={<SORanking />} />
           <Route path="/inovatech2026" element={<Inovatech2026 />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
     </div>

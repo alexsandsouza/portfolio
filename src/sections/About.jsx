@@ -68,6 +68,7 @@ const CyberFrame = () => {
                 <img
                     src="/Foto_Estudio2.png"
                     alt="Prof. Alexsander Farias"
+                    loading="lazy"
                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />
             </div>
