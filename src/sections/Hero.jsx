@@ -375,7 +375,32 @@ const Hero = () => {
                 </div>
             </div>
 
+            {/* Scroll Indicator */}
+            <div style={{
+                position: 'absolute',
+                bottom: '2.5rem',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '6px',
+                zIndex: 2,
+                opacity: 0.6
+            }}>
+                <span style={{ fontSize: '0.7rem', color: 'var(--text-secondary)', letterSpacing: '2px', textTransform: 'uppercase', fontFamily: 'monospace' }}>scroll</span>
+                <div style={{ animation: 'heroBounce 1.8s ease-in-out infinite' }}>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+            </div>
+
             <style>{`
+                @keyframes heroBounce {
+                    0%, 100% { transform: translateY(0); }
+                    50% { transform: translateY(6px); }
+                }
                 @keyframes shine {
                     to { background-position: 200% center; }
                 }

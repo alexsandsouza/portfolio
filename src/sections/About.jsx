@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { portfolioContent } from '../data/content';
 import { Reveal } from '../components/Reveal';
 import { useHoverCard } from '../hooks/useHoverCard';
@@ -11,8 +11,8 @@ const CyberFrame = () => {
             ...style.transform ? { transform: style.transform, transition: style.transition } : {},
             position: 'relative',
             zIndex: 10,
-            padding: '20px', // Space for markers
-            height: '100%', // Fill the grid column height
+            padding: '20px',
+            height: '100%',
             display: 'flex',
             alignItems: 'center'
         }}>
@@ -45,15 +45,15 @@ const CyberFrame = () => {
                 overflow: 'hidden',
                 boxShadow: '0 0 30px rgba(0,0,0,0.5)',
                 width: '100%',
-                height: '100%', // Force full height
-                minHeight: '500px', // Fallback
+                height: '100%',
+                minHeight: '500px',
                 zIndex: 1
             }}>
                 {/* Scanning Line Overlay */}
                 <div style={{
                     position: 'absolute', top: 0, left: 0, width: '100%', height: '5px',
-                    background: 'rgba(99, 102, 241, 0.8)',
-                    boxShadow: '0 0 15px rgba(99, 102, 241, 0.8)',
+                    background: 'rgba(124, 111, 250, 0.8)',
+                    boxShadow: '0 0 15px rgba(124, 111, 250, 0.8)',
                     animation: 'scan 4s linear infinite',
                     zIndex: 5,
                     opacity: 0.5
@@ -61,7 +61,7 @@ const CyberFrame = () => {
 
                 <div style={{
                     position: 'absolute', inset: 0,
-                    background: 'linear-gradient(to top, rgba(15, 23, 42, 0.8), transparent 40%)',
+                    background: 'linear-gradient(to top, rgba(8, 12, 26, 0.8), transparent 40%)',
                     zIndex: 2
                 }}></div>
 
@@ -78,13 +78,59 @@ const CyberFrame = () => {
     );
 }
 
+const parseStatValue = (value) => {
+    const match = value.match(/^(\d+)(.*)/);
+    if (!match) return { number: 0, suffix: value };
+    return { number: parseInt(match[1]), suffix: match[2] };
+};
+
+const useCountUp = (target, duration, triggered) => {
+    const [count, setCount] = useState(0);
+    useEffect(() => {
+        if (!triggered) return;
+        let startTime = null;
+        const easeOut = (t) => 1 - Math.pow(1 - t, 3);
+        const animate = (timestamp) => {
+            if (!startTime) startTime = timestamp;
+            const progress = Math.min((timestamp - startTime) / duration, 1);
+            setCount(Math.floor(easeOut(progress) * target));
+            if (progress < 1) requestAnimationFrame(animate);
+        };
+        requestAnimationFrame(animate);
+    }, [triggered, target, duration]);
+    return count;
+};
+
+const AnimatedStatValue = ({ value, triggered }) => {
+    const { number, suffix } = parseStatValue(value);
+    const count = useCountUp(number, 1800, triggered);
+    return <>{count}{suffix}</>;
+};
+
 const HolographicStats = ({ stats }) => {
+    const containerRef = useRef(null);
+    const [triggered, setTriggered] = useState(false);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setTriggered(true);
+                    observer.disconnect();
+                }
+            },
+            { threshold: 0.5 }
+        );
+        if (containerRef.current) observer.observe(containerRef.current);
+        return () => observer.disconnect();
+    }, []);
+
     return (
-        <div style={{
+        <div ref={containerRef} style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '1px', // Separation for grid lines
-            background: 'linear-gradient(90deg, transparent, var(--border-color), transparent)', // Top border illusion
+            gap: '1px',
+            background: 'linear-gradient(90deg, transparent, var(--border-color), transparent)',
             marginBottom: '2rem',
             paddingTop: '1px',
             position: 'relative'
@@ -100,20 +146,26 @@ const HolographicStats = ({ stats }) => {
                 <div key={i} style={{
                     textAlign: 'center',
                     padding: '1.5rem 0.5rem',
-                    background: 'var(--card-bg)', // Glass effect
+                    background: 'var(--card-bg)',
                     backdropFilter: 'blur(4px)',
-                    boxShadow: 'var(--card-shadow)', // Added shadow
-                    border: '1px solid var(--card-border)' // Added border
+                    boxShadow: 'var(--card-shadow)',
+                    border: '1px solid var(--card-border)'
                 }}>
                     <strong style={{
                         display: 'block',
                         fontSize: '2rem',
                         fontWeight: '800',
                         lineHeight: 1,
-                        background: i === 0 ? 'linear-gradient(to bottom, var(--text-heading), var(--primary-color))' : i === 1 ? 'linear-gradient(to bottom, var(--text-heading), var(--secondary-color))' : 'linear-gradient(to bottom, var(--text-heading), var(--accent-color))',
+                        background: i === 0
+                            ? 'linear-gradient(to bottom, var(--text-heading), var(--primary-color))'
+                            : i === 1
+                                ? 'linear-gradient(to bottom, var(--text-heading), var(--secondary-color))'
+                                : 'linear-gradient(to bottom, var(--text-heading), var(--accent-color))',
                         WebkitBackgroundClip: 'text',
                         WebkitTextFillColor: 'transparent'
-                    }}>{stat.value}</strong>
+                    }}>
+                        <AnimatedStatValue value={stat.value} triggered={triggered} />
+                    </strong>
                     <span style={{
                         fontSize: '0.7rem',
                         color: 'var(--text-secondary)',
@@ -153,7 +205,7 @@ const About = () => {
                                     fontSize: '1.25rem',
                                     fontWeight: '500',
                                     lineHeight: 1.6,
-                                    whiteSpace: 'pre-line' // Respond to \n
+                                    whiteSpace: 'pre-line'
                                 }}>
                                     {about.headline}
                                 </h3>
@@ -188,25 +240,21 @@ const About = () => {
             </div>
 
             <style>{`
-                /* Desktop default for headline */
                 .about-headline {
                     border-left: 3px solid var(--secondary-color);
                     padding-left: 1rem;
                     text-align: left;
                 }
-                
+
                 @media (max-width: 900px) {
-                    /* Force Center Everything on Mobile */
                     .text-left-mobile {
                         text-align: center !important;
                         align-items: center !important;
                     }
-                    .text-left-mobile h2, 
+                    .text-left-mobile h2,
                     .text-left-mobile p {
                         text-align: center !important;
                     }
-                    
-                    /* Adjust Headline Border */
                     .about-headline {
                         border-left: none !important;
                         padding-left: 0 !important;
@@ -215,8 +263,6 @@ const About = () => {
                         text-align: center !important;
                         width: 100%;
                     }
-                    
-                    /* Adjust Highlight Card */
                     .about-highlight-card {
                         justify-content: center !important;
                         text-align: center !important;

@@ -42,7 +42,14 @@ const SocialNode = ({ platform, url, icon }) => {
 
 const Contact = () => {
     const { contact } = portfolioContent;
-    const [formStatus, setFormStatus] = useState(null); // null, 'submitting', 'success'
+    const [formStatus, setFormStatus] = useState(null);
+    const [copied, setCopied] = useState(false);
+
+    const copyEmail = () => {
+        navigator.clipboard.writeText('alexsandfarias@gmail.com');
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2500);
+    };
 
     const handleSubmit = (e) => {
         // O envio real é feito pelo action do form, aqui só gerenciamos estado visual se necessário ou validação
@@ -87,7 +94,7 @@ const Contact = () => {
                             </p>
 
                             {/* WhatsApp Button */}
-                            <a href="https://wa.me/5592991199999" target="_blank" rel="noopener noreferrer" className="cyber-button-small" style={{
+                            <a href="https://wa.me/5592981425690" target="_blank" rel="noopener noreferrer" className="cyber-button-small" style={{
                                 display: 'inline-flex',
                                 alignItems: 'center',
                                 gap: '0.8rem',
@@ -106,6 +113,25 @@ const Contact = () => {
                                 <span style={{ fontSize: '1.2rem' }}>💬</span>
                                 <span>Chamar no WhatsApp</span>
                             </a>
+
+                            <button onClick={copyEmail} style={{
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: '8px',
+                                padding: '10px 20px',
+                                background: copied ? 'rgba(34, 197, 94, 0.1)' : 'var(--card-bg)',
+                                border: `1px solid ${copied ? 'rgba(34, 197, 94, 0.5)' : 'var(--card-border)'}`,
+                                borderRadius: '50px',
+                                color: copied ? '#22c55e' : 'var(--text-secondary)',
+                                fontSize: '0.85rem',
+                                fontWeight: '600',
+                                cursor: 'pointer',
+                                transition: 'all 0.3s',
+                                marginBottom: '2rem',
+                                fontFamily: 'monospace'
+                            }}>
+                                {copied ? '✓ Copiado!' : '📋 alexsandfarias@gmail.com'}
+                            </button>
 
                             <h3 style={{ fontSize: '1.2rem', color: 'var(--text-primary)', marginBottom: '1rem' }}>Conecte-se comigo:</h3>
                             <div className="social-links" style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>

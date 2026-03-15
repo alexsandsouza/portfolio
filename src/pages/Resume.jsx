@@ -107,6 +107,10 @@ const Resume = () => {
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
                             {/* Static List per User Request */}
                             <div style={{ pageBreakInside: 'avoid' }}>
+                                <div style={{ fontWeight: 'bold', fontSize: '11px', color: '#000', fontFamily: 'Arial, sans-serif' }}>Mestrado em Engenharia Elétrica</div>
+                                <div style={{ fontSize: '11px', color: '#000', fontFamily: 'Arial, sans-serif' }}>Universidade Federal do Amazonas - UFAM <span style={{ fontSize: '10px', color: '#444' }}>- Em andamento</span></div>
+                            </div>
+                            <div style={{ pageBreakInside: 'avoid' }}>
                                 <div style={{ fontWeight: 'bold', fontSize: '11px', color: '#000', fontFamily: 'Arial, sans-serif' }}>Pós Graduação Lato Sensu em Gestão da Educação Profissional e Tecnológica</div>
                                 <div style={{ fontSize: '11px', color: '#000', fontFamily: 'Arial, sans-serif' }}>Instituto Federal de Educação, Ciência e Tecnologia do Paraná - IFPR <span style={{ fontSize: '10px', color: '#444' }}>- Em andamento</span></div>
                             </div>

@@ -33,7 +33,7 @@ const WhatsAppButton = ({ message }) => {
             </div>
 
             <a
-                href={`https://wa.me/5592999999999?text=${encodedMessage}`}
+                href={`https://wa.me/5592981425690?text=${encodedMessage}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="whatsapp-float"
