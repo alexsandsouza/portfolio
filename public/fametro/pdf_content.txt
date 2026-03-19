@@ -1,0 +1,470 @@
+
+
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+(     )
+RESULTADO
+I:
+C:
+A:
+O:
+x4
+x4
+x4
+x4
+%
+%
+%
+%
+Águia
+Gato
+Tubarão
+Lobo
+Avaliação 
+de Perfil
+Comportamental
+Descubra qual é o seu PERFIL COMPORTAMENTAL e entenda
+suas habilidades e pontos de melhoria dentro da sua empresa. 
+Escolha sempre uma única alternativa para cada questão.
+Gato
+Tubarão
+Águia
+Lobo
+1
+0
+%
+2
+0
+%
+0
+3
+%
+4
+0
+%
+5
+0
+%
+6
+0
+%
+7
+0
+%
+8
+0
+%
+9
+%
+0
+0
+0
+%
+1
+0
+1
+%
+0
+%
+2
+3
+0
+%
+4
+%
+0
+5
+0
+%
+6
+0
+%
+7
+0
+%
+0
+8
+%
+9
+0
+%
+1
+0
+0
+%
+1
+0
+%
+2
+0
+%
+3
+0
+%
+4
+0
+%
+0
+5
+%
+0
+6
+%
+7
+0
+%
+0
+8
+%
+0
+9
+%
+1
+0
+0
+%
+1
+0
+%
+2
+0
+%
+3
+0
+%
+4
+0
+%
+5
+0
+%
+6
+0
+%
+7
+0
+%
+8
+0
+%
+0
+%
+9
+1
+0
+0
+%
+* Some as alternativas marcadas, multiplique
+o resultado x4 e descubra qual é o seu perfil
+comportamental.
+* Preencha o gráfico com o seu percentual.
+
+Águia
+Gato
+Lobo
+Tubarão
+ "FAZER DIFERENTE"
+Criativo
+Intuitivo
+Foco no futuro
+Distraído
+Curioso
+Informal/Casual
+Flexível
+ ̧
+ ̧
+ ̧
+ ̧
+ ̧
+ ̧
+ ̧
+ "FAZER CERTO"
+Detalhista
+Organizado
+Estrategista
+Busca do conhecimento
+Pontual
+Conservador
+Previsível
+ ̧
+ ̧
+ ̧
+ ̧
+ ̧
+ ̧
+ ̧
+ "FAZER RÁPIDO"
+Senso de urgência
+Ação, iniciativa
+Impulsivo, prático
+Vencer desafios
+Aqui e agora
+Auto suficiente
+Não gosta de delegar poder
+ ̧
+ ̧
+ ̧
+ ̧
+ ̧
+ ̧
+ ̧
+ "FAZER JUNTO"
+Sensível
+Relacionamentos
+Time
+Tradicionalistas
+Contribuição
+Busca harmonia
+Delega autoridade 
+ ̧
+ ̧
+ ̧
+ ̧
+ ̧
+ ̧
+ ̧
+COMPORTAMENTOS
+Águia
+Gato
+Lobo
+Tubarão
+ ̧
+ ̧
+ ̧
+Fazer que ocorra
+Parar com a burocracia
+Motivação
+Manter comunicação
+ harmoniosa
+Desenvolver e manter a
+cultura empresarial
+Comunicação aberta
+ 
+ ̧
+ ̧
+ ̧
+PONTOS FORTES
+Águia
+Gato
+Lobo
+Tubarão
+ ̧
+ ̧
+ ̧
+Falta de atenção para 
+o aqui e agora
+Impaciência e rebeldia
+Defender o novo pelo novo
+ ̧
+ ̧
+ ̧
+Dificuldades de se adaptar às
+ mudanças
+Pode impedir o progresso
+Detalhista, estruturado e
+demasiadamente sistematizado
+Esconder conflitos
+Felicidade acima dos
+ resultados
+Manipulação através dos
+sentimentos
+ ̧
+ ̧
+ ̧
+PONTOS DE MELHORIA
+Águia
+Gato
+Lobo
+Tubarão
+ ̧
+ ̧
+ ̧
+ ̧
+ ̧
+Liberdade de expressão
+Ausência de controles rígidos
+Ambiente de trabalho 
+descentralizado
+Liberdade para fazer exceções
+Oportunidade para delegar 
+tarefas e detalhes
+ ̧
+ ̧
+ ̧
+ ̧
+Certeza, compreensão exata de
+quais são as regras
+Conhecimento específico
+do trabalho
+Ausência de riscos e erros
+Ver o produto acabado 
+- começo, meio e fim
+Segurança
+Aceitação social
+Construir o consenso
+Reconhecimento da equipe
+Supervisão compreensiva
+Ambiente harmônico
+Trabalho em grupo
+ ̧
+ ̧
+ ̧
+ ̧
+ ̧
+ ̧
+ ̧
+MOTIVAÇÕES
+ ̧
+ ̧
+ ̧
+Provoca mudanças radicais
+Antecipar o futuro
+Criatividade
+- Passado, Presente e Futuro
+Consistência, conformidade e
+qualidade
+Lealdade e segurança
+Regras e responsabilidades
+ ̧
+ ̧
+ ̧
+Socialmente um desastre
+Faz do modo mais fácil
+Relacionamento complicado
+ ̧
+ ̧
+ ̧
+ ̧
+ ̧
+ ̧
+ ̧
+ ̧
+ ̧
+Liberdade para agir 
+  individualmente
+Controle das próprias atividades
+Resolver os problemas 
+do seu jeito
+Competição individual
+Variedade de atividades
+Não ter que repetir tarefas
+Á
+g
+u
+i
+a
+G
+a
+t
+o
+L
+o
+b
+o
+T
+u
+b
+a
+r
+ã
+o
+Entenda
+Seu Perfil
+Comportamental!

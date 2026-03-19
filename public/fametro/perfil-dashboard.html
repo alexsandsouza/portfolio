@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — Perfis Comportamentais | CEUNI-FAMETRO</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+<!-- Firebase SDK -->
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js';
+import { getFirestore, collection, onSnapshot, query, orderBy, deleteDoc, doc } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAwxl9Sm6Q3X4z6GnFuUjm-lqf2tH2_a4Y",
+  authDomain: "portfolio-b6e32.firebaseapp.com",
+  projectId: "portfolio-b6e32",
+  storageBucket: "portfolio-b6e32.firebasestorage.app",
+  messagingSenderId: "809040838176",
+  appId: "1:809040838176:web:fff2480b3c4c23cee48645"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+let allResults = [];
+
+const profileData = {
+  'I': {
+    name: 'Águia',
+    icon: '🦅',
+    color: '#6C63FF',
+    motto: 'Fazer diferente',
+    strengths: ['Criatividade e inovação', 'Visão de longo prazo', 'Flexibilidade e adaptação', 'Pensamento disruptivo'],
+    weaknesses: ['Falta de foco no presente', 'Desorganização crônica', 'Impaciência com detalhes', 'Dificuldade em concluir tarefas'],
+    improve: ['Trabalhar a disciplina e rotina', 'Priorizar tarefas críticas', 'Tentar terminar o que começou', 'Atenção aos detalhes técnicos']
+  },
+  'C': {
+    name: 'Gato',
+    icon: '🐱',
+    color: '#FF6B9D',
+    motto: 'Fazer junto',
+    strengths: ['Excelente comunicação', 'Empatia e harmonia', 'Trabalho em equipe', 'Lealdade e sensibilidade'],
+    weaknesses: ['Dificuldade em dar feedbacks negativos', 'Necessidade constante de aprovação', 'Evita conflitos necessários', 'Excesso de sentimentalismo'],
+    improve: ['Desenvolver assertividade', 'Aprender a dizer não quando necessário', 'Focar mais em metas e resultados', 'Separar o pessoal do profissional']
+  },
+  'O': {
+    name: 'Lobo',
+    icon: '🐺',
+    color: '#00B894',
+    motto: 'Fazer certo',
+    strengths: ['Organização e método', 'Planejamento detalhado', 'Lealdade aos processos', 'Pontualidade e precisão'],
+    weaknesses: ['Dificuldade com mudanças bruscas', 'Perfeccionismo travante', 'Tendência a ser crítico demais', 'Ritmo de decisão mais lento'],
+    improve: ['Praticar a flexibilidade', 'Arriscar-se em novas ideias', 'Acelerar o processo de decisão', 'Entender que o feito é melhor que o perfeito']
+  },
+  'A': {
+    name: 'Tubarão',
+    icon: '🦈',
+    color: '#FF7675',
+    motto: 'Fazer rápido',
+    strengths: ['Senso de urgência aguçado', 'Foco total em resultados', 'Praticidade e iniciativa', 'Independência e coragem'],
+    weaknesses: ['Falta de paciência com os outros', 'Pode ser ríspido ou autoritário', 'Ignora processos e detalhes', 'Dificuldade em delegar'],
+    improve: ['Desenvolver escuta ativa', 'Valorizar o planejamento estratégico', 'Ter mais paciência com ritmos alheios', 'Aprender a trabalhar em grupo de forma horizontal']
+  }
+};
+
+// Listener em tempo real
+const q = query(collection(db, 'perfil_comportamental'), orderBy('timestamp', 'desc'));
+onSnapshot(q, (snapshot) => {
+  allResults = snapshot.docs.map(d => ({ id: d.id, ...d.data() }));
+  render(allResults);
+  document.getElementById('loadingMsg').style.display = 'none';
+}, (err) => {
+  console.error(err);
+  document.getElementById('loadingMsg').textContent = '⚠️ Erro ao carregar dados. Verifique a conexão.';
+});
+
+window._deleteResult = async function(id) {
+  if (!confirm('Remover este resultado?')) return;
+  await deleteDoc(doc(db, 'perfil_comportamental', id));
+};
+
+window._filterAndRender = function() {
+  const search = document.getElementById('searchInput').value.toLowerCase();
+  const filterPerfil = document.getElementById('filterPerfil').value;
+  let filtered = allResults.filter(r => {
+    const matchName = r.nome && r.nome.toLowerCase().includes(search);
+    const matchPerfil = !filterPerfil || r.perfilKey === filterPerfil;
+    return matchName && matchPerfil;
+  });
+  render(filtered);
+};
+
+window._exportCSV = function() {
+  if (!allResults.length) return;
+  const header = ['Nome','Perfil Dominante','Águia %','Gato %','Lobo %','Tubarão %','Data'];
+  const rows = allResults.map(r => [
+    r.nome || '',
+    r.perfilDominante || '',
+    r.pctAguia || 0,
+    r.pctGato || 0,
+    r.pctLobo || 0,
+    r.pctTubarao || 0,
+    r.timestamp ? new Date(r.timestamp.toDate()).toLocaleString('pt-BR') : ''
+  ]);
+  const csv = [header, ...rows].map(r => r.join(';')).join('\n');
+  const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'perfis_comportamentais.csv'; a.click();
+};
+
+window._showReport = function(key) {
+  const data = profileData[key];
+  if (!data) return;
+
+  const modal = document.getElementById('reportModal');
+  const content = document.getElementById('reportContent');
+
+  content.innerHTML = `
+    <div class="report-header" style="border-bottom: 4px solid ${data.color}">
+      <span style="font-size: 64px">${data.icon}</span>
+      <div>
+        <h2 style="color:${data.color}; font-size: 32px; margin-bottom: 4px;">${data.name}</h2>
+        <p style="color:var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Lema: ${data.motto}</p>
+      </div>
+    </div>
+
+    <div class="report-grid">
+      <div class="report-section">
+        <h3><span class="report-icon">💪</span> Pontos Fortes</h3>
+        <ul>${data.strengths.map(s => `<li>${s}</li>`).join('')}</ul>
+      </div>
+      <div class="report-section">
+        <h3><span class="report-icon">⚠️</span> Pontos de Atenção</h3>
+        <ul>${data.weaknesses.map(w => `<li>${w}</li>`).join('')}</ul>
+      </div>
+    </div>
+
+    <div class="report-section full">
+      <h3><span class="report-icon">🚀</span> Como se Desenvolver</h3>
+      <div class="improve-list">
+        ${data.improve.map(i => `<div class="improve-item">${i}</div>`).join('')}
+      </div>
+    </div>
+
+    <div class="report-footer">
+      <button class="btn-action close-modal-btn" onclick="window._closeModal()" style="background: ${data.color}; color: white; border: none; padding: 14px 24px; width: 100%; border-radius: 12px; font-weight: 800; cursor: pointer; transition: filter 0.2s;">FECHAR RELATÓRIO</button>
+    </div>
+  `;
+
+  modal.style.display = 'flex';
+  setTimeout(() => modal.classList.add('open'), 10);
+};
+
+window._closeModal = function() {
+  const modal = document.getElementById('reportModal');
+  modal.classList.remove('open');
+  setTimeout(() => modal.style.display = 'none', 300);
+};
+
+// Fechar modal ao clicar fora
+window.onclick = function(event) {
+  const modal = document.getElementById('reportModal');
+  if (event.target == modal) window._closeModal();
+};
+
+function render(results) {
+  // Totals stats
+  const total = results.length;
+  const counts = { I: 0, C: 0, O: 0, A: 0 };
+  results.forEach(r => { if (r.perfilKey) counts[r.perfilKey]++; });
+  document.getElementById('statTotal').textContent = total;
+  document.getElementById('statAguia').textContent = counts.I;
+  document.getElementById('statGato').textContent = counts.C;
+  document.getElementById('statLobo').textContent = counts.O;
+  document.getElementById('statTubarao').textContent = counts.A;
+
+  // Stats cards click
+  const keys = { statAguia: 'I', statGato: 'C', statLobo: 'O', statTubarao: 'A' };
+  Object.keys(keys).forEach(id => {
+    const card = document.getElementById(id).closest('.stat-card');
+    card.onclick = () => window._showReport(keys[id]);
+  });
+
+  // Distribution bar
+  const distBar = document.getElementById('distBar');
+  distBar.innerHTML = '';
+  const profiles = [
+    { key: 'I', name: 'Águia', color: '#6C63FF', icon: '🦅' },
+    { key: 'C', name: 'Gato',  color: '#FF6B9D', icon: '🐱' },
+    { key: 'O', name: 'Lobo',  color: '#00B894', icon: '🐺' },
+    { key: 'A', name: 'Tubarão', color: '#FF7675', icon: '🦈' }
+  ];
+  profiles.forEach(p => {
+    const pct = total > 0 ? (counts[p.key] / total) * 100 : 0;
+    if (pct > 0) {
+      const seg = document.createElement('div');
+      seg.className = 'dist-seg';
+      seg.style.cssText = `width:${pct}%; background:${p.color};`;
+      seg.title = `${p.icon} ${p.name}: ${counts[p.key]} (${Math.round(pct)}%)`;
+      seg.onclick = () => window._showReport(p.key);
+      distBar.appendChild(seg);
+    }
+  });
+
+  // Donut chart (SVG)
+  renderDonut(counts, total);
+
+  // Table
+  const tbody = document.getElementById('tableBody');
+  if (!results.length) {
+    tbody.innerHTML = '<tr><td colspan="9" style="text-align:center;padding:40px;color:#4a5a7a">Nenhum resultado encontrado.</td></tr>';
+    return;
+  }
+  tbody.innerHTML = results.map((r, i) => {
+    const p = profiles.find(p => p.key === r.perfilKey) || { key: '?', color: '#888', icon: '?', name: r.perfilDominante || '—' };
+    const date = r.timestamp ? new Date(r.timestamp.toDate()).toLocaleString('pt-BR', { day:'2-digit', month:'2-digit', year:'2-digit', hour:'2-digit', minute:'2-digit' }) : '—';
+    return `<tr class="trow" style="animation-delay:${i*30}ms">
+      <td><span class="row-num">${i+1}</span></td>
+      <td><strong style="color:#e0e0e0">${r.nome || '—'}</strong></td>
+      <td>
+        <span class="perfil-badge clickable" onclick="window._showReport('${r.perfilKey}')" style="background:${p.color}20;color:${p.color};border:1px solid ${p.color}50">
+          ${p.icon} ${p.name}
+        </span>
+      </td>
+      <td><div class="mini-bar-wrap"><div class="mini-bar"><div class="mini-bar-fill" style="width:${r.pctAguia||0}%;background:#6C63FF"></div></div><span>${r.pctAguia||0}%</span></div></td>
+      <td><div class="mini-bar-wrap"><div class="mini-bar"><div class="mini-bar-fill" style="width:${r.pctGato||0}%;background:#FF6B9D"></div></div><span>${r.pctGato||0}%</span></div></td>
+      <td><div class="mini-bar-wrap"><div class="mini-bar"><div class="mini-bar-fill" style="width:${r.pctLobo||0}%;background:#00B894"></div><span>${r.pctLobo||0}%</span></div></td>
+      <td><div class="mini-bar-wrap"><div class="mini-bar"><div class="mini-bar-fill" style="width:${r.pctTubarao||0}%;background:#FF7675"></div><span>${r.pctTubarao||0}%</span></div></td>
+      <td style="font-size:11px;color:#4a6a8a;white-space:nowrap">${date}</td>
+      <td><button class="btn-del" onclick="window._deleteResult('${r.id}')" title="Remover">✕</button></td>
+    </tr>`;
+  }).join('');
+}
+
+function renderDonut(counts, total) {
+  const profiles = [
+    { key: 'I', color: '#6C63FF' },
+    { key: 'C', color: '#FF6B9D' },
+    { key: 'O', color: '#00B894' },
+    { key: 'A', color: '#FF7675' }
+  ];
+  const cx = 60, cy = 60, r = 48, stroke = 18;
+  const circum = 2 * Math.PI * r;
+  let offset = 0;
+  const svg = document.getElementById('donutSvg');
+  if (!svg) return;
+  svg.innerHTML = '';
+  // bg circle
+  const bg = document.createElementNS('http://www.w3.org/2000/svg','circle');
+  bg.setAttribute('cx', cx); bg.setAttribute('cy', cy); bg.setAttribute('r', r);
+  bg.setAttribute('fill','none'); bg.setAttribute('stroke','#0f3460'); bg.setAttribute('stroke-width', stroke);
+  svg.appendChild(bg);
+
+  if (total === 0) return;
+  profiles.forEach(p => {
+    const frac = counts[p.key] / total;
+    if (frac === 0) return;
+    const len = frac * circum;
+    const c = document.createElementNS('http://www.w3.org/2000/svg','circle');
+    c.setAttribute('cx', cx); c.setAttribute('cy', cy); c.setAttribute('r', r);
+    c.setAttribute('fill','none'); c.setAttribute('stroke', p.color); c.setAttribute('stroke-width', stroke);
+    c.setAttribute('stroke-dasharray', `${len} ${circum - len}`);
+    c.setAttribute('stroke-dashoffset', circum / 4 - offset * circum);
+    c.style.transition = 'stroke-dasharray 0.8s ease';
+    c.style.cursor = 'pointer';
+    c.onclick = () => window._showReport(p.key);
+    svg.appendChild(c);
+    offset += frac;
+  });
+  // center text
+  const t = document.createElementNS('http://www.w3.org/2000/svg','text');
+  t.setAttribute('x', cx); t.setAttribute('y', cy + 1);
+  t.setAttribute('text-anchor','middle'); t.setAttribute('dominant-baseline','middle');
+  t.setAttribute('font-size','18'); t.setAttribute('font-weight','800'); t.setAttribute('fill','#00d2ff');
+  t.textContent = total;
+  svg.appendChild(t);
+  const t2 = document.createElementNS('http://www.w3.org/2000/svg','text');
+  t2.setAttribute('x', cx); t2.setAttribute('y', cy + 16);
+  t2.setAttribute('text-anchor','middle'); t2.setAttribute('dominant-baseline','middle');
+  t2.setAttribute('font-size','9'); t2.setAttribute('fill','#4a6a8a');
+  t2.textContent = 'alunos';
+  svg.appendChild(t2);
+}
+</script>
+
+<style>
+  :root {
+    --dark: #0d1117; --card: #161b22; --border: #30363d;
+    --text: #c9d1d9; --muted: #8b949e; --white: #f0f6fc;
+    --sky: #58a6ff; --aguia: #6C63FF; --gato: #FF6B9D;
+    --lobo: #00B894; --tubarao: #FF7675; --gold: #FFD700;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', sans-serif; background: var(--dark); color: var(--text); min-height: 100vh; }
+
+  /* TOPBAR */
+  .topbar {
+    background: rgba(22, 27, 34, 0.8); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 24px; display: flex; align-items: center;
+    justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    position: sticky; top: 0; z-index: 1000;
+  }
+  .topbar-left { display: flex; align-items: center; gap: 14px; }
+  .topbar-logo { font-size: 20px; font-weight: 900; color: var(--white); }
+  .topbar-logo span { color: var(--sky); }
+  .topbar-badge { background: #21262d; border: 1px solid var(--border); border-radius: 6px; padding: 3px 10px; font-size: 11px; color: var(--muted); font-weight: 600; }
+  .live-dot { width: 8px; height: 8px; border-radius: 50%; background: #3fb955; display: inline-block; animation: blink 1.5s infinite; margin-right: 4px; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+  .topbar-actions { display: flex; gap: 8px; align-items: center; }
+  .btn-action {
+    padding: 8px 16px; border-radius: 8px; border: 1px solid var(--border);
+    cursor: pointer; font-size: 13px; font-weight: 600;
+    font-family: 'Inter', sans-serif; transition: all 0.2s;
+    background: #21262d; color: var(--text);
+  }
+  .btn-action:hover { border-color: var(--sky); color: var(--white); background: #30363d; }
+  .btn-action.export { background: #238636; border-color: rgba(240,246,252,0.1); color: #fff; }
+  .btn-action.export:hover { background: #2ea043; }
+  .btn-back { text-decoration: none; padding: 8px 16px; border-radius: 8px; border: 1px solid var(--border); font-size: 13px; font-weight: 600; color: var(--muted); transition: all 0.2s; background: transparent; }
+  .btn-back:hover { border-color: var(--sky); color: var(--sky); }
+
+  /* WRAP */
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 24px 20px 60px; }
+
+  /* STATS GRID */
+  .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 24px; }
+  .stat-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 18px 20px;
+    display: flex; flex-direction: column; gap: 4px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative; overflow: hidden;
+  }
+  .stat-card:hover { transform: translateY(-5px); border-color: var(--sky); background: #1c2128; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+  .stat-card::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: currentColor; opacity: 0.3; }
+  .stat-card .icon { font-size: 24px; margin-bottom: 4px; }
+  .stat-card .val { font-size: 32px; font-weight: 900; line-height: 1; }
+  .stat-card .lbl { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+  .stat-card.total .val { color: var(--sky); }
+  .stat-card.aguia .val { color: var(--aguia); }
+  .stat-card.gato .val { color: var(--gato); }
+  .stat-card.lobo .val { color: var(--lobo); }
+  .stat-card.tubarao .val { color: var(--tubarao); }
+
+  /* MID ROW: donut + dist */
+  .mid-row { display: grid; grid-template-columns: 200px 1fr; gap: 16px; margin-bottom: 24px; align-items: stretch; }
+  @media(max-width:768px) { .mid-row { grid-template-columns: 1fr; } }
+
+  .donut-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 20px; text-align: center;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .donut-card svg { display: block; margin: 0 auto 14px; }
+  .donut-legend { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+  .legend-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--muted); font-weight: 500; cursor: pointer; transition: color 0.2s; }
+  .legend-item:hover { color: var(--white); }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+  .dist-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 24px; display: flex; flex-direction: column;
+  }
+  .dist-title { font-size: 13px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
+  .dist-bar-wrap { background: #0d1117; border-radius: 12px; height: 40px; overflow: hidden; display: flex; margin-bottom: 16px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.3); border: 1px solid var(--border); }
+  .dist-seg { height: 100%; transition: all 0.8s cubic-bezier(0.17, 0.67, 0.83, 0.67); cursor: pointer; position: relative; }
+  .dist-seg:hover { filter: brightness(1.2); z-index: 10; transform: scaleY(1.05); }
+  .dist-legend { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 10px; }
+  .dist-legend-item { display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 600; cursor: pointer; padding: 4px 8px; border-radius: 6px; transition: background 0.2s; }
+  .dist-legend-item:hover { background: rgba(56, 139, 253, 0.1); }
+
+  /* FILTERS */
+  .filters-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 20px; }
+  .search-input {
+    flex: 1; min-width: 200px;
+    padding: 10px 16px; background: var(--card);
+    border: 1px solid var(--border); border-radius: 8px;
+    color: var(--white); font-size: 14px; font-family: 'Inter', sans-serif;
+    outline: none; transition: all 0.2s;
+  }
+  .search-input:focus { border-color: var(--sky); box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.15); background: #1c2128; }
+  .search-input::placeholder { color: var(--muted); }
+  .filter-select {
+    padding: 10px 16px; background: var(--card);
+    border: 1px solid var(--border); border-radius: 8px;
+    color: var(--white); font-size: 14px; font-family: 'Inter', sans-serif;
+    outline: none; cursor: pointer;
+  }
+  .filter-select option { background: var(--card); }
+
+  /* TABLE */
+  .table-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+  .table-scroll { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; }
+  thead th {
+    padding: 14px; text-align: left;
+    font-size: 11px; font-weight: 700; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 1px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(13, 17, 23, 0.5); white-space: nowrap;
+  }
+  .trow { border-bottom: 1px solid var(--border); animation: fadeRow 0.4s ease-out both; transition: background 0.2s; }
+  .trow:last-child { border-bottom: none; }
+  .trow:hover { background: #1c2128; }
+  @keyframes fadeRow { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+  td { padding: 14px; font-size: 13px; vertical-align: middle; }
+  .row-num { font-size: 11px; color: var(--muted); font-weight: 700; }
+  .perfil-badge {
+    padding: 6px 14px; border-radius: 50px;
+    font-size: 12px; font-weight: 700; white-space: nowrap;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .perfil-badge.clickable { cursor: pointer; transition: transform 0.2s; }
+  .perfil-badge.clickable:hover { transform: scale(1.05); filter: brightness(1.2); }
+  
+  .mini-bar-wrap { display: flex; align-items: center; gap: 8px; min-width: 90px; }
+  .mini-bar { height: 8px; border-radius: 4px; min-width: 2px; flex-shrink: 0; background: #30363d; overflow: hidden; }
+  .mini-bar-fill { height: 100%; border-radius: 4px; transition: width 1s ease-out; }
+  .mini-bar-wrap span { font-size: 11px; color: var(--muted); font-weight: 600; white-space: nowrap; width: 30px; text-align: right; }
+  
+  .btn-del {
+    background: none; border: 1px solid transparent;
+    color: var(--muted); cursor: pointer; border-radius: 6px;
+    padding: 6px 10px; font-size: 12px; transition: all 0.2s;
+  }
+  .btn-del:hover { border-color: #f85149; color: #f85149; background: rgba(248,81,73,0.1); }
+
+  /* MODAL */
+  .modal-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(4px); z-index: 2000;
+    display: none; align-items: center; justify-content: center;
+    padding: 20px; opacity: 0; transition: opacity 0.3s;
+  }
+  .modal-overlay.open { opacity: 1; }
+  .modal-content {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 20px; width: 100%; max-width: 600px;
+    max-height: 90vh; overflow-y: auto;
+    padding: 0; transform: scale(0.9); transition: transform 0.3s;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  }
+  .modal-overlay.open .modal-content { transform: scale(1); }
+  
+  .report-header { padding: 32px; display: flex; align-items: center; gap: 24px; background: rgba(0,0,0,0.2); }
+  .report-header h2 { font-size: 32px; font-weight: 900; }
+  .report-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; padding: 24px 32px; }
+  @media(max-width:600px) { .report-grid { grid-template-columns: 1fr; } }
+  
+  .report-section h3 { font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; color: var(--white); display: flex; align-items: center; gap: 8px; }
+  .report-icon { font-size: 18px; }
+  .report-section ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .report-section li { font-size: 14px; color: var(--text); padding-left: 20px; position: relative; line-height: 1.5; }
+  .report-section li::before { content: '•'; position: absolute; left: 0; color: var(--sky); font-weight: bold; }
+  
+  .report-section.full { grid-column: 1 / -1; padding: 0 32px 24px; }
+  .improve-list { display: flex; flex-direction: column; gap: 8px; }
+  .improve-item { background: #0d1117; border: 1px solid var(--border); padding: 12px 16px; border-radius: 10px; font-size: 14px; border-left: 4px solid var(--sky); }
+  
+  .report-footer { padding: 24px 32px 32px; }
+
+  /* EMPTY / LOADING */
+  #loadingMsg { text-align: center; padding: 60px 20px; color: var(--muted); font-size: 15px; font-weight: 500; }
+
+  /* SECTION TITLE */
+  .section-title {
+    font-size: 13px; font-weight: 700; color: var(--sky);
+    text-transform: uppercase; letter-spacing: 2px;
+    margin-bottom: 16px; display: flex; align-items: center; gap: 12px;
+  }
+  .section-title::after { content:''; flex:1; height:1px; background: var(--border); }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: var(--dark); }
+  ::-webkit-scrollbar-thumb { background: #30363d; border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: #484f58; }
+
+  @media(max-width:768px) {
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+
+  @media(max-width:768px) {
+    .stats-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-left">
+    <div class="topbar-logo">Perfil <span>Dashboard</span></div>
+    <div class="topbar-badge">CEUNI-FAMETRO</div>
+    <div class="topbar-badge">IBC Coaching</div>
+    <div style="font-size:12px;color:#4a8a6a;font-weight:600">
+      <span class="live-dot"></span>Tempo real
+    </div>
+  </div>
+  <div class="topbar-actions">
+    <button class="btn-action export" onclick="window._exportCSV()">⬇ Exportar CSV</button>
+    <a href="perfil-comportamental.html" class="btn-back">← Voltar ao Quiz</a>
+  </div>
+</div>
+
+<div id="loadingMsg">⏳ Carregando resultados dos alunos...</div>
+
+<div class="wrap">
+
+  <!-- STATS -->
+  <div class="section-title">Resumo da Turma</div>
+  <div class="stats-grid">
+    <div class="stat-card total">
+      <div class="icon">👥</div>
+      <div class="val" id="statTotal">0</div>
+      <div class="lbl" style="color:var(--sky)">Total</div>
+    </div>
+    <div class="stat-card aguia">
+      <div class="icon">🦅</div>
+      <div class="val" id="statAguia">0</div>
+      <div class="lbl" style="color:var(--aguia)">Águia</div>
+    </div>
+    <div class="stat-card gato">
+      <div class="icon">🐱</div>
+      <div class="val" id="statGato">0</div>
+      <div class="lbl" style="color:var(--gato)">Gato</div>
+    </div>
+    <div class="stat-card lobo">
+      <div class="icon">🐺</div>
+      <div class="val" id="statLobo">0</div>
+      <div class="lbl" style="color:var(--lobo)">Lobo</div>
+    </div>
+    <div class="stat-card tubarao">
+      <div class="icon">🦈</div>
+      <div class="val" id="statTubarao">0</div>
+      <div class="lbl" style="color:var(--tubarao)">Tubarão</div>
+    </div>
+  </div>
+
+  <!-- CHARTS ROW -->
+  <div class="mid-row">
+    <!-- Donut -->
+    <div class="donut-card">
+      <svg id="donutSvg" viewBox="0 0 120 120" width="120" height="120"></svg>
+      <div class="donut-legend">
+        <div class="legend-item"><div class="legend-dot" style="background:#6C63FF"></div>🦅 Águia</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#FF6B9D"></div>🐱 Gato</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#00B894"></div>🐺 Lobo</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#FF7675"></div>🦈 Tubarão</div>
+      </div>
+    </div>
+
+    <!-- Distribution -->
+    <div class="dist-card">
+      <div class="dist-title">📊 Distribuição de Perfis na Turma</div>
+      <div class="dist-bar-wrap" id="distBar"></div>
+      <div class="dist-legend">
+        <div class="dist-legend-item" style="color:#6C63FF"><div class="legend-dot" style="background:#6C63FF"></div>🦅 Fazer Diferente</div>
+        <div class="dist-legend-item" style="color:#FF6B9D"><div class="legend-dot" style="background:#FF6B9D"></div>🐱 Fazer Junto</div>
+        <div class="dist-legend-item" style="color:#00B894"><div class="legend-dot" style="background:#00B894"></div>🐺 Fazer Certo</div>
+        <div class="dist-legend-item" style="color:#FF7675"><div class="legend-dot" style="background:#FF7675"></div>🦈 Fazer Rápido</div>
+      </div>
+      <div style="margin-top:18px;padding:14px;background:#0d1117;border-radius:10px;border:1px solid #21262d;font-size:12px;color:#4a6a8a;line-height:1.7">
+        💡 <strong style="color:#6e7681">Dica pedagógica:</strong> Turmas com diversidade de perfis tendem a ter maior capacidade criativa e de resolução de problemas quando bem mediadas.
+      </div>
+    </div>
+  </div>
+
+  <!-- TABLE -->
+  <div class="section-title">Resultados Individuais</div>
+  <div class="filters-row">
+    <input class="search-input" id="searchInput" type="text" placeholder="🔍 Buscar por nome..." oninput="window._filterAndRender()">
+    <select class="filter-select" id="filterPerfil" onchange="window._filterAndRender()">
+      <option value="">Todos os perfis</option>
+      <option value="I">🦅 Águia</option>
+      <option value="C">🐱 Gato</option>
+      <option value="O">🐺 Lobo</option>
+      <option value="A">🦈 Tubarão</option>
+    </select>
+  </div>
+  <div class="table-card">
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nome do Aluno</th>
+            <th>Perfil Dominante</th>
+            <th>🦅 Águia</th>
+            <th>🐱 Gato</th>
+            <th>🐺 Lobo</th>
+            <th>🦈 Tubarão</th>
+            <th>Data / Hora</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+          <tr><td colspan="9" style="text-align:center;padding:60px;color:#4a5a7a">⏳ Aguardando dados...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <p style="text-align:center;margin-top:30px;font-size:12px;color:var(--muted)">
+    Os dados são atualizados em tempo real via Firebase Firestore · CEUNI-FAMETRO 2026
+  </p>
+</div>
+
+<!-- REPORT MODAL -->
+<div id="reportModal" class="modal-overlay">
+  <div class="modal-content" id="reportContent">
+    <!-- Content injected via JS -->
+  </div>
+</div>
+
+</body>
+</html>

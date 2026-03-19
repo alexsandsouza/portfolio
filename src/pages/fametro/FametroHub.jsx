@@ -40,6 +40,21 @@ export default function FametroHub() {
       badges: ['Labs', 'Java']
     },
     {
+      id: 1.8,
+      title: 'Lab: Classes, Getters, Setters & Construtor',
+      course: 'Sistemas de Informação',
+      institution: 'Centro Universitário FAMETRO',
+      professor: 'Alexsander Farias',
+      period: '2026.1',
+      description: 'Exercício prático progressivo: construa a classe Produto do zero, implementando atributos, getters, setters, construtor e toString() passo a passo.',
+      path: '/fametro/poo/construtores',
+      icon: <Layout size={24} color="#a855f7" />,
+      buttonText: 'Iniciar Lab Construtor',
+      status: 'active',
+      accentColor: '#a855f7',
+      badges: ['Labs', 'Construtor']
+    },
+    {
       id: 2,
       title: 'Análise de Requisitos',
       course: 'Sistemas de Informação',
@@ -72,18 +87,53 @@ export default function FametroHub() {
       badges: ['Quiz', 'SO']
     },
     {
+      id: 3.5,
+      title: 'SO Quest — Unidade I',
+      course: 'Sistemas de Informação',
+      institution: 'Centro Universitário FAMETRO',
+      professor: 'Alexsander Farias',
+      period: '2026.1',
+      description: 'Gamificação ativa: 15 questões situação-problema sobre Introdução aos SOs, Hierarquia de Memória, E/S, Barramento e Tradutor. Questões aleatórias a cada rodada!',
+      path: '/fametro/so/unidade1',
+      rankingPath: '/fametro/so-u1/ranking',
+      icon: <Rocket size={24} color="#8b5cf6" />,
+      buttonText: 'Iniciar Unidade I',
+      status: 'active',
+      accentColor: '#8b5cf6',
+      badges: ['Gamificado', 'Unidade I']
+    },
+    {
+      id: 3.6,
+      title: 'SO Quest — Aula 05',
+      course: 'Sistemas de Informação',
+      institution: 'Centro Universitário FAMETRO',
+      professor: 'Alexsander Farias',
+      period: '2026.1',
+      description: 'Missão: Gerenciamento de E/S. Domine Drivers, DMA, Polling e a classificação de periféricos neste desafio com cronômetro e ranking!',
+      path: '/fametro/so/aula5',
+      rankingPath: '/fametro/so/aula5/ranking',
+      icon: <Rocket size={24} color="#3b82f6" />,
+      buttonText: 'Iniciar Missão I/O',
+      status: 'active',
+      accentColor: '#3b82f6',
+      badges: ['Aula 05', 'I/O Control']
+    },
+    {
       id: 4,
       title: 'Estrutura de Dados',
       course: 'Sistemas de Informação',
       institution: 'Centro Universitário FAMETRO',
       professor: 'Alexsander Farias',
       period: '2026.1',
-      description: 'Em breve: Desafios de Filas, Pilhas, Árvores e Algoritmos de Ordenação.',
-      path: '#',
-      icon: <BookOpen size={24} color="#94a3b8" />,
-      buttonText: 'Bloqueado',
-      status: 'locked',
-      accentColor: '#64748b',
+      description: 'Matrix Quest & Lab: Desafios teóricos estilo ENADE e laboratório prático de codificação de matrizes.',
+      path: '/fametro/aed/matrizes',
+      rankingPath: '/fametro/aed/matrizes/ranking',
+      labPath: '/fametro/aed/matrizes/lab',
+      icon: <BookOpen size={24} color="#6366f1" />,
+      buttonText: 'Acessar Matrix Quest',
+      status: 'active',
+      accentColor: '#6366f1',
+      badges: ['ENADE', 'Prática', 'Matrizes']
     }
   ];
 
@@ -224,12 +274,29 @@ export default function FametroHub() {
                         backgroundColor: `${item.accentColor}18`,
                         color: item.accentColor, fontWeight: '600', fontSize: '0.8rem', textDecoration: 'none',
                         border: `1px solid ${item.accentColor}40`, transition: 'all 0.2s',
+                        marginBottom: item.labPath ? '0.5rem' : '0'
                       }}
                         onMouseEnter={e => { e.currentTarget.style.backgroundColor = `${item.accentColor}30`; }}
                         onMouseLeave={e => { e.currentTarget.style.backgroundColor = `${item.accentColor}18`; }}
                       >
                         <Trophy size={14} />
                         Ver Ranking ao Vivo
+                      </Link>
+                    )}
+                    {item.labPath && (
+                      <Link to={item.labPath} style={{
+                        display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px',
+                        width: '100%', boxSizing: 'border-box',
+                        padding: '0.625rem 1.25rem', borderRadius: '12px',
+                        backgroundColor: 'rgba(255,255,255,0.05)',
+                        color: '#cbd5e1', fontWeight: '600', fontSize: '0.8rem', textDecoration: 'none',
+                        border: '1px solid rgba(255,255,255,0.1)', transition: 'all 0.2s',
+                      }}
+                        onMouseEnter={e => { e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.1)'; }}
+                        onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.05)'; }}
+                      >
+                        <BookOpen size={14} />
+                        Abrir Laboratório Prático
                       </Link>
                     )}
                   </div>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ranking: Levantamento de Requisitos — FAMETRO</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js';
+import { getFirestore, collection, query, where, orderBy, onSnapshot } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAwxl9Sm6Q3X4z6GnFuUjm-lqf2tH2_a4Y",
+  authDomain: "portfolio-b6e32.firebaseapp.com",
+  projectId: "portfolio-b6e32",
+  storageBucket: "portfolio-b6e32.firebasestorage.app",
+  messagingSenderId: "809040838176",
+  appId: "1:809040838176:web:fff2480b3c4c23cee48645"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const q = query(
+  collection(db, "fametro_ranking"),
+  where("category", "==", "ER_Aula06"),
+  orderBy("score", "desc"),
+  orderBy("timestamp", "asc")
+);
+
+onSnapshot(q, (snapshot) => {
+  const tbody = document.getElementById('ranking-body');
+  tbody.innerHTML = '';
+  
+  if (snapshot.empty) {
+    tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;padding:40px;color:#666">Nenhum cadete completou a missão ainda.</td></tr>';
+    return;
+  }
+
+  snapshot.docs.forEach((doc, index) => {
+    const data = doc.data();
+    const tr = document.createElement('tr');
+    tr.className = index < 3 ? `top-${index + 1}` : '';
+    
+    const medal = index === 0 ? "🥇" : index === 1 ? "🥈" : index === 2 ? "🥉" : index + 1;
+    const date = data.timestamp ? new Date(data.timestamp.toDate()).toLocaleDateString('pt-BR') : '-';
+
+    tr.innerHTML = `
+      <td><span class="rank-num">${medal}</span></td>
+      <td class="name-cell">${data.name}</td>
+      <td class="score-cell">${data.score} <span>XP</span></td>
+      <td class="date-cell">${date}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+});
+</script>
+
+<style>
+  :root {
+    --neon-blue: #00d2ff; --neon-purple: #9d50bb;
+    --dark-bg: #050505; --card-bg: #111;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--dark-bg); color: #fff;
+    padding: 40px 20px;
+    background-image: linear-gradient(to bottom, #050505, #111);
+  }
+  .wrap { max-width: 800px; margin: 0 auto; }
+  
+  .header { text-align: center; margin-bottom: 50px; }
+  h1 { font-family: 'Orbitron', sans-serif; font-size: 24px; text-transform: uppercase; letter-spacing: 2px; }
+  h1 span { color: var(--neon-blue); text-shadow: 0 0 10px var(--neon-blue); }
+  .subtitle { color: #666; font-size: 12px; margin-top: 8px; text-transform: uppercase; letter-spacing: 1px; }
+
+  .table-card {
+    background: var(--card-bg); border: 1px solid #222;
+    border-radius: 12px; overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  }
+  table { width: 100%; border-collapse: collapse; }
+  th {
+    background: #1a1a1a; padding: 16px; text-align: left;
+    font-size: 11px; font-weight: 800; text-transform: uppercase;
+    color: #444; letter-spacing: 1px;
+  }
+  td { padding: 16px; border-bottom: 1px solid #1a1a1a; font-size: 14px; }
+  
+  .rank-num { font-family: 'Orbitron', sans-serif; font-weight: 900; color: #444; }
+  .name-cell { font-weight: 700; color: #e0e0e0; }
+  .score-cell { font-family: 'Orbitron', sans-serif; font-weight: 800; color: var(--neon-blue); }
+  .score-cell span { font-size: 10px; color: #444; }
+  .date-cell { color: #444; font-size: 11px; }
+
+  tr.top-1 td { background: rgba(0, 210, 255, 0.05); }
+  tr.top-1 .rank-num { color: #ffd700; font-size: 20px; }
+  tr.top-2 .rank-num { color: #c0c0c0; font-size: 18px; }
+  tr.top-3 .rank-num { color: #cd7f32; font-size: 16px; }
+
+  .footer-actions { display: flex; justify-content: center; margin-top: 30px; gap: 15px; }
+  .btn {
+    text-decoration: none; padding: 12px 24px; border-radius: 6px;
+    font-size: 12px; font-weight: 800; text-transform: uppercase;
+    font-family: 'Orbitron', sans-serif; transition: 0.3s;
+  }
+  .btn-primary { background: var(--neon-blue); color: #000; }
+  .btn-outline { border: 1px solid #333; color: #666; }
+  .btn:hover { transform: translateY(-2px); filter: brightness(1.1); }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="header">
+    <h1>Protocolo de <span>Ranking</span></h1>
+    <div class="subtitle">Aula 06 — Levantamento de Requisitos | Engenharia de Requisitos</div>
+  </div>
+
+  <div class="table-card">
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 80px;">Posição</th>
+          <th>Cadete (Aluno)</th>
+          <th>XP Acumulado</th>
+          <th>Data</th>
+        </tr>
+      </thead>
+      <tbody id="ranking-body">
+        <!-- Live Data -->
+      </tbody>
+    </table>
+  </div>
+
+  <div class="footer-actions">
+    <a href="atividade-levantamento-requisitos.html" class="btn btn-primary">Fazer Missão</a>
+    <a href="https://alexsanderfarias.vercel.app/fametro" class="btn btn-outline">Voltar ao HUB</a>
+  </div>
+</div>
+
+</body>
+</html>

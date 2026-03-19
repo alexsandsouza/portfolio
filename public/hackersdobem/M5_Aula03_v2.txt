@@ -1,0 +1,444 @@
+
+
+Módulo 05
+Gerenciamento de Identidades 
+e Contas
+Aula 03
+Soluções de Autorização
+5
+
+Introdução
+Nesta aula, você conhecerá os seguintes assuntos:
+Sistemas de controle de acesso –DiscretionaryAccess Control
+(DAC) e Role-BasedAccess Control(RBAC);
+Sistemas avançados –MandatoryAccess Control(MAC) e 
+Attribute-BasedAccess Control(ABAC);
+Permissões de read, writee execute para sistemas de arquivos;
+Privileged Access Management (PAM), Directory Services 
+usandoo Lightweight Directory Access Protocol (LDAP);
+Identificação federada;
+Protocolos de segurança.
+
+Controle de Acesso
+Soluções de Autorização
+Aula 03
+
+CONTROLE DE ACESSO
+É um conjunto de políticas, procedimentos 
+e tecnologias visando garantir que apenas 
+pessoas autorizadas possam acessar 
+determinados recursos.
+Envolve um processo de autenticação 
+e autorização.
+O objetivo maior é proteger 
+informações sensíveis e recursos 
+críticos.
+Controle de Acesso
+Aula 03
+Fonte: Medium.
+Disponível em: 
+<https://medium.com/@andressaabrantes/seguran%C3%A7a-em-web-
+apis-378404337ac7>
+Acesso em: 18 mar. 2024.
+
+CONTROLE DE ACESSO 
+DISCRICIONÁRIO -DISCRETIONARY 
+ACCESS CONTROL (DAC)
+É um modelo de controle de acesso 
+onde os proprietários determinam 
+quais as operações que podem ser 
+realizadas sobre os recursos.
+Controle de Acesso
+Aula 03
+Fonte: Delinea.
+Disponível em: <https://delinea.com/blog/access-control-models-
+methods>
+Acesso em: 18 mar. 2024.
+Proprietários e respectivos recursos;
+Permissões de acesso para cada 
+recurso;
+Lista de Controle de Acesso 
+associada a cada recurso;
+Passos para um DAC:
+Proprietário e controle.
+
+CONTROLE DE ACESSO BASEADO 
+EM FUNÇÃO –ROLE-BASED 
+ACCESS CONTROL (RBAC)
+É um modelo de controle de acesso 
+onde as permissões estão baseadas na 
+atribuição de funções específicas dos 
+usuários.
+Funcionamento do RBAC:
+Controle de Acesso
+Aula 03
+Funções baseadas nas 
+responsabilidades e cargos ;
+Usuários recebem uma ou mais 
+funções;
+Permissões associadas às 
+funções;
+Fonte: Micoope.
+Disponível em: <https://www.micoope.com.gt/?o=an-enhancement-of-the-
+role-based-access-control-model-nn-LAw9YjhQ>.
+Acesso em: 18 mar. 2024.
+Recursos recebem permissões.
+
+CONTROLE DE ACESSO 
+OBRIGATÓRIO –MANDATORY 
+ACCESS CONTROL (MAC)
+É um modelo de controle de acesso 
+onde as permissões estão baseadas 
+em políticas definidas pelo sistema.
+Funcionamento do MAC:
+Controle de Acesso
+Aula 03
+Políticas de segurança da 
+organização;
+Rótulos de segurança "Alto", 
+"Médio" e "Baixo;
+Regras de acesso definem as 
+permissões;
+Aplicação das políticas.
+Fonte: ResearchGate.
+Disponível em: <https://www.researchgate.net/figure/view-of-
+mandatory-access-control-MAC_fig4_358430862>.
+Acesso em: 18 mar. 2024.
+
+CONTROLE DE ACESSO BASEADO EM 
+ATRIBUTOS –ATTRIBUTE-BASED 
+ACCESS CONTROL (ABAC)
+É um modelo de controle de acesso onde 
+as permissões estão baseadas em 
+atributos de entidades, recursos e 
+condições.
+Atributos;
+Entidades;
+Recursos;
+Controle de Acesso
+Aula 03
+Funcionamento do ABAC:
+Fonte: Python.
+Disponível em: <https://python.plainenglish.io/policy-based-
+access-control-pbac-what-it-is-and-why-you-need-it-in-your-
+modern-data-lakehouse-672e869c2082>.
+Acesso em: 18 mar. 2024.
+Políticas de autorização.
+
+PERMISSÕES DO SISTEMA DE 
+ARQUIVOS
+São as permissões que determinam 
+quais ações os usuários podem 
+realizar em um arquivo ou diretório.
+Funcionamento das permissões:
+Leitura (Read–r);
+Escrita (Write–w);
+Execução (Execute–x);
+Comando chmod;
+Controle de Acesso
+Aula 03
+Fonte: Medium.
+Disponível em: 
+<https://medium.com/@dhanashrisaner.30/enhancing-
+security-with-linux-file-permissions-and-access-control-lists-
+ed6eb53679a5>.
+Acesso em: 18 mar. 2024.
+Comando chown.
+
+Controle de Acesso
+Aula 03
+Fonte: Delinea
+Disponível em: <https://delinea.com/blog/privileged-access-
+management-lifecycle-path-to-maturity>.
+Acesso em: 18 mar. 2024.
+É um procedimento que se concentra em 
+proteger e gerenciar o acesso a contas e 
+recursos privilegiados.
+Implementação do PAM:
+1.Identificação de contas privilegiadas;
+2.Políticas de acesso;
+3.Gerenciamento de credenciais;
+1
+3
+2
+GERENCIAMENTO DE ACESSO 
+PRIVILEGIADO -PRIVILEGED ACCESS 
+MANAGEMENT (PAM)
+
+GERENCIAMENTO DE ACESSO 
+PRIVILEGIADO -PRIVILEGED ACCESS 
+MANAGEMENT (PAM)
+Controle de Acesso
+Aula 03
+Fonte: Spice Works.
+Disponível em: <https://www.spiceworks.com/it-security/identity-
+access-management/articles/top-10-privileged-access-management-
+solutions/>.
+Acesso em: 18 mar. 2024.
+4.Autenticação multifator(MFA);
+5.Monitoramento de atividades;
+6.Rotação de senhas;
+7.Controle de sessões;
+8.Aprovação e revisão.
+4
+6
+5
+7
+8
+
+SERVIÇOS DE DIRETÓRIO
+São sistemas que permitem 
+armazenar, organizar e recuperar 
+informações de forma hierárquica.
+Tipos: LightweightDirectoryAccess 
+Protocol(LDAP) e diretórios 
+formato X.500.
+Controle de Acesso
+Aula 03
+Fonte: Netwokency.
+Disponível em: <https://networkencyclopedia.com/lightweight-directory-
+access-protocol-ldap/>.
+Acesso em: 18 mar. 2024.
+LDAP –versão simplificada do 
+padrão X.500;
+Diretórios X.500 –segue o padrão 
+X.500;
+Funcionamento dos serviços de 
+diretório:
+
+SERVIÇOS DE DIRETÓRIO
+Hierarquia –entradas de diretório pai e 
+filho;
+DistinguishedName(DN) -identificação 
+única para cada entrada no diretório;
+Controle de Acesso
+Aula 03
+Fonte: Keith brooks.
+Disponível em: 
+<https://keithbrooks.com/download/Collabsphere2021_ADSync.pdf>.
+Acesso em: 18 mar. 2024.
+Árvore de diretórios;
+LDAP como Interface;
+Consultas LDAP;
+Autenticação.
+
+ELEMENTOS EM SISTEMAS DE 
+GERENCIAMENTO DE DIRETÓRIOS
+São elementos usados LDAP e nos 
+diretórios X.500 para identificar, 
+classificar e organizar informações.
+Controle de Acesso
+Aula 03
+Common Name(CN);
+OrganizationalUnit (OU);
+Fonte: Stack Over Flow.
+Disponível em: 
+<https://stackoverflow.com/questions/18756688/what-are-cn-ou-
+dc-in-an-ldap-Search>.
+Acesso em: 18 mar. 2024.
+Elementos utilizados:
+Organization(O);
+Country (C);
+Domain Component(DC).
+
+FEDERAÇÃO
+Controle de Acesso
+Aula 03
+Fonte: Link springer.
+Disponível em: <https://link.springer.com/chapter/10.1007/978-1-4842-
+8936-5_2>.
+Acesso em: 18 mar. 2024.
+Trata-se de um modelo onde diversas 
+organizações ou serviços concordam 
+em compartilhar informações de 
+autenticação e autorização.
+.
+Funcionamento:
+Identidades e atributos;
+Provedores de Identidade(IdPs);
+Provedores de Serviços (SPs);
+
+FEDERAÇÃO
+Controle de Acesso
+Aula 03
+Federação;
+Security Assertion Markup Language 
+(SAML);
+Controle de acesso granular.
+Fonte: Link springer.
+Disponível em: <https://www.miniorange.com/blog/federated-
+identity-management-fim/>.
+Acesso em: 18 mar. 2024.
+Processo de autenticação e 
+autorização;
+Benefíciosda Federação;
+
+SAML E SOAP
+O Security AssertionsMarkup Language
+(SAML) e o SimpleObjectAccess 
+Protocol(SOAP) são protocolos 
+utilizados para prover autenticação e 
+segurança.
+1.  SAML:
+Controle de Acesso
+Aula 03
+Padrão de segurança baseado em 
+XML;
+Proporciona a troca de informações 
+de autenticação e autorização.
+1
+
+SAML E SOAP
+Componentes do SAML:
+Controle de Acesso
+Aula 03
+Afirmações (Assertions);
+Provedor de identidade (IdP);
+Provedor de Serviço;
+Pacotes SAML (SAML Artifacts);
+Protocolos SAML. 
+Fonte: ResearchGate.
+Disponível em: 
+<https://www.researchgate.net/figure/Figur
+a-1-Estrutura-de-uma-mensagem-SOAP-
+KALIN-2009_fig1_273316362>.
+Acesso em: 18 mar. 2024.
+
+SAML E SOAP
+Fluxo de Autenticação SAML:
+Controle de Acesso
+Aula 11.3
+Um usuário acessa serviço (SP);
+O SP redireciona o usuário para o 
+IdPapropriado;
+O IdPautentica o usuário e emite 
+uma afirmação SAML;
+O usuário é redirecionado de volta 
+para o SP com a afirmação SAML.
+O SP verifica a assinatura digital do 
+token SAML e concede o acesso.
+Fonte: Front egg.
+Disponível em: <https://frontegg.com/guides/saml>
+Acesso em: 18 mar. 2024.
+
+SAML E SOAP
+2.  SOAP:
+Controle de Acesso
+Aula 03
+Protocolo de comunicação baseado 
+em XML;
+Proporciona a troca de mensagens 
+entre aplicativos em uma rede.
+Fonte: Atitude reflexiva.
+Disponível em: 
+<https://atitudereflexiva.wordpress.com/20
+19/08/06/soap-introducao/>.
+Acesso em: 18 mar. 2024.
+Componentes do SOAP:
+Envelope SOAP;
+Header SOAP;
+Body SOAP;
+Protocolo de transporte.
+2
+
+SAML E SOAP
+Fluxo do SOAP:
+Controle de Acesso
+Aula 03
+O aplicativo cliente cria uma 
+mensagem SOAP com a 
+solicitação/dados encapsulados;
+Esta mensagem é enviada para o 
+serviço;
+O serviço recebe a mensagem 
+SOAP, extrai os dados do corpo 
+(Body) da mensagem e processa a 
+solicitação.
+O serviço gera resposta em formato 
+SOAP e envia de volta ao cliente;
+O cliente recebe, extrai os dados e 
+processa a resposta conforme 
+necessário
+Fonte: Linkedin.
+Disponível em: <https://www.linkedin.com/pulse/soap-simple-object-
+access-protocol-danuka-hettiarachchi-cxxoc/?trk=public_post_main-
+feed-card_feed-article-contente>.
+Acesso em: 18 mar. 2024.
+
+RESTFUL OAUTH
+É um protocolo de autorização.
+Controle de Acesso
+Aula 03
+Permite que um aplicativo de terceiro 
+acesse recursos de um usuário, sem a 
+necessidade de compartilhar suas 
+credenciais de autenticação.
+Funcionamento do OAuth:
+1.  Componentes do OAuth:
+Cliente (Client);
+Proprietário dos recursos 
+(ResourceOwner);
+Servidor de autorização 
+(AuthorizationServer);
+Servidor de recursos (Resource
+Server).
+
+RESTFUL OAUTH
+2. Registro do cliente:
+3. Fluxos OAuth;
+4. Fluxo de autorização de código 
+(AuthorizationCodeFlow);
+Controle de Acesso
+Aula 03
+Fonte: Youtube.
+Disponível em: <https://www.youtube.com/watch?app=desktop&v=_-
+qpXT8qiB0>.
+Acesso em: 18 mar. 2024.
+5. Token de acesso;
+6. Intercâmbio do código por um 
+Token de acesso;
+7.  Acesso a recursos protegidos;
+8.  Escopo;
+9. Renovação de tokens.
+
+OPENID CONNECT (OIDC)
+É um protocolo de autenticação e 
+autorização baseado no OAuth2.0.
+Controle de Acesso
+Aula 03
+Fonte: Subscription.
+Disponível em: 
+<https://subscription.packtpub.com/book/data/9781789132304/6/c
+h06lvl1sec45/openid-connect-oidc>.
+Acesso em: 18 mar. 2024.
+Provedor de Identidade (IdP);
+Cliente;
+Usuário final.
+Etapas do funcionamento:
+1. Atores envolvidos:
+2. Registro do cliente;
+3. Autenticação do usuário;
+4. Emissão do Token de identificação;
+
+OPENID CONNECT (OIDC)
+5. Redirecionamento de volta ao cliente;
+6.  Verificação do Token de 
+identificação;
+7.  Autorização adicional (opcional);
+Controle de Acesso
+Aula 03
+Fonte: Lins de Vasconcellos.
+Disponível em: <https://www.linsdevasconcellos.org.br/integrate-and-
+develop-oauth-v2-api-and-rest-api-pp-6DNlO4sp>.
+Acesso em: 18 mar. 2024.
+8. Solicitação de Token de acesso;
+9. Acesso a recursos protegidos;
+10. Renovação e expiração de 
+Tokens;
+11. Segurança;
+12. Compartilhamento de 
+informações do usuário.
+
+Soluções de Autorização
+Você chegou ao final da Aula 03
+5

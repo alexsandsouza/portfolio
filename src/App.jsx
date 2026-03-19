@@ -48,14 +48,28 @@ const AtividadeHackersDoBemM4A04 = lazy(() => import('./pages/hackersdobem/ativi
 const RankingHackersDoBemM4A04 = lazy(() => import('./pages/hackersdobem/ranking_m4a04'));
 const AtividadeExtraM05 = lazy(() => import('./pages/hackersdobem/atividade_extra_m05'));
 const RankingExtraM05 = lazy(() => import('./pages/hackersdobem/ranking_extra_m05'));
+const AtividadeM5A02 = lazy(() => import('./pages/hackersdobem/atividade_m5a02'));
+const RankingM5A02 = lazy(() => import('./pages/hackersdobem/ranking_m5a02'));
+const AtividadeM5A03 = lazy(() => import('./pages/hackersdobem/atividade_m5a03'));
+const RankingM5A03 = lazy(() => import('./pages/hackersdobem/ranking_m5a03'));
+const AtividadeM5M6Desafio = lazy(() => import('./pages/hackersdobem/atividade_m5m6_desafio'));
+const RankingM5M6Desafio = lazy(() => import('./pages/hackersdobem/ranking_m5m6_desafio'));
 const FametroHub = lazy(() => import('./pages/fametro/FametroHub'));
 const POOActivity = lazy(() => import('./pages/fametro/disciplinas/POO/POOActivity'));
 const POOJavaActivity = lazy(() => import('./pages/fametro/disciplinas/POO/POOJavaActivity'));
+const POOConstrutoresActivity = lazy(() => import('./pages/fametro/disciplinas/POO/POOConstrutoresActivity'));
 const RankingPOO = lazy(() => import('./pages/fametro/disciplinas/POO/RankingPOO'));
 const RequisitosActivity = lazy(() => import('./pages/fametro/disciplinas/Requisitos/RequisitosActivity'));
 const RankingRequisitos = lazy(() => import('./pages/fametro/disciplinas/Requisitos/RankingRequisitos'));
 const SOActivity = lazy(() => import('./pages/fametro/disciplinas/SO/SOActivity'));
 const SORanking = lazy(() => import('./pages/fametro/disciplinas/SO/SORanking'));
+const SOUnidade1Activity = lazy(() => import('./pages/fametro/disciplinas/SO/SOUnidade1Activity'));
+const SORankingU1 = lazy(() => import('./pages/fametro/disciplinas/SO/SORankingU1'));
+const SOAula5Activity = lazy(() => import('./pages/fametro/disciplinas/SO/SOAula5Activity'));
+const SORankingAula5 = lazy(() => import('./pages/fametro/disciplinas/SO/SORankingAula5'));
+const MatrizesActivity = lazy(() => import('./pages/fametro/disciplinas/AED/MatrizesActivity'));
+const MatrizesRanking = lazy(() => import('./pages/fametro/disciplinas/AED/MatrizesRanking'));
+const MatrizesLab = lazy(() => import('./pages/fametro/disciplinas/AED/MatrizesLab'));
 const Inovatech2026 = lazy(() => import('./pages/Inovatech2026'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
@@ -139,14 +153,28 @@ function App() {
           <Route path="/hackersdobem/ranking-m4a04" element={<RankingHackersDoBemM4A04 />} />
           <Route path="/hackersdobem/atividade-extra" element={<AtividadeExtraM05 />} />
           <Route path="/hackersdobem/ranking-extra-m05" element={<RankingExtraM05 />} />
+          <Route path="/hackersdobem/atividade-m5a02" element={<AtividadeM5A02 />} />
+          <Route path="/hackersdobem/ranking-m5a02" element={<RankingM5A02 />} />
+          <Route path="/hackersdobem/atividade-m5a03" element={<AtividadeM5A03 />} />
+          <Route path="/hackersdobem/ranking-m5a03" element={<RankingM5A03 />} />
+          <Route path="/hackersdobem/desafio-m5-m6" element={<AtividadeM5M6Desafio />} />
+          <Route path="/hackersdobem/ranking-m5m6" element={<RankingM5M6Desafio />} />
           <Route path="/fametro" element={<FametroHub />} />
           <Route path="/fametro/poo/atividade" element={<POOActivity />} />
           <Route path="/fametro/poo/java-atividade" element={<POOJavaActivity />} />
+          <Route path="/fametro/poo/construtores" element={<POOConstrutoresActivity />} />
           <Route path="/fametro/poo/ranking" element={<RankingPOO />} />
           <Route path="/fametro/requisitos" element={<RequisitosActivity />} />
           <Route path="/fametro/requisitos/ranking" element={<RankingRequisitos />} />
           <Route path="/fametro/so" element={<SOActivity />} />
           <Route path="/fametro/so/ranking" element={<SORanking />} />
+          <Route path="/fametro/so/unidade1" element={<SOUnidade1Activity />} />
+          <Route path="/fametro/so/aula5" element={<SOAula5Activity />} />
+          <Route path="/fametro/so/aula5/ranking" element={<SORankingAula5 />} />
+          <Route path="/fametro/so-u1/ranking" element={<SORankingU1 />} />
+          <Route path="/fametro/aed/matrizes" element={<MatrizesActivity />} />
+          <Route path="/fametro/aed/matrizes/ranking" element={<MatrizesRanking />} />
+          <Route path="/fametro/aed/matrizes/lab" element={<MatrizesLab />} />
           <Route path="/inovatech2026" element={<Inovatech2026 />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

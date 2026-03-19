@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avaliação de Perfil Comportamental — IBC</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<!-- Firebase SDK -->
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js';
+import { getFirestore, collection, addDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAwxl9Sm6Q3X4z6GnFuUjm-lqf2tH2_a4Y",
+  authDomain: "portfolio-b6e32.firebaseapp.com",
+  projectId: "portfolio-b6e32",
+  storageBucket: "portfolio-b6e32.firebasestorage.app",
+  messagingSenderId: "809040838176",
+  appId: "1:809040838176:web:fff2480b3c4c23cee48645"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+window._savePerfilToFirebase = async function(data) {
+  try {
+    await addDoc(collection(db, 'perfil_comportamental'), {
+      ...data,
+      timestamp: serverTimestamp()
+    });
+    console.log('✅ Resultado salvo no Firebase!');
+  } catch(e) {
+    console.warn('⚠️ Erro ao salvar no Firebase:', e);
+  }
+};
+</script>
+<style>
+  :root {
+    --aguia: #6C63FF; --aguia-light: #EEF0FF;
+    --gato: #FF6B9D; --gato-light: #FFF0F6;
+    --lobo: #00B894; --lobo-light: #E8FBF7;
+    --tubarao: #FF7675; --tubarao-light: #FFF0EF;
+    --dark: #1a1a2e; --card: #16213e; --border: #0f3460;
+    --text: #e0e0e0; --muted: #8892a4; --white: #ffffff;
+    --sky: #00d2ff; --gold: #FFD700;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--dark);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* PARTICLES */
+  #particles { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+  .p { position: absolute; border-radius: 50%; opacity: 0; animation: rise linear infinite; }
+  @keyframes rise {
+    0% { transform: translateY(110vh) scale(0); opacity: 0; }
+    10% { opacity: 0.4; }
+    90% { opacity: 0.2; }
+    100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+  }
+
+  .wrap { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: 20px 16px 40px; }
+
+  /* HEADER */
+  .header { text-align: center; padding: 32px 0 24px; }
+  .logo-row { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+  .logo-badge {
+    background: linear-gradient(135deg, #0f3460, #16213e);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 6px 14px;
+    font-size: 11px; font-weight: 700; letter-spacing: 2px;
+    color: var(--sky); text-transform: uppercase;
+  }
+  .main-title {
+    font-size: clamp(22px, 5vw, 36px);
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--sky), var(--aguia), var(--gato));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2; margin-bottom: 8px;
+  }
+  .main-sub { font-size: 14px; color: var(--muted); }
+
+  /* ANIMAL ICONS ROW */
+  .animals-row { display: flex; justify-content: center; gap: 16px; margin: 20px 0; flex-wrap: wrap; }
+  .animal-chip {
+    display: flex; align-items: center; gap: 8px;
+    background: #0f3460; border: 1px solid var(--border);
+    border-radius: 50px; padding: 8px 16px;
+    font-size: 13px; font-weight: 600;
+    transition: all 0.3s;
+  }
+  .animal-chip:hover { transform: translateY(-2px); }
+  .animal-chip.aguia { border-color: var(--aguia); color: var(--aguia); }
+  .animal-chip.gato { border-color: var(--gato); color: var(--gato); }
+  .animal-chip.lobo { border-color: var(--lobo); color: var(--lobo); }
+  .animal-chip.tubarao { border-color: var(--tubarao); color: var(--tubarao); }
+
+  /* SCREEN manager */
+  .screen { display: none; }
+  .screen.active { display: block; animation: fadeUp 0.5s ease-out; }
+  @keyframes fadeUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
+
+  /* START panel */
+  .start-card {
+    background: linear-gradient(135deg, #16213e, #0f3460);
+    border: 1px solid var(--border);
+    border-radius: 20px; padding: 32px;
+    text-align: center; margin: 8px 0 24px;
+  }
+  .start-icon { font-size: 64px; margin-bottom: 16px; }
+  .start-title { font-size: 22px; font-weight: 800; color: var(--white); margin-bottom: 10px; }
+  .start-desc { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 24px; max-width: 520px; margin-left: auto; margin-right: auto; }
+  .info-grid { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 28px; }
+  .info-box {
+    background: #0a1628; border: 1px solid var(--border);
+    border-radius: 12px; padding: 14px 20px; text-align: center; min-width: 100px;
+  }
+  .info-box .val { font-size: 24px; font-weight: 800; color: var(--sky); }
+  .info-box .lbl { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+
+  .input-name {
+    width: 100%; max-width: 380px;
+    padding: 14px 18px;
+    background: #0a1628; border: 2px solid var(--border);
+    border-radius: 12px; color: #fff;
+    font-size: 15px; font-family: 'Inter', sans-serif;
+    outline: none; transition: border 0.3s; text-align: center;
+    display: block; margin: 0 auto 20px;
+  }
+  .input-name:focus { border-color: var(--sky); }
+  .input-name::placeholder { color: var(--muted); }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 32px; border-radius: 12px; border: none;
+    cursor: pointer; font-size: 15px; font-weight: 700;
+    font-family: 'Inter', sans-serif; transition: all 0.25s;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--sky), var(--aguia));
+    color: #fff;
+  }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,210,255,.35); }
+  .btn-result {
+    background: linear-gradient(135deg, var(--gold), #e67e22);
+    color: #1a1a2e;
+  }
+  .btn-result:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(255,215,0,.35); }
+  .btn-outline {
+    background: transparent; border: 2px solid var(--border);
+    color: var(--text);
+  }
+  .btn-outline:hover { border-color: var(--sky); color: var(--sky); }
+
+  /* PROGRESS */
+  .progress-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 8px; flex-wrap: wrap; gap: 8px;
+  }
+  .progress-label { font-size: 13px; color: var(--muted); }
+  .progress-num { font-size: 18px; font-weight: 800; color: var(--sky); }
+  .progress-bar { background: #0f3460; border-radius: 99px; height: 10px; overflow: hidden; margin-bottom: 20px; }
+  .progress-fill { height: 100%; border-radius: 99px; background: linear-gradient(90deg, var(--sky), var(--aguia)); transition: width 0.5s ease; }
+
+  /* MINI TRACKER */
+  .mini-tracker { display: flex; gap: 5px; flex-wrap: wrap; justify-content: center; margin-bottom: 20px; }
+  .mini-dot {
+    width: 20px; height: 20px; border-radius: 50%;
+    border: 2px solid #0f3460; display: flex; align-items: center;
+    justify-content: center; font-size: 9px; font-weight: 700;
+    transition: all 0.3s; color: var(--muted);
+  }
+  .mini-dot.done-I { background: var(--aguia); border-color: var(--aguia); color: #fff; }
+  .mini-dot.done-C { background: var(--gato); border-color: var(--gato); color: #fff; }
+  .mini-dot.done-O { background: var(--lobo); border-color: var(--lobo); color: #fff; }
+  .mini-dot.done-A { background: var(--tubarao); border-color: var(--tubarao); color: #fff; }
+  .mini-dot.active { border-color: var(--sky); color: var(--sky); transform: scale(1.2); }
+
+  /* QUESTION CARD */
+  .q-card {
+    background: linear-gradient(135deg, #16213e, #0f3460);
+    border: 1px solid var(--border);
+    border-radius: 20px; padding: 28px;
+    margin-bottom: 16px;
+  }
+  .q-badge-row { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+  .q-num {
+    background: var(--sky); color: #fff;
+    border-radius: 8px; padding: 4px 12px;
+    font-size: 12px; font-weight: 800;
+  }
+  .q-instruction { font-size: 12px; color: var(--muted); }
+  .q-text {
+    font-size: 18px; font-weight: 700; color: var(--white);
+    line-height: 1.5; margin-bottom: 20px;
+  }
+
+  /* OPTIONS */
+  .options { display: grid; gap: 10px; }
+  .opt {
+    background: #0a1628; border: 2px solid #0f3460;
+    border-radius: 12px; padding: 14px 18px;
+    cursor: pointer; display: flex; align-items: center; gap: 14px;
+    font-size: 14px; color: var(--text); transition: all 0.2s;
+    text-align: left;
+  }
+  .opt:hover { border-color: var(--sky); background: #0d1f3c; transform: translateX(4px); }
+  .opt.selected-I { border-color: var(--aguia); background: #1a1640; color: var(--white); }
+  .opt.selected-C { border-color: var(--gato); background: #2a0f1e; color: var(--white); }
+  .opt.selected-O { border-color: var(--lobo); background: #001e19; color: var(--white); }
+  .opt.selected-A { border-color: var(--tubarao); background: #2a1010; color: var(--white); }
+  .opt-key {
+    width: 32px; height: 32px; border-radius: 8px;
+    background: #0f3460; display: flex; align-items: center;
+    justify-content: center; font-size: 13px; font-weight: 800;
+    flex-shrink: 0; transition: background 0.2s;
+  }
+  .opt.selected-I .opt-key { background: var(--aguia); }
+  .opt.selected-C .opt-key { background: var(--gato); }
+  .opt.selected-O .opt-key { background: var(--lobo); }
+  .opt.selected-A .opt-key { background: var(--tubarao); }
+
+  /* NAV BUTTONS */
+  .nav-row { display: flex; gap: 12px; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+  .btn-nav {
+    padding: 12px 24px; border-radius: 10px; border: 2px solid var(--border);
+    cursor: pointer; font-size: 14px; font-weight: 700;
+    font-family: 'Inter', sans-serif; transition: all 0.2s;
+    background: transparent; color: var(--text);
+  }
+  .btn-nav:hover { border-color: var(--sky); color: var(--sky); }
+  .btn-nav.next {
+    background: linear-gradient(135deg, var(--sky), var(--aguia));
+    border: none; color: #fff;
+  }
+  .btn-nav.next:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,210,255,.3); }
+  .btn-nav:disabled { opacity: 0.4; cursor: not-allowed; transform: none !important; }
+
+  /* RESULT SCREEN */
+  .result-hero {
+    text-align: center;
+    padding: 40px 20px 30px;
+  }
+  .result-animal { font-size: 100px; animation: animalPop 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+  @keyframes animalPop { from { transform: scale(0) rotate(-30deg); opacity:0; } to { transform: scale(1); opacity:1; } }
+  .result-profile-name {
+    font-size: 36px; font-weight: 900;
+    margin: 12px 0 6px;
+  }
+  .result-slogan {
+    font-size: 14px; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; opacity: 0.8;
+  }
+  .result-person { font-size: 15px; color: var(--muted); margin-top: 8px; }
+
+  /* RADAR CHART */
+  .radar-wrap {
+    background: linear-gradient(135deg, #16213e, #0f3460);
+    border: 1px solid var(--border);
+    border-radius: 20px; padding: 24px;
+    text-align: center; margin: 16px 0;
+  }
+  .radar-title { font-size: 14px; font-weight: 700; color: var(--sky); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+  .radar-bars { display: grid; gap: 14px; }
+  .radar-item { display: flex; align-items: center; gap: 14px; }
+  .radar-label { width: 100px; text-align: right; font-size: 13px; font-weight: 700; flex-shrink: 0; }
+  .radar-bar-bg { flex: 1; background: #0a1628; border-radius: 99px; height: 24px; overflow: hidden; position: relative; }
+  .radar-bar-fill { height: 100%; border-radius: 99px; transition: width 1.2s cubic-bezier(0.34, 1.1, 0.64, 1); display: flex; align-items: center; padding-left: 10px; font-size: 12px; font-weight: 800; color: #fff; width: 0%; }
+  .radar-pct { width: 40px; text-align: left; font-size: 14px; font-weight: 800; flex-shrink: 0; }
+  .radar-label.aguia { color: var(--aguia); }
+  .radar-label.gato { color: var(--gato); }
+  .radar-label.lobo { color: var(--lobo); }
+  .radar-label.tubarao { color: var(--tubarao); }
+  .radar-pct.aguia { color: var(--aguia); }
+  .radar-pct.gato { color: var(--gato); }
+  .radar-pct.lobo { color: var(--lobo); }
+  .radar-pct.tubarao { color: var(--tubarao); }
+
+  /* PROFILE CARD */
+  .profile-card {
+    border-radius: 20px; padding: 28px;
+    margin: 16px 0;
+  }
+  .profile-card.aguia { background: linear-gradient(135deg, #1a1640, #0f3460); border: 2px solid var(--aguia); }
+  .profile-card.gato { background: linear-gradient(135deg, #2a1030, #1a0020); border: 2px solid var(--gato); }
+  .profile-card.lobo { background: linear-gradient(135deg, #002820, #0f3020); border: 2px solid var(--lobo); }
+  .profile-card.tubarao { background: linear-gradient(135deg, #2a1010, #1a0808); border: 2px solid var(--tubarao); }
+
+  .profile-section { margin-bottom: 20px; }
+  .profile-section-title {
+    font-size: 12px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 2px; color: var(--muted); margin-bottom: 10px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .profile-section-title::before { content: ''; flex: 0 0 20px; height: 2px; background: currentColor; }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag {
+    padding: 6px 14px; border-radius: 50px;
+    font-size: 13px; font-weight: 600;
+  }
+  .tag.aguia { background: rgba(108,99,255,0.2); color: var(--aguia); border: 1px solid rgba(108,99,255,0.4); }
+  .tag.gato { background: rgba(255,107,157,0.2); color: var(--gato); border: 1px solid rgba(255,107,157,0.4); }
+  .tag.lobo { background: rgba(0,184,148,0.2); color: var(--lobo); border: 1px solid rgba(0,184,148,0.4); }
+  .tag.tubarao { background: rgba(255,118,117,0.2); color: var(--tubarao); border: 1px solid rgba(255,118,117,0.4); }
+
+  .profile-desc { font-size: 14px; line-height: 1.8; color: var(--text); }
+
+  /* MOTIVATIONS GRID */
+  .motiv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+  @media(max-width:600px) { .motiv-grid { grid-template-columns: 1fr; } }
+  .motiv-box { background: #0a1628; border: 1px solid var(--border); border-radius: 14px; padding: 18px; }
+  .motiv-box-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+  .motiv-box ul { list-style: none; }
+  .motiv-box ul li { font-size: 13px; color: var(--text); padding: 4px 0; display: flex; gap: 8px; }
+  .motiv-box ul li::before { content: '▸'; flex-shrink: 0; }
+
+  /* BOTTOM ACTIONS */
+  .result-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 24px; }
+
+  /* TOOLTIP HINT */
+  .hint { font-size: 12px; color: var(--muted); text-align: center; margin-top: 10px; }
+
+  /* RESPONSIVE */
+  @media(max-width:480px) {
+    .q-text { font-size: 16px; }
+    .opt { padding: 12px 14px; font-size: 13px; }
+    .result-animal { font-size: 80px; }
+    .result-profile-name { font-size: 28px; }
+  }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #0a1628; }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+<div id="particles"></div>
+<div class="wrap">
+
+<!-- ══ SCREEN: START ═══════════════════════════════════════ -->
+<div id="screen-start" class="screen active">
+  <div class="header">
+    <div class="logo-row">
+      <span class="logo-badge">CEUNI-FAMETRO</span>
+      <span class="logo-badge">IBC Coaching</span>
+      <span class="logo-badge">Ned Herman</span>
+    </div>
+    <div class="main-title">Avaliação de Perfil Comportamental</div>
+    <div class="main-sub">Descubra qual animal representa o seu estilo de ser e agir</div>
+  </div>
+
+  <div class="animals-row">
+    <div class="animal-chip aguia">🦅 Águia — Fazer Diferente</div>
+    <div class="animal-chip gato">🐱 Gato — Fazer Junto</div>
+    <div class="animal-chip lobo">🐺 Lobo — Fazer Certo</div>
+    <div class="animal-chip tubarao">🦈 Tubarão — Fazer Rápido</div>
+  </div>
+
+  <div class="start-card">
+    <div class="start-icon">🧭</div>
+    <div class="start-title">Como funciona?</div>
+    <div class="start-desc">
+      Você responderá <strong>25 questões</strong>. Em cada uma, escolha a alternativa que
+      <strong>mais representa você</strong> — seja honesto(a), não existe resposta certa ou errada!
+      Ao final, o sistema calculará seu <strong>Perfil Comportamental Dominante</strong>.
+    </div>
+    <div class="info-grid">
+      <div class="info-box"><div class="val">25</div><div class="lbl">Questões</div></div>
+      <div class="info-box"><div class="val">4</div><div class="lbl">Perfis</div></div>
+      <div class="info-box"><div class="val">~5min</div><div class="lbl">Duração</div></div>
+    </div>
+    <input id="playerName" class="input-name" type="text" placeholder="Digite seu nome completo...">
+    <button class="btn btn-primary" onclick="startQuiz()" id="btnStart">
+      🚀 Iniciar Avaliação
+    </button>
+    <p class="hint" style="margin-top:14px">Escolha a alternativa que mais te representa — seja espontâneo(a)!</p>
+  </div>
+</div>
+
+<!-- ══ SCREEN: QUIZ ═════════════════════════════════════════ -->
+<div id="screen-quiz" class="screen">
+  <div style="margin-bottom:16px;">
+    <div class="progress-header">
+      <span class="progress-label" id="progressLabel">Questão 1 de 25</span>
+      <span class="progress-num" id="progressNum">0%</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+    <div class="mini-tracker" id="miniTracker"></div>
+  </div>
+
+  <div class="q-card" id="qCard">
+    <div class="q-badge-row">
+      <span class="q-num" id="qNum">Q1</span>
+      <span class="q-instruction">Escolha a opção que mais combina com você</span>
+    </div>
+    <div class="q-text" id="qText"></div>
+    <div class="options" id="optionsContainer"></div>
+  </div>
+
+  <div class="nav-row">
+    <button class="btn-nav" id="btnBack" onclick="goBack()">← Anterior</button>
+    <button class="btn-nav next" id="btnNext" onclick="goNext()" disabled>Próxima →</button>
+  </div>
+  <p class="hint" id="hintText" style="margin-top:12px">Selecione uma alternativa para continuar</p>
+</div>
+
+<!-- ══ SCREEN: RESULT ═══════════════════════════════════════ -->
+<div id="screen-result" class="screen">
+  <div class="result-hero">
+    <div class="result-animal" id="resultAnimal">🦅</div>
+    <div class="result-profile-name" id="resultName">Águia</div>
+    <div class="result-slogan" id="resultSlogan">"Fazer Diferente"</div>
+    <div class="result-person" id="resultPerson"></div>
+  </div>
+
+  <div class="radar-wrap">
+    <div class="radar-title">📊 Seu Gráfico de Perfil</div>
+    <div class="radar-bars" id="radarBars"></div>
+  </div>
+
+  <div class="profile-card" id="profileCard">
+    <div class="profile-section">
+      <div class="profile-section-title" id="traitTitle">Características</div>
+      <div class="tags" id="traitTags"></div>
+    </div>
+    <div class="profile-section">
+      <div class="profile-section-title">Descrição do Perfil</div>
+      <div class="profile-desc" id="profileDesc"></div>
+    </div>
+    <div class="motiv-grid" id="motivGrid"></div>
+  </div>
+
+  <div class="result-actions">
+    <button class="btn btn-outline" onclick="restartQuiz()">🔄 Refazer Avaliação</button>
+    <button class="btn btn-result" onclick="shareResult()">📤 Compartilhar Resultado</button>
+  </div>
+  <p style="text-align:center;margin-top:30px;font-size:11px;color:#3a4a6a">
+    Professor? <a href="perfil-dashboard.html" style="color:#3a5a8a;text-decoration:none">Acesse o painel de resultados →</a>
+  </p>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+// ══════════════════════════════════════════════════
+// QUESTIONS — 25 questões (I=Águia, C=Gato, O=Lobo, A=Tubarão)
+// ══════════════════════════════════════════════════
+const QUESTIONS = [
+  {
+    q: "1. Eu sou...",
+    opts: [
+      { key: "I", label: "Idealista, criativo e visionário" },
+      { key: "C", label: "Divertido, espiritual e benéfico" },
+      { key: "O", label: "Confiável, meticuloso e previsível" },
+      { key: "A", label: "Focado, determinado e persistente" }
+    ]
+  },
+  {
+    q: "2. Eu gosto de...",
+    opts: [
+      { key: "A", label: "Ser piloto" },
+      { key: "C", label: "Conversar com os passageiros" },
+      { key: "O", label: "Planejar a viagem" },
+      { key: "I", label: "Explorar novas rotas" }
+    ]
+  },
+  {
+    q: "3. Se você quiser se dar bem comigo...",
+    opts: [
+      { key: "I", label: "Me dê liberdade" },
+      { key: "O", label: "Me deixe saber sua expectativa" },
+      { key: "A", label: "Lidere, siga ou saia do caminho" },
+      { key: "C", label: "Seja amigável, carinhoso e compreensivo" }
+    ]
+  },
+  {
+    q: "4. Para conseguir obter bons resultados é preciso...",
+    opts: [
+      { key: "I", label: "Ter incertezas" },
+      { key: "O", label: "Controlar o essencial" },
+      { key: "C", label: "Diversão e celebração" },
+      { key: "A", label: "Planejar e obter recursos" }
+    ]
+  },
+  {
+    q: "5. Eu me divirto quando...",
+    opts: [
+      { key: "A", label: "Estou me exercitando" },
+      { key: "I", label: "Tenho novidades" },
+      { key: "C", label: "Estou com os outros" },
+      { key: "O", label: "Determino as regras" }
+    ]
+  },
+  {
+    q: "6. Eu penso que...",
+    opts: [
+      { key: "C", label: "Unidos venceremos, divididos perderemos" },
+      { key: "A", label: "O ataque é melhor que a defesa" },
+      { key: "I", label: "É bom ser manso, mas andar com um porrete" },
+      { key: "O", label: "Um homem prevenido vale por dois" }
+    ]
+  },
+  {
+    q: "7. Minha preocupação é...",
+    opts: [
+      { key: "I", label: "Gerar a ideia global" },
+      { key: "C", label: "Fazer com que as pessoas gostem" },
+      { key: "O", label: "Fazer com que funcione" },
+      { key: "A", label: "Fazer com que aconteça" }
+    ]
+  },
+  {
+    q: "8. Eu prefiro...",
+    opts: [
+      { key: "I", label: "Perguntas a respostas" },
+      { key: "O", label: "Ter todos os detalhes" },
+      { key: "A", label: "Vantagens a meu favor" },
+      { key: "C", label: "Que todos tenham a chance de serem ouvidos" }
+    ]
+  },
+  {
+    q: "9. Eu gosto de...",
+    opts: [
+      { key: "A", label: "Fazer progresso" },
+      { key: "I", label: "Construir memórias" },
+      { key: "O", label: "Fazer sentido" },
+      { key: "C", label: "Tornar as pessoas confortáveis" }
+    ]
+  },
+  {
+    q: "10. Eu gosto de chegar...",
+    opts: [
+      { key: "A", label: "Na frente" },
+      { key: "C", label: "Junto" },
+      { key: "O", label: "Na hora" },
+      { key: "I", label: "Em outro lugar" }
+    ]
+  },
+  {
+    q: "11. Um ótimo dia para mim é quando...",
+    opts: [
+      { key: "A", label: "Consigo fazer muitas coisas" },
+      { key: "C", label: "Me divirto com meus amigos" },
+      { key: "O", label: "Tudo segue conforme planejado" },
+      { key: "I", label: "Desfruto de coisas novas e estimulantes" }
+    ]
+  },
+  {
+    q: "12. Eu vejo a morte como...",
+    opts: [
+      { key: "I", label: "Uma grande aventura misteriosa" },
+      { key: "C", label: "Oportunidade para rever os falecidos" },
+      { key: "O", label: "Um modo de receber recompensas" },
+      { key: "A", label: "Algo que sempre chega muito cedo" }
+    ]
+  },
+  {
+    q: "13. Minha filosofia de vida é...",
+    opts: [
+      { key: "A", label: "Há ganhadores e perdedores, e eu acredito ser um ganhador" },
+      { key: "C", label: "Para eu ganhar, ninguém precisa perder" },
+      { key: "O", label: "Para ganhar, é preciso seguir as regras" },
+      { key: "I", label: "Para ganhar, é necessário inventar novas regras" }
+    ]
+  },
+  {
+    q: "14. Eu sempre gostei de...",
+    opts: [
+      { key: "I", label: "Explorar" },
+      { key: "O", label: "Evitar surpresas" },
+      { key: "A", label: "Focalizar a meta" },
+      { key: "C", label: "Realizar uma abordagem natural" }
+    ]
+  },
+  {
+    q: "15. Eu gosto de mudanças se...",
+    opts: [
+      { key: "A", label: "Me der uma vantagem competitiva" },
+      { key: "C", label: "For divertido e puder ser compartilhado" },
+      { key: "I", label: "Me der mais liberdade e variedade" },
+      { key: "O", label: "Melhorar ou me der mais controle" }
+    ]
+  },
+  {
+    q: "16. Não existe nada de errado em...",
+    opts: [
+      { key: "A", label: "Se colocar na frente" },
+      { key: "C", label: "Colocar os outros na frente" },
+      { key: "I", label: "Mudar de ideia" },
+      { key: "O", label: "Ser consistente" }
+    ]
+  },
+  {
+    q: "17. Eu gosto de buscar conselhos de...",
+    opts: [
+      { key: "A", label: "Pessoas bem-sucedidas" },
+      { key: "C", label: "Anciões e conselheiros" },
+      { key: "O", label: "Autoridades no assunto" },
+      { key: "I", label: "Lugares, os mais estranhos" }
+    ]
+  },
+  {
+    q: "18. Meu lema é...",
+    opts: [
+      { key: "I", label: "Fazer o que precisa ser feito" },
+      { key: "O", label: "Fazer bem feito" },
+      { key: "C", label: "Fazer junto com o grupo" },
+      { key: "A", label: "Simplesmente fazer" }
+    ]
+  },
+  {
+    q: "19. Eu gosto de...",
+    opts: [
+      { key: "I", label: "Complexidade, mesmo se confuso" },
+      { key: "O", label: "Ordem e sistematização" },
+      { key: "C", label: "Calor humano e animação" },
+      { key: "A", label: "Coisas claras e simples" }
+    ]
+  },
+  {
+    q: "20. Tempo para mim é...",
+    opts: [
+      { key: "A", label: "Algo que detesto desperdiçar" },
+      { key: "C", label: "Um grande ciclo" },
+      { key: "O", label: "Uma flecha que leva ao inevitável" },
+      { key: "I", label: "Irrelevante" }
+    ]
+  },
+  {
+    q: "21. Se eu fosse bilionário...",
+    opts: [
+      { key: "C", label: "Faria doações para muitas entidades" },
+      { key: "O", label: "Criaria uma poupança avantajada" },
+      { key: "I", label: "Faria o que desse na cabeça" },
+      { key: "A", label: "Me exibiria bastante para algumas pessoas" }
+    ]
+  },
+  {
+    q: "22. Eu acredito que...",
+    opts: [
+      { key: "A", label: "O destino é mais importante que a jornada" },
+      { key: "C", label: "A jornada é mais importante que o destino" },
+      { key: "O", label: "Um centavo economizado é um centavo ganho" },
+      { key: "I", label: "Bastam um navio e uma estrela para navegar" }
+    ]
+  },
+  {
+    q: "23. Eu acredito também que...",
+    opts: [
+      { key: "A", label: "Aquele que hesita está perdido" },
+      { key: "O", label: "De grão em grão a galinha enche o papo" },
+      { key: "C", label: "O que vai, volta" },
+      { key: "I", label: "Um sorriso ou uma careta é o mesmo para quem é cego" }
+    ]
+  },
+  {
+    q: "24. Eu acredito ainda que...",
+    opts: [
+      { key: "O", label: "É melhor prudência que arrependimento" },
+      { key: "I", label: "A autoridade deve ser desafiada" },
+      { key: "A", label: "Ganhar é fundamental" },
+      { key: "C", label: "O coletivo é mais importante do que o individual" }
+    ]
+  },
+  {
+    q: "25. Eu penso que...",
+    opts: [
+      { key: "I", label: "Não é fácil ficar encurralado" },
+      { key: "O", label: "É preferível olhar, antes de pular" },
+      { key: "C", label: "Duas cabeças pensam melhor do que uma" },
+      { key: "A", label: "Se você não tem condições de competir, não compita" }
+    ]
+  }
+];
+
+// ══════════════════════════════════════════════════
+// PROFILES DATA
+// ══════════════════════════════════════════════════
+const PROFILES = {
+  I: {
+    name: "Águia",
+    animal: "🦅",
+    slogan: '"Fazer Diferente"',
+    color: "var(--aguia)",
+    colorClass: "aguia",
+    traits: ["Criativo","Intuitivo","Visionário","Foco no futuro","Curioso","Informal","Flexível","Inovador"],
+    desc: "A Águia voa alto e enxerga além do horizonte. Você é uma pessoa criativa, visionária e intuitiva, sempre focada no futuro e nas possibilidades. Adora inovar, questionar o status quo e explorar novos caminhos. Seu maior trunfo é a capacidade de ver oportunidades onde os outros veem obstáculos.",
+    pontosFortesTitle: "Pontos Fortes",
+    pontosFortes: ["Criatividade e inovação", "Visão estratégica de longo prazo", "Capacidade de antecipar tendências", "Adaptabilidade às mudanças", "Pensamento não-linear e intuitivo"],
+    melhoriaTitle: "Pontos de Melhoria",
+    melhoria: ["Falta de atenção para o aqui e agora", "Impaciência e rebeldia", "Defender o novo pelo novo", "Dificuldade com detalhes e rotinas"],
+    motivTitle: "O que te motiva",
+    motiv: ["Liberdade de expressão", "Ausência de controles rígidos", "Ambiente de trabalho descentralizado", "Liberdade para fazer exceções", "Oportunidade para delegar tarefas e detalhes"],
+    comportTitle: "Comportamentos Característicos",
+    comportamentos: ["Provoca mudanças radicais", "Antecipa o futuro", "Criatividade — Passado, Presente e Futuro"]
+  },
+  C: {
+    name: "Gato",
+    animal: "🐱",
+    slogan: '"Fazer Junto"',
+    color: "var(--gato)",
+    colorClass: "gato",
+    traits: ["Sensível","Empático","Trabalho em equipe","Tradicional","Contribuição","Busca harmonia","Delega autoridade","Comunicativo"],
+    desc: "O Gato é sociável, sensível e valoriza profundamente as relações humanas. Você tem um grande talento para criar conexões, resolver conflitos com empatia e fazer as pessoas se sentirem bem. Seu ambiente ideal é colaborativo e harmonioso, onde todos têm voz e se sentam bem juntos.",
+    pontosFortesTitle: "Pontos Fortes",
+    pontosFortes: ["Manter comunicação harmoniosa", "Desenvolver e manter cultura organizacional", "Comunicação aberta e empática", "Motivação e engajamento de equipes", "Construção de relacionamentos duradouros"],
+    melhoriaTitle: "Pontos de Melhoria",
+    melhoria: ["Pode esconder conflitos por medo de magoar", "Felicidade acima dos resultados", "Manipulação através dos sentimentos", "Dificuldade em tomar decisões impopulares"],
+    motivTitle: "O que te motiva",
+    motiv: ["Aceitação social", "Construir consenso", "Reconhecimento da equipe", "Supervisão compreensiva", "Ambiente harmônico e trabalho em grupo"],
+    comportTitle: "Comportamentos Característicos",
+    comportamentos: ["Lealdade e segurança", "Regras e responsabilidades", "Consistência e conformidade"]
+  },
+  O: {
+    name: "Lobo",
+    animal: "🐺",
+    slogan: '"Fazer Certo"',
+    color: "var(--lobo)",
+    colorClass: "lobo",
+    traits: ["Detalhista","Organizado","Estrategista","Busca conhecimento","Pontual","Conservador","Previsível","Sistemático"],
+    desc: "O Lobo é metódico, organizado e detalhista. Você valoriza a precisão, segue processos e busca sempre fazer as coisas do jeito correto. É um estrategista nato, que planeja cada passo antes de agir. Sua força está na capacidade de estruturar problemas complexos e entregá-los com qualidade.",
+    pontosFortesTitle: "Pontos Fortes",
+    pontosFortes: ["Organização e planejamento rigorosos", "Atenção a detalhes e qualidade", "Estratégia e pensamento estruturado", "Busca constante por conhecimento", "Pontualidade e confiabilidade"],
+    melhoriaTitle: "Pontos de Melhoria",
+    melhoria: ["Dificuldades de se adaptar às mudanças", "Pode impedir o progresso por excesso de cautela", "Detalhista e demasiadamente sistematizado", "Resistência ao novo e ao imprevisto"],
+    motivTitle: "O que te motiva",
+    motiv: ["Certeza e compreensão exata das regras", "Conhecimento específico do trabalho", "Ausência de riscos e erros", "Ver o produto acabado — começo, meio e fim", "Segurança e previsibilidade"],
+    comportTitle: "Comportamentos Característicos",
+    comportamentos: ["Fazer que funcione", "Parar com a burocracia desnecessária", "Ver o produto final com qualidade"]
+  },
+  A: {
+    name: "Tubarão",
+    animal: "🦈",
+    slogan: '"Fazer Rápido"',
+    color: "var(--tubarao)",
+    colorClass: "tubarao",
+    traits: ["Senso de urgência","Ação e iniciativa","Impulsivo","Vencer desafios","Aqui e agora","Autossuficiente","Prático","Determinado"],
+    desc: "O Tubarão é movido por resultados, velocidade e competição. Você age com urgência, enfoca no presente e quer ver resultados concretos o mais rápido possível. É autossuficiente, prático e determinado a vencer. Não tem medo de desafios — na verdade, os busca ativamente.",
+    pontosFortesTitle: "Pontos Fortes",
+    pontosFortes: ["Senso de urgência e ação imediata", "Alta capacidade de execução", "Foco total em resultados e metas", "Resiliência e perseverança", "Capacidade de motivar equipes a entregar"],
+    melhoriaTitle: "Pontos de Melhoria",
+    melhoria: ["Não gosta de delegar poder", "Pode ser impulsivo, prático demais", "Socialmente pode ser um desastre", "Relacionamento complicado em conflitos"],
+    motivTitle: "O que te motiva",
+    motiv: ["Liberdade para agir individualmente", "Controle das próprias atividades", "Resolver problemas do seu jeito", "Competição individual e variedades de atividades"],
+    comportTitle: "Comportamentos Característicos",
+    comportamentos: ["Fazer que ocorra", "Fazer progresso constante", "Vencer e superar desafios"]
+  }
+};
+
+// ══════════════════════════════════════════════════
+// STATE
+// ══════════════════════════════════════════════════
+let state = {
+  current: 0,
+  answers: new Array(25).fill(null),
+  playerName: ''
+};
+
+// ══════════════════════════════════════════════════
+// PARTICLES
+// ══════════════════════════════════════════════════
+(function createParticles() {
+  const c = document.getElementById('particles');
+  const colors = ['#6C63FF','#FF6B9D','#00B894','#FF7675','#00d2ff'];
+  for (let i = 0; i < 25; i++) {
+    const p = document.createElement('div');
+    p.className = 'p';
+    const sz = Math.random() * 8 + 3;
+    p.style.cssText = `
+      width:${sz}px; height:${sz}px;
+      left:${Math.random()*100}%;
+      background:${colors[Math.floor(Math.random()*colors.length)]};
+      animation-duration:${12+Math.random()*16}s;
+      animation-delay:${Math.random()*20}s;
+    `;
+    c.appendChild(p);
+  }
+})();
+
+// ══════════════════════════════════════════════════
+// SCREENS
+// ══════════════════════════════════════════════════
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ══════════════════════════════════════════════════
+// START
+// ══════════════════════════════════════════════════
+function startQuiz() {
+  const name = document.getElementById('playerName').value.trim();
+  if (name.length < 2) {
+    document.getElementById('playerName').style.borderColor = '#FF7675';
+    document.getElementById('playerName').placeholder = 'Por favor, digite seu nome!';
+    return;
+  }
+  state.playerName = name;
+  state.current = 0;
+  state.answers = new Array(25).fill(null);
+  buildMiniTracker();
+  renderQuestion(0);
+  showScreen('screen-quiz');
+}
+
+// ══════════════════════════════════════════════════
+// MINI TRACKER
+// ══════════════════════════════════════════════════
+function buildMiniTracker() {
+  const tracker = document.getElementById('miniTracker');
+  tracker.innerHTML = '';
+  for (let i = 0; i < 25; i++) {
+    const d = document.createElement('div');
+    d.className = 'mini-dot' + (i === 0 ? ' active' : '');
+    d.id = `dot-${i}`;
+    d.textContent = i + 1;
+    tracker.appendChild(d);
+  }
+}
+
+function updateMiniTracker(current, answers) {
+  for (let i = 0; i < 25; i++) {
+    const d = document.getElementById(`dot-${i}`);
+    if (!d) continue;
+    d.className = 'mini-dot';
+    if (i === current) d.classList.add('active');
+    else if (answers[i]) d.classList.add(`done-${answers[i]}`);
+  }
+}
+
+// ══════════════════════════════════════════════════
+// RENDER QUESTION
+// ══════════════════════════════════════════════════
+function renderQuestion(idx) {
+  const q = QUESTIONS[idx];
+  const total = QUESTIONS.length;
+  const pct = Math.round((idx / total) * 100);
+
+  document.getElementById('progressLabel').textContent = `Questão ${idx+1} de ${total}`;
+  document.getElementById('progressNum').textContent = `${pct}%`;
+  document.getElementById('progressFill').style.width = `${pct}%`;
+  document.getElementById('qNum').textContent = `Q${idx+1}`;
+  document.getElementById('qText').textContent = q.q;
+
+  const container = document.getElementById('optionsContainer');
+  container.innerHTML = '';
+
+  const letters = ['A', 'B', 'C', 'D'];
+  q.opts.forEach((opt, i) => {
+    const div = document.createElement('div');
+    div.className = 'opt' + (state.answers[idx] === opt.key ? ` selected-${opt.key}` : '');
+    div.dataset.key = opt.key;
+    div.innerHTML = `<span class="opt-key">${letters[i]}</span>${opt.label}`;
+    div.onclick = () => selectOption(idx, opt.key);
+    container.appendChild(div);
+  });
+
+  // Nav buttons
+  document.getElementById('btnBack').disabled = idx === 0;
+  const btnNext = document.getElementById('btnNext');
+  const isLast = idx === total - 1;
+  const hasAnswer = state.answers[idx] !== null;
+  btnNext.disabled = !hasAnswer;
+  btnNext.textContent = isLast ? '🎯 Ver Resultado' : 'Próxima →';
+  btnNext.onclick = isLast ? showResult : goNext;
+
+  document.getElementById('hintText').textContent = hasAnswer
+    ? (isLast ? 'Clique em "Ver Resultado" quando estiver pronto!' : 'Ótimo! Clique em "Próxima" para continuar.')
+    : 'Selecione uma alternativa para continuar';
+
+  updateMiniTracker(idx, state.answers);
+
+  // Animate card
+  const card = document.getElementById('qCard');
+  card.style.animation = 'none';
+  card.offsetHeight;
+  card.style.animation = 'fadeUp 0.3s ease-out';
+}
+
+// ══════════════════════════════════════════════════
+// SELECT OPTION
+// ══════════════════════════════════════════════════
+function selectOption(qIdx, key) {
+  state.answers[qIdx] = key;
+  renderQuestion(qIdx);
+}
+
+// ══════════════════════════════════════════════════
+// NAVIGATION
+// ══════════════════════════════════════════════════
+function goNext() {
+  if (state.current < QUESTIONS.length - 1) {
+    state.current++;
+    renderQuestion(state.current);
+  }
+}
+
+function goBack() {
+  if (state.current > 0) {
+    state.current--;
+    renderQuestion(state.current);
+  }
+}
+
+// ══════════════════════════════════════════════════
+// CALCULATE & SHOW RESULT
+// ══════════════════════════════════════════════════
+function calcScores() {
+  const counts = { I: 0, C: 0, O: 0, A: 0 };
+  state.answers.forEach(a => { if (a) counts[a]++; });
+  const pcts = {};
+  Object.keys(counts).forEach(k => { pcts[k] = Math.round(counts[k] * 4); });
+  return { counts, pcts };
+}
+
+function getDominant(pcts) {
+  let maxKey = 'I', maxVal = -1;
+  Object.entries(pcts).forEach(([k, v]) => { if (v > maxVal) { maxVal = v; maxKey = k; } });
+  return maxKey;
+}
+
+function showResult() {
+  // Check all answered
+  const unanswered = state.answers.filter(a => a === null).length;
+  if (unanswered > 0) {
+    alert(`Você ainda tem ${unanswered} questão(ões) sem resposta. Por favor, responda todas antes de ver o resultado.`);
+    const firstUnanswered = state.answers.findIndex(a => a === null);
+    state.current = firstUnanswered;
+    renderQuestion(firstUnanswered);
+    return;
+  }
+
+  const { pcts } = calcScores();
+  const dominant = getDominant(pcts);
+  const profile = PROFILES[dominant];
+
+  // ── Salvar no Firebase ──────────────────────────
+  if (typeof window._savePerfilToFirebase === 'function') {
+    window._savePerfilToFirebase({
+      nome: state.playerName,
+      perfilDominante: profile.name,
+      perfilKey: dominant,
+      animal: profile.animal,
+      pctAguia: pcts.I,
+      pctGato: pcts.C,
+      pctLobo: pcts.O,
+      pctTubarao: pcts.A,
+      respostas: state.answers
+    });
+  }
+  // ────────────────────────────────────────────────
+
+  // Hero
+  document.getElementById('resultAnimal').textContent = profile.animal;
+  document.getElementById('resultName').textContent = profile.name;
+  document.getElementById('resultName').style.color = profile.color;
+  document.getElementById('resultSlogan').textContent = profile.slogan;
+  document.getElementById('resultSlogan').style.color = profile.color;
+  document.getElementById('resultPerson').textContent = `Resultado de ${state.playerName}`;
+
+  // Radar bars
+  const order = [
+    { key: 'I', name: '🦅 Águia', cls: 'aguia', color: 'var(--aguia)' },
+    { key: 'C', name: '🐱 Gato', cls: 'gato', color: 'var(--gato)' },
+    { key: 'O', name: '🐺 Lobo', cls: 'lobo', color: 'var(--lobo)' },
+    { key: 'A', name: '🦈 Tubarão', cls: 'tubarao', color: 'var(--tubarao)' }
+  ];
+  const radarBars = document.getElementById('radarBars');
+  radarBars.innerHTML = order.map(o => `
+    <div class="radar-item">
+      <div class="radar-label ${o.cls}">${o.name}</div>
+      <div class="radar-bar-bg">
+        <div class="radar-bar-fill" id="bar-${o.key}" style="background: linear-gradient(90deg, ${o.color}, ${o.color}88); width: 0%"></div>
+      </div>
+      <div class="radar-pct ${o.cls}" id="pct-${o.key}">0%</div>
+    </div>
+  `).join('');
+
+  // Animate bars after DOM render
+  setTimeout(() => {
+    order.forEach(o => {
+      const bar = document.getElementById(`bar-${o.key}`);
+      const pctEl = document.getElementById(`pct-${o.key}`);
+      if (bar) bar.style.width = `${pcts[o.key]}%`;
+      if (pctEl) pctEl.textContent = `${pcts[o.key]}%`;
+    });
+  }, 200);
+
+  // Profile card
+  document.getElementById('profileCard').className = `profile-card ${profile.colorClass}`;
+  document.getElementById('traitTitle').textContent = profile.pontosFortesTitle || 'Características';
+  document.getElementById('traitTags').innerHTML = profile.traits.map(t =>
+    `<span class="tag ${profile.colorClass}">${t}</span>`
+  ).join('');
+  document.getElementById('profileDesc').textContent = profile.desc;
+
+  document.getElementById('motivGrid').innerHTML = `
+    <div class="motiv-box">
+      <div class="motiv-box-title" style="color:${profile.color}">${profile.pontosFortesTitle}</div>
+      <ul>${profile.pontosFortes.map(i => `<li>${i}</li>`).join('')}</ul>
+    </div>
+    <div class="motiv-box">
+      <div class="motiv-box-title" style="color:#FF7675">${profile.melhoriaTitle}</div>
+      <ul>${profile.melhoria.map(i => `<li>${i}</li>`).join('')}</ul>
+    </div>
+    <div class="motiv-box">
+      <div class="motiv-box-title" style="color:${profile.color}">${profile.motivTitle}</div>
+      <ul>${profile.motiv.map(i => `<li>${i}</li>`).join('')}</ul>
+    </div>
+    <div class="motiv-box">
+      <div class="motiv-box-title" style="color:${profile.color}">${profile.comportTitle}</div>
+      <ul>${profile.comportamentos.map(i => `<li>${i}</li>`).join('')}</ul>
+    </div>
+  `;
+
+  showScreen('screen-result');
+}
+
+function restartQuiz() {
+  state.answers = new Array(25).fill(null);
+  state.current = 0;
+  document.getElementById('playerName').value = '';
+  showScreen('screen-start');
+}
+
+function shareResult() {
+  const { pcts } = calcScores();
+  const dominant = getDominant(pcts);
+  const profile = PROFILES[dominant];
+  const text = `🧭 Meu Perfil Comportamental é ${profile.animal} ${profile.name} ${profile.slogan}!\n📊 Águia: ${pcts.I}% | Gato: ${pcts.C}% | Lobo: ${pcts.O}% | Tubarão: ${pcts.A}%\n\nAvaliação de Perfil Comportamental — CEUNI-FAMETRO / IBC`;
+  if (navigator.share) {
+    navigator.share({ title: 'Meu Perfil Comportamental', text });
+  } else {
+    navigator.clipboard.writeText(text).then(() => alert('Resultado copiado para a área de transferência! Cole e compartilhe 🙂'));
+  }
+}
+</script>
+</body>
+</html>

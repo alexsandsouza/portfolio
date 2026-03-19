@@ -1,0 +1,333 @@
+
+
+Módulo 06
+Proteção Web e 
+Desenvolvimento Seguro
+Aula 02
+Ataques e Proteção Web 
+–Parte 2
+6
+
+Introdução
+Nesta aula, você conhecerá os seguintes assuntos:
+Osataques XSS e Directory Traversal attacks, 
+suaidentificação e prevenção;
+OsataquesXML, LDAP, SQL e Command Injection 
+Attacks suaidentificaçãoeprevenção;
+OsataquesServer-Side Request Forgery (SSRF), 
+suaidentificaçãoeprevenção.
+
+Ataques na Web 
+–Parte 2
+Ataques e Proteção Web –Parte 2
+Aula 6.2
+
+Há três tipos principais de XSS:
+Ocorre quando um atacante coloca scripts 
+maliciosos em páginas web.
+CROSS-SITE SCRIPTING (XSS)
+Ataques na Web –Parte 2
+Aula 02
+O código malicioso é executado pelo 
+navegador como se fosse parte legítima da 
+página visualizada pelos usuários.
+Refletido (Reflected XSS);
+1
+Armazenado (Stored XSS);
+DOM-based (DOM-based XSS).
+2
+3
+
+PREVENÇÃO E MITIGAÇÃO DE XSS
+Filtragem Estrita;
+Escape de Saída.
+Práticas recomendadas para evitar 
+ataques de XSS:
+Fonte: Quora.
+Disponível em: <https://www.quora.com/What-is-stored-cross-
+site-scripting>. 
+Acesso em: 20 mar. 2024. 
+Ataques na Web –Parte 2
+Aula 02
+Validação de Entradas:
+1
+Utilização de Content Security 
+Policy (CSP);
+Sanitização de Dados;
+2
+3
+Headers HTTP Seguros;
+4
+
+Fonte: Medium, 2020.
+Disponível em: <https://medium.com/@jenlindner22/the-risk-of-
+innerhtml-3981253fe217>. 
+Acesso em: 20 mar. 2024. 
+Práticas recomendadas para evitar 
+ataques de XSS (cont.):
+PREVENÇÃO E MITIGAÇÃO DE XSS
+Validação de Origem (Origin Validation);
+5
+Atenção a APIs e Bibliotecas 
+de Terceiros;
+Monitoramento e Teste;
+Treinamento e Conscientização;
+Utilização de 
+Frameworks Seguros.
+6
+7
+8
+9
+Ataques na Web –Parte 2
+Aula 02
+
+Trata-se da inserção de instruções SQL 
+maliciosas em formulários de entrada.
+STRUCTURED QUERY LANGUAGE 
+INJECTION ATTACKS (SQL INJECTION)
+Fonte: Tureba, 2020.
+Disponível em: <https://tureba.org/postgresql-sqlinjection.html>. 
+Acesso em: 21 mar. 2024. 
+Ataques na Web –Parte 2
+Aula 02
+Visa manipular consultas SQL 
+executadas pelo aplicativo invadido.
+Passos dos ataques de SQL Injection:
+Identificação de Vulnerabilidades;
+1
+Inserção de Instruções Maliciosas;
+Execução da Instrução Maliciosa;
+Exploração do Resultado.
+2
+3
+4
+
+Ataques na Web –Parte 2
+Aula 02
+Medidas de prevenção e mitigação do 
+SQL Injection:
+PREVENÇÃO E MITIGAÇÃO 
+DE SQL INJECTION
+Validação de Entradas;
+1
+Consultas Parametrizadas;
+Evite Construção de Consulta Manual;
+Princípio do Menor Privilégio;
+Monitoramento e Registros de Auditoria.
+2
+3
+4
+5
+
+Ocorre quando dados não confiáveis são 
+inseridos em documentos XML.
+XML INJECTION ATTACK
+Fonte: The SSL Store, 2022.
+Disponível em: <https://www.thesslstore.com/blog/xml-injection-attacks-what-
+to-know-about-xpath-xquery-xxe-more/>. 
+Acesso em: 21 mar. 2024. 
+Ataques na Web –Parte 2
+Aula 02
+O analisador XML interpreta os dados 
+que pode levar a resultados indesejados.
+Os seguintes passos descrevem um 
+cenário comum de ataque:
+Identificação da Vulnerabilidade;
+1
+Inserção de Dados Maliciosos;
+Interpretação Incorreta.
+2
+3
+
+Ataques na Web –Parte 2
+Aula 02
+Medidas de prevenção e mitigação 
+de XML Injection:
+PREVENÇÃO E MITIGAÇÃO 
+DE SQL INJECTION
+Validação de Entrada;
+1
+Filtragem de Dados;
+Evitar a Concatenação de Dados 
+em Documentos XML;
+Uso de Bibliotecas Seguras;
+Limitar Privilégios;
+2
+3
+4
+5
+Monitoramento e Registros;
+Treinamento e Conscientização;
+6
+7
+Atualizações Regulares.
+8
+
+Fonte: Reddit, 2016.
+Disponível em: <https://www.reddit.com/r/hacking/comments/43qb31/
+what_is_ldap_injection_attack_and_how_does_it_work/?rdt=3807>. 
+Acesso em: 21 mar. 2024. 
+Ataques na Web –Parte 2
+Aula 02
+Ocorre quando dados não confiáveis são 
+inseridos em consultas LDAP.
+LIGHTWEIGHT DIRECTORY ACCESS 
+PROTOCOL (LDAP) INJECTION ATTACK
+O invasor pode manipular as consultas 
+para acessar, modificar ou excluir 
+informações armazenadas em um 
+diretório LDAP.
+Os passos típicos de um ataque de 
+LDAP Injection incluem:
+Identificação da Vulnerabilidade;
+1
+Inserção de Dados Maliciosos;
+Manipulação da Consulta LDAP;
+2
+3
+Execução de Consulta Maliciosa.
+4
+
+Consultas LDAP Parametrizadas;
+1
+Filtros de Pesquisa Seguros;
+Validação de Entrada;
+Escape de Caracteres Especiais;
+Princípio do Menor Privilégio;
+2
+3
+4
+5
+Monitoramento e Registros de Log;
+Treinamento e Conscientização;
+6
+7
+Atualizações Regulares.
+8
+Abordagem de prevenção:
+PREVENÇÃO E MITIGAÇÃO 
+DE SQL INJECTION
+Fonte: Reddit, 2016.
+Disponível em: <https://www.reddit.com/r/hacking/comments/43qb31/
+what_is_ldap_injection_attack_and_how_does_it_work/?rdt=3807>. 
+Acesso em: 21 mar. 2024. 
+Ataques na Web –Parte 2
+Aula 02
+
+Ocorre quando um invasor descobre 
+uma vulnerabilidade em path de arquivo 
+ou diretório em um aplicativo web.
+DIRECTORY TRAVERSAL
+Passos de um ataque de Directory Traversal:
+Ataques na Web –Parte 2
+Aula 02
+Identificação da Vulnerabilidade;
+1
+Inserção de Caminho Manipulado;
+Acesso aos Arquivos/Diretórios.
+2
+3
+
+Ataques na Web –Parte 2
+Aula 02
+Validação Estrita;
+1
+Utilização de Caminhos Relativos;
+Restrições de Acesso;
+Sanitização de Caminhos;
+Listas de Permissões (Whitelists);
+2
+3
+4
+5
+Limitação de Caracteres Especiais.
+6
+Medidas de prevenção e mitigação 
+de Directory Traversal:
+PREVENÇÃO E MITIGAÇÃO 
+DE DIRECTORY TRAVERSAL
+
+Trata-se da inserção indevida de 
+comandos maliciosos em campos de 
+entrada ou parâmetros de aplicativo web.
+COMMAND INJECTION ATTACKS
+Os comandos são executados no sistema 
+operacional da máquina.
+Ataques na Web –Parte 2
+Aula 02
+Passos do Command Injection Attack:
+Identificação da Vulnerabilidade;
+1
+Inserção de Comandos Maliciosos;
+Execução do Comando Malicioso;
+2
+3
+Exploração.
+4
+
+Ataques na Web –Parte 2
+Aula 02
+PREVENÇÃO E MITIGAÇÃO 
+DE COMMAND INJECTION
+Medidas de prevenção de 
+Command Injection:
+Validação Estrita;
+1
+Utilização de Funções Seguras;
+Sanitização de Dados;
+2
+3
+Restrições de Privilégios;
+4
+Uso de Entrada de Usuário Segura.
+5
+
+Fonte: OWASP Cheat SheetSeries.
+Disponível em: <https://cheatsheetseries.owasp.org/cheatsheets/Server_
+Side_Request_Forgery_Prevention_Cheat_Sheet.html>. 
+Acesso em: 21 mar. 2024. 
+Ataques na Web –Parte 2
+Aula 02
+SERVER-SIDE REQUEST 
+FORGERY (SSRF)
+O Forjamento de Requisições do Lado 
+do Servidor (SSRF) é um ataque onde 
+um servidor executa requisições não 
+autorizadas em outros recursos.
+Etapas de um típico de ataque de SSRF:
+Identificação da Vulnerabilidade;
+1
+Inserção de URL Manipulada;
+Execução da Requisição;
+2
+3
+Exploração.
+4
+
+Fonte: Medium, 2021.
+Disponível em: <https://rodolfomarianocy.medium.com/ssrf-entenda-o-
+b%C3%A1sico-de-forma-simples-e-algumas-formas-de-bypass-
+e694751acc0e>. 
+Acesso em: 21 mar. 2024. 
+Ataques na Web –Parte 2
+Aula 02
+PREVENÇÃO E MITIGAÇÃO DE SSRF
+Medidas de prevenção e mitigação 
+de SSRF:
+Validação Estrita de Entradas;
+1
+Uso de Listas de Permissões (Whitelists);
+Limitação de Privilégios;
+2
+3
+Restrição de Saída de Rede;
+4
+Utilização de URLs Relativas;
+5
+Monitoramento de Logs.
+6
+
+Ataques e Proteção Web 
+–Parte 2
+Você chegou ao final da Aula 02
+6

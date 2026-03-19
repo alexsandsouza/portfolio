@@ -1,0 +1,154 @@
+
+
+Módulo 05
+Gerenciamento de Identidades 
+e Contas
+Aula 02
+Políticas de Contas
+5
+
+Introdução
+Nesta aula, você conhecerá os seguintes assuntos:
+Políticas relacionadas ao ciclo de vida das contas 
+de usuário em ambiente computacional.
+As políticas de contas como diretrizes para 
+controlar o acesso e o uso de contas de usuário.
+A definição de regras e restrições sobre quem tem 
+acesso a quais recursos e em quais condições.
+Definição de políticas de senha de conta, restrições 
+e definição de atributos de conta.
+
+Contas
+Políticas de contas
+Aula 02
+
+São informações específicas 
+associadas a uma conta de usuário 
+em um sistema de gerenciamento 
+de contas.
+Fornecem detalhes sobre a identidade, 
+função e características do usuário.
+Exemplos de atributos: nome, endereço 
+de e-mail, telefone e departamento do 
+usuário, nível de acesso, permissões 
+associadas, etc.
+Políticas de Contas
+Aula 02
+ATRIBUTOS DE CONTAS
+
+Contêm as regras e diretrizes que 
+determinam quem tem permissão para 
+acessar recursos ou informações em 
+que condições e com quais privilégios.
+Podem abordar aspectos como: 
+autenticação, autorização, criptografia, 
+restrições, segregação de funções e 
+controle de acesso baseado em 
+papéis.
+Uma forma de implementação são 
+os GPOs(objetos de política de 
+grupo) configurados em uma rede 
+Windows Active Directory.
+POLÍTICA DE CONFIGURAÇÕES DE 
+SENHAS DE CONTA
+Fonte: Eventos.
+Disponível em> https://eventos.ifmt.edu.br/cursos/home/
+Acesso em: 18 mar. 2024.
+Políticas de Contas
+Aula 02
+
+Políticas de Contas
+Aula 02
+Visa promover senhas fortes e seguras.
+É um conjunto de diretrizes e regras que 
+determinam os requisitos e as restrições 
+relacionadas às senhas utilizadas pelas 
+contas de usuário.
+Comprimento mínimo da senha;
+Complexidade da senha;
+Aspectos da política de configurações de 
+senhas de conta:
+POLÍTICAS DE ACESSO
+
+Políticas de Contas
+Aula 02
+Restrições de reutilização de senhas;
+Exigência de alteração periódica;
+POLÍTICAS DE ACESSO
+Bloqueio após várias tentativas falhas;
+Proibição de senhas comuns.
+
+São mecanismos utilizados para limitar e 
+controlar o acesso e o uso de contas de 
+usuário com base em diferentes critérios.
+Podem ser:
+Geofencing–tecnologia que delimita 
+espaços geográficos utilizando 
+dispositivos móveis ou 
+geolocalização.
+Restrições baseadas em horário.
+Políticas baseadas em localização;
+RESTRIÇÕES DE CONTAS
+Políticas de Contas
+Aula 02
+
+Políticas de Contas
+Aula 02
+Pode abordar diferentes aspectos como:
+É um processo que envolve a revisão 
+e análise sistemática das atividades e 
+eventos relacionados às contas de 
+usuário.
+Conformidade;
+Monitoramento de atividades;
+Detecção de violações de segurança;
+Investigação forense.
+AUDITORIA DE CONTAS
+
+Referem-se aos direitos e privilégios 
+atribuídos a uma conta de usuário. 
+Determinam o que um usuário pode ou 
+não pode fazer.
+Tipos de permissões:
+PERMISSÕES DE CONTAS
+Fonte: Blog Apiki.
+Disponível em: <https://blog.apiki.com/permissao-de-arquivos-
+e-pastas-do-wordpress/>.
+Acesso em: 18 mar. 2024.
+Leitura;
+Gravação;
+Execução;
+Exclusão;
+Administração.
+Políticas de Contas
+Aula 02
+
+O bloqueio refere-se a uma medida 
+temporária em que o acesso a uma 
+conta é negado por um determinado 
+período de tempo.
+Geralmente aplicado quando 
+ocorrem várias tentativas de login 
+malsucedidas.
+BLOQUEIO E DESABILITAÇÃO DE 
+CONTAS
+Políticas de Contas
+Aula 02
+
+A desabilitação é uma ação permanente em 
+que a conta de usuário é desativada ou 
+removida completamente do sistema.
+BLOQUEIO E DESABILITAÇÃO DE CONTAS
+Acontece:
+Quando um usuário deixa a 
+organização;
+Quando uma conta está associada 
+a atividades fraudulentas.
+Quando há uma violação significativa 
+da política de segurança.
+Políticas de Contas
+Aula 02
+
+Políticas de Contas
+Você chegou ao final da Aula 02
+5

@@ -1,0 +1,215 @@
+
+
+Módulo 05
+Gerenciamento de Identidades e 
+Contas
+Aula 04
+Políticas de Pessoal
+5
+
+Introdução
+Nesta aula, você conhecerá os seguintes assuntos:
+Uso de dispositivos pessoais no trabalho;
+Técnicas de treinamento pessoal;
+Política de mesa limpa;
+Campanhas de esclarecimento de phishing;
+Conceitosde Shadow IT.
+
+Política de Conduta
+Políticas de Pessoal
+Aula 04
+
+POLÍTICA DE CONDUTA
+Refere-se ao conjunto de diretrizes, 
+normas e regras forjados pela 
+organização;
+Visa orientar o comportamento das 
+equipes quanto à segurança das 
+informações e sistemas de tecnologia 
+da empresa.
+Promove a cultura organizacional que 
+prioriza a confidencialidade, 
+integridade e disponibilidade dos 
+ativos de informação.
+Política de Pessoal
+Aula 04
+
+Política de Pessoal
+Aula 05.1
+POLÍTICA DE USO ACEITÁVEL 
+(ACCEPTABLE USE POLICY)
+É a política definida pela organização que 
+regulamenta o uso de recursos de 
+tecnologia e comunicação pelos seus 
+colaboradores.
+Conteúdo da Política:
+1. Escopo e objetivos da política;
+2. Responsabilidades dos usuários;
+3. Restrições e proibições.
+
+POLÍTICA DE USO ACEITÁVEL 
+(ACCEPTABLE USE POLICY)
+Política de Pessoal
+Aula 04
+Segurança da informação;
+Monitoramento e auditoria;
+Fonte: Tech Target.
+Disponível em: 
+<https://www.techtarget.com/whatis/definition/acce
+ptable-use-policy-AUP>.
+Acesso em: 18 mar. 2024.
+Consequências do não cumprimento;
+Treinamento e conscientização;
+Revisão e atualização;
+Assinatura e aceitação;
+Apoio da alta administração.
+
+CÓDIGO DE CONDUTA
+Reúne os princípios éticos que devem 
+guiar o comportamento dos colaboradores 
+quando utilizarem informações e/ou 
+recursos tecnológicos.
+Conteúdo da Código de Conduta:
+Política de Pessoal
+Aula 04
+1.  Definição dos padrões éticos;
+2.  Responsabilidades dos funcionários;
+3.  Treinamento e conscientização;
+4.  Consequências do não cumprimento;
+5.  Relação com a lei e a constituição.
+
+Política de Pessoal
+Aula 05.1
+ANÁLISE DE MÍDIAS SOCIAIS
+Abrange monitorar, coletar e analisar as 
+atividades da organização e dos 
+funcionários nas redes sociais e nas 
+plataformas online.
+Etapas da análise:
+1. Coleta de dados;
+2. Identificação de contas;
+3. Monitoramento de comportamento 
+e conteúdo;
+4. Detecção de riscos e oportunidades;
+5.  Resposta a incidentes;
+6. Educação e conscientização.
+
+USO DE DISPOSITIVOS DE 
+PROPRIEDADE PESSOAL NO 
+AMBIENTE DE TRABALHO
+Regulamentado nas Políticas e Práticas da 
+organização, refere-se ao uso de 
+dispositivos pessoais pelos funcionários no 
+ambiente de trabalho.
+Etapas a serem tratadas pelas práticas:
+Política de Pessoal
+Aula 04
+1.  Escopo e objetivo;
+2.  Permissão e registro;
+3.  Segurança da informação;
+4.  Acesso à rede corporativa;
+5.  Política de BYOD (Bring Your 
+Own Device);
+6.  Avaliação de riscos.
+
+SHADOW IT
+Trata-se do uso de recursos 
+tecnológicos por funcionários em uma 
+organização, sem autorização.
+Política de Pessoal
+Aula 04
+Fonte: Wallarm¹.
+¹Disponível em: 
+<https://www.wallarm.com/what/shadow-it>
+Acesso em: 18 mar. 2024.
+1.  Identificação de uso não 
+autorizado;
+2. Consequências e educação;
+3. Avaliação de riscos;
+4. Autorização e supervisão;
+5. Comunicação e treinamento;
+Etapas da Política de Pessoal para 
+Shadow IT:
+6. Monitoramento contínuo.
+
+POLÍTICA DE MESA LIMPA
+Refere-se às políticas de segurança 
+que atuam para minimizar o risco 
+de acesso a informações 
+depositadas nos locais de trabalho.
+Etapas da Política de Mesa Limpa:
+Política de Pessoal
+Aula 04
+Fonte: Noticias Unb.
+Disponível em: <https://noticias.unb.br/76-institucional/6354-
+sti-da-dicas-para-protecao-de-dados-na-rede>.
+Acesso em: 18 mar. 2024.
+Remoção de documentos e 
+dispositivos;
+Armazenamento seguro;
+Limpeza diária;
+Sensibilização e treinamento;
+Monitoramento e conformidade.
+
+Treinamento
+Políticas de Pessoal
+Aula 04
+
+TREINAMENTO BASEADO EM 
+USUÁRIO E FUNÇÃO
+É uma modalidade de treinamento 
+orientada pela função e 
+responsabilidade do indivíduo 
+dentro da organização.
+Principais aspectos:
+Política de Pessoal
+Aula 04
+Identificação de funções e 
+responsabilidades;
+Customização do conteúdo;
+Atribuição de treinamento;
+Acompanhamento e avaliação;
+Atualização contínua.
+
+CAMPANHAS DE PHISHING
+São treinamentos voltados para 
+conscientizar os funcionários sobre as 
+ameaças de phishingdentro da organização.
+Política de Pessoal
+Aula 04
+Planejamento e design da campanha;
+Seleção de alvos e disseminação;
+Monitoramento e coleta de dados;
+Feedback e treinamento.
+Principais tópicos:
+
+CAPTURE A BANDEIRA
+É um tipo de treinamento para 
+profissionais de segurança e equipes 
+de resposta a incidentes com foco no 
+aperfeiçoamento.
+Política de Pessoal
+Aula 04
+Etapas para o exercício:
+1. Configuração do desafio;
+2. Equipes e participantes;
+3. Objetivo de capturar a bandeira;
+4. Pontuação e competição.
+
+Política de Pessoal
+Aula 04
+TREINAMENTO POR GAMIFICAÇÃO
+É um método de ensino que incorpora 
+técnicas de jogos e dinâmica de games para 
+tornar o processo de aprendizado mais 
+atrativo.
+Etapas do treinamento:
+1.  Designde conteúdo gamificado;
+2.  Plataforma de treinamento;
+3.  Progresso e recompensas;
+4.  Feedback e avaliação;
+5.  Competição e colaboração.
+
+Políticas de Pessoal
+Você chegou ao final da Aula 04
+5

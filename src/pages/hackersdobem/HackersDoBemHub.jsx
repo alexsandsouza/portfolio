@@ -62,14 +62,42 @@ export default function HackersDoBemHub() {
     },
     {
       id: 5,
-      title: 'Desafio Web Application',
-      module: 'Módulo 06',
-      description: 'Uma nova simulação de vulnerabilidades web para você explorar e resolver.',
-      path: '#',
-      icon: <Lock size={24} color="#94a3b8" />,
-      buttonText: 'Bloqueado',
-      status: 'locked',
-      accentColor: '#64748b',
+      title: 'Políticas de Contas',
+      module: 'Módulo 05 · Aula 02',
+      description: 'Atributos, Geofencing, Permissões e Auditoria de Contas.',
+      path: '/hackersdobem/atividade-m5a02',
+      rankingPath: '/hackersdobem/ranking-m5a02',
+      icon: <Shield size={24} color="#eab308" />,
+      buttonText: 'Iniciar Missão',
+      status: 'active',
+      accentColor: '#eab308',
+      badges: ['15 min', '100 pts']
+    },
+    {
+      id: 6,
+      title: 'Soluções de Autorização',
+      module: 'Módulo 05 · Aula 03',
+      description: 'Modelos DAC, RBAC, MAC, protocolos SAML, LDAP e OAUTH.',
+      path: '/hackersdobem/atividade-m5a03',
+      rankingPath: '/hackersdobem/ranking-m5a03',
+      icon: <Rocket size={24} color="#a855f7" />,
+      buttonText: 'Iniciar Missão',
+      status: 'active',
+      accentColor: '#a855f7',
+      badges: ['20 min', '100 pts']
+    },
+    {
+      id: 7,
+      title: 'Desafio Supremo M5 & M6',
+      module: 'Módulo 05 e 06 · Aulas 04, 01 e 02',
+      description: 'Enfrente o Jogo da Forca, Relacione as Colunas e Palavras Cruzadas sobre Proteção Web e Políticas de Pessoal.',
+      path: '/hackersdobem/desafio-m5-m6',
+      rankingPath: '/hackersdobem/ranking-m5m6',
+      icon: <Terminal size={24} color="#06b6d4" />,
+      buttonText: 'Iniciar Desafio',
+      status: 'active',
+      accentColor: '#06b6d4',
+      badges: ['30 min', '500 pts']
     }
   ];
 

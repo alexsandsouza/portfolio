@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Missão Elicitação: Levantamento de Requisitos — FAMETRO</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<!-- Firebase SDK -->
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js';
+import { getFirestore, collection, addDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAwxl9Sm6Q3X4z6GnFuUjm-lqf2tH2_a4Y",
+  authDomain: "portfolio-b6e32.firebaseapp.com",
+  projectId: "portfolio-b6e32",
+  storageBucket: "portfolio-b6e32.firebasestorage.app",
+  messagingSenderId: "809040838176",
+  appId: "1:809040838176:web:fff2480b3c4c23cee48645"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+window._saveScoreToFirebase = async function(name, score) {
+  try {
+    await addDoc(collection(db, 'fametro_ranking'), {
+      name: name,
+      score: score,
+      category: 'ER_Aula06',
+      materia: 'Engenharia de Requisitos',
+      unidade: 'Aula 06 - Levantamento',
+      timestamp: serverTimestamp()
+    });
+    console.log('✅ Score salvo com sucesso!');
+  } catch(e) {
+    console.error('❌ Erro ao salvar score:', e);
+  }
+};
+</script>
+
+<style>
+  :root {
+    --neon-blue: #00d2ff; --neon-purple: #9d50bb;
+    --neon-green: #39ff14; --neon-red: #ff3131;
+    --dark-bg: #050505; --card-bg: #111;
+    --text-main: #e0e0e0; --text-dim: #888;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--dark-bg);
+    color: var(--text-main);
+    overflow-x: hidden;
+    background-image: 
+      radial-gradient(circle at 20% 20%, rgba(157, 80, 187, 0.15) 0%, transparent 40%),
+      radial-gradient(circle at 80% 80%, rgba(0, 210, 255, 0.15) 0%, transparent 40%);
+    min-height: 100vh;
+  }
+
+  .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; position: relative; }
+
+  /* HEADER */
+  .header { text-align: center; margin-bottom: 40px; }
+  .badge {
+    background: rgba(0, 210, 255, 0.1);
+    color: var(--neon-blue); border: 1px solid var(--neon-blue);
+    padding: 4px 12px; border-radius: 4px; font-size: 11px;
+    font-weight: 700; text-transform: uppercase; letter-spacing: 2px;
+    display: inline-block; margin-bottom: 12px;
+  }
+  h1 { font-family: 'Orbitron', sans-serif; font-size: 28px; font-weight: 900; letter-spacing: 1px; color: #fff; text-transform: uppercase; }
+  h1 span { color: var(--neon-blue); text-shadow: 0 0 10px var(--neon-blue); }
+
+  /* SCREENS */
+  .screen { display: none; animation: fadeIn 0.5s ease; }
+  .screen.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* START CARD */
+  .card {
+    background: var(--card-bg); border: 1px solid #222;
+    border-radius: 12px; padding: 40px; text-align: center;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  }
+  .desc { margin: 24px 0; color: var(--text-dim); line-height: 1.6; font-size: 15px; }
+  
+  .input-name {
+    width: 100%; max-width: 320px;
+    background: #1a1a1a; border: 2px solid #333;
+    border-radius: 8px; padding: 14px 20px;
+    color: #fff; font-size: 16px; margin: 0 auto 24px;
+    display: block; outline: none; transition: border 0.3s;
+    text-align: center;
+  }
+  .input-name:focus { border-color: var(--neon-blue); box-shadow: 0 0 15px rgba(0,210,255,0.2); }
+
+  .btn {
+    background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+    color: #fff; border: none; padding: 16px 40px;
+    border-radius: 8px; font-weight: 800; text-transform: uppercase;
+    letter-spacing: 1px; cursor: pointer; transition: all 0.3s;
+    font-family: 'Orbitron', sans-serif; font-size: 14px;
+  }
+  .btn:hover { transform: scale(1.05); filter: brightness(1.2); box-shadow: 0 0 20px rgba(0,210,255,0.4); }
+
+  /* PROGRESS BAR */
+  .progress-container { margin-bottom: 30px; }
+  .progress-meta { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-dim); margin-bottom: 8px; font-weight: 700; }
+  .progress-track { background: #222; height: 8px; border-radius: 4px; overflow: hidden; }
+  .progress-fill { background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple)); height: 100%; width: 0%; transition: width 0.4s ease; }
+
+  /* QUIZ CARD */
+  .question-card { background: var(--card-bg); border: 1px solid #222; border-radius: 12px; padding: 30px; }
+  .question-text { font-size: 20px; font-weight: 700; margin-bottom: 24px; line-height: 1.4; }
+  .options { display: grid; gap: 12px; }
+  .option {
+    background: #1a1a1a; border: 1px solid #333;
+    padding: 18px 24px; border-radius: 8px; cursor: pointer;
+    transition: all 0.2s; display: flex; align-items: center; gap: 15px;
+    text-align: left;
+  }
+  .option:hover { border-color: var(--neon-blue); background: #222; }
+  .option.correct { border-color: var(--neon-green); background: rgba(57, 255, 20, 0.1); }
+  .option.wrong { border-color: var(--neon-red); background: rgba(255, 49, 49, 0.1); }
+  
+  .opt-letter {
+    width: 30px; height: 30px; border-radius: 4px;
+    background: #333; display: flex; align-items: center;
+    justify-content: center; font-weight: 800; font-size: 14px; flex-shrink: 0;
+  }
+  .correct .opt-letter { background: var(--neon-green); color: #000; }
+  .wrong .opt-letter { background: var(--neon-red); color: #fff; }
+
+  /* FEEDBACK */
+  .feedback { margin-top: 24px; padding: 20px; border-radius: 8px; display: none; font-size: 14px; line-height: 1.6; border-left: 4px solid var(--neon-blue); background: #1a1a1a; }
+
+  /* RESULT */
+  .result-card { text-align: center; }
+  .score-circle {
+    width: 150px; height: 150px; border-radius: 50%;
+    border: 8px solid var(--neon-blue); margin: 0 auto 24px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    box-shadow: 0 0 30px rgba(0,210,255,0.2);
+  }
+  .score-val { font-family: 'Orbitron', sans-serif; font-size: 40px; font-weight: 900; }
+  .score-label { font-size: 11px; text-transform: uppercase; color: var(--text-dim); }
+
+  .btn-group { display: flex; gap: 12px; justify-content: center; margin-top: 30px; }
+  .btn-secondary { background: #333; color: #fff; border: none; padding: 14px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: 0.2s; }
+  .btn-secondary:hover { background: #444; }
+
+  /* PARTICLES */
+  #particles-js { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+</style>
+</head>
+<body>
+
+<div id="particles-js"></div>
+
+<div class="container">
+  <div class="header">
+    <span class="badge">Aula 06 — Eng. Requisitos</span>
+    <h1>Missão <span>Elicitação</span></h1>
+  </div>
+
+  <!-- TELA INICIAL -->
+  <div id="screen-start" class="screen active">
+    <div class="card">
+      <div style="font-size: 60px; margin-bottom: 20px;">🚀</div>
+      <h2>Você está pronto, Arquiteto?</h2>
+      <p class="desc">
+        O cliente sabe o que dói, mas raramente sabe o que precisa. <br>
+        Sua missão é aplicar as técnicas de <strong>VORD, Etnografia e Workshops</strong> para extrair os requisitos perfeitos. <br>
+        <strong>Objetivo:</strong> 1000 Pontos.
+      </p>
+      <input type="text" id="studentName" class="input-name" placeholder="Seu Codinome (Nome)">
+      <button class="btn" onclick="startQuiz()">Iniciar Protocolo</button>
+    </div>
+  </div>
+
+  <!-- TELA QUIZ -->
+  <div id="screen-quiz" class="screen">
+    <div class="progress-container">
+      <div class="progress-meta">
+        <span id="current-q-badge">Questão 1/10</span>
+        <span id="score-badge">SCORE: 000</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progress-bar"></div>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-text" id="q-text">Carregando dados da missão...</div>
+      <div class="options" id="options"></div>
+      <div class="feedback" id="feedback"></div>
+      <button class="btn" id="btn-next" style="display: none; margin-top: 24px; width: 100%;" onclick="nextQuestion()">Próximo Nível</button>
+    </div>
+  </div>
+
+  <!-- TELA RESULTADO -->
+  <div id="screen-result" class="screen">
+    <div class="card result-card">
+      <h2 id="result-title">Missão Concluída</h2>
+      <p class="desc" id="result-msg">Sincronizando dados com o sistema central...</p>
+      <div class="score-circle">
+        <div class="score-val" id="final-score">0</div>
+        <div class="score-label">Points</div>
+      </div>
+      <div class="btn-group">
+        <button class="btn" onclick="location.reload()">Tentar Novamente</button>
+        <button class="btn-secondary" onclick="window.location.href='ranking-levantamento-requisitos.html'">Ver Ranking</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const QUESTIONS = [
+  {
+    q: "O material diz que 'O cliente sabe o que dói, mas quase nunca consegue verbalizar o que quer'. Qual o nome da necessidade que fica invisível no dia a dia?",
+    options: ["Necessidades Explícitas", "Necessidades Implícitas", "Requisitos de Software", "Desejos do Stakeholder"],
+    correct: 1,
+    info: "Necessidades implícitas são aquelas óbvias para o usuário, por isso ele não as cita nas entrevistas. É aí que o analista precisa estar atento!"
+  },
+  {
+    q: "O método VORD é comparado a qual profissional no material?",
+    options: ["Um Médico", "Um Arquiteto", "Um Fotógrafo", "Um Detetive"],
+    correct: 2,
+    info: "O VORD tira fotos do mesmo evento (sistema) de vários ângulos (viewpoints). Nenhuma foto está errada, todas se complementam."
+  },
+  {
+    q: "No VORD, se você está projetando um app de delivery e o 'Viewpoint Cliente' quer entrega grátis enquanto o 'Viewpoint Entregador' quer ganhar mais, você encontrou:",
+    options: ["Um Erro de Código", "Um Requisito Não-Funcional", "Um Conflito de Interesses", "Uma Falta de Verba"],
+    correct: 2,
+    info: "Detectar conflitos na fase de requisitos é 100x mais barato do que corrigir depois que o sistema está pronto."
+  },
+  {
+    q: "A técnica de Etnografia é originária de qual ciência?",
+    options: ["Psicologia", "Antropologia", "Sociologia", "Economia"],
+    correct: 1,
+    info: "Vem da Antropologia. O analista observa o ambiente real sem interferir para entender como o trabalho é REALMENTE feito."
+  },
+  {
+    q: "Segundo o material, onde o analista de requisitos encontra 'requisitos escondidos valiosos'?",
+    options: ["Na documentação oficial", "Nas 'Gambiarras' e improvisos do usuário", "Nas ordens do Gerente", "No código-fonte antigo"],
+    correct: 1,
+    info: "Onde existe uma gambiarra (como um caderno físico ou grupo de WhatsApp paralelo), existe uma necessidade que o sistema atual não atende."
+  },
+  {
+    q: "O caso do 'Caixa de Supermercado' no PDF ilustra que:",
+    options: ["O gerente sabe mais que os caixas", "Entrevistar só o gerente pode levar a um sistema que não serve na prática", "Sistemas de supermercado são fáceis de fazer", "Caixas de supermercado não gostam de tecnologia"],
+    correct: 1,
+    info: "Se você perguntar para quem não opera a tarefa, vai receber uma visão limitada. Por isso a Etnografia é vital nesse caso."
+  },
+  {
+    q: "Qual a regra de ouro (proporção) proposta para uma Entrevista eficiente?",
+    options: ["50% Fala / 50% Escuta", "20% Fala / 80% Escuta", "90% Fala / 10% Escuta", "100% Fala do Analista"],
+    correct: 1,
+    info: "Regra 80/20: O analista deve escutar 80% do tempo para captar todos os detalhes do usuário."
+  },
+  {
+    q: "Para evitar que a 'Voz do Diretor' domine um Workshop e impeça os outros de falarem, o que o material sugere?",
+    options: ["Pedir para o diretor sair", "Usar post-its anônimos e votações individuais", "Gravar a reunião", "Fazer a reunião por e-mail"],
+    correct: 1,
+    info: "Post-its e votações anônimas garantem legitimidade coletiva e evitam que apenas a voz mais forte seja ouvida."
+  },
+  {
+    q: "A Entrevista é comparada a qual situação no seu material?",
+    options: ["Uma Reunião de Pais e Mestres", "Uma Blitz Policial", "Uma Consulta Médica", "Um Debate Político"],
+    correct: 2,
+    info: "É individual, focada e confidencial. O analista (médico) ouve os sintomas do stakeholder (paciente) para dar o diagnóstico (requisito)."
+  },
+  {
+    q: "Em qual dessas situações a Etnografia é considerada INSUBSTITUÍVEL?",
+    options: ["Com usuários altamente técnicos", "Em sistemas que não mudarão nunca", "Com usuários leigos (ex: pescadores) que não sabem verbalizar termos técnicos", "Quando o orçamento é infinito"],
+    correct: 2,
+    info: "Usuários leigos dificilmente dirão 'preciso de um CRUD', mas observar o trabalho deles revela todas as necessidades sistêmicas."
+  }
+];
+
+let currentIdx = 0;
+let score = 0;
+let studentName = "";
+let canAnswer = true;
+
+function startQuiz() {
+  const name = document.getElementById('studentName').value.trim();
+  if (name.length < 3) {
+    alert("Por favor, digite seu nome completo para o ranking.");
+    return;
+  }
+  studentName = name;
+  document.getElementById('screen-start').classList.remove('active');
+  document.getElementById('screen-quiz').classList.add('active');
+  renderQuestion();
+}
+
+function renderQuestion() {
+  canAnswer = true;
+  const q = QUESTIONS[currentIdx];
+  document.getElementById('q-text').textContent = q.q;
+  document.getElementById('current-q-badge').textContent = `Questão ${currentIdx + 1}/${QUESTIONS.length}`;
+  document.getElementById('progress-bar').style.width = `${((currentIdx + 1) / QUESTIONS.length) * 100}%`;
+  document.getElementById('feedback').style.display = 'none';
+  document.getElementById('btn-next').style.display = 'none';
+
+  const optionsContainer = document.getElementById('options');
+  optionsContainer.innerHTML = '';
+  
+  const letters = ["A", "B", "C", "D"];
+  q.options.forEach((opt, idx) => {
+    const div = document.createElement('div');
+    div.className = 'option';
+    div.innerHTML = `<span class="opt-letter">${letters[idx]}</span> ${opt}`;
+    div.onclick = () => selectOption(idx);
+    optionsContainer.appendChild(div);
+  });
+}
+
+function selectOption(idx) {
+  if (!canAnswer) return;
+  canAnswer = false;
+  
+  const q = QUESTIONS[currentIdx];
+  const options = document.querySelectorAll('.option');
+  
+  if (idx === q.correct) {
+    options[idx].classList.add('correct');
+    score += 100;
+  } else {
+    options[idx].classList.add('wrong');
+    options[q.correct].classList.add('correct');
+  }
+  
+  document.getElementById('score-badge').textContent = `SCORE: ${score}`;
+  const feedback = document.getElementById('feedback');
+  feedback.innerHTML = `<strong>INSIGHT:</strong> ${q.info}`;
+  feedback.style.display = 'block';
+  document.getElementById('btn-next').style.display = 'block';
+}
+
+function nextQuestion() {
+  currentIdx++;
+  if (currentIdx < QUESTIONS.length) {
+    renderQuestion();
+  } else {
+    finishQuiz();
+  }
+}
+
+async function finishQuiz() {
+  document.getElementById('screen-quiz').classList.remove('active');
+  document.getElementById('screen-result').classList.add('active');
+  document.getElementById('final-score').textContent = score;
+  
+  let msg = score >= 800 ? "Nível Sênior! Você dominou as técnicas de elicitação." : score >= 500 ? "Nível Pleno. Bom trabalho, mas revise as gambiarras!" : "Nível Júnior. Releia o PDF para não perder requisitos importantes.";
+  document.getElementById('result-msg').textContent = msg;
+  
+  // Salvar no Firebase
+  if (window._saveScoreToFirebase) {
+    await window._saveScoreToFirebase(studentName, score);
+  }
+}
+</script>
+
+</body>
+</html>

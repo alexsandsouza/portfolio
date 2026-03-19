@@ -1,0 +1,423 @@
+
+
+Módulo 06
+Proteção Web e 
+Desenvolvimento Seguro
+Aula 01
+Ataques e Proteção Web 
+–Parte 1
+6
+
+Introdução
+Nesta aula, você conhecerá os seguintes assuntos:
+Os ataques API Attacks e Replay Attacks, 
+sua identificação e prevenção;
+Os ataques Session Hijacking e 
+Clickjacking,suaidentificaçãoeprevenção;
+Os ataques Cross-Site Request Forger e 
+SSL Strip, suaidentificaçãoeprevenção;
+Análise de URLs suspeitas.
+
+Análise de URL (Uniform 
+Resource Locators)
+Ataques e Proteção Web –Parte 1
+Aula 01
+
+URLs são endereços precisos de recursos 
+web passados para o navegador.
+ESTRUTURA DA URL
+Análise de URL (Uniform Resource Locators)
+Aula 01
+Fonte: Iraqi Academic ScientificJournals.
+Disponível em: <https://www.iasj.net/iasj/download/38d686435bc620a5>. 
+Acesso em: 20 mar. 2024. 
+Componentes:
+Esquema (Scheme);
+1
+Domínio (Host);
+Porta (Port);
+Caminho (Path);
+Query String;
+2
+3
+4
+5
+Âncora (Fragment).
+6
+
+IDENTIFICAÇÃO DE URLS 
+MALICIOSAS
+Técnicas de Identificação:
+Fonte: Medium, 2023.
+Disponível em: <https://medium.com/@kumarishefu.4507/malware-
+analysis-episode-4-phishing-url-attachment-analysis-2af651cb88bf>. 
+Acesso em: 20 mar. 2024. 
+Análise de URL (Uniform Resource Locators)
+Aula 01
+Verificação do Domínio (Nome do Host);
+1
+Protocolo Seguro (HTTPS);
+Examine a Estrutura Geral;
+Verificação de Ortografia;
+Evite URLs Encurtadas;
+2
+3
+4
+5
+Use um Antivírus e Anti-Malware;
+6
+Reputação de Domínio;
+7
+Verificação de E-mails 
+e Mensagens.
+8
+
+HTTP Percent Encoding 
+(Codificação Percentual 
+no HTTP)
+Ataques e Proteção Web –Parte 1
+Aula 6.1
+
+Trata-se de uma técnica para representar 
+caracteres especiais e caracteres não 
+imprimíveis em URLs, parâmetros de 
+consulta (query string) e cabeçalhos.
+REPRESENTAÇÃO DO HTTP 
+PERCENT ENCODING
+HTTP Percent Encoding (Codificação Percentual no HTTP)
+Aula 01
+Fonte: Ambilgratis, 2011.
+Disponível em: <https://ambilgratis.com/tag/url-encoding/>. 
+Acesso em: 20 mar. 2024. 
+Técnicas de representação:
+Caracteres Reservados;
+1
+Caracteres Não Imprimíveis;
+Caracteres Não Seguros.
+2
+3
+
+COMO FUNCIONA O HTTP 
+PERCENT ENCODING
+Fonte: Circuits 4 you, 2019.
+Disponível em: <https://circuits4you.com/2019/03/21/esp8266-url-
+encode-decode-example/#google_vignette>. 
+Acesso em: 20 mar. 2024. 
+HTTP Percent Encoding (Codificação Percentual no HTTP)
+Aula 01
+Consiste em substituir um caractere 
+problemático por um "%" seguido por 
+dois dígitos hexadecimais cujo valor é o 
+byte do caractere na tabela ASCII.
+Por exemplo:
+O espaço em branco é 
+codificado como "%20".
+1
+O caractere "/" é substituído 
+por "%2F”.
+2
+
+IDENTIFICAÇÃO DE PERCENT 
+ENCODING EM URLS MALICIOSAS
+HTTP Percent Encoding (Codificação Percentual no HTTP)
+Aula 01
+Fonte: PowerDMARC, 2023.
+Disponível em: <https://powerdmarc.com/pt/what-is-url-
+phishing/>. 
+Acesso em: 20 mar. 2024. 
+Técnicas e ferramentas que podem 
+ajudar na detecção:
+Inspeção Visual;
+1
+Utilização de Ferramentas 
+de Segurança;
+Análise de Logs;
+Serviços de Reversão de 
+Percent Encoding;
+Treinamento de 
+Conscientização.
+2
+3
+4
+5
+
+Ataques na Web 
+–Parte 1
+Ataques e Proteção Web –Parte 1
+Aula 6.1
+
+ATAQUES DE API (APPLICATION 
+PROGRAMMING INTERFACE)
+Fonte: Akamai.
+Disponível em: <https://www.akamai.com/pt/glossary/what-is-api-
+security>. 
+Acesso em: 20 mar. 2024. 
+Ataques na Web –Parte 1
+Aula 01
+APIs são conjuntos de regras, 
+ferramentas e protocolos para criação 
+de aplicativos.
+Permite aos desenvolvedores 
+interligarem soluções e serviços sem a 
+necessidade de conhecer como estes 
+foram implementados.
+São tipos comuns de ataques a APIs:
+Injeção de SQL;
+1
+Ataques de Força Bruta;
+Cross-Site Scripting (XSS);
+Ataques de Dicionário.
+2
+3
+4
+
+AUTENTICAÇÃO EM APIs
+Autenticação é o processo de verificar a 
+identidade de um usuário ou aplicativo 
+que está tentando acessar uma API.
+Autenticação baseada em Token;
+1
+Autenticação com Credenciais 
+(Usuário/Senha);
+Autenticação de API Key;
+Autenticação de Certificado.
+2
+3
+4
+Ataques na Web –Parte 1
+Aula 01
+Maneiras de autenticar usuários em APIs:
+Fonte: Raphael Cardoso, 2015.
+Disponível em: <https://raphaelcardoso.com.br/criando-e-
+consumindo-web-api-parte-1/>. 
+Acesso em: 20 mar. 2024. 
+
+Formas de implementar a autorização 
+em APIs:
+É o processo que verifica se o usuário 
+autenticado tem permissão para acessar 
+determinados recursos ou executar ações 
+dentro da API.
+AUTORIZAÇÃO EM APIs
+Ataques na Web –Parte 1
+Aula 01
+Controle de Acesso Baseado em 
+Função (RBAC);
+1
+Controle de Acesso Baseado 
+em Política (ABAC);
+OAuth e OAuth2.
+2
+3
+
+BOAS PRÁTICAS PARA PROTEGER APIS
+Ataques na Web –Parte 1
+Aula 01
+Formas de implementar:
+Fonte: eSafer.
+Disponível em: <https://e-safer.com.br/api-protection/>. 
+Acesso em: 20 mar. 2024. 
+Validação de Entrada;
+1
+Limite de Taxa;
+Controle de Acesso;
+Monitoramento e Registro;
+Atualização Regular;
+2
+3
+4
+5
+Autenticação Forte
+6
+Documentação Segura.
+7
+
+REPLAY ATTACKS 
+(ATAQUES DE REPETIÇÃO)
+Fonte: Mirror xyz, 2022.
+Disponível em: 
+<https://mirror.xyz/zhangfang.eth/sF7aF9fL7t4ax0v93Eosn5
+xGpoTD4eNj7qQV5vx0Uxg>. 
+Acesso em: 20 mar. 2024. 
+Um invasor intercepta e depois retransmite 
+dados de comunicação válidos.
+Etapas:
+Ataques na Web –Parte 1
+Aula 01
+A técnica explora a reutilização de 
+informações legítimas a fim de causar dano.
+Interceptação;
+1
+Armazenamento;
+Repetição;
+Exploração ou Acesso 
+Não Autorizado.
+2
+3
+4
+
+MITIGAÇÃO DE ATAQUES DE REPETIÇÃO
+Ataques na Web –Parte 1
+Aula 01
+Implementar medidas de segurança:
+Fonte: Gratispng.
+Disponível em: <https://www.gratispng.com/png-0y52hb/>. 
+Acesso em: 20 mar. 2024. 
+Utilização de Tokens Únicos;
+1
+Carimbo de Data e Hora;
+Controle de Sessão;
+Criptografia;
+Autenticação Multifator (MFA);
+2
+3
+4
+5
+Monitoramento de Tráfego;
+6
+Expiração de Sessão.
+7
+
+SESSION HIJACKING 
+(SEQUESTRO DE SESSÃO)
+Fonte: Business Process Incubator, 2022.
+Disponível em: <https://www.businessprocessincubator.com/content/what-is-
+session-hijacking/>. 
+Acesso em: 20 mar. 2024. 
+Trata-se de um ataque cibernético para 
+obter o controle da sessão de um usuário.
+Técnicas utilizadas no sequestro de sessão:
+Ataques na Web –Parte 1
+Aula 01
+Visa assumir a identidade do usuário 
+legítimo para realizar ações em seu nome.
+Captura de Cookies de Sessão;
+1
+Predição de ID de Sessão;
+Ataque de Man-in-the-Middle (MitM);
+Ataque de Session Fixation.
+2
+3
+4
+
+PROTEÇÃO CONTRA 
+SEQUESTRO DE SESSÃO
+Ataques na Web –Parte 1
+Aula 01
+Técnicas utilizadas na proteção contra 
+sequestro de sessão:
+Fonte: ResearchGate.
+Disponível em: <https://www.researchgate.net/figure/HTTP-
+Session-Hijacking-of-Social-Network-Users_fig1_297812280>. 
+Acesso em: 20 mar. 2024. 
+Criptografia;
+1
+Autenticação Multifator (MFA);
+IDs de Sessão Aleatórios;
+Tempo de Expiração de Sessão;
+Validação de Origem
+2
+3
+4
+5
+Gerenciamento Seguro de 
+Cookies de Sessão.
+6
+
+CROSS-SITE REQUEST 
+FORGERY (CSRF)
+Fonte: Medium, 2021.
+Disponível em: <https://medium.com/@efraimmoreira333/csrf-cross-
+site-request-forgery-conceito-e-pr%C3%A1tica-9f51e091a4a>. 
+Acesso em: 20 mar. 2024. 
+É um ataque onde um invasor engana um 
+usuário legítimo que já está autenticado.
+Técnicas utilizadas na prevenção do CSRF:
+Ataques na Web –Parte 1
+Aula 01
+Assim, o usuário pode executar ações 
+não intencionais no site ou aplicativo.
+Token Anti-CSRF (CSRF Token);
+1
+Origens de Referência (Same-Site);
+Verificação de Origem (Origin);
+Requerer Confirmação de 
+Ações Críticas;
+2
+3
+4
+Tempo de Expiração 
+de Sessão.
+5
+
+CLICKJACKING
+Ataques na Web –Parte 1
+Aula 01
+Um invasor oculta ou mascara itens de 
+uma página web real utilizando uma outra 
+página maliciosa por trás.
+Fonte: Wallarm.
+Disponível em: < https://www.wallarm.com/what/what-is-
+clickjacking >. 
+Acesso em: 20 mar. 2024. 
+O usuário clica e pode estar executando 
+uma ação maliciosa e indesejada.
+Técnicas utilizadas na prevenção do 
+Clickjacking:
+Uso de Cabeçalhos HTTP como 
+X-Frame-Options;
+1
+Frame-Busting JavaScript;
+Políticas de Segurança de Conteúdo;
+Validação Visual.
+2
+3
+4
+
+SSL STRIP (REMOÇÃO 
+DE SSL)
+Fonte: Infilock, 2023.
+Disponível em: <https://infilock.io/blog/how-blockchain-can-
+prevent-ssl-tls-attacks/>. 
+Acesso em: 20 mar. 2024. 
+É um ataque direcionado a conexões 
+SSL/TLS.
+O tráfego é descriptografado e 
+redirecionado para um servidor malicioso.
+Ataques na Web –Parte 1
+Aula 01
+Visa interceptar o tráfego criptografado 
+entre um usuário e um servidor.
+Interceptação;
+1
+Redirecionamento;
+Descriptografia;
+Encaminhamento.
+2
+3
+4
+Funcionamento:
+
+SSL STRIP (REMOÇÃO DE SSL)
+Ataques na Web –Parte 1
+Aula 01
+Técnicas utilizadas na prevenção do 
+SSL Strip:
+Implementação de HTTPS Estrito 
+(Strict HTTPS);
+1
+HSTS (HTTP Strict Transport 
+Security);
+Certificados de Segurança e 
+Validação do Usuário;
+Rede Segura;
+2
+3
+4
+Segurança do Dispositivo.
+5
+
+Ataques e Proteção Web –
+Parte 1
+Você chegou ao final da Aula 01
+6

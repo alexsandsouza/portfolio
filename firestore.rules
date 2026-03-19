@@ -1,0 +1,13 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Coleção de ranking de atividades — acesso público
+    match /fametro_ranking/{doc} {
+      allow read, write: if true;
+    }
+    // Coleção de perfil comportamental — alunos escrevem, todos leem
+    match /perfil_comportamental/{doc} {
+      allow read, write: if true;
+    }
+  }
+}

@@ -1,0 +1,358 @@
+
+
+UNIDADE DIDÁTICA II  |  ENGENHARIA DE REQUISITOS | 2026.1
+Técnicas de Levantamento
+de Requisitos
+Do conceito à prática -com exemplos do dia a dia
+VORDEtnografiaWorkshops & Entrevistas
+Iniciantes em ES  |  Exemplos práticos do cotidiano  |  Pronto para sala de aula
+Professor Alexsander Farias
+CENTRO UNIVERSITÁRIO CEUNI -FAMETRO
+
+Por Que Levantar Requisitos é Difícil?
+O problema que todas as técnicas tentam resolver
+Antes de aprender qualquer técnica, entenda o problema:
+"O cliente sabe o que dói. Raramente sabe o que precisa.
+E quase nunca consegue verbalizar o que quer."
+Problema 1: O usuário fala o que acha 
+que quer
+Mas o que ele descreve e o que ele 
+realmente precisa são coisas diferentes. 
+Ele imagina a solução, não o problema.
+Problema 2: O usuário não sabe o que 
+não sabe
+Necessidades implícitas do dia a dia 
+ficam invisíveis. Ninguém fala do que é 
+óbvio —e óbvio para ele pode ser 
+novidade para o sistema.
+Problema 3: Stakeholders diferentes 
+querem coisas opostas
+O gestor quer controle total. O 
+funcionário quer privacidade. Sem 
+técnica, o conflito só aparece quando o 
+sistema já está pronto.
+
+Método VORD -O Que É?
+Viewpoint-Oriented Requirements Definition
+DEFINIÇÃO
+VORD é um método de levantamento de requisitos que organiza as 
+necessidades do sistema a partir dos diferentes pontos de vista 
+(viewpoints) de cada tipo de stakeholder.
+Em vez de misturar tudo numa lista única, o VORD separa: "O que o 
+SISTEMA 1 precisa?", "O que o SISTEMA 2 precisa?" —e depois analisa 
+onde eles se cruzam ou conflitam.
+Viewpoint = qualquer pessoa, sistema ou organização que tem 
+interesse no software ou é afetado por ele.
+AANALOGIA
+O VORD é como um fotógrafo que tira fotos 
+do mesmo casamento de vários ângulos.
+Noivos → emoção e detalhes românticos
+Buffet → comida e organização das mesas
+Convidados → diversão e interação social
+DJ → som, timing e dança
+Mãe da noiva → família e tradição
+Nenhuma foto está errada.
+Todas mostram o mesmo sistema
+de ângulos diferentes.
+
+VORD -Exemplo Prático: A Praça Pública
+Cada pessoa quer a mesma praça —mas uma praça diferente
+Você foi contratado para reformar uma praça. Antes de fazer qualquer projeto, você pergunta aos stakeholders o que eles 
+querem:
+Dona de casa
+"Espaço verde, tranquilo,
+bancos para conversar"
+Adolescente
+"Pista de skate,
+Wi-Fi gratuito"
+Dono do bar
+"Quiosques para vender,
+iluminação noturna"
+Prefeitura
+"Câmeras de segurança,
+baixo custo de manutenção"
+Perceba: o mesmo projeto tem 4 realidades diferentes. Se você ouvir só um, vai frustrar os outros três.
+
+VORD -Os 4 Passos
+Como aplicar na prática —exemplo: app de delivery
+01
+Identificar os Viewpoints
+Liste TODOS os tipos de pessoas/sistemas afetados.
+No delivery: cliente, restaurante, entregador, admin, 
+suporte.
+Pergunta-chave: "Quem se importa com esse sistema —e 
+por quê?"
+02
+Extrair Requisitos por Viewpoint
+Para cada viewpoint, pergunte: o que o sistema precisa 
+fazer PARA essa pessoa?
+Cliente quer rastrear o pedido. Entregador quer GPS. 
+Restaurante quer painel de pedidos.
+Cada viewpoint vive em um universo diferente de 
+necessidades.
+03
+Detectar Conflitos
+Coloque os requisitos lado a lado e procure 
+contradições.
+Cliente quer entrega barata Entregador quer ganhar 
+mais. Conflito real!
+Conflitos encontrados aqui custam infinitamente menos do 
+que conflitos encontrados em produção.
+04
+Documentar por Viewpoint
+Registre formalmente: "Do ponto de vista do cliente, o 
+sistema deve..."
+Isso facilita revisão, comunicação e rastreabilidade.
+Documento organizado por viewpoint é compreendido por 
+desenvolvedores E pelo cliente.
+
+VORD -Conflitos: O Coração do Método
+Onde viewpoints se contradizem -e o que fazer
+No app de delivery, conflitos reais entre viewpoints:
+Cliente
+"Entrega sempre barata"
+Entregador
+"Ganhar mais por entrega"
+Solução: taxa de entrega dinâmica + 
+subsídio em horários de pico
+Restaurante
+"Recusar pedidos sem penalidade"
+Cliente
+"Garantia que o pedido será aceito"
+Solução: limitar recusas por mês + 
+alerta ao cliente em tempo real
+Admin
+"Coletar máximo de dados do 
+usuário"
+Cliente
+"Privacidade e controle dos próprios 
+dados"
+Solução: dados mínimos obrigatórios 
++ opt-in para dados extras
+Detectar conflitos na fase de requisitos é 100x mais barato do que corrigir depois do desenvolvimento.
+
+Etnografia -O Que É e Por Que Existe?
+Quando perguntar não é suficiente
+O Caso do Caixa de Supermercado
+Você entrevistao gerente: "O sistema precisa registrar itens, calcular o total e emitir cupom." Parece completo. Você desenvolve. O 
+sistema entra em produção e os caixas reclamam: não dá para trocar de operador sem reiniciar, não tem atalho para banana a 
+granel, trava ao dividir pagamento em dois cartões. O gerente não sabia -porque ELE não opera o caixa.
+O QUE É ETNOGRAFIA
+Técnica originária da Antropologia. O analista vai até o 
+ambiente real do usuário e o observa trabalhando -sem 
+interferir, sem sugerir.
+A pergunta central muda completamente:
+"O que você precisa?"
+"Como você realmente faz isso?"
+INSIGHT CENTRAL
+Usuários mentem -sem querer.
+Não porque são desonestos, mas porque descrevem como 
+acham que deveriam agir, não como agem de fato.
+A Etnografia captura o comportamento real —não o 
+comportamento relatado.
+
+Etnografia -Como Aplicar na Prática
+Exemplo: sistema de rotas para motoboys de farmácia
+01
+Planejamento
+Defina o foco: o que vou observar?
+"Como os motoboys recebem e organizam as entregas 
+do dia?"
+Defina também a duração: meio dia, um dia, uma semana.
+02
+Imersão a Campo
+Vá até lá. Sente no canto. Observe sem roteiro fixo.
+Descoberta real: eles combinam rotas por WhatsApp. 
+Têm um caderninho físico com endereços 
+problemáticos.
+Não interrompa. Não sugira. Não critique. Só observe.
+03
+Registro das Gambiarras
+Anote tudo —especialmente os improvisos.
+Caderninho físico = requisito não atendido.
+Grupo no WhatsApp = necessidade de comunicação em 
+tempo real.
+Onde existe gambiarra, existe requisito escondido.
+04
+Transformar em Requisitos
+"Caderninho de endereços" → sistema deve permitir 
+anotações por endereço.
+"WhatsApp de rotas" → sistema precisa de 
+chat/notificação entre entregadores.
+Cada comportamento observado vira um requisito 
+potencial documentado.
+
+Etnografia -Quando Usar e a Analogia Final
+Três situações onde ela é insubstituível
+Usuários leigos em tecnologia
+Agricultora familiar, pescador artesanal, agente comunitário de saúde. Eles não vão 
+verbalizar "CRUD com filtro por data" -mas um dia observando o trabalho deles revela 
+tudo.
+Processos físicos e cheios de informais
+Galpão logístico, cozinha industrial, obra de construção. Dezenas de micro-decisões e 
+improvisos que nunca foram documentados -mas existem e são críticos.
+Quando entrevistas já falharam
+Se o cliente diz apenas "quero algo fácil de usar" sem conseguir detalhar: vá a campo. Ver 
+o trabalho real de um dia responde perguntas que horas de entrevistanão respondem.
+AANALOGIA
+Etnografia é como
+câmera escondida -mascom permissão.
+Se você quer saber como as pessoas se 
+comportam num supermercado de 
+verdade, você não pergunta.
+Você observa.
+As pessoas descrevem como acham que 
+deveriam agir. A câmera mostra como 
+agem.
+Etnografia NÃO é entrevistano local de trabalho. Entrevistar alguém na mesa dela ainda 
+é entrevista-você pede que ela verbalize. Etnografia é OBSERVAR ela trabalhando, não 
+falando sobre o trabalho.
+
+Entrevista -Do Conceito à Prática
+A técnica mais usada no levantamento de requisitos
+Conversa estruturada entre o analista e UM stakeholder de cada vez. O analista prepara perguntas e conduz para 
+entender a perspectiva individual daquela pessoa.
+ANTES
+→  Identifique quem entrevistar (1 por 
+viewpoint)
+→  Prepare perguntas específicas por perfil
+→  Comece com perguntas ABERTAS ("Me 
+conta como é seu dia de trabalho")
+→  Termine com perguntas FECHADAS para 
+confirmar detalhes
+DURANTE
+→  Escute mais do que fale -regra 80/20
+→  Afunile: geral → específico → detalhe
+→  Quando disser "sempre faço assim": 
+"Pode me mostrar um exemplo?"
+→  Anote ou grave (com permissão)
+DEPOIS
+→  Transcreva as informações relevantes 
+em até 24h
+→  Separe fatos de opiniões e suposições
+→  Transforme cada comportamento 
+descrito em um requisito
+→  Envie resumo ao entrevistado para 
+validação
+Entrevista é como uma consulta médica: individual, focada, confidencial. O paciente conta os sintomas, o médico faz perguntas, sai dali com diagnóstico 
+personalizado.
+
+Workshop -Do Conceito à Prática
+Quando o alinhamento coletivo é mais importante que a profundidade individual
+Sessão de trabalho em GRUPO (5 a 15 stakeholders) mediada por um facilitador. Objetivo: levantar, alinhar ou priorizar 
+requisitos coletivamente-especialmente quando há conflitos de visões.
+COMO FUNCIONA -Exemplo: sistema de ponto eletrônico
+Objective claro: "Alinhar como a hora extra será registrada"
+Convidar os stakeholders certos: RH, gestores, TI
+Cada grupo expõe sua perspectiva -sem julgamento
+Conflito: RH quer automático Gestor quer aprovação prévia
+Votação individual antes da discussão (evita dominância)
+Decisão acordada coletivamente → todos legitimam o resultado
+RISCO PRINCIPAL
+Dominância de voz: o diretor fala e ninguém 
+contradiz. Use post-its anônimos, votações 
+individuais e rodadas onde cada um fala por vez.
+Reunião de pais e mestres:
+→  Todo mundo na mesma sala
+→  Problemas visíveis para todos
+→  Decisão com legitimidade coletiva
+
+Workshop vs. Entrevista -Comparação Direta
+Nenhuma substitui aoutra —são complementares
+VS
+WORKSHOP
+FormatoGrupo —5 a 15 pessoas
+Duração4 a8 horas
+Melhor paraAlinhar visões conflitantes
+RiscoDominância de voz
+Quando usarInício do projeto, conflitos visíveis
+FerramentasPost-its, brainstorming, dot voting
+ENTREVISTA
+FormatoIndividual —1 a 1
+Duração30 a 90 minutos
+Melhor paraProfundidade individual
+RiscoVisão de túnel
+Quando usarDetalhar requisitos específicos
+FerramentasPerguntas abertas, escuta ativa
+Entrevista dá profundidade. Workshop dá alinhamento. Use as duas no mesmo projeto —em momentos diferentes.
+
+Como Escolher a Técnica Certa?
+Mapa de decisão —o que perguntar antes de escolher
+SE: Vários tipos de usuário com interesses diferentes
+→ VORD
+Ele organiza o mundo por perspectivas —sem 
+confundir necessidades opostas
+SE: Usuário leigo que não consegue verbalizar o que precisa
+→ Etnografia
+Ver o trabalho real revela o que nenhuma entrevista
+conseguiria extrair
+SE: Início do projeto com visões conflitantes entre áreas
+→ Workshop
+A decisão coletiva tem mais legitimidade —e 
+resolve conflitos na fonte
+SE: Um stakeholder-chave com conhecimento único e específico
+→ Entrevista
+Sem interrupções, você aprofunda ao máximo a 
+perspectiva dele
+SE: Stakeholders em cidades ou fusos diferentes
+→ Entrevista
+Pode ser feita individualmente, remota, sem reunir 
+todo mundo
+SE: Processo operacional com muitas etapas informais
+→ Etnografia
+Gambiarras e improvisos do dia a dia = requisitos 
+escondidos valiosos
+
+Resumo: As 3 Técnicas em Uma Visão
+Coloque no caderno —vai cair na prova e na vida real
+VORD
+O que é:
+Viewpoint-Oriented Requirements Definition
+Quando usar:
+Múltiplos stakeholderscom interesses distintos
+Como funciona:
+Identifica viewpoints → extrai requisitos → 
+detecta conflitos → documenta
+Analogia:
+Fotógrafo que tira o mesmo evento de 
+vários ângulos
+Exemplo:
+App de delivery: cliente, restaurante, 
+entregador, admin
+ETNOGRAFIA
+O que é:
+Observação participante em campo
+Quando usar:
+Usuário leigo ou processo cheio de etapas 
+informais
+Como funciona:
+Vai a campo → observa sem interferir → registra 
+gambiarras → transforma em requisitos
+Analogia:
+Câmera escondida —mascom permissão
+Exemplo:
+Observar garis por 3 dias antes de criar app de 
+logística
+WORKSHOP / ENTREVISTA
+O que é:
+Sessão coletiva ou conversa individual
+Quando usar:
+Alinhar visões (workshop) ou aprofundar 
+perspectiva (entrevista)
+Como funciona:
+Workshop: grupo + facilitador + dinâmicas | 
+Entrevista: 1 a 1 + perguntas abertas
+Analogia:
+Reunião de pais e mestres vs. Consulta 
+médica
+Exemplo:
+Workshop: conflito sobre horas extras | 
+Entrevista: advogado sênior e fluxo de contratos
+
+"Bons sistemas nascem de boas perguntas,
+não de boas suposições."
+VORD: nunca comece sem mapear todos os viewpoints
+Etnografia: onde tem gambiarra, tem requisito escondido
+Workshop: para conflitos que precisam de legitimidade coletiva
+Entrevista: para profundidade individual sem interrupções
+Próxima aula: Especificação de Requisitos & Casos de Uso  →
