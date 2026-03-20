@@ -246,7 +246,7 @@ export default function SOAula5Activity() {
   const [score, setScore] = useState(0);
   const [correctCount, setCorrectCount] = useState(0);
   const [wrongCount, setWrongCount] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(25);
+  const [timeLeft, setTimeLeft] = useState(180);
   const [totalTime, setTotalTime] = useState(0);
   const [answered, setAnswered] = useState(false);
   const [lifelines, setLifelines] = useState({ "50": true, skip: true, time: true });
@@ -288,7 +288,7 @@ export default function SOAula5Activity() {
     if (answered) return;
     setAnswered(true);
     setWrongCount((prev) => prev + 1);
-    setTotalTime((prev) => prev + 25);
+    setTotalTime((prev) => prev + 180);
   };
 
   const startQuiz = () => {
@@ -309,7 +309,7 @@ export default function SOAula5Activity() {
     setOptOrder(shuffle([0, 1, 2, 3]));
     setSelectedDisplayIdx(null);
     setAnswered(false);
-    setTimeLeft(25);
+    setTimeLeft(180);
   };
 
   const selectAnswer = (displayIdx, origIdx) => {
@@ -317,7 +317,7 @@ export default function SOAula5Activity() {
     clearInterval(timerRef.current);
     setAnswered(true);
     setSelectedDisplayIdx(displayIdx);
-    setTotalTime((prev) => prev + (25 - timeLeft));
+    setTotalTime((prev) => prev + (180 - timeLeft));
 
     const q = questions[qIndex];
     if (origIdx === q.correct) {
@@ -470,7 +470,7 @@ export default function SOAula5Activity() {
 
             <div style={{ display: "flex", justifyContent: "center", gap: "30px", marginBottom: "40px" }}>
               <div style={{ textAlign: "center" }}>
-                <div style={{ color: "#3b82f6", fontSize: "24px", fontWeight: "bold", fontFamily: "Orbitron" }}>25s</div>
+                <div style={{ color: "#3b82f6", fontSize: "24px", fontWeight: "bold", fontFamily: "Orbitron" }}>3min</div>
                 <div style={{ fontSize: "12px", color: "#64748b" }}>P/ QUESTÃO</div>
               </div>
               <div style={{ textAlign: "center" }}>
@@ -520,12 +520,14 @@ export default function SOAula5Activity() {
                     className="timer-bar" 
                     cx="30" cy="30" r="28" 
                     style={{ 
-                      strokeDashoffset: 175.9 * (1 - timeLeft / 25),
-                      stroke: timeLeft < 8 ? "#f87171" : "#3b82f6"
+                      strokeDashoffset: 175.9 * (1 - timeLeft / 180),
+                      stroke: timeLeft < 30 ? "#f87171" : "#3b82f6"
                     }} 
                    />
                 </svg>
-                <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "Orbitron", fontSize: "15px", fontWeight: "700", color: timeLeft < 8 ? "#f87171" : "#fff" }}>{timeLeft}s</div>
+                <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "Orbitron", fontSize: "14px", fontWeight: "700", color: timeLeft < 30 ? "#f87171" : "#fff" }}>
+                  {Math.floor(timeLeft / 60)}:{String(timeLeft % 60).padStart(2, '0')}
+                </div>
               </div>
 
               <div className="quiz-card">
