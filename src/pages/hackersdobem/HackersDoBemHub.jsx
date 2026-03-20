@@ -1,15 +1,103 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Shield, Trophy, Lock, Rocket, ChevronRight, Terminal } from 'lucide-react';
+import { Shield, Trophy, Lock, Rocket, ChevronRight, Terminal, CheckCircle } from 'lucide-react';
+import { getProgress } from './HDBProgress';
+import './HackersDoBem.css';
+
+function MatrixRain() {
+  const canvasRef = React.useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+
+    // Katakana + hacker chars
+    const chars = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789ABCDEF@#$%<>[]{}|/\\^~;:?!';
+
+    const fontSize = 14;
+    let columns, drops, animId;
+
+    const resize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      columns = Math.floor(canvas.width / fontSize);
+      drops = Array.from({ length: columns }, () => Math.random() * -50);
+    };
+
+    resize();
+
+    const draw = () => {
+      // Fading black overlay — controls trail length
+      ctx.fillStyle = 'rgba(10, 10, 18, 0.055)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.font = `${fontSize}px "Fira Code", monospace`;
+
+      for (let i = 0; i < drops.length; i++) {
+        const char = chars[Math.floor(Math.random() * chars.length)];
+        const x = i * fontSize;
+        const y = drops[i] * fontSize;
+
+        // Bright white-green "head" character
+        ctx.shadowBlur = 12;
+        ctx.shadowColor = '#00FF88';
+        ctx.fillStyle = '#CCFFE8';
+        ctx.fillText(char, x, y);
+
+        // Body trail — slightly dimmer (drawn on previous frames via fade)
+        ctx.shadowBlur = 0;
+
+        // Reset drop randomly after it passes bottom
+        if (y > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i] += 0.5 + Math.random() * 0.5;
+      }
+
+      animId = requestAnimationFrame(draw);
+    };
+
+    animId = requestAnimationFrame(draw);
+    window.addEventListener('resize', resize);
+
+    return () => {
+      cancelAnimationFrame(animId);
+      window.removeEventListener('resize', resize);
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      style={{
+        position: 'fixed',
+        top: 0, left: 0,
+        width: '100vw', height: '100vh',
+        pointerEvents: 'none',
+        zIndex: 0,
+        opacity: 0.55,
+      }}
+    />
+  );
+}
 
 export default function HackersDoBemHub() {
+  const [progress, setProgress] = useState(getProgress());
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
   useEffect(() => {
     window.scrollTo(0, 0);
+    setProgress(getProgress());
+    
+    const handleMouse = (e) => setMousePos({ x: e.clientX, y: e.clientY });
+    window.addEventListener('mousemove', handleMouse);
+    return () => window.removeEventListener('mousemove', handleMouse);
   }, []);
 
   const missions = [
     {
-      id: 1,
+      id: 'M05A01',
       title: 'Proteja a Rede da SeguraTech',
       module: 'Módulo 05 · Aula 01',
       description: 'Identifique contas e classifique as fases de onboarding e offboarding em um ambiente simulado.',
@@ -22,7 +110,7 @@ export default function HackersDoBemHub() {
       badges: ['20 min', '100 pts']
     },
     {
-      id: 2,
+      id: 'M04A03',
       title: 'Controles e Autenticação',
       module: 'Módulo 04 · Aula 03',
       description: 'Identifique as tecnologias ideais de autenticação e seus fatores.',
@@ -35,7 +123,7 @@ export default function HackersDoBemHub() {
       badges: ['15 min', '100 pts']
     },
     {
-      id: 3,
+      id: 'M04A04',
       title: 'Autenticação por Biometria',
       module: 'Módulo 04 · Aula 04',
       description: 'Explore reconhecimento facial, impressão digital, biometria comportamental e métricas como FRR, FAR e CER.',
@@ -48,7 +136,7 @@ export default function HackersDoBemHub() {
       badges: ['20 min', '100 pts']
     },
     {
-      id: 4,
+      id: 'EXTRA_M05',
       title: 'Atividade Extra - Módulo 05',
       module: 'Módulo 05 · Atividade Extra',
       description: 'Desafio extra de reforço sobre Tipos de Contas, Identidades e Gestão de Privilégios.',
@@ -61,7 +149,7 @@ export default function HackersDoBemHub() {
       badges: ['10 min', '100 pts']
     },
     {
-      id: 5,
+      id: 'M05A02',
       title: 'Políticas de Contas',
       module: 'Módulo 05 · Aula 02',
       description: 'Atributos, Geofencing, Permissões e Auditoria de Contas.',
@@ -74,7 +162,7 @@ export default function HackersDoBemHub() {
       badges: ['15 min', '100 pts']
     },
     {
-      id: 6,
+      id: 'M05A03',
       title: 'Soluções de Autorização',
       module: 'Módulo 05 · Aula 03',
       description: 'Modelos DAC, RBAC, MAC, protocolos SAML, LDAP e OAUTH.',
@@ -87,7 +175,7 @@ export default function HackersDoBemHub() {
       badges: ['20 min', '100 pts']
     },
     {
-      id: 7,
+      id: 'HDB_M5M6',
       title: 'Desafio Supremo M5 & M6',
       module: 'Módulo 05 e 06 · Aulas 04, 01 e 02',
       description: 'Enfrente o Jogo da Forca, Relacione as Colunas e Palavras Cruzadas sobre Proteção Web e Políticas de Pessoal.',
@@ -98,23 +186,53 @@ export default function HackersDoBemHub() {
       status: 'active',
       accentColor: '#06b6d4',
       badges: ['30 min', '500 pts']
+    },
+    {
+      id: 'HDB_M6M7',
+      title: 'Proteção Web & Backup',
+      module: 'Módulo 06 e 07 · Aulas 03 e 01/02',
+      description: 'Enfrente 20 desafios sobre Proteção Web, Redundância, Backup e Segurança Física em formatos variados.',
+      path: '/hackersdobem/atividade-m6-m7',
+      rankingPath: '/hackersdobem/ranking-m6-m7',
+      icon: <Lock size={24} color="#f43f5e" />,
+      buttonText: 'Iniciar Missão',
+      status: 'active',
+      accentColor: '#f43f5e',
+      badges: ['25 min', '200 pts']
+    },
+    {
+      id: 'HDB_M10',
+      title: 'Segurança no Host',
+      module: 'Módulo 10 · Aulas 01 a 04',
+      description: 'Blindagem de sistemas, AV vs EDR, Hardening e Gerenciamento de Patches para Endpoints.',
+      path: '/hackersdobem/atividade-m10',
+      rankingPath: '/hackersdobem/ranking-m10',
+      icon: <Shield size={24} color="#00FF88" />,
+      buttonText: 'Iniciar Defesa',
+      status: 'active',
+      accentColor: '#00FF88',
+      badges: ['30 min', '100 pts']
     }
   ];
 
   return (
-    <div style={{
+    <div className="hdb-scanlines" style={{
       minHeight: '100vh',
-      backgroundColor: '#0f172a',
+      backgroundColor: '#0A0A12',
       color: '#cbd5e1',
       padding: '8rem 1.5rem 4rem',
-      fontFamily: 'system-ui, -apple-system, sans-serif',
+      fontFamily: 'var(--hdb-main-font)',
       position: 'relative',
       overflow: 'hidden'
     }}>
+      <MatrixRain />
+      <div className="hdb-perspective-grid" />
+      <div className="hdb-aura-follow" style={{ left: mousePos.x, top: mousePos.y }} />
+
       {/* Background Effects */}
       <div style={{
         position: 'absolute', top: '-10%', left: '-10%', width: '40%', height: '40%',
-        backgroundColor: 'rgba(22, 163, 74, 0.15)', borderRadius: '50%', filter: 'blur(100px)', zIndex: 0, pointerEvents: 'none'
+        backgroundColor: 'rgba(0, 255, 136, 0.05)', borderRadius: '50%', filter: 'blur(100px)', zIndex: 0, pointerEvents: 'none'
       }}></div>
       <div style={{
         position: 'absolute', bottom: '-10%', right: '-10%', width: '40%', height: '40%',
@@ -134,7 +252,7 @@ export default function HackersDoBemHub() {
           <h1 style={{
             fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', fontWeight: '900', color: '#fff', margin: '0 0 1rem', letterSpacing: '-0.02em'
           }}>
-            Portal <span style={{
+            Portal <span className="hdb-glow-green" style={{
               background: 'linear-gradient(to right, #4ade80, #059669)',
               WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
               position: 'relative'
@@ -182,11 +300,13 @@ export default function HackersDoBemHub() {
 
         {/* Missions Grid */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
-          {missions.map((mission) => (
-            <div key={mission.id} className="hub-card" style={{
+          {missions.map((mission) => {
+            const isCompleted = progress.modules[mission.id];
+            return (
+            <div key={mission.id} className="hdb-card" style={{
               display: 'flex', flexDirection: 'column', padding: '2.5rem 2rem', borderRadius: '16px',
-              backgroundColor: mission.status === 'active' ? 'rgba(30, 41, 59, 0.7)' : 'rgba(15, 23, 42, 0.6)',
-              border: `1px solid ${mission.status === 'active' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(255, 255, 255, 0.05)'}`,
+              backgroundColor: isCompleted ? 'rgba(0, 255, 136, 0.03)' : 'rgba(30, 41, 59, 0.7)',
+              border: `1px solid ${isCompleted ? '#00FF8844' : 'rgba(255, 255, 255, 0.1)'}`,
               backdropFilter: 'blur(10px)',
               transition: 'all 0.3s ease',
               position: 'relative', overflow: 'hidden',
@@ -197,9 +317,10 @@ export default function HackersDoBemHub() {
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1.5rem' }}>
                 <div style={{
                   padding: '0.75rem', borderRadius: '12px', backgroundColor: 'rgba(0, 0, 0, 0.3)',
-                  border: '1px solid rgba(255, 255, 255, 0.05)', display: 'inline-flex'
+                  border: `1px solid ${isCompleted ? '#00FF8888' : 'rgba(255, 255, 255, 0.05)'}`, display: 'inline-flex',
+                  boxShadow: isCompleted ? '0 0 15px rgba(0, 255, 136, 0.2)' : 'none'
                 }}>
-                  {mission.icon}
+                  {isCompleted ? <CheckCircle size={24} color="#00FF88" /> : mission.icon}
                 </div>
                 {mission.badges && (
                   <div style={{ display: 'flex', gap: '0.5rem' }}>
@@ -221,7 +342,7 @@ export default function HackersDoBemHub() {
                 <div style={{ fontSize: '0.75rem', fontFamily: 'monospace', letterSpacing: '0.1em', color: '#94a3b8', marginBottom: '0.5rem', textTransform: 'uppercase' }}>
                   {mission.module}
                 </div>
-                <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#fff', margin: '0 0 0.75rem', lineHeight: '1.3' }}>
+                <h3 className="hdb-glow-blue" style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#fff', margin: '0 0 0.75rem', lineHeight: '1.3' }}>
                   {mission.title}
                 </h3>
                 <p style={{ fontSize: '0.875rem', color: '#cbd5e1', lineHeight: '1.5' }}>
@@ -233,16 +354,16 @@ export default function HackersDoBemHub() {
               <div style={{ marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
                 {mission.status === 'active' ? (
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                    <Link to={mission.path} className="hub-btn" style={{
-                      display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', boxSizing: 'border-box',
-                      padding: '0.875rem 1.25rem', borderRadius: '12px', backgroundColor: 'rgba(15, 23, 42, 0.8)',
-                      color: '#fff', fontWeight: '600', fontSize: '0.875rem', textDecoration: 'none',
-                      border: '1px solid rgba(255,255,255,0.1)', transition: 'all 0.2s',
-                      '--hover-bg': mission.accentColor
-                    }}>
-                      <span>{mission.buttonText}</span>
-                      <ChevronRight size={18} className="btn-icon" />
-                    </Link>
+                      <Link to={mission.path} className="hdb-btn-neon" style={{
+                        display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', boxSizing: 'border-box',
+                        padding: '0.875rem 1.25rem', borderRadius: '12px', backgroundColor: isCompleted ? '#00FF88' : 'rgba(15, 23, 42, 0.8)',
+                        color: isCompleted ? '#000' : '#fff', fontWeight: '800', fontSize: '0.875rem', textDecoration: 'none',
+                        border: '1px solid rgba(255,255,255,0.1)', transition: 'all 0.2s',
+                        '--hover-bg': mission.accentColor
+                      }}>
+                        <span>{isCompleted ? 'Refazer Missão' : mission.buttonText}</span>
+                        <ChevronRight size={18} className="btn-icon" />
+                      </Link>
                     {mission.rankingPath && (
                       <Link to={mission.rankingPath} style={{
                         display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px',
@@ -273,7 +394,8 @@ export default function HackersDoBemHub() {
                 )}
               </div>
             </div>
-          ))}
+            );
+          })}
 
           {/* Decorative Card */}
           <div style={{
