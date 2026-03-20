@@ -216,6 +216,216 @@ const QUESTION_BANK = [
     ],
     correct: 2,
     explanation: "Para alta performance: blocos permitem acesso paralelo, DMA move dados sem CPU, interrupções evitam perda de tempo e Buffering duplo permite ler enquanto processa."
+  },
+  {
+    id: 16,
+    level: "Nível 1 — RAID",
+    scenario: "Sua empresa precisa que os dados sejam salvos simultaneamente em dois discos diferentes para garantir que, se um falhar, o outro continue funcionando.",
+    text: "Qual nível de RAID (espelhamento) deve ser configurado?",
+    options: [
+      { letter: "A", text: "RAID 0" },
+      { letter: "B", text: "RAID 1" },
+      { letter: "C", text: "RAID 5" },
+      { letter: "D", text: "JBOD" },
+    ],
+    correct: 1,
+    explanation: "RAID 1 (Mirroring) cria uma cópia idêntica dos dados em dois ou mais discos, oferecendo alta tolerância a falhas."
+  },
+  {
+    id: 17,
+    level: "Nível 1 — Performance",
+    scenario: "Um editor de vídeo profissional exige que o sistema de armazenamento seja o mais rápido possível para ler arquivos 8K, sem se importar com a perda de dados em caso de falha física.",
+    text: "Qual configuração de RAID (Striping) prioriza puramente o desempenho de leitura/escrita?",
+    options: [
+      { letter: "A", text: "RAID 0" },
+      { letter: "B", text: "RAID 1" },
+      { letter: "C", text: "RAID 5" },
+      { letter: "D", text: "RAID 6" },
+    ],
+    correct: 0,
+    explanation: "RAID 0 divide os dados entre os discos (striping), permitindo acesso paralelo e alta velocidade, mas sem redundância."
+  },
+  {
+    id: 18,
+    level: "Nível 2 — SSD",
+    scenario: "Ao comprar um SSD NVMe, você lê no manual que o dispositivo utiliza células de memória Flash que se desgastam conforme são gravadas.",
+    text: "Qual técnica interna do controlador do SSD garante que todas as células se desgastem por igual, aumentando a vida útil?",
+    options: [
+      { letter: "A", text: "Overclocking de Memória." },
+      { letter: "B", text: "Wear Leveling (Nivelamento de Desgaste)." },
+      { letter: "C", text: "Defragmentação Automática." },
+      { letter: "D", text: "RAID Logístico de Célula." },
+    ],
+    correct: 1,
+    explanation: "Wear Leveling é o algoritmo que distribui as gravações por todas as células do SSD para evitar que algumas falhem antes das outras."
+  },
+  {
+    id: 19,
+    level: "Nível 2 — Dispositivos",
+    scenario: "Você está analisando a placa-mãe de um servidor moderno e percebe que ele não usa mais cabos IDE largos de 40 pinos, mas sim cabos finos para os discos.",
+    text: "Qual interface serial substituiu o padrão IDE (PATA) nos computadores modernos?",
+    options: [
+      { letter: "A", text: "SCSI" },
+      { letter: "B", text: "SATA" },
+      { letter: "C", text: "ISA" },
+      { letter: "D", text: "AGP" },
+    ],
+    correct: 1,
+    explanation: "O padrão SATA (Serial ATA) substituiu o IDE paralelo devido à maior velocidade e cabos menores que facilitam a ventilação."
+  },
+  {
+    id: 20,
+    level: "Nível 3 — Escalonamento",
+    scenario: "O braço de leitura do HD está na trilha 50. Há pedidos para as trilhas 55, 120 e 10. O SO decide atender primeiro o pedido da trilha 55.",
+    text: "Qual algoritmo de escalonamento de disco prioriza o pedido com a menor distância física da cabeça de leitura?",
+    options: [
+      { letter: "A", text: "FCFS (First-Come, First-Served)." },
+      { letter: "B", text: "SSTF (Shortest Seek Time First)." },
+      { letter: "C", text: "SCAN (Elevator)." },
+      { letter: "D", text: "Look-Ahead Buffering." },
+    ],
+    correct: 1,
+    explanation: "O SSTF move o braço do disco para o pedido mais próximo da posição atual, minimizando o tempo de busca (seek time)."
+  },
+  {
+    id: 21,
+    level: "Nível 3 — Escalonamento",
+    scenario: "Em um servidor com muitos usuários, o algoritmo de disco SCAN corre o risco de deixar pedidos nas extremidades esperando por muito tempo.",
+    text: "Qual variação do algoritmo SCAN volta imediatamente para o início do disco sem atender pedidos na volta, garantindo espera mais uniforme?",
+    options: [
+      { letter: "A", text: "SCAN Circular (C-SCAN)." },
+      { letter: "B", text: "SSTF Dinâmico." },
+      { letter: "C", text: "RAID Linear." },
+      { letter: "D", text: "LIFO (Last-In, First-Out)." },
+    ],
+    correct: 0,
+    explanation: "O C-SCAN percorre o disco em um sentido atendendo pedidos e, ao chegar no fim, retorna ao início sem processar dados, criando um fluxo circular."
+  },
+  {
+    id: 22,
+    level: "Nível 4 — RAID",
+    scenario: "Um servidor possui 4 discos de 1 TB. O gestor quer redundância contra a falha de UM disco, mas deseja usar o máximo de espaço possível.",
+    text: "Qual nível de RAID utiliza paridade distribuída entre os discos para oferecer segurança com economia de espaço?",
+    options: [
+      { letter: "A", text: "RAID 0" },
+      { letter: "B", text: "RAID 1" },
+      { letter: "C", text: "RAID 5" },
+      { letter: "D", text: "RAID 10" },
+    ],
+    correct: 2,
+    explanation: "RAID 5 utiliza paridade distribuída, exigindo pelo menos 3 discos. Ele suporta a falha de um disco sem perda de dados."
+  },
+  {
+    id: 23,
+    level: "Nível 4 — Hardware",
+    scenario: "A CPU precisa enviar comandos para a placa de vídeo. Em vez de usar instruções especiais de hardware, ela escreve em endereços que parecem memória RAM, mas são da GPU.",
+    text: "Como se chama essa técnica de mapear registradores de hardware no espaço de endereçamento da memória principal?",
+    options: [
+      { letter: "A", text: "Instruções Privilegiadas." },
+      { letter: "B", text: "Memory-Mapped I/O (E/S Mapeada em Memória)." },
+      { letter: "C", text: "Swap de Barramento." },
+      { letter: "D", text: "DMA Reverso." },
+    ],
+    correct: 1,
+    explanation: "No Memory-Mapped I/O, o SO acessa o hardware lendo e escrevendo em endereços específicos da memória, simplificando a programação de drivers."
+  },
+  {
+    id: 24,
+    level: "Nível 5 — Cache vs Buffer",
+    scenario: "O SO mantém uma cópia dos arquivos mais acessados do HD na memória RAM rápida para evitar ler o disco lento novamente.",
+    text: "Nesse contexto de otimização de E/S, qual o nome dessa técnica de armazenamento?",
+    options: [
+      { letter: "A", text: "Buffering Sequencial." },
+      { letter: "B", text: "Caching de Disco." },
+      { letter: "C", text: "Spooling de Caractere." },
+      { letter: "D", text: "Polling Dinâmico." },
+    ],
+    correct: 1,
+    explanation: "Caching armazena cópias de dados de dispositivos lentos em mídias rápidas (RAM) para acelerar acessos futuros repetidos."
+  },
+  {
+    id: 25,
+    level: "Nível 5 — Interrupções",
+    scenario: "Um dispositivo envia uma interrupção para a CPU. A CPU consulta uma tabela na memória para saber exatamente qual rotina (handler) deve executar.",
+    text: "Qual o nome técnico para o índice fornecido pelo hardware que aponta para o endereço da rotina de tratamento?",
+    options: [
+      { letter: "A", text: "Vetor de Interrupção." },
+      { letter: "B", text: "Checksum de Loop." },
+      { letter: "C", text: "Ponteiro de Barramento." },
+      { letter: "D", text: "Flag de Status." },
+    ],
+    correct: 0,
+    explanation: "O Vetor de Interrupções redireciona a CPU para o código correto de tratamento correspondente ao hardware que gerou o sinal."
+  },
+  {
+    id: 26,
+    level: "Nível 6 — Sistema de Arquivos",
+    scenario: "Quando um programa em C executa 'fprintf(file_ptr, ...)', ele não fala com o disco, mas usa uma abstração do sistema.",
+    text: "Qual camada de software do SO fornece as bibliotecas e chamadas de sistema (system calls) para o usuário manipular E/S?",
+    options: [
+      { letter: "A", text: "BIOS/Firmware." },
+      { letter: "B", text: "Kernel/Camada de E/S do SO." },
+      { letter: "C", text: "Hardware Controller." },
+      { letter: "D", text: "Unidade de Controle da CPU." },
+    ],
+    correct: 1,
+    explanation: "O Kernel fornece uma interface uniforme (como open, read, write) que esconde a complexidade do hardware para o programador."
+  },
+  {
+    id: 27,
+    level: "Nível 6 — Buffering Duplo",
+    scenario: "Um player de áudio usa dois buffers na memória. Enquanto a placa de som 'toca' o conteúdo do Buffer A, a CPU preenche o Buffer B com a próxima parte da música.",
+    text: "Qual a vantagem principal do Buffering Duplo nesse cenário?",
+    options: [
+      { letter: "A", text: "Dobrar a capacidade de armazenamento do disco rígido." },
+      { letter: "B", text: "Permitir que a produção e o consumo de dados ocorram simultaneamente." },
+      { letter: "C", text: "Reduzir o consumo de energia da bateria." },
+      { letter: "D", text: "Eliminar a necessidade de drivers de som." },
+    ],
+    correct: 1,
+    explanation: "O Buffering Duplo desacopla produtores e consumidores de dados, permitindo que o processamento continue sem pausas entre as transferências."
+  },
+  {
+    id: 28,
+    level: "Nível 7 — RAID 10",
+    scenario: "Um administrador de redes busca o compromisso entre a velocidade do RAID 0 e a segurança do RAID 1.",
+    text: "Qual configuração combina esses dois níveis criando um 'espelhamento de tiras'?",
+    options: [
+      { letter: "A", text: "RAID 2" },
+      { letter: "B", text: "RAID 5" },
+      { letter: "C", text: "RAID 10 (1+0)" },
+      { letter: "D", text: "RAID 0+5" },
+    ],
+    correct: 2,
+    explanation: "O RAID 10 combina RAID 1 e RAID 0, oferecendo o desempenho do striping com a segurança robusta do espelhamento."
+  },
+  {
+    id: 29,
+    level: "Nível 7 — Overrun",
+    scenario: "Uma porta serial está recebendo dados. Se a CPU demorar demais para ler o registrador de dados antes que o próximo bit chegue, o dado antigo é sobrescrito.",
+    text: "Qual o nome técnico para essa perda de dados por falha de sincronia temporal?",
+    options: [
+      { letter: "A", text: "Data Underflow." },
+      { letter: "B", text: "Overrun Error." },
+      { letter: "C", text: "Bit Flipping." },
+      { letter: "D", text: "Parity Mismatch." },
+    ],
+    correct: 1,
+    explanation: "O erro de Overrun ocorre quando um hardware recebe novos dados antes que os anteriores tenham sido processados ou movidos pelo SO."
+  },
+  {
+    id: 30,
+    level: "⚔️ BOSS FINAL",
+    scenario: "Em um datacenter que armazena trilhões de pequenas fotos, o sistema de armazenamento deve ser resiliente à falha de até DOIS discos simultâneos sem perda de dados.",
+    text: "Qual nível de RAID avançado utiliza paridade dupla para sobreviver a essa falha crítica?",
+    options: [
+      { letter: "A", text: "RAID 0+1" },
+      { letter: "B", text: "RAID 5" },
+      { letter: "C", text: "RAID 6" },
+      { letter: "D", text: "RAID linear." },
+    ],
+    correct: 2,
+    explanation: "O RAID 6 utiliza dois esquemas de paridade diferentes, permitindo que o sistema continue operacional mesmo se dois discos falharem ao mesmo tempo."
   }
 ];
 
@@ -293,15 +503,34 @@ export default function SOAula5Activity() {
 
   const startQuiz = () => {
     if (playerName.trim().length < 2) return;
-    const shuffled = shuffle(QUESTION_BANK);
-    setQuestions(shuffled);
+    
+    // Select balanced questions (2 per level 1-7, 1 for BOSS)
+    const selectBalanced = () => {
+      const levels = [
+        "Nível 1", "Nível 2", "Nível 3", "Nível 4", "Nível 5", "Nível 6", "Nível 7"
+      ];
+      let selected = [];
+      
+      levels.forEach(lvl => {
+        const pool = QUESTION_BANK.filter(q => q.level.includes(lvl));
+        selected = [...selected, ...shuffle(pool).slice(0, 2)];
+      });
+      
+      const bossPool = QUESTION_BANK.filter(q => q.level.includes("BOSS"));
+      selected = [...selected, ...shuffle(bossPool).slice(0, 1)];
+      
+      return selected;
+    };
+
+    const picked = selectBalanced();
+    setQuestions(picked);
     setQIndex(0);
     setScore(0);
     setCorrectCount(0);
     setWrongCount(0);
     setTotalTime(0);
     setLifelines({ "50": true, skip: true, time: true });
-    prepareQuestion(shuffled[0]);
+    prepareQuestion(picked[0]);
     setScreen("quiz");
   };
 
