@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { Link } from 'react-router-dom';
 import { db } from '../../../../firebase';
 import { collection, query, onSnapshot, getDocs, deleteDoc, doc, limit } from 'firebase/firestore';
 
@@ -103,6 +104,11 @@ export default function SORankingAula5() {
       `}</style>
 
       <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
+        {/* BACK LINK */}
+        <Link to="/fametro" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', color: '#64748b', textDecoration: 'none', fontSize: '13px', marginBottom: '20px', transition: '0.2s' }}>
+          <span style={{ fontSize: '18px' }}>←</span> VOLTAR AO HUB DE DISCIPLINAS
+        </Link>
+
         {/* HEADER */}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "40px", flexWrap: "wrap", gap: "20px" }}>
           <div>

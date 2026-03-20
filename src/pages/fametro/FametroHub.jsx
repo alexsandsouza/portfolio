@@ -109,7 +109,7 @@ export default function FametroHub() {
       institution: 'Centro Universitário FAMETRO',
       professor: 'Alexsander Farias',
       period: '2026.1',
-      description: 'Missão: Gerenciamento de E/S. Domine Drivers, DMA, Polling e a classificação de periféricos neste desafio com cronômetro e ranking!',
+      description: 'Missão I/O: 15 etapas de pura tecnologia! Domine Drivers, DMA e Interrupções no estilo Hackers do Bem, com XP progressivo e ranking ao vivo.',
       path: '/fametro/so/aula5',
       rankingPath: '/fametro/so/aula5/ranking',
       icon: <Rocket size={24} color="#3b82f6" />,
