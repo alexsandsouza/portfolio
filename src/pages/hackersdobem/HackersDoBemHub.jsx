@@ -212,6 +212,32 @@ export default function HackersDoBemHub() {
       status: 'active',
       accentColor: '#00FF88',
       badges: ['30 min', '100 pts']
+    },
+    {
+      id: 'HDB_M11',
+      title: 'Segurança em Redes',
+      module: 'Módulo 11 · Aulas 01 a 04',
+      description: 'Zonas Desmilitarizadas, IDS/IPS, Network TAP, UEBA e Segurança em Encaminhamento.',
+      path: '/hackersdobem/atividade-m11',
+      rankingPath: '/hackersdobem/ranking-m11',
+      icon: <Terminal size={24} color="#00e5ff" />,
+      buttonText: 'Inspecionar Tráfego',
+      status: 'active',
+      accentColor: '#00e5ff',
+      badges: ['30 min', '100 pts']
+    },
+    {
+      id: 'HDB_M12',
+      title: 'Resposta a Incidentes',
+      module: 'Módulo 12 · Aulas 01 a 04',
+      description: 'Cyber Kill Chain, MITRE ATT&CK, CSIRT, Security Protocols e Gestão de Logs/SIEM.',
+      path: '/hackersdobem/atividade-m12',
+      rankingPath: '/hackersdobem/ranking-m12',
+      icon: <Terminal size={24} color="#f59e0b" />,
+      buttonText: 'Mitigar Incidentes',
+      status: 'active',
+      accentColor: '#f59e0b',
+      badges: ['30 min', '100 pts']
     }
   ];
 

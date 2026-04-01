@@ -54,6 +54,14 @@ const AtividadeM5A03 = lazy(() => import('./pages/hackersdobem/atividade_m5a03')
 const RankingM5A03 = lazy(() => import('./pages/hackersdobem/ranking_m5a03'));
 const AtividadeM5M6Desafio = lazy(() => import('./pages/hackersdobem/atividade_m5m6_desafio'));
 const RankingM5M6Desafio = lazy(() => import('./pages/hackersdobem/ranking_m5m6_desafio'));
+const AtividadeHDBM6M7 = lazy(() => import('./pages/hackersdobem/atividade_m6_m7'));
+const RankingHDBM6M7 = lazy(() => import('./pages/hackersdobem/ranking_m6_m7'));
+const AtividadeHDBM10 = lazy(() => import('./pages/hackersdobem/atividade_m10'));
+const RankingHDBM10 = lazy(() => import('./pages/hackersdobem/ranking_m10'));
+const AtividadeHDBM11 = lazy(() => import('./pages/hackersdobem/atividade_m11'));
+const RankingHDBM11 = lazy(() => import('./pages/hackersdobem/ranking_m11'));
+const AtividadeHDBM12 = lazy(() => import('./pages/hackersdobem/atividade_m12'));
+const RankingHDBM12 = lazy(() => import('./pages/hackersdobem/ranking_m12'));
 const FametroHub = lazy(() => import('./pages/fametro/FametroHub'));
 const POOActivity = lazy(() => import('./pages/fametro/disciplinas/POO/POOActivity'));
 const POOJavaActivity = lazy(() => import('./pages/fametro/disciplinas/POO/POOJavaActivity'));
@@ -70,6 +78,8 @@ const SORankingAula5 = lazy(() => import('./pages/fametro/disciplinas/SO/SORanki
 const MatrizesActivity = lazy(() => import('./pages/fametro/disciplinas/AED/MatrizesActivity'));
 const MatrizesRanking = lazy(() => import('./pages/fametro/disciplinas/AED/MatrizesRanking'));
 const MatrizesLab = lazy(() => import('./pages/fametro/disciplinas/AED/MatrizesLab'));
+const TecnologiaWebActivity = lazy(() => import('./pages/fametro/disciplinas/TecnologiaWeb/HTMLSemanticActivity'));
+const TecnologiaWebRanking = lazy(() => import('./pages/fametro/disciplinas/TecnologiaWeb/RankingHTMLSemantic'));
 const Inovatech2026 = lazy(() => import('./pages/Inovatech2026'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
@@ -159,6 +169,14 @@ function App() {
           <Route path="/hackersdobem/ranking-m5a03" element={<RankingM5A03 />} />
           <Route path="/hackersdobem/desafio-m5-m6" element={<AtividadeM5M6Desafio />} />
           <Route path="/hackersdobem/ranking-m5m6" element={<RankingM5M6Desafio />} />
+          <Route path="/hackersdobem/atividade-m6-m7" element={<AtividadeHDBM6M7 />} />
+          <Route path="/hackersdobem/ranking-m6-m7" element={<RankingHDBM6M7 />} />
+          <Route path="/hackersdobem/atividade-m10" element={<AtividadeHDBM10 />} />
+          <Route path="/hackersdobem/ranking-m10" element={<RankingHDBM10 />} />
+          <Route path="/hackersdobem/atividade-m11" element={<AtividadeHDBM11 />} />
+          <Route path="/hackersdobem/ranking-m11" element={<RankingHDBM11 />} />
+          <Route path="/hackersdobem/atividade-m12" element={<AtividadeHDBM12 />} />
+          <Route path="/hackersdobem/ranking-m12" element={<RankingHDBM12 />} />
           <Route path="/fametro" element={<FametroHub />} />
           <Route path="/fametro/poo/atividade" element={<POOActivity />} />
           <Route path="/fametro/poo/java-atividade" element={<POOJavaActivity />} />
@@ -175,6 +193,8 @@ function App() {
           <Route path="/fametro/aed/matrizes" element={<MatrizesActivity />} />
           <Route path="/fametro/aed/matrizes/ranking" element={<MatrizesRanking />} />
           <Route path="/fametro/aed/matrizes/lab" element={<MatrizesLab />} />
+          <Route path="/fametro/tecnologia-web/html-semantico" element={<TecnologiaWebActivity />} />
+          <Route path="/fametro/tecnologia-web/html-semantico/ranking" element={<TecnologiaWebRanking />} />
           <Route path="/inovatech2026" element={<Inovatech2026 />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
