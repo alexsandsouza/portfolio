@@ -358,7 +358,7 @@ const Navbar = ({ triggerMatrix }) => {
                             <h3 style={{ color: '#333', marginBottom: '1rem' }}>Scan Me! 📱</h3>
                             <div style={{ background: '#fff', padding: '10px', borderRadius: '10px', display: 'inline-block' }}>
                                 <img
-                                    src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://alexsander-farias.vercel.app"
+                                    src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://alexsanderfarias\.vercel\.app"
                                     alt="QR Code"
                                     style={{ display: 'block' }}
                                 />

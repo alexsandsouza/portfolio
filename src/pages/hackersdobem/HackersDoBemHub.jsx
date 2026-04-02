@@ -410,10 +410,10 @@ export default function HackersDoBemHub() {
               padding: '10px 16px', fontSize: '0.8rem', color: '#94a3b8',
               fontFamily: 'monospace', letterSpacing: '0.02em', whiteSpace: 'nowrap',
               overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '300px'
-            }}>alexsander-farias.vercel.app/hackersdobem</div>
+            }}>alexsanderfarias\.vercel\.app/hackersdobem</div>
             <button
               onClick={() => {
-                navigator.clipboard.writeText('https://alexsander-farias.vercel.app/hackersdobem');
+                navigator.clipboard.writeText('https://alexsanderfarias\.vercel\.app/hackersdobem');
                 const btn = document.getElementById('copy-btn-hub');
                 if (btn) { btn.textContent = '✓ Copiado!'; btn.style.color = '#4ade80'; setTimeout(() => { btn.textContent = 'Copiar'; btn.style.color = '#94a3b8'; }, 2000); }
               }}

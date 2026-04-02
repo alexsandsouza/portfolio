@@ -178,7 +178,7 @@ const Resume = () => {
                             </div>
                             <div>
                                 <strong style={{ display: 'block', marginBottom: '2px', opacity: 0.7 }}>Site</strong>
-                                <a href="https://alexsander-farias.vercel.app" target="_blank" style={{ color: '#fff', textDecoration: 'none', display: 'flex', alignItems: 'flex-start', gap: '6px', wordBreak: 'break-all', lineHeight: 1.2 }}><Globe size={12} /> https://alexsander-farias.vercel.app</a>
+                                <a href="https://alexsanderfarias\.vercel\.app" target="_blank" style={{ color: '#fff', textDecoration: 'none', display: 'flex', alignItems: 'flex-start', gap: '6px', wordBreak: 'break-all', lineHeight: 1.2 }}><Globe size={12} /> https://alexsanderfarias\.vercel\.app</a>
                             </div>
                         </div>
                     </section>

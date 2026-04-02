@@ -19,7 +19,7 @@ const MentorshipPage = () => {
             <SEO
                 title="Mentoria Carreira TI do Zero | Inscrições Abertas"
                 description="Garanta sua vaga na Mentoria Estratégica. 8 encontros ao vivo, roadmap personalizado e acompanhamento para entrar na área de TI em 2026."
-                image="https://alexsander-farias.vercel.app/Marketing_Mentoria/Slide1.JPG"
+                image="https://alexsanderfarias\.vercel\.app/Marketing_Mentoria/Slide1.JPG"
             />
             <Navbar />
 
@@ -96,13 +96,13 @@ const MentorshipPage = () => {
 
                         <div style={{ background: '#f0f0f0', padding: '15px', borderRadius: '15px', display: 'inline-block', marginBottom: '1rem' }}>
                             <img
-                                src={`https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://alexsander-farias.vercel.app/mentoria`}
+                                src={`https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://alexsanderfarias\.vercel\.app/mentoria`}
                                 alt="QR Code Mentoria"
                                 style={{ display: 'block', width: '200px', height: '200px' }}
                             />
                         </div>
                         <p style={{ color: 'var(--primary-color)', fontWeight: 'bold', fontSize: '0.8rem' }}>
-                            alexsander-farias.vercel.app/mentoria
+                            alexsanderfarias\.vercel\.app/mentoria
                         </p>
                     </div>
                 </div>
