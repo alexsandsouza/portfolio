@@ -1,0 +1,339 @@
+
+
+Módulo 04
+Controles de Acesso
+Aula 01
+Gerenciamento de Identidade 
+e Acesso
+4
+
+Introdução
+Nesta aula serão discutidos os conceitos básicos do gerenciamento de 
+identidade e acesso a sistemas, como:
+Fatoresde Autenticação: Knowledge, Ownershipe Biometric Factor;
+Atributos de Autenticação: Local, Comportamental, Baseado em algo 
+que você exibe e em alguém que você conhece;
+Design de Autenticação; e
+Multifatorde Autenticação.
+
+Conceitos em Projetos de 
+Autenticação
+Gerenciamento de Identidade e Acesso
+Aula 01
+
+Os objetos são os recursos: redes, 
+servidores, bancos de dados, arquivos.
+Os sujeitos representam os usuários, 
+dispositivos ou processos que solicitam 
+acesso a um recurso.
+IdentityandAccess Management (IAM) 
+é o conjunto de controles técnicos que 
+determinam como os sujeitos podem 
+interagir com os objetos.
+GERENCIAMENTO DE IDENTIDADE 
+E ACESSO (IAM)
+Gerenciamento de Identidade e Acesso
+Aula 01
+Fonte: BIP Brasil
+Disponível em: <https://bipbrasil.com.br/iam-gerenciamento-de-
+identidades-e-ciberseguranca/>. 
+Acesso em: 25 mar. 2024. 
+
+Gerenciamento de Identidade e Acesso
+Aula 01
+Refere-se a atribuição de uma 
+identidade única para cada usuário.
+Inclui a criação de uma Conta ou ID 
+que representa um usuário, 
+dispositivo ou processo na rede.
+É o primeiro passo no 
+reconhecimento e diferenciação dos 
+usuários individualmente.
+Um sistema de gerenciamento de identidade 
+e acesso (IAM) pode ser descrito em termos 
+de quatro processos principais:
+GERENCIAMENTO DE 
+IDENTIDADE E ACESSO (IAM)
+Identificação
+1
+
+Aula 01
+Gerenciamento de Identidade e Acesso
+GERENCIAMENTO DE 
+IDENTIDADE E ACESSO (IAM)
+Autenticação
+2
+Processo que verifica a legitimidade 
+da identidade.
+Comprova que um sujeito é quem 
+afirma ser quando tenta acessar o 
+recurso.
+Assim garante que apenas usuários 
+autorizados tenham acesso aos 
+recursos do sistema.
+
+Determina as permissões e 
+privilégios de cada usuário 
+autenticado.
+Baseia-se nas políticas de 
+segurança e no perfil de cada 
+um.
+Garante que os usuários tenham 
+acesso apenas aos recursos e 
+informações relevantes às suas 
+funções e responsabilidades.
+GERENCIAMENTO DE 
+IDENTIDADE E ACESSO (IAM)
+Aula 01
+Gerenciamento de Identidade e Acesso
+Autorização
+3
+Fonte: Medium
+Disponível em: <https://medium.com/@audira98/authorization-and-
+authentication-cd0a7c994278>. 
+Acesso em: 25 mar. 2024. 
+
+Gerenciamento de Identidade e Acesso
+Aula 01
+Accounting, ou contabilidade, 
+refere-se ao processo de 
+monitoramento, registro e análise 
+sistemática de eventos e atividades.
+O rastreamento cria uma trilha de 
+auditoria para análise posterior.
+Sua importância está na contribuição 
+e detecção precoce de atividades 
+suspeitas.
+GERENCIAMENTO DE 
+IDENTIDADE E ACESSO (IAM)
+Contabilidade
+4
+
+FATORES DE AUTENTICAÇÃO
+Aula 01
+Gerenciamento de Identidade e Acesso
+Fonte: Clicksign
+Disponível em: <https://www.clicksign.com/blog/autenticacao-digital/>. 
+Acesso em: 25 mar. 2024. 
+Referem-se aos métodos e elementos 
+utilizados na verificação de identidades.
+A combinação de mais de um elemento 
+cria uma defesa multicamadas contra 
+acessos não autorizados.
+Há várias tecnologias aplicadas na 
+criação e verificação de credencias 
+categorizadas como fatores.
+
+Aula 01
+Gerenciamento de Identidade e Acesso
+Envolve o uso de informações 
+que o usuário conhece para 
+validar sua identidade.
+Exemplo: Senhas de contas 
+online, códigos PIN de cartões 
+bancários ou respostas a 
+perguntas de segurança.
+Categorias dos fatores:
+FATORES DE AUTENTICAÇÃO
+Autenticação baseada no que você 
+conhece (KnowledgeFactor).
+1
+
+Aula 01
+Gerenciamento de Identidade e Acesso
+Requer que o usuário possua 
+um objeto específico para 
+confirmar sua identidade.
+Exemplo: Cartões de acesso 
+magnético, tokensde 
+autenticação por tempo limitado 
+ou chaves de hardware.
+FATORES DE AUTENTICAÇÃO
+Autenticação baseada em algo que 
+você tem (OwnershipFactor).
+2
+
+Aula 01
+Gerenciamento de Identidade e Acesso
+Utiliza características únicas do 
+corpo ou comportamentos 
+individuais para confirmar a 
+identidade.
+Exemplos: Desbloqueio de 
+smartphones por 
+reconhecimento facial, leitores 
+de impressões digitais para 
+acesso a edifícios ou 
+autenticação por voz em 
+sistemas de segurança.
+FATORES DE AUTENTICAÇÃO
+Autenticação baseada no que você 
+é ou faz (BiometricFactor).
+3
+
+Aula 01
+Inclui uma variedade de métodos e 
+tecnologias.
+Refere-se à criação e implementação de 
+ferramentas que verificam e validam a 
+identidade de usuários antes de conceder 
+acesso a meios ou informações.
+DESENHO DE AUTENTICAÇÃO
+Precisa atender aos requisitos de 
+confidencialidade, integridade e 
+disponibilidade.
+Gerenciamento de Identidade e Acesso
+
+Aula 01
+Fonte: G7 Informática
+Disponível em: <https://g7.com.br/o-tripe-de-seguranca-da-
+cia-o-que-voce-deve-saber-sendo-um-proprietario-de-site/> 
+Acesso em: 25 mar. 2024. 
+DESENHO DE AUTENTICAÇÃO
+Gerenciamento de Identidade e Acesso
+A tecnologia deve proteger as 
+credencias contra vazamentos.
+Confidencialidade:
+1
+O mecanismo protege as 
+credencias contra o uso de 
+credenciais falsas.
+Integridade:
+2
+O tempo para autenticação é 
+rápido, fácil e seguro.
+Disponibilidade:.
+3
+
+Aula 01
+DESENHO DE AUTENTICAÇÃO
+Políticas de Senhas e Senhas Fortes:
+1
+O designde autenticação 
+combina a implementação de 
+senhas robustas com políticas 
+efetivas de gerenciamento de 
+senhas.
+Gerenciamento de Identidade e Acesso
+Aplicação prática do designde autenticação:
+Biometria:
+2
+Sistemas que utilizam impressões 
+digitais, reconhecimento facial ou 
+voz, representam o designde 
+autenticação avançado.
+
+Aula 01
+Fonte: Alura, 2021
+Disponível em: https://www.alura.com.br/artigos/tipos-de-autenticacao
+Acesso em: 25 mar. 2024. 
+DESENHO DE AUTENTICAÇÃO
+Tokenização:
+3
+A geração de códigos 
+temporários por meio de 
+tokens físicos ou aplicativos 
+autenticadores representa 
+uma abordagem eficaz no 
+design de autenticação.
+Gerenciamento de Identidade e Acesso
+
+Aula 01
+É uma abordagem de segurança onde 
+os usuários fornecem mais de uma 
+forma de verificação de identidade para 
+acessar um sistema ou recurso.
+MULTIFATOR DE AUTENTICAÇÃO
+Exemplos de uso:
+Fonte: Mente Binária
+Disponível em: 
+<https://www.mentebinaria.com.br/noticias/portal-mente-
+bin%C3%A1ria/executivos-de-ti-priorizar%C3%A3o-
+autentica%C3%A7%C3%A3o-multifator-em-2020-r261/> 
+Acesso em: 25 mar. 2024. 
+Gerenciamento de Identidade e Acesso
+1. Senha + Token.
+2. ImpressãoDigital + Senha.
+3. Reconhecimento Facial + 
+Confirmação via Dispositivo.
+
+Aula 01
+ATRIBUTOS DE AUTENTICAÇÃO
+Autenticação baseada no Local
+1
+Utiliza a localização física do 
+usuário para validar sua 
+identidade.
+Pode ser por meio de 
+geolocalização ou endereço IP.
+Não é usada como fator de 
+autenticação primário.
+Gerenciamento de Identidade e Acesso
+É uma propriedade ou fator não exclusivo.
+Não pode ser usado independentemente.
+Atributos existentes:
+
+Aula 01
+Gerenciamento de Identidade e Acesso
+ATRIBUTOS DE AUTENTICAÇÃO
+Autenticação baseada em 
+comportamento (algo que você pode 
+fazer)
+2
+Considera os padrões de 
+comportamento do usuário.
+Pode ser usado para autenticação 
+contextual e contínua.
+Exemplos de características 
+comportamentais: velocidade de 
+digitação ou a maneira como 
+navega em uma página, a maneira 
+como você anda ou segura o 
+smartphone.
+
+Aula 01
+ATRIBUTOS DE AUTENTICAÇÃO
+Autenticação baseada em algo que 
+você exibe (comportamental)
+3
+Considera como um usuário 
+interage com interfaces 
+digitais.
+Analisa padrões como 
+movimentos do mouse, 
+velocidade de cliques e até 
+mesmo a maneira como digita.
+Exemplos de autenticação 
+comportamentais: a maneira 
+como você usa aplicativos para 
+smartphones ou mecanismos 
+de pesquisa na web.
+Gerenciamento de Identidade e Acesso
+
+Aula 01
+ATRIBUTOS DE AUTENTICAÇÃO
+Autenticação baseada em alguém que 
+você conhece.
+4
+Se baseia no conhecimento de 
+relações pessoais ou redes 
+sociais.
+Pode incluir perguntas sobre 
+pessoas conhecidas ou a 
+validação por meio de contatos 
+de confiança.
+Exemplos: o modelo 
+descentralizado de web de 
+confiança, usado pela Pretty
+GoodPrivacy(PGP) Corp. como 
+alternativa à PKI.
+Fonte: Fortinet
+Disponível em: 
+<https://www.fortinet.com/de/resources/cyberglossary/pgp-encryption> 
+Acesso em: 25 mar. 2024. 
+Gerenciamento de Identidade e Acesso
+
+Gerenciamento de Identidade 
+e Acesso
+Você chegou ao final da Aula 01
+4

@@ -1,0 +1,169 @@
+
+
+Módulo 02
+Ameaças, Malwares e Controles
+Aula 02
+Análise de Indicadores e 
+Prevenção de Malware
+2
+
+Introdução
+Nesta aula, você conhecerá os seguintes assuntos:
+Indicadores de malware;
+Análise de indicadores;
+Técnicas e ferramentas de análises de processos;
+Estratégias de prevenção e mitigação de malware.
+
+Análise de Indicadores 
+de Malware
+Análise de Indicadores e Prevenção de Malware
+Aula 02
+
+Também chamados de indicadores de 
+comprometimento (IoCs) representam 
+traços, pistas ou evidências deixadas 
+pelo software malicioso.
+INDICADORES DE MALWARE
+Análise de Indicadorese Prevenção de Malware
+Aula 02
+Eles são como impressões digitais virtuais.
+Permitem aos profissionais de segurança 
+rastrear e analisar o comportamento 
+suspeito ou malicioso.
+Fonte: Hsclabs
+Disponível em: https://hsclabs.com/pt-br/indicadores-de-
+comprometimento/
+Acesso em: 02 abr. 2024.
+
+Podem ser de vários formatos:
+Notificações de antivírus;
+Execução de sandbox;
+Consumo de recursos;
+Mudanças no sistema de 
+arquivos.
+Análise de Indicadorese Prevenção de Malware
+Aula 02
+
+Sempre que um antivírus identificar um 
+malware, ele enviará um alerta para 
+informar o usuário ou o administrador do 
+sistema;
+NOTIFICAÇÕES DE ANTIVÍRUS
+Funcionamento;
+Falso positivo: arquivo legítimo é 
+erroneamente identificado como malware;
+Fonte: Pcrisk.pt
+Disponível em: https://www.pcrisk.pt/guias-de-remocao/11221-mcafee-
+subscription-has-expired-email-scam/
+Acesso em: 02 abr. 2024.
+Utilizam técnicas de detecção;
+Envio de notificação quando encontra 
+arquivo ou programa suspeito.
+Falso negativo: o antivírus não identifica 
+uma ameaça genuína.
+Análise de Indicadorese Prevenção de Malware
+Aula 02
+
+É um ambiente de isolamento controlado 
+onde os programas e arquivos suspeitos 
+podem ser executados com segurança.
+EXECUÇÃO DE SANDBOX
+Podem alterar seu comportamento diante 
+disto;
+Fonte: 360 Total Security
+Disponível em: https://blog.360totalsecurity.com/en/how-to-run-untrusted-
+programs-safely-in-sandbox/
+Disponível em: 02 abr. 2024.
+É fundamental para garantir uma análise 
+eficaz do malware em um ambiente de 
+sandbox.
+Análise de Indicadorese Prevenção de Malware
+Aula 02
+Malwares são projetados para detectar a 
+presença de sandbox.
+
+Refere-se ao monitoramento constante 
+em busca de picos de consumo;
+CONSUMO DE RECURSOS
+O consumo excessivo de CPU ou consumo 
+de memória anormal é um indicador 
+importante de atividade maliciosa;
+Ferramentas que monitoram o uso de 
+recursos:
+Análise de Indicadorese Prevenção de Malware
+Aula 02
+Monitor de recursos do MS-
+Windows;
+SysinternalsSuite.
+
+Mudanças no sistema de arquivos podem 
+ser indicativas de atividade maliciosa;
+File IntegrityMonitoring(FIM);
+Tripwire.
+Análise de Indicadorese Prevenção de Malware
+Aula 02
+MUDANÇAS NO SISTEMA
+DE ARQUIVOS
+Os indicadores envolvem o 
+rastreamento e o registro de qualquer 
+modificação não autorizada;
+Ferramentas que rastreiam alterações 
+no sistema de arquivos:
+
+Análise de Processos
+Análise de Indicadores e Prevenção de Malware
+Aula 02
+
+Necessidade de conhecer o comportamento 
+de aplicativos, processos e serviços.
+Técnica para examinar o comportamento de 
+programas e processos em execução;
+São ações que auxiliam na detecção de 
+malware.
+Análise de Indicadorese Prevenção de Malware
+Aula 02
+
+Ferramentas de análise:
+Técnicas de Análise Baseada em 
+Comportamento:
+Análise de Indicadorese Prevenção de Malware
+Aula 02
+Análise de tráfego de rede;
+Análise de registros;
+Monitoramento e comportamento.
+Wireshark, SystinternalsSuite.
+
+Prevenção de Malware
+Análise de Indicadores e Prevenção de Malware
+Aula 02
+
+São medidas proativas visando evitar a 
+infecção por malware;
+Atualização de software;
+Políticas de acesso;
+Conscientização dos usuários.
+Análise de Indicadorese Prevenção de Malware
+Aula 02
+ESTRATÉGIAS DE PREVENÇÃO
+Tem potencial de reduzir a superfície de 
+ataque a aumentar a segurança dos 
+sistemas;
+Medidas utilizadas:
+
+Visa minimizar o impacto de uma 
+infecção por malware;
+MITIGAÇÃO DE RISCOS
+Ações de mitigação:
+Estratégias de isolamento e 
+contenção;
+Recuperação e restauração;
+Investigação pós-incidente.
+Análise de Indicadorese Prevenção de Malware
+Aula 02
+O objetivo é reduzir o dano potencial 
+causado por tais infecções;
+
+Análise de Indicadores e 
+Prevenção de Malware 
+Você chegou ao final da Aula 02
+2

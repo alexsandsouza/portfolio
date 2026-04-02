@@ -1,0 +1,391 @@
+
+
+Módulo 03
+Técnicas Utilizadas na 
+Identificação de Ameaças
+Aula 03
+Estratégias de Resiliência
+3
+
+Gestão de Configuração 
+e Mudança
+Estratégias de Resiliência
+Aula 03
+
+Aula 03
+A resposta a incidentes e recuperação de 
+desastre dependerão do nível de 
+organização dos sistemas na TI como um 
+todo. 
+Pressupõe a existência de políticas, 
+processos, pessoal e ferramentas.
+Identifica, controla e mantém as 
+configurações em uma infraestrutura 
+de TI.
+GERENCIAMENTO DE 
+CONFIGURAÇÃO
+É ainda mais crítico para empresas de 
+médio e grande porte.
+Estratégias de Resiliência
+Fonte: ITSM Docs, 2021
+Disponível em: <https://www.itsm-
+docs.com/blogs/configuration-management/configuration-
+management-database-cmdb>. 
+Acesso em: 21 mar. 2024. 
+
+Aula 03
+Ativos de Serviço;
+Item de configuração
+Linha de Base de configuração;
+Sistema de Gerenciamento de 
+Configuração (CMS);
+Diagramas de relacionamento.
+Composição da gerência de configuração:
+GERENCIAMENTO DE 
+CONFIGURAÇÃO
+Estratégias de Resiliência
+Fonte: LinkedIn, 2016.
+Disponível em: <https://www.linkedin.com/pulse/your-
+cmdb-its-really-important-jean-paul-lizotte>. 
+Acesso em: 21 mar. 2024. 
+
+Aula 03
+Refere-se a um conjunto de práticas e 
+processos que visam identificar, 
+monitorar, manter e proteger os ativos 
+digitais da organização.
+GERENCIAMENTO DE ATIVOS
+Os ativos incluem hardware, software, 
+dados, redes e outros componentes de 
+TI.
+Um processo de gerenciamento de 
+ativos rastreia todos os sistemas 
+críticos, componentes, dispositivos e 
+outros objetos de valor da organização 
+em um inventário
+Estratégias de Resiliência
+Fonte: Medium, 2023.
+Disponível em: 
+<https://medium.com/@ayesha_amjad92/from-chaos-to-
+control-how-rfid-technology-has-transformed-it-asset-
+tracking-588e835b2fb5>. 
+Acesso em: 21 mar. 2024. 
+
+Aula 03
+GERENCIAMENTO DE ATIVOS
+Estratégias de Resiliência
+1. Identificação de ativos;
+2. Classificação;
+3. Categorização;
+4. Monitoramento contínuo;
+5. Proteção e segurança;
+6. Manutenção e atualização;
+7. Descarte adequado.
+Principais aspectos da gestão de ativos:
+
+Aula 03
+Trata-se um processo para controlar as 
+alterações no ambiente de TI.
+CONTROLE DE MUDANÇA
+Estratégias de Resiliência
+Usado para solicitar e aprovar mudanças 
+de forma planejada e controlada.
+Mudanças são geradas para corrigir, 
+mudar, melhorar um sistema em 
+funcionamento ou implantar um sistema 
+novo.
+As mudanças podem ser classificadas 
+como: Reativa ou Proativa.
+Fonte: LinkedIn, 2020.
+Disponível em: <https://pt.linkedin.com/pulse/itil-e-
+gest%C3%A3o-de-mudan%C3%A7as-na-cloud-gabriel-
+carvalho>. 
+Acesso em: 21 mar. 2024. 
+
+Aula 03
+O processo tem início com o 
+preenchimento de uma RFC (Request
+for Change).
+Quanto ao impacto e risco são 
+classificadas em:
+CONTROLE DE MUDANÇA
+Grande;
+Significativa;
+Menor;
+Normal.
+Estratégias de Resiliência
+
+Aula 03
+Elementos comuns de uma RFC 
+(Requestfor Change):
+CONTROLE DE MUDANÇA
+Estratégias de Resiliência
+1. Descrição da mudança;
+2. Justificativa;
+3. Impacto da mudança;
+4. Plano de implementação;
+5. Aprovação;
+6. Documentação pós-implementação.
+Fonte: SketchBubble.
+Disponível em: <https://www.sketchbubble.com/en/presentation-
+change-request.html>. 
+Acesso em: 21 mar. 2024. 
+
+Aula 03
+É um processo cuidadoso que avalia 
+todos os aspectos de uma mudança e 
+como ela afetará os componentes 
+dependentes. 
+GERENCIAMENTO DE MUDANÇA
+Estratégias de Resiliência
+Visa planejar, avaliar, aprovar, 
+implementar e validar mudanças em um 
+ambiente organizacional.
+Todas as mudanças devem vir 
+acompanhadas de um Plano de 
+Reversão (Rollback).
+Um processo rigoroso de mudança 
+garante a resiliência e adaptabilidade 
+da organização.
+Fonte: Bridge & Co., 2016.
+Disponível em: 
+<http://www.bridgeconsulting.com.br/importancia-do-
+gerenciamento-de-mudancas-para-ti/>. 
+Acesso em: 21 mar. 2024. 
+
+Aula 03
+GERENCIAMENTO DE MUDANÇA
+1. Identificação e registro das mudanças;
+2. Avaliação e análise da mudança;
+3. Aprovação da mudança;
+4. Planejamento das mudanças;
+5. Implementação;
+6. Avaliação pós-implementação.
+Estratégias de Resiliência
+Etapas do gerenciamento de mudanças:
+Fonte: ServiceNow.
+Disponível em: 
+<https://www.servicenow.com/br/products/itsm/what-is-it-
+change-management.html>. 
+Acesso em: 21 mar. 2024. 
+
+Resiliência em Instalações 
+de TI
+Estratégias de Resiliência
+Aula 03
+
+Aula 03
+Há três abordagens classificadas como: 
+Hot, Warme Cold.
+RESILIÊNCIA DE SITE DE 
+OPERAÇÕES
+1. Requisitos de negócio;
+2. Orçamentodisponível;
+3. Tolerância quanto ao tempo de 
+inatividade ou recuperação.
+Refere-se à capacidade de um site de 
+manter a continuidade operacional após 
+falhas ou desastres.
+Estratégias de Resiliência
+A escolha de entre as abordagens 
+depende de:
+Fonte: Medium, 2021.
+Disponível em: <http://ronbert.com/coldwarmhotpicture.htm>. 
+Acesso em: 21 mar. 2024. 
+
+Aula 03
+RESILIÊNCIA DE SITE DE 
+OPERAÇÕES
+Características de um Site de Operações 
+Hot:
+1
+Hardwaree softwaretotalmente 
+configurados.
+Dados sincronizados em tempo real entre 
+o site principal e  a contingência.
+O tempo de recuperação é rápido.
+O tempo de inatividade percebido é 
+mínimo.
+Estratégias de Resiliência
+
+Aula 03
+Estratégias de Resiliência
+RESILIÊNCIA DE SITE DE 
+OPERAÇÕES
+Características de um Site de 
+Operações Warm:
+2
+Parte da infraestrutura está pré-
+configurada.
+Os dados são atualizados 
+regularmente.
+Os dados podem não estar totalmente 
+sincronizados.
+O tempo de recuperação é mais 
+rápido do que um site Cold, porém 
+mais lento do que um site Hot.
+Fonte: NEWCOM.
+Disponível em: <https://newcomglobal.com/wp-
+content/uploads/2019/08/DS-Continuity-Engine-
+NEWCOM.pdf>. 
+Acesso em: 21 mar. 2024. 
+
+Aula 03
+Estratégias de Resiliência
+RESILIÊNCIA DE SITE DE 
+OPERAÇÕES
+Características de um Site de 
+Operações Cold:
+3
+Nenhum hardwareou software
+configurado.
+Dados podem estar desatualizados ou 
+não disponíveis.
+Requer configuração manual e 
+restauração de dados.
+Possui maior tempo de recuperação 
+que os demais tipos.
+É mais econômico, mas o tempo de 
+inatividade será maior.
+Fonte: YouTube, 2022.
+Disponível em: 
+<https://www.youtube.com/watch?v=XdYw30ZvRfg>. Acesso em: 
+21 mar. 2024. 
+
+Aula 03
+Visa dificultar invasões já que o invasor 
+precisa passar por vários controles.
+DEFESA EM PROFUNDIDADE
+Trata-se de implementar camadas 
+múltiplas de segurança.
+Estratégias de Resiliência
+Reduz a superfície potencial de ataque.
+Minimiza a probabilidade de sucesso 
+de um ataque.
+Reduz os impactos quando uma falha 
+ocorre.
+Fonte: Quizlet.
+Disponível em: <https://quizlet.com/650062564/preparing-
+for-the-sas-programming-certification-exam-week2-flash-
+cards/>. Acesso em: 21 mar. 2024. 
+
+Aula 03
+Os níveis de implementação podem ser:
+DEFESA EM PROFUNDIDADE
+Estratégias de Resiliência
+1. Camadas de segurança.
+2. Monitoramentocontínuo.
+3. Atualizações e patches regulares.
+4. Treinamento e conscientização.
+Fonte: RastekSoluções, 2022.
+Disponível em: <https://rasteksolucoes.com.br/2022/04/5-
+dicas-para-fortalecer-a-seguranca-da-informacao-na-nuvem-
+da-sua-empresa/>. 
+Acesso em: 21 mar. 2024. 
+
+Aula 03
+DIVERSIDADE
+Estratégias de Resiliência
+Refere-se a ambiente de TI com 
+diferentes tecnologias e soluções 
+instaladas.
+Diversidade de hardwaree software.
+Diversidade de fornecedores.
+Diversidade Geográfica.
+Essa estratégia visa reduzir a 
+vulnerabilidade do site a falhas únicas.
+Níveis de aplicação da diversidade:
+
+Estratégias de Defesa Ativa
+Estratégias de Resiliência
+Aula 03
+
+Aula 03
+ESTRATÉGIAS DE ENGANO
+Facilita a detecção de invasões por meio 
+da interação com o invasor.
+1. Honeypot;
+2. Honeynet;
+3. Honeyfile.
+Envolve a utilização de recursos chamariz 
+para atuar como isca.
+Tipos de estratégia de engano:
+Estratégias de Resiliência
+Fonte: IPWITHEASE, 2022.
+Disponível em: <https://ipwithease.com/honeypot-vs-
+honeynet-complete-guide/>. 
+Acesso em: 21 mar. 2024. 
+https://ipwithease.com
+
+Aula 03
+Facilita a detecção de invasões por meio 
+da interação com o invasor.
+ESTRATÉGIAS DE ENGANO
+Envolve a utilização de recursos 
+chamariz para atuar como isca.
+Estratégias de Resiliência
+Tipos de estratégia de engano:
+Honeypot
+1
+Projetado para ser alvo de ataques, 
+desviando dos sistemas reais.
+Há dois tipos principais:
+Honeypotsde baixa interação; e
+Honeypotsde alta interação.
+Fonte: Medium, 2022.
+Disponível em: <https://medium.com/@harshadhoma/what-is-a-
+honeypot-do-you-have-one-of-these-at-work-how-do-they-help-
+secure-a-network-4dd2d31e13d>. 
+Acesso em: 21 mar. 2024. 
+
+Aula 03
+ESTRATÉGIAS DE ENGANO
+Estratégias de Resiliência
+Honeynet
+2
+É uma rede de honeypots
+interconectados.
+Proporcionam uma visão mais 
+abrangente das estratégias de ataque.
+Simulam uma rede real.
+Honeyfile
+3
+É um arquivo fictício projetado para atrair 
+atividades maliciosas.
+Identifica tentativas de acesso não 
+autorizado ou exfiltraçãode dados.
+Fonte: Agência SEO Twaino, 2022.
+Disponível em: <https://www.twaino.com/pt/definicao/s/definicao-
+spamco-ou-spam-de-comentarios/>. 
+Acesso em: 21 mar. 2024. 
+
+Aula 03
+Estratégias de Resiliência
+ESTRATÉGIAS DE DISRUPÇÃO
+É parte das estratégias de defesa ativa.
+Busca interromper ou atrapalhar as 
+atividades maliciosas de um atacante.
+Visa desencorajar ou limitar o progresso 
+de um ataque.
+Pode ser aplicada desde a camada de 
+rede até a aplicação.
+Pode envolver a introdução de obstáculos, 
+restrições ou respostas automáticas. 
+Fonte: DIO, 2023
+Disponível em: <https://www.dio.me/articles/desvendando-os-
+ataques-ddos-como-lidar-com-a-tempestade-digital>. 
+Acesso em: 21 mar. 2024. 
+
+Aula 03
+ESTRATÉGIAS DE DISRUPÇÃO
+Estratégias de Resiliência
+Principais componentes:
+1. Interrupção na Camada de Rede.
+2. Interrupção na Camada de Sistema.
+3. Interrupção na Camada de Aplicação.
+4. Resposta Automatizada.
+5. Isolamento de Segmentos de Rede.
+
+Estratégias de Resiliência
+Você chegou ao final da Aula 03
+3

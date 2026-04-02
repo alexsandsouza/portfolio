@@ -1,0 +1,516 @@
+
+
+Módulo 04
+Controles de Acesso
+Aula 02
+Autenticação Baseada em 
+Conhecimento
+4
+
+Introdução
+Nesta aula serão apresentados os conceitos para autenticação baseada em 
+conhecimento:
+Autenticação Local, de rede e remota, para ambientes Windows e Linux;
+Single Sign-On(SSO) e protocolos como PAP, CHAP, MS-Chap 
+Authentication;
+Ataques de senha incluindo força bruta e de dicionário; e
+Estratégias de gerenciamento de autenticação.
+
+Implementando Autenticação 
+Baseada em Conhecimento
+Autenticação Baseada em Conhecimento
+Aula 01
+
+Autenticação Baseada em Conhecimento
+Aula 02
+IMPLEMENTANDO 
+AUTENTICAÇÃO BASEADA 
+EM CONHECIMENTO
+Inclui ainda a configuração de protocolos 
+de autenticação baseados em senha.
+Refere-se principalmente à criação de 
+credenciais de usuários com mecanismos 
+de acesso à conta baseados em senha.
+Fornecer suporte a usuários com 
+problemas de autenticação também é 
+parte dessa função.
+
+Aula 02
+Provedor de autenticação:
+AUTENTICAÇÃO LOCAL, DE REDE 
+E REMOTA
+É um dos recursos mais importantes 
+de um sistema operacional.
+É a arquitetura de software e o código 
+que sustenta o mecanismo pelo qual o 
+usuário é autenticado antes de iniciar 
+uma atividade.
+O provedor de autenticação padrão para 
+a maioria dos sistemas operacionais é 
+baseado em conhecimento (senha ou 
+PIN).
+O processo é descrito como login 
+(Linux) ou logonou sign-in (Microsoft).
+Autenticação Baseada em Conhecimento
+
+Aula 02
+A autenticação baseada em 
+conhecimento depende de hashes.
+A senha é armazenada em bancos de 
+dados como um hashcriptográfico.
+O autenticador converte a senha 
+digitada em um hashe transmite para 
+a autoridade que compara o hash
+enviado com o do banco de dados.
+Autentica somente se houver 
+correspondência entre eles.
+Hashcriptográfico:
+AUTENTICAÇÃO LOCAL, DE 
+REDE E REMOTA
+Fonte: Wikipédia
+Disponível em: 
+<https://pt.wikipedia.org/wiki/Fun%C3%A7%C3%A3o_hash>. 
+Acesso em: 25 mar. 2024. 
+Autenticação Baseada em Conhecimento
+
+Aula 02
+O processo de login:
+AUTENTICAÇÃO LOCAL, DE 
+REDE E REMOTA
+Autenticação Baseada em Conhecimento
+1. Identificação do usuário: Usuário 
+fornece um identificador exclusivo;
+2. Fornecimento de Credenciais: 
+Usuário informa a senha associada 
+ao identificador;
+São as etapas pelas quais um usuário 
+solicita acesso a um sistema em TI:
+
+AUTENTICAÇÃO LOCAL, DE 
+REDE E REMOTA
+Fonte: Salesforce
+Disponível em: <https://trailhead.salesforce.com/pt-
+BR/content/learn/modules/identity_external/identity_external_s
+ocial> 
+Acesso em: 25 mar. 2024. 
+Aula 02
+Autenticação Baseada em Conhecimento
+3. Envio das credenciais ao 
+sistema de autenticação local ou 
+remoto;
+4. Validação das credenciais;
+5. Concessão de acesso.
+6. Criação de sessão.
+
+Aula 02
+AUTENTICAÇÃO LOCAL
+Autenticação Baseada em Conhecimento
+Pode ser um computador pessoal ou um 
+dispositivo móvel.
+Refere-se ao processo de verificar a 
+identidade de um usuário em um 
+dispositivo específico.
+O usuário interage diretamente com o 
+sistema.
+Um exemplo está na autenticação 
+biométrica, como leitores de impressões 
+digitais em smartphones para liberação 
+do acesso local.
+
+Aula 02
+Inclui o acesso a recursos compartilhados 
+em uma rede corporativa.
+AUTENTICAÇÃO DE REDE
+A verificação de identidade ocorre em 
+um servidor central.
+Por exemplo, em ambiente corporativos: 
+Autenticação Baseada em Conhecimento
+1. No sistema MS-Windows é o Active 
+Directory(AD).
+2. O uso do protocolo LDAP (Lightweight
+DirectoryAccess Protocol) para 
+autenticar usuários em um servidor 
+centralizado.
+
+Aula 02
+A validação da identidade de usuários 
+permite acessar recursos em locais 
+geograficamente distantes.
+AUTENTICAÇÃO REMOTA
+É essencial em organizações com 
+equipes distribuídas regionalmente ou 
+com trabalhadores remotos.
+Fonte: Eduardo Mozart
+Disponível em: 
+<https://eduardomozartdeoliveira.wordpress.com/2016/12/1
+4/autenticacao-em-nivel-de-rede-nla/> 
+Acesso em: 25 mar. 2024. 
+Autenticação Baseada em Conhecimento
+Por exemplo, o uso de VPN (Virtual 
+Private Network) para usuários remotos, 
+permitindo a autenticação remota como 
+se estivessem fisicamente na sede da 
+empresa.
+
+Aula 02
+Fonte: Microsoft Infrastructure, Virtualization & System Management
+Disponível em: <https://pkjayan.wordpress.com/2013/09/30/kerberos-
+authentication-technology-simplified-2/>. 
+Acesso em: 25 mar. 2024. 
+Autenticação Baseada em Conhecimento
+Sign-in Local:
+AUTENTICAÇÃO NO WINDOWS 
+E LINUX
+Autenticação no Windows
+1
+1. A Autoridade de Segurança 
+Local (LSA) compara a credencial 
+enviada a um hasharmazenado 
+no banco de dados do Security 
+AccountsManager (SAM).
+Autenticação de rede:
+1. Gerenciada pelo Active Directory(AD).
+2. O LSA passa as credenciais 
+para um serviço de rede, em geral, 
+baseado em Kerberos.
+
+Aula 02
+Fonte: DocumentaçãoSciELO
+Disponível em: <https://documentacao.scielo.org/books/manuais-
+publicos/page/cadastro-de-usuario> 
+Acesso em: 25 mar. 2024. 
+Autenticação Baseada em Conhecimento
+Autenticação remota no Windows
+AUTENTICAÇÃO NO WINDOWS 
+E LINUX
+1. Podem ser adotadas tecnologias 
+como o Protocolo de Área Segura 
+(SSTP) para VPNs.
+2. Os usuários remotos 
+autenticam-se por meio de uma 
+conexão segura, geralmente 
+utilizando certificados digitais ou 
+outros métodos seguros.
+
+Aula 02
+Autenticação Baseada em Conhecimento
+Login local:
+AUTENTICAÇÃO NO WINDOWS 
+E LINUX
+Autenticação no Linux
+2
+1. O arquivo "/etc/passwd“ guarda 
+as credenciais das contas de 
+usuários.
+2. O "/etc/shadow" guarda o hash
+das senhas.
+Fonte: TI da Hora!
+Disponível em: <https://tidahora.com.br/servidor-proxy-squid-no-
+linux-centos-7-com-autenticacao-local/>. 
+Acesso em: 25 mar. 2024. 
+
+Autenticação de rede:
+AUTENTICAÇÃO NO WINDOWS 
+E LINUX
+1. Pode ser realizado usando 
+SecureShell (SSH)e chaves 
+criptográficas em vez de senha.
+2. Pode ser utilizando o Pluggable
+AuthenticationModules (PAM) o 
+que permite flexibilidade na escolha 
+de métodos de autenticação para 
+serviços de rede.
+3. Além disso, a integração com 
+serviços de diretório, como o LDAP, 
+pode ser implementada para 
+autenticar usuários em uma rede 
+centralizada.
+Aula 02
+Autenticação Baseada em Conhecimento
+Fonte: Cisco
+Disponível em: 
+<https://www.cisco.com/c/pt_br/support/docs/smb/switches/Cis
+co-Business-Switching/kmgmt-2776-configure-secure-shell-
+ssh-server-authentication-settings-cbs.html>. 
+Acesso em: 25 mar. 2024. 
+
+Autenticação remota:
+AUTENTICAÇÃO NO WINDOWS 
+E LINUX
+1. Usuários remotos autenticam-se 
+usando chaves SSH ou senhas.
+2. A estrutura PAM também pode 
+ser usada para implementar 
+autenticação em servidores de 
+redes.
+Aula 02
+Autenticação Baseada em Conhecimento
+
+Aula 02
+É uma solução de autenticação que 
+permite que um usuário acesse vários 
+sistemas ou aplicativos com uma única 
+autenticação.
+SINGLE SIGN-ON (SSO)
+Autenticação Baseada em Conhecimento
+Simplifica a experiência do usuário.
+Reduz o número de senhas que um 
+usuário precisa gerenciar.
+
+Aula 02
+Etapas do Processo de Single Sign-On:
+SINGLE SIGN-ON (SSO)
+Autenticação Baseada em Conhecimento
+1. Autenticação inicial em um dos 
+serviços conectados ao sistema SSO;
+2. Emissão de Token de Sessão;
+3. Armazenamento Seguro do Token;
+4. Acesso a Outros Serviços;
+5. Renovação de Token;
+6. Logout Único (Single Logout).
+Fonte: Gyoumagazine
+Disponível em: 
+<https://pt.gyoumagazine.com/article/single_sign_on_sso_what_is_it_and_shou
+ld_you_use_it> 
+Acesso em: 25 mar. 2024. 
+
+Aula 02
+PROTOCOLOS DE 
+AUTENTICAÇÃO (PAP, CHAP, 
+MS-CHAP)
+PAP (PasswordAuthentication
+Protocol)
+1
+É um protocolo de autenticação 
+simples;
+As credenciais (nome de usuário e 
+senha) são enviadas ao servidor de 
+autenticação em texto aberto.
+Caindo em desuso devido à falta de 
+segurança.
+Utilizado em redes dial-up e como 
+mecanismo de autenticação em 
+HTTP.
+Fonte: Medium
+Disponível em: 
+<https://medium.com/@gabriellaakubueze115/authenticatio
+n-protocols-60baaba1281f> 
+Acesso em: 25 mar. 2024. 
+Autenticação Baseada em Conhecimento
+
+Aula 02
+PROTOCOLOS DE 
+AUTENTICAÇÃO (PAP, CHAP, 
+MS-CHAP)
+CHAP (Challenge Handshake 
+Authentication Protocol)
+2
+É um protocolo de autenticação mais 
+seguro que o PAP.
+O servidor envia um desafio ao cliente, 
+que responde com uma versão 
+criptografada da senha combinada 
+com o desafio.
+Usado em conexões PPP (Point-to-
+Point Protocol) em redes dial-up e 
+VPNs. 
+Fonte: The Network DNA
+Disponível em: 
+<https://www.thenetworkdna.com/2020/12/introduction-to-p2p-
+authentication-pap.html> 
+Acesso em: 25 mar. 2024. 
+Autenticação Baseada em Conhecimento
+
+Aula 02
+PROTOCOLOS DE 
+AUTENTICAÇÃO (PAP, CHAP, 
+MS-CHAP)
+MS-CHAP (Microsoft Challenge 
+Handshake Authentication Protocol)
+3
+É uma variação do CHAP 
+desenvolvida pela Microsoft.
+Adicionou suporte à troca de senhas 
+criptografadas.
+Usado em ambientes Microsoft, 
+especialmente em VPNs.
+Fonte: UniversityofBaltimore
+Disponível em: 
+<http://home.ubalt.edu/abento/427/security/sld045.htm>. 
+Acesso em: 25 mar. 2024. 
+Autenticação Baseada em Conhecimento
+
+Aula 02
+Tipos de ataques de senha:
+ATAQUES DE SENHA
+Ataque de texto simples/não 
+criptografado (plaintext/unencrypted
+attack)
+1
+Ocorre se as senhas são 
+transmitidas ou armazenadas 
+sem criptografia.
+Os atacantes podem interceptar 
+ou acessar diretamente essas 
+senhas.
+Os exemplos incluem PAP, 
+autenticação HTTP/FTP básica 
+e Telnet.
+Autenticação Baseada em Conhecimento
+
+Aula 02
+Fonte: Diego Macêdo
+Disponível em: <https://www.diegomacedo.com.br/quebra-de-senha-
+ataques-passivos-online/>. 
+Acesso em: 25 mar. 2024. 
+ATAQUES DE SENHA
+Ataques online
+2
+O agente da ameaça interage 
+diretamente no serviço de 
+autenticação.
+Envolve tentativas automáticas 
+e contínuas de login em uma 
+conta, geralmente usando força 
+bruta ou dicionário.
+Atacantes exploram a 
+capacidade de realizar tentativas 
+repetidas para encontrar a 
+combinação correta de nome de 
+usuário e senha.
+Autenticação Baseada em Conhecimento
+
+Fonte: Diego Macêdo
+Disponível em: <https://www.diegomacedo.com.br/quebra-de-
+senha-ataques-off-line/> 
+Acesso em: 25 mar. 2024. 
+Aula 02
+Autenticação Baseada em Conhecimento
+ATAQUES DE SENHA
+Pulverização de senhas
+3
+O invasor escolhe uma ou mais 
+senhas comuns (por exemplo, 
+“senha” ou “123456”) e as testa 
+em conjunto com vários nomes 
+de usuário.
+Limita as tentativas por conta e 
+evita bloqueios automáticos, 
+tornando mais difícil a detecção 
+de atividades suspeitas.
+
+Aula 02
+Autenticação Baseada em Conhecimento
+ATAQUES DE SENHA
+Ataque offline
+4
+O invasor conseguiu obter um 
+banco de dados de hashesde 
+senha.
+Usa técnicas offline, tentativas 
+de quebra sem interação com o 
+sistema alvo, como ataques de 
+força bruta ou dicionário. 
+Fonte: Diego Macêdo
+1
+.
+1 
+Disponível em: <https://www.diegomacedo.com.br/quebra-de-
+senha-ataques-off-line/>. 
+Acesso em: 25 mar. 2024. 
+
+Aula 02
+Autenticação Baseada em Conhecimento
+ATAQUES DE SENHA
+Ataques de Força Bruta
+5
+Tenta todas as combinações 
+possíveis no espaço de saída 
+para corresponder a um hash
+capturado e adivinhar o texto 
+que o gerou.
+O espaço de saída é 
+determinado pelo número de 
+bits usados pelo algoritmo 
+(MDS de 128 bits ou SHA256 
+de 256 bits, por exemplo).
+Necessita recursos 
+computacionais.
+São mais eficazes na quebra 
+de senhas curtas.
+
+Aula 02
+ATAQUES DE SENHA
+Ataques de dicionário:
+6
+Usam uma lista de palavras 
+comuns.
+O software gera valores de 
+hasha partir de um dicionário 
+de textos simples para tentar 
+combinar com o hash
+capturado.
+Atacantes exploram a 
+previsibilidade de senhas 
+comuns ou sequências 
+alfanuméricas, tentando 
+exaustivamente todas as 
+combinações.
+Autenticação Baseada em Conhecimento
+
+Aula 02
+ATAQUES DE SENHA
+Ataque Híbrido
+7
+Usa uma combinação de 
+ataques de dicionário e de força 
+bruta.
+O algoritmo de quebra de senha 
+testa palavras e nomes de 
+dicionário em combinação com 
+uma máscara que limita o 
+número de variações a serem 
+testadas, como a adição de 
+prefixos e/ou sufixos numéricos.
+Os atacantes buscam equilibrar 
+a eficiência de um ataque de 
+força bruta com a previsibilidade 
+de padrões de senha comuns.
+Autenticação Baseada em Conhecimento
+
+Aula 02
+GERENCIAMENTO DE 
+AUTENTICAÇÃO
+Cenário:
+Autenticação Baseada em Conhecimento
+Fonte: Minuto da Segurança
+Disponível em: <https://minutodaseguranca.blog.br/cofre-
+de-senhas-sugestoes-para-uma-implementacao-bem-
+sucedida/> 
+Acesso em: 25 mar. 2024. 
+Usuários adotam práticas 
+inadequadas e difíceis de controlar.
+Por exemplo, usar a mesma senha 
+para rede e sites de consumidores.
+Isto gera vulnerabilidade.
+
+Aula 02
+GERENCIAMENTO DE 
+AUTENTICAÇÃO
+Solução:
+Autenticação Baseada em Conhecimento
+Uma solução de gerenciamento de 
+autenticação para senhas mitiga 
+esse risco usando um dispositivo ou 
+serviço como proxy para 
+armazenamento de credenciais:
+1. Chave de senha: Tokens USB 
+para conexão com PCs e 
+smartphones.
+2. Cofres de senhas: Gerenciador 
+de senhas baseado em software.
+
+Autenticação Baseada em 
+Conhecimento
+Você chegou ao final da Aula 02
+4

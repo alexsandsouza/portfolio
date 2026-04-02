@@ -1,0 +1,421 @@
+
+
+Módulo 03
+Técnicas Utilizadas na 
+Identificação de Ameaças
+Aula 01
+Gerenciamento de 
+Vulnerabilidades
+3
+
+Introdução
+Nesta aula, você conhecerá os seguintes assuntos:
+Gerenciamento de vulnerabilidades em sistemas e redes;
+Técnicas de verificação de vulnerabilidades;
+Vulnerabilidades e Exposições Comuns;
+Verificação Intrusiva e Não Intrusiva;
+Varreduras de segurança: credenciada e não credenciada;
+Falsos positivos, falsos negativos, análise de logs;
+Revisão de configurações.
+
+Avaliações de Segurança
+Gerenciamento de Vulnerabilidades
+Aula 01
+
+Aula 01
+Testar o objeto em avaliação;
+Examinar objetos de avaliação;
+Entrevistar pessoal.
+O NIST (SP 800-115) identificou três 
+atividades principais:
+É estabelecida uma superfície de ataque 
+geral.
+Primeiro a varredura identifica hosts, 
+topologia da rede e serviços/portas.
+AVALIAÇÕES DE SEGURANÇA
+As avaliações são utilizadas para testar 
+vulnerabilidades do ambiente.
+Gerenciamento de Vulnerabilidades
+Fonte: CleanCloud, 2023.
+Disponível em: <https://cleancloud.io/nist-conheca-um-dos-principais-
+frameworks-da-ciberseguranca/>. 
+Acesso em: 21 mar. 2024. 
+
+Aula 01
+Verificação de vulnerabilidade;
+Caça a ameaças;
+Testes de penetração.
+Os principais tipos de avaliação de 
+segurança são: 
+AVALIAÇÕES DE SEGURANÇA
+Nosso foco neste momento será a 
+verificação de vulnerabilidades.
+Gerenciamento de Vulnerabilidades
+Fonte: LinkedIn, 2020.
+Disponível em: <https://pt.linkedin.com/pulse/como-fazer-
+gest%C3%A3o-de-vulnerabilidades-em-8-passos-hamir-
+campos>. 
+Acesso em: 21 mar. 2024. 
+
+Aula 01
+Apontam para a necessidade de ajustes 
+na segurança e correções de software.
+Analisa sistemas, redes, aplicativos ou 
+infraestrutura de TI.
+Trata-se do processo de identificação, 
+avaliação e análise das fraquezas e 
+falhas de segurança.
+VERIFICAÇÃO DE 
+VULNERABILIDADES
+As verificações podem ser manuais ou 
+automatizadas.
+Gerenciamento de Vulnerabilidades
+
+Gerenciamento de Vulnerabilidades
+Aula 01
+Podem ser categorizadas em dois grandes 
+grupos, muito embora sejam aplicadas em 
+conjunto na maioria das vezes: 
+TÉCNICAS DE VERIFICAÇÃO 
+DE VULNERABILIDADES
+Varreduras automatizadas:
+1
+Uso de softwareespecializado.
+É configurada com assinaturas 
+e scripts.
+Existem vários tipos de scanners
+otimizados para diferentes tarefas.
+Exige atualizações pois podem não ser 
+capazes de detectar vulnerabilidades 
+novas ou personalizadas.
+
+Gerenciamento de Vulnerabilidades
+Aula 01
+TÉCNICAS DE VERIFICAÇÃO 
+DE VULNERABILIDADES
+Exemplos de ferramentas disponíveis 
+para varreduras automatizadas: 
+1. Nmap(Network Mapper).
+2. OpenVAS (Open Vulnerability 
+Assessment System)
+3. Nessus
+4. BurpSuite
+5. Wireshark
+
+Gerenciamento de Vulnerabilidades
+Aula 01
+TÉCNICAS DE VERIFICAÇÃO 
+DE VULNERABILIDADES
+Testes manuais:
+2
+Análise minuciosa feita por profissionais 
+de segurança cibernética.
+Exige especialização.
+Identificam vulnerabilidades não 
+detectadas pelas ferramentas automáticas.
+São úteis para avaliar a segurança 
+de sistemas complexos.
+
+Aula 01
+É uma iniciativa global.
+Trata-se de um sistema internacional 
+de identificação e nomeação de 
+vulnerabilidades de segurança 
+cibernética. 
+É mantido e gerenciado pela 
+organização MITRE Corporation.
+Conta com a colaboração de várias 
+outras entidades e especialistas.
+Common Vulnerabilities and Exposures 
+(CVE): 
+VULNERABILIDADES E 
+EXPOSIÇÕES COMUNS
+Gerenciamento de Vulnerabilidades
+Fonte: Medium, 2023.
+Disponível em: <https://medium.com/@tarponise/cve-o-que-
+%C3%A9-e-como-funciona-7da9aadee1e6>. 
+Acesso em: 21 mar. 2024. 
+
+Aula 01
+Gerenciamento de Vulnerabilidades
+Registro de entrada de uma 
+vulnerabilidade no CVE:
+VULNERABILIDADES E 
+EXPOSIÇÕES COMUNS
+1. Um identificador no formato 
+CVE-YYYY-####;
+2. Descriçãoda vulnerabilidade;
+3. Uma lista de referência de URLs;
+4. A data em que a entrada de 
+vulnerabilidade foi criada.
+O sistema de nomeação do CVE segue 
+um padrão bem definido.
+Fonte: Mente Binária, 2019
+.
+Disponível em: <https://www.mentebinaria.com.br/noticias/portal-
+mente-bin%C3%A1ria/n%C3%A3o-dependa-apenas-do-cve-para-
+descobrir-falhas-de-seguran%C3%A7a-r195/>. 
+Acesso em: 21 mar. 2024. 
+
+Aula 01
+São duas abordagens distintas de 
+verificação e análise de vulnerabilidades.
+VERIFICAÇÃO INTRUSIVA 
+E NÃO INTRUSIVA
+Gerenciamento de Vulnerabilidades
+A diferença está não só nas 
+funcionalidades mas também no 
+impacto sobre os sistemas e 
+infraestrutura durante a verificação.
+A intrusividadeé uma medida do 
+quanto o scannerinterage com o alvo.
+Fonte: GTA/UFRJ.
+Disponível em: 
+<https://www.gta.ufrj.br/grad/16_2/2016VARPORT/>. 
+Acesso em: 21 mar. 2024. 
+
+Aula 01
+VERIFICAÇÃO INTRUSIVA 
+E NÃO INTRUSIVA
+Gerenciamento de Vulnerabilidades
+Varreduras intrusivas (ou ativas):
+1
+Possuem ações que podem impactar 
+o sistema ou rede verificados.
+Usa algum tipo de conexão de rede 
+com o alvo.
+Pode causar travamento ou 
+interrupção no alvo.
+Fazem exploração real de 
+vulnerabilidades.
+Devem ser realizadas em ambiente 
+controlado.
+
+Aula 01
+VERIFICAÇÃO INTRUSIVA 
+E NÃO INTRUSIVA
+Gerenciamento de Vulnerabilidades
+Exemplos de varreduras intrusivas: 
+Tentativa de autenticação com 
+credenciais incorretas e uso de 
+exploitsou técnicas de invasão.
+Vantagens: Verificam a exploração 
+real de vulnerabilidades e checam 
+a resistência a ataques.
+Desvantagens: Potencial para causar 
+impacto adverso como interrupções 
+de serviço.
+
+Aula 01
+VERIFICAÇÃO INTRUSIVA 
+E NÃO INTRUSIVA
+Gerenciamento de Vulnerabilidades
+Varreduras não intrusivas (ou passivas):
+2
+Analisa evidências indiretas.
+Projetados para não causar impacto 
+nos sistemas verificados.
+A vantagem é que são seguras e 
+não causam interrupções.
+A desvantagem é que podem não 
+detectar vulnerabilidades de forma 
+abrangente.
+Fonte: BroadcomInc., 2019.
+Disponível em: <https://techdocs.broadcom.com/br/pt_br/ca-
+enterprise-software/it-operations-management/unified-
+infrastructure-management/8-5-1/integrando-outros-produtos-
+da-ca/an_lise-de-log.html>. 
+Acesso em: 21 mar. 2024. 
+
+Aula 01
+VERIFICAÇÃO INTRUSIVA 
+E NÃO INTRUSIVA
+Gerenciamento de Vulnerabilidades
+Exemplos de varreduras não 
+intrusivas: 
+1. Coleta de informações por meio 
+de análise de tráfego de rede;
+2. Pesquisa de informações 
+publicamente disponíveis;
+3. Análise de configurações de 
+sistemas;
+4. Verificação de portas abertas.
+Fonte: Blog ACSoftware, 2021.
+Disponível em: <https://blogac.me/desvendando-ameacas-de-
+portas-abertas-e-aumentando-a-seguranca-com-ferramentas-de-
+varredura-de-portas/>. 
+Acesso em: 21 mar. 2024. 
+
+Gerenciamento de Vulnerabilidades
+Aula 01
+VARREDURA CREDENCIADA 
+VS. NÃO CREDENCIADA
+A escolha dependerá dos objetivos da 
+avaliação e de especificidades do 
+ambiente.
+1
+Na maioria dos casos é recomendável 
+usar ambas as abordagens.
+2
+Permitirá uma análise mais 
+abrangente.
+3
+Pode abordar análise de 
+vulnerabilidades internas e externas.
+4
+
+Aula 01
+VARREDURA CREDENCIADA 
+VS. NÃO CREDENCIADA
+Gerenciamento de Vulnerabilidades
+Varredura credenciada:
+1
+Exige o uso de credenciais válidas com 
+anuência dos donos dos sistemas.
+É um tipo de verificação mais 
+intrusiva do que a não credenciada.
+Permite o acesso às áreas mais 
+profundas e restritas dos sistemas.
+Podem fornecer resultados mais 
+detalhados e precisos.
+Identificam vulnerabilidades não visíveis 
+por varreduras não credenciadas.
+
+Aula 01
+VARREDURA CREDENCIADA 
+VS. NÃO CREDENCIADA
+Gerenciamento de Vulnerabilidades
+Vantagem da varredura credenciada:
+É particularmente eficaz na 
+identificação de problemas de 
+configuração e atualização.
+Desvantagem da varredura 
+credenciada:
+Exige a cooperação dos 
+proprietários dos sistemas.
+O acesso com credenciais deve 
+ser concedido.
+Pode ser mais demorado e 
+complexo de configurar.
+
+Gerenciamento de Vulnerabilidades
+Aula 01
+VARREDURA CREDENCIADA 
+VS. NÃO CREDENCIADA
+Varredura não credenciada:
+2
+Não faz uso de credenciais válidas.
+Não faz acesso a áreas restritas 
+dos sistemas.
+Examina sistemas e redes de fora, 
+como um observador externo.
+A verificação fica limitada a informações 
+disponíveis publicamente.
+São mais rápidas e mais fáceis de 
+implementar.
+Podem não detectar vulnerabilidades 
+internas.
+
+Vantagem da varredura não 
+credenciada:
+Elas são úteis para identificar 
+vulnerabilidades que podem ser 
+exploradas por invasores externos 
+os quais não possuem permissões.
+Desvantagem da varredura não 
+credenciada:
+Podem não detectar problemas de 
+configuração e atualização devido à 
+falta de acesso com credenciais.
+Gerenciamento de Vulnerabilidades
+Aula 01
+VARREDURA CREDENCIADA 
+VS. NÃO CREDENCIADA
+
+Aula 01
+FALSOS POSITIVOS, FALSOS 
+NEGATIVOS E ANÁLISE DE LOG
+Gerenciamento de Vulnerabilidades
+Falso positivo:
+1
+Ocorre quando a ferramenta de 
+verificação identifica erroneamente 
+uma vulnerabilidade que na realidade 
+não existe no sistema ou rede.
+Podem levar a tempo desperdiçado 
+na investigação e correção de 
+problemas inexistentes.
+O verdadeiro positivo ocorre quando 
+o resultado indica corretamente a 
+presença de uma condição ou 
+característica que está presente de 
+fato. 
+Fonte: SideChannel, 2023.
+Disponível em: <https://www.sidechannel.blog/falsos-
+positivos-no-contexto-de-deteccao-de-ameacas/>. 
+Acesso em: 21 mar. 2024. 
+
+Aula 01
+Gerenciamento de Vulnerabilidades
+FALSOS POSITIVOS, FALSOS 
+NEGATIVOS E ANÁLISE DE LOG
+Falso negativo:
+2
+Ocorre quando uma vulnerabilidade 
+que está presente no sistema ou rede 
+não é detectada pela ferramenta de 
+verificação.
+Como resultado, vulnerabilidades 
+reais não serão tratadas.
+Traz aumento de risco.
+O verdadeiro negativo ocorre quando 
+um teste indica corretamente a 
+ausência de uma condição ou 
+característica que não está presente.
+Fonte: SideChannel, 2023.
+Disponível em: <https://www.sidechannel.blog/falsos-
+positivos-no-contexto-de-deteccao-de-ameacas/>. 
+Acesso em: 21 mar. 2024. 
+
+Aula 01
+FALSOS POSITIVOS, FALSOS 
+NEGATIVOS E ANÁLISE DE LOG
+Gerenciamento de Vulnerabilidades
+Análise de Logs:
+3
+Envolve a revisão de registros de 
+eventos e atividades de sistemas, 
+aplicativos e redes.
+Visa confirmar ou não os resultados 
+das ferramentas de verificação.
+Ajuda a distinguir entre falsos 
+positivos, falsos negativos e 
+fragilidades reais.
+Esta pode ser uma tarefa complexa.
+Fonte: Daniel Donda, 2022.
+Disponível em: <https://danieldonda.com/gerenciamento-e-
+analise-de-logs/>. 
+Acesso em: 21 mar. 2024. 
+
+Fundamentos de Segurança da Informação
+Aula 01
+Identificação das Configurações.
+Avaliação de Conformidade.
+Análise de Vulnerabilidades.
+Documentação e Registro.
+Implementação de Correções.
+Teste e Validação.
+Etapas do processo:
+Trata-se da análise e ajuste das 
+configurações de sistemas, aplicativos 
+e redes.
+REVISÃO DE CONFIGURAÇÃO
+Fonte: DevMedia, 2022.
+Disponível em: <https://www.devmedia.com.br/quick-tips-
+gerencia-de-configuracao-parte-1/13708>. 
+Acesso em: 21 mar. 2024. 
+
+Gerenciamento de 
+Vulnerabilidades
+Você chegou ao final da Aula 01
+3

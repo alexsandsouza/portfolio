@@ -1,0 +1,225 @@
+
+
+Módulo 03
+Técnicas Utilizadas na 
+Identificação de Ameaças
+Aula 02
+Scanner de 
+Vulnerabilidades
+3
+
+Introdução
+Nesta aula serão abordados os seguintes conceitos:
+Reconhecimento ativo e passivo e suas técnicas;
+Pen Testou Teste de Penetração: finalidade e importância;
+Ciclo de vida do ataque de Pen Test.
+
+Reconhecimento Ativo 
+vs. Passivo
+Scanner de Vulnerabilidades
+Aula 02
+
+Aula 02
+1. Reconhecimento Ativo.
+2. Reconhecimento Passivo.
+Há duas abordagens distintas:
+Acontece antes de um atacante ou 
+profissional de segurança explorar uma 
+rede ou sistema.
+É o primeiro passo em qualquer avaliação 
+de segurança cibernética.
+RECONHECIMENTO ATIVO 
+VS. PASSIVO
+Trata-se da coleta de informações sobre 
+o alvo da avaliação ou do ataque.
+Scanner de Vulnerabilidades
+Fonte: Site24x7
+Disponível em: <https://www.site24x7.com/pt/network-
+mapping.html>. 
+Acesso em: 21 mar. 2024. 
+
+Aula 02
+Varreduras de portas,
+Solicitações de DNS, 
+Ping sweeps.
+Envolve a interação direta com o alvo.
+RECONHECIMENTO ATIVO
+Alguns exemplos: 
+Pode gerar tráfego.
+Pode ser detectado pelos sistemas ou 
+equipes de segurança.
+Equivale a "bater à porta" do alvo para 
+ver como ele responde.
+Scanner de Vulnerabilidades
+Fonte: SlidePlayer, 2017.
+Disponível em: <https://slideplayer.com/slide/6055181/>. 
+Acesso em: 21 mar. 2024. 
+
+Aula 02
+Vantagens:
+RECONHECIMENTO ATIVO
+Desvantagens: 
+Fornece informações detalhadas e 
+em tempo real.
+É útil para testar a resiliência do alvo 
+a varreduras ativas.
+Pode ser invasivo e perturbar as 
+operações normais.
+Pode ser detectado pelo alvo.
+Scanner de Vulnerabilidades
+Fonte: Youtube, 2020.
+Disponível em: 
+<https://www.youtube.com/watch?app=desktop&v=LvCDaftsMwI>. 
+Acesso em: 21 mar. 2024. 
+
+Aula 02
+Geralmente passa despercebido e não 
+perturba o alvo.
+RECONHECIMENTO PASSIVO
+Envolve a coleta de informações sem 
+interação direta com o alvo.
+Pode fornecer informações menos 
+detalhadas.
+Exemplos: Monitoramento de tráfego de 
+rede, Análise de logs, Pesquisa OSINT 
+(Open SourceIntelligence).
+Scanner de Vulnerabilidades
+Fonte: OneProxy.
+Disponível em: <https://oneproxy.pro/wiki/passive-attack/>. 
+Acesso em: 21 mar. 2024. 
+
+Aula 02
+Geralmente passa despercebido e 
+não perturba o alvo. 
+É útil para coletar informações gerais 
+sobre a infraestrutura do alvo.
+Vantagens: 
+RECONHECIMENTO PASSIVO
+Pode fornecer informações menos 
+detalhadas e mais antigas.
+Não é ideal para identificar 
+vulnerabilidades específicas.
+Desvantagens:
+Scanner de Vulnerabilidades
+Fonte: Medium, 2023.
+Disponível em: 
+<https://medium.com/@ronak.d.sharma111/an-introduction-
+to-maltego-and-its-use-of-osint-5146e8f1e66f>. 
+Acesso em: 21 mar. 2024. 
+
+Teste de Penetração 
+(Pen Test)
+Scanner de Vulnerabilidades
+Aula 02
+
+Aula 02
+TESTE DE PENETRAÇÃO 
+(PEN TEST)
+Esse tipo de ataque é controlado e faz 
+parte da estratégia de segurança.
+Trata-se da realização de um ataque 
+simulado a sistema, rede ou aplicação.
+Permitem que as organizações tomem 
+medidas proativas para mitigar riscos.
+A ética e a conformidade em testes de 
+penetração são fundamentais.
+Isso inclui o respeito às leis e 
+regulamentações, autorização adequada, 
+notificação às partes interessadas e 
+documentação.
+Scanner de Vulnerabilidades
+
+Aula 02
+Objetivos claros: 
+TESTE DE PENETRAÇÃO 
+(PEN TEST)
+Scanner de Vulnerabilidades
+Mapear pontos fracos em sistemas, 
+redes e aplicativos.
+Avaliar a eficácia das medidas de 
+segurança existentes
+Medir a capacidade de resposta da 
+organização.
+Fornecer recomendações.
+Fonte: Successive.Cloud.
+Disponível em: <https://successive.cloud/penetration-testing-
+phases/>. 
+Acesso em: 21 mar. 2024. 
+
+Aula 02
+Fases de um Pen Test: 
+TESTE DE PENETRAÇÃO 
+(PEN TEST)
+Scanner de Vulnerabilidades
+1.Planejamento;
+2. Coleta de informações;
+3. Análise;
+4. Exploração;
+5. Documentação;
+6. Relatório.
+Fonte: ResearchGate, 2019.
+Disponível em: <https://www.researchgate.net/figure/Fig-
+Phases-of-Penetration-Testing-12_fig1_349077887>. 
+Acesso em: 21 mar. 2024. 
+
+Aula 02
+Scanner de Vulnerabilidades
+Ciclo de vida de um Pen Test utilizando 
+uma kill chainestruturada:
+TESTE DE PENETRAÇÃO 
+(PEN TEST)
+1.Reconhecimento;
+2. Exploração;
+3. Persistência;
+4. Escalonamento de privilégios;
+5. Movimento lateral/pivotagem;
+6. Ações baseadas em objetivos;
+7. Fases de limpeza.
+Fonte: Adobe Stock.
+Disponível em: <https://stock.adobe.com/br/images/cyber-kill-
+chain/183497530>. 
+Acesso em: 21 mar. 2024. 
+
+Aula 02
+TESTE DE PENETRAÇÃO 
+(PEN TEST)
+Importância de relatórios detalhados e 
+documentação:
+Scanner de Vulnerabilidades
+Os relatórios registram as atividades 
+realizadas e fornecem informações 
+para tomada de decisão quanto à 
+melhoria contínua na segurança 
+cibernética.
+Estrutura dos relatórios:
+1.Visão geral do escopo do teste.
+2. Detalhes das atividades 
+realizadas em cada fase.
+Fonte: Tutorialspoint.
+Disponível em: 
+<https://www.tutorialspoint.com/penetration_testing/penetration_t
+esting_report_writing.htm>. 
+Acesso em: 21 mar. 2024. 
+
+Aula 02
+TESTE DE PENETRAÇÃO 
+(PEN TEST)
+Scanner de Vulnerabilidades
+3.Vulnerabilidades identificadas e 
+seu impacto.
+4. Recomendações para mitigação.
+5. Evidências que comprovem as 
+descobertas.
+6. Informações sobre a 
+conformidade com as regras de 
+engajamento.
+7. Uma análise de riscos e impacto.
+Fonte: Mir Ali ShahidiEthicalHacker.
+Disponível em: <https://www.miralishahidi.ir/resources/writing-
+penetration-testing-report-33343.pdf>. 
+Acesso em: 21 mar. 2024. 
+
+Scanner de 
+Vulnerabilidades
+Você chegou ao final da Aula 02
+3

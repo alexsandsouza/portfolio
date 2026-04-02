@@ -1,0 +1,365 @@
+
+
+Módulo 01
+Princípios de Segurança
+da Informação
+Aula 02
+Profissionais de Segurança 
+da Informação
+1
+
+Introdução
+Nesta aula, você conhecerá os seguintes assuntos:
+Papéis e responsabilidades dos profissionais de 
+segurança da informação
+Unidades de negócio NOC, SOC e CSIRT
+Metodologias de trabalho ágeis como Kanban, XP, 
+Scrum, DevOpse DevSecOps
+
+Competências de Segurança 
+da Informação
+Profissionais de Segurança da Informação
+Aula 02
+
+Há uma diversidade de profissionais 
+atuando em segurança da informação. 
+Para compreender essa gama de papéis, 
+destacamos os seguintes atores:
+PAPÉIS E RESPONSABILIDADES EM 
+SEGURANÇASDA INFORMAÇÃO
+Profissionais de Segurança da Informação
+Aula 02
+Papel: Líder sênior de segurança da 
+informação.
+CISO 
+(ChiefInformationSecurity)
+Responsabilidade: Gestão e liderança 
+em segurança da informação.
+
+Profissionais de Segurança da Informação
+Aula 02
+Papel: Garantir a privacidade de 
+dados em conformidade com a Lei.
+DPO
+(Data ProtectionOfficer)
+Responsabilidade: Coordenar as 
+atividades de privacidade de dados.
+Papel: Gerenciamento da 
+infraestrutura de TI.
+ANALISTA DE SEGURANÇA 
+DA INFORMAÇÃO
+Responsabilidade: Implementar 
+soluções, monitorar a infraestrutura e 
+atuar nos incidentes de segurança.
+
+Papel: Testar a segurança de 
+sistemas e aplicativos.
+HACKER ÉTICO
+(Pentesters)
+Profissionais de Segurança da Informação
+Aula 02
+Responsabilidade: Invadir sistemas 
+para identificar e relatar falhas.
+Papel: Garantir recursos em nuvem 
+com segurança.
+ESPECIALISTAS EM 
+SEGURANÇA DA NUVEM 
+Responsabilidade: Zelar pelo 
+ambiente em nuvem.
+Papel: Atuar em investigações 
+forenses fornecendo suporte a 
+processos legais.
+ANALISTA DE FORENSE 
+DIGITAL
+Responsabilidade: Tarefas 
+relacionadas com evidências digitais.
+Papel: Realiza análise preditiva e 
+prescritiva de dados de segurança.
+CIENTISTA DE DADOS EM 
+SEGURANÇA
+Responsabilidade: Identifica padrões 
+de ameaças.
+
+Profissionais de Segurança da Informação
+Aula 02
+Papel: Atua na ocorrência de 
+incidentes de segurança.
+ANALISTA DE RESPOSTAS A 
+INCIDENTES DE SEGURANÇA
+Responsabilidade: Detecta, isola e 
+analisa incidentes, recupera o ambiente 
+e documenta.
+Papel: Avalia aplicativos em busca 
+de vulnerabilidade em segurança.
+TESTADOR DE SOFTWARE
+Responsabilidade: Identifica falhas 
+de segurança e atua junto com o 
+desenvolvedores para corrigir.
+
+Unidades de Negócios de 
+Segurança da Informação
+Profissionais de Segurança da Informação
+Aula 02
+
+Garantir a disponibilidade e 
+desempenho da rede;
+Identificar e corrigir o problema 
+em tempo real;
+Garantir a continuidade das 
+operações.
+Atua no monitoramento, gestão e 
+manutenção da infraestrutura de rede.
+NOC(Network OperationsCenter)
+Profissionais de Segurança da Informação
+Aula 02
+Objetivos:
+
+Profissionais de Segurança da Informação
+Aula 02
+Monitoramento 24/7, resposta a 
+incidentes e manutenção da rede.
+Serviços Executados:
+Garantia da disponibilidade e 
+confiabilidade da rede;
+Identifica e soluciona problemas 
+de rede com tempestividade;
+Reduz o gapde indisponibilidade.
+Vantagens:
+Foco na infraestrutura;
+Pode não perceber ameaças 
+cibernéticas avançadas.
+Desvantagens:
+
+Profissionais de Segurança da Informação
+Aula 02
+Monitorar e responder a 
+incidentes de segurança;
+Identificar ameaças em 
+tempo real;
+Prevenir ataques.
+Atua no monitoramento, detecção, 
+resposta e prevenção de ameaças.
+SOC(Security OperationsCenter)
+Objetivos:
+
+Profissionais de Segurança da Informação
+Aula 02
+Implementação de políticas de 
+segurança e monitoramento 24/7;
+Respostas a incidentes de segurança 
+e análise forense.
+Serviços Executados:
+Proteção contra ameaças 
+cibernéticas;
+Resposta rápida para incidentes 
+de segurança.
+Vantagens:
+Pode resultar em custo elevado;
+Pode gerar quantidades significativa 
+de alertas.
+Desvantagens:
+
+Garantir agilidades na resposta aos 
+incidentes de segurança cibernética;
+Identificar a causa raiz e 
+providenciar a correção.
+O CSIRT se concentra na resposta 
+aos incidentes cibernéticos.
+CSIRT
+(Computer Security IncidentResponse)
+Profissionais de Segurança da Informação
+Aula 02
+Objetivos:
+
+Profissionais de Segurança da Informação
+Aula 02
+Investigação de incidentes;
+Recuperação de 
+sistemas afetados;
+Análise forense digital.
+Serviços Executados:
+Capacitação das equipes;
+Redução nos incidentes 
+de segurança;
+Melhoria contínua.
+Vantagens:
+Atuação mais corretiva do que 
+preventiva;
+Exige recursos técnicos e pessoal 
+altamente treinado.
+Desvantagens:
+
+Profissionais de Segurança da Informação
+Aula 02
+Blue team: monitoramento e 
+defesa;
+Redteam: simulação de 
+ataques;
+Purpleteam: avaliação e 
+aprimoramento;
+White team: validação de 
+resultados de testes.
+Esses times são parte do SOC e CSIRT.
+Papéis de cada Time:
+TIMES DE TESTE
+
+Avaliação contínua de segurança;
+Ampliação da cultura de 
+segurança.
+Vantagens:
+Exige comunicação clara e 
+entrosamento entre as equipes;
+Requer recursos e planejamento 
+adequados.
+Desvantagens:
+Profissionais de Segurança da Informação
+Aula 02
+
+Metodologias de 
+Trabalho Ágil
+Profissionais de Segurança da Informação
+Aula 02
+
+Controlar o fluxo de trabalho 
+eliminando gargalos;
+Maximizar a produtividade.
+É uma metodologia de gerenciamento 
+visual baseada em quadros Kanban.
+KANBAN
+Profissionais de Segurança da Informação
+Aula 02
+Objetivos:
+Proporcionar visualização do fluxo 
+de trabalho;
+Limitar do WIP e priorização 
+contínua de tarefas.
+Principais funções:
+
+Profissionais de Segurança da Informação
+Aula 02
+Flexibilidade para lidar com 
+tarefas simples ou complexas;
+Problemas no fluxo de trabalho 
+são resolvidos rapidamente.
+Vantagens:
+Requer monitoramento contínuo;
+Pode ocorrer acúmulo de trabalho.
+Desvantagens:
+
+Profissionais de Segurança da Informação
+Aula 02
+Melhorar a qualidade do 
+software;
+Tempestividade nas 
+entregas.
+Esta metodologia Ágil prioriza a entrega 
+de software com qualidade;
+XP(Extreme Programming)
+Objetivos:
+Está baseada em TDD (Test Driven
+Development) e programação em pares.
+
+Profissionais de Segurança da Informação
+Aula 02
+Programação em pares;
+Testes automotivados com 
+integração contínua.
+Principais funções:
+Confiabilidade de software;
+Entregas rápidas e incrementais;
+Satisfação do cliente.
+Vantagens:
+Requer treinamento e 
+mudança de cultura;
+Pode não ser eficaz em 
+projetos grandes.
+Desvantagens:
+
+Entrega rápida;
+Rápida adaptação a mudanças 
+de requisitos.
+É um frameworkde desenvolvimento 
+Ágil e iterativo.
+SCRUM
+Profissionais de Segurança da Informação
+Aula 02
+Objetivos:
+Scrum Master e ProductOwner;
+Time de Desenvolvimento.
+Principais funções:
+Trabalha com ciclos de entrega curtos e 
+com duração fixa denominados sprints.
+
+Profissionais de Segurança da Informação
+Aula 02
+Regularidade nas entregas;
+Transparência e adaptabilidade;
+Comunicação clara.
+Vantagens:
+Pode não ser eficaz em projetos 
+pequenos ou muito grandes;
+Requer compromisso e papéis 
+bem definidos da equipe.
+Desvantagens:
+
+Profissionais de Segurança da Informação
+Aula 02
+Refere-se a um conjunto de práticas 
+para integração das equipes de 
+desenvolvimento e operação.
+DEVOPS
+Entrega rápida e confiável de 
+software;
+Automação de processos;
+Colaboração entre desenvolvimento 
+e operações.
+Objetivos:
+
+Entregas frequentes e confiáveis;
+Redução nas falhas de 
+implantação;
+Colaboração e eficiência.
+Vantagens:
+Mudança cultural desafiadora;
+Requer investimentos em 
+automação.
+Desvantagens:
+Profissionais de Segurança da Informação
+Aula 02
+Desenvolvedores, Operações 
+de Ti e Engenheiros de 
+automação.
+Principais papéis:
+
+Identificar vulnerabilidade 
+preventivamente;
+Proteger os ativos de informação 
+contra ameaças cibernéticas.
+Integra a segurança ao DevOpsdo 
+desenvolvimento à implantação.
+DEVSECOPS
+Profissionais de Segurança da Informação
+Aula 02
+Objetivos:
+Analistas e engenheiros de 
+segurança;
+Desenvolvedores.
+Principais funções:
+
+Profissionais de Segurança da Informação
+Aula 02
+Softwares mais seguros;
+Trabalho preventivo de ameaças 
+cibernéticas;
+Conformidade regulatória.
+Vantagens:
+Necessidades de treinamento e 
+criação de cultura de segurança;
+Pode acrescentar complexidade 
+ao processo de desenvolvimento.
+Desvantagens:
+
+Profissionais de Segurança 
+da Informação
+Você chegou ao final da Aula 02
+1

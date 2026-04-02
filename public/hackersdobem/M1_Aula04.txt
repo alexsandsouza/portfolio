@@ -1,0 +1,164 @@
+
+
+Módulo 01
+Princípios de Segurança
+da Informação
+Aula 04
+Identificando Engenharia 
+Social
+1
+
+Introdução
+Nesta aula, você conhecerá os seguintes assuntos:
+Princípios e tipologias de engenharia social;
+Técnicas e tipologias de engenharia social;
+Phishinge suas variantes, Spam, Hoaxes, Coleta de 
+Credenciais e Campanhas de Influência.
+
+Identificando 
+Engenharia Social
+Engenharia Social
+Aula 04
+
+A Engenharia Social manipula 
+pessoas e explora sua confiança;
+ENGENHARIA SOCIAL
+Induz a revelar informações 
+confidenciais ou influencia suas ações 
+de maneira prejudicial;
+A engenharia social não envolve 
+técnicas de hackingou explora técnicas 
+de sistemas;
+Se baseia na exploração da natureza 
+humana e na confiança das pessoas.
+Engenharia Social
+Aula 04
+
+Autoridade (Authority) e Intimidação;
+Scarcity(Escassez);
+Urgência (Urgency);
+Familiaridade/Gosto (Liking);
+Consenso/Prova Social (Social 
+Proof).
+Engenharia Social
+Aula 04
+Princípios da engenharia social:
+Personificação (Impersonation);
+Confiabilidade (Trust);
+Mergulho em Lixeiras (Dumpster
+Diving);
+Engenharia Social Online (Online 
+Social Engineering).
+Técnicas:
+
+É um método da engenharia social 
+que se utiliza do envio de 
+mensagens fraudulentas (e-mail ou 
+SMS) ou a criação de sites falsos.
+PHINISHING
+Visa enganar as pessoas e fazê-las 
+divulgar informações confidencias.
+Mensagem falsa;
+Isca e Página falsa;
+Roubo de informações.
+Funcionamento:
+Engenharia Social
+Aula 04
+
+SpearPhinising: Alvos específicos.
+1
+Funcionamento:
+VARIANTES DO PHISHING
+Coleta de informações sobre 
+as vítimas;
+Envio de mensagens 
+personalizadas de Phishing;
+Vítima pode ou não executar 
+as ações específicas.
+Whaling(Caça à Baleia): Vítimas 
+são pessoas de alto escalão.
+2
+Funcionamento:
+Focam nos executivos;
+Os atacantes se passam por 
+pessoas conhecidas da vítima 
+pra ganhar sua confiança.
+Vishing(Voice + Phishing): Ocorre 
+por chamada telefônica.
+3
+Funcionamento:
+Estabelece contato telefônico 
+com a vítima;
+Uso de alguma artimanha para 
+enganar a vítima;
+Vítima pode acatar porque a 
+voz pode criar uma falsa 
+sensação de autenticidade.
+Engenharia Social
+Aula 04
+
+Spam: Envio em massa de mensagens 
+não solicitadas (e-mails) para um grande 
+número de destinatários. 
+1
+Funcionamento: Envio de mensagens 
+em massa contendo alguma ação 
+embutida como link malicioso ou 
+phishing.
+Essas são outros tipos de tática 
+utilizadas na engenharia social:
+SPAM, HOAXES E COLETA 
+DE CREDENCIAIS
+Engenharia Social
+Aula 04
+
+Hoaxes(Boato): Mensagens falsas 
+circulando na internet
+2
+Envio de mensagens sensacionalistas;
+Incentivo para compartilhamento.
+Funcionamento:
+Coleta de Credenciais (Credential
+Harvesting): Visa a obtenção de 
+informações de login e senha de usuários
+3
+Criação de páginas webou mensagens 
+que imitam sites legítimos;
+As vítimas são induzidas a acreditar  
+que estão inserido suas credenciais 
+em um site real.
+Funcionamento:
+Engenharia Social
+Aula 04
+
+Engenharia Social
+Aula 04
+É mais uma tática utilizada na 
+engenharia social;
+CAMPANHA DE INFLUÊNCIA
+Podem influenciar opiniões, moldar 
+percepções, promover agendas 
+políticas.
+
+Engenharia Social
+Aula 04
+Identificação dos alvos;
+1
+Funcionamento:
+Desenvolvimento da narrativa;
+2
+Distribuição do conteúdo;
+3
+Amplificação;
+4
+Engajamento;
+5
+Monitoramento e adaptação;
+6
+Avaliação do sucesso.
+7
+
+Identificando Engenharia 
+Social
+Você chegou ao final da Aula 04
+1

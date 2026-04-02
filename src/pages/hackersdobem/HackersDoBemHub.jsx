@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Shield, Trophy, Lock, Rocket, ChevronRight, Terminal, CheckCircle } from 'lucide-react';
+import { Shield, Trophy, Lock, Unlock, Search, Rocket, ChevronRight, Terminal, CheckCircle, Globe } from 'lucide-react';
 import { getProgress } from './HDBProgress';
 import './HackersDoBem.css';
 
@@ -96,6 +96,71 @@ export default function HackersDoBemHub() {
   }, []);
 
   const missions = [
+    {
+      id: 'HDB_M01',
+      title: 'Princípios de Segurança',
+      module: 'Módulo 01 · Aulas 01 a 04',
+      description: 'Fundamentos de Segurança da Informação, Tríade CID e NIST Framework.',
+      path: '/hackersdobem/atividade-m01',
+      rankingPath: '/hackersdobem/ranking-m01',
+      icon: <Shield size={24} color="#00ff88" />,
+      buttonText: 'Iniciar Recrutamento',
+      status: 'active',
+      accentColor: '#00ff88',
+      badges: ['20 min', '150 pts']
+    },
+    {
+      id: 'HDB_M02',
+      title: 'Ameaças e Malwares',
+      module: 'Módulo 02 · Aulas 01 a 04',
+      description: 'Vírus, Worms, Trojans, Ransomware e análise de vetores de infecção.',
+      path: '/hackersdobem/atividade-m02',
+      rankingPath: '/hackersdobem/ranking-m02',
+      icon: <Lock size={24} color="#f43f5e" />,
+      buttonText: 'Scannear Ameaças',
+      status: 'active',
+      accentColor: '#f43f5e',
+      badges: ['25 min', '200 pts']
+    },
+    {
+      id: 'HDB_M03',
+      title: 'Identificação de Ameaças',
+      module: 'Módulo 03 · Aulas 01 a 04',
+      description: 'Scanners de vulnerabilidade, CVE, varreduras intrusivas e análise de logs.',
+      path: '/hackersdobem/atividade-m03',
+      rankingPath: '/hackersdobem/ranking-m03',
+      icon: <Search size={24} color="#3b82f6" />,
+      buttonText: 'Detectar Alvos',
+      status: 'active',
+      accentColor: '#3b82f6',
+      badges: ['25 min', '200 pts']
+    },
+    {
+      id: 'HDB_M04',
+      title: 'Controles de Acesso',
+      module: 'Módulo 04 · Aulas 01 a 04',
+      description: 'IAM, Autenticação Multifator (MFA), SSO e protocolos de segurança.',
+      path: '/hackersdobem/atividade-m04',
+      rankingPath: '/hackersdobem/ranking-m04',
+      icon: <Unlock size={24} color="#eab308" />,
+      buttonText: 'Validar Acessos',
+      status: 'active',
+      accentColor: '#eab308',
+      badges: ['30 min', '250 pts']
+    },
+    {
+      id: 'HDB_M06',
+      title: 'Proteção Web',
+      module: 'Módulo 06 · Aulas 01 a 04',
+      description: 'Ataques de Injeção (SQL, XML, LDAP), XSS, CSRF, Clickjacking e segurança em APIs.',
+      path: '/hackersdobem/atividade-m06',
+      rankingPath: '/hackersdobem/ranking-m06',
+      icon: <Globe size={24} color="#f43f5e" />,
+      buttonText: 'Blindar Aplicação',
+      status: 'active',
+      accentColor: '#f43f5e',
+      badges: ['30 min', '300 pts']
+    },
     {
       id: 'M05A01',
       title: 'Proteja a Rede da SeguraTech',

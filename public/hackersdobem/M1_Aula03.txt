@@ -1,0 +1,331 @@
+
+
+Módulo 01
+Princípios de Segurança
+da Informação
+Aula 03
+Atores de Ameaças e 
+Ameaças Inteligentes
+1
+
+Introdução
+Nesta aula, você conhecerá os seguintes assuntos:
+Atores de ameaça, suas motivações e tipologia;
+Superfície de ataque, o que é e como os atores de 
+ataque exploram suas vulnerabilidades;
+Métodos e táticas utilizadas por atores de ameaça 
+conhecidos como vetores de ataque;
+Fontes de pesquisa de inteligência de ameaça e o crescente 
+papel da Inteligência Artificial na segurança cibernética.
+
+Atributos dos Atores 
+de Ameaças
+Atores de Ameaças e Ameaças Inteligentes
+Aula 03
+
+Os black hathackers, ou “hackers de 
+chapéu preto”, são indivíduos ou 
+grupos que agem com fins maliciosos.
+BLACK HAT HACKERS
+Atores de Ameaças Inteligentes
+Aula 03
+
+Atores de Ameaças Inteligentes
+Aula 03
+Atividades:
+1
+Invasão;
+Roubo de dados;
+Distribuição de malware;
+Sabotagem.
+Motivação:
+2
+Financeira;
+Intenção de prejudicar;
+Habilidades:
+3
+Avançadas.
+Padrão de Atuação:
+4
+Clandestinidade;
+Identidade oculta
+Ilegalidade.
+
+Atores de Ameaças Inteligentes
+Aula 03
+Os whitehathackers, ou “hackers 
+de chapéu branco”, são hackers 
+éticos.
+WHITE HAT HACKERS
+Trabalham para proteger sistemas, 
+redes e informações.
+
+Atores de Ameaças Inteligentes
+Aula 03
+Atividades:
+1
+Invasão de sistema de dados;
+Buscam falhas;
+Apontam melhorias.
+Motivação:
+2
+Ética e legal;
+Melhoria dos sistemas 
+de segurança.
+Habilidades:
+3
+Usam técnicas avançadas.
+Padrão de Atuação:
+4
+Com autorização;
+Procuram vulnerabilidade;
+Legalidade.
+
+Profissionais de Segurança da Informação
+Aula 03
+Os grayhathackers, ou “hackers de 
+chapéu cinza”, são intermediário;
+GRAY HAT HACKERS
+Atuam na fronteira da legalidade.
+
+Atores de Ameaças Inteligentes
+Aula 03
+Atividades:
+1
+Invasão;
+Buscam vulnerabilidades;
+Divulgação sem autorização.
+Motivação:
+2
+Desafiar Sistemas;
+Revelar as falhas.
+Habilidades:
+3
+Avançadas.
+Padrão de Atuação:
+4
+Independentes ou em grupos;
+Operam sem autorização.
+
+Atores de Ameaças Inteligentes
+Aula 03
+Os blue hathackers, ou “hackers de 
+chapéu azul”, são indivíduos externos 
+contratados para testar sistemas 
+internos.
+BLUE HAT HACKER
+
+Atores de Ameaças Inteligentes
+Aula 03
+Atividades:
+1
+Teste de invasão;
+Relatórios;
+Recomendações de melhoria.
+Motivação:
+2
+Financeira;
+Contribuição para a segurança.
+Habilidades:
+3
+Avançadas.
+Padrão de Atuação:
+4
+Tem permissão;
+Contratação formal, profissional.
+
+Os Script Kiddiessão indivíduos que 
+usam ferramentas de hackers 
+experientes;
+SCRIPT KIDDIES
+Atores de Ameaças Inteligentes
+Aula 03
+Em geral, não têm habilidades para 
+criar ataques.
+
+Atores de Ameaças Inteligentes
+Aula 03
+Atividades:
+1
+Mesmas atividades de hacker.
+Motivação:
+2
+Busca de notoriedade.
+Habilidades:
+3
+Limitadas.
+Padrão de Atuação:
+4
+Ataques mais simples.
+
+Atores de Ameaças Inteligentes
+Aula 03
+Os hacktivistassão indivíduos ou 
+grupos que usam suas habilidades 
+para promover causas políticas, 
+sociais ou ideológicas.
+HACKTIVISTAS
+
+Atores de Ameaças Inteligentes
+Aula 03
+Atividades:
+1
+Invasão;
+Divulgação de informações;
+Adulteração de Sites.
+Motivação:
+2
+Protesto em defesa de causas 
+políticas ou sociais.
+Habilidades:
+3
+Avançadas.
+Padrão de Atuação:
+4
+Invasão e obtenção de 
+informações;
+Vazamentos de dados confidenciais;
+Interrupção de serviços;
+Desfigurar Sites.
+
+Superfície de Ataque e 
+Vetores de Ataque
+Atores de Ameaças e Ameaças Inteligentes
+Aula 03
+
+Profissionais de Segurança da Informação
+Aula 02
+Refere-se ao conjunto de todos os 
+pontos de entrada e vulnerabilidade em 
+sistemas, redes e organizações que 
+podem ser explorados por atores de 
+ameaça;
+SUPERFÍCIE DE ATAQUE
+É supostamente maior quando se trata 
+de atores internos em comparação com 
+atores externos.
+
+Atores de Ameaças Inteligentes
+Aula 03
+Servidores;
+Dispositivos;
+Aplicativos;
+Usuários.
+Os pontos de entrada da superfície de 
+ataque podem incluir:
+Reduzir a superfície de ataque 
+implica em restringir acessos;
+Limitar o acesso a endpoints, 
+protocolos/portas e 
+serviços/métodos conhecidos.
+Fonte: Cloudflare.
+Disponível em:
+<https://www.cloudflare.com/pt-br/learning/security/glossary/attack-vector/>
+Acesso em: 18 mar. 2024.
+
+VETORES DE ATAQUE
+Atores de Ameaças Inteligentes
+Aula 03
+Vetores baseados em softwares;
+Vetores de Ataque de Redes e 
+Tráfego;
+Vetores de Ataque Sociais 
+e Psicológicos;
+Vetores de Ataque de 
+Autentificação e Senhas.
+Categorias de vetores de ataque:
+Fonte: Whitehack
+1
+.
+1
+Disponível em:
+<https://whitehack.com.br/superficie-de-ataque-7-vetores-mortais/>
+Acesso em: 28 mar. 2024
+Vetores de ataque são os métodos e 
+técnicas usados pelos atores de ameaças 
+para explorar vulnerabilidades na 
+superfície de ataque.
+Fonte: Whitehack.
+Disponível em:
+<https://whitehack.com.br/superficie-de-ataque-7-vetores-mortais/>
+Acesso em: 18 mar. 2024
+
+Fontes de Pesquisa de 
+Inteligência de Ameaças
+Atores de Ameaças e Ameaças Inteligentes
+Aula 03
+
+Fontes abertas;
+Fontes fechadas;
+Inteligência de ameaças internas;
+DeepWebe DarkWeb.
+A inteligência de ameaças é o processo 
+de coletar, analisar e compartilhar 
+informações sobre ameaças 
+cibernéticas visando a tomada de 
+decisão proativa.
+FONTES DE PESQUISA E 
+INTELIGÊNCIA DE AMEAÇA
+Atores de Ameaças Inteligentes
+Aula 03
+Tipos de fontes de pesquisa de 
+inteligência de ameaças:
+
+Atores de Ameaças Inteligentes
+Aula 03
+Ferramentas e Plataformas de 
+Inteligência de Ameaças;
+Colaboração e Compartilhamento.
+Como pesquisar inteligência de ameaças:
+Equipes de Segurança Cibernética;
+Fornecedores de Segurança 
+Cibernética;
+Agências de Segurança e 
+Inteligência;
+Comunidade de Segurança 
+Cibernética.
+Quem pesquisa inteligência de ameaças:
+
+Inteligência Artificial
+Atores de Ameaças e Ameaças Inteligentes
+Aula 03
+
+IA, ANÁLISE PREDITIVA E 
+MACHINE LEARNING
+Atores de Ameaças Inteligentes
+Aula 03
+A Inteligência Artificial (IA) refere-se à 
+capacidade das máquinas de realizar 
+tarefas que exigem inteligência humana.
+1
+Pode realizar correlações precisas 
+em curto espaço de tempo.
+A análise preditiva usa algoritmos 
+e modelos estatísticos:
+2
+Identifica padrões e tendências 
+na previsão de eventos futuros.
+O aprendizado de máquina 
+(Machine Learning) é um 
+subconjunto da IA:
+3
+Cria algoritmos para que 
+sistemas aprendam com base 
+em dados.
+
+Atores de Ameaças Inteligentes
+Aula 03
+Detecção de ameaças;
+Análise de malware;
+Autenticação e identificação;
+Previsão e automação de resposta a 
+incidentes.
+Usos na segurança cibernética:
+Sistema utilizado por muitas empresas e 
+agências de segurança cibernética e 
+defesa.
+
+Atores de Ameaças 
+Inteligentes
+Você chegou ao final da Aula 03
+1

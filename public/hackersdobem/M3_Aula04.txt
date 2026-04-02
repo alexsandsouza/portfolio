@@ -1,0 +1,174 @@
+
+
+Módulo 03
+Técnicas Utilizadas na 
+Identificação de Ameaças
+Aula 04
+Análise de Tráfego TCP/IP
+3
+
+Introdução
+Nesta aula, você conhecerá os seguintes assuntos:
+Os conceitos e utilidades de ferramentas de detecção de redes;
+O potencial da avaliação da segurança no contexto das redes TCP/IP;
+A utilidade dos comandos: Ipconfig, ifconfig, ping, arp, route, traceroute, tracert, 
+Netstate nslookup;
+Análise de pacotes com foco em Wireshark.
+
+Avaliação da Segurança 
+Organizacional 
+Análise de Tráfego TCP/IP
+Aula 04
+
+Aula 04
+Análise de Tráfego TCP/IP
+FERRAMENTAS DE DETECÇÃO 
+DE REDE
+O mapeamento da superfície de ataque 
+é conhecido como reconhecimento e 
+descoberta de rede.
+Varreduras são executadas 
+periodicamente por linha de comando 
+ou GUI.
+A descoberta de topologia (ou 
+"footprinting") significa verificar hosts, 
+intervalos de IP e rotas entre redes para 
+mapear a estrutura da rede de destino.
+Fonte: PCWDLD, 2024.
+Disponível em: <https://www.pcwdld.com/how-to-scan-network-
+for-ip-addresses/>. 
+Acesso em: 21 mar. 2024. 
+
+Aula 04
+Análise de Tráfego TCP/IP
+FERRAMENTAS DE DETECÇÃO 
+DE REDE
+Ipconfig;
+Ifconfig;
+Ping; 
+arp. 
+Ferramentas de linha de comando para 
+tarefas básicas de descoberta: 
+
+Aula 04
+As ferramentas a seguir podem ser 
+usadas para testar a configuração de 
+roteamento e a conectividade com hosts
+e redes remotas:
+CONFIGURAÇÃO DE ROTAS
+Análise de Tráfego TCP/IP
+1. Route
+2. Tracert
+3. Traceroute
+4. Pathping
+Fonte: Blog LabCisco, 2013.
+Disponível em: 
+<http://labcisco.blogspot.com/2013/12/laboratorio-de-
+roteamento-estatico-no.html>. 
+Acesso em: 21 mar. 2024. 
+
+Aula 04
+Ferramentas de scanners são utilizadas na 
+maior parte das descobertas de topologia 
+realizadas.
+SCANNERS IP E NMAP
+Um scannerIP realiza a descoberta de hosts
+e identifica como os hostsestão conectados 
+em uma rede.
+Como exemplo, está o System Centerda 
+Microsofte o NmapSecurity Scanner.
+Análise de Tráfego TCP/IP
+
+Aula 04
+Análise de Tráfego TCP/IP
+Fonte: Blog Iron Linux, 2020.
+Disponível em: <https://blog.ironlinux.com.br/nmap-
+scripting-engine-nse/>. 
+Acesso em: 21 mar. 2024. 
+DESCOBERTA DE SERVIÇO 
+E NMAP
+Inclui sistemas operacionais em uso, 
+serviços de rede de cada hoste o 
+correspondente aplicativo que suporta 
+os serviços.
+A descoberta de serviços é o próximo 
+passo após o reconhecimento da rede.
+Pode ser usada para investigar possíveis 
+sistemas ou portas não autorizadas.
+
+Aula 04
+Descoberta com Nmap:
+DESCOBERTA DE SERVIÇO 
+E NMAP
+Análise de Tráfego TCP/IP
+1. Ferramenta de código aberto 
+com versões para MS-Win, Linux 
+e MacOS.
+2. Pode ser operado com linha de 
+comando ou via GUI (Zenmap).
+3. Exemplos de opções de 
+descoberta de serviço:  TCP SYN 
+(-sS), Varreduras UDP (-sU), 
+Intervalo de portas (-p).
+Fonte: IPWITHEASE.
+Disponível em: <https://ipwithease.com/category/security/page/7/>. 
+Acesso em: 21 mar. 2024. 
+
+Aula 04
+Principais comandos:
+DESCOBERTA DE SERVIÇO 
+E NMAP
+1. netstat
+2. nslookup(Win) / dig(Linux)
+Tarefas básicas de descoberta de 
+serviços podem ser executadas usando 
+ferramentas integradas aos sistemas 
+operacionais MS-Windows e Linux.
+Análise de Tráfego TCP/IP
+Fonte: ElizandroSantos, 2023.
+Disponível em: 
+<https://elizandrosantos.wordpress.com/2013/07/05/o-
+comando-netstat/>. 
+Acesso em: 21 mar. 2024. 
+
+Aula 04
+Um analisador de pacotes realiza 
+análise de tráfego.
+ANÁLISE DE PACOTES E 
+WIRESHARK
+Funciona em conjunto com um sniffer.
+O resultado pode ser resumido ou 
+detalhado.
+Análise de Tráfego TCP/IP
+Wiresharké uma ferramenta de código 
+aberto para análise de protocolo, ou 
+analisador de pacotes.
+Fonte: PacktSecProNewsletter, 2022.
+Disponível em: <https://security.packt.com/threat-hunting-using-
+wireshark-in-2022-part-1/>. 
+Acesso em: 21 mar. 2024. 
+
+Aula 04
+Características do Wireshark:
+ANÁLISE DE PACOTES E 
+WIRESHARK
+Análise de Tráfego TCP/IP
+Funciona de forma gráfica para 
+captura e análise de pacotes.
+Possui versões de instalação para a 
+maioria dos sistemas operacionais.
+Apresenta a visualização em três 
+painéis: painel de lista de pacotes, 
+painel de detalhes do pacote e 
+painel de bytesde pacote.
+É capaz de interpretar os cabeçalhos 
+e payloadsde centenas de 
+protocolos de rede.
+Fonte: Medium, 2022.
+Disponível em: <https://medium.com/@shadowfeit60/tutorial-
+wireshark-32702d0349d3>. 
+Acesso em: 21 mar. 2024. 
+
+Análise de Tráfego TCP/IP
+Você chegou ao final da Aula 04
+3

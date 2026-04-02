@@ -1,0 +1,264 @@
+
+
+Módulo 02
+Ameaças, Malwares e Controles
+Aula 04
+Fontes de Ameaça
+2
+
+Introdução
+Nesta aula, você conhecerá os seguintes assuntos:
+Ameaças internas e externas;
+Atores e suas motivações;
+Camadas da internet e seu potencial;
+Deep Web, Dark Web e Dark Net.
+
+Fontes de Ameaça
+Fontes de Ameaça
+Aula 04
+
+Representam os pontos de onde as 
+ameaças podem surgir;
+Fontes de Ameaça
+Aula 04
+Compreendem os locais, atores ou 
+entidades com potencial de causar danos;
+Podem ser internas ou externas à 
+organização;
+Controlar as ameaças internas e externas 
+possibilita desenvolver estratégias de 
+proteção mais eficientes e eficazes.
+
+Têm origem dentro da própria 
+organização;
+Aula 04
+São representadas, na maioria das vezes, 
+por atores internos (funcionários);
+Frequentemente envolvem uma quebra de 
+confiança;
+AMEAÇAS INTERNAS
+Podem ser também contratados, parceiros 
+de negócios e ex-funcionários;
+As ameaças internas podem ser acidentais 
+ou propositadas.
+Fontes de Ameaça
+
+Ameaças internas acidentais:
+Aula 04
+Não têm a intenção de 
+prejudicar a organização;
+Inclui funcionários que cometem erros 
+não intencionais, mas perigosos.
+Ameaças internas propositadas ou 
+maliciosas:
+Têm a intenção de causar 
+danos a organização;
+Inclui funcionários descontentes, ex-
+funcionários ou colaboradores.
+Fontes de Ameaça
+
+Aula 04
+ATRIBUTOS DOS ATORES 
+INTERNOS
+Motivação: Financeiras, vingança, 
+descontentamento no trabalho ou 
+coerção por terceiros.
+1
+Nível de sofisticação: Pode 
+variar dependendo do nível de 
+conhecimento e autorizações 
+do funcionário.
+Recursos: Depende do nível 
+de acesso aos sistemas ou 
+apoio de fontes externas.
+Estratégias comuns: Abuso 
+de privilégios de acesso, 
+roubo, destruição, divulgação 
+e vazamento de dados.
+2
+3
+4
+Fontes de Ameaça
+
+Algumas das estratégias comuns nas 
+ameaças internas incluem:
+Aula 04
+Abuso de Privilégios de Acesso.
+1
+Roubo de Informações 
+Confidenciais.
+Destruição de Dados ou Ativos;
+Divulgação de Informações 
+Confidenciais;
+2
+3
+4
+Vazamento de Dados.
+4
+ESTRATÉGIAS COMUNS 
+USADAS NAS AMEAÇAS 
+INTERNAS
+Fontes de Ameaça
+
+Têm origem fora da organização e não 
+têm conhecimento interno;
+AMEAÇAS EXTERNAS
+Buscam ganhos financeiros, acesso a 
+informações confidenciais ou causam 
+danos à reputação da organização;
+São representadas por atores externos:
+Aula 04
+Hackers individuais;
+Grupos criminosos;
+Concorrentes;
+Hacktivistas;
+Governos estrangeiros.
+Fontes de Ameaça
+
+ATRIBUTOS DOS ATORES 
+EXTERNOS
+Aula 04
+Motivação: Financeiras, causas 
+políticas, sociais ou pessoais.
+1
+Nível de sofisticação: Pode 
+variar significativamente, 
+desde altamente qualificados a 
+menos sofisticados;
+Recursos: Hackers individuais 
+podem ter recursos limitados, 
+enquanto grupos criminosos têm 
+acesso a financiamentos 
+substanciais;
+2
+3
+Estratégias comuns: Ataques de 
+engenharia social, malware, roubo 
+de identidade, ransomware, DDoS
+e outros.
+4
+Fontes de Ameaça
+
+Aula 04
+Ataques de Engenharia Social;
+1
+Malware e Exploits
+(Explorações);
+Roubo de Identidade;
+Ataques de Negação de 
+Serviço (DDoS);
+2
+3
+4
+Algumas das estratégias comuns 
+incluem:
+ESTRATÉGIAS COMUNS USADAS 
+EM AMEAÇAS EXTERNAS
+Ataques de Injeção (SQL, 
+XSS);
+5
+Exploração de Vulnerabilidades;
+6
+Ataques de Ransomware.
+7
+Fontes de Ameaça
+
+DeepWeb, DarkWeb e 
+DarkNet
+Fontes de Ameaça
+Aula 04
+
+Aula 04
+É a parte visível da internet;
+É a internet indexada por mecanismo 
+de busca comuns (Google, Bing);
+Acessado por meio de 
+navegadores convencionais 
+(Google Chrome, Mozilla, 
+Firefox ou Safari);
+A maioria das atividades online 
+ocorre na Web Superficial.
+DEFINIÇÃO DAS CAMADAS 
+DA INTERNET
+1
+Surface Web (Web de Superfície):
+Fontes de Ameaça
+Fonte: Reedit
+Disponível em: 
+<https://www.reddit.com/r/PORTUGALCARALHO/comm
+ents/sqnwob/dark_web_discord_o_que_se_aprende_na
+_comunica%C3%A7%C3%A3o/?rdt=51883>
+Acesso em: 03 abr. 2024.
+
+Aula 04
+Representa uma parte substancial, 
+porém menos visível, da internet;
+Tem um papel na cibersegurança 
+e atividades legítimas;
+Acesso controlado, privacidade 
+e segurança;
+2
+DeepWeb (Web Profunda):
+Não é indexada pelos mecanismos 
+de busca tradicionais;
+Exige conhecimento técnico 
+para acessar e navegar.
+Fonte: Extra Globo
+Disponível em: <https://extra.globo.com/noticias/seis-
+que-sabem/o-lado-negro-da-internet-5963119.html>
+Acesso em: 03 abr. 2024.
+Fontes de Ameaça
+
+Aula 04
+É parte da DeepWeb, utiliza redes 
+criptografadas e sistemas de 
+anonimato;
+Tem potencial como ferramenta 
+para ativistas, jornalistas e 
+pessoas em países com censura 
+para se comunicarem de forma 
+segura. 
+3
+DarkWeb (Web Escura):
+Costuma hospedar mercados 
+clandestinos, fóruns de hacking, 
+conteúdo ilegal e atividades ilícitas;
+Fonte: TorsMarket
+Disponível em: <https://torsmarket.com/how-to-get-on-
+the-dark-web-on-any-device-safely-2023/>
+Acesso em: 03 abr. 2024.
+Fontes de Ameaça
+
+Funcionamento/Acesso da Darkweb: 
+Anonimato, utilizam redes específicas 
+(Rede Tor/Tor Browser) com roteamento 
+por servidores criptografados, difícil 
+rastreabilidade;
+Organização da Darkweb: 
+Descentralizada e baseada em 
+comunidades, composta por várias redes 
+independentes (Darknets) como a rede 
+Onion;
+Aula 04
+Potencial de Utilização como Contra-
+Ameaça: Pode ser usada de forma 
+legítima para uma comunicação segura.
+Fontes de Ameaça
+
+Fontes de Ameaça
+Aula 04
+Opera por meio de redes privadas 
+e sistemas criptografados;
+Garante um alto grau de anonimato 
+para seus usuários;
+A organização da DarkNet é 
+descentralizada;
+A DarkNet tem potencial tanto para 
+atividades maliciosas quanto para 
+ações legítimas.
+4
+DarkNet:
+
+Fontes de Ameaça
+Você chegou ao final da Aula 04
+2

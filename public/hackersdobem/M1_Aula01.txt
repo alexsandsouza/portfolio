@@ -1,0 +1,246 @@
+
+
+Módulo 01
+Princípios de Segurança
+da Informação
+Aula 01
+Fundamentos de Segurança 
+da Informação
+1
+
+Introdução
+Nesta aula, você conhecerá os seguintes assuntos:
+Os conceitos básicos de segurança da informação;
+A tríade CID, pilar da segurança da informação;
+A relação entre vulnerabilidade, ameaça e risco;
+As principais tarefas relacionadas à cybersecurity
+baseadas no NIST Framework.
+
+Princípios da Segurança 
+da Informação
+Fundamentos da Segurança da Informação
+Aula 01
+
+forma como são armazenados;
+forma como são transferidos;
+forma como são processados.
+Os dados podem estar vulneráveis devido à:
+A segurança da informação desempenha 
+um papel vital na proteção da CID.
+É um conjunto de práticas, políticas, 
+procedimentos e tecnologias projetadas 
+para proteger os ativos de informação.
+SEGURANÇA DA INFORMAÇÃO
+Fundamentos de Segurança da Informação
+Aula 01
+Fonte: Advisera, 2016
+Disponível em: https://advisera.com/27001academy/pt-
+br/blog/2016/10/25/onde-a-seguranca-da-informacao-se-
+encaixa-em-uma-organizacao/
+Acesso em: 18 mar. 2024
+
+Confidencialidade;
+Integridade;
+Disponibilidade.
+Este é considerado o pilar de sustentação 
+da segurança da informação:
+TRÍADE CID
+Fundamentos de Segurança da Informação
+Aula 01
+Fonte: g7
+Disponível em: https://g7.com.br/o-tripe-de-seguranca-
+da-cia-o-que-voce-deve-saber-sendo-um-proprietario-
+de-site/
+Acesso em: 18 mar. 2024
+
+Não Repúdio;
+1
+Autenticidade;
+Controle de Acesso;
+OUTROS CONCEITOS APLICADOS EM 
+SEGURANÇA DA INFORMAÇÃO
+Autenticação e Autorização;
+Princípio do Menor Privilégio;
+2
+3
+4
+5
+Fundamentos de Segurança da Informação
+Aula 01
+Fonte: Procedimentos Normativos de Segurança com 
+base na Norma ABNT 27002
+Disponível em: 
+https://profandreluisbelini.files.wordpress.com/2015/07/au
+la-11-norma-abnt-27002.pdf
+Acesso em: 18 mar. 2024
+
+Gestão de Risco;
+6
+Ativos de Informação;
+Ameaças à Segurança da Informação;
+OUTROS CONCEITOS APLICADOS EM 
+SEGURANÇA DA INFORMAÇÃO
+Ataques Cibernéticos;
+Criptografia.
+7
+8
+9
+Fundamentos de Segurança da Informação
+Aula 01
+10
+Fonte: Lumiun, 2015
+Disponível em: https://www.lumiun.com/blog/fundamentos-de-
+seguranca-da-informacao-para-empresas/
+Acesso em: 18 mar. 2024
+
+Relação entre Vulnerabilidade, 
+Ameaça e Risco
+Fundamentos da Segurança da Informação
+Aula 01
+
+Vulnerabilidade: fraqueza ou 
+deficiência que pode ser explorada;
+Ameaça: evento com potencial de 
+causar dano:
+Risco: probabilidade de uma 
+ameaça explorar uma vulnerabilidade 
+e causar dano.
+Envolve o mapeamento e a análise das 
+relações entre:
+Trata-se de identificar as formas pelas 
+quais os sistemas podem ser atacados.
+RELAÇÃO ENTRE VULNERABILIDADE, 
+AMEÇA E RISCO
+Fundamentos de Segurança da Informação
+Aula 01
+Fonte: Colaborae, 2022
+Disponível em:
+https://colaborae.com.br/blog/2022/07/29/planejamento-
+risco-e-incerteza/
+Acesso em: 18 mar. 2024
+
+Fundamentos de Segurança da Informação
+Aceitar;
+Mitigar;
+Transferir; ou
+Evitar o risco.
+Após identificar vulnerabilidades, avaliar 
+ameaças potenciais é necessário aplicar as 
+medidas de segurança com foco em:
+O objetivo é reduzir o risco.
+Aula 01
+ESTRATÉGIAS PARA GERENCIAR 
+RISCOS
+
+Ameaças;
+Vulnerabilidades;
+Riscos;
+Medidas de Mitigação.
+Os elementos da Matriz do Risco incluem:
+É uma ferramenta que auxilia as 
+organizações a avaliar e visualizar 
+os riscos de segurança;
+MATRIZ DE RISCO
+Fundamentos de Segurança da Informação
+Aula 01
+Utilizada para classificar e priorizar 
+com base da probabilidade e no 
+impacto da ocorrência.
+Fonte: portaldodpo
+Disponível em:https://www.portaldodpo.pt/blog/service/risco/
+Acesso em: 18 mar. 2024 
+
+Principais Tarefas de 
+Segurança Cibernética com 
+base no NIST Framework
+Fundamentos da Segurança da Informação
+Aula 1
+
+Funções;
+Categorias;
+Subcategorias;
+Referências informativas.
+O frameworké composto por quatro 
+elementos:
+Trata-se de uma abordagem institucional 
+que auxilia as organizações a gerenciar de 
+segurança cibernética.
+NIST CYBERSECURITY FRAMEWORK
+Fundamentos de Segurança da Informação
+Aula 01
+Fonte: rmagdalena, 2018
+Disponível em: https://rmagdalena.wordpress.com/2018/07/24/nist-
+cybersecurity-framework/
+Acesso em: 18 mar. 2024
+
+Gerenciamento de Ativos;
+Ambiente Empresarial;
+Governança;
+Avaliação de Risco;
+Estratégia de Gerenciamento 
+de Risco.
+Identificar (Identify):
+TAREFAS DO NIST 
+FRAMEWORK
+Fundamentos de Segurança da Informação
+Aula 01
+1
+Categorias
+
+Controle de Acesso;
+Gerenciamento de Identidade;
+Conscientização e 
+Treinamento;
+Segurança de dados;
+Processos e Procedimentos de 
+Proteção da Informação;
+Manutenção;
+Tecnologia de Proteção.
+Proteger (Protect):
+TAREFAS DO NIST 
+FRAMEWORK
+Fundamentos de Segurança da Informação
+Aula 01
+2
+Categorias
+
+Anomalias e Ocorrências;
+Monitoramento Contínuo de 
+Segurança;
+Processos de Detecção.
+Detectar (Detect):
+TAREFAS DO NIST 
+FRAMEWORK
+Fundamentos de Segurança da Informação
+Aula 01
+3
+Categorias
+
+Planejamento e Resposta;
+Comunicações;
+Análise;
+Mitigação;
+Aperfeiçoamento.
+Responder (Respond):
+TAREFAS DO NIST 
+FRAMEWORK
+Fundamentos de Segurança da Informação
+Aula 01
+4
+Categorias
+
+Planejamento de Recuperação;
+Aperfeiçoamento;
+Comunicações.
+Recuperar (Recover):
+TAREFAS DO NIST 
+FRAMEWORK
+Fundamentos de Segurança da Informação
+Aula 01
+5
+Categorias
+
+Princípios de Segurança da 
+Informação
+Você chegou ao final da Aula 01
+1

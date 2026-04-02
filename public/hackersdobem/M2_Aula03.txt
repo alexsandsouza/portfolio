@@ -1,0 +1,302 @@
+
+
+Módulo 02
+Ameaças, Malwares e Controles
+Aula 03
+Categorias de Controle 
+de Segurança
+2
+
+Introdução
+Nesta aula, você conhecerá os seguintes assuntos:
+As categorias e os tipos funcionais;
+A importância da implementação de controles;
+Controle de segurança técnico, operacional e 
+gerencial;
+Controle de segurança preventivo, detectivo e 
+corretivo;
+Controles de segurança físicos, dissuasor e de 
+compensação.
+
+Controle de Segurança
+Categorias de Controle de Segurança
+Aula 03
+
+Refere-se a um conjunto de políticas, 
+procedimentos, processos, atividades e 
+ferramentas que moldam as estruturas de 
+serviços na organização;
+Categorias de Controle de Segurança
+Aula 03
+Um controle de segurança é projetado para 
+garantir confidencialidade, integridade, 
+disponibilidade e não repúdio a um sistema 
+ou ativo de dados;
+De acordo com a forma de implementação 
+os controles se dividem em: Técnico, 
+Operacional e Gerencial.
+Fonte: Gestão de Segurança Privada
+Disponível em: <https://gestaodesegurancaprivada.com.br/controles-de-
+seguranca-o-que-sao/>
+Acesso em: 03 abr. 2024.
+
+Também chamadosde controles lógicos;
+Categorias de Controle de Segurança
+Aula 03
+São os controles focados na parte 
+tecnológica da segurança da informação;
+Operam em tempo real com respostas 
+rápidas a ameaças e ataques.
+CONTROLE TÉCNICOS
+São implementados por meio de sistemas, 
+dispositivos e softwares;
+
+Funcionamento:
+Categorias de Controle de Segurança
+Aula 03
+Fonte: Slide team
+Disponível em: <https://www.slideteam.net/categories-of-security-
+controls-to-minimize-data-risks.html>
+Acesso em: 03 abr. 2024.
+Monitoramento;
+Bloqueio ou restrição de 
+acesso a sistemas e dados;
+Estão baseados em regras, 
+configurações e políticas predefinidas.
+Exemplos:
+Firewall;
+Antivírus / Antimalware;
+IDS e IPS.
+
+Refere-se às práticas, procedimentos e 
+ações diárias para garantir a segurança 
+da informação.
+Categorias de Controle de Segurança
+Aula 03
+Garantem a implementação das políticas 
+de segurança.
+Garantem que os funcionários estejam 
+cientes das melhores práticas de 
+segurança.
+CONTROLES OPERACIONAIS
+Contribuem para a criação de uma cultura 
+de segurança dentro da organização.
+Fonte: O’Reilly
+Disponível em: <https://www.oreilly.com/library/view/sscp-systems-
+security/9780071771566/lev225.html>
+Acesso em: 03 abr. 2024.
+
+Categorias de Controle de Segurança
+Aula 03
+Exemplos de controles operacionais:
+Gerenciamento de acesso de usuário:
+Treinamento em segurança da 
+informação:
+Políticas de senhas:
+Regras para criação e 
+gerenciamento de senhas.
+Controle de quem tem acesso a 
+determinados sistemas e dados
+Proporcionar treinamento aos 
+funcionários sobre ameaças 
+cibernéticas.
+
+Tem foco na alta administração;
+Desenvolvimento de estratégias de longo 
+prazo para lidar com ameaças e risco;
+Contempla a definição de políticas e 
+diretrizes gerais de segurança;
+Categorias de Controle de Segurança
+Aula 03
+Estabelecem a estrutura e a governança da 
+informação.
+CONTROLES GERENCIAIS
+
+Análise de risco:
+Exemplos de controles gerenciais:
+Categorias de Controle de Segurança
+Aula 03
+Plano de Continuidade de Negócios:
+Políticas de Segurança da 
+Informação:
+Contêm as diretrizes gerais da 
+segurança da organização.
+Definir avaliações periódicas e 
+regulares de riscos.
+Estabelecer planos para garantir 
+a continuidade das operações.
+
+Tipos Funcionais de 
+Controle de Segurança
+Categorias de Controle de Segurança
+Aula 03
+
+Além das categorias de controle Técnico, 
+Operacional e Gerencial existem também 
+os tipos funcionais;
+Aula 03
+Contém abordagens específicas para a 
+proteção de ativos e a gestão de riscos;
+Podem ser classificados também de 
+acordo com seu objetivo ou com a 
+função que ele executa.
+Categorias de Controle de Segurança
+
+Aula 03
+Controles Preventivos;
+1
+Controles Detectivos;
+Controles Corretivos;
+Outros tipos de controle.
+2
+3
+4
+Classificação dos controles de segurança 
+funcionais:
+Categorias de Controle de Segurança
+
+Visam evitar que os incidentes de 
+segurança ocorram;
+CONTROLES PREVENTIVOS
+Minimizar riscos;
+Fonte: GTA UFRJ
+Disponível em: 
+https://www.gta.ufrj.br/grad/16_2/2016IDS/conceituacao.html/
+Acesso em: 3 abr. 2024.
+Exemplos:
+Aula 03
+Firewalls;
+Política de segurança de 
+senhas.
+Impedir ocorrência de ameaças antes 
+que possam causar danos;
+Categorias de Controle de Segurança
+
+Visam a identificação precoce de 
+incidentes de segurança;
+CONTROLES DETECTIVOS
+Monitoramento constante em busca de 
+atividades anormais;
+Fonte: GTA UFRJ
+Disponível em: 
+https://www.gta.ufrj.br/grad/16_2/2016IDS/conceituacao.html/
+Acesso em: 03 abr. 2024.
+Exemplos:
+Aula 03
+Sistema de Identificação (IDS);
+Registro de Eventos.
+Resposta rápida e eficaz;
+Categorias de Controle de Segurança
+
+Visam restaurar a normalidade após a 
+ocorrência de incidente de segurança;
+CONTROLES CORRETIVOS
+Mitigar danos;
+Exemplos:
+Backups;
+Planos de Recuperação de 
+Desastres (DRP).
+Recuperar sistemas e dados;
+Garantem a continuidade dos negócios.
+Fonte: Linkedin
+Disponível em: <https://pt.linkedin.com/pulse/recupera%C3%A7%C3%A3o-
+de-desastres-parte-3-o-plano-uellington-santos>
+Acesso em: 03 abr. 2024.
+Aula 03
+Categorias de Controle de Segurança
+
+São aqueles controles que não se 
+encaixam claramente como Preventivo, 
+Detectivo e Corretivo;
+OUTROS TIPOS DE CONTROLE
+Podem ser utilizados para reforçar outros 
+tipos de controle;
+Nessa classificação estão os seguintes 
+controles:
+Aula 03
+Físicos;
+Dissuasores;
+Controle de Compensação.
+Categorias de Controle de Segurança
+
+Seleção de Controles 
+de Segurança
+Categorias de Controle de Segurança
+Aula 03
+
+É necessário compreender como selecionar 
+e aplicar os controles certos;
+Representa uma das etapas na construção 
+de uma estratégia de segurança;
+Aula 03
+As necessidades específicas da 
+organização;
+Os critérios de seleção e o 
+custo-benefício;
+A importância da revisão contínua.
+O processo de seleção e implementação de 
+controles de segurança, deve considerar:
+Categorias de Controle de Segurança
+
+Etapas para seleção dos controles:
+PROCESSOS DE SELEÇÃO E 
+IMPLEMENTAÇÃO
+Aula 03
+Avaliação de Riscos;
+1
+Definição de Requisitos de 
+Segurança;
+Seleção de Controles 
+Adequados;
+Implementação e Testes.
+2
+3
+4
+Categorias de Controle de Segurança
+Controles
+Administrativos
+Controles
+Técnicos/Lógicos
+
+Considera os seguintes critérios na 
+escolha dos controles:
+CRITÉRIOS DE SELEÇÃO
+Aula 03
+Relevância para Riscos;
+1
+Custo-Benefício;
+Conformidade Regulatória;
+Viabilidade Técnica e 
+Operacional.
+2
+3
+4
+Categorias de Controle de Segurança
+
+A implementação de controles de 
+segurança não é um processo estático.
+REVISÃO CONTÍNUA
+Aula 03
+Mudanças no Ambiente de 
+Ameaças;
+1
+Mudanças na Organização;
+Resultados de Testes e 
+Incidentes;
+Alterações em 
+Regulamentações.
+2
+3
+4
+Ajustes são necessários porque as 
+necessidades mudam:
+Fonte: Med Net Franquias
+Disponível em: https://mednetfranquias.com.br/ciclo-pdca-
+uma-importante-ferramenta-de-gestao/l
+Acesso em: 03 abr. 2024.
+Categorias de Controle de Segurança
+
+Categorias de Controle de 
+Segurança
+Você chegou ao final da Aula 03
+2

@@ -1,0 +1,386 @@
+
+
+Módulo 02
+Ameaças, Malwares e Controles
+Aula 01
+Tipos de Malware
+2
+
+Introdução
+Nesta aula, você conhecerá os seguintes assuntos:
+Tipos de malwarecom base em sua classificação;
+Classificação de malwarepor critérios como vetor, 
+propósito e payload;
+Identificar exemplos de cada tipo de malwaree seu 
+modo de operação;
+Virus & Worms, Trojans, Programas Potencialmente 
+Indesejados (PUPs);
+Spywaree keyloggers, Backdoors, Rootkitse 
+Ransomware.
+
+Classificação de Malware
+Tipos de Malware
+Aula 01
+
+Tipos de Malware
+Aula 01
+A classificação de malware não segue 
+um padrão pré-estabelecido;
+Algumas classificações concentram-se 
+no vetor usado pelo malware;
+Pode haver sobreposição na 
+classificação;
+Outras classificações são baseadas na 
+carga (payload) entregue pelo malware;
+Podem também serem baseadas no 
+seu propósito.
+
+Classificação de Malware 
+de Acordo com o Vetor
+Tipos de Malware
+Aula 01
+
+Tipos de Malware
+Aula 01
+Categorias de malware de acordo com 
+seu vetor:
+Vírus:
+1
+Estão entre os mais antigos 
+malwares;
+Podem ser ocultados em um 
+executável, documentos ou scripts;
+Se espalham quando esses 
+arquivos são compartilhados;
+Se for ativado, pode infectar outros 
+arquivos no mesmo sistema.
+
+Tipos de Malware
+Aula 01
+Modo de operação do vírus:
+Os vírus precisam de um 
+“hospedeiro” para se propagar;
+Se anexam a arquivos executáveis, 
+documentos ou scripts;
+São ativados se o arquivo “hospedeiro” 
+for executado ou aberto;
+Neste momento, pode infectar outros 
+arquivos no mesmo sistema.
+Exemplo de vírus:
+Vírus ILOVEYOU em 2000 e Vírus 
+Melissa.
+
+Tipos de Malware
+Aula 01
+Worms:
+2
+São autônomos, não precisam 
+de hospedeiro;
+Exploram vulnerabilidade para 
+se propagar;
+Se ativado, pode se replicar e 
+transmitir-se a outros sistemas 
+e redes.
+
+Tipos de Malware
+Aula 01
+Modo de operação do Worms:
+São projetados para se replicar 
+por redes e sistemas;
+Os Worms não se anexam a 
+arquivos existentes;
+Se transmitem pelas redes, 
+dispositivos USB e Internet;
+Se ativado pode se replicar 
+automaticamente e transmitir-se a 
+outros sistemas na rede.
+Exemplos de worm: “Conficker” e 
+“SQL Slammer”.
+
+Tipos de Malware
+Aula 01
+Trojan:
+3
+Trojans, ou Cavalos de Troia, se 
+disfarçam como softwares legítimos;
+Ficam ocultos em um pacote de 
+instalação que parece ser legítimo;
+Formas utilizadas: Falsos aplicativos, 
+anexos de e-mail, links maliciosos, 
+funcionalidades maliciosas;
+Se ativado, pode roubar 
+informações, obter acessos remoto, 
+destruir dados.
+
+Tipos de Malware
+Aula 01
+Modo de operação do trojan:
+Enganam o usuário usando, muitas 
+vezes, de engenharia social;
+São frequentemente disfarçados 
+como software legítimo;
+Podem estar contidos em anexos 
+maliciosos de e-mails;
+Links maliciosos que levam para a 
+instalação do trojan.
+Exemplos de trojan: “Zeus trojan” 
+RAT (Remote AcessTrojan).
+
+Tipos de Malware
+Aula 01
+Programas Potencialmente 
+Indesejados (PUPs: Potentially
+UnwantedPrograms)
+4
+Em geral, acompanham a instalação 
+de software legítimo;
+Realizam atividades 
+indesejadas, como exibição de 
+anúncios invasivos;
+A presença de um PUP não é, via 
+de regra, considerada maliciosa;
+Mesmo assim, podem causar 
+problemas de segurança ou 
+privacidade.
+
+Tipos de Malware
+Aula 01
+Modo de operação de um PUP:
+São instalados como parte de um 
+pacote de software;
+O PUP é descrito às vezes como 
+graywareem vez de malware;
+Realizam ações intrusivas sem o 
+consentimento do usuário.
+Exemplos de PUP: Barras de 
+ferramentas de navegador, 
+extensões suspeitas.
+
+Classificação de Malware 
+pelo Propósito
+Tipos de Malware
+Aula 01
+
+Tipos de Malware
+Aula 01
+Categorias de malware de acordo com 
+seu propósito:
+Spyware:
+1
+Projetado para coletar informações 
+pessoais e confidenciais do usuário;
+Seu objetivo principal é o 
+monitoramento e a coleta de 
+dados sensíveis;
+Pode ser instalado com 
+downloads ou anexos de e-mail 
+ou links maliciosos;
+Se ativado, monitora a atividade do 
+usuário, coleta e transmite as 
+informações para um servidor 
+controlado pelo atacante.
+
+Tipos de Malware
+Aula 01
+Exemplos de Spyware:
+Adware: Exibe anúncios 
+indesejados e coleta informações 
+sobre os hábitos do usuário para 
+exibir anúncios direcionados;
+Superfish: Um spywareque foi 
+pré-instalado em alguns laptops 
+Lenovo para fins de publicidade, 
+mas acabou expondo os usuário 
+a vulnerabilidade de segurança.
+
+Tipos de Malware
+Aula 01
+Keyloggers:
+2
+Ou registradores de teclas, são um 
+umsubconjunto de Spyware;
+Visa registrar todas as teclas 
+digitadas pelo usuário;
+Espera roubar informações como 
+senhas ou dados do cartão de 
+crédito;
+O modo de operação é o mesmo 
+dos Spywares.
+Exemplos de Keyloggers
+Zeus: Roubo de informações 
+bancárias, senhas e credenciais 
+financeiras;
+HawkEyeKeylogger: Usando para 
+roubar informações de login e 
+credenciais sensíveis.
+
+Tipos de Malware
+Aula 01
+Outros tipos de malware desta 
+categoria:
+3
+Cookies de rastreamento 
+(Tracking Cookies): criados por 
+anúncios e widgets analíticos 
+incorporados em muitos sites. 
+Podem registrar páginas visitadas, 
+consultas de pesquisa, metadados 
+do navegador e endereço de IP.
+Adware: Pode ser instalado como 
+um programa ou como uma 
+extensão/plug-in do navegador. 
+Realiza reconfigurações do 
+navegador.
+
+Classificação de Malware 
+de Acordo com o Payload
+Tipos de Malware
+Aula 01
+
+Tipos de Malware
+Aula 01
+Categorias de malware de acordo com 
+seu payload:
+Backdoorse Trojans de 
+Acesso Remoto (RAT):
+1
+Abrem “portas dos fundos” 
+(backdoors) para que um invasor 
+controle e manipule o sistema 
+remotamente;
+Se disfarçam como programas 
+legítimos ou são instalados junto 
+com o software confiável;
+RAT é um malware backdoorque 
+imita a funcionalidade de programas 
+remotos legítimos.
+
+Tipos de Malware
+Aula 01
+Exemplos de backdoorse RAT:
+RAT DarkComente o Net Bus: 
+Trojans de acessos remoto usados 
+por invasores para controlar 
+sistemas remotamente;
+BackOrifice: Um famoso backdoor
+que permite o controle remoto de 
+sistemas.
+
+Tipos de Malware
+Aula 01
+Rootkits:
+2
+Projetados para se esconder no 
+sistema costumam se fixar no kernel;
+Conseguem manter-se ativos 
+mesmo após reinicializações do 
+sistema e atualizações de software;
+Dificuldade de detecção por 
+softwares de segurança;
+Podem residir no firmware de placas 
+e adaptadores.
+Fonte: Welivesecurity
+Disponível em: https://www.welivesecurity.com/br/2014/08/12/rootkit-ou-
+bootkit-entendendo-as-diferencas/
+Acesso em: 02 abr. 2024.
+
+Tipos de Malware
+Aula 01
+Exemplos de Rootkits
+DarkMattere QuarkMatterEFI: 
+Direcionados ao firmware de 
+laptops Apple Macbook;
+Sony BMG Rootkit: Instalado em 
+CDs de música para impedir a cópia 
+não autorizada de faixas, o que 
+levou a problemas de segurança;
+Tdl-4: Um rootkitnotório usado para 
+ocultar botnete atividades 
+maliciosas.
+
+Tipos de Malware
+Aula 01
+Ransomware:
+3
+Criptografa os arquivos ou sistemas 
+tornando-os inacessíveis.
+Infecção por meio de anexos de e-
+mails maliciosos, downloads, sites 
+infectados ou exploração de 
+vulnerabilidades;
+Exigem um resgate (ransom) 
+financeiro pela chave de 
+descriptografia, sem garantia de 
+integridade no retorno de dados
+Pagamento em moedas digitais.
+
+Tipos de Malware
+Aula 01
+Exemplos de ransomware:
+WannaCry(2017): Se espalhou 
+globalmente;
+CryptoLocker(2013): Um dos 
+primeiros, extorquiu muito dinheiro 
+das vítimas;
+Ryuk: Direcionados contra 
+empresas e organizações.
+
+Tipos de Malware
+Aula 01
+Cripto-Malware:
+4
+Utiliza técnicas de criptografia para 
+prejudicar ou comprometer sistemas, 
+arquivos ou informações;
+Não pede resgate mas visa 
+prejudicar ou ocultar informações;
+Pode causar danos irreparáveis;
+A infecção ocorre da mesma forma 
+que o ransomware.
+
+Tipos de Malware
+Aula 01
+Exemplos Cripto-Malware:
+CrytoLocker: Criptografa arquivos 
+sem fornecer a chave de 
+descriptografia. Uma variante do 
+CryptoLocker, chamado 
+“LockerGoga”, é um exemplo de 
+cripto-malware destrutivo que visava 
+organizações empresariais;
+NotPetya(ExPetr/Petya/SortaPeetya): 
+Destruía os dados em vez de fornecer 
+uma maneira de recuperá-los.
+
+Tipos de Malware
+Aula 01
+Bombas Lógicas (LogicBombs):
+5
+São um tipo de malware ativado a 
+partir de um gatilho pré-determinado;
+Causam danos deliberados aos 
+sistemas;
+A infecção ocorre por meio de 
+programa legítimo, código-fonte ou 
+operação criminosa maior;
+Se ativada, suas ações incluem 
+exclusão de arquivos críticos, 
+corrupção de dados, disseminação 
+adicional e outros.
+
+Tipos de Malware
+Aula 01
+Exemplos de Bombas Lógicas 
+(LogicBombs):
+Stuxnet: Ela foi usada para atacar 
+sistemas de enriquecimento de 
+urânio no Irã;
+Mydoom: Um wormque continha 
+uma bomba lógica para lançar 
+um ataque distribuído de 
+negação de serviço (DDoS) em 
+um determinado dia.
+
+Tipos de Malware
+Você chegou ao final da Aula 01
+2
