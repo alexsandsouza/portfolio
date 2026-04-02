@@ -1,0 +1,239 @@
+
+
+Módulo 08
+Conceitos de Criptografia
+Aula 02
+Criptografia simétrica
+8
+
+Introdução
+Nesta aula, você conhecerá os seguintes assuntos:
+Criptografia simétrica.
+
+Componentes 
+e funcionamento 
+da criptografia simétrica
+Criptografia simétrica
+Aula 02
+
+COMPONENTES
+Texto Claro (Plaintext).
+Criptografia simétrica
+Aula 02
+Fonte: Madefy.
+Disponível em: <https://madefy.com.br/servicos/desenvolvimento-
+de-api/>. Acesso em: 18 mar. 2024.
+Chave Simétrica (SymmetricKey).
+Cifra (Cipher).
+Texto Cifrado (Ciphertext).
+
+O fluxo de chave é combinado com os bits 
+do texto claro por meio de uma operação 
+lógica, como a operação XOR.
+Criptografia: combina os bits do texto claro 
+com uma sequência de bits gerada pela 
+chave simétrica (fluxo de chave).
+Transforma dados em um fluxo contínuo de 
+caracteres cifrados.
+CIFRA DE FLUXO
+Fonte: ResearchGate, 2020.
+Disponível 
+em:<https://www.researchgate.net/publication/341400904_Evalu
+ating_the_Code_Encryption_Effects_on_Memory_Fault_Resilien
+ce>.
+Acesso em: 19 mar. 2024.
+Criptografia simétrica
+Aula 02
+São rápidas e eficientes em termos de 
+recursos computacionais.
+Qualquer falha na geração pode 
+comprometer a segurança.
+
+Cada bloco de dados é processado 
+individualmente usando a chave simétrica e 
+o algoritmo de criptografia.
+Dividem o texto claro em blocos de 
+tamanho fixo e criptografa cada bloco 
+independentemente.
+CIFRA DE BLOCOS
+Fonte: ResearchGate, 2020.
+Disponível 
+em:<https://www.researchgate.net/publication/341400
+904_Evaluating_the_Code_Encryption_Effects_on_M
+emory_Fault_Resilience>.
+Acesso em: 19 mar. 2024.
+Criptografia simétrica
+Aula 02
+Tamanho do bloco: 64 bits (8 bytes) ou 128 
+bits (16 bytes).
+Principais: ElectronicCodebook(ECB), 
+CipherBlockChaining(CBC) e Counter
+Mode(CTR).
+
+Chave secreta compartilhada.
+DISTRIBUIÇÃO DE CHAVES -PROBLEMAS
+Número de chaves.
+Escalabilidade.
+Criptografia simétrica
+Aula 02
+
+Principais algoritmos 
+modernos de criptografia 
+simétrica
+Criptografia simétrica
+Aula 02
+
+Opera em blocos de dados de tamanho fixo 
+de 64 bits.
+Algoritmo de criptografia simétrica de 
+blocos.
+DES (DATA ENCRYPTION STANDARD)
+Fonte: Academia Tech, 2023.
+Disponível em: <https://academiatech.blog.br/irda/>. 
+Acesso em: 19 mar. 2024.
+Principais algoritmos modernos de 
+criptografia simétrica
+Aula 02
+Utiliza uma estrutura de rede Feistel, 
+composta por 16 rounds de operações.
+Cada round usa permutação, substituição e 
+combinação linear.
+É considerado atualmente inseguro para 
+muitas aplicações devido ao seu tamanho 
+de chave relativamente curto.
+
+3DES (TRIPLE DATA ENCRYPTION
+STANDARD)
+Extensão do algoritmo DES.
+Aula 02
+Fonte: ResearchGate, 2003.
+Disponível em: 
+<https://www.researchgate.net/publication/4008596_Implem
+entation_of_an_FPGA_based_accelerator_for_Virtual_Priva
+te_Networks>.
+Acesso em: 19 mar. 2024.
+Opera em blocos de dados de tamanho 
+fixo de 64 bits.
+Pode ser usado em diferentes modos de 
+operação, como ECB e CBC.
+Consiste em três etapas: criptografia, 
+descriptografiae criptografia novamente.
+Principais algoritmos modernos de 
+criptografia simétrica
+
+Opera gerando uma sequência 
+pseudoaleatória de bytes (keystream) que é 
+combinada com o texto claro por meio de 
+uma operação XOR.
+Algoritmo de criptografia de fluxo.
+RC4 (RIVEST CIPHER 4)
+Fonte: Innokrea, 2023.
+Disponível em: 
+<https://www.innokrea.com/blog/cryptography-stream-
+ciphers/>.
+Acesso em: 19 mar. 2024.
+Aula 02
+Possui duas partes principais: a etapa de 
+inicialização e a geração do keystream.
+Foi amplamente utilizado no passado, mas 
+foram descobertos alguns problemas de 
+segurança relacionados ao seu uso em 
+determinadas situações.
+Principais algoritmos modernos de 
+criptografia simétrica
+
+RC6 (RIVEST CIPHER 6)
+Algoritmo de criptografia simétrica de 
+blocos.
+Aula 02
+Fonte: Github.
+Disponível em: < https://github.com/shashankrao/RC6-
+Block-Cipher/blob/master/helpers.py>.
+Acesso em: 19 mar. 2024.
+Opera em blocos de dados de tamanho 
+fixo, normalmente de 128 bits.
+É considerado um algoritmo seguro e 
+eficiente, projetado para resistir a 
+diversos ataques criptográficos 
+conhecidos.
+Ele suporta tamanhos de chave de 128, 
+192 e 256 bits.
+Principais algoritmos modernos de 
+criptografia simétrica
+
+Pode trabalhar com chaves de tamanho 
+variável, de 32 bits a 448 bits.
+Algoritmo de criptografia simétrica de 
+blocos.
+BLOWFISH
+Aula 02
+É um algoritmo rápido e eficiente em termos 
+de desempenho.
+Opera em blocos de dados de tamanho fixo 
+(normalmente 64 bits).
+Principais algoritmos modernos de 
+criptografia simétrica
+
+Opera em blocos de dados de tamanho 
+fixo, normalmente de 128 bits.
+Suporta tamanhos de chave de 128, 192 e 
+256 bits,
+TWOFISH
+O processo de criptografia/descriptografia
+envolve quatro partes: expansão de chaves, 
+permutação, substituição e combinação 
+linear.
+É altamente considerado seguro e resistente a 
+ataques criptográficos conhecidos.
+Aula 02
+Algoritmo de criptografia simétrica de 
+blocos.
+Principais algoritmos modernos de 
+criptografia simétrica
+
+Opera em blocos de dados de tamanho 
+fixo, geralmente de 128 bits.
+Algoritmo de criptografia simétrica de 
+blocos.
+SERPENT
+Fonte: Medium, 2023.
+Disponível em: <https://cyberw1ng.medium.com/a-
+comprehensive-guide-to-serpent-encryption-a-powerful-cipher-
+for-securing-your-data-2023-61e8f5957880>.
+Acesso em: 19 mar. 2024.
+Aula 02
+O processo de criptografia/descriptografia
+envolve várias etapas, incluindo expansão 
+de chaves, substituição, permutação e 
+combinação linear.
+Suporta tamanhos de chave de 128, 192 e 
+256 bits, proporcionando um alto nível de 
+segurança para diferentes aplicações.
+Principais algoritmos modernos de 
+criptografia simétrica
+
+AES (ADVANCED ENCRYPTION 
+STANDARD)
+Foi escolhido como o novo padrão de 
+criptografia pelo NIST.
+Aula 02
+Fonte: Exlade.
+Disponível em: <https://www.exlade.com/en/cryptic-
+disk/features/cryptography/>.
+Acesso em: 19 mar. 2024.
+Opera em blocos de dados de tamanho 
+fixo de 128 bits.
+Suporta tamanhos de chave de 128, 192 
+e 256 bits.
+Conhecido por sua segurança e 
+resistência a ataques criptográficos 
+existentes.
+É um dos algoritmos criptográficos 
+mais confiáveis e amplamente 
+utilizados atualmente.
+Principais algoritmos modernos de 
+criptografia simétrica
+
+Criptografia simétrica
+Você chegou ao final da Aula 02
+8

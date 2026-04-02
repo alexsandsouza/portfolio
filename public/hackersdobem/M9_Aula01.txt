@@ -1,0 +1,191 @@
+
+
+Módulo 09
+Infraestrutura de Chaves 
+Públicas e Blockchain
+Aula 01
+Autoridades 
+Certificadoras
+9
+
+Introdução
+Nesta aula, você conhecerá os seguintes assuntos:
+O papel das Autoridades Certificadoras (ACs) na infraestrutura de 
+chaves públicas (PKI);
+Os diferentes tipos de Autoridades Certificadoras.
+
+PublicKey Infrastructure-PKI
+Autoridades Certificadoras
+Aula 01
+
+Autoridades Certificadoras
+Aula 01
+Permite autenticação entre as partes 
+envolvidas garantindo integridade, 
+confidencialidade, autenticidade e não 
+repúdio na troca de informações.
+Utiliza um par de chaves criptográficas: 
+chave pública e chave privada.
+Conjunto de tecnologias, políticas e 
+procedimentos usados para estabelecer e 
+gerenciar a segurança em ambientes digitais. 
+PUBLIC KEY 
+INFRASTRUCTURE
+Fonte: AppViewX, 2020.
+Disponível em: <https://www.researchgate.net/figure/Public-Key-
+Infrastructure-AppViewX-2020_fig1_351247755>.
+Acesso em: 20 mar. 2024.
+
+Aula 01
+Autoridades Certificadoras
+Chave pública:
+Chave privada:
+Usada para criptografar informações 
+ou verificar assinaturas digitais;
+Deriva da chave privada.
+Usada para descriptografar 
+informações criptografadas com a 
+chave pública correspondente ou 
+para criar assinaturas digitais. 
+PUBLIC KEY 
+INFRASTRUCTURE
+Fonte: Input Jam, 2020.
+Disponível em: <https://kleinfelter.com/surf-safe-at-Starbucks>.
+Acesso em: 20 mar. 2024.
+
+Aula 01
+Autoridades Certificadoras
+A relação entre as chaves públicas e 
+privadas com os certificados digitais é 
+estabelecida por meio das Autoridades 
+Certificadoras (CAs). 
+PUBLIC KEY 
+INFRASTRUCTURE
+Fonte: Digital Certificate, 2023.
+Disponível em: <https://networkencyclopedia.com/digital-
+certificate/?expand_article=1>.
+Acesso em: 20 mar. 2024.
+
+AUTORIDADES CERTIFICADORAS 
+(ACS) EM PKI
+Aula 01
+São responsáveis por emitir, validar e revogar 
+certificados digitais. 
+Deriva da chave privada;
+Garantir a validade e identidade dos 
+certificados solicitados;
+Estabelecer confiança na AC por parte 
+dos usuários;
+Gerenciar os repositórios;
+Realizar a gestão do ciclo de vida das 
+chaves e certificados e gerar as LCRs
+(Lista de Certificados Revogados).
+Autoridades Certificadoras
+Funções de uma AC:
+Fonte: welivesecurity, 2017.
+Disponível em: 
+<https://www.welivesecurity.com/br/2017/04/28/certificados-digitais-e-
+infraestrutura-de-chaves-publicas/>.
+Acesso em: 20 mar. 2024.
+
+Aula 01
+AC Única;
+MODELOS DE 
+CONFIANÇA DA PKI
+Hierárquico (AC Intermediária);
+AC Online x AC Offline.
+Autoridades Certificadoras
+Fonte: BryTecnologia, 2019.
+Disponível em: <https://www.bry.com.br/blog/infraestrutura-chaves-
+publicas/>.
+Acesso em: 20 mar. 2024.
+
+Aula 01
+Autoridade Certificadora Raiz (Root 
+CertificationAuthority);
+TIPOS DE ACs
+Autoridade Certificadora Comercial 
+(CommercialCertificationAuthority).
+Autoridade Certificadora Intermediária 
+(IntermediateCertificationAuthority);
+Autoridades Certificadoras
+Fonte: Certisign, 2015.
+Disponível em: <https://blog.certisign.com.br/tag/a3/>.
+Acesso em: 20 mar. 2024.
+
+Aula 01
+Autoridades Certificadoras
+Autoridade Certificadora de Domínio 
+(Domain CertificationAuthority);
+Autoridade Certificadora de Email
+(EmailCertificationAuthority);
+Autoridade Certificadora de Assinatura de 
+Código (CodeSigningCertificationAuthority);
+Autoridade Certificadora de Máquina/Computador 
+(Machine/Computer CertificationAuthority).
+TIPOS DE ACs
+Fonte: pavietnam, 2023.
+Disponível em: <https://kb.pavietnam.vn/3-buoc-cai-dat-code-signing-cho-
+microsoft-authenticode.html>.
+Acesso em: 20 mar. 2024.
+
+Aula 01
+AC Inmetro -Bombas de Gasolina 
+com Certificado Digital
+Autoridades Certificadoras
+Autoridade Certificadora de Dispositivo 
+(Device CertificationAuthority);
+Autoridade Certificadora de Identidade 
+(IdentityCertificationAuthority);
+Autoridade Certificadora de Servidor 
+(Server CertificationAuthority).
+TIPOS DE ACs
+Fonte: cryptoid, 2021.
+Disponível em: <https://cryptoid.com.br/certificacao-
+digital/cerimonia-da-entrega-das-chaves-publicas-do-inmetro-
+como-ac-de-1o-nivel-da-icp-brasil-acontecera-dia-10-de-junho/>.
+Acesso em: 20 mar. 2024.
+
+Aula 01
+As ARsverificam a identidade dos 
+solicitantes de certificados e coletam as 
+informações necessárias para a emissão 
+de certificados. 
+AUTORIDADES DE REGISTRO (RA) E 
+SOLICITAÇÕES DE ASSINATURA DE 
+CERTIFICADO (CSRs)
+As Solicitações de Assinatura de 
+Certificado (CSRs) são os documentos 
+gerados pelos solicitantes que contêm as 
+informações necessárias para a criação 
+do certificado. 
+Autoridades Certificadoras
+Fonte: Hierarquia ICP-Brasil, 2022.
+Disponível em: <https://materialpublic.imd.ufrn.br/curso/disciplina/4/62/6/9>.
+Acesso em: 20 mar. 2024.
+
+Aula 01
+AUTORIDADES CERTIFICADORAS NO BRASIL
+INSTITUTO NACIONAL DE TECNOLOGIA DA 
+INFORMAÇÃO (ITI)
+AC Raiz;
+ACsSubordinadas;
+ACsAutorizadas;
+ACsAutorizadas.
+INSTITUTO NACIONAL DE TECNOLOGIA DA 
+INFORMAÇÃO (ITI)
+Acsno Brasil:
+É a AC Raiz;
+Audita e fiscaliza os entes que integram a cadeia da ICP-Brasil.
+Autarquia federal (https://www.gov.br/iti/pt-br);
+Mantém e executa as políticas da ICP-Brasil;
+Autoridades Certificadoras
+Fonte: validcertificadora, 2023.
+Disponível em: 
+<https://blog.validcertificadora.com.br/conheca-os-
+tipos-de-certificados-digitais-icp-brasil/>.
+Acesso em: 20 mar. 2024.
+
+Autoridades Certificadoras
+Você chegou ao final da Aula 01
+9

@@ -1,0 +1,491 @@
+
+
+Módulo 07
+Redundância, Backup, 
+Segurança física e Destruição de 
+dados
+Aula 01
+Redundância e replicação
+7
+
+Introdução
+Nesta aula, você conhecerá os seguintes assuntos:
+Os conceitos de redundância e replicação;
+A resiliência e a recuperação de dados em 
+ambientes de TI.
+
+Redundância
+Redundância e replicação
+Aula 01
+
+Evita a perda de dados ou interrupções no 
+serviço.
+Consiste em ter componentes ou sistemas 
+duplicados.
+Princípio fundamental na área de 
+segurança da informação.
+REDUNDÂNCIA
+Redundância
+Aula 01
+Fonte: Eco automação, 2021.
+Disponível em: < https://www.ecoautomacao.com.br/protocolos-de-
+redundancia-em-redes-ethernet/ >.
+Acessado em: 
+25mar. 2024.
+Exemplo: a redundância de discos rígidos 
+em um servidor.
+
+A redundância ajuda a garantir a 
+disponibilidade contínua dos serviços e 
+sistemas de TI.
+DISPONIBILIDADE CONTÍNUA
+Fonte: Projeto de redes, 2020.
+Disponível em: 
+<https://blog.projetoderedes.com.br/2020/05/alta-
+disponibilidade-de-rede-para-isps/ > 
+Acessado em: 25 mar. 2024.
+Ao ter componentes ou sistemas 
+duplicados, em caso de falha em um 
+deles, outro pode assumir a operação.
+É especialmente importante em 
+ambientes de missão crítica.
+Redundância
+Aula 01
+
+Website que recebe milhares de visitantes 
+simultâneos e não pode tolerar qualquer 
+período de indisponibilidade.
+Implementação de um cluster de servidores 
+em um ambiente de servidor web de alto 
+tráfego.
+DISPONIBILIDADE CONTÍNUA -EXEMPLO
+Redundância
+Aula 01
+Fonte: SemanticScholar, 2015.
+Disponível em: <https://www.semanticscholar.org/paper/A-
+predictive-modified-round-robin-scheduling-for-Zongyu-
+Xingxuan/70ea26e9828df7ab029eaf96c2d6a17978483d13
+/figure/0>.
+Acessado em: 25 mar. 2024.
+Cada servidor do cluster é idêntico em 
+termos de hardware e software e 
+compartilham a carga de trabalho.
+
+A redundância aumenta a tolerância a 
+falhas.
+TOLERÂNCIA A FALHAS
+Fonte: ArifulsPlanet, 2023.
+Disponível em: 
+<https://arifulsplanet.com/building-a-safety-net-
+the-importance-of-fault-tolerance-in-todays-
+technology-driven-world >.
+Acessado em: 25 mar. 2024.
+Reduz a probabilidade de perda de 
+dados ou interrupções nos sistemas.
+Se um componente falhar, os demais 
+assumem a carga de trabalho.
+Redundância
+Aula 01
+Garante que as operações continuem 
+sem interrupções significativas.
+Importante em ambientes em que a falha 
+de um único componente pode ter um 
+impacto significativo.
+
+Garante o desempenho e a escalabilidade 
+do sistema.
+A recuperação de falhas ou desastres pode 
+ser mais rápida e eficiente.
+RECUPERAÇÃO RÁPIDA
+Redundância
+Aula 01
+Fonte: AviNetworks.
+Disponível em: <https://avinetworks.com/glossary/failover/>. 
+Acessado em: 25 mar. 2024.
+No caso de um servidor falhar, o sistema de 
+failoverentra em ação.
+Failover: processo de transferir 
+automaticamente o tráfego e as solicitações 
+de um servidor que falhou para um servidor 
+redundante.
+
+Desastres naturais.
+A redundância pode ajudar a proteger os 
+dados e sistemas contra:
+PROTEÇÃO CONTRA DESASTRES
+Falhas de energia.
+Outros eventos catastróficos.
+Redundância
+Aula 01
+
+Exemplo: implementar uma estratégia 
+de backup com redundância de lugares 
+de armazenamento.
+PROTEÇÃO CONTRA DESASTRES
+Redundância
+Aula 01
+Necessidade de proteção adicional contra 
+eventos catastróficos, como incêndios, 
+inundações ou terremotos.
+Implementar a redundância de lugares 
+de armazenamento de backup.
+Estabelece um segundo local de 
+armazenamento em uma área 
+geograficamente separada do local 
+principal.
+O segundo local pode ser um data 
+center externo.
+
+Ao adicionar sistemas redundantes, é 
+possível lidar com o aumento da demanda e 
+distribuir a carga de trabalho de forma mais 
+eficiente.
+A redundância contribui para a 
+escalabilidade dos sistemas.
+MELHORIA DA ESCALABILIDADE
+Redundância
+Aula 01
+Fonte: LeanxCale, 2021.
+Disponível em: <https://blog.leanxcale.com/financial-
+insurance/finance-or-insurance-company-how-to-speed-up-
+data-processing-and-why-you-should/>.
+Acessado em: 25 mar. 2024.
+Permite que a infraestrutura de TI se adapte 
+às necessidades em constante mudança.
+Garante o desempenho adequado mesmo 
+em períodos de alto volume de dados ou 
+tráfego.
+
+Replicação
+Redundância e replicação
+Aula 01
+
+Consiste em criar cópias idênticas de 
+dados, sistemas ou componentes em 
+diferentes localidades ou dispositivos.
+REPLICAÇÃO
+Replicação
+Aula 01
+Garante a disponibilidade contínua dos 
+recursos, mitigar o impacto de falhas e 
+aumentar a resiliência do sistema.
+Pode ser aplicada a diferentes níveis de um 
+ambiente de TI.
+A replicação de dados envolve a criação de 
+cópias exatas de informações em 
+diferentes locais ou dispositivos de 
+armazenamento.
+
+Frequentemente utilizado para proteger 
+dados críticos contra perdas, danos ou 
+corrupção.
+REPLICAÇÃO
+Fonte: Data Work, 2022.
+Disponível em: <https://datawork3.blogspot.com/2022/11/the-
+optimized-uses-of-database.html>.
+Acessado em: 25 mar. 2024.
+Se uma das cópias for comprometida ou 
+inacessível, as cópias restantes podem ser 
+utilizadas para recuperar ou continuar a 
+operação.
+A replicação também pode ser aplicada a 
+sistemas e componentes.
+Replicação
+Aula 01
+
+Em um ambiente de servidores, é 
+possível ter servidores replicados 
+que executam as mesmas tarefas 
+e contêm os mesmos dados.
+REPLICAÇÃO -EXEMPLO
+Replicação
+Aula 01
+Em caso de falha de um servidor, 
+outro servidor replicado possa 
+assumir a carga de trabalho sem 
+interromper os serviços.
+A replicação de servidores 
+garante a continuidade dos 
+serviços e minimizar o tempo de 
+inatividade em situações de falha.
+
+REDUNDANT ARRAY OF 
+INDEPENDENT DISKS (RAID)
+Fonte: YugaTech, 2015.
+Disponível em: <https://www.yugatech.com/guides/a-
+crash-course-to-raid-configurations/>.
+Acessado em: 25 mar. 2024.
+Tecnologia que envolve a combinação 
+de múltiplos discos rígidos (como HDD 
+ou SSD).
+Melhora o desempenho, a capacidade 
+de armazenamento e a confiabilidade 
+dos sistemas de armazenamento.
+Implementado em um computador ou 
+servidor via software ou hardware.
+Tipos de RAID mais comuns: 0, 1, 5, 6, 
+1+0 e 0+1.
+Replicação
+Aula 01
+
+Funcionalidade fornecida pelo sistema 
+operacional ou por um software específico.
+RAID VIA SOFTWARE
+Fonte: DevMedia.
+Disponível em: <https://www.devmedia.com.br/um-
+pouco-sobre-raid-configuracao-via-software-e-via-
+hardware/23994>. 
+Acessado em: 25 mar. 2024.
+É geralmente mais flexível.
+Pode ser executada em qualquer sistema 
+compatível.
+Replicação
+Aula 01
+Gerenciamento das configurações RAID 
+pelo software, sem a necessidade de 
+componentes físicos adicionais.
+
+O software RAID utiliza os recursos de 
+processamento da CPU para gerenciar as 
+operações de RAID.
+RAID VIA SOFTWARE
+Fonte: Flynsamy, 2012.
+Disponível em: 
+<https://www.flynsarmy.com/2012/12/create-and-manage-
+a-raid-array-in-ubuntu/>.
+Acessado em: 25 mar. 2024.
+Pode afetar o desempenho geral do 
+sistema.
+Replicação
+Aula 01
+São soluções mais acessíveis em termos 
+de custo, pois não requerem hardware 
+especializado.
+Oferece maior portabilidade, pois as 
+configurações RAID podem ser 
+transferidas entre sistemas.
+
+O RAID é implementado por meio de uma 
+controladora de hardware dedicada.
+RAID VIA HARDWARE
+Fonte: Xinnor, 2022.
+Disponível em: <https://xinnor.io/blog/software-raid-or-hardware-
+raid-whats-better-in-2023/>.
+Acessado em: 25 mar. 2024.
+Geralmente instalada em uma placa PCI-e
+no computador.
+A controladora gerencia todas as 
+operações de RAID.
+Replicação
+Aula 01
+Alivia a carga de processamento da CPU e 
+melhorando o desempenho geral do sistema.
+
+As controladoras de hardware RAID 
+possuem processadores próprios, memória 
+cache e interfaces de disco dedicadas.
+RAID VIA HARDWARE
+Replicação
+Aula 01
+Otimiza as operações de armazenamento.
+As controladoras de hardware geralmente 
+oferecem recursos avançados:
+Cache de gravação.
+Monitoramento de integridade de 
+disco.
+Suporte para diferentes níveis de 
+RAID.
+
+RAID VIA HARDWARE
+É mais cara do que a 
+implementação via software.
+Requer a compra de 
+controladoras RAID dedicadas.
+Podem ter suporte limitado a sistemas 
+operacionais específicos.
+Replicação
+Aula 01
+Podem exigir drivers e software de 
+gerenciamento específicos.
+
+Configuração que divide os dados em 
+blocos.
+RAID 0 (STRIPING)
+Fonte: BotRec.
+Disponível em: <https://bot.rec.br/o-que-e-raid/>. 
+Acessado em: 25 mar. 2024.
+Distribui os blocos igualmente em dois ou 
+mais discos.
+Replicação
+Aula 01
+Melhora o desempenho, pois a leitura e 
+gravação de dados podem ser realizadas 
+em paralelo.
+Aumentando a taxa de transferência.
+Não oferece tolerância a falhas.
+Se um dos discos falhar, todos os dados 
+são perdidos.
+
+Envolve a criação de uma cópia espelhada 
+dos dados em dois ou mais discos.
+RAID 1 (ESPELHAMENTO)
+Fonte: Infortrend.
+Disponível em: 
+<https://www.infortrend.com.br/infortrend/eonnas-
+pro-200/p>.
+Acessado em: 25 mar. 2024.
+Cada disco contém exatamente as 
+mesmas informações.
+Garante a redundância e a disponibilidade 
+dos dados.
+Replicação
+Aula 01
+
+RAID 1 (ESPELHAMENTO)
+Fonte: Delta Servers, 2020.
+Disponível em: <https://www.deltaservers.com.br/blog/o-que-e-
+raid-e-como-funciona-essa-configuracao-nos-servidores-web/>. 
+Acessado em: 25 mar. 2024.
+Se um disco falhar, os dados podem ser 
+recuperados do disco espelhado.
+A capacidade de armazenamento efetiva 
+é reduzida pela metade.
+Cada disco contém uma cópia idêntica 
+dos dados.
+Replicação
+Aula 01
+
+Configuração que distribui os dados e a 
+paridade entre três ou mais discos.
+RAID 5
+Fonte: Wondershare, 2022.
+Disponível em: 
+<https://recoverit.wondershare.com.br/windows-
+tips/raid-5-vs-raid-6.html>.
+Acessado em: 25 mar. 2024.
+Permite que os dados sejam 
+reconstruídos em caso de falha de um 
+dos discos.
+Oferece um bom equilíbrio entre 
+desempenho, capacidade e redundância.
+Replicação
+Aula 01
+A capacidade de armazenamento efetiva é 
+reduzida em um disco devido à paridade 
+distribuída.
+
+RAID 6
+Fonte: MDF Technology, 2019.
+Disponível em: <https://blog.mdftechnology.com.br/raid-
+arranjos-de-discos-para-trabalho-em-conjunto-o-que-e-
+raid/>.
+Acessado em: 25 mar. 2024.
+É uma extensão do RAID 5.
+Utiliza um esquema de paridade dupla 
+para fornecer maior proteção contra 
+falhas.
+Distribui os dados e duas informações 
+de paridade em diferentes discos.
+Replicação
+Aula 01
+Permite que o sistema se recupere 
+mesmo se 2 discos falharem 
+simultaneamente.
+Oferece maior tolerância a falhas do que 
+o RAID 5.
+Requer um número mínimo de quatro 
+discos.
+
+Combina os conceitos do RAID 1 e RAID 0.
+RAID 1+0 (RAID 10)
+Fonte: Root Layer.
+Disponível em: 
+<https://rootlayer.net/billing/index.php/knowledgeba
+se/20/Raid-Redundant-Array-of-Inexpensive-Disks-
+Information.html?language=czech>.
+Acessado em: 25 mar. 2024.
+Cria um conjunto de discos em RAID 0 
+(striping) e, em seguida, esses conjuntos 
+são espelhados (RAID 1).
+Oferece alta capacidade de 
+armazenamento e desempenho, além de 
+redundância de dados.
+Replicação
+Aula 01
+Pode lidar com falhas de disco sem perda 
+de dados.
+
+Projetado para minimizar a quantidade de 
+dados transferidos na sincronização.
+RSYNC
+Replicação
+Aula 01
+Ideal para atualizar cópias de arquivos 
+grandes ou diretórios inteiros.
+Utiliza um algoritmo de sincronização 
+inteligente que compara o conteúdo dos 
+arquivos em ambos os lados da 
+transferência.
+Transfere apenas as partes do arquivo que 
+foram modificadas: transferência 
+incremental ou delta transfer.
+Ajuda a economizar tempo e largura de 
+banda, especialmente em situações em 
+que os arquivos são grandes ou as 
+conexões de rede são lentas.
+
+1. Comparação de arquivos.
+RSYNC -FUNCIONAMENTO
+Replicação
+Aula 01
+2. Transferência de dados delta.
+3. Reconstrução do arquivo.
+
+REPLICAÇÃO SÍNCRONA
+Fonte: YugaByte, 2019.
+Disponível em: <https://www.yugabyte.com/blog/yugabyte-
+db-high-availability-transactions-for-postgresql-mongodb-
+developers/>.
+Acessado em: 25 mar. 2024.
+Os dados são replicados em tempo real, 
+à medida que são gravados no sistema 
+de origem.
+Antes que a operação de gravação seja 
+considerada concluída, a réplica dos 
+dados é confirmada no sistema de 
+destino.
+Replicação
+Aula 01
+Se houver uma falha no sistema de 
+origem, o sistema de destino estará 
+sempre atualizado com os dados mais 
+recentes.
+Garante que os dados estejam sempre 
+sincronizados entre os dois sistemas.
+Exemplo: Oracle Data Guard.
+
+REPLICAÇÃO ASSÍNCRONA
+Fonte: YugaByte, 2019.
+Disponível em: <https://www.yugabyte.com/blog/yugabyte-db-
+high-availability-transactions-for-postgresql-mongodb-
+developers/>.
+Acessado em: 25 mar. 2024.
+Os dados são replicados em um 
+intervalo de tempo definido, em vez de 
+serem replicados imediatamente após a 
+gravação no sistema de origem.
+Replicação
+Aula 01
+Permite que a operação de gravação 
+seja concluída mais rapidamente no 
+sistema de origem.
+Não precisa esperar pela confirmação da 
+réplica no sistema de destino.
+É adequada para ambientes em que um 
+pequeno atraso na sincronização dos 
+dados é aceitável, e o desempenho é 
+uma prioridade.
+
+Redundância e replicação
+Você chegou ao final da Aula 01
+7

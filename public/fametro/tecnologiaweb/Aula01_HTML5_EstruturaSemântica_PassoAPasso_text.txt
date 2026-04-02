@@ -1,0 +1,333 @@
+
+
+CENTRO UNIVERSITÁRIO CEUNI - FAMETRO 
+Curso de Sistemas de Informação  |  Disciplina: Tecnologia Web I 
+Professor: Alexsander Farias   |   2026.1 - Manaus, AM 
+AULA PRÁTICA 01 - PASSO A PASSO 
+HTML5 Parte 1: Estrutura Básica de um Documento e Tags Semânticas 
+OK 652  |  Projeto: Portfólio Pessoal Estático 
+IDENTIFICAÇÃO DA AULA 
+Objeto de Conhecimento OK 652 - HTML5 Parte 1 
+Duração 3h (Aula prática no laboratório) 
+Nível Introdutório - sem pré-requisitos técnicos 
+Ferramentas VS Code + extensão Live Server + navegador Google Chrome 
+Entregável Arquivo index.html com estrutura semântica completa 
+OBJETIVO DA AULA 
+Ao final desta aula, o aluno será capaz de criar do zero a estrutura semântica de um documento 
+HTML5, organizar as pastas do projeto e visualizar o resultado no navegador - estabelecendo a base 
+do portfólio pessoal que será desenvolvido ao longo das demais aulas. 
+O QUE É HTML5? - CONCEITO RÁPIDO 
+HTML (HyperText Markup Language) é a linguagem de marcação usada para estruturar o conteúdo de 
+páginas web. O HTML5 é a versão mais atual e traz, além das tags tradicionais, um conjunto de tags 
+semânticas  que  descrevem  o  significado  do  conteúdo - facilitando  tanto  a  leitura  humana  do  código 
+quanto a interpretação por motores de busca e leitores de tela. 
+ 
+ DICA 
+Semântica = significado. Uma tag semântica como <header> diz ao navegador que 
+aquele bloco é o cabeçalho da página, enquanto uma <div> não comunica nenhum 
+significado. 
+PASSO 1 - CONFIGURAÇÃO DO AMBIENTE E ESTRUTURA DE PASTAS 
+Antes de escrever qualquer linha de código, vamos organizar a estrutura do projeto. Uma boa 
+organização de pastas facilita a manutenção e o crescimento do site. 
+1.1  Instalando o VS Code e a extensão Live Server 
+ 
+1. Acesse https://code.visualstudio.com e faça o download do VS Code para o seu sistema 
+operacional. 
+2. Instale o VS Code e abra o programa. 
+3. No painel lateral esquerdo, clique no ícone de Extensões (ou pressione Ctrl+Shift+X). 
+4. Pesquise por "Live Server" (autor: Ritwick Dey) e clique em Instalar. 
+5. A extensão Live Server atualiza o navegador automaticamente sempre que você salvar um 
+arquivo. 
+ 
+1.2  Criando a estrutura de pastas do projeto 
+ 
+
+Crie uma pasta chamada portfolio em um local de fácil acesso (ex: Área de Trabalho ou Documentos). 
+Dentro dela, crie a seguinte estrutura: 
+ 
+ 
+portfolio/ 
+├── index.html        ← página principal do portfólio 
+├── css/ 
+│   └── style.css     ← arquivo de estilos (será usado na Aula 3) 
+└── img/    └── (suas imagens ficarão aqui) 
+ 
+ 
+COMO 
+CRIAR 
+No Windows: clique com o botão direito > Novo > Pasta. No VS Code: abra a pasta 
+portfolio (Arquivo > Abrir Pasta) e use o ícone de novo arquivo/nova pasta no painel 
+Explorer. 
+1.3  Criando os arquivos 
+ 
+1. Dentro da pasta portfolio, crie um arquivo chamado index.html (arquivo principal). 
+2. Dentro da pasta css, crie o arquivo style.css (será preenchido na Aula 3 — deixe vazio por 
+enquanto). 
+3. Abra o arquivo index.html no VS Code para começar a codificar. 
+PASSO 2 - ESTRUTURA BÁSICA DO DOCUMENTO HTML5 
+Todo documento HTML5 começa com uma estrutura padrão obrigatória. Vamos digitar (não copiar!) 
+cada parte para fixar o aprendizado. 
+2.1  O esqueleto mínimo de um HTML5 
+Digite o seguinte código no arquivo index.html: 
+ 
+<!DOCTYPE html> 
+<html lang="pt-BR"> 
+ 
+  <head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Meu Portfólio</title> 
+    <link rel="stylesheet" href="css/style.css"> 
+  </head> 
+ 
+  <body> 
+ 
+    <!-- Conteúdo da página será inserido aqui --> 
+ 
+  </body> 
+</html> 
+ 
+O que significa cada linha? 
+Elemento 
+Para que serve 
+<!DOCTYPE html> 
+Declara ao navegador que este é um documento HTML5. 
+<html lang="pt-BR"> 
+Elemento raiz da página. O atributo lang informa o idioma (importante 
+para acessibilidade). 
+<head> 
+Contém informações invisíveis ao usuário: metadados, título, links para 
+CSS etc. 
+<meta charset="UTF-
+8"> 
+Define a codificação de caracteres — permite exibir acentos e caracteres 
+especiais. 
+
+<meta 
+name="viewport" ...> 
+Garante que a página se adapte a telas de dispositivos móveis. 
+<title> 
+O texto que aparece na aba do navegador. 
+<link 
+rel="stylesheet"> 
+Conecta o arquivo CSS à página HTML. 
+<body> 
+Tudo que é visível ao usuário vai dentro do body. 
+ 
+PASSO 3 - TAGS SEMÂNTICAS DO HTML5 
+O HTML5 introduziu tags semânticas que descrevem a função de cada parte da página. Veja o 
+diagrama de blocos abaixo e, em seguida, implemente cada seção no seu portfólio. 
+ 
+Diagrama de estrutura semântica: 
+<header>  - Cabeçalho: logo, nome e navegação 
+<nav>  - Menu de navegação 
+<main> - Conteúdo principal da página 
+<section id="sobre">  - Sobre mim 
+ 
+<section id="projetos"> - Projetos 
+<section id="formacao">  - Formação 
+ 
+<section id="contato"> - Contato 
+<footer> - Rodapé: copyright e redes sociais 
+ 
+Significado de cada tag semântica: 
+Tag 
+Parte do Portfólio O que vai conter 
+<header> 
+Cabeçalho Nome/logo, foto de perfil, menu principal de navegação 
+<nav> 
+Navegação Lista de links para as seções da página (âncoras) 
+<main> 
+Corpo principal Todo o conteúdo central: sobre mim, projetos, formação, 
+contato 
+<section> 
+Seção temática Cada bloco de conteúdo com um tema: Sobre, Projetos, 
+Formação, Contato 
+<article> 
+Conteúdo 
+independente 
+Cards de projetos (conteúdo que faz sentido sozinho) 
+<aside> 
+Conteúdo lateral Informações complementares, links extras, sidebar 
+<footer> 
+Rodapé Copyright, redes sociais, informações de contato 
+ 
+PASSO 4 - CÓDIGO COMPLETO DA ESTRUTURA SEMÂNTICA 
+Agora que você entende cada peça, vamos montar o código completo da estrutura do portfólio. Digite o 
+código abaixo substituindo index.html pelo conteúdo completo: 
+ 
+ 
+<!DOCTYPE html> 
+<html lang="pt-BR"> 
+ 
+<head> 
+
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>Portfólio — Seu Nome</title> 
+  <link rel="stylesheet" href="css/style.css"> 
+</head> 
+ 
+<body> 
+ 
+  <!-- ==================== CABEÇALHO ==================== --> 
+  <header> 
+    <nav> 
+      <!-- Menu de navegação será preenchido na Aula 2 --> 
+    </nav> 
+  </header> 
+ 
+  <!-- ==================== CONTEÚDO PRINCIPAL ==================== --> 
+  <main> 
+ 
+    <!-- Seção: Sobre Mim --> 
+    <section id="sobre"> 
+      <!-- Conteúdo será preenchido na Aula 2 --> 
+    </section> 
+ 
+    <!-- Seção: Projetos --> 
+    <section id="projetos"> 
+      <!-- Cards de projetos serão adicionados na Aula 2 --> 
+    </section> 
+ 
+    <!-- Seção: Formação e Experiência --> 
+    <section id="formacao"> 
+      <!-- Conteúdo de formação será preenchido na Aula 2 --> 
+    </section> 
+ 
+    <!-- Seção: Contato --> 
+    <section id="contato"> 
+      <!-- Formulário de contato será criado na Aula 2 --> 
+    </section> 
+ 
+  </main> 
+ 
+  <!-- ==================== RODAPÉ ==================== --> 
+  <footer> 
+    <!-- Rodapé será preenchido na Aula 2 --> 
+  </footer> 
+ 
+</body> 
+</html> 
+ 
+  Por que usar comentários HTML? 
+Os comentários <!-- ... --> não aparecem no navegador. Eles servem para documentar o código, 
+facilitando a manutenção e a compreensão por outros desenvolvedores (e por você mesmo no 
+futuro!) 
+ 
+PASSO 5 - VISUALIZANDO NO NAVEGADOR COM LIVE SERVER 
+Com o código digitado, vamos visualizar o resultado no navegador em tempo real. 
+ 
+1 
+Abra o VS Code com a pasta portfolio 
+Certifique-se de que o arquivo index.html está aberto no editor. 
+ 
+
+2 
+Inicie o Live Server 
+Na barra inferior do VS Code, clique em "Go Live". Ou clique com o botão direito sobre o 
+arquivo index.html e selecione "Open with Live Server". 
+ 
+3 
+Observe o resultado 
+O navegador abrirá automaticamente em http://127.0.0.1:5500/index.html. A página 
+estará em branco — isso é esperado! Ainda não adicionamos conteúdo visível. 
+ 
+4 
+Inspecione com o DevTools 
+Pressione F12 no Chrome > aba "Elements". Você verá a árvore HTML com todas as 
+tags semânticas que criou. Confirme que a estrutura está correta. 
+ 
+PASSO 6 - VALIDANDO O CÓDIGO COM O W3C VALIDATOR 
+A validação garante que o código está escrito corretamente, sem erros de sintaxe que possam causar 
+comportamentos inesperados em diferentes navegadores. 
+ 
+1. Acesse https://validator.w3.org no navegador. 
+2. Selecione a aba "Validate by Direct Input". 
+3. Copie todo o conteúdo do seu index.html e cole na área de texto. 
+4. Clique em "Check". 
+5. Corrija todos os erros (em vermelho) e avisos (em amarelo) apontados pelo validador. 
+ 
+✅  Resultado esperado 
+A mensagem "Document checking completed. No errors or warnings to show." indica que o 
+HTML está válido e pronto para a próxima etapa. 
+ 
+ERROS COMUNS E COMO CORRIGIR 
+Erro comum Como corrigir 
+Tag não fechada  <section> sem 
+</section> 
+Toda tag de bloco precisa ser fechada. Verifique se há uma 
+tag de abertura e fechamento correspondente. 
+Acentos aparecendo como símbolos 
+estranhos 
+Confirme que o arquivo foi salvo com encoding UTF-8 (VS 
+Code: canto inferior direito > UTF-8) e que o <meta 
+charset="UTF-8"> está no <head>. 
+Página em branco no navegador Verifique se o Live Server está rodando e se o caminho do 
+arquivo está correto. Salve o arquivo (Ctrl+S). 
+Estrutura aninhada errada (ex: <div> 
+dentro de <head>) 
+Revise a hierarquia: <head> e <body> são filhos diretos de 
+<html>. Tags de conteúdo vão dentro do <body>. 
+CSS não carregando (página sem 
+estilo) 
+Confirme que o caminho href="css/style.css" está correto e 
+que o arquivo style.css existe dentro da pasta css/. 
+ 
+ATIVIDADE EXTRA (OPCIONAL - PARA ADIANTAR) 
+  Desafio para quem terminar antes 
+
+Pesquise e adicione ao seu index.html as tags <meta name="description" content="..."> e <meta 
+name="author" content="..."> dentro do <head>. Estas metatags são importantes para SEO 
+(otimização para motores de busca). Verifique o resultado no validador W3C. 
+ 
+CHECKLIST DO ENTREGÁVEL - AULA 01 
+Antes de encerrar a aula, verifique se o seu arquivo index.html contempla todos os itens abaixo: 
+ 
+☐ 
+<!DOCTYPE html> declarado corretamente na primeira linha 
+☐ 
+<html lang="pt-BR"> como elemento raiz 
+☐ 
+<head> com <meta charset="UTF-8"> e <meta name="viewport"> 
+☐ 
+<title> preenchido com seu nome 
+☐ 
+<link> apontando para css/style.css 
+☐ 
+<body> com toda a estrutura semântica dentro 
+☐ 
+<header> contendo <nav> 
+☐ 
+<main> com as quatro <section> identificadas por id 
+☐ 
+<footer> presente no final do body 
+☐ 
+Comentários HTML em cada bloco principal 
+☐ 
+Código validado no W3C Validator (sem erros) 
+☐ 
+Arquivo salvo como index.html dentro da pasta portfolio/ 
+ 
+  Próxima Aula - Aula 02: HTML5 Parte 2 
+Na próxima aula você vai preencher toda a estrutura criada hoje com conteúdo real: textos, 
+parágrafos, listas, links âncora, imagens e o formulário de contato do portfólio. Venha com uma 
+foto (ou imagem de avatar) e textos sobre você já preparados! 
+ 
+ 
+ 
+___________________________________ 
+Prof. Alexsander Farias 
+Tecnologia Web I - CEUNI FAMETRO 
+ 
+___________________________________ 
+Aluno(a) 
+Matrícula: ______________________ 
+Manaus, AM - 2026.1 
+ 
+ 
+  
+ 
+ 
+ 
+  

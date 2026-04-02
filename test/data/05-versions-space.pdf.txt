@@ -1,0 +1,370 @@
+
+
+Módulo 12
+Resposta a incidentes
+e protocolos seguros
+Aula 01
+Monitoramento de
+redes e redes sem fio
+12
+
+Introdução
+Nesta aula, você conhecerá os seguintes assuntos:
+Network Monitor e Logs;
+Security Information and Event Management (SIEM);
+Processo de LogCollection; 
+LogAggregation;
+Wireless Access Point, SSID, WPA2, WPA3;
+IEEE 802.1X Authentication, Rogue Access PointseEvilTwins.
+
+Monitoramento de redes
+Monitoramento de redes e redes sem fio
+Aula 01
+
+Etapas do funcionamento:
+É uma ferramenta para monitoramento e 
+análise do tráfego de rede.
+Network Monitor
+Captura de pacotes;
+Análise de pacotes;
+Filtragem de dados;
+Visualização e análise de tráfego;
+Diagnóstico de problemas;
+Registro e exportação de dados.
+Monitoramento de redes e redes sem fio
+Aula 01
+
+São registros detalhados de ocorrências 
+geradas por sistemas ou aplicativos.
+LOGS
+Características dos Logs:
+Geração de Logsautomática;
+Formato estruturado;
+Armazenamento e gerenciamento; 
+Análise e monitoramento;
+Ferramentas de análise.
+Monitoramento de redes e redes sem fio
+Aula 01
+Seu propósito é registrar informações 
+relevantes para análise posterior.
+Fonte: Site 24x7
+Disponível em: <https://site24x7.acsoftware.com.br/principais-
+ferramentas-de-monitoramento-de-logs/ . 
+Acesso em: 18 mar. 2024. 
+
+SYSLOG
+Armazena registros de eventos
+gerados por sistemas e aplicativos.
+São classificados em Syslog
+de instalações e severidades.
+Fonte: Paessler.
+Disponível em:
+<https://www.paessler.com/it-explained/syslog>.
+Acesso em: 18 mar. 2024. 
+Monitoramento de redes e redes sem fio
+Aula 01
+Pode ser centralizado para
+agilizar a resposta a incidentes.
+Representa um recurso importante para
+a segurança da rede e dos sistemas.
+Ferramentas como SIEM (Security
+InformationandEventManagement) 
+utilizam o Syslog.
+
+Considerada essencial para o 
+monitoramento da segurança em redes.
+COLETA DE LOGS (LOG COLLECTION)
+Agent-based(baseada em agente);
+Collector; e
+Sensor.
+Monitoramento de redes e redes sem fio
+Aula 01
+Abordagens existentes:
+Fonte: NXLog
+Disponível em: 
+<https://nxlog.co/news-and-blog/posts/agent-based-versus-agent-less . 
+Acesso em: 18 mar. 2024. 
+
+SECURITY INFORMATION AND 
+EVENT MANAGEMENT (SIEM)
+É uma solução em cyber segurança que 
+oferece gerenciamento de eventos e 
+informações em tempo real.
+Etapas do seu funcionamento:
+Fonte: CodiaSegurança da informação.
+Disponível em:
+<https://www.codia.com.br/o-que-e-siem-e-quais-suas-principais-
+funcionalidades/>.
+Acesso em: 18 mar. 2024. 
+Monitoramento de redes e redes sem fio
+Aula 01
+Coleta de dados de diversas fontes;
+Armazenamento centralizado;
+Normalização e correlação.
+
+Etapas do seu funcionamento: (cont.)
+SECURITY INFORMATION AND
+EVENT MANAGEMENT (SIEM)
+Detecção de anomalias e ameaças;
+Notificação e resposta;
+Relatórios e conformidade;
+Integração com outras ferramentas.
+Monitoramento de redes e redes sem fio
+Aula 01
+Fonte: Linkedin
+Disponível em: 
+<https://www.linkedin.com/pulse/siem-security-information-event-management-
+hernandez-matos/?originalSubdomain=pt>. 
+Acesso em: 18 mar. 2024. 
+
+Agregaçãode Logs (Log Aggregation)
+Trata-se do processo de centralização de 
+diversos Logsem um único local.
+Visa facilitar o monitoramento, análise e 
+correlação de eventos de segurança.
+Fonte: Daniel Donda.
+Disponível em:
+<https://danieldonda.com/gerenciamento-e-analise-de-logs/>.
+Acesso em: 18 mar. 2024. 
+Monitoramento de redes e redes sem fio
+Aula 01
+Coleta de Logsde diferentes fontes;
+Centralização dos Logs;
+Normalização dos dados;
+É geralmente realizado no SIEM.
+Funcionalidades: 
+
+Funcionalidades: (cont.)
+Agregação de Logs(LogAggregation)
+Normalização dos dados;
+Análise e correlação de eventos;
+Alertas e notificações;
+Armazenamento de longo prazo;
+Relatórios e inteligência de segurança.
+Monitoramento de redes e redes sem fio
+Aula 01
+Fonte: Broadcom
+Disponível em: 
+<https://techdocs.broadcom.com/br/pt_br/ca-enterprise-software/it-
+operations-management/unified-infrastructure-management/9-
+0/integrando-outros-produtos/an_lise-de-log.html>. 
+Acesso em: 18 mar. 2024. 
+
+User and Entity Behavior 
+Analytics (UEBA)
+A Análise de Comportamento de 
+Usuários e Entidades (UEBA) é uma 
+técnica utilizada em cyber security.
+Fonte: Azure.
+Disponível em:
+<https://learn.microsoft.com/en-us/azure/sentinel/identify-
+threats-with-entity-behavior-analytics>.
+Acesso em: 18 mar. 2024. 
+Monitoramento de redes e redes sem fio
+Aula 01
+Coleta de dados de comportamento;
+Perfil de comportamento baseline.
+Emprega inteligência artificial e 
+aprendizado de máquina.
+Pode operar junto com o SIEM.
+Etapas de funcionamento do UEBA:
+
+Etapas de funcionamento do UEBA: (cont.)
+User and Entity Behavior Analytics (UEBA)
+Detecção de anomalias;
+Correlação de eventos;
+Pontuação de risco;
+Alertas e notificações;
+Adaptação ao ambiente.
+Monitoramento de redes e redes sem fio
+Aula 01
+Fonte: Forcepoint
+Disponível em: 
+<https://www.forcepoint.com/pt-br/product/ueba-user-entity-behavior-
+analytics>. 
+Acesso em: 18 mar. 2024. 
+
+Security Orchestration, Automation, 
+and Response (SOAR)
+A Orquestração, Automatização e 
+Resposta de Segurança (SOAR) 
+proporciona resposta a incidentes 
+a partir da combinação de todas 
+as funções. 
+Fonte: TechBridge.
+Disponível em:
+<https://tech-bridge.biz/security-operations-center/security-
+orchestration-automation-and-response/>.
+Acesso em: 18 mar. 2024. 
+Monitoramento de redes e redes sem fio
+Aula 01
+Coleta e agregação de dados;
+Análise e correlação de eventos.
+Opera em uma plataforma única.
+Etapas de funcionamento:
+
+Etapas de funcionamento: (cont.)
+Security Orchestration, 
+Automation, and Response (SOAR)
+Automatização de tarefas;
+Orquestração de fluxo de trabalho;
+Integração com 
+ferramentas de segurança;
+Geração de relatórios e métricas.
+Monitoramento de redes e redes sem fio
+Aula 01
+Fonte: Medium
+Disponível em: 
+<https://medium.com/@cloud_tips/soar-security-orchestration-automation-
+and-response-definition-best-practices-and-tools-8a20dd590bd5>. 
+Acesso em: 18 mar. 2024. 
+
+Manipulaçãode arquivos
+Lista de comandos no Unix-likepara 
+extração de informações relevantes:
+Monitoramento de redes e redes sem fio
+Aula 01
+Comando Cat(Concatenate);
+Comandos Heade Tail;
+Comando Logger;
+Sintaxe de expressões
+regulares (Regex);
+Comando Grep.
+Fonte: raullesteves, 2018.
+Disponível em:
+<https://raullesteves.medium.com/tratamento-de-texto-pelo-
+terminal-cat-cut-grep-tr-uniq-short-paste-9f1d7286b3cc>.
+Acesso em: 18 mar. 2024. 
+
+Segurança em redes sem fio
+Aula 01
+Monitoramento de redes e redes sem fio
+
+Wireless Access Point (WAP)
+Conexão à rede com fio;
+Criação de rede sem fio.
+Monitoramento de redes e redes sem fio
+Aula 01
+É um dispositivo que proporciona conexão 
+wi-fia uma rede cabeada.
+Permite a comunicação sem fio entre os 
+dispositivos habilitados para wi-fi.
+Funcionamento:
+Fonte: lightoptics, 2018.
+Disponível em:
+<https://www.lightoptics.co.uk/blogs/news?page=5>.
+Acesso em: 18 mar. 2024. 
+
+Wireless Access Point (WAP)
+Funcionamento: (cont.)
+Monitoramento de redes e redes sem fio
+Aula 01
+SSID e autenticação;
+Comutação de pacotes;
+Segurança;
+Gestão e monitoramento.
+Fonte: mywifiservice.
+Disponível em:
+<https://www.mywifiservice.com/en/installation/Building_InfoPort
+al_WiFi_Network>.
+Acesso em: 18 mar. 2024. 
+
+Interferência de Canal Compartilhado -Co-
+channelInterference(CCI) 
+Canais de frequência-surgem pela 
+divisão das faixas não licenciadas;
+Sobreposição de canais;
+Canais não sobrepostos e Canais 
+sobrepostos;
+Concorrência por largura de banda;
+Gerenciamento de canais;
+Controle de potência.
+Monitoramento de redes e redes sem fio
+Aula 01
+Ocorre se dois ou mais Access Point(APs) 
+compartilham o mesmo canal de frequência
+gerando interferência para ambas as redes.
+Como ocorre o fenômeno CCI:
+Fonte: csdn.
+Disponível em:
+<https://blog.csdn.net/qq_23662505/article/details/127313266>.
+Acesso em: 18 mar. 2024. 
+
+Wi-Fi Protected Access –
+WPA2 e WPA3
+São padrões de segurança em 
+redes Wi-fi.
+Monitoramento de redes e redes sem fio
+Aula 01
+Autenticação –protocolo 802.1X/EAP;
+Criptografia –padrão AES;
+Modos de operação -WPA2-PSK e 
+WPA2-Enterprise.
+Etapas de funcionamento do WPA2:
+Fonte: InfosecInsights.
+Disponível em:
+<https://sectigostore.com/blog/what-is-wpa2-how-to-improve-
+wpa2-security/>.
+Acesso em: 18 mar. 2024. 
+
+Wi-FiProtectedAccess -WPA2 e WPA3
+Autenticação individualizada –chave 
+única para cada dispositivo;
+Criptografia de 192 bits –padrão SAE;
+Proteção contra ataques
+de força bruta;
+Resistência a ataques de dicionário;
+Transições de segurança
+Monitoramento de redes e redes sem fio
+Aula 01
+Etapas de funcionamento do WPA3:
+WPA3 é mais seguro e foi aprimorado em 
+relação ao WPA2.
+Fonte: bežičnihsigurnosnihprotokola.
+Disponível em:
+<https://zir.nsk.hr/islandora/object/etfos:3382/datastream/P
+DF/download>.
+Acesso em: 18 mar. 2024. 
+
+Wi-Fi Protected Setup (WPS)
+Recurso utilizado para configuração 
+de redes Wi-Fiseguras.
+Monitoramento de redes e redes sem fio
+Aula 01
+Dois métodos de configuração –
+PushButton e PIN;
+Temporização do PIN;
+Chaves de criptografia;
+Ativação e desativação.
+Características do funcionamento:
+Segurança –Vulnerabilidades detectadas 
+como ataque de força bruta de PIN e 
+ataque de registro externo.
+Fonte: Exame, 2015.
+Disponível em:
+<https://exame.com/tecnologia/hackers-invadem-roteadores-para-
+infectar-sites-com-anuncios-e-pornografias/>.
+Acesso em: 18 mar. 2024. 
+
+Engenharia social em Wi-Fi
+Rogue Access Point-RAP (Ponto de 
+Acesso Falso);
+Criação da rede falsa;
+Enganando dispositivos;
+Captura de tráfego;
+Ataques Man-in-the-Middle;
+EvilTwin(Gêmeo Malicioso).
+Monitoramento de redes e redes sem fio
+Aula 01
+A seguir estão alguns ataques em redes 
+Wi-Fipara roubo de dados:
+Fonte: Medium, 2019.
+Disponível em:
+<https://jansalvadorsebastian.medium.com/evil-twin-attack-prevention-
+bc456560d4b1>.
+Acesso em: 18 mar. 2024. 
+
+Monitoramento de
+redes e redes sem fio
+Você chegou ao final da Aula 01
+12

@@ -1,0 +1,519 @@
+
+
+Módulo 08
+Conceitos de criptografia
+Aula 03
+Funções Hash
+8
+
+Introdução
+Nesta aula, você conhecerá os seguintes assuntos:
+Algoritmos poderosos e versáteis, amplamente 
+utilizados em:
+Criptografia.
+Verificação de integridade de arquivos.
+Autenticação de dados e muito mais.
+
+Características 
+das Funções Hash
+Funções Hash
+Aula 03
+
+Algoritmo que recebe dados de 
+entrada e produz uma sequência 
+de caracteres ou valores de 
+tamanho fixo, chamados de "hash“ 
+ou resumo.
+FUNÇÃO HASH
+Características das Funções Hash
+Aula 03
+É rápida de calcular e 
+determinística, ou seja, a mesma 
+entrada sempre produzirá o 
+mesmo hash.
+
+FUNÇÃO HASH
+Objetivos:
+Fonte: Macoratti.
+Disponível em: <https://macoratti.net/16/09/net_cripto2.htm>.
+Acesso em: 20 mar. 2024.
+Mapear um conjunto de dados de 
+tamanho arbitrário para um valor de 
+hashde tamanho fixo.
+Representa de forma única e 
+compacta os dados originais.
+Características das Funções Hash
+Aula 8.3Aula 03
+
+Criptografia.
+FUNÇÃO HASH
+Usado em:
+Aula 03
+Características das Funções Hash
+Verificação de integridade de dados.
+Autenticação.
+Indexação de informações.
+
+FUNÇÃO HASH
+Uma função hashde qualidade deve ser 
+capaz de produzir valores de hashúnicos 
+para diferentes conjuntos de dados.
+Fonte: MitsloanManagement Review, 2023.
+Disponível em: <https://www.mitsloanreview.com.br/post/leis-de-
+protecao-de-dados-e-blockchain-solucoes-da-propria-tecnologia-parte>.
+Acesso em: 20 mar. 2024.
+Características das Funções Hash
+Aula 8.3Aula 03
+Desempenha um papel importante na 
+proteção de senhas e na verificação da 
+integridade dos dados transmitidos.
+
+É uma propriedade fundamental de uma 
+função hash.
+Fonte: CryptoID, 2022.
+Disponível em: <https://cryptoid.com.br/criptografia-identificacao-
+digital-id-biometria/the-paper-that-can-change-the-foundations-of-
+all-blockchain-cryptography-jesus-rodrigues/>.
+Acesso em: 20 mar. 2024.
+Refere-se à dificuldade de recuperar ou 
+reverter os dados originais a partir do valor 
+de hashgerado por essa função.
+Encontrar a entrada original a partir do 
+valor de hashdeve ser 
+computacionalmente difícil e impraticável.
+Aula 03
+Características das Funções Hash
+RESISTÊNCIA A TENTATIVAS DE INVERSÃO
+
+É essencial para garantir a segurança de 
+diversas aplicações.
+RESISTÊNCIA A TENTATIVAS DE INVERSÃO
+Fonte: CryptoID, 2022.
+Disponível em: <https://cryptoid.com.br/criptografia-identificacao-
+digital-id-biometria/the-paper-that-can-change-the-foundations-of-all-
+blockchain-cryptography-jesus-rodrigues/>.
+Acessado em: 20 mar. 2024.
+Exemplo:
+Aula 03
+Características das Funções Hash
+Quando uma senha é armazenada em 
+um sistema, ela não é armazenada 
+diretamente, mas sim o seu valor 
+de hash.
+Quando um usuário tenta fazer login, 
+a senha inserida é novamente convertida 
+em um valor de hash.
+Esse hashé comparado com o valor 
+armazenado anteriormente.
+Se ambos os valores de hashcoincidirem, 
+a senha é considerada correta.
+
+Garante que mesmo que um atacante 
+obtenha acesso aos hasharmazenados, 
+ele não poderá determinar a senha original 
+correspondente.
+Fonte: CryptoID, 2022.
+Disponível em: <https://cryptoid.com.br/criptografia-
+identificacao-digital-id-biometria/the-paper-that-can-
+change-the-foundations-of-all-blockchain-cryptography-
+jesus-rodrigues/>.
+Acesso em: 20 mar. 2024.
+O atacante precisaria testar diferentes 
+combinações de entrada e calcular os 
+valores de hashcorrespondentes até 
+encontrar uma colisão válida.
+Aula 03
+Características das Funções Hash
+RESISTÊNCIA A TENTATIVAS DE INVERSÃO
+
+COLISÕES
+Ocorrem quando dois conjuntos de dados 
+distintos produzem o mesmo valor de 
+hash.
+Fonte: Security Affairs, 2017.
+Disponível em: 
+<https://securityaffairs.com/56608/hacking/shattered-
+attack.html>.
+Acesso em: 20 mar. 2024.
+Características das Funções Hash
+Aula 8.3Aula 03
+É quando duas entradas diferentes são 
+mapeadas para o mesmo resultado de 
+hash.
+É indesejável, pois uma das principais 
+propriedades de uma função hashé a 
+unicidade.
+
+Podem ser exploradas para falsificar 
+informações ou comprometer a integridade 
+dos dados.
+É fundamental utilizar funções hashque 
+apresentem uma resistência adequada a 
+colisões.
+Aula 03
+Características das Funções Hash
+COLISÕES
+Fonte: Quora, 2020.
+Disponível em: <https://pt.quora.com/Como-funciona-a-
+implementa%C3%A7%C3%A3o-de-tabelas-Hash>.
+Acesso em: 20 mar. 2024.
+Os algoritmos utilizados devem ser 
+cuidadosamente projetados e analisados 
+para minimizar as chances de colisões.
+
+DISTRIBUIÇÃO UNIFORME
+Refere-se à maneira como os valores de 
+hashsão distribuídos no espaço de saída 
+da função.
+Fonte: ResearchGate, 2018.
+Disponível em: 
+<https://www.researchgate.net/publication/31867078
+7_Controlled_Alternate_Quantum_Walks_based_Qu
+antum_Hash_Function>.
+Acesso em: 20 mar. 2024.
+Características das Funções Hash
+Aula 8.3Aula 03
+Garante que todos os possíveis valores 
+de hashtenham a mesma probabilidade 
+de serem gerados.
+É desejada porque evita a ocorrência de 
+colisões excessivas.
+
+DISTRIBUIÇÃO UNIFORME
+Garante que, independentemente dos 
+dados de entrada, espalhe os valores de 
+hashde forma equilibrada em todo o 
+espaço de saída.
+Características das Funções Hash
+Aula 8.3Aula 03
+Se a distribuição dos valores de hashnão 
+for uniforme:
+Pode haver agrupamentos.
+Regiões no espaço de saída com 
+uma maior concentração de valores 
+de hash.
+Aumenta a probabilidade de 
+colisões.
+Fonte: ResearchGate, 2018.
+Disponível em: 
+<https://www.researchgate.net/publication/31867078
+7_Controlled_Alternate_Quantum_Walks_based_Qu
+antum_Hash_Function>.
+Acesso em: 20 mar. 2024.
+
+Garante que cada conjunto de dados de 
+entrada produza um valor de hashúnico.
+Dois conjuntos de dados diferentes não 
+devem gerar o mesmo valor de hash.
+Aula 03
+Características das Funções Hash
+UNICIDADE EM FUNÇÕES HASH
+Fonte: StackOverflow, 2022.
+Disponível em: 
+<https://stackoverflow.com/questions/39375600/what-
+hash-function-produces-the-maximum-number-of-
+collisions-when-hashing-n-keys>.
+Acesso em: 20 mar. 2024.
+Permite identificar e distinguir de forma 
+única conjuntos de dados específicos por 
+meio de seus valores de hash
+correspondentes.
+
+É essencial em várias aplicações:
+Aula 03
+Características das Funções Hash
+UNICIDADE EM FUNÇÕES HASH
+Fonte: StackOverflow, 2022.
+Disponível em: 
+<https://stackoverflow.com/questions/39375600/what-
+hash-function-produces-the-maximum-number-of-
+collisions-when-hashing-n-keys>.
+Acessado em: 20 mar. 2024.
+Armazenamento e recuperação de 
+dados.
+Indexação.
+Detecção de duplicatas.
+Verificação de integridade e muito mais.
+
+Minimiza as chances de colisões.
+Em teoria, a existência de colisões é 
+inevitável devido ao espaço limitado de 
+valores de hash.
+Aula 03
+Características das Funções Hash
+UNICIDADE EM FUNÇÕES HASH
+Fonte: StackOverflow, 2022.
+Disponível em: 
+<https://stackoverflow.com/questions/39375600/what-
+hash-function-produces-the-maximum-number-of-
+collisions-when-hashing-n-keys>.
+Acessado em: 20 mar. 2024.
+Funções hashde alta qualidade têm uma 
+probabilidade extremamente baixa de gerar 
+colisões em casos práticos.
+
+Quanto maior o espaço de valores de hash, 
+menor a probabilidade de colisões.
+Aula 03
+Características das Funções Hash
+UNICIDADE EM FUNÇÕES HASH
+Fonte: StackOverflow, 2022.
+Disponível em: 
+<https://stackoverflow.com/questions/39375600/what-
+hash-function-produces-the-maximum-number-of-
+collisions-when-hashing-n-keys>.
+Acesso em: 20 mar. 2024.
+Exemplo: em criptografia de senhas, é 
+essencial que diferentes senhas sejam 
+convertidas em valores de hashdiferentes.
+Mesmo que um invasor tenha acesso aos 
+hasharmazenados, ele terá dificuldade em 
+determinar as senhas originais 
+correspondentes.
+
+Refere-se à capacidade de verificar se os 
+dados permaneceram inalterados durante 
+sua:
+Aula 03
+Características das Funções Hash
+INTEGRIDADE EM FUNÇÕES HASH
+Fonte: Kuleuven, 2020.
+Disponível em: <https://www.esat.kuleuven.be/cosic/blog/co6gc-
+hash-functions/>.
+Acesso em: 20 mar. 2024.
+Transmissão.
+Armazenamento.
+Processamento.
+É possível detectar qualquer modificação 
+ou corrupção nos dados.
+Garante que os dados não tenham sido 
+alterados, fornecendo um mecanismo para 
+validar a sua integridade.
+
+CONFUSÃO EM FUNÇÕES HASH
+Propriedade de uma função em tornar o 
+resultado do valor de hashaltamente 
+dependente das mudanças nos dados de 
+entrada.
+Fonte: Secureideas, 2020.
+Disponível em: 
+<https://www.secureideas.com/blog/2020/07/hashin
+g-functions-cissp-domain-3.html>.
+Acesso em: 20 mar. 2024.
+Características das Funções Hash
+Aula 8.3Aula 03
+Uma função hashcom uma boa confusão 
+produzirá um valor de hashradicalmente 
+diferente para entradas ligeiramente 
+diferentes.
+Necessária para garantir que pequenas 
+alterações nos dados de entrada causem 
+grandes efeitos nos valores de hash
+resultantes.
+
+CONFUSÃO EM FUNÇÕES HASH
+Espalha as propriedades dos dados de 
+entrada de forma equilibrada e caótica 
+em todo o processo de cálculo do valor 
+de hash.
+Fonte: Secureideas, 2020.
+Disponível em: 
+<https://www.secureideas.com/blog/2020/07/
+hashing-functions-cissp-domain-3.html>.
+Acessado em: 20 mar. 2024.
+Características das Funções Hash
+Aula 8.3Aula 03
+Atingido por técnicas de embaralhamento
+que amplificam as diferenças nas 
+entradas e propagam essas diferenças ao 
+longo de cada etapa.
+Dificulta a manipulação ou a falsificação 
+dos dados sem alterar drasticamente o 
+valor de hashcorrespondente.
+Ajuda a evitar correlações entre 
+os dados de entrada e os 
+valores de hash.
+
+DIFUSÃO EM FUNÇÕES HASH
+Propriedade de uma função em espalhar 
+as características dos dados de entrada 
+por todo o valor de hashresultante.
+Fonte: Secureideas, 2020.
+Disponível em: 
+<https://www.secureideas.com/blog/2020/07/hashing-
+functions-cissp-domain-3.html>.
+Acesso em: 20 mar. 2024.
+Características das Funções Hash
+Aula 8.3Aula 03
+Garante que qualquer mudança nos 
+dados de entrada afete significativamente 
+todos os bits do valor de hash.
+Alcançada por meio do processamento 
+iterativo dos dados de entrada em uma 
+série de transformações.
+Garante que qualquer alteração 
+nos dados de entrada produza 
+um efeito significativo em todos 
+os bits do valor de hash.
+
+Fenômeno estatístico que ilustra a 
+probabilidade de ocorrência de colisões em 
+um conjunto de elementos.
+Aula 03
+Características das Funções Hash
+PARADOXO DO ANIVERSÁRIO EM 
+FUNÇÕES HASH
+Fonte: Youtube, 2015.
+Disponível em: 
+<https://www.youtube.com/watch?app=desktop&v=QrwV6f
+JKBi8>.
+Acesso em: 20 mar. 2024.
+Aplicado para ilustrar a probabilidade de 
+duas entradas diferentes produzirem o 
+mesmo valor de hash(colisão).
+A probabilidade de colisões aumenta à 
+medida que o número de elementos 
+aumenta.
+
+A probabilidade de colisões se torna 
+significativa quando o número de entradas 
+se aproxima da raiz quadrada do espaço de 
+valores de hash.
+Aula 03
+Características das Funções Hash
+PARADOXO DO ANIVERSÁRIO EM 
+FUNÇÕES HASH 
+Fonte: Youtube, 2015.
+Disponível em: 
+<https://www.youtube.com/watch?app=desktop&v=Qrw
+V6fJKBi8>.
+Acesso em: 20 mar. 2024.
+Exemplo:
+Se o espaço de valores tiver 10.000 
+valores possíveis.
+A probabilidade de pelo menos uma 
+colisão ocorrer aumenta 
+consideravelmente quando houver cerca 
+de 100 entradas.
+
+APLICAÇÕES DE FUNÇÕES HASH
+Criptografia.
+Fonte: ResearchGate, 2007.
+Disponível em: 
+<https://www.researchgate.net/figure/FIGURA-33-
+Funcao-de-Hash-Fonte-WIKIPEDIA-
+2007b_fig1_237673107>.
+Acesso em: 20 mar. 2024.
+Características das Funções Hash
+Aula 8.3Aula 03
+Armazenamento e verificação de 
+integridade de dados.
+Tabelas de dispersão (hashtables).
+Verificação de integridade de arquivos e 
+downloads.
+Verificação de integridade de mensagens 
+e comunicações.
+
+Principais algoritmos de 
+Funções Hash
+Funções Hash
+Aula 03
+
+Opera em blocos de dados de tamanho fixo 
+(512 bits) e utiliza operações bitwise, 
+aritméticas e lógicas para processar os 
+dados de entrada.
+Aula 03
+Principais algoritmos de Funções Hash
+MD5 (MESSAGE DIGEST ALGORITHM 5)
+Fonte: CryptoNews, 2017.
+Disponível em: <https://www.crypto-news.net/what-are-
+bitcoin-hash-functions/>.
+Acesso em: 20 mar. 2024.
+Passa por quatro etapas principais: 
+inicialização, processamento de blocos, 
+finalização e geração do valor de hash.
+Devido a vulnerabilidades descobertas, o 
+MD5 não é mais considerado seguro para 
+aplicações criptográficas críticas.
+É possível gerar colisões de forma prática 
+com ataques computacionais modernos.
+
+SHA-1 (SECURE HASH ALGORITHM 1)
+Foi amplamente utilizado, mas agora é 
+considerado inseguro para aplicações 
+criptográficas críticas.
+Opera em blocos de 512 bits e gera um 
+valor de hashde 160 bits.
+Em 2005 foram divulgadas vulnerabilidades 
+teóricas no SHA-1, indicando que é 
+possível encontrar colisões.
+Aula 03
+Principais algoritmos de Funções Hash
+
+SHA-2 (SECURE HASH ALGORITHM 2)
+Família de algoritmos de função hash
+criptográfica que foi projetada como uma 
+melhoria do SHA-1.
+Inclui vários tamanhos de saída, como 
+SHA-224, SHA-256, SHA-384 e SHA-512.
+Esses números representam o tamanho 
+dos valores de hashproduzidos pelo 
+algoritmo: 224, 256, 384 e 512 bits.
+Principais algoritmos de Funções Hash
+Aula 03
+Quanto maior o tamanho de saída, maior é 
+a resistência a ataques criptográficos.
+
+SHA-3 (SECURE HASH ALGORITHM 3)
+Inclui vários tamanhos de saída, como 
+SHA3-224, SHA3-256, SHA3-384 e SHA3-
+512.
+Geram valores de hashde 224, 256, 384 e 
+512 bits.
+Oferece uma maior segurança em relação 
+ao SHA-2 e é recomendado para 
+aplicações que exigem um alto nível de 
+proteção.
+Principais algoritmos de Funções Hash
+Aula 03
+Amplamente utilizado em sistemas de 
+autenticação, assinaturas digitais e 
+sistemas de segurança em redes.
+
+Foi projetado como uma extensão do 
+algoritmo RIPEMD original, com um 
+tamanho de saída de 160 bits.
+RIPEMD-160 (RACE INTEGRITY PRIMITIVES 
+EVALUATION MESSAGE DIGEST-160)
+Fonte: Toolsyep.
+Disponível em: <https://toolsyep.com/pt/gerador-de-
+hash/ripemd160/>.
+Acesso em: 20 mar. 2024.
+Foi desenvolvido como uma alternativa aos 
+algoritmos SHA-1 e MD5.
+Aula 03
+Principais algoritmos de Funções Hash
+É utilizado em várias áreas, como 
+criptografia, integridade de dados, 
+assinaturas digitais e autenticação de 
+arquivos.
+
+É altamente versátil, oferecendo 
+diferentes versões com tamanhos 
+de saída variáveis.
+BLAKE2
+Inclui Blake2b (com tamanho de 
+saída de 512 bits) e Blake2s (com 
+tamanho de saída de 256 bits).
+Seu desempenho é 
+excepcionalmente rápido.
+Otimizado para processadores modernos.
+Possui propriedades de difusão e 
+confusão bem equilibradas.
+Aula 03
+Principais algoritmos de Funções Hash
+
+Funções Hash
+Você chegou ao final da Aula 03
+8

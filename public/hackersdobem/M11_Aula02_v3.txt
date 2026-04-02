@@ -1,0 +1,354 @@
+
+
+Módulo 11
+Rede Segura e Equipamentos 
+de Segurança
+Aula 02
+Segurança em 
+Encaminhamento 
+de Tráfego
+11
+
+Introdução
+Nesta aula, você conhecerá os seguintes assuntos:
+Ataques na camada de Enlace (camada 2);
+Ataques na camada de Rede (camada 3);
+Clustering; 
+Qualidade de Serviço (QoS).
+
+AtaquesMan-in-the-
+Middlede Camada2
+Segurança em Encaminhamento de Tráfego
+Aula 02
+
+No ataque MITM o invasor age na 
+comunicação de dois dispositivos;
+Intercepta as mensagens trocadas;
+Controla todo o fluxo.
+AtaquesMan-in-the-Middlede Camada2
+Aula 02
+Fonte: Online PaymentsIndia.
+Disponível em: 
+<https://www.onlinepaymentsindia.com/2021/05/man-in-the-
+middle-attack-payment-gateway-protection.html>.
+Acesso em: 18 mar. 2024.
+
+Técnica de falsificação do endereço 
+MAC de um dispositivo;
+AtaquesMan-in-the-Middlede Camada2
+Aula 02
+Visa obter autenticação na rede para 
+acessar recursos restritos;
+Formas de implementação do ataque:
+Observação do Alvo;
+Identificação do alvo;
+Coleta do endereço MAC do alvo;
+Configuração do endereço MAC 
+clonado;
+Conexão à rede.
+CLONAGEM DE MAC
+Fonte: Cisco.
+Disponível em: 
+<https://www.cisco.com/c/pt_br/support/docs/smb/routers/cisco
+-rv-series-small-business-routers/smb4163-clone-mac-
+address-on-rv320-and-rv325-vpn-router-series.html>.
+Acesso em: 18 mar. 2024.
+
+Sobrecarrega a tabela de endereços MAC 
+do switch com informações falsas;
+Técnica de ataque em LANs;
+Identificação do Switch e Porta;
+Criação de Pacotes Falsos;
+Envio dos Pacotes Falsos;
+Comportamento Anômalo do Switch.
+AtaquesMan-in-the-Middlede Camada2
+Aula 02
+Etapas do ataque:
+INUNDAÇÃO DE MAC (MAC FLOODING)
+Fonte: Fake Cineast.
+Disponível em: <https://fakecineaste.blogspot.com/2022/02/mac-flooding-
+attack.html.>. 
+Acesso em: 18 mar. 2024.
+
+Etapas de funcionamento:
+AtaquesMan-in-the-Middlede Camada2
+Aula 02
+Fornece redundância e disponibilidade 
+utilizando bloqueios inteligentes para 
+manter a convergência da rede.
+Protocolo utilizado para 
+evitar loops de caminho.
+Eleição do Bridge Raiz (Root Bridge);
+Cálculo dos Caminhos Mais Curtos.
+SPANNING TREE PROTOCOL (STP)
+Fonte: Cisco.
+Disponível em: <https://community.cisco.com/t5/service-providers-
+knowledge-base/asr9000-xr-using-mst-ag-mst-access-gateway-
+mst-and-vpls/ta-p/3110290>.
+Acesso em: 18 mar. 2024.
+
+Etapas de funcionamento: (cont.)
+Versões aprimoradas do STP:
+AtaquesMan-in-the-Middlede Camada2
+Aula 02
+Rapid Spanning Tree Protocol 
+(RSTP); e
+MultipleSpanningTreeProtocol
+(MSTP).
+Escolha das Portas Designadas e 
+Bloqueadas;
+Atualizações Contínuas com BPDUs
+(Bridge ProtocolData Units);
+Tempo de Convergência.
+SPANNING TREE PROTOCOL (STP)
+Fonte: Network Lessons.
+Disponível em: 
+<https://networklessons.com/switching/flex-links>.
+Acesso em: 18 mar. 2024.
+
+Etapas do funcionamento:
+É uma medida de segurança para 
+switches;
+Portas de Acesso e Portas Tronco;
+BPDU Guard para Portas de Acesso;
+Cenário de Porta Bloqueada;
+Recuperação da Porta.
+AtaquesMan-in-the-Middlede Camada2
+Aula 02
+Evita mau funcionamento devido a 
+mensagens BPDU em portas 
+indevidas;
+BRIDGE PROTOCOL DATA UNIT 
+(BPDU) GUARD
+Fonte: Route XP.
+Disponível em: <https://www.routexp.com/2020/03/switching-
+techniques-bpdu-filter-and.html?m=0>.
+Acesso em: 18 mar. 2024.
+
+É uma técnica de segurança que verifica 
+se um dispositivo tem permissão para 
+acessar a rede.
+AtaquesMan-in-the-Middlede Camada2
+Aula 02
+Coleta dos Endereços MAC 
+Autorizados.
+Apenas dispositivos com endereços 
+MAC específicos se conectam à rede.
+Funcionamento do MAC Filtering:
+Filtragem de Endereços MAC 
+(MAC Filtering)
+Fonte: SupportSasktel.
+Disponível em: 
+<https://support.sasktel.com/app/answers/detail/a_id/11379/~/
+setting-up-mac-address-filtering-on-your-2wire-or-pace-
+gateway>.
+Acesso em: 18 mar. 2024.
+
+Funcionamento do MAC Filtering: (cont.)
+Configuração no Roteador ou Switch;
+Escolha do Modo de Filtragem;
+Autenticação dos Dispositivos;
+AtaquesMan-in-the-Middlede Camada2
+Aula 02
+Segurança e Limitações.
+FILTRAGEM DE ENDEREÇOS MAC 
+(MAC FILTERING)
+Fonte: YouTube.
+Disponível em: 
+<https://www.youtube.com/watch?v=-
+RPS5s9um7k>.
+Acesso em: 18 mar. 2024.
+
+O DHCP é um protocolo para obtenção de 
+endereços IP automaticamente.
+DHCP Falso fornece endereços 
+inválidos ou em servidor malicioso.
+AtaquesMan-in-the-Middlede Camada2
+Aula 02
+O DHCP Snoopingprotege contra ataques 
+de DHCP falsificado.
+Como o Snoopingfunciona:
+DHCP SNOOPING
+Fonte: Cisco.
+Disponível em: <https://www.cisco.com/c/pt_br/support/docs/switches/meraki-
+ms320-48/217894-troubleshoot-recent-802-1x-failure-alert.html>.
+Acesso em: 18 mar. 2024.
+
+Trata-se de uma técnica baseada nas 
+portas físicas do switch para controlar o 
+acesso dos dispositivos aos recursos 
+da rede.
+Funcionamento do PNAC:
+Identificação dos Dispositivos e 
+Portas.
+AtaquesMan-in-the-Middlede Camada2
+Aula 02
+PORT-BASED NETWORK 
+ACCESS CONTROL (PNAC)
+Fonte: Eduroam.
+Disponível em: <https://www.eduroam.dk/technical-
+design?language=em>.
+Acesso em: 18 mar. 2024.
+
+Funcionamento do PNAC: (cont.)
+Definição das Políticas de Acesso;
+Configuração no Switch;
+Métodos de Autenticação;
+AtaquesMan-in-the-Middlede Camada2
+Aula 02
+Verificação do Acesso;
+Monitoramento e Manutenção. 
+PORT-BASED NETWORK 
+ACCESS CONTROL (PNAC)
+Fonte: ResearchGate.
+Disponível em: <https://www.researchgate.net/figure/3-IEEE-8021X-
+Port-Based-Access-Control_fig6_238668444>.
+Acesso em: 18 mar. 2024.
+
+Refere-se à uma técnica de ataque 
+onde o remetente utiliza um IP falso 
+para esconder sua verdadeira 
+identidade.
+Identificação do Alvo.
+AtaquesMan-in-the-Middlede Camada2
+Aula 02
+Frequentemente utilizada em DDoS.
+Funcionamento:
+IP SPOOFING
+Fonte: Socradar.
+Disponível em: <https://socradar.io/what-is-spoofing-attack-and-
+how-to-prevent-it/>.
+Acesso em: 18 mar. 2024.
+
+Funcionamento: (cont.)
+Captura do Tráfego de Rede;
+Escolha do Endereço IP 
+Falsificado;
+Criação do Pacote Forjado;
+AtaquesMan-in-the-Middlede Camada2
+Aula 02
+Envio dos Pacotes Falsificados;
+Consequências do IP Spoofing. 
+IP SPOOFING
+Fonte: Zenamor.
+Disponível em: <https://www.zenarmor.com/docs/network-security-
+tutorials/what-is-ip-spoofing>.
+Acesso em: 18 mar. 2024.
+
+Balanceamento de carga, 
+Clusteringe Qualityof
+Service (QoS)
+Segurança em Encaminhamento de Tráfego
+Aula 02
+
+É um dispositivo ou software utilizado 
+para equilibrar a distribuição do 
+tráfego na rede entre os servidores.
+Visa evitar a sobrecarga de alguns 
+servidores causando atrasos na 
+entrega.
+Há dois tipos principais:
+Balanceamentode carga, Clusteringe QualityofService(QoS)Aula 02
+BALANCEAMENTO DE CARGA 
+(LOAD BALANCER)
+Balanceador de Carga de Camada 4; e
+Balanceador de Carga de 
+Camada 7.
+Fonte: Linkedin.
+Disponível em: 
+<https://www.linkedin.com/in/leandroperesgoncalves/?locale=pt_BR>.
+Acesso em: 18 mar. 2024.
+
+ATAQUE DISTRIBUÍDO DE NEGAÇÃO 
+DE SERVIÇO (DDOS)
+Trata-se de um ataque a um servidor, 
+serviço ou infraestrutura a fim de provocar 
+sobrecarga.
+Causa negação de serviço aos 
+usuários legítimos.
+Funcionamento:
+Balanceamentode carga, Clusteringe QualityofService(QoS)
+Aula 02
+Recrutamento de Botnets;
+Preparaçãodo ataque;
+Ataque -Enchendo a Tubulação;
+Sobrecarga de recursos.
+Fonte: UnderLinux.
+Disponível em: <https://under-linux.org/content.php?r=8604>.
+Acesso em: 18 mar. 2024.
+
+Refere-se à técnica de reunir vários 
+servidores em um único conjunto (cluster).
+CLUSTERING
+Visa otimizar o desempenho, a 
+escalabilidade e a disponibilidade dos 
+serviços.
+Criação do Cluster;
+Distribuição da Carga;
+Monitoramento e Gerenciamento;
+Balanceamentode carga, Clusteringe QualityofService(QoS)
+Aula 02
+Funcionamento:
+Escalabilidade e Disponibilidade.
+Fonte: SemanticScholar.
+Disponível em: <https://www.semanticscholar.org/paper/SDN-based-load-balancing-
+strategy-for-server-Zhang-Guo/eff05a6d5fa1d92f77b24408784c5ea396a9bf1a>.
+Acesso em: 18 mar. 2024.
+
+CLUSTERING
+Configurações de clusteringem 
+balanceamento de carga:
+Balanceamentode carga, Clusteringe QualityofService(QoS)
+Aula 02
+Fonte: Recoverit.
+Disponível em: <https://recoverit.wondershare.com.br/backup-
+files/sync-files-between-two-linux-server.html>.
+Acesso em: 18 mar. 2024.
+Active/Passive (A/P) Clustering;
+Active/Active (A/A) Clustering.
+
+Refere-se a uma técnica de gerenciamento 
+de tráfego na rede.
+QUALITY OF SERVICE (QOS)
+Prioriza e controla a entrega de dados.
+Visa a distribuição equitativa dos recursos 
+de rede pelos diversos tipos de tráfego.
+Balanceamentode carga, Clusteringe QualityofService(QoS)
+Aula 02
+Fonte: Obkio.
+Disponível em:  
+<https://obkio.com/blog/what-is-qos/>
+Acesso em: 18 mar. 2024.
+
+QUALITY OF SERVICE (QOS)
+Funcionamento:
+Balanceamentode carga, Clusteringe QualityofService(QoS)
+Aula 02
+Fonte: Huawei.
+Disponível em: 
+<https://support.huawei.com/enterprise/en/doc/EDOC1100086518>.
+Acesso em: 18 mar. 2024.
+Classificação do tráfego;
+Marcaçãode pacotes;
+Priorização do tráfego;
+Gerenciamentode largura de 
+banda;
+Controle de congestionamento.
+
+Benefícios do QoS:
+QUALITY OF SERVICE (QOS)
+Balanceamentode carga, Clusteringe QualityofService(QoS)Aula 02
+Fonte: Linkedin.
+Disponível em: 
+<https://www.linkedin.com/pulse/telecomunica%C3%A7%C3%B5es-o-que-
+%C3%A9-qos-carlos-eduardo/?originalSubdomain=pt>.
+Acesso em: 18 mar. 2024.
+Garantia de desempenho;
+Melhoria na experiência do usuário;
+Prevenção de congestionamentos;
+Otimização de recursos.
+
+Segurança em 
+Encaminhamento de Tráfego
+Você chegou ao final da Aula 02
+11

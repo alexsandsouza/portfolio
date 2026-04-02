@@ -1,0 +1,290 @@
+
+
+Módulo 07
+Redundância, Backup, 
+Segurança física e Destruição de 
+dados
+Aula 04
+Técnicas para destruição 
+segura de dados
+7
+
+Introdução
+Nesta aula, você conhecerá os seguintes assuntos:
+Estratégias e métodos para garantir a eliminação definitiva de 
+informações armazenadas em dispositivos de armazenamento.
+Protege a privacidade e confidencialidade.
+Ajuda a tomar medidas efetivas para proteger as informações 
+confidenciais.
+Evitando riscos de vazamentos de dados e possíveis violações de 
+segurança.
+
+Técnicas físicas de 
+destruição
+Técnicas para destruição segura de dados
+Aula 04
+
+Métodos que envolvem a manipulação 
+direta dos dispositivos de 
+armazenamento.
+TÉCNICAS FÍSICAS DE DESTRUIÇÃO
+Técnicas físicas de destruição
+Aula 04
+Garante a eliminação segura dos dados.
+Destruir fisicamente os dispositivos.
+Torna os dispositivos irreparáveis.
+Inviabiliza a recuperação de informações 
+armazenadas.
+
+TRITURAÇÃO
+Técnica física de destruição.
+Usa equipamentos especializados para 
+reduzir os dispositivos de armazenamento 
+em pequenos pedaços.
+Os dispositivos são inseridos em um 
+triturador industrial que utiliza lâminas ou 
+cilindros giratórios de alta potência.
+Técnicas físicas de destruição
+Aula 04
+O tamanho dos pedaços pode variar 
+dependendo do equipamento utilizado.
+
+Garantir a eliminação segura dos dados 
+armazenados em:
+Altamente eficaz na destruição dos 
+dispositivos.
+TRITURAÇÃO
+Técnicas físicas de destruição
+Aula 04
+Discos rígidos.
+Unidades de fita magnética.
+CDs/DVDs.
+Cartões de memória.
+Papel.
+Outros tipos de mídia.
+
+Método avançado de destruição segura 
+de dados.
+TRITURAÇÃO CRIPTOGRÁFICA
+Combina a criptografia dos dispositivos 
+de armazenamento com a posterior 
+trituração física.
+Os dados armazenados nos dispositivos 
+são criptografados antes de serem 
+triturados.
+A criptografia torna os dados 
+ininteligíveis sem a chave de 
+descriptografiacorrespondente.
+Técnicas físicas de destruição
+Aula 04
+
+PERFURAÇÃO
+Cria de furos ou danos significativos nos 
+dispositivos.
+Comprometer a integridade dos 
+mecanismos internos do dispositivo.
+Técnicas físicas de destruição
+Aula 04
+Torna inoperável e impossibilita a 
+recuperação dos dados.
+É essencial atingir áreas críticas que 
+contêm os dados armazenados.
+Considerada uma técnica eficaz de 
+destruição segura de dados.
+
+Os dispositivos são submetidos a altas 
+temperaturas em fornos especiais.
+Queima controlada dos dispositivos de 
+armazenamento.
+INCINERAÇÃO
+Técnicas físicas de destruição
+Aula 04
+É realizada de forma a garantir a destruição 
+completa dos dispositivos, reduzindo-os a 
+cinzas.
+É considerada uma técnica eficaz para a 
+destruição segura de dados.
+
+Deve ser realizada em instalações 
+apropriadas, com equipamentos de controle 
+de poluição e segurança.
+O calor intenso derrete e deforma os 
+componentes físicos dos dispositivos.
+INCINERAÇÃO
+Técnicas físicas de destruição
+Aula 04
+É importante considerar os impactos 
+ambientais dessa técnica e buscar 
+alternativas sustentáveis.
+
+Fonte: CBL.
+Disponível em: 
+<https://cblsolucoes.com.br/equipamentos/>. Acessado 
+em: 27 mar. 2024.
+Técnica física de destruição que envolve 
+o uso de um dispositivo chamado 
+degaussingmachineou 
+desmagnetizador.
+DEGAUSSING
+Eliminar dados armazenados em mídias 
+magnéticas :
+Discos rígidos.
+Fitas magnéticas.
+Cartões de crédito com faixa 
+magnética.
+Técnicas físicas de destruição
+Aula 04
+
+O campo magnético intenso faz com que as 
+partículas magnéticas percam sua 
+orientação magnética original.
+Expõe a mídia magnética a um campo 
+magnético intenso e oscilante, que é 
+gerado pelo desmagnetizador.
+DEGAUSSING
+Resulta na eliminação completa e 
+irreversível dos dados armazenados.
+Técnicas físicas de destruição
+Aula 04
+Fonte: CBL.
+Disponível em: 
+<https://cblsolucoes.com.br/equipamentos/>. 
+Acessado em: 27 mar. 2024.
+
+Técnica de destruição de dados que 
+envolve a separação dos componentes 
+dos dispositivos de armazenamento.
+DESMONTAGEM
+Técnicas físicas de destruição
+Aula 04
+Os dispositivos são desmontados 
+manualmente ou com o auxílio de 
+ferramentas especializadas.
+Útil quando se trata de dispositivos como 
+discos rígidos, unidades de fita 
+magnética ou cartões de memória.
+Após a desmontagem, os componentes 
+podem ser submetidos a técnicas 
+adicionais de destruição.
+
+Técnicas de formatação e 
+sobrescrita de dados
+Técnicas para destruição segura de dados
+Aula 04
+
+TÉCNICAS DE FORMATAÇÃO E 
+SOBRESCRITA DE DADOS
+Métodos utilizados para eliminar ou 
+tornar irrecuperáveis os dados 
+armazenados.
+Manipula dos bits de dados nos 
+dispositivos.
+Garante que os dados sejam 
+apagados de forma segura e 
+permanente.
+Técnicas de formatação e sobrescrita de dados
+Aula 04
+
+Fonte: Tecmundo, 2011.
+Disponível em: 
+<https://www.tecmundo.com.br/forma
+tacao/8151-como-formatar-seu-
+pendrive-para-funcionar-com-o-
+windows-linux-e-mac.htm>. 
+Acessado em: 27 mar. 2024.
+O sistema de arquivos é recriado.
+FORMATAÇÃO RÁPIDA
+Os dados previamente armazenados não 
+são apagados fisicamente.
+Técnicas de formatação e sobrescrita de dados
+Aula 04
+O sistema operacional cria uma nova 
+tabela de alocação de arquivos e remove 
+as referências aos arquivos antigos.
+Os dados existentes no dispositivo 
+permanecem intactos, mas são 
+considerados como espaço livre 
+disponível para uso.
+
+Fonte: Tecmundo, 2011.
+Disponível em: 
+<https://www.tecmundo.com.br
+/formatacao/8151-como-
+formatar-seu-pendrive-para-
+funcionar-com-o-windows-
+linux-e-mac.htm>.
+Acessado em: 27 mar. 2024.
+Apaga todos os dados de um dispositivo 
+de armazenamento.
+FORMATAÇÃO COMPLETA
+Técnicas de formatação e sobrescrita de dados
+Aula 04
+Além de apagar o sistema de arquivos, 
+também sobrescreve os setores não 
+alocados do dispositivo.
+O software percorre todas as trilhas e 
+setores do dispositivo de 
+armazenamento.
+Substitui dados existentes com zeros ou 
+outros padrões.
+
+Cada passagem consiste em escrever um 
+padrão de bits sobre os dados existentes.
+Os dados existentes são substituídos por 
+padrões de bits específicos, repetidas 
+vezes, em várias passagens.
+SOBRESCRITA DE MÚLTIPLAS 
+PASSAGENS
+Seguido de uma nova passagem com um 
+padrão diferente.
+Fonte: Brazip.
+Disponível em: <https://www.brazip.com.br/public/manualbrazip9.pdf>.
+Acessado em: 27 mar. 2024.
+Técnicas de formatação e sobrescrita de dados
+Aula 04
+Geralmente são recomendadas três ou mais 
+passagens.
+
+Padrão de sobrescrita de múltiplas 
+passagens.
+Técnica de destruição que segue as 
+diretrizes estabelecidas pelo Departamento 
+de Defesa dos Estados Unidos (DoD).
+SOBRESCRITA COM O PADRÃO DoD
+5220.22-M
+Envolve três passagens consecutivas de 
+escrita nos dados:
+Fonte: Scribd.
+Disponível em: 
+<https://pt.scribd.com/document/222579026/NISPO
+M-National-Industrial-Security-Programme-
+Operating-Manual>.
+Acessado em: 27 mar. 2024.
+Técnicas de formatação e sobrescrita de dados
+Aula 04
+1 passagem: bits sobrescritos com 
+zeros (0).
+2 passagem: bits sobrescritos com uns 
+(1).
+3 passagem: bits sobrescritos com um 
+padrão aleatório (0) e (1).
+
+Fonte: Techtudo, 2018.
+Disponível em: <https://www.techtudo.com.br/dicas-e-
+tutoriais/2018/12/como-usar-o-dban-para-limpar-todos-os-arquivos-
+do-disco-rigido.ghtml>.
+Acessado em: 27 mar. 2024.
+Programas desenvolvidos com o objetivo 
+de garantir a eliminação irreversível e 
+segura de informações:
+APLICATIVOS ESPECIALIZADOS
+Técnicas de formatação e sobrescrita de dados
+Aula 04
+Eraser.
+DBAN (Darik'sBoot and Nuke).
+Secure Eraser.
+
+Técnicas para destruição 
+segura de dados
+Você chegou ao final da Aula 04
+7

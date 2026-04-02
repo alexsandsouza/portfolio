@@ -51,7 +51,7 @@ export default function RankingExtraM05() {
 
   // Read data from Firestore
   useEffect(() => {
-    const q = query(collection(db, "hackersdobem_ranking"));
+    const q = query(collection(db, "fametro_ranking"));
     const unsubscribe = onSnapshot(q, (snapshot) => {
       let loaded = snapshot.docs.map(doc => ({
         id: doc.id,
@@ -80,11 +80,11 @@ export default function RankingExtraM05() {
 
   async function clearAll() {
     try {
-      const q = query(collection(db, "hackersdobem_ranking"));
+      const q = query(collection(db, "fametro_ranking"));
       const snapshot = await getDocs(q);
       const deletePromises = snapshot.docs
         .filter(document => document.data().module === "M05_EXTRA")
-        .map(document => deleteDoc(doc(db, "hackersdobem_ranking", document.id)));
+        .map(document => deleteDoc(doc(db, "fametro_ranking", document.id)));
       await Promise.all(deletePromises);
       setShowClear(false);
     } catch {}

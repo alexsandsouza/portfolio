@@ -1,0 +1,558 @@
+
+
+Módulo 12
+Resposta a incidentes
+e protocolos seguros
+Aula 03
+Resposta a Incidentes
+12
+
+Introdução
+Nesta aula, você conhecerá os seguintes assuntos:
+As fases do tratamento de incidente;
+Fontes de dados apropriadas para resposta a incidente;
+Controles de mitigação;
+Ferramentas de monitoramento e planos 
+estratégicos para gestão dos incidentes;
+Identificação de ameaças como framework de ataque 
+Cyber KillChaine o Modelo MITRE ATT&CK.
+
+Lidando com Incidentes
+Resposta a incidentes e protocolos seguros
+Aula 03
+
+A política de resposta a incidentes define os 
+recursos, processos e diretrizes para lidar 
+com incidentes de segurança.
+Resposta a Incidentes
+Aula 03
+A resposta a incidentes segue um processo 
+bem estruturado com etapas bem definidas.
+O objetivo é identificar, conter, mitigar e 
+aprender com incidentes a fim de  evitar 
+danos à imagem da organização.
+Processo de Resposta a Incidentes
+
+Processo de Resposta a Incidentes
+Etapas do processo de
+resposta a incidentes:
+Preparação;
+Identificação;
+Contenção;
+Erradicação;
+Recuperação;
+Lições Aprendidas.
+Lidando com Incidentes
+Aula 03
+
+Computer Security Incident 
+Response Team (CSIRT)
+Trata-se da equipe de profissionais 
+especializados responsáveis por 
+gerenciar e coordenar internamente a 
+resposta a incidentes na organização.
+O CSIRT tem as seguintes funções:
+Coordenação e gerenciamento 
+atuando como um single
+point-of-contact;
+Detecção e análise por meio
+de monitoramento da rede e
+dos sistemas.
+Lidando com Incidentes
+Aula 03
+Fonte: Collidu.
+Disponível em: <https://www.collidu.com/presentation-computer-
+security-incident-response-team-csirt>.
+Acesso em: 18 mar. 2024. 
+
+Computer Security Incident
+Response Team (CSIRT)
+O CSIRT tem as seguintes funções: (cont.)
+Investigação e resposta conforme 
+a extensão do incidente;
+Comunicação e notificação 
+aos stakeholders;
+Mitigação e prevenção;
+Melhoria contínua incluindo 
+reavaliação dos planos de 
+resposta a incidentes.
+Lidando com Incidentes
+Aula 03
+Fonte: Collidu.
+Disponível em: <https://www.collidu.com/presentation-computer-security-
+incident-response-team-csirt>.
+Acesso em: 18 mar. 2024. 
+
+Times de segurança da informação
+BlueTeam
+Fonte: CLEANCLOUD.
+Disponível em: <https://cleancloud.io/quais-as-diferencas-entre-
+red-team-blue-team-e-purple-team/>. 
+Acesso em: 18 mar. 2024. 
+Grupo operacional que 
+trabalha na implantação
+das medidas de segurança;
+Monitora a infraestrutura, 
+detecta e responde a 
+incidentes de segurança;
+Executa a configuração dos 
+dispositivos como firewall, IDS, 
+IPS, etc;
+Executa a configuração dos 
+dispositivos como firewall, IDS, 
+IPS, etc.
+Lidando com Incidentes
+Aula 03
+
+Times de segurança da informação
+RedTeam
+Grupo operacional que 
+Trabalha na prevenção;
+Simula ataques cibernéticos para 
+identificar possíveis vulnerabilidades;
+Realizam testes de penetração;
+Realizam tentativas de invasão
+aos sistemas com controle e ética.
+Fonte: CLEANCLOUD.
+Disponível em: <https://cleancloud.io/quais-as-diferencas-entre-
+red-team-blue-team-e-purple-team/>. 
+Acesso em: 18 mar. 2024. 
+Lidando com Incidentes
+Aula 03
+
+Times de segurança da informação
+PurpleTeam
+Fonte: CLEANCLOUD.
+Disponível em: <https://cleancloud.io/quais-as-diferencas-entre-
+red-team-blue-team-e-purple-team/>. 
+Acesso em: 18 mar. 2024. 
+Trabalha em conjunto
+com o Bluee RedTeam;
+Coordena e planeja ações 
+conjuntas entre o Bluee Red
+Team;
+Compartilha informações entre 
+as equipes;
+Avalia e mede a eficiência
+e efetividade dos controles
+de segurança;
+Promove a cultura de melhoria 
+contínua dos processos de 
+resposta a incidentes.
+Lidando com Incidentes
+Aula 03
+
+Fonte: CLEANCLOUD.
+Disponível em: <https://cleancloud.io/quais-as-diferencas-entre-
+red-team-blue-team-e-purple-team/>. 
+Acesso em: 18 mar. 2024. 
+Times de segurança da 
+informação
+White Team
+Grupo seguidamente ligado a 
+competições de cyber security
+como CTFs;
+Trabalha na criação de cenários, 
+desafios e ambientes de teste;
+Atuam na organização
+das competições;
+Podem atuar como juiz na 
+determinação da pontuação
+dos competidores.
+White team
+White team
+Lidando com Incidentes
+Aula 03
+
+Plano de Resposta a Incidentes -
+IncidentResponsePlan(IRP)
+Um IRP contém a lista dos 
+procedimentos, contatos e recursos 
+disponíveis para várias categorias 
+de incidentes.
+São essas orientações que guiarão 
+os investigadores na determinação 
+de prioridades e planos
+de remediação.
+Um IRP deve conter: 
+Fonte: Software testinghelp.
+Disponível em: <https://www.softwaretestinghelp.com/what-is-
+incident-response-plan/>. 
+Acesso em: 18 mar. 2024. 
+Objetivos e escopo;
+Equipe (Time de especialistas) 
+e papéis.
+Lidando com Incidentes
+Aula 03
+
+Plano de Respostaa Incidentes-
+Incident Response Plan (IRP)
+Classificação e priorização;
+Fases de resposta;
+Procedimentos específicos;
+Comunicação e notificação;
+Cooperação externa;
+Fonte: Exabeam.
+Disponível em: <https://www.exabeam.com/incident-
+response/incident-response-plan/>. 
+Acesso em: 18 mar. 2024. 
+Testes e atualizações;
+Treinamento e conscientização.
+Lidando com Incidentes
+Aula 03
+
+Cyber Kill Chain Attack Framework
+É uma estrutura utilizada para 
+descrever os estágios de um
+cyber attack.
+Descreve as etapas geralmente 
+seguidas pelos atacantes 
+cibernéticos.
+É uma ferramenta chave para a 
+pesquisa de ameaças fornecendo 
+insights sobre táticas, técnicas e 
+procedimentos (TTPs) do 
+adversário.
+Fonte: Oreilly.
+Disponível em: <https://www.oreilly.com/library/view/practical-cyber-
+intelligence/9781788625562/57958656-3d88-4734-bc32-
+bf2d35b7c3e9.xhtml>.
+Acesso em: 18 mar. 2024. 
+Lidando com Incidentes
+Aula 03
+
+Cyber Kill Chain Attack Framework
+Etapas do Cyber KillChain:
+Reconhecimento;
+Armadilha (Weaponization);
+Instalação;
+Entrega;
+Exploração (Exploitation);
+Comando e Controle (C2);
+Ação (ActiononObjectives).
+Lidando com Incidentes
+Aula 03
+Fonte: Colidu.
+Disponível em: <https://www.collidu.com/presentation-cyber-kill-
+chain>. 
+Acesso em: 18 mar. 2024. 
+
+Modelo Diamante de
+Análise de Intrusão
+TambémconhecidocomoThe 
+Diamond Model of Intrusion Analysis.
+Auxilia conceitualmente na 
+análise mais profunda de um 
+ataque cibernético.
+Adversário (Adversary);
+Infraestrutura(Infrastructure);
+Fonte: Michaelkoczwara.
+Disponível em: <https://michaelkoczwara.medium.com/diamond-
+model-of-intrusion-analysis-in-practice-31659f370043>. 
+Acesso em: 18 mar. 2024. 
+A visualização gráfica do modelo tem 
+a forma de um diamante composto 
+de quatro principais componentes:
+Capacidade (Capability);
+Vítima (Victim).
+Lidando com Incidentes
+Aula 03
+
+MITRE ATT&CK
+Táticas;
+Matriz de Táticas e Técnicas;
+Técnicas;
+Frameworks de Ataque.
+AdversarialTactics, Techniques, and
+CommonKnowledgeé mais uma estrutura 
+que detalha as táticas, técnicas e 
+procedimentos (TTPs) dos cyber attacks.
+Visa o aprimoramento de defesas
+pelas organizações.
+O framework possui os seguintes 
+recursos:
+Lidando com Incidentes
+Aula 03
+Fonte: Michaelkoczwara.
+Disponível em: 
+<https://michaelkoczwara.medium.com/diamond-model-
+of-intrusion-analysis-in-practice-31659f370043>. 
+Acesso em: 18 mar. 2024. 
+
+MITRE ATT&CK
+O framework possui os seguintes 
+recursos (cont.):
+Fonte: Medium.
+Disponível em: <https://ensarseker1.medium.com/mitre-pre-att-ck-
+db744fe719ed>.
+Acesso em: 18 mar. 2024. 
+Detecção e prevenção;
+Treinamento e conscientização;
+Teste de RedTeam;
+Análise de incidentes.
+Lidando com Incidentes
+Aula 03
+
+Exercícios de Resposta 
+a Incidentes
+São atividades realizadas pelas 
+organizações visando a 
+otimização dos processos de 
+resposta a incidentes.
+Processo;
+Benefícios.
+Há três tipos principais:
+1. TabletopExercise
+(Exercício de Mesa Redonda);
+Lidando com Incidentes
+Aula 03
+
+Exercícios de Resposta 
+a Incidentes
+Processo;
+Benefícios.
+2. Walkthrough Exercise
+(Exercício de Passo a Passo):
+Processo;
+Benefícios.
+3. SimulationExercise
+(Exercício de Simulação):
+Lidando com Incidentes
+Aula 03
+
+Plano de Recuperação 
+de Desastres
+O DisasterRecoveryPlan(DRP) 
+é um documento que reúne 
+procedimentos e estratégias para 
+recuperação do ambiente diante 
+de desastres.
+Identificação de ativos críticos;
+Avaliação de riscos e impacto;
+Definição de objetivos
+de recuperação.
+Visa o retorno a normalidade 
+operacional o mais rápido possível.
+O DRP deve conter:
+Lidando com Incidentes
+Aula 03
+
+Plano de Recuperação 
+de Desastres
+O DRP deve conter:
+Fonte: UellingtonSantos.
+Disponível em: 
+<https://pt.linkedin.com/pulse/recupera%C3%A7%C3%A3o-de-
+desastres-parte-3-o-plano-uellington-santos>.
+Acesso em: 18 mar. 2024. 
+Estratégias de recuperação;
+Procedimentos de recuperação;
+Alocação de recursos;
+Testes e treinamento;
+Manutenção e atualização;
+Comunicação e notificação;
+Revisão e melhoria contínua.
+Lidando com Incidentes
+Aula 03
+
+Plano de Continuidade de Negócios
+Avaliação de riscos e impactos;
+Identificação de funções essenciais;
+O Business ContinuityPlan(BCP) é um 
+documento que reúne estratégias, 
+processos e procedimentos necessários 
+para garantir a continuidade das 
+operações de negócio.
+Visa minimizar os efeitos negativos de 
+eventos de grande impacto assegurando a 
+sobrevivência da organização.
+O BCP deve conter: 
+Fonte: BurnieGroup.
+Disponível em: <https://burniegroup.com/top-10-priorities-
+for-a-strong-business-continuity-plan/>.
+Acesso em: 18 mar. 2024. 
+Lidando com Incidentes
+Aula 03
+
+Plano de Continuidade 
+de Negócios
+O BCP deve conter (cont.):
+Definição de objetivos 
+de continuidade;
+Estratégias de continuidade;
+Plano de ação;
+Testes e treinamento;
+Manutenção e atualização;
+Comunicação e notificação;
+Revisão e melhoria contínua.
+Fonte: BurnieGroup.
+Disponível em: <https://burniegroup.com/top-10-priorities-
+for-a-strong-business-continuity-plan/>.
+Acesso em: 18 mar. 2024. 
+Lidando com Incidentes
+Aula 03
+
+Ferramentas de respostas 
+a incidentes
+Resposta a incidentes e protocolos seguros
+Aula 03
+
+Plataformas de Registro
+Rsyslog;
+Syslog;
+São ferramentas utilizadas na coleta, 
+armazenamento e análise de registros 
+de  logs gerados pelos diversos 
+elementos da infraestrutura de TI.
+Cada _loggingplatforms_tem 
+características próprias.
+Tipos de plataformas mais utilizados:
+Fonte: Crowdstrike.
+Disponível em: 
+<https://www.crowdstrike.com/guides/syslog-logging/>.
+Acesso em: 18 mar. 2024. 
+Ferramentas de respostas a incidentes
+Aula 03
+Journalctl;
+Syslog-ng;
+Nxlog.
+
+Os Application LogFiles fornecem 
+informações sobre o 
+comportamento e a atividade de 
+aplicativos, sistemas e serviços.
+Os Application LogFiles 
+fornecem informações sobre o 
+comportamento e a atividade de 
+aplicativos, sistemas e serviços.
+DNS EventLogs
+(Registros de Eventos DNS);
+Consulta de DNS (DNS Query);
+Ferramentas de respostas a incidentes
+Aula 03
+Os registros de aplicativos 
+podem ser:
+Registro de resposta
+(DNS Response);
+Análise de padrões e anomalias.
+Fonte: Skufel.
+Disponível em: <https://blog.skufel.net/tag/windows-server/>.
+Acesso em: 18 mar. 2024. 
+
+Registros de Aplicativos
+Respostas do servidor;
+Solicitações de acesso;
+Web/HTTP Access Logs
+(Registros de Acesso a Sites 
+e HTTP):
+Ferramentas de respostas a incidentes
+Aula 03
+Monitoramento de desempenho.
+Detecção de
+atividades maliciosas;
+
+Metadados
+Metadadosda Web;
+Metadadosde arquivo;
+Metadadosfornecem informações de 
+outros dados subjacentes.
+Facilitam a compreensão e o 
+gerenciamentos desses dados.
+Podem ser encontrados de várias formas:
+Fonte: Luiz Camolesi.
+Disponível em: < https://www.linkedin.com/pulse/metadados-
+conceitos-b%C3%A1sicos-luiz-camolesi-jr-
+/?originalSubdomain=pt>.
+Acesso em: 18 mar. 2024. 
+Ferramentas de respostas a incidentes
+Aula 03
+Metadadosmóveis.
+Metadadosde E-mail;
+
+Prevenção de Perda de 
+Dados (Data Loss
+Prevention–DLP)
+Agrega uma estratégia e conjunto 
+de tecnologias com foco na 
+proteção de dados sensíveis
+e confidenciais.
+Fonte: Cielhr.
+Disponível em: <https://www.cielhr.com/prevent-data-loss-by-
+outsourcing-your-employees/>.
+Acesso em: 18 mar. 2024. 
+Ferramentas de respostas a incidentes
+Aula 03
+Visa proteger dados
+confidenciais contra ameaças 
+internas e externas.
+
+Prevenção de Perda de Dados (Data 
+LossPrevention–DLP)
+Monitoramento de tráfego e atividades;
+Identificação de dados sensíveis;
+Etapas do funcionamento
+Fonte: LUXSCI.
+Disponível em: <https://luxsci.com/blog/futureproof-your-
+data-loss-prevention-strategy.html>.
+Acesso em: 18 mar. 2024. 
+Ferramentas de respostas a incidentes
+Aula 03
+Política de ação;
+Detecção de conteúdo sensível;
+Auditoria e relatórios.
+Prevenção e correção;
+
+Listas de permissão
+e de bloqueio
+Não encontrei a fonte, mas penso que não há 
+necessidade.
+Ferramentas de respostas a incidentes
+Aula 03
+Listas de permissão (AllowLists)
+e listas de bloqueio (BlockLists) 
+Procedimentos para a entrevista 
+controlam quais aplicativos
+tem autorização para
+serem executados.
+Visa proteger contra execução 
+de aplicativos maliciosos
+ou acesso a conteúdo 
+potencialmente prejudicial.
+Fonte: Inetweb
+Disponível em: < https://ajuda.inetweb.com.br/kb/adicionando-
+enderecos-a-lista-permissao-de-remetente-antispam/>.
+Acesso em: 18 mar. 2024. 
+
+Listas de permissão
+e de bloqueio
+Ferramentas de respostas a incidentes
+Aula 03
+Bloqueio de Aplicativos
+Não Autorizados;
+Criação da lista;
+Application AllowLists–
+Contém a lista de
+aplicativos autorizados. 
+Funcionamento:
+Prevenção de Execução
+de Malware.
+
+Ferramentas de respostas a incidentes
+Aula 03
+Listas de permissão
+e de bloqueio
+Impedindo a Execução de
+Aplicativos Bloqueados;
+Criação da lista;
+Application AllowLists–
+Contém a lista de aplicativos não 
+confiáveis ou inseguros. Visa o 
+impedimento da execução desses 
+aplicativos.
+Funcionamento:
+Prevenção de
+Ameaças Conhecidas.
+
+Resposta a Incidentes
+Você chegou ao final da Aula 03
+12

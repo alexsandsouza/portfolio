@@ -342,7 +342,7 @@ export default function AtividadeM5A03() {
     const avgTime = Math.round(totalTime / 5);
 
     try {
-      await addDoc(collection(db, "hackersdobem_ranking"), {
+      await addDoc(collection(db, "fametro_ranking"), {
         name: playerName,
         score: finalScore,
         correct: finalCorrect,

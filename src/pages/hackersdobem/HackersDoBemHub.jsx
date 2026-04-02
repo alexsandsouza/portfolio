@@ -201,6 +201,45 @@ export default function HackersDoBemHub() {
       badges: ['25 min', '200 pts']
     },
     {
+      id: 'HDB_M07',
+      title: 'Redundância & Backup',
+      module: 'Módulo 07 · Aulas 01 a 03',
+      description: 'Arquiteturas de RAID, tipos de Backup, failover e Segurança Física em ambientes críticos.',
+      path: '/hackersdobem/atividade-m07',
+      rankingPath: '/hackersdobem/ranking-m07',
+      icon: <Shield size={24} color="#00ff88" />,
+      buttonText: 'Garantir Continuidade',
+      status: 'active',
+      accentColor: '#00ff88',
+      badges: ['30 min', '100 pts']
+    },
+    {
+      id: 'HDB_M08',
+      title: 'Criptografia',
+      module: 'Módulo 08 · Aulas 01 a 02',
+      description: 'Confusão e difusão, cifras de bloco e fluxo, esteganografia, AES, DES, e algoritmos simétricos.',
+      path: '/hackersdobem/atividade-m08',
+      rankingPath: '/hackersdobem/ranking-m08',
+      icon: <Lock size={24} color="#facc15" />,
+      buttonText: 'Analisar Código',
+      status: 'active',
+      accentColor: '#facc15',
+      badges: ['30 min', '100 pts']
+    },
+    {
+      id: 'HDB_M09',
+      title: 'Chaves Públicas e Blockchain',
+      module: 'Módulo 09 · Aulas 01 a 02',
+      description: 'Infraestrutura de Chaves Públicas (PKI), Autoridades Certificadoras e Certificados SSL/TLS.',
+      path: '/hackersdobem/atividade-m09',
+      rankingPath: '/hackersdobem/ranking-m09',
+      icon: <CheckCircle size={24} color="#3b82f6" />,
+      buttonText: 'Validar Identidade',
+      status: 'active',
+      accentColor: '#3b82f6',
+      badges: ['30 min', '100 pts']
+    },
+    {
       id: 'HDB_M10',
       title: 'Segurança no Host',
       module: 'Módulo 10 · Aulas 01 a 04',

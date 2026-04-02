@@ -353,7 +353,7 @@ export default function AtividadeHackersDoBem() {
 
     // Save to Firestore
     try {
-      await addDoc(collection(db, "hackersdobem_ranking"), {
+      await addDoc(collection(db, "fametro_ranking"), {
         name: playerName,
         score: finalScore,
         correct: finalCorrect,

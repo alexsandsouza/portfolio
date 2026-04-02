@@ -1,0 +1,315 @@
+
+
+Módulo 09
+Infraestrutura de Chaves 
+Públicas e Blockchain
+Aula 02
+Certificado Digital
+9
+
+Introdução
+Nesta aula, você conhecerá os seguintes assuntos:
+Ciclo de Vida: solicitação, verificação, emissão, distribuição, 
+uso, renovação, revogação e expiração;
+Formatos mais comuns: PEM, DER, PFX/P12, P7B/PKCS#7 e CRL.
+
+Certificados digitais 
+e seu ciclo de vida
+Infraestrutura de Chaves Públicas e Blockchain
+Aula 02
+
+Certificados digitais e seu ciclo de vida
+Aula 02
+Conceito: é um documento eletrônico que contém 
+informações de identificação (nome do titular, 
+identidade, chave pública, período de validade, 
+assinatura digital da AC emissora, por exemplo) 
+de uma pessoa física, jurídica ou dispositivo. 
+CERTIFICADOS DIGITAIS E 
+SEU CICLO DE VIDA
+A chave privada é mantida em sigilo pelo 
+titular do certificado.
+São emitidos por Autoridades Certificadoras (CAs) 
+confiáveis dentro de uma Infraestrutura de Chaves 
+Públicas (PKI).
+
+Certificados digitais e seu ciclo de vida
+Aula 02
+CICLO DE VIDA
+Solicitaçãoenviada a Autoridade 
+Certificadora (CA).
+Verificaçãoda identidade do solicitante.
+Emissãodo certificado pela CA.
+Distribuiçãodo certificado emitido 
+para o titular.
+Usoem aplicações como autenticação, 
+criptografia e assinatura digital.
+
+Certificados digitais e seu ciclo de vida
+Aula 02
+CICLO DE VIDA
+Renovaçãodevido ao prazo de validade.
+Revogaçãodevido a problemas de 
+segurança. Vai para a Lista de 
+Certificados Revogados.
+Expiraçãoocorre após 
+vencimento da data de validade.
+
+Arquivos PEM (PrivacyEnhancedMail)
+TIPOS COMUNS DE 
+CERTIFICADOS DIGITAIS 
+Certificados digitais e seu ciclo de vida
+Aula 02
+Arquivos DER (DistinguishedEncodingRules)
+Formato de texto baseado em ASCII (American 
+Standard Codefor InformationInterchange). 
+Possuem extensões como .pem, .crtou .cer.
+Formato binário para armazenar certificados 
+digitais seguindo as regras de codificação ASN.1 
+(Abstract SyntaxNotationOne). Os arquivos 
+DER geralmente têm a extensão .der ou .cer.
+
+Arquivos PFX (PersonalInformationExchange) ou 
+P12 (PKCS#12)
+TIPOS COMUNS DE 
+CERTIFICADOS DIGITAIS 
+Certificados digitais e seu ciclo de vida
+Aula 02
+Arquivos P7B/PKCS#7
+Formatos de arquivo usados para exportar e 
+importar certificados digitais e chaves privadas 
+entre diferentes sistemas e aplicativos.
+Usados para armazenar certificados digitais em 
+um formato compacto. Eles geralmente têm a 
+extensão .p7b ou .p7c.
+
+Certificados digitais e seu ciclo de vida
+Aula 02
+Arquivos CRL (Certificate RevocationList).
+TIPOS  COMUNS DE 
+CERTIFICADOS DIGITAIS 
+Usados para armazenar listas de 
+certificados revogados. São 
+fornecidos em um formato binário ou 
+em texto codificado em Base64.
+Arquivos de container de chave (Keychain
+no macOSe os Key Stores no Windows).
+Fonte: fikaki, 2019.
+Disponível em: <https://test.fikaki.com/certificate-revocation-list-crl/>.
+Acesso em: 20 mar. 2024.
+
+Certificados digitais e seu ciclo de vida
+Aula 02
+Um certificado de servidor garante a 
+identidade de sites de comércio eletrônico 
+ou qualquer tipo de site para o qual os 
+usuários enviam dados que devem ser 
+mantidos confidenciais. 
+TIPOS DE CERTIFICADOS 
+DE SERVIDOR WEB
+Fonte: clickssli, 2023.
+Disponível em: https://www.clickssl.net/blog/why-should-
+switch-website-from-http-to-https
+Acesso em: 20 mar. 2024
+
+TIPOS DE CERTIFICADOS 
+DE SERVIDOR WEB
+Aula 02
+Certificado de Validação de 
+Domínio (DV -Domain Validation):
+É o mais utilizado. A validação é 
+feita por meio da resposta a um e-
+mail enviado para o endereço de 
+e-mail do domínio ou adicionando 
+um registro DNS específico.
+Tem baixo custo e são fáceis de obter.
+Certificados digitais e seu ciclo de vida
+Fonte: san, 2023.
+Disponível em: https://blog.saninternet.com/certificado-dv-o-que-e-
+como-adquirir
+Acesso em: 20 mar. 2024
+
+Certificados digitais e seu ciclo de vida
+Aula 02
+Certificado de Validação Estendida 
+(EV -ExtendedValidation):
+Fornecem maior nível de confiança aos usuários;
+TIPOS DE CERTIFICADOS 
+DE SERVIDOR WEB
+Exibem informações adicionais na barra de endereços 
+do navegador, como o nome da organização;
+O solicitante do certificado passa por 
+verificações detalhadas de identidade e 
+autenticação da organização;
+São amplamente utilizados por instituições 
+financeiras e comércio eletrônico.
+
+Certificados digitais e seu ciclo de vida
+Aula 02
+Certificado de Organização Validada (OV -
+OrganizationValidation):
+TIPOS DE CERTIFICADOS 
+DE SERVIDOR WEB
+Validação mais rigorosa que o DV;
+Verificam a propriedade do domínio e 
+realizam verificações adicionais para 
+confirmar a identidade e a existência 
+legal da organização;
+Exibem informações da organização no 
+certificado, fornecendo uma camada 
+extra de confiança aos usuários.
+Fonte: certisign, 2023.
+Disponível em: 
+<https://loja.certisign.com.br/certificados/md/multiplos
+-dominios-ssl-somente-certificado-12-
+meses/GEOSSLMDOV100.html>.
+Acesso em: 20 mar. 2024.
+
+Certificados digitais e seu ciclo de vida
+Aula 02
+Certificados de Máquina/Computador
+OUTROS TIPOS DE 
+CERTIFICADOS
+Pode ser necessário emitir certificados 
+para máquinas (dispositivos de rede, 
+servidores, PCs, smartphones e 
+tablets), independentemente da função;
+O atributo SAN (SubjectAlternative
+Name) e frequentemente o atributo CN 
+(Common Name) devem ser configurados 
+com o FQDN (FullyQualifiedDomain 
+Name) da máquina (nome do host e parte 
+do domínio local).
+Fonte: thalesgroup, 2023.
+Disponível em: <https://cpl.thalesgroup.com/pt-
+pt/encryption/enterprise-key-management>.
+Acesso em: 20 mar. 2024.
+
+Certificados digitais e seu ciclo de vida
+Aula 02
+Certificados de Email/Usuário:
+OUTROS TIPOS DE 
+CERTIFICADOS
+Um certificado de emailpode ser usado 
+para assinar e criptografar mensagens de 
+email, normalmente usando Extensões 
+Seguras de Mensagens na Internet 
+(S/MIME) ou PrettyGoodPrivacy(PGP);
+O endereço de emaildo usuário deve ser 
+inserido como SAN e CN;
+Em uma rede local baseada em diretório, 
+como o Windows Active Directory, pode 
+haver a necessidade de vários tipos de 
+certificados de usuário de acordo com a 
+função.
+Fonte: youtube, 2022.
+Disponível em: <https://www.youtube.com/watch?v=KJ9FRlfwffI>.
+Acesso em: 20 mar. 2024.
+
+Certificados digitais e seu ciclo de vida
+Aula 02
+Certificados de Assinatura de Código 
+(CodeSigning)
+OUTROS TIPOS DE 
+CERTIFICADOS
+É emitido pela AC, após o processo 
+de verificação e validação, para um 
+editor de software.
+O editor então assina os executáveis ou 
+DLLsque compõem o programa para 
+garantir a validade de um aplicativo de 
+software ou plug-in de navegador.
+
+Certificados digitais e seu ciclo de vida
+Aula 02
+Versão: Indica a versão do padrão 
+X.509 utilizada;
+Definida pela arquitetura X.509
+ARQUITETURA DE 
+CERTIFICADOS DIGITAIS
+Número de Série: É único e identifica 
+o certificado dentro da AC;
+Algoritmo de Assinatura do Emitente: 
+Indica o algoritmo de criptografia usado 
+pela AC para assinar o certificado (pode 
+ser RSA, DSA ou ECDSA).
+Fonte: thesecmaster, 2024.
+Disponível em: <https://thesecmaster.com/blog/what-are-the-different-
+types-of-certificate-formats>.
+Acesso em: 20 mar. 2024.
+
+Certificados digitais e seu ciclo de vida
+Aula 02
+Nome do Emitente: Identifica a AC 
+que emitiu o certificado;
+Definida pela arquitetura X.509 (cont.)
+ARQUITETURA DE 
+CERTIFICADOS DIGITAIS
+Período de Validade: "Validade a 
+partir de" e "Validade até”;
+Nome do Sujeito:Titular do certificado;
+Chave Pública: É a chave pública 
+correspondente à chave privada do titular;
+Identificador de Algoritmo de Assinatura: 
+Algoritmo de criptografia utilizado para 
+assinar o certificado digital. 
+Plaintext
+
+Certificados digitais e seu ciclo de vida
+Aula 02
+Extensões(opcional): informações 
+adicionais sobre o certificado;
+Definida pela arquitetura X.509 (cont.)
+ARQUITETURA DE 
+CERTIFICADOS DIGITAIS
+Assinatura Digital: Assinatura digital 
+da AC usando sua chave privada.
+A assinatura garante a autenticidade 
+e a integridade do certificado.
+Fonte: GTA-UFJR, 2023.
+Disponível em: 
+<https://www.gta.ufrj.br/ensino/eel879/trabalhos_vf
+_2011_2/ricardo/chavepublica.html>.
+Acesso em: 20 mar. 2024.
+
+Certificados digitais e seu ciclo de vida
+Aula 02
+São informações contidas nos certificados 
+digitais que identificam o sujeito ou 
+entidade para a qual o certificado foi 
+emitido (nome, organização, localidade, 
+país, endereço de e-mail, entre outros).
+ATRIBUTOS DO NOME DO 
+ASSUNTO (SUBJECT NAME 
+ATTRIBUTES)
+Nome comum –Common Name
+(CN): Usado para identificar de forma 
+inequívoca o titular do certificado.
+É um dos principais componentes 
+usados na verificação da identidade 
+durante o processo de autenticação.
+
+Certificados digitais e seu ciclo de vida
+Aula 02
+Nome Alternativo do Assunto –Subject
+AlternativeName(SAN): É um campo 
+presente em certificados digitais que 
+permite especificar nomes alternativos 
+para identificar o sujeito ou entidade do 
+certificado, além do Common Name(CN).
+ATRIBUTOS DO NOME DO 
+ASSUNTO (SUBJECT NAME 
+ATTRIBUTES)
+Pode ser utilizado para incluir 
+diferentes domínios em um único 
+certificado, permitindo que todos eles 
+sejam validados e confiáveis para uso 
+seguro na comunicação online.
+Fonte: cloudflare, 2023.
+Disponível em: <https://www.cloudflare.com/pt-br/learning/ssl/types-
+of-ssl-certificates/>. 
+Acesso em: 20 mar. 2024
+
+Certificado Digital
+Você chegou ao final da Aula 02
+9

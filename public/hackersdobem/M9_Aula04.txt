@@ -1,0 +1,238 @@
+
+
+Módulo 09
+Infraestrutura de Chaves 
+Públicas e Blockchain
+Aula 04
+Blockchain
+9
+
+Blockchain
+Infraestrutura de Chaves Públicas e Blockchain
+Aula 04
+
+Introdução
+Nesta aula, você conhecerá os seguintes assuntos:
+As características e a estrutura do Blockchain;
+Criptografia e Segurança emBlockchain;
+Carteira de criptomoedas.
+
+Blockchain
+Aula 04
+CARACTERÍSTICAS
+Trata-se de registros digitais 
+descentralizados de transações ou 
+eventos.
+Armazena informações de forma 
+sequencial em blocos concatenados.
+Utiliza criptografia para interligar os blocos 
+formando uma cadeia.
+Cria identidades digitais e assinaturas 
+digitais utilizando par de chaves.
+É mantido por uma rede de computadores 
+distribuídos (Nós).
+
+Blockchain
+Aula 04
+Os blocos são as unidades que integram a 
+estrutura de dados.
+BLOCOS E CADEIA DE BLOCOS
+Armazenam dados de transação, timestamps
+e outras informações relevantes.
+São interconectados entre si formando 
+uma cadeia de blocos.
+Permite o rastreamento.
+Garante a integridade e confiabilidade das 
+informações armazenadas.
+Fonte: geeksforgeeks, 2022.
+Disponível em: <https://www.geeksforgeeks.org/blockchain-
+structure/>.
+Acesso em: 20 mar. 2024.
+
+A transação é uma ação ou evento ocorrida na 
+rede e registrada nos blocos.
+TRANSAÇÕES E REGISTROS 
+DISTRIBUÍDOS
+Blockchain
+Aula 04
+Cada Nó tem uma cópia completa da cadeia de 
+blocos contendo as transações já realizadas. 
+As cópias são atualizadas e sincronizadas 
+periodicamente.
+Todas as transações são compartilhadas e 
+propagadas por toda a rede.
+
+Blockchain
+Aula 04
+Todos os Nós da rede devem concordar para 
+validar a cadeia de blocos.
+ALGORITMOS DE CONSENSO
+Deve haver consenso sobre a validade das 
+transações para que os blocos sejam adicionados 
+à cadeia.
+Cada algoritmo tem suas próprias características.
+Os requisitos e as necessidades específicas da 
+rede vão determinar qual o melhor.
+
+Blockchain
+Aula 04
+Algoritmos de consenso mais utilizados em 
+Blockchain:
+ALGORITMOS DE CONSENSO
+Existem outros ainda, como o Delegated
+ProofofStake(DPoS) e o Practical
+ByzantineFaultTolerance(PBFT).
+ProofofWork(Prova de Trabalho).
+ProofofStake(Prova de Participação).
+Fonte: hashinvest, 2018.
+Disponível em: https://www.hashinvest.com.br/single-
+post/2018/07/02/um-pouco-sobre-os-algoritmos-de-consenso
+Acesso em: 20 mar. 2024
+
+Criptografia e Segurança 
+em Blockchain
+Infraestrutura de Chaves Públicas e Blockchain
+Aula 04
+
+Criptografia e Segurança em Blockchain
+Aula 04
+A rede Blockchainimplementa Criptografia 
+assimétrica: 
+ALGORITMOS DE CONSENSO
+Chave Privada para cada participante –
+mantida em sigilo;
+Chave Pública derivada da chave privada -
+compartilhada com todos os participantes.
+Função Hashaplicada à transação –cada 
+bloco contém o hashdo bloco anterior 
+formando a cadeia de blocos.
+Fonte: phemex, 2022.
+Disponível em: <https://phemex.com/pt/academy/what-is-blockchain-
+cryptography>.
+Acesso em: 20 mar. 2024.
+
+Criptografia e Segurança em Blockchain
+Aula 04
+Assinaturas Digitais –realizada com a chave 
+privada do remetente;
+ALGORITMOS DE CONSENSO
+Verificação da Assinatura –realizada com 
+a chave pública correspondente;
+Proteção da Privacidade –criptografia 
+utilizando o par de chaves.
+Fonte: gate.io, 2022.
+Disponível em: <https://www.gate.io/pt-br/learn/articles/what-is-
+public-key-cryptography-pkc/311>.
+Acesso em: 20 mar. 2024.
+
+Tipos de Blockchain
+Infraestrutura de Chaves Públicas e Blockchain
+Aula 04
+
+Tipos de Blockchain
+Aula 04
+Cada tipo tem características próprias.
+TIPOS DE BLOCKCHAIN
+BlockchainPública:
+Descentralizada;
+Participação aberta;
+Transparência completa;
+Transações devem ser verificadas e 
+validadas pelos Nós.
+
+Tipos de Blockchain
+Aula 04
+TIPOS DE BLOCKCHAIN
+BlockchainPública:
+Utiliza algoritmo de consenso;
+Mineração;
+Confirmação de Transações;
+Segurança.
+
+TIPOS DE BLOCKCHAIN
+BlockchainPrivada:
+Controlada por uma organização ou 
+grupo restrito de organizações;
+Participantes precisam ser autorizados;
+Limita o acesso e as permissões 
+dos participantes; 
+Governança definida pela organização 
+responsável.
+Tipos de Blockchain
+Aula 04
+
+TIPOS DE BLOCKCHAIN
+BlockchainPrivada:
+Consenso utiliza mecanismos 
+adicionais além dos algoritmos;
+Escalabilidade melhor que a 
+BlockchainPública;
+Privacidade aos participantes 
+autorizados;
+Casos de Uso em organizações 
+com controle total do seu ambiente.
+Tipos de Blockchain
+Aula 04
+
+Tipos de Blockchain
+Aula 04
+TIPOS DE BLOCKCHAIN
+Blockchainde Consórcio ou Federada:
+Controlada por um consórcio de organizações.
+Cada organização no consórcio possui 
+um ou mais nós na Blockchain;
+Permissões de acesso a rede restritas 
+aos membros do consórcio;
+O modelo de governança é definido e 
+acordado pelo consórcio.
+
+Tipos de Blockchain
+Aula 04
+TIPOS DE BLOCKCHAIN
+Blockchainde Consórcio ou Federada:
+Algoritmos de consenso: PracticalByzantine
+FaultTolerance(PBFT) e o Proofof
+Authority(PoA);
+Confiança Interorganizacionalpor meio 
+da tecnologia blockchain;
+A Privacidade dos dados é garantida por 
+criptografia e compartimentalização;
+Retorno de benefícios oriundos da 
+colaboração.
+
+Carteira de Criptomedas
+Infraestrutura de Chaves Públicas e Blockchain
+Aula 04
+
+Carteira de Criptomedas
+Aula 04
+É um software ou um serviço que permite 
+aos usuários armazenar, gerenciar e 
+interagir com suas criptomoedas.
+CARTEIRA DE CRIPTOMOEDAS
+Recursos utilizados:
+Chave Privada;
+Chave Pública;
+Carteiras de Software;
+Carteiras de Hardware.
+
+Carteira de Criptomoedas
+Aula 04
+CARTEIRA DE CRIPTOMOEDAS
+Recursos utilizados:
+Carteiras Online;
+Carteiras de Papel;
+A segurança da chave privada é 
+um ponto crítico;
+Recomenda-se utilizar autenticação 
+de dois fatores (2FA) e criptografia de 
+dispositivo para proteger a carteira.
+Fonte: kriptobr, 2019.
+Disponível em: https://kriptobr.com/guia-de-carteiras-de-
+criptomoedas-um-tutorial-passo-a-passo-definitivo/Acesso 
+em: 20 mar. 2024
+
+Tipos de Blockchain
+Você chegou ao final da Aula 04
+9
+Carteira de Criptomedas

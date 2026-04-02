@@ -1,0 +1,324 @@
+
+
+CENTRO UNIVERSITÁRIO CEUNI - FAMETRO 
+Curso de Sistemas de Informação  |  Disciplina: Tecnologia Web I 
+Professor: Alexsander Farias   |   2026.1 - Manaus, AM 
+ 
+AULA PRÁTICA 00 - PASSO A PASSO 
+Git, GitHub e Publicação com GitHub Pages - Entrega Final 
+OK 652 ao OK 656  |  Projeto: Portfólio Pessoal Estático 
+IDENTIFICAÇÃO DA AULA 
+Objetos de 
+Conhecimento 
+Integração de todos os OKs: 652, 653, 654, 655 e 656 
+Duração 1h 
+Pré-requisito Aulas 01 a 04 concluídas - portfólio HTML + CSS completo e 
+responsivo 
+Ferramentas VS Code + Terminal (Git) + Navegador + Conta no GitHub 
+Entregável Link do repositório GitHub público + link do GitHub Pages 
+funcionando 
+OBJETIVO DA AULA 
+Finalizar o portfólio, versionar o código com Git, enviar para um repositório público no GitHub e 
+publicar online usando o GitHub Pages - gerando um link permanente e acessível de qualquer 
+dispositivo. 
+CONCEITO RÁPIDO: O QUE É GIT E GITHUB? 
+Git 
+Sistema de controle de versão local. Rastreia 
+todas as alterações feitas no código, permite 
+voltar a versões anteriores e trabalhar em equipe 
+sem conflitos. 
+GitHub 
+Plataforma online que hospeda repositórios Git. 
+Funciona como uma "nuvem de código": permite 
+colaboração, portfólio público e publicação de 
+sites via GitHub Pages. 
+Os 4 comandos Git que você mais usará: 
+Tag / Propriedade 
+Descrição / Uso 
+git init 
+Inicializa um repositório Git na pasta atual. Executado uma única vez por 
+projeto. 
+git add . 
+Adiciona todos os arquivos modificados à área de staging (prontos para o 
+commit). 
+git commit -m 
+"msg" 
+Salva um snapshot permanente das alterações com uma mensagem 
+descritiva. 
+git push 
+Envia os commits locais para o repositório remoto (GitHub). 
+PASSO 1 - REVISÃO E AJUSTES FINAIS DO PORTFÓLIO 
+Antes de versionar, faça uma revisão completa do portfólio. Use o checklist abaixo: 
+ 
+☐ 
+Estrutura HTML5 semântica correta e validada no W3C Validator 
+☐ 
+Todas as seções preenchidas: Sobre Mim, Projetos (2+), Formação e Contato 
+
+☐ 
+Menu de navegação com links âncora funcionando 
+☐ 
+Formulário de contato completo (com required nos campos obrigatórios) 
+☐ 
+CSS vinculado e aplicado: identidade visual consistente 
+☐ 
+Layout Flexbox funcionando no header, seção sobre mim e grid de projetos 
+☐ 
+Portfólio responsivo: testado em viewport mobile (375px) no DevTools 
+☐ 
+Scroll suave (html { scroll-behavior: smooth }) 
+☐ 
+Nenhum erro de console no DevTools (aba Console, F12) 
+☐ 
+Nenhuma imagem quebrada - todos os caminhos src corretos 
+PASSO 2 - CONFIGURANDO O GIT 
+Abra o Terminal (no VS Code: Terminal > New Terminal) e configure seu nome e e-mail. Isso 
+precisa ser feito apenas uma vez por computador: 
+ 
+ 
+# Configuração global do Git (faça uma vez no computador) 
+git config --global user.name "Seu Nome Completo" 
+git config --global user.email "seu@email.com" 
+ 
+# Confirme as configurações:git config --global --list 
+ 
+  Verificando se o Git está instalado 
+Digite git --version no terminal. Se aparecer a versão (ex: git version 2.43.0), está instalado. 
+Caso contrário, baixe em https://git-scm.com 
+PASSO 3 - CRIANDO O REPOSITÓRIO NO GITHUB 
+1 
+Acesse github.com 
+Se ainda não tiver conta, clique em "Sign up" e crie uma conta gratuita com seu e-mail. 
+ 
+2 
+Crie um novo repositório 
+Clique no botão "+" (canto superior direito) > "New repository". 
+ 
+3 
+Configure o repositório 
+Repository name: portfolio-seu-nome (ex: portfolio-joao-silva). Visibilidade: Public 
+(obrigatório para GitHub Pages gratuito). NÃO marque "Initialize this repository" — o 
+código virá do seu computador. 
+ 
+4 
+Copie a URL do repositório 
+Após criar, copie a URL HTTPS exibida na tela (ex: https://github.com/usuario/portfolio-
+seu-nome.git). 
+ 
+⚠  Nome do repositório 
+
+Recomendação: use apenas letras minúsculas, hífens e sem espaços. Exemplo: portfolio-ana-
+silva. O nome aparece na URL do GitHub Pages, então escolha algo legível. 
+PASSO 4 - VERSIONANDO E ENVIANDO O CÓDIGO 
+No terminal do VS Code (com a pasta portfolio aberta), execute os comandos na ordem: 
+4.1  Inicializando o repositório local 
+ 
+ 
+# 1. Acesse a pasta do projeto (se necessário) 
+cd caminho/para/portfolio 
+ 
+# 2. Inicializa o Git na pasta 
+git init 
+ 
+# 3. Adiciona todos os arquivos ao staging 
+git add . 
+ 
+# 4. Cria o primeiro commit 
+git commit -m "feat: portfólio pessoal concluído - HTML5 + CSS3" 
+ 
+# 5. Renomeia a branch para 'main' 
+git branch -M main 
+ 
+# 6. Conecta ao repositório remoto (use SUA URL) 
+git remote add origin https://github.com/SEU-USUARIO/portfolio-seu-nome.git 
+ 
+# 7. Envia o código para o GitHubgit push -u origin main 
+ 
+  Autenticação no GitHub 
+Na primeira vez que fizer git push, o VS Code ou o terminal pedirá login no GitHub. Use seu 
+usuário e senha ou configure um token de acesso pessoal em github.com > Settings > 
+Developer settings > Personal access tokens. 
+ 
+4.2  Verificando o envio 
+ 
+Acesse github.com/SEU-USUARIO/portfolio-seu-nome no navegador. Você deve ver todos os seus 
+arquivos listados no repositório. 
+ 
+ 
+# Comandos úteis para verificar o status: 
+git status          # mostra arquivos modificados e staged 
+git log --oneline   # lista os commits feitosgit remote -v       # mostra o 
+repositório remoto configurado 
+ 
+PASSO 5 - PUBLICANDO COM GITHUB PAGES 
+O GitHub Pages publica automaticamente arquivos HTML/CSS/JS de um repositório como um site 
+público e gratuito. 
+ 
+1 
+Acesse as configurações do repositório 
+No GitHub, dentro do repositório, clique em Settings (ícone de engrenagem). 
+ 
+
+2 
+Encontre o GitHub Pages 
+No menu lateral esquerdo, clique em Pages. 
+ 
+3 
+Configure a fonte 
+Em "Source", selecione: Deploy from a branch. Em "Branch", selecione: main e pasta 
+/(root). Clique em Save. 
+ 
+4 
+Aguarde a publicação 
+A publicação leva entre 1 e 3 minutos. Atualize a página e o link aparecerá no topo da 
+seção Pages: 
+ 
+ 
+# Formato da URL do seu portfólio publicado: 
+https://SEU-USUARIO.github.io/portfolio-seu-nome 
+ 
+# Exemplo real:https://joao-silva.github.io/portfolio-joao-silva 
+ 
+✅  Portfólio publicado! 
+Seu portfólio agora está acessível de qualquer dispositivo, em qualquer lugar do mundo, com 
+URL permanente. Compartilhe nos seus perfis do LinkedIn e GitHub! 
+ 
+PASSO 6 - ATUALIZANDO O PORTFÓLIO APÓS MUDANÇAS 
+Sempre que fizer alterações no portfólio, use este fluxo para atualizar o GitHub Pages: 
+ 
+ 
+# Salve os arquivos no VS Code (Ctrl+S) 
+ 
+# Adicione as alterações ao staging 
+git add . 
+ 
+# Crie um novo commit descrevendo o que foi alterado 
+git commit -m "fix: corrige layout mobile da seção projetos" 
+ 
+# Envie para o GitHub 
+git push 
+# O GitHub Pages atualiza automaticamente em 1-2 minutos 
+ 
+Boas práticas de mensagens de commit: 
+Prefixo Quando usar — exemplo 
+feat: 
+Nova funcionalidade — feat: adiciona seção de certificados 
+fix: 
+Correção de erro — fix: corrige link quebrado no footer 
+style: 
+Ajuste visual — style: melhora responsividade do header 
+docs: 
+Documentação — docs: adiciona README ao repositório 
+refactor: 
+Refatoração — refactor: reorganiza estrutura do CSS 
+ 
+PASSO 7 - ADICIONANDO UM README AO REPOSITÓRIO 
+
+Um bom README transforma o repositório em um cartão de visitas técnico. Crie um arquivo 
+README.md na pasta portfolio/: 
+ 
+ 
+# Portfólio — Seu Nome 
+ 
+Portfólio pessoal desenvolvido como projeto final da disciplina 
+**Tecnologia Web I** — CEUNI FAMETRO (2026.1). 
+ 
+## Tecnologias utilizadas 
+- HTML5 (semântico) 
+- CSS3 (Flexbox, variáveis CSS, responsividade) 
+- Git e GitHub Pages 
+ 
+## Visualizar online 
+https://seu-usuario.github.io/portfolio-seu-nome 
+ 
+## Seções 
+- Sobre Mim 
+- Projetos 
+- Formação e Experiência 
+- Contato 
+ 
+## Autor**Seu Nome** | Sistemas de Informação — CEUNI FAMETRO 
+ 
+ 
+# Após criar o README.md, envie para o GitHub: 
+git add README.md 
+git commit -m "docs: adiciona README ao repositório"git push 
+ 
+ERROS COMUNS NESTA AULA 
+Erro comum Como corrigir 
+git push recusa (error: rejected) Use git pull origin main --allow-unrelated-histories antes do 
+push. Isso ocorre quando o repositório remoto foi 
+inicializado com arquivos. 
+GitHub Pages mostra página em 
+branco 
+Confirme que o arquivo principal se chama exatamente 
+index.html (minúsculas) na raiz do repositório. 
+GitHub Pages não encontra o CSS O caminho no HTML deve ser href="css/style.css" — 
+caminho relativo, sem /. Caminhos absolutos não 
+funcionam no GitHub Pages gratuito. 
+Imagens não aparecem no GitHub 
+Pages 
+Confirme que os nomes dos arquivos de imagem são iguais 
+aos caminhos no HTML. O Linux (servidor do GitHub) 
+diferencia maiúsculas de minúsculas: foto.JPG e foto.jpg 
+são arquivos diferentes. 
+Branch rejeitada (not found) Execute git branch -M main para garantir que a branch se 
+chama main antes do push. 
+ 
+CHECKLIST DO ENTREGÁVEL FINAL — AULA 05 
+☐ 
+Portfólio revisado: HTML válido, CSS aplicado, imagens carregando, formulário funcional 
+☐ 
+Portfólio responsivo: layout correto em 375px (mobile) e 1200px (desktop) 
+☐ 
+Git configurado com nome e e-mail (git config --global) 
+
+☐ 
+Repositório criado no GitHub como público 
+☐ 
+git init, git add, git commit e git push executados com sucesso 
+☐ 
+Todos os arquivos visíveis no repositório GitHub (index.html, css/style.css, img/) 
+☐ 
+GitHub Pages configurado (Settings > Pages > branch main > /(root)) 
+☐ 
+Link do GitHub Pages funcionando e abrindo o portfólio 
+☐ 
+README.md criado e enviado ao repositório 
+☐ 
+Links do repositório e do GitHub Pages enviados ao professor conforme instrução 
+ 
+  PARABÉNS - PORTFÓLIO CONCLUÍDO! 
+Ao completar esta aula, você terá desenvolvido do zero um portfólio pessoal completo — 
+estruturado em HTML5 semântico, estilizado com CSS3 e Flexbox, responsivo para mobile e 
+publicado online com uma URL permanente. Você agora tem um portfólio real para mostrar em 
+entrevistas, processos seletivos e redes profissionais! 
+ 
+RESUMO DO PROJETO - HABILIDADES DESENVOLVIDAS 
+Aula Objeto O que você aprendeu 
+Aula 01 OK 652 Estrutura semântica HTML5: <!DOCTYPE>, <head>, <body>, 
+tags semânticas 
+Aula 02 OK 653 Conteúdo HTML: textos, listas, links âncora, imagens e 
+formulários 
+Aula 03 OK 654 CSS3: seletores, Box Model, tipografia, variáveis CSS e 
+DevTools 
+Aula 04 OK 655+656 Display, position, Flexbox e responsividade com media 
+queries 
+Aula 05 Integração Git, GitHub, versionamento e publicação com GitHub Pages 
+ 
+  Continue evoluindo o portfólio! 
+Sugestões para próximas melhorias: adicionar animações com CSS (transition e animation), 
+integrar ícones do Font Awesome, personalizar o formulário com FormSpree para envio real de 
+e-mails, e explorar CSS Grid para layouts mais complexos. 
+ 
+ 
+ 
+ 
+___________________________________ 
+Prof. Alexsander Farias 
+Tecnologia Web I — CEUNI FAMETRO 
+  
+___________________________________ 
+Aluno(a) 
+Matrícula: ______________________ 
+Manaus, AM — 2026.1 

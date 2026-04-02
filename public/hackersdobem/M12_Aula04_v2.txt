@@ -1,0 +1,365 @@
+
+
+Aula 04
+Forense Digital
+Módulo 12
+Resposta a incidentes
+e protocolos seguros
+12
+
+Introdução
+Nesta aula, você conhecerá os seguintes assuntos:
+Os principais aspectos sobre Forense Digital;
+Importância do processo (DueProcess)
+e da preservação das evidências;
+Ferramentas avançadas de Forense Digital;
+Noções de ChainofCustody, Digital 
+ForensicsReportse E-Discovery.
+
+Conceitos de Forense Digital
+Forense Digital
+Aula 04
+
+Evidência
+São os registros eletrônicos (dados, 
+arquivos, registros de atividades, 
+mensagens de texto, e-mails, imagens, 
+etc.) coletados.
+O tratamento deve ser de forma 
+cuidadosa e imparcial.
+A preservação da integridade das 
+evidências é condição essencial para 
+sua aceitação pela Justiça;
+Forense Digital
+Aula 04
+A autenticidade das evidências deriva 
+da preservação da cadeia de custódia.
+
+Evidência
+A evidência possui duas 
+categorias principais:
+Evidência direta –comprova 
+diretamente um fato;
+Evidência circunstancial –
+não prova diretamente um
+fato, mas cria uma conexão 
+lógica entre os eventos.
+Forense Digital
+Aula 04
+
+Devido processo legal (Dueprocess)
+Refere-se a um entendimento jurídico 
+sobre a proteção dos direitos individuais 
+durante processos judiciais ou 
+investigações.
+Na Forense Digital isto significa adotar 
+os procedimentos legais e éticos na 
+busca de evidências evitando abusos 
+e violações de privacidade.
+Forense Digital
+Aula 04
+
+Retenção legal (Legal hold)
+Refere-se a um procedimento que 
+envolve a preservação de evidências 
+eletrônicas relevantes.
+Visa evitar que evidências sejam 
+destruídas, alteradas ou perdidas.
+Etapas da retenção legal:
+A não conformidade da retenção legal 
+pode trazer sérias consequênciasaos 
+processos legais ou mesmo sanções 
+por perda de evidências.
+Identificação das informações;
+Notificação às partes envolvidas;
+Criação de um processo ou política 
+de retenção;
+Fonte: MagnetForensics.
+Disponível em: <https://www.magnetforensics.com/blog/automating-
+legal-hold-requests-with-remote-collections-in-magnet-automate-
+enterprise/>. 
+Acesso em: 18 mar. 2024. 
+Forense Digital
+Aula 04
+
+Cadeia de custódia 
+(Chainofcustody)
+É um processo da Forense Digital 
+que documenta de forma detalhada 
+e controla rigorosamente o histórico 
+de posse, manipulação e 
+localização das evidências digitais 
+ao longo de uma investigação.
+Visa garantir a integridade e 
+autenticidade das evidências.
+Etapas da implementação:
+Forense Digital
+Aula 04
+Identificação da evidência;
+Documentação detalhada;
+Coleta inicial.
+Fonte: Ibliss.
+Disponível em: <https://www.ibliss.com.br/computacao-
+forense-ferramenta-de-diagnostico-e-prevencao-de-ameacas-
+para-empresas/>. 
+Acesso em: 18 mar. 2024. 
+
+Cadeia de custódia (Chainofcustody)
+Selagem e identificação;
+Registro de transferências;
+Armazenamento seguro;
+Análises e exames;
+Registro de acesso e manipulação;
+Apresentação em Tribunal;
+Encerramento da cadeia de custódia.
+Forense Digital
+Aula 04
+Fonte: oladoyinbello.
+Disponível em: 
+<https://oladoyinbello.wordpress.com/2015/02/11/chain-of-custody-
+the-key-and-solution-to-robust-computer-forensics-today/>. 
+Acesso em: 18 mar. 2024. 
+
+Descoberta Eletrônica
+Abrange a identificação, 
+filtragem e organização das 
+evidências relevantes.
+Visa criar uma base de dados 
+contendo as evidências para uso 
+da Justiça.
+A ferramentas E-Discoverypode 
+facilitar o processo. Funções do 
+E-Discovery:
+Identificação e duplicação
+de arquivos e metadados;
+Busca;
+Marcadores (Tags);
+Segurança;
+Divulgação (Disclosure). 
+Forense Digital
+Aula 04
+
+Entrevistascom Testemunhas
+Possibilitam aos investigadores obter 
+informações diretas sobre um evento.
+Procedimentos para a entrevista:
+Preparação:
+Identificação das testemunhas; e
+Criação de roteiro.
+Forense Digital
+Aula 04
+Condução da entrevista:
+Escolha do formato;
+Coleta de informações; e
+Registro em vídeo.
+
+Entrevistas com Testemunhas
+Forense Digital
+Aula 04
+Procedimentos para a entrevista (Cont.):
+Preservação da evidência:
+Documentação completa; e
+Assinatura e consentimento.
+Análise e uso de evidências: 
+Comparação com outras evidências; e
+Corroboração de informações.
+Apresentação em Tribunal;
+Depoimentos de testemunhas.
+
+InteligênciaEstratégica
+Permite a tomada de decisão proativa 
+baseada em informações oriundas de 
+pesquisa e análise de dados coletados.
+Etapas do processo:   
+Coleta de dados e pesquisa:
+Dados técnicos; e
+Forense Digital
+Aula 04
+Dados contextuais. 
+Análise de dados:
+Identificação de padrões; e
+Correlação de dados.
+Geração de insights.
+
+Contrainteligência
+Forense Digital
+Aula 04
+Trata-se de um processo para 
+identificação e análise de táticas, 
+técnicas e procedimentos (TTP) de 
+agentes maliciosos.
+Identificação de táticas do adversário;
+Coleta de informações;
+Análise de padrões.
+Visa identificar com precisão, prevenir e 
+responder a atividades maliciosas.
+Etapas de implantação da 
+contrainteligência:
+
+Contrainteligência
+Etapas de implantação da 
+contrainteligência(cont.):
+Serviços em nuvem
+Aula 04
+Fonte: GovBr.
+Disponível em: < https://www.gov.br/abin/pt-br/assuntos/inteligencia-
+e-contrainteligencia >.
+Acesso em: 18 mar. 2024. 
+Análise das técnicas utilizadas:
+Exame detalhado;
+Avaliação de vulnerabilidades.
+Definição de configurações de 
+Registros Ativos:
+Configuração adequada;
+Identificação de pontos chave.
+
+Contrainteligência
+Etapas de implantação da 
+contrainteligência(cont.):
+Serviços em nuvem
+Aula 04
+Auditoria e monitoramento:
+Auditoria regular;
+Monitoramento contínuo.
+Resposta e ajuste:
+Resposta rápida;
+Ajuste de defesas.
+Fonte: SmartCyber.
+Disponível em: <https://smartcyber.com/contrainteligencia/>. 
+Acesso em: 18 mar. 2024. 
+
+Aquisiçãode dados
+Trata-se da coleta de informações em 
+meios eletrônicos de forma precisa.
+Visa obter uma cópia exata dos dados 
+originais mantendo sua integridade.
+Forense Digital
+Aula 04
+Etapas do processo de
+aquisição de dados:
+Identificação dos alvos de aquisição;
+LiveAcquisition;
+Seleção das técnicas de aquisição:
+Imagem de disco.
+
+Aquisiçãode dados
+Etapas do processo de
+aquisição de dados (cont.):
+Preparação e planejamento: 
+Documentação; Hardware
+e Software.
+Coleta de dados: Cópia bit a bit.
+Hashinge verificação.
+Armazenamento seguro.
+Registro completo.
+Análise e exame.
+Forense Digital
+Aula 04
+Fonte: IFBA.
+Disponível em: <https://ads.ifba.edu.br/dl1286>.
+Acesso em: 18 mar. 2024. 
+
+Visa obter as evidências antes que sejam 
+removidas.
+Fixa a sequênciade priorização da coleta 
+de dados em uma investigação.
+Ordem de volatilidade
+Classificação:
+Dados voláteis e não voláteis:
+Dados voláteis –perdidos ou 
+alterados rapidamente;
+Dados não voláteis –permanecem 
+gravados mesmo após o 
+shutdown.
+Priorização da coleta.
+Forense Digital
+Aula 04
+
+Ordemde volatilidade
+Forense Digital
+Aula 04
+Classificação (cont.)
+Memória RAM;
+Sequênciade coleta:
+Cachedo sistema;
+Estado do processo;
+Dados de disco.
+Análise e correlação.
+
+Software de ForenseDigital
+Visa investigar e analisar
+evidências digitais.
+Forense Digital
+Aula 04
+Seguem algumas ferramentas 
+utilizadas pela Forense Digital.
+As três primeiras são as
+mais conhecidas:
+Fonte: IndiaMart.
+Disponível em: <https://m.indiamart.com/proddetail/forensic-
+tool-kit-ftk-2850466117648.html>. 
+Acesso em: 18 mar. 2024. 
+EnCaseForensic;
+TheForensicToolkit (FTK);
+TheSleuthKit;
+WinHex;
+TheVolatilityFramework;
+
+Visa obter as evidências antes que sejam 
+removidas.
+Fixa a sequênciade priorização da coleta 
+de dados em uma investigação.
+Ordem de volatilidade
+Classificação:
+Dados voláteis e não voláteis:
+Dados voláteis –perdidos ou 
+alterados rapidamente;
+Dados não voláteis –permanecem 
+gravados mesmo após o 
+shutdown.
+Priorização da coleta.
+Forense Digital
+Aula 04
+
+Aquisição de memória de disco
+Forense Digital
+Aula 04
+Permite obter uma cópia completa de 
+um dispositivo de armazenamento.
+Identificação e preparação do alvo;
+Etapas de funcionamento:
+Técnica de aquisição;
+Preparação e ferramentas;
+Aquisição da imagem;
+Armazenamento seguro.
+
+Forense Digital
+Aula 04
+Referem-se aos princípios fundamentais da 
+forense digital onde informações coletadas 
+na investigação devem ser mantidas 
+íntegras e confiáveis.
+Preservação e integridade da evidência
+Fazem parte desse processo:
+Cadeia de custódia;
+Coleta adequada;
+Armazenamento seguro;
+Hashinge cerificação;
+Rastreamento da evidência;
+Preservação do ambiente.
+
+Aquisiçãode outrosdados
+Trata-se da coleta em outras fontes
+digitais como rede, cache, firmware.
+Fazem parte desse processo:
+Forense Digital
+Aula 04
+Aquisição de dados de rede;
+Aquisição de dados de cache;
+Artefatos e recuperação de dados;
+Aquisição de instantâneos (Snapshots);
+Aquisição de Firmware.
+
+Forense Digital
+Você chegou ao final da Aula 04
+12

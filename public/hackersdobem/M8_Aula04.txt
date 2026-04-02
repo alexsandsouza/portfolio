@@ -1,0 +1,401 @@
+
+
+Módulo 08
+Conceitos de criptografia
+Aula 04
+Criptografia assimétrica
+8
+
+Introdução
+Nesta aula, você conhecerá os seguintes assuntos:
+Permite a comunicação segura entre partes.
+Garante nos dados transmitidos:
+Confidencialidade.
+Integridade.
+Autenticidade dos dados transmitidos.
+
+Introdução
+Utiliza um par de chaves distintas: chaves públicas e privadas.
+Permitir a distribuição da chave pública para qualquer pessoa.
+Mantém a chave privada em posse exclusiva do proprietário.
+Algoritmos de criptografia assimétrica para Confidencialidade.
+Algoritmos de criptografia assimétrica com Assinaturas digitais.
+As partes podem se comunicar de forma segura sem 
+compartilhar a chave secreta.
+
+Funcionamento da 
+criptografia assimétrica
+Criptografia assimétrica
+Aula 04
+
+COMPONENTES –GERAÇÃO DO 
+PAR DE CHAVES
+Fonte: DaylightingSociety, 2017.
+Disponível em: 
+<https://paillier.daylightingsociety.org/about>.
+Acesso em: 21 mar. 2024.
+Funcionamento da criptografia assimétrica
+Aula 8.3Aula 04
+O primeiro passo é gerar o par de 
+chaves.
+Composto pela chave pública e pela 
+chave privada.
+As chaves são matematicamente 
+relacionadas, mas computacionalmente 
+inviáveis de serem derivadas uma da 
+outra.
+
+COMPONENTES –GERAÇÃO DO 
+PAR DE CHAVES
+Funcionamento da criptografia assimétrica
+Aula 8.3Aula 04
+A chave pública é divulgada 
+publicamente.
+A chave privada é mantida em sigilo pelo 
+proprietário.
+Cada parte da comunicação (emissor e 
+receptor) pode ter um par de chaves 
+pública e privada.
+Fonte: DaylightingSociety, 2017.
+Disponível em: 
+<https://paillier.daylightingsociety.org/about>.
+Acesso em: 21 mar. 2024.
+
+O remetente utiliza uma das chaves 
+(pública ou privada) para criptografar a 
+mensagem.
+Fonte: WikimediaCommons.
+Disponível 
+em:<https://commons.wikimedia.org/wiki/File:Public_key
+_shared_secret.svg>.
+Acesso em: 21 mar. 2024.
+É implementado aplicando uma função 
+matemática específica à mensagem 
+original, juntamente com a chave usada.
+COMPONENTES -CRIPTOGRAFIA
+O resultado é a mensagem criptografada, 
+que só pode ser descriptografadacom a 
+outra chave (privada ou pública) 
+correspondente.
+Funcionamento da criptografia assimétrica
+Aula 04
+
+COMPONENTES –TRANSMISSÃO DA 
+MENSAGEM CRIPTOGRAFADA
+Fonte: VPN Mentor.
+Disponível em: <https://pt.vpnmentor.com/blog/o-
+que-e-criptografia-e-como-ela-funciona/>.
+Acesso em: 21 mar. 2024.
+Funcionamento da criptografia assimétrica
+Aula 8.3Aula 04
+A mensagem criptografada é 
+transmitida.
+Somente o destinatário que possui a 
+chave correspondente (pública ou 
+privada) poderá descriptografá-la.
+
+COMPONENTES –DESCRIPTOGRAFIA
+Funcionamento da criptografia assimétrica
+Aula 8.3Aula 04
+O destinatário recebe a mensagem 
+criptografada.
+O destinatário utiliza a chave 
+correspondente descriptografara 
+mensagem.
+Resulta na recuperação da mensagem 
+original.
+Fonte: VPN Mentor.
+Disponível em: <https://pt.vpnmentor.com/blog/o-
+que-e-criptografia-e-como-ela-funciona/>.
+Acesso em: 21 mar. 2024.
+
+Criptografia assimétrica 
+para confidencialidade
+Criptografia assimétrica
+Aula 04
+
+Bob gera um par de chaves composto por 
+uma chave pública (PubBob) e uma chave 
+privada (PrivBob).
+A chave pública de Bob (PubBob) é 
+compartilhada publicamente.
+GERAÇÃO DO PAR DE CHAVES
+A chave privada (PrivBob) é mantida em 
+sigilo por Bob.
+Criptografia assimétrica para confidencialidade
+Aula 04
+Fonte: DaylightingSociety, 2017.
+Disponível em: 
+<https://paillier.daylightingsociety.org/abou>.
+Acesso em: 21 mar. 2024.
+
+CIFRAGEM DOS DADOS POR ALICE 
+Fonte: Huawei, 2023.
+Disponível em: 
+<https://forum.huawei.com/enterprise/en/Symmetric-
+Encryption-vs-Asymmetric/thread/705861155395878912-
+667213854934970368>.
+Acesso em: 21 mar. 2024.
+Alice deseja enviar dados confidenciais 
+para Bob.
+Ela obtém a chave pública de Bob 
+(PubBob) e utiliza essa chave para cifrar 
+os dados.
+Alice aplica um algoritmo de criptografia 
+assimétrica à mensagem original.
+Produz uma versão cifrada da 
+mensagem.
+Criptografia assimétrica para confidencialidade
+Aula 04
+
+TRANSMISSÃO DE DADOS 
+CRIFRADOS
+Alice envia os dados cifrados para Bob.
+Mesmo que um terceiro (como Eveou 
+Mallory) intercepte a mensagem cifrada, 
+não poderá decifrá-la sem acesso à 
+chave privada (PrivBob).
+Criptografia assimétrica para confidencialidade
+Aula 04
+Fonte: Huawei, 2023.
+Disponível em: 
+<https://forum.huawei.com/enterprise/en/Symmetric-
+Encryption-vs-Asymmetric/thread/705861155395878912-
+667213854934970368>.
+Acesso em: 21 mar. 2024.
+
+DECIFRAGEM DOS DADOS POR BOB 
+Bob recebe os dados cifrados de Alice.
+Bob utiliza sua chave privada (PrivBob) 
+para decifrar a mensagem.
+Ele aplica um algoritmo de descriptografia
+assimétrica à mensagem cifrada 
+utilizando sua chave privada.
+Resulta na recuperação da mensagem 
+original enviada por Alice.
+Criptografia assimétrica para confidencialidade
+Aula 04
+Fonte: SeerAtitus.
+Disponível em: 
+<https://seer.atitus.edu.br/index.php/revistasi/article/view/1639/1296>.
+Acesso em: 21 mar. 2024.
+
+Criptografia assimétrica 
+para assinaturas digitais
+Criptografia assimétrica
+Aula 04
+
+Garante a autenticidade e integridade de 
+dados digitais.
+Usa criptografia assimétrica.
+ASSINATURAS DIGITAIS
+É criada pelo remetente, associada aos 
+dados originais.
+Criptografia assimétrica para assinaturas digitais
+Aula 04
+É única e vinculada ao remetente, sendo 
+verificada pelo destinatário utilizando a 
+chave pública correspondente.
+O destinatário confirma a autenticidade do 
+remetente e a integridade dos dados.
+
+Alice gera um par de chaves composto por 
+uma chave pública (PubAlice) e uma chave 
+privada (PrivAlice).
+GERAÇÃO DO PAR DE CHAVES
+A chave pública é compartilhada 
+publicamente.
+Criptografia assimétrica para assinaturas digitais
+Aula 04
+A chave privada é mantida em sigilo por 
+Alice.
+
+Alice deseja disponibilizar um documento 
+(pode ser qualquer arquivo) assinado 
+digitalmente por ela.
+CRIAÇÃO DA ASSINATURA DIGITAL POR 
+ALICE
+Criptografia assimétrica para assinaturas digitais
+Aula 04
+Ela aplica uma função hashao documento 
+original para gerar um resumo criptográfico 
+único e fixo.
+Em seguida, Alice utiliza sua chave privada 
+(PrivAlice) para criptografar o resumo e o 
+documento.
+O resultado é um arquivo assinado 
+digitalmente.
+
+Alice disponibiliza o arquivo assinado 
+digitalmente.
+TRANSMISSÃO DOS DADOS ASSINADOS
+Criptografia assimétrica para assinaturas digitais
+Aula 04
+Qualquer pessoa pode ter acesso arquivo.
+No futuro qualquer pessoa poderá verificar 
+que esse arquivo foi gerado por Alice.
+
+Quem for verificar o arquivo assinado 
+digitalmente (Bob), utiliza a chave pública 
+de Alice (PubAlice) para descriptografara 
+assinatura.
+VERIFICAÇÃO DA ASSINATURA
+Criptografia assimétrica para assinaturas digitais
+Aula 04
+Resulta na obtenção do documento digital 
+e o resumo criptográfico original (da função 
+hash). Neste ponto sabemos que Alice 
+gerou o documento.
+Bob aplica a mesma função hashao 
+documento digital.
+Bob compara o resumo gerado por ele com 
+o resumo descriptografadoque estava no 
+arquivo assinado digitalmente por Alice.
+Se forem idênticos, a integridade do 
+documento é confirmada. 
+Fonte: ResearchGate.
+Disponível em: <https://www.researchgate.net/figure/Figura-1-Processo-
+de-manutencao-adaptativa-de-software-embarcado-apoiado-por-
+ferramentas_fig1_256706302>.
+Acesso em: 21 mar. 2024.
+
+DESAFIOS E CONSIDERAÇÕES NA 
+IMPLEMENTAÇÃO DA CRIPTOGRAFIA 
+ASSIMÉTRICA
+Criptografia assimétrica para assinaturas digitais
+Aula 04
+Desempenho.
+Gerenciamento de chaves.
+Algoritmos e padrões confiáveis.
+Criptografia híbrida.
+Atualização e segurança.
+
+Algoritmos de 
+criptografia assimétrica
+Criptografia assimétrica
+Aula 04
+
+Baseia-se na dificuldade de fatorar grandes 
+números inteiros para fornecer segurança 
+na troca de informações.
+É um dos algoritmos de criptografia 
+assimétrica mais amplamente utilizados.
+RSA (RIVEST, SHAMIR, ADLEMAN)
+Usado em: Criptografia de dados; 
+Criptografia de chave pública (PGP e SSH); 
+Autenticação.
+Normalmente, são utilizadas chaves com 
+tamanho de 2048 bits ou mais, 
+consideradas seguras para a maioria dos 
+cenários.
+Algoritmos de criptografia assimétrica
+Aula 04
+
+DSA (DIGITAL SIGNATURE AIGORITHM)
+É amplamente utilizado para garantir a 
+autenticidade e integridade de mensagens 
+e documentos digitais.
+O tamanho das chaves seguras no 
+algoritmo DSA é geralmente de 1024 bits 
+ou mais.
+Algoritmos de criptografia assimétrica
+Aula 04
+Usado em: Criptografia de emails; 
+Certificados digitais (PKIs); Protocolos de 
+segurança (TLS/SSL).
+
+DIFFIE-HELLMAN
+Fonte: The Security Buddy, 2017.
+Disponível em: 
+<https://www.thesecuritybuddy.com/vulnerabilities/what-is-
+logjam-attack/>.
+Acesso em: 21 mar. 2024.
+Permite que duas partes estabeleçam 
+uma chave secreta compartilhada, 
+mesmo que estejam se comunicando por 
+um canal inseguro.
+A segurança do algoritmo Diffie-Hellman
+está baseada na dificuldade do problema 
+do logaritmo discreto.
+Tamanho de chaves seguras: 2048 bits 
+ou mais.
+Algoritmos de criptografia assimétrica
+Aula 04
+Usado em: Protocolo TLS/SSL; 
+Protocolo SSH; VPN; 
+Criptografia de mensagens.
+
+ELGAMAL
+Fonte: Medium, 2020.
+Disponível em: 
+<https://medium.com/@florian.johannes.isopp/elgamal-
+encryption-wordrap-4a082cdef4ca>.
+Acesso em: 21 mar. 2024.
+Combina a criptografia de chave pública e 
+a troca de chaves de Diffie-Hellman.
+Tamanho das chaves seguras: 2048 bits ou 
+mais.
+Algoritmos de criptografia assimétrica
+Aula 04
+Usado em: Criptografia de emails; 
+Compartilhamento seguro de chaves; 
+Criptografia de arquivos.
+
+ECC (ELLIPTIC CURVE 
+CRYPTOGRAPHY)
+Fonte: Info Secwriteups, 2023.
+Disponível em: <https://infosecwriteups.com/elliptic-
+curve-cryptography-basics-cryptography-blockchain-
+7797ba1021ed>.
+Acesso em: 21 mar. 2024.
+Baseia-se na teoria das curvas elípticas 
+sobre corpos finitos.
+As chaves pública e privada são geradas 
+com base em operações matemáticas na 
+curva elíptica.
+Uma chave ECC de 256 bits é 
+considerada segura.
+Algoritmos de criptografia assimétrica
+Aula 04
+Usado em: Criptografia de curva 
+elíptica em TLS/SSL; Smartcards
+e dispositivos de segurança; 
+Internet das Coisas (IoT).
+
+CRIPTOGRAFIA SIMÉTRICA X ASSIMÉTRICA
+Fonte: SSL Insights.
+Disponível em: <https://sslinsights.com/symmetric-encryption-vs-
+asymmetric-encryption/>.
+Acesso em: 21 mar. 2024.
+Aula 04
+Algoritmos de criptografia assimétrica
+REFAZER
+Desempenho superior (mais rápida).
+Não é irrefutável (autoria pode ser 
+negada).
+Distribuição de muitas chaves é 
+trabalhosa.
+Criptografia Simétrica:
+Sem autenticação -> sem mecanismo.
+Qualquer um com a chave 
+compartilhada tem acesso.
+
+CRIPTOGRAFIA SIMÉTRICA X ASSIMÉTRICA
+Fonte: SSL Insights.
+Disponível em: <https://sslinsights.com/symmetric-encryption-vs-
+asymmetric-encryption/>.
+Acesso em: 21 mar. 2024.
+Aula 04
+Algoritmos de criptografia assimétrica
+REFAZER
+Desempenho inferior (mais lenta).
+Assinatura digital é irrefutável.
+Distribuição simplificada.
+Criptografia Assimétrica:
+Com autenticação -> assinaturas digitais.
+Acesso a informação é restrito 
+ao proprietário da chave privada.
+
+Criptografia assimétrica
+Você chegou ao final da Aula 04
+8

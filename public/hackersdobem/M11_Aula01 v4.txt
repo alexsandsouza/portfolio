@@ -1,0 +1,221 @@
+
+
+Módulo 11
+RedeSeguraeEquipamentosde
+Segurança
+Aula 01
+Designde Rede Segura
+1
+
+Introdução
+Nesta aula, você conhecerá os seguintes assuntos:
+Infraestrutura para redes seguras e confiáveis;
+Camadas OSI e os protocolos de roteamento e comutação; 
+Address Resolution Protocol (ARP);
+InternetProtocol (IP).
+
+Princípios de Redes Seguras
+Design de Rede Segura
+Aula 01
+
+São os princípios da segurança da informação:
+Confidencialidade;
+Integridade;
+Disponibilidade.
+Princípios de Redes Seguras
+Aula 01
+PRINCÍPIOS DE REDES SEGURAS
+
+Principais pontos fracos:
+Princípios de Redes Seguras
+Aula 01
+Pontos únicos de falha;
+Dependências complexas;
+Disponibilidade acima de 
+confidencialidade e integridade;
+Falta de documentação e 
+controle de mudanças;
+Dependência exagerada na 
+segurança perimetral.
+FRAQUEZAS EM REDES SEGURAS
+
+Equipamentos presentes em uma 
+arquitetura de rede:
+Switch (Comutador);
+Wireless Access Points (WAP);
+Roteadores;
+Firewalls;
+Balanceadores de Carga;
+Princípios de Redes Seguras
+Aula 01
+Servidores Domain Name 
+System (DNS).
+Fonte: Slider Player.
+Disponível em: https://slideplayer.com.br/slide/5617047/
+Acesso em: 18 mar. 2024.
+PRINCIPAIS EQUIPAMENTOS DE REDE
+
+Encaminhamento de tráfego
+Design de Rede Segura
+Aula 01
+
+Encaminhamento de tráfego
+Aula 01
+ENCAMINHAMENTO DE TRÁFEGO
+Switching –Endereço MAC na mesma LAN.
+Refere-se ao processo de comutação 
+(switching) e roteamento dos pacotes 
+de dados.
+Roteamento –Endereço IP em 
+outras redes.
+
+Opera na camada 3 do Modelo 
+OSI, a camada de rede;
+O pacote IP contém os dados 
+encapsulados, endereço IP de 
+origem e destino;
+Há dois padrões de endereços 
+IP existentes: IPv4 e IPv6;
+O endereço IP é exclusivo 
+para cada dispositivo;
+Oferece controle de 
+fragmentação dos pacotes.
+Encaminhamento de tráfego
+Aula 01
+INTERNET PROTOCOL (IP)
+Fonte: Clube do Hardware.
+Disponível em: https://www.clubedohardware.com.br/artigos/redes/como-
+o-protocolo-tcp-ip-funciona-parte-1-r34823/?nbcpage=4#google_vignette
+Acesso em: 18 mar. 2024.
+
+Opera na camada 2 do Modelo 
+OSI, a camada de enlace;
+Associa endereços IP a 
+endereços MAC;
+O endereço MAC é exclusivo atribuído 
+à placa de rede;
+ARP Request vs. ARP Reply;
+Encaminhamento de tráfego
+Aula 01
+Pacotes para dispositivos na 
+mesma LAN.
+Fonte: Forum.
+Disponível em: 
+https://forum.ix.br/files/apresentacao/arquivo/159/
+05%2012%20%2016%2050%20%20Douglas.pdf
+Acesso em: 18 mar. 2024.
+PROTOCOLO DERESOLUÇÃO 
+DEENDEREÇO(ARP)
+
+Trata-se da divisão de uma rede maior em 
+sub-redes independentes.
+Encaminhamento de tráfego
+Aula 01
+Cada segmento de rede é isolado;
+Facilita o gerenciamento da segurança 
+e desempenho;
+Possibilita a segregação do tráfego.
+SEGMENTAÇÃO DE REDE
+LAN SEGMENTADA
+
+Representa a separação física ou 
+lógica dos segmentos de rede;
+Utiliza técnicas como VLANs, sub-
+redes ou firewalls;
+Segrega o tráfego;
+Encaminhamento de tráfego
+Aula 1
+Protege recursos críticos por meio do 
+isolamento;
+Facilita a gestão da cyber security.
+SEGREGAÇÃO DE REDE
+Fonte: DLTEC.
+Disponível em: 
+<https://www.dltec.com.br/blog/redes/o-que-e-vlan/>.
+Acesso em: 18 mar. 2024.
+
+Zonas e suas topologias
+Design de Rede Segura
+Aula 01
+
+Zona de rede é uma área que agrupa 
+dispositivos com requisitos comuns 
+de segurança e acesso;
+Está relacionada à segregação;
+Intranet;
+Extranet.
+Zonas e suas topologias
+Aula 01
+ZONAS E SUAS TOPOLOGIAS
+Fonte: Elaboração própria.
+
+São áreas isoladas das demais zonas 
+de rede;
+É intermediária entre a rede interna 
+(Intranet) e a rede externa (Internet);
+Fornece uma camada de segurança adicional;
+Zonas e suas topologias
+Aula 01
+Os servidores são configurados com 
+restrição de acesso.
+ZONAS DESMILITARIZADAS (DMZ)
+
+Maneiras de implementar a DMZ:
+Zonas e suas topologias
+Aula 01
+Sub-rede com DMZ;
+Firewall Triplamente Protegido;
+Host filtrado.
+ZONAS DESMILITARIZADAS (DMZ)
+Fonte: Falati.
+Disponível em: https://falati.com.br/dmz-o-que-e-e-para-
+que-serve/
+Acesso em: 18 mar. 2024.
+
+Há dois tipos principais de tráfego:
+Tráfego Leste-Oeste (East-West Traffic):
+Comunicação interna entre 
+dispositivos do datacenter.
+Rede interna de alta velocidade e 
+baixa latência.
+Zonas e suas topologias
+Aula 01
+CONSIDERAÇÕES DE DESIGN DE 
+REDES SEGURAS
+Fonte: Suse.
+Disponível em: https://www.suse.com/c/securing-east-
+west-traffic-in-container-based-data-center/
+Acesso em: 18 mar. 2024.
+
+Há dois tipos principais de tráfego: (cont.)
+Comunicação do datacenter com a 
+rede externa.
+Conexão com a internet e 
+dispositivos para gerenciar o tráfego.
+Zonas e suas topologias
+Aula 01
+Tráfego Norte-Sul (North-South Traffic)
+CONSIDERAÇÕES DE DESIGN DE 
+REDES SEGURAS
+Fonte: Cisco.
+Disponível em: https://community.cisco.com/t5/blogues-de-
+data-center-e-cloud/cisco-aci-e-a-evolu%C3%A7%C3%A3o-
+das-redes/ba-p/4423856
+Acesso em: 18 mar. 2024.
+
+Redefine a proteção de redes e 
+sistemas.
+Tradicionalmente havia a “confiança 
+implícita”.
+Para o Zero Trust nenhum dispositivo 
+ou usuário é confiável por padrão.
+Propõe a segurança baseada na 
+autenticação, autorização e 
+verificação contínua.
+Zonas e suas topologias
+Aula 01
+CONFIANÇA ZERO (ZERO TRUST)
+
+Design de Rede Segura
+Você chegou ao final da Aula 01
+1

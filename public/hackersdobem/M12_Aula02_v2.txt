@@ -1,0 +1,447 @@
+
+
+Módulo 12
+Resposta a incidentes
+e protocolos seguros
+Aula 02
+Protocolos seguros
+12
+
+Introdução
+Nesta aula, você conhecerá os seguintes assuntos:
+DHCP SnoopingPortSecurity;
+DNS SecurityExtensions(DNSSEC);
+Ataques de Domain Hijacking e DNS Poisoning;
+Secure Sockets Layer (SSL) e Transport Layer Security (TLS);
+SecureShell (SSH);
+Secure SMTP, Secure POP e Secure IMAP.
+
+Ataques de rede e 
+protocolos seguros
+Protocolos seguros
+Aula 02
+
+Visa garantir que somente servidores 
+legítimos atribuam endereços IP na rede.
+Segurança de Porta com DHCP Snooping
+(DHCP SnoopingPortSecurity)
+Identificação de portas
+confiáveis e não confiáveis;
+Construção da tabela DHCP snooping.
+É um recurso utilizado contra
+ataques de RogueDHCP.
+Ataques de rede e protocolos seguros
+Aula 02
+Seu funcionamento está baseado em dois 
+conceitos:
+Verificação de pacotes DHCP 
+subsequentes.
+Fonte: VikimediaCommons .
+Disponível em: 
+<https://commons.wikimedia.org/wiki/File:DHCP
+_Snooping.png>.
+Acesso em: 18 mar. 2024. 
+
+Domain hijacking
+Configura-se pelo roubo e 
+controle de um domínio de internet.
+O invasor pode causar 
+sérios danos ao Site.
+Etapas características do ataque:
+Fonte: RiskCrew.
+Disponível em: <https://www.riskcrew.com/2021/01/how-to-
+mitigate-dns-hijacking/>.
+Acesso em: 18 mar. 2024. 
+Ataques de rede e protocolos seguros
+Aula 02
+Identificação do domínio-alvo;
+Roubo das credenciais
+de acesso.
+
+Domainhijacking
+Acesso à conta do registrante
+ou provedor;
+Transferência ou modificação de DNS;
+Redirecionamento de tráfego;
+Extorsão ou chantagem;
+Monitoramento e ocultação.
+Etapas características do ataque: (cont.)
+Ataques de rede e protocolos seguros
+Aula 02
+Fonte: Impervaa Thales company.
+Disponível em: <https://www.imperva.com/learn/application-
+security/dns-hijacking-redirection/>.
+Acesso em: 18 mar. 2024. 
+
+Domain Poisoning
+Ataque aos servidores DNS 
+redirecionando os usuários para
+sites maliciosos.
+Explora vulnerabilidades nos 
+servidores DNS:
+Fonte: Bluecat.
+Disponível em: <https://bluecatnetworks.com/blog/what-is-dns-
+poisoning-how-to-prevent-it/>.
+Acesso em: 18 mar. 2024. 
+Ataques de rede e protocolos seguros
+Aula 02
+Identificação do alvo;
+Interceptação do tráfego DNS;
+Falsificação de respostas DNS;
+Inserção de registros 
+falsos no cacheDNS;
+Redirecionamento de tráfego;
+Exploração do redirecionamento.
+
+DNS SecurityExtensions(DNSSEC)
+Assinatura digital dos registros DNS;
+Cadeia de confiança.
+Fornece uma camada adicional de proteção 
+contra ataques de envenenamento de 
+cacheDNS (DNS Poisoning).
+Ataques de rede e protocolos seguros
+Aula 02
+Fonte: Xeonbd.
+Disponível em: <https://www.xeonbd.com/blog/dnssec/>.
+Acesso em: 18 mar. 2024. 
+Etapas do funcionamento:
+
+DNS Security Extensions (DNSSEC)
+Etapas do funcionamento: (cont.)
+Fonte: Cloudflare.
+Disponível em: <https://www.cloudflare.com/pt-
+br/dns/dnssec/how-dnssec-works/>.
+Acesso em: 18 mar. 2024. 
+Ataques de rede e protocolos seguros
+Aula 02
+Armazenamento das chaves públicas;
+Resposta DNS com assinaturas;
+Verificação das assinaturas;
+Indicação de suporte DNSSEC.
+
+Lightweight Directory Access Protocol 
+Secure (LDAPS)
+Configuração do servidor LDAP;
+Solicitação de conexão segura.
+O LDAPS utiliza criptografia para proteger 
+os dados durante a transmissão entre os 
+clientes e servidores LDAP.
+Ataques de rede e protocolos seguros
+Aula 02
+É amplamente utilizado em ambientes 
+corporativos e de rede para proteger 
+senhas e informações de usuários.
+Etapas do funcionamento:
+Fonte: Docplayer.net.
+Disponível em: <https://docplayer.net/128097845-Big-ip-access-
+policy-manager-authentication-and-single-sign-on-version-13-
+1.html>.
+Acesso em: 18 mar. 2024. 
+
+Lightweight Directory Access Protocol 
+Secure (LDAPS)
+Etapas do funcionamento: (cont.)
+Ataques de rede e protocolos seguros
+Aula 02
+Estabelecimento da conexão segura;
+Verificação do certificado;
+Autenticação do cliente;
+Troca de dados criptografada.
+Fonte: Docplayer.net.
+Disponível em: <https://docplayer.net/128097845-Big-ip-access-policy-
+manager-authentication-and-single-sign-on-version-13-1.html>.
+Acesso em: 18 mar. 2024. 
+
+Network Time Protocol (NTP)
+Seleção de servidores NTP
+que fornecerão a hora exata;
+Sincronização inicial;
+Atualização periódica.
+Trata-se de um protocolo utilizado para 
+sincronizar os relógios dos dispositivos na 
+rede garantindo que todos tenham o 
+mesmo tempo de referência.
+Ataques de rede e protocolos seguros
+Aula 02
+Etapas do funcionamento: 
+Fonte: Networkingsignal.
+Disponível em: <https://www.networkingsignal.com/network-time-
+protocol-ntp/>.
+Acesso em: 18 mar. 2024. 
+
+Network Time Security (NTS)
+É uma extensão do NTP com uma 
+camada de segurança adicional.
+Ataques de rede e protocolos seguros
+Aula 02
+Estabelecimento de segurança;
+Autenticação do servidor;
+Proteção contra ataques de spoofing;
+Integridade dos dados de tempo;
+Integridade dos dados de tempo.
+As transações NTP são protegidas 
+com criptografia.
+Etapas do funcionamento: 
+Fonte: Network Time Security(NTS).
+Disponível em: 
+<https://blog.meinbergglobal.com/2021/07/14/network-time-security-
+nts-updated-security-for-ntp/>.
+Acesso em: 18 mar. 2024. 
+
+Simple Network Management
+Protocol (SNMP)
+Agentes SNMP instalado no 
+dispositivo a ser monitorado;
+Gerenciadores SNMP responsáveis 
+pelo monitoramento;
+Management InformationBase (MIB);
+OperaçõesSNMP: Get, Set, Trap, GetNext.
+É um protocolo de gerenciamento de rede 
+IP bastante utilizado no monitoramento de 
+dispositivos que suportam SNMP.
+Ataques de rede e protocolos seguros
+Aula 02
+Etapas do funcionamento: 
+Fonte: Ozeki.
+Disponível em: <https://ozeki.hu/p_7614-introduction-simple-
+network-management-protocol-snmp.html>.
+Acesso em: 18 mar. 2024. 
+
+SNMPv2
+É uma atualização do SNMP ou SNMPv1.
+Ataques de rede e protocolos seguros
+Aula 02
+Adicionou novas operações:
+GetBulke Inform.
+Possibilita acessar e
+manipular tabelas de MIN.
+Fonte: Researchgate.
+Disponível em: <https://www.researchgate.net/figure/SNMP-v2-
+Management-Hierarchy_fig1_238681985>.
+Acesso em: 18 mar. 2024. 
+Continua utilizando CommunityStrings. 
+
+SNMPv3
+É a versão segura do protocolo.
+Ataques de rede e protocolos seguros
+Aula 02
+Autenticação forte com algoritmos como 
+MD5 e SHA;
+Fonte: Acervo Lima.
+Disponível em: <https://acervolima.com/visao-geral-do-snmpv3/>.
+Acesso em: 18 mar. 2024. 
+Criptografia de dados com DES e AES;
+Modelos de segurança: noAuthNoPriv, 
+authNoPrive authPriv;
+Autenticação baseada em usuários e grupos.
+
+Secure Sockets Layer (SSL)
+e Transport Layer Security (TLS)
+SSL é um protocolo de segurança 
+criptográfica usado para estabelecer 
+uma conexão segura entre um cliente 
+e um servidor.
+Ataques de rede e protocolos seguros
+Aula 02
+TLS é uma evolução do SSL e é 
+utilizado para proteger as 
+comunicações na internet entre 
+clientes e servidores.
+TLS 1.1 lançado em 2006;
+TLS 1.2 lançado em 2008;
+TLS 1.3 lançado em 2018.
+
+SSH FTP (SFTP) e FTP Over SSL (FTPS)
+São protocolos para transferência de 
+arquivos de forma segura.
+Ataques de rede e protocolos seguros
+Aula 02
+Funcionamento do SFTP:
+Fonte: Geeksforgeeks.
+Disponível em: <https://www.geeksforgeeks.org/sftp-
+file-transfer-protocol/>.
+Acesso em: 18 mar. 2024. 
+Conexão segura por meio do 
+protocolo SSH (SecureShell);
+Autenticação do cliente antes
+de iniciar a transferência;
+Criptografia durante a transferência;
+Integração com sistema de arquivos.
+
+SSH FTP (SFTP) e FTP Over SSL (FTPS)
+Funcionamento do FTPS:
+Ataques de rede e protocolos seguros
+Aula 02
+Fonte: Msp360.
+Disponível em: 
+<https://www.msp360.com/resources/blog/sftp-vs-ftps/>.
+Acesso em: 18 mar. 2024. 
+Início da conexão –utiliza SSL/TLS;
+Estabelecimento da conexão segura 
+com certificados digitais e criptografia;
+Autenticação;
+Criptografia de transferência;
+Modos de transferência:
+FTPS explícito ou implícito;
+Portas: TCP 21 (explícito)
+ou TCP 990 (implícito).
+
+SMTPS, POP3S, IMAPS e S/MIME
+Utilizados para proteger
+as comunicações de e-mail.
+Ataques de rede e protocolos seguros
+Aula 2
+Funcionamento do Secure
+SMTP (SMTPS):
+Fonte: Linuxbabe
+Disponível em: <https://www.linuxbabe.com/mail-
+server/enable-smtps-port-465-postfix>.
+Acesso em: 18 mar. 2024. 
+É a versão segura do protocolo
+SimpleMailTransferProtocol(SMTP);
+Usa a Porta TCP 465;
+Utilizado para enviar
+e-mails de forma segura.
+
+SMTPS, POP3S, IMAPS e S/MIME
+Funcionamento do SecurePOP (POP3S):
+Ataques de rede e protocolos seguros
+Aula 2
+É a versão segura do protocolo Post
+Office Protocolversion 3 (POP3);
+Conexão na Porta TCP 995;
+Cliente baixa e-mails de
+forma segura do servidor.
+Fonte: Mailmodo.
+Disponível em: <https://www.mailmodo.com/guides/email-
+protocol/>.
+Acesso em: 18 mar. 2024. 
+
+SMTPS, POP3S, IMAPS e S/MIME
+Funcionamento do SecureIMAP (IMAPS):
+Ataques de rede e protocolos seguros
+Aula 2
+Fonte: Cyberhoot.
+Disponível em: <https://cyberhoot.com/cybrary/internet-message-
+access-protocol-imap/>.
+Acesso em: 18 mar. 2024. 
+É a versão segura do protocolo 
+Internet MessageAccess
+Protocol(IMAP);
+Conexão na Porta TCP 993;
+Cliente acessa e-mails no
+servidor de forma segura.
+
+SMTPS, POP3S, IMAPS e S/MIME
+Funcionamento do Secure/Multipurpose
+Internet MailExtensions(S/MIME):
+Ataques de rede e protocolos seguros
+Aula 2
+É um padrão de criptografia e 
+assinatura digital utilizado para 
+garantir a segurança e autenticidade 
+dos e-mails;
+Segurança da criptografia
+utilizando chaves públicas;
+Integridade e autenticidade
+por meio da assinatura digital.
+Fonte: Zoho.
+Disponível em: <https://www.zoho.com/pt-br/mail/help/s-
+mime.html>.
+Acesso em: 18 mar. 2024. 
+
+Transport Layer Security
+Virtual Private Network (TLS VPN) 
+Trata-se de uma VPN com conexão segura 
+por meio do protocolo TLS.
+Ataques de rede e protocolos seguros
+Aula 2
+Fonte: Practicalnetworking.
+Disponível em: <https://www.practicalnetworking.net/practical-
+tls/practical-tls-free-ssl-training-m1/>.
+Acesso em: 18 mar. 2024. 
+HandshakeTLS;
+Autenticação;
+Criptografia;
+Túnel VPN;
+Roteamentoseguro;
+Acesso remoto e conexões site-to-site.
+A TLS VPN possui criptografia e 
+autenticação garantindo confidencialidade, 
+integridade e autenticidade.
+Seu funcionamento inclui:
+
+Internet ProtocolSecurity(IPSec)
+Refere-se a um conjunto de protocolos de 
+segurança para proteção das 
+comunicações na rede.
+Ataques de rede e protocolos seguros
+Aula 2
+Authentication Header (AH); e
+EncapsulationSecurity
+Payload(ESP).
+O IPSecé composto por dois principais 
+protocolos:
+Fonte: NetworkLessons.com.
+Disponível em: <https://networklessons.com/cisco/ccie-
+routing-switching/ipsec-internet-protocol-security>.
+Acesso em: 18 mar. 2024. 
+
+Internet Protocol Security (IPSec)
+Funcionamento do IPSec:
+Ataques de rede e protocolos seguros
+Aula 2
+Fonte: Huawei.
+Disponível em: <https://forum.huawei.com/enterprise/en/application-and-
+example-of-ipsec-vpn-in-the-dual-system-hot-backup-
+scenario/thread/698954350837252096-667213854934970368>.
+Acesso em: 18 mar. 2024. 
+Possui duas formas de implementação:
+Modo de Túnel
+O pacote é encapsulado em um 
+novo pacote IP adicionando 
+cabeçalho.
+Modo de Transporte:
+Só o payloaddos pacotes IP é 
+encapsulado com os cabeçalhos
+AH e/ou ESP.
+
+SecureShell (SSH)
+Trata-se do protocolo de rede
+que fornece conexões seguras
+entre dispositivos.
+Ataques de rede e protocolos seguros
+Aula 2
+Conexão segura entre cliente e 
+servidor por meio de criptografia;
+Autenticação por senha, por chave 
+pública ou por chave de host.
+Oferece autenticação e utiliza
+criptografia nas comunicações.
+Funcionamento do SSH:
+Fonte: Huawei.
+Disponível em: <https://forum.huawei.com/enterprise/en/application-and-
+example-of-ipsec-vpn-in-the-dual-system-hot-backup-
+scenario/thread/698954350837252096-667213854934970368>.
+Acesso em: 18 mar. 2024. 
+
+Secure Shell (SSH)
+Funcionamento do SSH: (cont.)
+Ataques de rede e protocolos seguros
+Aula 2
+Fonte: Sshslowdns.
+Disponível em: <https://ssh.sshslowdns.com/ssh-server-
+public-key-too-small-3/>.
+Acesso em: 18 mar. 2024. 
+Chaves criptográficas na autenticação, 
+uma pública e uma privada;
+Criptografia de dados para a 
+comunicação entre cliente e servidor;
+Operações remotas
+executadas de forma segura;
+Porta padrão TCP 22.
+
+Segurança em sistemas 
+embarcados
+Você chegou ao final da Aula 02
+12

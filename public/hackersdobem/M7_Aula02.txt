@@ -1,0 +1,214 @@
+
+
+Módulo 07
+Redundância, Backup, 
+Segurança física e Destruição de 
+dados
+Aula 02
+Backup
+7
+
+Introdução
+Nesta aula, você conhecerá os seguintes assuntos:
+Processo de criação de cópias de dados 
+importantes e críticos.
+
+Tipos de Backup
+Redundância e replicação
+Aula 02
+
+Todos os arquivos e dados selecionados 
+são copiados e armazenados em um local 
+de backup.
+BACKUP COMPLETO (FULL BACKUP)
+Fonte: Virtualizor.
+Disponível em: <https://www.virtualizor.com/backuply/>.
+Acessado em: 25 mar. 2024.
+Tipos de Backup
+Aula 02
+Envolve a criação de uma cópia exata e 
+abrangente de todos os arquivos, 
+independentemente de terem sido 
+modificados ou não.
+Garante que, em caso de perda de dados 
+ou falha no sistema, seja possível restaurar 
+o sistema para um estado anterior 
+completo e consistente.
+
+BACKUP COMPLETO (FULL BACKUP)
+Tipos de Backup
+Aula 02
+Fonte: Sim Networks, 2017.
+Disponível em: <https://www.sim-networks.com/en/blog/backup-
+full-increment-differential>. 
+Acessado em: 25 mar. 2024.
+O processo de backup completo pode ser 
+demorado.
+Requer espaço de armazenamento 
+adequado para armazenar a cópia de 
+todos os dados.
+Oferece uma restauração rápida e 
+simples.
+Uma das principais vantagens do backup 
+completo é a sua confiabilidade.
+Não há dependência de backups 
+anteriores ou de outros tipos de backup 
+para restaurar completamente o sistema. 
+
+BACKUP INCREMENTAL
+Captura apenas as alterações feitas 
+desde o último backup, seja ele completo 
+ou incremental.
+Tipos de Backup
+Aula 02
+Copia apenas os arquivos que foram 
+modificados ou adicionados desde o 
+último backup.
+Fonte: HLTI, 2024.
+Disponível em: <https://www.hlti.com.br/incremental-
+backup/>.
+Acessado em: 25 mar. 2024.
+
+BACKUP DIFERENCIAL
+Envolve a cópia dos arquivos que foram 
+modificados desde o último backup 
+completo.
+Tipos de Backup
+Aula 02
+Inclui todas as alterações feitas desde o 
+último backup completo, 
+independentemente de terem sido 
+realizados backups incrementais entre 
+eles.
+Fonte: HLTI, 2024.
+Disponível em: <https://www.hlti.com.br/incremental-backup/>.
+Acessado em: 25 mar. 2024.
+
+Envolve a criação de cópias de arquivos e 
+dados à medida que são modificados ou 
+atualizados.
+Captura em tempo real das mudanças nos 
+arquivos.
+BACKUP CONTÍNUO (CONTINUOUS 
+BACKUP)
+Ao contrário de outros tipos de backup que 
+são executados em intervalos fixos, o 
+backup contínuo ocorre de forma constante 
+e automática.
+Garante que as alterações mais recentes sejam 
+imediatamente salvas.
+Tipos de Backup
+Aula 02
+
+Uma cópia exata dos dados é criada e 
+mantida em um local separado ou em outro 
+dispositivo de armazenamento.
+BACKUP ESPELHADO (MIRRORED 
+BACKUP)
+Mantém os dados sincronizados em dois 
+locais distintos.
+Os dados são replicados em tempo real, 
+garantindo que haja uma réplica idêntica 
+disponível para recuperação em caso de 
+falhas.
+Qualquer alteração feita nos dados originais 
+é automaticamente refletida na cópia 
+espelhada.
+Tipos de Backup
+Aula 02
+
+Cria uma cópia exata de um disco rígido ou 
+de uma partição inteira do sistema.
+Cria um arquivo de imagem que pode ser 
+usado para restaurar o sistema em sua 
+totalidade.
+BACKUP DE IMAGEM (IMAGE 
+BACKUP)
+Inclui o sistema operacional, aplicativos, 
+configurações e todos os dados 
+armazenados.
+Captura o estado completo do sistema em um 
+determinado momento.
+Tipos de Backup
+Aula 02
+
+Também conhecido como cloud backup.
+BACKUP EM NUVEM
+Os dados são enviados pela rede para 
+servidores em nuvem.
+Armazena dados fazendo o backup deles 
+em servidores remotos localizados em data 
+centers na nuvem.
+Tipos de Backup
+Aula 02
+
+Prática de fazer cópias de segurança dos 
+dados e armazená-las em dispositivos de 
+armazenamento físico local.
+Oferece controle direto sobre os dados, 
+acesso rápido e confiabilidade.
+BACKUP LOCAL (LOCAL BACKUP)
+Como discos rígidos externos, servidores locais 
+ou dispositivos de fita.
+Tipos de Backup
+Aula 02
+
+BACKUP REMOTO (OFFSITE 
+BACKUP)
+Envolve a cópia dos arquivos e 
+informações para um local 
+geograficamente separado das 
+instalações principais.
+Tipos de Backup
+Aula 02
+Fonte: CBackup, 2023.
+Disponível em: 
+<https://www.cbackup.com/articles/offsite-server-
+backup.html>.
+Acessado em: 25 mar. 2024.
+O local remoto pode ser um data center, 
+um servidor externo ou um serviço de 
+armazenamento em nuvem.
+Protege os dados contra desastres locais 
+que possam afetar as instalações físicas.
+
+Envolve a captura de um instantâneo dos 
+dados e sistemas em um determinado 
+ponto no tempo.
+Usado para recuperar versões anteriores 
+de arquivos ou restaurar o sistema para um 
+estado de funcionamento estável.
+BACKUP DE PONTO DE 
+VERIFICAÇÃO
+Permite restaurar os dados para um estado 
+específico anterior.
+Tipos de Backup
+Aula 02
+
+Unidades de fita.
+FERRAMENTAS DE BACKUP
+Bibliotecas de fita.
+Dispositivos de armazenamento em disco 
+externo.
+Tipos de Backup
+Aula 02
+Dispositivos de armazenamento em nuvem.
+Appliancesde backup.
+Dispositivos de armazenamento de rede 
+(NAS).
+Dispositivos de armazenamento em disco 
+virtual (VTL).
+
+Fitas magnéticas.
+Dispositivos de armazenamento em nuvem.
+MÍDIAS DE BACKUP
+Discos rígidos.
+Tipos de Backup
+Aula 02
+Dispositivos de armazenamento em disco 
+óptico.
+Unidades de estado sólido (SSDs).
+
+Backup
+Você chegou ao final da Aula 02
+7

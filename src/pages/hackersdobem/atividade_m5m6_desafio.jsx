@@ -291,7 +291,7 @@ const AtividadeM5M6Desafio = () => {
     const saveScore = async (finalScore) => {
         if (!userName) return;
         try {
-            await addDoc(collection(db, "hackersdobem_ranking"), {
+            await addDoc(collection(db, "fametro_ranking"), {
                 name: userName,
                 score: finalScore,
                 duration: (Date.now() - startTime),

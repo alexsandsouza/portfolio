@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Rajdhani:wght@400;600;700&display=swap');
+
+:root {
+  --hdb-neon-green: #00FF88;
+  --hdb-neon-blue: #00E5FF;
+  --hdb-neon-red: #FF5252;
+  --hdb-bg-dark: #0A0A0F;
+  --hdb-bg-card: #13131A;
+  --hdb-border: #2A2A35;
+  --hdb-terminal-font: 'Fira Code', monospace;
+  --hdb-main-font: 'Rajdhani', sans-serif;
+}
+
+/* Scanlines muito mais sutis para não atrapalhar leitura */
+.hdb-scanlines::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.05) 50%);
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 10000;
+  opacity: 0.15;
+}
+
+/* Perspective Grid mais visível e imersiva */
+.hdb-perspective-grid {
+  position: fixed;
+  bottom: 0; left: 0; width: 100%; height: 50vh;
+  background-image: 
+    linear-gradient(to right, rgba(0, 255, 136, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 255, 136, 0.1) 1px, transparent 1px);
+  background-size: 80px 80px;
+  transform: perspective(300px) rotateX(60deg);
+  transform-origin: bottom;
+  mask-image: linear-gradient(to top, black, transparent);
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.25;
+}
+
+/* Binary Rain em destaque (Estilo Matrix) */
+.hdb-binary-rain {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  z-index: -2;
+  overflow: hidden;
+  opacity: 0.35; /* Triplicado do anterior */
+}
+
+.hdb-rain-bit {
+  position: absolute;
+  color: var(--hdb-neon-green);
+  font-family: var(--hdb-terminal-font);
+  font-size: 16px;
+  line-height: 1;
+  user-select: none;
+  text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+  animation: hdb-fall linear infinite;
+}
+
+/* Badge de Agente - Estilo Sci-fi */
+.hdb-badge-container {
+  width: 450px;
+  background: #0D0F14;
+  border: 2px solid var(--hdb-neon-green);
+  border-radius: 15px;
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 50px rgba(0, 255, 136, 0.3);
+  text-align: center;
+}
+
+.hdb-badge-head {
+  border-bottom: 1px solid rgba(0, 255, 136, 0.2);
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+@media print {
+  body * { visibility: hidden; }
+  .hdb-badge-print, .hdb-badge-print * { visibility: visible; }
+  .hdb-badge-print { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+  .hdb-no-print { display: none !important; }
+}
+
+/* Forçar nitidez de texto herdados */
+.hdb-high-contrast {
+  color: #FFFFFF !important;
+  text-shadow: none !important;
+  opacity: 1 !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Cards com borda mais definida e fundo menos transparente */
+.hdb-card {
+  background: #13131A !important; /* Opacidade 100% para não sumir */
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5) !important;
+}
+
+.hdb-rain-bit {
+  position: absolute;
+  color: var(--hdb-neon-green);
+  font-family: var(--hdb-terminal-font);
+  font-size: 14px;
+  line-height: 1;
+  user-select: none;
+  animation: hdb-fall linear infinite;
+}
+
+@keyframes hdb-fall {
+  from { transform: translateY(-100vh); }
+  to { transform: translateY(100vh); }
+}
+
+/* Mouse Aura Follow */
+.hdb-aura-follow {
+  position: fixed;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(0, 255, 136, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  transition: opacity 0.3s;
+}
+
+/* Terminal typing effect improved */
+.hdb-typing {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid var(--hdb-neon-green);
+  width: 0;
+  animation: hdb-typing-anim 2s steps(40, end) forwards, 
+             hdb-blink 0.8s step-end infinite;
+}
+
+@keyframes hdb-typing-anim { from { width: 0 } to { width: 100% } }
+@keyframes hdb-blink { from, to { border-color: transparent } 50% { border-color: var(--hdb-neon-green) } }
+
+/* Glow effects */
+.hdb-glow-green { text-shadow: 0 0 10px var(--hdb-neon-green); }
+.hdb-glow-blue { text-shadow: 0 0 10px var(--hdb-neon-blue); }
+
+/* Glitch animation */
+.hdb-glitch:hover { animation: hdb-glitch-anim 0.3s infinite; }
+@keyframes hdb-glitch-anim {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); clip-path: inset(10% 0 30% 0); }
+  40% { transform: translate(2px, -2px); clip-path: inset(40% 0 10% 0); }
+  60% { transform: translate(-2px, 1px); clip-path: inset(0 0 60% 0); }
+  80% { transform: translate(2px, -1px); clip-path: inset(20% 0 20% 0); }
+  100% { transform: translate(0); }
+}
+
+/* Glassmorphism Cards */
+.hdb-card {
+  background: rgba(19, 19, 26, 0.8) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--hdb-border) !important;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.hdb-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--hdb-neon-green) !important;
+  box-shadow: 0 15px 30px rgba(0, 255, 136, 0.1);
+}
+
+/* Neon Buttons */
+.hdb-btn-neon {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s;
+}
+
+.hdb-btn-neon::after {
+  content: "";
+  position: absolute;
+  top: -50%; left: -50%; width: 200%; height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+  transform: rotate(45deg);
+  transition: all 0.6s;
+}
+
+.hdb-btn-neon:hover::after { left: 100%; }

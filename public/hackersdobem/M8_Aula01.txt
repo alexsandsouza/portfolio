@@ -1,0 +1,307 @@
+
+
+Módulo 08
+Conceitos de Criptografia
+Aula 01
+Propriedades 
+da Criptografia
+8
+
+Introdução
+Nesta aula, você conhecerá os seguintes assuntos:
+Propriedades dos algoritmos criptográficos:
+Confusão.
+Difusão.
+Colisão.
+Técnicas de ocultação de dados:
+Esteganografia.
+Ofuscação.
+
+Propriedades da comunicação 
+com criptografia
+Propriedades da criptografia
+Aula 01
+
+Uso de algoritmos matemáticos e chaves 
+criptográficas para realizar a transformação 
+dos dados.
+Objetivo: proteger a confidencialidade, 
+integridade e autenticidade dessas 
+informações.
+Prática de transformar informações legíveis 
+em um formato ilegível (texto cifrado).
+CRIPTOGRAFIA
+Propriedades da Criptografia
+Aula 01
+Fonte: timr, 2021.
+Disponível em: <https://timr.com.br/entenda-a-
+criptografia-e-seus-beneficios/>.
+Acesso em: 18 mar. 2024.
+
+Propriedades da Criptografia
+Apenas aqueles que possuem a chave 
+correta podem decifrar o texto cifrado e 
+obter acesso às informações originais.
+Proteger dados sensíveis durante a 
+transmissão, armazenamento em 
+dispositivos e comunicação entre sistemas.
+CRIPTOGRAFIA
+Aula 01
+É uma das principais técnicas para garantir 
+a privacidade e segurança dos dados.
+Desempenha um papel fundamental na 
+segurança da informação.
+
+Mallory: personagem mal-intencionado que 
+tenta interceptar.
+Bob: destinatário da mensagem enviada 
+por Alice.
+Alice: entidade que deseja enviar uma 
+mensagem de forma segura.
+ALICE, BOB, MALLORY E OUTROS
+Propriedades da Criptografia
+Aula 01
+Fonte: ElektronikKompendium.
+Disponível em: <https://www.elektronik-
+kompendium.de/sites/net/1909021.htm>. 
+Acesso em: 18 mar. 2024.
+Eve: “espião" ou "eavesdropper".
+
+Charlie: representa um intermediário ou 
+canal de comunicação.
+Oscar: adversário avançado ou hacker 
+experiente.
+Trent: personagem neutro e confiável que 
+atua como uma autoridade.
+ALICE, BOB, MALLORY E OUTROS
+Propriedades da Criptografia
+Aula 01
+Fonte: Abseed.
+Disponível em: <https://www.abseed.com.br/blog/como-escalar-
+resultados-em-saas-b2b>.
+Acesso em: 18 mar. 2024.
+Carol: assim como Alice e Bob, Carol pode 
+ser uma parte legítima.
+
+Propriedade dos algoritmos 
+criptográficos.
+CONFUSÃO
+Fonte: Funzen.
+Disponível em: < https://funzen.net/po/2019/11/19/diferenca-
+entre-confusao-e-difusao/>.
+Acesso em: 18 mar. 2024.
+Propriedades da Criptografia
+Aula 01
+Tornar a relação entre a chave de 
+criptografia e o texto cifrado tão 
+complexa quanto possível.
+Alcançada por meio do embaralhamento
+e da dispersão das características dos 
+dados de entrada.
+Dificulta a identificação de padrões ou 
+informações úteis pelos adversários.
+
+Exigindo um grande esforço 
+computacional para quebrar a 
+criptografia.
+CONFUSÃO
+Propriedades da Criptografia
+Aula 01
+Garante a resistência a ataques de força 
+bruta, análise estatística e outras 
+técnicas de criptoanálise.
+Exemplo: o uso de tabelas de 
+substituição, como a Tabela de 
+Substituição S-Boxno algoritmo de 
+criptografia simétrica AES.
+Fonte: Funzen.
+Disponível em: < https://funzen.net/po/2019/11/19/diferenca-
+entre-confusao-e-difusao/>.
+Acesso em: 18 mar. 2024.
+
+Princípio fundamental dos algoritmos 
+criptográficos.
+DIFUSÃO
+Propriedades da Criptografia
+Aula 01
+Garante que qualquer alteração mínima 
+nos dados de entrada cause uma 
+mudança significativa nos dados de 
+saída.
+Uma pequena modificação nos bits de 
+entrada deve ser propagada para vários 
+bits diferentes no texto cifrado.
+Torna a relação entre os dados originais 
+e os dados criptografados o mais 
+complexa possível.
+Fonte: Funzen.
+Disponível em: < https://funzen.net/po/2019/11/19/diferenca-
+entre-confusao-e-difusao/>.
+Acesso em: 18 mar. 2024.
+
+Alcançada por meio de operações 
+aplicadas aos dados durante o processo 
+de criptografia.
+DIFUSÃO
+Propriedades da Criptografia
+Aula 01
+Podem ser substituições, permutações, 
+misturas e outras técnicas.
+Garante que cada bit de entrada tenha 
+um impacto significativo em múltiplos 
+bits de saída.
+Distribui as propriedades estatísticas dos 
+dados originais de maneira uniforme em 
+todo o texto criptografado.
+Fonte: Funzen.
+Disponível em: < https://funzen.net/po/2019/11/19/diferenca-
+entre-confusao-e-difusao/>.
+Acesso em: 18 mar. 2024.
+
+Se um invasor puder encontrar uma colisão, 
+ele pode substituir os dados originais por 
+dados maliciosos sem que seja detectado.
+É indesejável na criptografia, pois 
+compromete a integridade dos dados.
+Ocorre quando duas entradas distintas 
+geram o mesmo resumo criptográfico.
+COLISÃO
+Propriedades da Criptografia
+Aula 01
+Fonte: Firebits, 2012.
+Disponível em: <https://firebitsbr.wordpress.com/2012/01/05/
+hashcat-ferramenta-avancada-de-recuperacao-de-senhas/>.
+Acesso em: 18 mar. 2024.
+Leva a sérias vulnerabilidades em sistemas 
+que dependem da integridade dos dados.
+
+Criptografia em dados em uso.
+Criptografia em dados em trânsito.
+Criptografia em dados em repouso.
+CRIPTOGRAFIA EM DADOS
+Propriedades da Criptografia
+Aula 01
+Fonte: Sealpath.
+Disponível em: <https://www.sealpath.com/page/4/?lang=es%2F1000 > 
+Acesso em: 18 mar. 2024.
+
+Garante a confidencialidade dos dados 
+mesmo que as chaves de criptografia 
+sejam comprometidas no futuro.
+PERFECT FORWARD SECRECY (PFS) 
+Propriedades da Criptografia
+Aula 01
+Mesmo que um atacante comprometa 
+uma chave usada em uma comunicação 
+específica, as chaves de sessão 
+anteriores e futuras permanecerão 
+seguras.
+Fonte: Hideme, 2017.
+Disponível em: < https://hide.me/en/blog/perfect-forward-
+secrecy/>.
+Acesso em: 18 mar. 2024.
+Usa chaves efêmeras no processo de 
+estabelecimento da comunicação.
+
+Em um grupo de 23 pessoas a probabilidade 
+de que pelo menos duas pessoas 
+compartilhem o mesmo dia de aniversário é 
+de 50,73%.
+A probabilidade de duas ou mais pessoas 
+em um grupo compartilharem a mesma 
+data de aniversário (dia e mês) pode ser 
+alta.
+PARADOXO DO ANIVERSÁRIO
+Propriedades da Criptografia
+Aula 01
+Com 50 pessoas, a probabilidade é de cerca 
+de 97%.
+Com 70 pessoas, a probabilidade aumenta 
+para quase 100%.
+
+Técnicas de ocultação de dados
+Propriedades da criptografia
+Aula 01
+
+Esconde informações sensíveis em 
+outros tipos de arquivos ou meios de 
+comunicação.
+OCULTAÇÃO DE DADOS
+Busca camuflar as informações 
+sensíveis dentro de arquivos ou 
+estruturas aparentemente comuns.
+Técnicas de ocultação de dados
+Aula 01
+Procura tornar as informações menos 
+detectáveis ou disfarçadas dentro de 
+outros arquivos ou meios de 
+comunicação.
+
+Esconde os dados de forma que eles 
+passem despercebidos.
+Oculta informações dentro de outros tipos 
+de arquivos, sem levantar suspeitas de que 
+esses dados estejam presentes.
+ESTEGANOGRAFIA
+Fonte: Imesec, USP.
+Disponível em: <https://imesec.ime.usp.br/lectures.html>.
+Acesso em: 18 mar. 2024.
+Utiliza arquivos de mídia, como imagens, 
+áudios ou vídeos, como meio para ocultar os 
+dados.
+Os dados são inseridos de forma que não 
+alterem a aparência visual ou auditiva do 
+arquivo.
+Técnicas de ocultação de dados
+Aula 01
+
+Torna o código ou programa mais complexo 
+e difícil de entender, sem alterar sua 
+funcionalidade.
+Dificultar a compreensão do conteúdo por 
+parte de terceiros não autorizados.
+OFUSCAÇÃO
+Renomeação de variáveis, substituição de 
+trechos de código, inserção de instruções 
+irrelevantes e reorganização da estrutura do 
+código.
+Técnicas de ocultação de dados
+Aula 01
+
+Divisão de um dado em partes menores, 
+conhecidas como fragmentos, antes de 
+aplicar a criptografia.
+FRAGMENTAÇÃO
+O conteúdo original é dividido em 
+várias partes menores, geralmente 
+de tamanho fixo.
+Técnicas de ocultação de dados
+Aula 01
+Dificulta a reconstituição dos dados 
+originais sem ter acesso a todos os 
+fragmentos e a chave de criptografia.
+
+Os metadados são informações que 
+descrevem outros dados, como o autor, data 
+de criação, localização, entre outros.
+Adiciona informações extra aos dados, 
+conhecidas como metadados.
+MARCAÇÃO E OCULTAÇÃO 
+EM METADADOS
+Fonte: Commons, Wikimedia.
+Disponível em: 
+<https://commons.wikimedia.org/wiki/File:Met
+asploit_Framework.png>.
+Acesso em: 18 mar. 2024.
+Adição de informações ocultas nos dados, 
+que não são visíveis inicialmente.
+Os metadados ocultos não são facilmente 
+acessíveis e podem exigir ferramentas 
+especiais para serem extraídos.
+Técnicas de ocultação de dados
+Aula 01
+
+Propriedades 
+da Criptografia
+Você chegou ao final da Aula 01
+8

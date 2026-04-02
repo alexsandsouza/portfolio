@@ -1,0 +1,263 @@
+
+
+Módulo 09
+Infraestrutura de Chaves 
+Públicas e Blockchain
+Aula 03
+Gerenciamento de Infraestrutura 
+de Chaves Públicas (PKI)
+9
+
+Introdução
+Nesta aula, você conhecerá os seguintes assuntos:
+Gerenciamento do ciclo de vida dos Certificados e Chaves;
+Recuperação e custódia de chaves com o uso de hardware especializado;
+Lista de Certificados Revogados (LCR) e protocolo OCSP;
+Pinningde certificados; e
+Uso prático de OpenSSL.
+
+Gerenciamento 
+de Chaves
+Infraestrutura de Chaves Públicas e Blockchain
+Aula 03
+
+Gerenciamento de Chaves
+Aula 03
+Abrange a administração e o controle das chaves 
+de criptografia utilizadas em certificados digitais.
+GERENCIAMENTO DE CHAVES
+Garante os três princípios fundamentais da 
+segurança da informação:
+Confidencialidade;
+Integridade;
+Autenticidade.
+
+Gerenciamento de Chaves
+Aula 03
+CICLO DE VIDA DAS CHAVES
+Etapas do ciclo de vida:
+Confidencialidade;
+Solicitação e Emissão de Certificados;
+Armazenamento e Proteção;
+Renovação e Atualização;
+Revogação;
+Destruição.
+Fonte: wikipedia, 2024.
+Disponível em: 
+https://pt.wikipedia.org/wiki/Criptografia_de_chave_p
+%C3%BAblica
+Acesso em: 20 mar. 2024
+
+Gerenciamento de Chaves
+Aula 03
+TIPOS DE GERENCIAMENTO 
+DE CHAVE
+Gerenciamento de Chaves Centralizado:
+Armazenamento e gerenciamento 
+a partir de um ponto central;
+Servidor de chaves dedicado;
+Executado pelas Autoridades 
+Certificadoras (ACs);
+Controle mais rigoroso e padronizado.
+Fonte: servicenow, 2024.
+Disponível em: 
+https://www.servicenow.com/br/products/it-operations-
+management/what-is-certificate-management.html
+Acesso em: 20 mar. 2024
+
+Aula 03
+Gerenciamento de Chaves
+TIPOS DE GERENCIAMENTO 
+DE CHAVE
+Gerenciamento de Chaves Descentralizado:
+Armazenamento e gerenciamento distribuídos;
+Cada entidade gera suas próprias 
+chaves e certificados;
+Maior autonomia e flexibilidade;
+Dificuldades de coordenação e padronização.
+Fonte: smartsheet, 2024.
+Disponível em: <https://help.smartsheet.com/pt/articles/2482311-
+customer-managed-encryption-Keys>.
+Acesso em: 20 mar. 2024.
+
+Aula 03
+Gerenciamento de Chaves
+VULNERABILIDADES NO 
+GERENCIAMENTO DE 
+CERTIFICADOS
+O Gerenciamento inadequado acarreta em 
+vulnerabilidades como:
+Exposição de Chaves Privadas;
+Certificados Inválidos ou 
+Comprometidos;
+Falta de Revogação de Certificados.
+
+Gerenciamento de Chaves
+Aula 03
+O Gerenciamento inadequado acarreta em 
+vulnerabilidades como:
+Falha na Renovação de Certificados;
+Uso de Algoritmos e Parâmetros Obsoletos;
+Falta de Monitoramento e Auditoria.
+VULNERABILIDADES NO 
+GERENCIAMENTO DE 
+CERTIFICADOS
+
+Gerenciamento de Chaves
+Aula 03
+O mecanismo empregado é denominado 
+controle M de N, mais utilizado em 
+ambientes de alto risco.
+CONTROLE DE 
+ACESSO A CHAVES
+“M” é o número mínimo de entidades para 
+desbloquear as chaves privadas;
+“N” é o número total de entidades ou 
+partes envolvidas.
+Por exemplo, em um controle 2 de 3 duas das 
+três entidades autorizadas participam para 
+desbloquear as chaves privadas.
+
+Consiste em um mecanismo confiável 
+para armazenar uma cópia de 
+segurança das chaves privadas;
+CUSTÓDIA DE CHAVES 
+(KEY ESCROW)
+Gerenciamento de Chaves
+Aula 03
+O objetivo é garantir a recuperação das 
+chaves originais em caso de perda, 
+corrupção ou comprometimento;
+A terceira parte confiável pode ser uma 
+AC ou uma agência governamental.
+
+Infraestrutura de Chaves Públicas e Blockchain
+Aula 03
+Gerenciamento 
+de Certificados
+
+É um conjunto de práticas e processos 
+utilizados para administrar certificados 
+digitais em uma PKI.
+GERENCIAMENTO 
+DE CERTIFICADOS
+Gerenciamento de Certificados
+Aula 03
+Gerencia todo o ciclo de vida dos 
+certificados e seu armazenamento seguro;
+O objetivo é garantir autenticidade, 
+integridade e confidencialidade na troca 
+de informações.
+
+Gerenciamento de Certificados
+Aula 03
+Etapas envolvidas:
+GERAÇÃO DE 
+CERTIFICADOS
+Solicitação de Certificado;
+Criação do Par de Chaves;
+Preenchimento dos Dados do Certificado;
+Assinatura Digital;
+Emissão do Certificado.
+Fonte: welivesecurity, 2017.
+Disponível em: 
+https://www.welivesecurity.com/br/2017/04/28/certifica
+dos-digitais-e-infraestrutura-de-chaves-publicas/
+Acesso em: 20 mar. 2024
+
+REVOGAÇÃO DE CERTIFICADOS 
+E LISTA DE CERTIFICADOS 
+REVOGADOS (CRL)
+Gerenciamento de Certificados
+Aula 03
+A revogação de certificados digitais 
+ocorre quando:
+Um certificado está comprometido; ou
+Ou é suspeito de ter sido comprometido;
+Possui informações incorretas;
+Ou ainda, o titular do certificado deixa de 
+ser autorizado a utilizá-lo.
+
+Gerenciamento de Certificados
+Aula 03
+Passos para a Revogação de certificados:
+Identificação da 
+necessidade de revogação;
+Publicação da Lista de Certificados 
+Revogados (CRL);
+Verificação da Revogação.
+REVOGAÇÃO DE CERTIFICADOS 
+E LISTA DE CERTIFICADOS 
+REVOGADOS (CRL)
+Fonte: test.fikaki, 2019.
+Disponível em: <https://test.fikaki.com/certificate-revocation-list-crl/>.
+Acesso em: 20 mar. 2024.
+
+Gerenciamento de Certificados
+Aula 03
+Protocolo utilizado na consulta online do 
+status de revogação dos certificados.
+Solicitação OCSP;
+Resposta OCSP;
+ONLINE CERTIFICATE STATUS 
+PROTOCOL (OCSP)
+Passos para a verificação OCSP online:
+Resposta OCSP ao Solicitante;
+Validação do Certificado.
+Fonte: ssl, 2020.
+Disponível em: <https://www.ssl.com/faqs/faq-digital-certificate-
+revocation/>.
+Acesso em: 20 mar. 2024.
+
+Gerenciamento de Certificados
+Aula 03
+Visa garantir a autenticidade e a 
+integridade dos certificados digitais 
+durante a comunicação.
+Seleção de Certificados;
+FIXAÇÃO DE CERTIFICADO 
+(CERTIFICATE PINNING)
+Etapas do pinning:
+Armazenamento de 
+Informações de Identificação;
+Verificação de Certificados;
+Comparação e Validação.
+Fonte: cybertrends, 2021.
+Disponível em: <https://cybertrends-
+indusface.medium.com/what-is-ssl-pinning-a-quick-walk-
+through-d5f0d6dc0889>.
+Acesso em: 20 mar. 2024
+
+Gerenciamento de Certificados
+Aula 03
+É uma biblioteca de código aberto utilizada 
+para implementação de criptografia.
+OpenSSL
+Auxilia no gerenciamento de certificados 
+em uma PKI.
+Geração de chaves;
+Criação e assinatura de certificados.
+Funcionalidades oferecidas:
+Fonte: opensourceforu, 2015.
+Disponível em: 
+<https://www.opensourceforu.com/2015/03/customising-
+openssl-for-the-real-world/>.
+Acesso em: 20 mar. 2024.
+
+Gerenciamento de Certificados
+Aula 03
+Criação e verificação de 
+assinaturas digitais;
+OpenSSL
+Verificação de Certificados;
+Gerenciamento de CRLs;
+Implementação de OCSP Responders.
+Fonte: blacktdn, 2015.
+Disponível em: <https://www.blacktdn.com.br/2023/07/blacktdn-
+openssl-usando-https-em.html>.
+Acesso em: 20 mar. 2024
+
+Gerenciamento de 
+Chaves e Certificado
+Você chegou ao final da Aula 03
+9

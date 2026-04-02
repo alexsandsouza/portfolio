@@ -1,0 +1,392 @@
+
+
+4
+Módulo 04
+Controles de Acesso
+Aula 04
+Autenticação por Biometria
+
+Introdução
+Nesta aula serão discutidos os seguintes pontos:
+Conceito, princípios e fundamentos da autenticação biométrica.
+Conhecer as práticas dessas tecnologias e seu papel no controle de acesso.
+Explorar as diferentes modalidades de autenticação biométrica.
+Conceito de reconhecimento digital, facial e tecnologias comportamentais.
+
+Autenticação Biométrica
+Autenticação por Biometria
+Aula 04
+
+Aula 04
+Autenticação por Biometria
+DEFINIÇÃO DE AUTENTICAÇÃO 
+BIOMÉTRICA E SEUS PRINCÍPIOS 
+FUNDAMENTAIS
+Princípios fundamentais:
+1. Singularidade -características únicas 
+para cada indivíduo
+2. Universalidade -estão sempre 
+presentes em todos os seres humanos.
+3. Permanência -são relativamente 
+constantes ao longo da vida adulta.
+4. Coleta não invasiva -não invasiva e 
+não requer ações do usuário.
+É um método avançado de verificação 
+de identidade que utiliza características 
+físicas ou comportamentais exclusivas 
+de um indivíduo.
+
+Aula 04
+CARACTERÍSTICAS ÚNICAS 
+DO CORPO HUMANO PARA 
+AUTENTICAÇÃO
+Impressões digitais.
+1
+Lista de características únicas:
+Reconhecimento facial.
+2
+Íris e retina.
+3
+Voz.
+4
+Geometria da mão e veias.
+5
+Assinatura dinâmica.
+6
+Autenticação por Biometria
+
+Aula 04
+Autenticação por Biometria
+PROCESSO DE SCANNING
+Lista de processos de scanning:
+1. Captura de imagem para 
+reconhecimento facial.
+2. Captura da impressão digital.
+Transforma características do corpo 
+humano em representações matemáticas.
+Desta forma, é possível uma comparação 
+precisa para autenticação biométrica.
+
+Aula 04
+MÉTRICAS CHAVE E 
+CONSIDERAÇÕES SOBRE 
+PADRÕES BIOMÉTRICOS
+Auxiliam na avaliação da taxa de 
+eficácia da obtenção e correspondência 
+de padrões biométricos e adequação 
+como mecanismo de autenticação.
+Principais métricas e considerações :
+Autenticação por Biometria
+1. FRR (Taxa de Falsos Rejeitos -False 
+RejectionRate).
+2. FAR (Taxa de Falsos Aceitos -False 
+AcceptanceRate).
+3. CER (Taxa de Erro de Equalização 
+-EqualErrorRate).
+
+Aula 04
+Autenticação por Biometria
+MÉTRICAS CHAVE E 
+CONSIDERAÇÕES SOBRE 
+PADRÕES BIOMÉTRICOS
+4. ThroughputSpeed.
+5. FER (Taxa de Erro de Falha -Failure
+toEnrollRate).
+6. CostImplementation(Custo de 
+Implementação).
+7. Ameaça à Privacidade.
+8. Discriminatória.
+
+Reconhecimento Digital
+Autenticação por Biometria
+Aula 04
+
+CONCEITO, FUNCIONAMENTO 
+E PRÁTICAS
+Aula 04
+Autenticação por Biometria
+É o método de autenticação biométrica 
+mais amplamente implementado.
+O reconhecimento da digital é um 
+método biométrico que coleta as 
+impressões digitais para identificar e 
+autenticar indivíduos.
+A tecnologia é relativamente barata, não 
+intrusiva e o processo bastante simples.
+Pontos de atenção: a umidade ou a 
+sujeira podem impedir a leitura.
+
+Aula 04
+Autenticação por Biometria
+CONCEITO, FUNCIONAMENTO 
+E PRÁTICAS
+Funcionamento:
+1. Captura da impressão digital 
+por meio de um sensor digital 
+biométrico:
+O tipo do sensor pode ser óptico, 
+capacitivo ou ultrassônico.
+2. Digitalização e extração de 
+características:
+Algoritmos de reconhecimento 
+de padrões analisam a imagem 
+digitalizada. 
+
+Aula 04
+Autenticação por Biometria
+CONCEITO, FUNCIONAMENTO 
+E PRÁTICAS
+3. Criação de modelo biométrico:
+Um modelo biométrico exclusivo 
+converte a captura em dados 
+matemáticos
+4. Armazenamento seguro:
+As informações matemáticas 
+são armazenadas utilizando 
+criptografia.
+5. Comparação e autenticação:
+Na autenticação a impressão 
+digital é capturada e seu modelo 
+é comparado com o armazenado 
+no sistema. 
+
+Aula 04
+Autenticação por Biometria
+CONCEITO, FUNCIONAMENTO 
+E PRÁTICAS
+Aplicações práticas:
+1. Smartphones:
+Permite que os usuários 
+desbloqueiem seus dispositivos, 
+acessem aplicativos e realizem 
+transações financeiras de forma 
+segura e conveniente.
+2. Controle de acesso físico:
+É utilizado para controlar o acesso 
+a edifícios, salas seguras e áreas 
+restritas, substituindo métodos 
+tradicionais, como cartões 
+magnéticos.
+
+Aula 04
+Autenticação por Biometria
+CONCEITO, FUNCIONAMENTO 
+E PRÁTICAS
+3. Transações financeiras:
+É comum em sistemas de 
+autenticação de instituições 
+bancárias para verificar a 
+identidade do usuário durante 
+operações sensíveis.
+O reconhecimento de impressões 
+digitais acrescenta uma camada 
+extra de segurança em caixas 
+eletrônicos, por exemplo.
+
+Reconhecimento Facial
+Autenticação por Biometria
+Aula 04
+
+CONCEITO, FUNCIONAMENTO 
+E PRÁTICAS
+Aula 04
+Autenticação por Biometria
+Registra vários indicadores como 
+tamanho e formato do rosto, distância 
+entre cada olho ou largura e comprimento 
+do nariz.
+O reconhecimento facial é uma tecnologia 
+biométrica que utiliza características 
+faciais únicas para identificar e autenticar 
+indivíduos.
+Busca criar um modelo único que 
+permita distinguir uma pessoa de outra.
+Já se tornou um método popular para 
+uso com smartphones.
+
+Aula 04
+Autenticação por Biometria
+CONCEITO, FUNCIONAMENTO E 
+PRÁTICAS
+Funcionamento:
+1. Captura e digitalização:
+A imagem capturada por meio de 
+uma câmera é digitalizada para criar 
+uma representação digital das 
+características faciais.
+2. Extração:de características:
+Os algoritmos de reconhecimento facial 
+retiram traços-chave da imagem.
+Deve ser realizado sob condições 
+ideias de iluminação.
+Esses traços são convertidos em dados 
+que formam o modelo biométrico.
+
+Aula 04
+Autenticação por Biometria
+CONCEITO, FUNCIONAMENTO E 
+PRÁTICAS
+3. Criação de modelo biométrico:
+O modelo é a representação 
+matemática das características 
+faciais exclusivas do indivíduo.
+4. Comparação e autenticação:
+Na autenticação, a imagem facial 
+apresentada é novamente capturada;
+Seu modelo é comparado com o 
+modelo armazenado no sistema.
+Havendo correspondência a 
+autenticação é concedida.
+
+Aula 04
+Autenticação por Biometria
+CONCEITO, FUNCIONAMENTO E 
+PRÁTICAS
+5. Atualização contínua:
+Alguns sistemas de reconhecimento 
+facial suportam aprendizado 
+contínuo.
+6. Pontos de atenção:
+Um ponto de atenção são as questões 
+legais de privacidade e ética.
+Ajustam-se às mudanças na aparência 
+de uma pessoa ao longo do tempo. 
+Possui altas taxas de falsa aceitação, 
+rejeição e pode sofrer falsificação.
+
+Aula 04
+Autenticação por Biometria
+CONCEITO, FUNCIONAMENTO E 
+PRÁTICAS
+Aplicações práticas:
+1. Segurança de dispositivos móveis:
+Desbloqueio de smartphones 
+e tablets. 
+2. Controle de acesso:
+Acesso a edifícios, salas 
+restritas ou áreas específicas 
+nesses espaços.
+3. Vigilância e monitoramento:
+Identifica e rastreia indivíduos 
+em locais públicos.
+
+Tecnologias Comportamentais
+Autenticação por Biometria
+Aula 04
+
+Aula 04
+Fonte: SecurityInformed.
+Disponível em: <https://www.securityinformed.com/news/behavioral-
+biometrics-improving-security-discusses-aratek-co-1669082358-
+ga.1671195243.html?utm_source=SSc%20International%20Edition&
+utm_medium=Redirect&utm_campaign=International%20Redirect%2
+0Popup>.
+Acesso em: 25 mar. 2024. 
+Algo que você faz é traduzido em padrões 
+biométricos comportamentais.
+CONCEITO, FUNCIONAMENTO 
+E PRÁTICAS
+As tecnologias comportamentais na 
+autenticação usam padrões e características 
+comportamentais únicas como meio de 
+identificar um usuário.
+Um modelo é criado analisando um 
+comportamento do indivíduo.
+Esses métodos estão sujeitos a taxas 
+de erro mais altas.
+Podem ser mais difíceis de executar.
+Autenticação por Biometria
+
+Aula 04
+Autenticação por Biometria
+CONCEITO, FUNCIONAMENTO 
+E PRÁTICAS
+1. Coleta de dados comportamentais:
+Ocorre durante as atividades 
+regulares do usuário: forma 
+de digitar, assinar, como lida 
+com o mouse, por exemplo.
+2. Criação de perfil biométrico:
+O perfil representa as 
+características únicas do 
+comportamento do usuário, 
+convertendo essas informações 
+em um modelo matemático.
+Funcionamento:
+
+Aula 04
+Autenticação por Biometria
+CONCEITO, FUNCIONAMENTO 
+E PRÁTICAS
+3. Treinamento do sistema:
+Período durante o qual o 
+sistema aprende e se adapta 
+aos padrões comportamentais 
+específicos do usuário.
+4. Comparação e autenticação 
+contínua:
+A comparação ocorre durante a 
+fase inicial de autenticação ou 
+durante o uso regular do sistema.
+O sistema compara os 
+comportamentos observados 
+com os dados armazenados 
+para verificar a autenticidade 
+do usuário.
+
+Aula 04
+Autenticação por Biometria
+CONCEITO, FUNCIONAMENTO 
+E PRÁTICAS
+Durante a autenticação 
+contínua, o sistema avalia 
+regularmente se os padrões de 
+comportamento ainda 
+correspondem à referência 
+inicial.
+Se ocorrerem desvios 
+significativos ou se houver 
+sinais de comportamento 
+anormal, o sistema pode 
+acionar verificações adicionais 
+ou até mesmo solicitar uma 
+nova autenticação.
+
+Aplicações práticas:
+CONCEITO, FUNCIONAMENTO 
+E PRÁTICAS
+Aula 04
+Autenticação por Biometria
+1. Segurança corporativa:
+Em sistemas de segurança 
+corporativos as tecnologias 
+comportamentais podem incluir 
+o uso de padrões de digitação 
+para autenticação em redes 
+corporativas.
+2. Autenticação contínua:
+As tecnologias comportamentais 
+são utilizadas para autenticação 
+contínua em centros de controle 
+de infraestrutura crítica.
+
+Aula 04
+CONCEITO, FUNCIONAMENTO 
+E PRÁTICAS
+Autenticação por Biometria
+3. Prevenção de fraudes em transações:
+As tecnologias comportamentais 
+são empregadas para detectar 
+atividades suspeitas durante 
+transações online no setor 
+financeiro.
+4. Controle de acesso a dispositivos:
+Em dispositivos com tela sensível 
+ao toque, a dinâmica do toque 
+pode ser utilizada para garantir o 
+acesso somente ao usuário 
+autorizado.
+
+Autenticação por Biometria
+Você chegou ao final da Aula 04
+4

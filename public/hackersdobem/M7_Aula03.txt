@@ -1,0 +1,258 @@
+
+
+Módulo 07
+Redundância, Backup, 
+Segurança física e Destruição de 
+dados
+Aula 03
+Segurança física
+7
+
+Controles 
+de acesso físico
+Segurança Física
+Aula 03
+
+Conjunto de medidas, procedimentos e 
+tecnologias utilizados para proteger as 
+instalações, equipamentos e recursos 
+físicos contra ameaças e riscos:
+SEGURANÇA FÍSICA
+Outras atividades maliciosas.
+Acesso não autorizado.
+Furto.
+Vandalismo.
+Desastres naturais.
+Engenharia social.
+Controles de acesso físico
+Aula 03
+
+Segurança física das instalações e 
+equipamentos de TI.
+OBJETIVOS DA SEGURANÇA FÍSICA
+Implementação de controles físicos 
+eficazes.
+Controles de acesso físico.
+Garantir a segurança contínua do 
+ambiente físico.
+Controles de acesso físico
+Aula 03
+
+CONTROLES DE ACESSO FÍSICO
+Mecanismos implementados para regular e 
+monitorar o acesso a áreas, instalações ou 
+recursos físicos de uma organização.
+Projetados para garantir que somente 
+indivíduos autorizados possam entrar em 
+espaços restritos.
+Protege ativos de TI, informações sensíveis 
+e recursos críticos.
+Controles de acesso físico
+Aula 03
+
+Método mais antigo e amplamente 
+utilizado para controlar o acesso físico a 
+áreas restritas.
+FECHADURAS E CHAVES
+Controles de acesso físico
+Aula 03
+Usa fechaduras físicas instaladas em 
+portas, portões ou outras barreiras de 
+acesso, juntamente com chaves 
+correspondentes.
+Existem diferentes tipos de fechaduras, 
+como fechaduras de cilindro, fechaduras 
+de alavanca, fechaduras eletrônicas, 
+entre outras.
+
+São amplamente adotadas e facilmente 
+compreendidas por usuários de todas as 
+idades.
+FECHADURAS E CHAVES
+Podem ser suscetíveis a técnicas de 
+arrombamento, como pickingou duplicação 
+não autorizada de chaves.
+O gerenciamento e controle das chaves 
+podem ser desafiadores em ambientes 
+com muitos usuários e áreas de acesso 
+restrito.
+Controles de acesso físico
+Aula 03
+
+Projetados para conceder permissões de 
+entrada a pessoas autorizadas e restringir o 
+acesso a indivíduos não autorizados.
+Dispositivos utilizados para controlar o 
+acesso físico a áreas restritas de uma 
+organização.
+CARTÕES DE ACESSO
+Controles de acesso físico
+Aula 03
+Geralmente emitidos aos funcionários, 
+contratados ou visitantes.
+São apresentados a leitores eletrônicos 
+para permitir o acesso a portas, portões ou 
+áreas específicas.
+
+CARTÕES DE ACESSO
+Contêm informações codificadas, como 
+dados de identificação pessoal ou números 
+de identificação exclusivos.
+São lidos pelo leitor eletrônico.
+Tipos de cartões de acesso: cartões de 
+proximidade, cartões inteligentes ou 
+cartões de banda magnética.
+Controles de acesso físico
+Aula 03
+Podem ser programados para fornecer 
+diferentes níveis de permissões de acesso.
+
+Utiliza características físicas exclusivas 
+para autenticar a identidade e permitir o 
+acesso a determinadas áreas ou 
+recursos.
+BIOMETRIA
+Controles de acesso físico
+Aula 03
+Cada pessoa possui características 
+biométricas únicas.
+Fatores:
+Impressões Digitais.
+Reconhecimento Facial.
+
+BIOMETRIA
+Controles de acesso físico
+Aula 03
+Fatores:
+Íris.
+Reconhecimento de Voz.
+Geometria da Mão.
+O dados biométricos são comparados 
+com dados armazenados previamente 
+em um banco de dados seguro.
+Se houver uma correspondência 
+suficiente entre os padrões biométricos 
+capturados e os dados armazenados, o 
+acesso é concedido.
+
+Integram diferentes tecnologias para 
+controlar e monitorar o acesso físico a 
+áreas restritas:
+SISTEMAS DE CONTROLE DE ACESSO 
+ELETRÔNICO
+Controles de acesso físico
+Aula 03
+Leitores de cartões ou 
+crachás.
+Sistemas de identificação.
+Sensores de movimento.
+Fechaduras eletrônicas.
+Software de gerenciamento.
+
+Criar uma separação física clara entre 
+espaços restritos e públicos.
+BARREIRAS FÍSICAS
+Controles de acesso físico
+Aula 03
+Linha de defesa inicial contra acesso não 
+autorizado.
+Portões.
+Catracas.
+Torniquetes.
+Grades.
+Barreiras retráteis.
+Cercas.
+
+Monitoramento e 
+vigilância de instalações
+Segurança Física
+Aula 03
+
+MONITORAMENTO E VIGILÂNCIA DE 
+INSTALAÇÕES 
+Monitoramento e vigilância de instalações
+Aula 03
+Observar e supervisionar um local de 
+forma contínua.
+Garante a segurança e detecta qualquer 
+atividade suspeita ou intrusão.
+Permite que as organizações monitorem 
+e protejam suas instalações contra 
+possíveis ameaças.
+
+CIRCUITO FECHADO DE TELEVISÃO 
+(CFTV)
+Sistema de monitoramento por câmeras 
+que permite:
+Captura de imagens e vídeos.
+Transmissão de imagens e vídeos.
+Gravação de imagens e vídeos.
+Monitoramento e vigilância de instalações
+Aula 03
+
+CIRCUITO FECHADO DE TELEVISÃO 
+(CFTV)
+Monitoramento e vigilância de instalações
+Aula 03
+Composto por:
+Câmeras de vigilância.
+Cabos e conexões.
+DVR (Digital VideoRecorder) ou 
+NVR (Network VideoRecorder).
+Monitoramento em tempo real.
+Gravação e reprodução.
+Gerenciamento e controle.
+
+Detectam violações de segurança e alertam 
+imediatamente os responsáveis.
+SISTEMAS DE ALARME
+Residências.
+Empresas.
+Instituições governamentais.
+Outros locais que exigem 
+proteção contra intrusões.
+Monitoramento e vigilância de instalações
+Aula 03
+Podem ser instalados em:
+
+SISTEMAS DE ALARME
+Geralmente consistem nos seguintes 
+componentes:
+Sensores.
+Painel de controle.
+Alarmes sonoros e visuais.
+Monitoramento e vigilância de instalações
+Aula 03
+Comunicação.
+
+Clean Desk (mesa limpa)
+Segurança Física
+Aula 03
+
+Prática de manter a área de trabalho 
+organizada.
+CLEAN DESK (MESA LIMPA)
+Clean Desk (mesa limpa)
+Aula 03
+Livre de documentos, informações ou 
+dispositivos eletrônicos sensíveis quando 
+não estão em uso.
+Medida preventiva para evitar o acesso não 
+autorizado a informações confidenciais.
+
+CLEAN DESK (MESA LIMPA)
+Minimizar os riscos de vazamento de 
+dados.
+Mesas sem documentos sensíveis, 
+relatórios, senhas, anotações ou qualquer 
+outra informação confidencial.
+Promove uma cultura de segurança nas 
+organizações.
+Implementada por meio do treinamento 
+adequado aos funcionários.
+Clean Desk (mesa limpa)
+Aula 03
+
+Segurança física
+Você chegou ao final da Aula 03
+7

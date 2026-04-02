@@ -1,0 +1,463 @@
+
+
+4
+Módulo 04
+Controles de Acesso
+Aula 03
+Tecnologias de 
+Autenticação
+
+Introdução
+Nesta Aula serão discutidos conceitos e tecnologias que formam a base da 
+autenticação moderna, como:
+Smart-carde dispositivos de gerenciamento de chaves;
+Protocolos IEEE 802.1X e RADIUS;
+Autenticação aberta: HOTP, TOTP; 
+Verificação em duas etapas.
+Chaves de token e códigos estáticos;
+
+Tecnologias Voltadas 
+para Autenticação
+Tecnologias de Autenticação
+Aula 03
+
+Aula 03
+Tecnologias de Autenticação
+TECNOLOGIAS VOLTADAS 
+PARA AUTENTICAÇÃO
+As tecnologias de autenticação podem 
+estar baseadas em algo que você possui.
+Esta técnica é conhecida como Ownership
+Factor.
+A tendência, no entanto, são os sistemas 
+de autenticação multifatorial.
+Neste caso, o sistema de autenticação 
+utiliza mais de um fator, como por 
+exemplo, algo que o usuário sabe e algo 
+que o usuário possui.
+
+Aula 03
+São dispositivos portáteis de 
+armazenamento e processamento de 
+dados.
+AUTENTICAÇÃO COM 
+SMART-CARD
+Fonte: eeNews
+Disponível em: <https://www.eenewseurope.com/en/trends-
+in-the-smart-card-payment-industry-chip-innovations-drive-
+new-applications-and-services/> 
+Acesso em: 25 mar. 2024. 
+Tecnologias de Autenticação
+São usados em várias aplicações 
+(Bancos, controle de acesso de entrada).
+Funcionamento na autenticação:
+1. Utiliza o duplo fator de autenticação 
+(ownership+ knowledgefactor).
+2. Usuário insere o Smart-Cardno 
+leitor e fornece a senha pessoal.
+3. O microprocessador do Smart-Card
+realiza a validação interna da senha.
+4. Gera o código de autenticação único 
+para acesso ao sistema.
+
+Aula 03
+AUTENTICAÇÃO COM SMART-CARD
+Tecnologias de Autenticação
+1. Segurança aprimorada por dois 
+fatores;
+2. Portabilidadee conveniência;
+3. Diversidade de aplicações.
+1. Custo inicial significativo;
+2. Perdaouroubo;
+3. Complexidade para usuários 
+inexperientes.
+Vantagens:
+Desvantagens:
+
+Aula 03
+Exemplos práticos de aplicação:
+AUTENTICAÇÃO COM 
+SMART-CARD
+Tecnologias de Autenticação
+1. Acesso a redes corporativas;
+2. Sistemasde saúde;
+3. Pagamentos eletrônicos;
+4. Controle de acesso físico.
+
+Aula 03
+Tecnologias de Autenticação
+DISPOSITIVOS DE 
+GERENCIAMENTO DE CHAVES
+São responsáveis por gerar, armazenar 
+e distribuir chaves criptográficas.
+As chaves criptográficas são utilizadas 
+para cifrar e decifrar dados.
+Tipos de dispositivos:
+1. Hardware Security Modules (HSMs);
+2. Token USB;
+3. TrustedPlatform Module (TPM);
+4. SecureEnclaves.
+
+Aula 03
+DISPOSITIVOS DE 
+GERENCIAMENTO DE CHAVES
+Fonte: WeLiveSecurity
+Disponível em: 
+<https://www.welivesecurity.com/br/2017/04/28/certificados-
+digitais-e-infraestrutura-de-chaves-publicas/> 
+Acesso em: 25 mar. 2024. 
+Tecnologias de Autenticação
+Implementações práticas:
+1. Criação de certificados digitais;
+2. Assinatura Digital;
+3. Controle de acesso a dados 
+sensíveis.
+
+Aula 03
+Tecnologias de Autenticação
+DISPOSITIVOS DE 
+GERENCIAMENTO DE CHAVES
+Considerações de segurança:
+1. Proteção física dos dispositivos evita 
+acesso não autorizado;
+2. Atualizações e monitoramento para 
+corrigir vulnerabilidades;
+3. Backupe recuperação de chaves.
+
+Aula 03
+Tecnologias de Autenticação
+PROTOCOLO DE AUTENTICAÇÃO 
+EXTENSÍVEL (IEEE 802.1X)
+1. Amplamente utilizado em ambientes 
+corporativos e institucionais;
+2. É eficaz em redes com fio e sem fio;
+3. Permite às organizações estabelecer 
+políticas de controle de acesso;
+4. É flexível permitindo a integração com 
+diferentes métodos de autenticação.
+Quanto a sua utilização:
+Suporta a autenticação de dispositivos 
+à rede: computadores, impressoras e 
+IoT (Internet ofThings).
+É um protocolo de controle de acesso à 
+rede.
+
+Aula 03
+Componentes envolvidos:
+PROTOCOLO DE AUTENTICAÇÃO 
+EXTENSÍVEL (IEEE 802.1X)
+Fonte: Juniper Networks
+Disponível em: 
+<https://www.juniper.net/documentation/br/pt/software/jun
+os/user-access/topics/topic-map/802-1x-authentication-
+switching-devices.html>. 
+Acesso em: 25 mar. 2024. 
+Tecnologias de Autenticação
+1. Suplicante (Supplicant): Este é o 
+dispositivo que busca acesso à rede;
+2. Autenticador (Authenticator): Ponto 
+de acesso à rede (switch, AP-Wi-Fi);
+3. Servidor de Autenticação 
+(AuthenticationServer).
+
+Aula 03
+Fonte: Wikipedia
+Disponível em: <https://en.wikipedia.org/wiki/IEEE_802.1X> 
+Acesso em: 25 mar. 2024. 
+Funcionamento:
+PROTOCOLO DE AUTENTICAÇÃO 
+EXTENSÍVEL (IEEE 802.1X)
+Tecnologias de Autenticação
+1. No Autenticador:
+Habilitar o IEEE 802.1X no 
+switch.
+Definir portas de autenticação 
+como portas IEEE 802.1X.
+Especificar o servidor de 
+autenticação (geralmente um 
+servidor RADIUS).
+
+Aula 03
+Fonte: Portal do Manual do Usuário Canon
+Disponível em: <https://oip.manual.canon/USRMA-0820-zz-SS-
+ptBR/contents/SS419_security_236configuringieee8021xauthentic
+ation.html> 
+Acesso em: 25 mar. 2024. 
+PROTOCOLO DE AUTENTICAÇÃO 
+EXTENSÍVEL (IEEE 802.1X)
+Tecnologias de Autenticação
+2. No Suplicante:
+Configurar o dispositivo cliente 
+para iniciar o processo e definir 
+os parâmetros de autenticação 
+IEEE 802.1X.
+3. No Servidor de Autenticação 
+(RADIUS):
+Configurar o RADIUS para se 
+comunicar com o switche 
+definir políticas de autenticação 
+e autorização para os 
+Suplicantes.
+
+Aula 03
+É um protocolo de rede utilizado para 
+gerenciar a autenticação, autorização e 
+contabilidade (AAA).
+SERVIÇO DE USUÁRIO DE 
+DISCAGEM DE AUTENTICAÇÃO 
+REMOTA (RADIUS)
+Fonte: Forcepoint
+Disponível em: 
+<https://www.websense.com/content/support/library/web/v
+84/radius_agent/ra_radius_id.aspx> 
+Acesso em: 25 mar. 2024. 
+Tecnologias de Autenticação
+1. Funcionamento:
+O RADIUS opera em um modelo 
+cliente-servidor.
+O cliente (switch ou AP) envia 
+solicitação;
+O servidor RADIUS processa a 
+solicitação;
+Autentica os usuários e fornece as 
+informações de autorização necessárias.
+
+Aula 03
+SERVIÇO DE USUÁRIO DE 
+DISCAGEM DE AUTENTICAÇÃO 
+REMOTA (RADIUS)
+Fonte: Wikipedia
+Disponível em: 
+<https://pt.wikipedia.org/wiki/Extensible_Authentication_Pr
+otocol>
+Acesso em: 25 mar. 2024. 
+Tecnologias de Autenticação
+2. Papel do RADIUS na autenticação:
+A função principal é facilitar a 
+comunicação segura entre o 
+cliente e o servidor RADIUS.
+3. Papel do RADIUS na autorização:
+Determina os recursos e 
+serviços autorizados para o 
+usuário autenticado.
+4. Accounting:
+Suporta a contabilidade.
+
+Aula 03
+SERVIÇO DE USUÁRIO DE 
+DISCAGEM DE AUTENTICAÇÃO 
+REMOTA (RADIUS)
+Fonte: Cisco
+Disponível em: <https://www.cisco.com/c/pt_br/support/docs/security-
+vpn/remote-authentication-dial-user-service-radius/12433-32.html>
+Acesso em: 25 mar. 2024. 
+Tecnologias de Autenticação
+5. Exemplos de Cenários de Aplicação:
+Redes corporativas;
+Provedores de Serviços de 
+Internet (ISPs);
+Telecomunicações;
+Redes de campus universitários.
+
+Aula 03
+Tecnologias de Autenticação
+SISTEMA DE CONTROLE DE 
+ACESSO DO CONTROLADOR 
+DE ACESSO TERMINAL
+Funcionamento:
+Refere-se à prática de gerenciar e 
+regular o acesso a terminais ou 
+dispositivos finais em uma rede.
+Autenticação dos usuários envolvendo 
+verificação de credenciais.
+Autorização de acesso determinando 
+as permissões do usuário.
+Auditoria e registro de todas as 
+atividades realizadas.
+Controle de sessão.
+Integração com outros sistemas.
+
+Aula 03
+Casos práticos de utilização:
+Tecnologias de Autenticação
+SISTEMA DE CONTROLE DE 
+ACESSO DO CONTROLADOR 
+DE ACESSO TERMINAL
+Administração de redes.
+Gerenciamento de servidores.
+Operações de telecomunicações.
+Segurança industrial.
+Ambiente de computação em Nuvem.
+Fonte: Amazon
+Disponível em: <https://www.amazon.com.br/Controle-
+Acesso-IDFlex-Prox-Colorida/dp/B09KQW8DY8>
+Acesso em: 25 mar. 2024. 
+
+Aula 03
+Tecnologias de Autenticação
+CHAVES DE TOKEN
+Uso para autenticação:
+São códigos gerados por um dispositivo 
+de HW ou SW conhecidos como "token".
+Geração dinâmica –códigos únicos 
+de curta duração fornecidos junto 
+com as credencias de login.
+Aplicação móvel -geradas por 
+aplicativos móveis onde o 
+dispositivo é o token.
+
+Aula 03
+Tecnologias de Autenticação
+CHAVES DE TOKEN
+Considerações de segurança:
+Exemplos práticos: Google Authenticator, 
+RSA SecurID.
+Temporalidade –reduz o risco de 
+comprometimento.
+Proteção do token –dispositivos 
+comprometidos, expõem a autenticação.
+Implementação adequada –garante a 
+eficácia das chaves de token.
+Fonte: G1
+1
+1 
+Disponível em: 
+https://g1.globo.com/tecnologia/noticia/2012/06/pesquisadores-
+extraem-chaves-secretas-de-aparelhos-de-seguranca.html
+Acesso em: 25 mar. 2024. 
+
+Aula 03
+CÓDIGOS ESTÁTICOS
+São senhas ou códigos que permanecem 
+constantes, não mudam com o tempo.
+Combinados com códigos temporários 
+(2FA).
+Acesso a áreas restritas.
+Uso na autenticação:
+Tecnologias de Autenticação
+Riscos de reutilização.
+Necessidade de combinar com outros 
+métodos.
+Considerações de segurança:
+
+Aula 03
+CÓDIGOS ESTÁTICOS
+Cartões de Acesso com Código PIN -
+usados para acessar edifícios ou 
+áreas restritas.
+Códigos de Recuperação de Conta.
+Exemplos práticos:
+Tecnologias de Autenticação
+
+Aula 03
+Tecnologias de Autenticação
+AUTENTICAÇÃO ABERTA: 
+HOTP E TOTP
+HOTP (HMAC-basedOne-Time Password) 
+é um algoritmo de autenticação baseado 
+em HMAC (Hash-basedMessage
+AuthenticationCode).
+Funcionamento:
+Gera senhas únicas válidas apenas 
+durante uma transação ou sessão.
+Uma chave secreta é compartilhada 
+pelo servidor e o dispositivo do usuário.
+O código de autenticação é gerado por 
+meio de uma função hashda chave 
+secreta combinada com um contador.
+
+Aula 03
+Fonte: Rublon
+Disponível em: <https://rublon.com/blog/what-is-totp/> 
+Acesso em: 25 mar. 2024. 
+Tecnologias de Autenticação
+AUTENTICAÇÃO ABERTA: 
+HOTP E TOTP
+TOTP (Time-basedOne-Time Password) 
+é uma variação do HOTP.
+Funcionamento:
+A senha única é gerada com base no 
+tempo atual e na chave secreta 
+compartilhada.
+Exige sincronia temporal entre o 
+dispositivo do usuário e o servidor.
+Em vez de depender de um contador, ele 
+utiliza um fator de tempo.
+
+Aula 03
+Tecnologias de Autenticação
+AUTENTICAÇÃO ABERTA: 
+HOTP E TOTP
+Diferenças entre eles:
+Método de geração: Contador vs. 
+Tempo Atual.
+Sincronia temporal: TOTP exige 
+sincronia temporal.
+Validade dos códigos: HOTP os 
+códigos são válidos até serem usados 
+vs. TOTP os códigos são válidos por 
+um curto período de tempo.
+Implementação: HOTP é adequado 
+se a sincronia temporal é difícil vs. 
+TOTP quando a sincronia temporal 
+pode ser suportada.
+Fonte: Sinch
+Disponível em: <https://www.sinch.com/blog/one-time-
+password/> 
+Acesso em: 25 mar. 2024. 
+
+Aula 03
+Tecnologias de Autenticação
+AUTENTICAÇÃO ABERTA: 
+HOTP E TOTP
+Aplicações práticas:
+Autenticação em Dois Fatores (2FA).
+Acesso a Aplicações Corporativas.
+Proteção de Contas Online.
+Controle de Acesso Físico.
+Ambientes de IoT (Internet ofThings).
+
+Aula 03
+Tecnologias de Autenticação
+VERIFICAÇÃO EM DUAS ETAPAS
+Requer duas formas distintas de 
+autenticação (senha + token físico, por 
+exemplo).
+Valor para a segurança:
+Mitigação de Riscos de Senhas 
+Comprometidas..
+Fortalecimento da Segurança Online.
+Proteção contra Ataques de Engenharia 
+Social.
+Conformidade com Padrões de 
+Segurança.
+
+Aula 03
+Tecnologias de Autenticação
+VERIFICAÇÃO EM DUAS ETAPAS
+Exemplos de implementação:
+Códigos de Verificação via Mensagem 
+de Texto (SMS).
+Aplicativos de Autenticação.
+Tokens de Hardware.
+Biometria como Segunda Etapa.
+Fonte: NetIQ
+Disponível em: <https://www.netiq.com/documentation/cloudaccess-
+2-2/install_config/data/config-otp.html> 
+Acesso em: 25 mar. 2024. 
+
+Aula 03
+Tecnologias de Autenticação
+VERIFICAÇÃO EM DUAS ETAPAS
+Boas práticas:
+Diversificação de Fatores.
+Atualizações e Revisões Periódicas.
+Backup de Códigos de Recuperação.
+Integração com Ferramentas de 
+Gerenciamento de Identidade.
+Educação do Usuário.
+
+Tecnologias de 
+Autenticação
+Você chegou ao final da Aula 03
+4

@@ -1,0 +1,417 @@
+
+
+Módulo 11
+Rede Segura e Equipamentos 
+de Segurança
+Aula 04
+Detecção e prevenção de 
+intrusão
+11
+
+Introdução
+Nesta aula, serão tratadas as seguintes técnicas de produção de redes:
+IntrusionDetectionSystems (IDS):
+IntrusionPreventionSystems (IPS);
+SPAN (Switched Port Analyzer) / Mirror Port;
+Passive and Active Test Access Point (TAP);
+User and Entity Behavior Analytics (UEBA);
+Next-Generation Firewall.
+
+Sistemas de Detecção e 
+Prevenção de Intrusão
+Sistemas de detecção e prevenção de intrusão
+Aula 04
+
+SISTEMAS DE DETECÇÃO DE INTRUSÃO 
+(IDS)
+Tecnologia utilizada para monitorar e 
+analisar tráfego de rede.
+Visa detectar comportamentos 
+anômalos e potenciais ameaças.
+Etapas de funcionamento:
+Detecção e prevenção de intrusão
+Aula 04
+Coleta de dados;
+Análise do tráfego e comportamento;
+Comparação com assinaturas de 
+ataques conhecidos;
+Geração de alertas;
+Resposta das ações.
+Fonte: ArisFsidDigi.
+Disponível em: 
+<https://arifsiddiqi.com/publication/journal-article/>.
+Acesso em: 18 mar. 2024.
+
+Network-Based Intrusion 
+Detection Systems (NIDS)
+Operam em conjunto com os 
+Host-BasedIntrusion
+DetectionSystems (HIDS).
+São capazes de identificar ameaças 
+na rede.
+Características:
+Detecção e prevenção de intrusão
+Aula 04
+Análise de tráfego via inspeção de 
+pacotes;
+Alertas e notificações para 
+administradores e console de 
+monitoramento.
+Fonte: RepositorioBib.
+Disponível em: 
+<https://www.repositoriobib.ufc.br/000033/000033
+e8.pdf>.
+Acesso em: 18 mar. 2024.
+
+HOST-BASED INTRUSION DETECTION 
+SYSTEMS (HIDS)
+Operam em conjunto com os NIDS.
+São capazes de detectar atividades 
+nos hosts individuais.
+Características:
+Detecção e prevenção de intrusão
+Aula 04
+Implementação em Hosts;
+Monitoramento de eventos locais;
+Diferentes níveis de detecção;
+Resposta no próprio host.
+Fonte: RepositorioBib.
+Disponível em: 
+<https://www.repositoriobib.ufc.br/000033/000033e8.pdf>.
+Acesso em: 18 mar. 2024.
+
+SISTEMAS DE PREVENÇÃO DE 
+INTRUSÃO (IPS)
+Projetado para atuar de forma 
+proativa na segurança.
+Atua complementando o IDS.
+São capazes de detectar, 
+bloquear, tomar ações 
+automaticamente prevenindo 
+intrusões.
+Detecção e prevenção de intrusão
+Aula 04
+Fonte: Huawei.
+Disponível em: <https://forum.huawei.com/enterprise/en/what-are-the-
+differences-between-fw-ids-ips-and-waf/thread/676568470059368448-
+667213852955258880>.
+Acesso em: 18 mar. 2024.
+
+SISTEMAS DE PREVENÇÃO DE 
+INTRUSÃO (IPS)
+Características do funcionamento:
+Detecção e prevenção de intrusão
+Aula 04
+Fonte: Info SecWhite Ups.
+Disponvelem: <https://infosecwriteups.com/day-9-cn-
+network-security-devices-100daysofhacking-
+b856b5ab092d>.
+Acesso em: 18 mar. 2024.
+Monitoramento contínuo;
+Análise de tráfego;
+Comparação com banco de dados;
+Tomada de decisões;
+Prevenção de intrusões;
+Resposta imediata;
+Registro e relatórios;
+Integração com outras ferramentas.
+
+NETWORK-BASED INTRUSION 
+PREVENTION SYSTEMS (NIPS) 
+Opera no tráfego de toda a rede.
+Características do funcionamento:
+Detecção e prevenção de intrusão
+Aula 04
+Posicionamento em pontos 
+estratégicos da rede;
+Análise do tráfego;
+Detecção e prevenção de intrusões;
+Resposta em tempo real.
+
+HOST-BASED INTRUSION PREVENTION 
+SYSTEMS (HIPS)
+Atua protegendo cada host 
+individualmente.
+Características do funcionamento:
+Detecção e prevenção de intrusão
+Aula 04
+Implantado em Hosts;
+Monitoramento de atividades locais;
+Políticas de Segurança;
+Bloqueio de atividades suspeitas;
+Flexibilidade.
+
+Tipos de Detecção 
+ou Prevenção
+Sistemas de detecção e prevenção de intrusão
+Aula 04
+
+BASEADA EM ASSINATURAS 
+(SIGNATURE-BASED DETECTION)
+Técnica utilizada em IDS/IPS 
+visando identificar ameaças 
+conhecidas.
+Etapas de implementação:
+Tipos de Detecção ou Prevenção
+Aula 04
+Criação de Assinaturas;
+Banco de Dados de Assinatura;
+Monitoramento do Tráfego;
+Comparação e Identificação;
+Geração de Alertas ou Ações.
+Fonte: AkonDrahm.
+Disponível em: 
+<https://akondrahman.github.io/files/papers/bigdata2021.pdf>.
+Acesso em: 18 mar. 2024.
+
+BASEADA EM ASSINATURAS 
+(SIGNATURE-BASED DETECTION)
+Vantagens da Signature-based
+Detection:
+Eficiência
+Precisão.
+Tipos de Detecção ou Prevenção
+Aula 04
+Desafios da Signature-based
+Detection:
+Dependência de Atualizações;
+Vulnerabilidade a ameaças 
+desconhecidas.
+
+BASEADA EM ANOMALIAS 
+(ANOMALY-BASED DETECTION)
+Técnica utilizada em sistemas IDS/IPS 
+visando detectar atividades anômalas.
+Tipos de Detecção ou Prevenção
+Aula 04
+Coleta de Dados de Comportamento;
+Análise de Padrões;
+Criação de Perfis;
+Detecção de Anomalias;
+Geração de Alertas.
+Opera identificando desvios no 
+comportamento padrão da rede.
+Características do funcionamento:
+
+BASEADA EM ANOMALIAS (Tipos de 
+Detecção ou Prevenção)
+Vantagens da Anomaly-Based
+Detection:
+Tipos de Detecção ou Prevenção
+Aula 04
+Desafios da Anomaly-Based
+Detection:
+Detecção de ameaças desconhecidas;
+Baixa dependência de atualizações.
+Geração de falsos-positivos;
+Complexidade.
+
+Ferramentas de detecção 
+ou prevenção de intrusões
+Sistemas de detecção e prevenção de intrusão
+Aula 04
+
+SWITCHED PORT ANALYZER (SPAN) 
+OU MIRROR PORT
+Funcionalidade existente em switches e 
+roteadores.
+Ferramentas de detecção ou prevenção de intrusões
+Aula 04
+Configuração do SPAN;
+Cópia do Tráfego;
+Fonte: Vienthongxanh.
+Disponível em: <https://vienthongxanh.vn/cong-span-la-gi/>.
+Acesso em: 18 mar. 2024.
+Visa o monitoramento do tráfego em tempo 
+real sem interromper o fluxo.
+Etapas do funcionamento:
+Inspeção de Tráfego;
+Análise de Pacotes.
+
+SWITCHED PORT ANALYZER (SPAN) 
+OU MIRROR PORT
+Benefícios do SPAN:
+Ferramentas de detecção ou prevenção de intrusões
+Aula 04
+Monitoramento em tempo real;
+Busca e verificação de atividades 
+maliciosas ou comportamentos 
+anômalos sem interromper as 
+operações da rede.
+Fonte: Medium.
+Disponível em: <https://medium.com/@AriaZhu/network-switch-port-
+mirroring-vs-network-tap-c5c709f32035>.
+Acesso em: 18 mar. 2024.
+
+NETWORK TEST ACCESS POINT (TAP)
+É um dispositivo capaz de monitorar 
+o tráfego sem intervir no fluxo de 
+dados.
+Ferramentas de detecção ou prevenção de intrusões
+Aula 04
+Proporciona uma visão ampla e 
+precisa do tráfego de rede em tempo 
+real. 
+Há dois tipos de TAP:
+Passive TAP (TAP Passivo);
+Active TAP (TAP Ativo).
+Fonte: Zenya.
+Disponível em: <https://www.zenya.com.tw/index.php?lang=en>.
+Acesso em: 18 mar. 2024.
+
+TAP PASSIVO
+Opera de forma passiva e não 
+requer fonte de energia própria.
+Ferramentas de detecção ou prevenção de intrusões
+Aula 04
+Fica entre dois dispositivos de rede 
+como switches, roteadores ou 
+servidores.
+Possui portas de entrada e saída. 
+Funcionamento:
+Divisão do sinal óptico ou elétrico;
+Conectividade não-invasiva.
+Fonte: Oficina da Net.
+Disponível em: 
+<https://www.oficinadanet.com.br/redesdecomputadores/25196-seis-
+tipos-de-conexoes-de-rede-explicados>.
+Acesso em: 18 mar. 2024.
+
+TAP ATIVO
+Design e funcionamento:
+Ferramentas de detecção ou prevenção de intrusões
+Aula 04
+Reconfiguração de pacotes:
+Filtragem de tráfego como recurso 
+adicional que pode ser incluído.
+É capaz de reconfigurar pacotes e 
+reconstituir o sinal elétrico.
+Requer fonte de energia própria para 
+funcionar;
+Possui portas de entrada e saída;
+Cópia o tráfego e regenera os 
+pacotes antes de encaminhá-los.
+Fonte: Messkom.
+Disponível em: <https://www.messkom.de/loesungen/>.
+Acesso em: 18 mar. 2024.
+
+USER AND ENTITY BEHAVIOR 
+ANALYTICS (UEBA)
+Ferramentas de detecção ou prevenção de intrusões
+Aula 04
+Abordagem que utiliza algoritmos de 
+aprendizado de máquina e técnicas 
+de análise comportamental para 
+detectar atividades suspeitas.
+Visa identificar ameaças internas 
+e externas relacionadas a 
+usuários e entidades.
+
+USER AND ENTITY BEHAVIOR 
+ANALYTICS (UEBA)
+Funcionamento:
+Ferramentas de detecção ou prevenção de intrusões
+Aula 04
+Contínua
+Coleta de dados;
+Criação de perfis
+de comportamento;
+Aprendizado de máquina;
+Detecção de anomalias;
+Avaliação de risco;
+Geração de alertas.
+
+NEXT-GENERATION FIREWALL 
+(NGFW)
+Ferramentas de detecção ou prevenção de intrusões
+Aula 04
+Representa uma evolução dos 
+tradicionais firewalls de rede.
+Características do 
+funcionamento:
+Filtragem de pacotes tradicional;
+Inspeção de pacotes em camadas de 
+aplicação;
+Prevenção de Intrusões (IPS);
+Filtragem de conteúdo;
+Controle de aplicações;
+VPN e Segurança de acesso remoto;
+Inteligência de ameaças e Machine 
+Learning.
+
+FILTRO DE CONTEÚDO (CONTENT 
+FILTER)
+É uma ferramenta projetada para 
+monitorar determinados acessos na 
+internet.
+Características do funcionamento:
+Ferramentas de detecção ou prevenção de intrusões
+Aula 04
+Identificação de categorias de 
+conteúdo;
+Inspeção do tráfego;
+Análise de URLs e conteúdo;
+Correspondência com listas 
+de categorias;
+Bloqueio ou liberação de conteúdo;
+Notificações e relatórios;
+Personalização de políticas.
+
+UNIFIED THREAT MANAGEMENT 
+(UTM)
+Trata-se de uma solução integrada 
+que combina diversas tecnologias.
+Ferramentas de detecção ou prevenção de intrusões
+Aula 04
+Características de um único equipamento:
+Firewall;
+Prevenção de Intrusões (IPS);
+Antivírus e Antimalware;
+Filtro de conteúdo;
+Bloqueio ou liberação de conteúdo;
+Virtual Private Network (VPN);
+Controle de aplicações;
+Análise e relatórios;
+Gerenciamento centralizado.
+Fonte: WatchGuard.
+Disponível em: <https://www.watchguard.com/fr/wgrd-blog/now-
+available-firebox-m370-m470-m570-and-m670>.
+Acesso em: 18 mar. 2024.
+
+SECURE WEB GATEWAY (SWG) 
+Trata-se de uma solução para 
+proteger os usuários e a rede de 
+ameaças da web.
+Características de funcionamento:
+Ferramentas de detecção ou prevenção de intrusões
+Aula 04
+Roteamento de tráfego;
+Verificação e autenticação de 
+usuários;
+Filtro de conteúdo.
+Fonte: Linkedin.
+Disponível em: <https://www.linkedin.com/posts/tina-
+caldarone1234_generative-ai-content-control-in-umbrella-
+activity-7169487713820168192-gBOU/>.
+Acesso em: 18 mar. 2024.
+
+SECURE WEB GATEWAY (SWG) 
+Características de funcionamento: 
+(cont.)
+Ferramentas de detecção ou prevenção de intrusões
+Aula 04
+Prevenção de malware;
+Proteção contra ameaças avançadas;
+Inspeção SSL/TLS;
+Controle de aplicações;
+Relatórios e análises;
+Segurança para dispositivos remotos.
+Fonte: Comprompt.
+Disponível em: <https://www.comprompt.co.in/security-
+solution/firewall/seqrite-secure-web-gateway/>.
+Acesso em: 18 mar. 2024.
+
+Detecção e prevenção de 
+intrusão
+Você chegou ao final da Aula 04
+11

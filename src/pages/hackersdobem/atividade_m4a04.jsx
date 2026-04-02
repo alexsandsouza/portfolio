@@ -726,7 +726,7 @@ export default function AtividadeHackersDoBemM4A04() {
         createdAt: serverTimestamp(),
         module: "M04A04"
       };
-      await addDoc(collection(db, "hackersdobem_ranking"), entry);
+      await addDoc(collection(db, "fametro_ranking"), entry);
     } catch (e) {
       console.warn("Não foi possível salvar no ranking:", e);
     }

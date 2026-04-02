@@ -56,6 +56,12 @@ const AtividadeM5M6Desafio = lazy(() => import('./pages/hackersdobem/atividade_m
 const RankingM5M6Desafio = lazy(() => import('./pages/hackersdobem/ranking_m5m6_desafio'));
 const AtividadeHDBM6M7 = lazy(() => import('./pages/hackersdobem/atividade_m6_m7'));
 const RankingHDBM6M7 = lazy(() => import('./pages/hackersdobem/ranking_m6_m7'));
+const AtividadeHDBM07 = lazy(() => import('./pages/hackersdobem/atividade_m07'));
+const RankingHDBM07 = lazy(() => import('./pages/hackersdobem/ranking_m07'));
+const AtividadeHDBM08 = lazy(() => import('./pages/hackersdobem/atividade_m08'));
+const RankingHDBM08 = lazy(() => import('./pages/hackersdobem/ranking_m08'));
+const AtividadeHDBM09 = lazy(() => import('./pages/hackersdobem/atividade_m09'));
+const RankingHDBM09 = lazy(() => import('./pages/hackersdobem/ranking_m09'));
 const AtividadeHDBM10 = lazy(() => import('./pages/hackersdobem/atividade_m10'));
 const RankingHDBM10 = lazy(() => import('./pages/hackersdobem/ranking_m10'));
 const AtividadeHDBM11 = lazy(() => import('./pages/hackersdobem/atividade_m11'));
@@ -171,6 +177,12 @@ function App() {
           <Route path="/hackersdobem/ranking-m5m6" element={<RankingM5M6Desafio />} />
           <Route path="/hackersdobem/atividade-m6-m7" element={<AtividadeHDBM6M7 />} />
           <Route path="/hackersdobem/ranking-m6-m7" element={<RankingHDBM6M7 />} />
+          <Route path="/hackersdobem/atividade-m07" element={<AtividadeHDBM07 />} />
+          <Route path="/hackersdobem/ranking-m07" element={<RankingHDBM07 />} />
+          <Route path="/hackersdobem/atividade-m08" element={<AtividadeHDBM08 />} />
+          <Route path="/hackersdobem/ranking-m08" element={<RankingHDBM08 />} />
+          <Route path="/hackersdobem/atividade-m09" element={<AtividadeHDBM09 />} />
+          <Route path="/hackersdobem/ranking-m09" element={<RankingHDBM09 />} />
           <Route path="/hackersdobem/atividade-m10" element={<AtividadeHDBM10 />} />
           <Route path="/hackersdobem/ranking-m10" element={<RankingHDBM10 />} />
           <Route path="/hackersdobem/atividade-m11" element={<AtividadeHDBM11 />} />
