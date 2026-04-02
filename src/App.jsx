@@ -50,20 +50,8 @@ const AtividadeHDBM03 = lazy(() => import('./pages/hackersdobem/atividade_m03'))
 const RankingHDBM03 = lazy(() => import('./pages/hackersdobem/ranking_m03'));
 const AtividadeHDBM04 = lazy(() => import('./pages/hackersdobem/atividade_m04'));
 const RankingHDBM04 = lazy(() => import('./pages/hackersdobem/ranking_m04'));
-const AtividadeHackersDoBemM4A03 = lazy(() => import('./pages/hackersdobem/atividade_m4a03'));
-const RankingHackersDoBemM4A03 = lazy(() => import('./pages/hackersdobem/ranking_m4a03'));
-const AtividadeHackersDoBemM4A04 = lazy(() => import('./pages/hackersdobem/atividade_m4a04'));
-const RankingHackersDoBemM4A04 = lazy(() => import('./pages/hackersdobem/ranking_m4a04'));
-const AtividadeExtraM05 = lazy(() => import('./pages/hackersdobem/atividade_extra_m05'));
-const RankingExtraM05 = lazy(() => import('./pages/hackersdobem/ranking_extra_m05'));
-const AtividadeM5A02 = lazy(() => import('./pages/hackersdobem/atividade_m5a02'));
-const RankingM5A02 = lazy(() => import('./pages/hackersdobem/ranking_m5a02'));
-const AtividadeM5A03 = lazy(() => import('./pages/hackersdobem/atividade_m5a03'));
-const RankingM5A03 = lazy(() => import('./pages/hackersdobem/ranking_m5a03'));
-const AtividadeM5M6Desafio = lazy(() => import('./pages/hackersdobem/atividade_m5m6_desafio'));
-const RankingM5M6Desafio = lazy(() => import('./pages/hackersdobem/ranking_m5m6_desafio'));
-const AtividadeHDBM6M7 = lazy(() => import('./pages/hackersdobem/atividade_m6_m7'));
-const RankingHDBM6M7 = lazy(() => import('./pages/hackersdobem/ranking_m6_m7'));
+const AtividadeHDBM05 = lazy(() => import('./pages/hackersdobem/atividade_m05'));
+const RankingHDBM05 = lazy(() => import('./pages/hackersdobem/ranking_m05'));
 const AtividadeHDBM06 = lazy(() => import('./pages/hackersdobem/atividade_m06'));
 const RankingHDBM06 = lazy(() => import('./pages/hackersdobem/ranking_m06'));
 const AtividadeHDBM07 = lazy(() => import('./pages/hackersdobem/atividade_m07'));
@@ -181,20 +169,8 @@ function App() {
           <Route path="/hackersdobem/ranking-m03" element={<RankingHDBM03 />} />
           <Route path="/hackersdobem/atividade-m04" element={<AtividadeHDBM04 />} />
           <Route path="/hackersdobem/ranking-m04" element={<RankingHDBM04 />} />
-          <Route path="/hackersdobem/atividade-m4a03" element={<AtividadeHackersDoBemM4A03 />} />
-          <Route path="/hackersdobem/ranking-m4a03" element={<RankingHackersDoBemM4A03 />} />
-          <Route path="/hackersdobem/atividade-m4a04" element={<AtividadeHackersDoBemM4A04 />} />
-          <Route path="/hackersdobem/ranking-m4a04" element={<RankingHackersDoBemM4A04 />} />
-          <Route path="/hackersdobem/atividade-extra" element={<AtividadeExtraM05 />} />
-          <Route path="/hackersdobem/ranking-extra-m05" element={<RankingExtraM05 />} />
-          <Route path="/hackersdobem/atividade-m5a02" element={<AtividadeM5A02 />} />
-          <Route path="/hackersdobem/ranking-m5a02" element={<RankingM5A02 />} />
-          <Route path="/hackersdobem/atividade-m5a03" element={<AtividadeM5A03 />} />
-          <Route path="/hackersdobem/ranking-m5a03" element={<RankingM5A03 />} />
-          <Route path="/hackersdobem/desafio-m5-m6" element={<AtividadeM5M6Desafio />} />
-          <Route path="/hackersdobem/ranking-m5m6" element={<RankingM5M6Desafio />} />
-          <Route path="/hackersdobem/atividade-m6-m7" element={<AtividadeHDBM6M7 />} />
-          <Route path="/hackersdobem/ranking-m6-m7" element={<RankingHDBM6M7 />} />
+          <Route path="/hackersdobem/atividade-m05" element={<AtividadeHDBM05 />} />
+          <Route path="/hackersdobem/ranking-m05" element={<RankingHDBM05 />} />
           <Route path="/hackersdobem/atividade-m06" element={<AtividadeHDBM06 />} />
           <Route path="/hackersdobem/ranking-m06" element={<RankingHDBM06 />} />
           <Route path="/hackersdobem/atividade-m07" element={<AtividadeHDBM07 />} />

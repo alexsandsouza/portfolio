@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Shield, Trophy, Lock, Unlock, Search, Rocket, ChevronRight, Terminal, CheckCircle, Globe } from 'lucide-react';
+import { Shield, Trophy, Lock, Unlock, Search, Rocket, ChevronRight, Terminal, CheckCircle, Globe, Key, Database, Wifi, AlertTriangle } from 'lucide-react';
 import { getProgress } from './HDBProgress';
 import './HackersDoBem.css';
 
@@ -100,23 +100,23 @@ export default function HackersDoBemHub() {
       id: 'HDB_M01',
       title: 'Princípios de Segurança',
       module: 'Módulo 01 · Aulas 01 a 04',
-      description: 'Fundamentos de Segurança da Informação, Tríade CID e NIST Framework.',
+      description: 'Fundamentos de Segurança da Informação, Tríade CID, Matriz de Riscos e NIST Framework.',
       path: '/hackersdobem/atividade-m01',
       rankingPath: '/hackersdobem/ranking-m01',
       icon: <Shield size={24} color="#00ff88" />,
       buttonText: 'Iniciar Recrutamento',
       status: 'active',
       accentColor: '#00ff88',
-      badges: ['20 min', '150 pts']
+      badges: ['25 min', '150 pts']
     },
     {
       id: 'HDB_M02',
       title: 'Ameaças e Malwares',
       module: 'Módulo 02 · Aulas 01 a 04',
-      description: 'Vírus, Worms, Trojans, Ransomware e análise de vetores de infecção.',
+      description: 'Vírus, Worms, Trojans, Ransomware, Spyware e análise de vetores de infecção.',
       path: '/hackersdobem/atividade-m02',
       rankingPath: '/hackersdobem/ranking-m02',
-      icon: <Lock size={24} color="#f43f5e" />,
+      icon: <AlertTriangle size={24} color="#f43f5e" />,
       buttonText: 'Scannear Ameaças',
       status: 'active',
       accentColor: '#f43f5e',
@@ -126,7 +126,7 @@ export default function HackersDoBemHub() {
       id: 'HDB_M03',
       title: 'Identificação de Ameaças',
       module: 'Módulo 03 · Aulas 01 a 04',
-      description: 'Scanners de vulnerabilidade, CVE, varreduras intrusivas e análise de logs.',
+      description: 'Scanners de vulnerabilidade, CVE, CVSS, varreduras intrusivas e análise de logs.',
       path: '/hackersdobem/atividade-m03',
       rankingPath: '/hackersdobem/ranking-m03',
       icon: <Search size={24} color="#3b82f6" />,
@@ -139,13 +139,26 @@ export default function HackersDoBemHub() {
       id: 'HDB_M04',
       title: 'Controles de Acesso',
       module: 'Módulo 04 · Aulas 01 a 04',
-      description: 'IAM, Autenticação Multifator (MFA), SSO e protocolos de segurança.',
+      description: 'IAM, Autenticação Multifator (MFA), SSO, Biometria e protocolos de segurança.',
       path: '/hackersdobem/atividade-m04',
       rankingPath: '/hackersdobem/ranking-m04',
       icon: <Unlock size={24} color="#eab308" />,
       buttonText: 'Validar Acessos',
       status: 'active',
       accentColor: '#eab308',
+      badges: ['30 min', '250 pts']
+    },
+    {
+      id: 'HDB_M05',
+      title: 'Gerenciamento de Identidades',
+      module: 'Módulo 05 · Aulas 01 a 04',
+      description: 'IAM, Onboarding/Offboarding, RBAC, MAC, DAC, OAuth, SAML e Políticas de Pessoal.',
+      path: '/hackersdobem/atividade-m05',
+      rankingPath: '/hackersdobem/ranking-m05',
+      icon: <Key size={24} color="#a855f7" />,
+      buttonText: 'Gerenciar Identidades',
+      status: 'active',
+      accentColor: '#a855f7',
       badges: ['30 min', '250 pts']
     },
     {
@@ -162,147 +175,43 @@ export default function HackersDoBemHub() {
       badges: ['30 min', '300 pts']
     },
     {
-      id: 'M05A01',
-      title: 'Proteja a Rede da SeguraTech',
-      module: 'Módulo 05 · Aula 01',
-      description: 'Identifique contas e classifique as fases de onboarding e offboarding em um ambiente simulado.',
-      path: '/hackersdobem/atividade',
-      rankingPath: '/hackersdobem/ranking',
-      icon: <Shield size={24} color="#4ade80" />, 
-      buttonText: 'Iniciar Missão',
-      status: 'active',
-      accentColor: '#4ade80',
-      badges: ['20 min', '100 pts']
-    },
-    {
-      id: 'M04A03',
-      title: 'Controles e Autenticação',
-      module: 'Módulo 04 · Aula 03',
-      description: 'Identifique as tecnologias ideais de autenticação e seus fatores.',
-      path: '/hackersdobem/atividade-m4a03',
-      rankingPath: '/hackersdobem/ranking-m4a03',
-      icon: <Shield size={24} color="#3b82f6" />,
-      buttonText: 'Iniciar Missão',
-      status: 'active',
-      accentColor: '#3b82f6',
-      badges: ['15 min', '100 pts']
-    },
-    {
-      id: 'M04A04',
-      title: 'Autenticação por Biometria',
-      module: 'Módulo 04 · Aula 04',
-      description: 'Explore reconhecimento facial, impressão digital, biometria comportamental e métricas como FRR, FAR e CER.',
-      path: '/hackersdobem/atividade-m4a04',
-      rankingPath: '/hackersdobem/ranking-m4a04',
-      icon: <Shield size={24} color="#06b6d4" />,
-      buttonText: 'Iniciar Missão',
-      status: 'active',
-      accentColor: '#06b6d4',
-      badges: ['20 min', '100 pts']
-    },
-    {
-      id: 'EXTRA_M05',
-      title: 'Atividade Extra - Módulo 05',
-      module: 'Módulo 05 · Atividade Extra',
-      description: 'Desafio extra de reforço sobre Tipos de Contas, Identidades e Gestão de Privilégios.',
-      path: '/hackersdobem/atividade-extra',
-      rankingPath: '/hackersdobem/ranking-extra-m05',
-      icon: <Terminal size={24} color="#ff007b" />,
-      buttonText: 'Iniciar Desafio',
-      status: 'active',
-      accentColor: '#ff007b',
-      badges: ['10 min', '100 pts']
-    },
-    {
-      id: 'M05A02',
-      title: 'Políticas de Contas',
-      module: 'Módulo 05 · Aula 02',
-      description: 'Atributos, Geofencing, Permissões e Auditoria de Contas.',
-      path: '/hackersdobem/atividade-m5a02',
-      rankingPath: '/hackersdobem/ranking-m5a02',
-      icon: <Shield size={24} color="#eab308" />,
-      buttonText: 'Iniciar Missão',
-      status: 'active',
-      accentColor: '#eab308',
-      badges: ['15 min', '100 pts']
-    },
-    {
-      id: 'M05A03',
-      title: 'Soluções de Autorização',
-      module: 'Módulo 05 · Aula 03',
-      description: 'Modelos DAC, RBAC, MAC, protocolos SAML, LDAP e OAUTH.',
-      path: '/hackersdobem/atividade-m5a03',
-      rankingPath: '/hackersdobem/ranking-m5a03',
-      icon: <Rocket size={24} color="#a855f7" />,
-      buttonText: 'Iniciar Missão',
-      status: 'active',
-      accentColor: '#a855f7',
-      badges: ['20 min', '100 pts']
-    },
-    {
-      id: 'HDB_M5M6',
-      title: 'Desafio Supremo M5 & M6',
-      module: 'Módulo 05 e 06 · Aulas 04, 01 e 02',
-      description: 'Enfrente o Jogo da Forca, Relacione as Colunas e Palavras Cruzadas sobre Proteção Web e Políticas de Pessoal.',
-      path: '/hackersdobem/desafio-m5-m6',
-      rankingPath: '/hackersdobem/ranking-m5m6',
-      icon: <Terminal size={24} color="#06b6d4" />,
-      buttonText: 'Iniciar Desafio',
-      status: 'active',
-      accentColor: '#06b6d4',
-      badges: ['30 min', '500 pts']
-    },
-    {
-      id: 'HDB_M6M7',
-      title: 'Proteção Web & Backup',
-      module: 'Módulo 06 e 07 · Aulas 03 e 01/02',
-      description: 'Enfrente 20 desafios sobre Proteção Web, Redundância, Backup e Segurança Física em formatos variados.',
-      path: '/hackersdobem/atividade-m6-m7',
-      rankingPath: '/hackersdobem/ranking-m6-m7',
-      icon: <Lock size={24} color="#f43f5e" />,
-      buttonText: 'Iniciar Missão',
-      status: 'active',
-      accentColor: '#f43f5e',
-      badges: ['25 min', '200 pts']
-    },
-    {
       id: 'HDB_M07',
       title: 'Redundância & Backup',
-      module: 'Módulo 07 · Aulas 01 a 03',
-      description: 'Arquiteturas de RAID, tipos de Backup, failover e Segurança Física em ambientes críticos.',
+      module: 'Módulo 07 · Aulas 01 a 04',
+      description: 'Arquiteturas de RAID, tipos de Backup, failover, RTO/RPO e Segurança Física.',
       path: '/hackersdobem/atividade-m07',
       rankingPath: '/hackersdobem/ranking-m07',
-      icon: <Shield size={24} color="#00ff88" />,
+      icon: <Database size={24} color="#00ff88" />,
       buttonText: 'Garantir Continuidade',
       status: 'active',
       accentColor: '#00ff88',
-      badges: ['30 min', '100 pts']
+      badges: ['30 min', '250 pts']
     },
     {
       id: 'HDB_M08',
       title: 'Criptografia',
-      module: 'Módulo 08 · Aulas 01 a 02',
-      description: 'Confusão e difusão, cifras de bloco e fluxo, esteganografia, AES, DES, e algoritmos simétricos.',
+      module: 'Módulo 08 · Aulas 01 a 04',
+      description: 'Confusão e difusão, cifras de bloco e fluxo, esteganografia, AES, DES e PKI.',
       path: '/hackersdobem/atividade-m08',
       rankingPath: '/hackersdobem/ranking-m08',
       icon: <Lock size={24} color="#facc15" />,
       buttonText: 'Analisar Código',
       status: 'active',
       accentColor: '#facc15',
-      badges: ['30 min', '100 pts']
+      badges: ['30 min', '300 pts']
     },
     {
       id: 'HDB_M09',
       title: 'Chaves Públicas e Blockchain',
-      module: 'Módulo 09 · Aulas 01 a 02',
-      description: 'Infraestrutura de Chaves Públicas (PKI), Autoridades Certificadoras e Certificados SSL/TLS.',
+      module: 'Módulo 09 · Aulas 01 a 04',
+      description: 'Infraestrutura de Chaves Públicas (PKI), Autoridades Certificadoras, SSL/TLS e Blockchain.',
       path: '/hackersdobem/atividade-m09',
       rankingPath: '/hackersdobem/ranking-m09',
       icon: <CheckCircle size={24} color="#3b82f6" />,
       buttonText: 'Validar Identidade',
       status: 'active',
       accentColor: '#3b82f6',
-      badges: ['30 min', '100 pts']
+      badges: ['30 min', '300 pts']
     },
     {
       id: 'HDB_M10',
@@ -315,7 +224,7 @@ export default function HackersDoBemHub() {
       buttonText: 'Iniciar Defesa',
       status: 'active',
       accentColor: '#00FF88',
-      badges: ['30 min', '100 pts']
+      badges: ['30 min', '300 pts']
     },
     {
       id: 'HDB_M11',
@@ -324,11 +233,11 @@ export default function HackersDoBemHub() {
       description: 'Zonas Desmilitarizadas, IDS/IPS, Network TAP, UEBA e Segurança em Encaminhamento.',
       path: '/hackersdobem/atividade-m11',
       rankingPath: '/hackersdobem/ranking-m11',
-      icon: <Terminal size={24} color="#00e5ff" />,
+      icon: <Wifi size={24} color="#00e5ff" />,
       buttonText: 'Inspecionar Tráfego',
       status: 'active',
       accentColor: '#00e5ff',
-      badges: ['30 min', '100 pts']
+      badges: ['30 min', '300 pts']
     },
     {
       id: 'HDB_M12',
@@ -341,7 +250,7 @@ export default function HackersDoBemHub() {
       buttonText: 'Mitigar Incidentes',
       status: 'active',
       accentColor: '#f59e0b',
-      badges: ['30 min', '100 pts']
+      badges: ['30 min', '300 pts']
     }
   ];
 
