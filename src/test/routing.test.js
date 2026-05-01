@@ -29,6 +29,7 @@ describe('Roteamento & Navegação', () => {
       { path: '/cv', name: 'Currículo' },
       { path: '/hackersdobem', name: 'Hackers do Bem Hub' },
       { path: '/fametro', name: 'Fametro Hub' },
+      { path: '/privacidade', name: 'Política de Privacidade' },
     ];
 
     requiredRoutes.forEach(route => {

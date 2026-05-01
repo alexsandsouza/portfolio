@@ -16,6 +16,7 @@ import WhatsAppButton from './components/WhatsAppButton';
 import { ScrollToTop } from './components/ScrollToTop';
 import Terminal from './components/Terminal';
 import SecretChallenge from './components/SecretChallenge';
+import CookieConsent from './components/CookieConsent';
 
 // Lazy-load sections abaixo da dobra (code splitting)
 const Areas = lazy(() => import('./sections/Areas'));
@@ -75,6 +76,7 @@ const MatrizesLab = lazy(() => import('./pages/fametro/disciplinas/AED/MatrizesL
 const TecnologiaWebActivity = lazy(() => import('./pages/fametro/disciplinas/TecnologiaWeb/HTMLSemanticActivity'));
 const TecnologiaWebRanking = lazy(() => import('./pages/fametro/disciplinas/TecnologiaWeb/RankingHTMLSemantic'));
 const Inovatech2026 = lazy(() => import('./pages/Inovatech2026'));
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 const Home = () => {
@@ -185,9 +187,11 @@ function App() {
           <Route path="/fametro/tecnologia-web/html-semantico" element={<TecnologiaWebActivity />} />
           <Route path="/fametro/tecnologia-web/html-semantico/ranking" element={<TecnologiaWebRanking />} />
           <Route path="/inovatech2026" element={<Inovatech2026 />} />
+          <Route path="/privacidade" element={<PrivacyPolicy />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
+      <CookieConsent />
     </div>
   );
 }

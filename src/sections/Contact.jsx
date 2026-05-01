@@ -239,6 +239,42 @@ const Contact = () => {
                                     }} placeholder="Como posso ajudar?"></textarea>
                                 </div>
 
+                                {/* Checkbox de Consentimento LGPD */}
+                                <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
+                                    <label style={{
+                                        display: 'flex',
+                                        alignItems: 'flex-start',
+                                        gap: '10px',
+                                        cursor: 'pointer',
+                                        fontSize: '0.82rem',
+                                        color: 'var(--text-secondary)',
+                                        lineHeight: 1.5,
+                                    }}>
+                                        <input
+                                            type="checkbox"
+                                            name="consent"
+                                            required
+                                            style={{
+                                                marginTop: '3px',
+                                                accentColor: 'var(--primary-color)',
+                                                width: '16px',
+                                                height: '16px',
+                                                flexShrink: 0,
+                                                cursor: 'pointer',
+                                            }}
+                                        />
+                                        <span>
+                                            Li e concordo com a{' '}
+                                            <a href="/privacidade" target="_blank" rel="noopener noreferrer" style={{
+                                                color: 'var(--primary-color)',
+                                                textDecoration: 'underline',
+                                                textUnderlineOffset: '2px',
+                                            }}>Política de Privacidade</a>.
+                                            Autorizo o uso dos dados informados para fins de contato profissional, conforme a LGPD.
+                                        </span>
+                                    </label>
+                                </div>
+
                                 <button type="submit" className="cyber-button" disabled={formStatus === 'submitting'} style={{
                                     width: '100%',
                                     padding: '1rem',
