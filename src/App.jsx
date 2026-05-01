@@ -27,7 +27,6 @@ import { usePageTitle } from './hooks/usePageTitle';
 import { useSecurity } from './hooks/useSecurity';
 import WhatsAppButton from './components/WhatsAppButton';
 import { ScrollToTop } from './components/ScrollToTop';
-import TopBanner from './components/TopBanner';
 import Terminal from './components/Terminal';
 import SecretChallenge from './components/SecretChallenge';
 
@@ -104,7 +103,6 @@ const Home = () => {
 
   return (
     <>
-      <TopBanner />
       {showMatrix && <MatrixEffect onClose={() => setShowMatrix(false)} />}
       {showChallenge && <SecretChallenge onClose={() => setShowChallenge(false)} />}
       <Terminal isOpen={showTerminal} onClose={() => setShowTerminal(false)} triggerMatrix={() => setShowMatrix(true)} />

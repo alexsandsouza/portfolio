@@ -35,7 +35,7 @@ const Navbar = ({ triggerMatrix }) => {
             className={`navbar ${scrolled ? 'scrolled' : ''}`}
             style={{
                 position: 'fixed',
-                top: '40px', // Adjusted for TopBanner
+                top: 0,
                 left: 0,
                 right: 0,
                 zIndex: 9999,
