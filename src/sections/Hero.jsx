@@ -94,7 +94,7 @@ const GlowingProfile = () => {
             }}></div>
 
             {/* Glowing Background behind Image */}
-            <div style={{
+            <div className="profile-glow" style={{
                 position: 'absolute',
                 width: '85%', height: '85%',
                 background: 'radial-gradient(circle, var(--primary-color) 0%, transparent 70%)',
@@ -110,13 +110,12 @@ const GlowingProfile = () => {
                 width={320}
                 height={320}
                 loading="eager"
+                className="hero-profile-img"
                 style={{
                     width: '80%',
                     height: '80%',
                     objectFit: 'cover',
                     borderRadius: '50%',
-                    border: '4px solid rgba(255,255,255,0.1)',
-                    boxShadow: '0 0 30px rgba(0,0,0,0.5)',
                     position: 'relative',
                     zIndex: 2
                 }}
@@ -126,6 +125,24 @@ const GlowingProfile = () => {
                 @keyframes spin { 100% { transform: rotate(360deg); } }
                 @keyframes spinReverse { 100% { transform: rotate(-360deg); } }
                 @keyframes pulse { 0%, 100% { opacity: 0.2; transform: scale(1); } 50% { opacity: 0.4; transform: scale(1.1); } }
+
+                .hero-profile-img {
+                    border: 4px solid rgba(255,255,255,0.1);
+                    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+                }
+                [data-theme="light"] .hero-profile-img {
+                    border: 4px solid rgba(124, 111, 250, 0.25);
+                    box-shadow: 0 10px 40px rgba(100, 116, 139, 0.2), 0 0 0 1px rgba(148, 163, 184, 0.1);
+                }
+                [data-theme="light"] .profile-glow {
+                    opacity: 0.15 !important;
+                }
+                [data-theme="light"] .spin-ring {
+                    border-color: rgba(99, 102, 241, 0.2) !important;
+                }
+                [data-theme="light"] .spin-ring-reverse {
+                    box-shadow: 0 0 15px rgba(99, 102, 241, 0.15) !important;
+                }
                 @media (max-width: 768px) {
                      div[style*="width: 400px"] { width: 300px !important; height: 300px !important; margin: 0 auto; }
                 }
