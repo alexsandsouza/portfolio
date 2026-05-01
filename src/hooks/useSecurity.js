@@ -1,3 +1,15 @@
+/**
+ * @file useSecurity.js
+ * @description Hook de segurança para proteção do portfolio.
+ * 
+ * Protege contra:
+ * - Abertura do DevTools via F12 / Ctrl+Shift+I/J/C
+ * - Visualização do código-fonte via Ctrl+U
+ * - Salvamento e impressão da página via Ctrl+S / Ctrl+P
+ * - Menu de contexto (botão direito)
+ * 
+ * NÃO bloqueia: Ctrl+C, Ctrl+V, seleção de texto (acessibilidade)
+ */
 import { useEffect } from 'react';
 
 export const useSecurity = () => {
@@ -7,7 +19,7 @@ export const useSecurity = () => {
             e.preventDefault();
         };
 
-        // 2. Disable Keyboard Shortcuts (F12, Ctrl+Shift+I, Ctrl+U, Ctrl+C, Ctrl+V, Ctrl+S)
+        // 2. Disable Keyboard Shortcuts (DevTools, View Source, Save, Print)
         const handleKeyDown = (e) => {
             // F12
             if (e.key === 'F12') {
@@ -29,14 +41,6 @@ export const useSecurity = () => {
             if (e.ctrlKey && e.key === 'u') {
                 e.preventDefault();
             }
-            // Ctrl + C (Copy) - Prevent copying text
-            if (e.ctrlKey && e.key === 'c') {
-                e.preventDefault();
-            }
-            // Ctrl + V (Paste) - Prevent pasting
-            if (e.ctrlKey && e.key === 'v') {
-                e.preventDefault();
-            }
             // Ctrl + S (Save)
             if (e.ctrlKey && e.key === 's') {
                 e.preventDefault();
@@ -47,19 +51,12 @@ export const useSecurity = () => {
             }
         };
 
-        // 3. Disable Text Selection via JS event (backup to CSS)
-        const handleSelectStart = (e) => {
-            e.preventDefault();
-        };
-
         document.addEventListener('contextmenu', handleContextMenu);
         document.addEventListener('keydown', handleKeyDown);
-        document.addEventListener('selectstart', handleSelectStart);
 
         return () => {
             document.removeEventListener('contextmenu', handleContextMenu);
             document.removeEventListener('keydown', handleKeyDown);
-            document.removeEventListener('selectstart', handleSelectStart);
         };
     }, []);
 };

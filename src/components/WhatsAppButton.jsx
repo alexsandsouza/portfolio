@@ -21,7 +21,7 @@ const WhatsAppButton = ({ message }) => {
             {/* Notification Bubble */}
             <div className={`wa-notification ${showNotification ? 'show' : ''}`}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <span>👋 Dúvidas sobre a mentoria?</span>
+                    <span>👋 Vamos conversar sobre seu projeto?</span>
                     <button
                         onClick={(e) => { e.preventDefault(); e.stopPropagation(); setShowNotification(false); }}
                         style={{ background: 'none', border: 'none', color: '#666', cursor: 'pointer', fontSize: '14px', padding: '0 4px' }}

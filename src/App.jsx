@@ -2,19 +2,6 @@ import React, { useState, useEffect, lazy, Suspense } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './sections/Hero';
 import About from './sections/About';
-import Areas from './sections/Areas';
-import Experience from './sections/Trajectory';
-import BackendExpertise from './sections/BackendExpertise';
-import Education from './sections/Education';
-import Projects from './sections/Projects';
-import Testimonials from './sections/Testimonials';
-import Journey from './sections/Journey';
-import AcademyHub from './sections/AcademyHub';
-import MentorshipShowcase from './sections/MentorshipShowcase';
-import Services from './sections/Services';
-import Skills from './sections/Skills';
-import Highlights from './sections/Highlights';
-import Contact from './sections/Contact';
 import ThemeToggle from './components/ThemeToggle';
 import MouseSpotlight from './components/MouseSpotlight';
 import ScrollProgress from './components/ScrollProgress';
@@ -29,6 +16,21 @@ import WhatsAppButton from './components/WhatsAppButton';
 import { ScrollToTop } from './components/ScrollToTop';
 import Terminal from './components/Terminal';
 import SecretChallenge from './components/SecretChallenge';
+
+// Lazy-load sections abaixo da dobra (code splitting)
+const Areas = lazy(() => import('./sections/Areas'));
+const BackendExpertise = lazy(() => import('./sections/BackendExpertise'));
+const Experience = lazy(() => import('./sections/Trajectory'));
+const Education = lazy(() => import('./sections/Education'));
+const Projects = lazy(() => import('./sections/Projects'));
+const Testimonials = lazy(() => import('./sections/Testimonials'));
+const Journey = lazy(() => import('./sections/Journey'));
+const AcademyHub = lazy(() => import('./sections/AcademyHub'));
+const MentorshipShowcase = lazy(() => import('./sections/MentorshipShowcase'));
+const Services = lazy(() => import('./sections/Services'));
+const Skills = lazy(() => import('./sections/Skills'));
+const Highlights = lazy(() => import('./sections/Highlights'));
+const Contact = lazy(() => import('./sections/Contact'));
 
 // Lazy-load all page routes (não carregados na entrada)
 const Feedback = lazy(() => import('./pages/Feedback'));
@@ -113,19 +115,21 @@ const Home = () => {
       <Navbar triggerMatrix={() => setShowMatrix(true)} />
       <Hero />
       <About />
-      <Areas />
-      <BackendExpertise />
-      <Experience />
-      <Projects />
-      <Testimonials />
-      <MentorshipShowcase />
-      <AcademyHub />
-      <Journey />
-      <Services />
-      <Skills />
-      <Education />
-      <Highlights />
-      <Contact />
+      <Suspense fallback={null}>
+        <Areas />
+        <BackendExpertise />
+        <Experience />
+        <Projects />
+        <Testimonials />
+        <MentorshipShowcase />
+        <AcademyHub />
+        <Journey />
+        <Services />
+        <Skills />
+        <Education />
+        <Highlights />
+        <Contact />
+      </Suspense>
       <WhatsAppButton />
       <ScrollToTop />
     </>

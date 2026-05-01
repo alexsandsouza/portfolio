@@ -1,8 +1,8 @@
 # 📋 Documento de Requisitos do Sistema
 
-## Portfolio Profissional — Prof. Alexsander Farias
+## Portfolio Profissional - Prof. Alexsander Farias
 **Versão:** 2.0  
-**Data:** Maio/2026  
+**Data:** Maio/2024  
 **Autor:** Alexsander Farias  
 **URL Produção:** [alexsanderfarias.vercel.app](https://alexsanderfarias.vercel.app)
 
