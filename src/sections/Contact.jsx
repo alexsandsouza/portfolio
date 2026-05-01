@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { portfolioContent } from '../data/content';
 import { Reveal } from '../components/Reveal';
 import { useHoverCard } from '../hooks/useHoverCard';
+import Footer from '../components/Footer';
 
 const SocialNode = ({ platform, url, icon }) => {
     const { ref, style } = useHoverCard({ maxRotation: 10, scale: 1.2 });
@@ -200,10 +201,10 @@ const Contact = () => {
                                     <input type="text" name="name" required style={{
                                         width: '100%',
                                         padding: '1rem',
-                                        background: 'rgba(0,0,0,0.2)',
+                                        background: 'var(--card-bg)',
                                         border: '1px solid var(--card-border)',
                                         borderRadius: '8px',
-                                        color: '#fff',
+                                        color: 'var(--text-primary)',
                                         fontSize: '1rem',
                                         outline: 'none'
                                     }} placeholder="Ex: João Silva" />
@@ -214,10 +215,10 @@ const Contact = () => {
                                     <input type="email" name="email" required style={{
                                         width: '100%',
                                         padding: '1rem',
-                                        background: 'rgba(0,0,0,0.2)',
+                                        background: 'var(--card-bg)',
                                         border: '1px solid var(--card-border)',
                                         borderRadius: '8px',
-                                        color: '#fff',
+                                        color: 'var(--text-primary)',
                                         fontSize: '1rem',
                                         outline: 'none'
                                     }} placeholder="Ex: joao@email.com" />
@@ -228,10 +229,10 @@ const Contact = () => {
                                     <textarea name="message" required rows="4" style={{
                                         width: '100%',
                                         padding: '1rem',
-                                        background: 'rgba(0,0,0,0.2)',
+                                        background: 'var(--card-bg)',
                                         border: '1px solid var(--card-border)',
                                         borderRadius: '8px',
-                                        color: '#fff',
+                                        color: 'var(--text-primary)',
                                         fontSize: '1rem',
                                         outline: 'none',
                                         resize: 'vertical'
@@ -257,36 +258,8 @@ const Contact = () => {
                     </Reveal>
                 </div>
 
-                {/* Footer Style Integration */}
-                <div style={{
-                    marginTop: '5rem',
-                    borderTop: '1px solid var(--border-color)',
-                    paddingTop: '2rem',
-                    color: 'var(--text-secondary)',
-                    fontSize: '0.9rem',
-                    textAlign: 'center'
-                }}>
-                    <p>© {new Date().getFullYear()} Prof. Alexsander Farias. Todos os direitos reservados.</p>
-                    <p>
-                        <a href="/links" style={{ color: 'var(--text-secondary)', textDecoration: 'underline', fontSize: '0.85rem' }}>Links Úteis (Bio)</a>
-                    </p>
-                    <p style={{ fontSize: '0.8rem', marginTop: '0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
-                        Desenvolvido com <span style={{ color: '#ef4444' }}>❤</span> e Tecnologia Vite + React
-                        <button
-                            onClick={() => window.dispatchEvent(new Event('open-terminal'))}
-                            style={{
-                                background: 'transparent', border: '1px solid rgba(255,255,255,0.1)',
-                                color: 'var(--text-secondary)', borderRadius: '4px', padding: '2px 6px',
-                                cursor: 'pointer', fontFamily: 'monospace', fontSize: '0.7rem',
-                                opacity: 0.5, transition: 'all 0.3s'
-                            }}
-                            title="Terminal Mode"
-                            onMouseEnter={(e) => { e.target.style.opacity = '1'; e.target.style.borderColor = '#4ade80'; e.target.style.color = '#4ade80' }}
-                            onMouseLeave={(e) => { e.target.style.opacity = '0.5'; e.target.style.borderColor = 'rgba(255,255,255,0.1)'; e.target.style.color = 'var(--text-secondary)' }}
-                        >
-                            &gt;_
-                        </button>
-                    </p>
+                <div style={{ marginTop: '5rem' }}>
+                    <Footer />
                 </div>
             </div>
 
@@ -295,6 +268,8 @@ const Contact = () => {
                 .cyber-button:hover { filter: brightness(1.2); }
                 .cyber-button-small:hover { transform: translateY(-3px); filter: brightness(1.1); }
                 input:focus, textarea:focus { border-color: var(--primary-color) !important; box-shadow: 0 0 10px rgba(99, 102, 241, 0.3); }
+                input:invalid:not(:placeholder-shown) { border-color: #ef4444 !important; box-shadow: 0 0 8px rgba(239, 68, 68, 0.15); }
+                input:valid:not(:placeholder-shown) { border-color: rgba(34, 197, 94, 0.5) !important; }
                 
                 .contact-left-col { text-align: left; }
                 

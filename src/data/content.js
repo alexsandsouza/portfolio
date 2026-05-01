@@ -71,12 +71,12 @@ export const portfolioContent = {
       link: "https://ad-academy-treinamentos.vercel.app/"
     },
     {
-      title: "AD Academy One",
-      context: "HUB DE EXPERIÊNCIA DO ALUNO",
+      title: "AD Academy Net",
+      context: "PORTAL DE INFRAESTRUTURA DE TI",
       role: "Idealizador & Full Stack.",
-      description: "Centralização de conteúdos, produtos digitais e jornada de aprendizado.",
-      impact: "Ecossistema digital focado em conversão e engajamento.",
-      link: "https://ad-academy-one.vercel.app/"
+      description: "Portal completo de Infraestrutura de TI com conteúdos, formações e trilhas de aprendizado.",
+      impact: "Ecossistema digital focado em formação e capacitação profissional.",
+      link: "https://adacademynet.vercel.app/"
     },
     {
       title: "Projeto Profissional - Suellem Abreu",

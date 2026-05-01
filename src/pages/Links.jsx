@@ -20,8 +20,8 @@ const Links = () => {
             internal: true
         },
         {
-            label: 'AD Academy One',
-            url: 'https://ad-academy-one.vercel.app',
+            label: 'AD Academy Net',
+            url: 'https://adacademynet.vercel.app',
             icon: <ExternalLink size={20} />,
         },
         {

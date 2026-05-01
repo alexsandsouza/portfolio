@@ -78,28 +78,28 @@ const AcademyHub = () => {
                 </h3>
 
                 <div className="grid-3">
-                    {/* Card 1: Formação Cisco */}
+                    {/* Card 1: AD Academy Net */}
                     <Reveal delay={200}>
-                        <a href="https://ad-academy-one.vercel.app" target="_blank" rel="noopener noreferrer" className="card-glass hover-card" style={{
+                        <a href="https://adacademynet.vercel.app" target="_blank" rel="noopener noreferrer" className="card-glass hover-card" style={{
                             display: 'block', padding: '2.5rem', height: '100%', textDecoration: 'none', transition: 'transform 0.3s ease'
                         }}>
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1.5rem' }}>
                                 <div style={{
-                                    width: '60px', height: '60px', background: 'rgba(56, 189, 248, 0.1)',
+                                    width: '60px', height: '60px', background: 'rgba(99, 102, 241, 0.1)',
                                     borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center'
                                 }}>
-                                    <Award size={32} color="#38bdf8" />
+                                    <Award size={32} color="#6366f1" />
                                 </div>
                                 <ExternalLink size={20} color="var(--text-secondary)" />
                             </div>
                             <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem', color: 'var(--text-heading)' }}>
-                                Academy One (Cisco)
+                                AD Academy Net
                             </h3>
                             <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem' }}>
-                                Formação Oficial Cisco NetAcad. Cursos profissionalizantes com certificação internacional em Redes e Infraestrutura.
+                                Portal completo de Infraestrutura de TI. Conteúdos, formações e trilhas de aprendizado para profissionais de tecnologia.
                             </p>
-                            <span style={{ color: '#38bdf8', fontWeight: 'bold', fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: '5px' }}>
-                                Acessar Portal Cisco <ExternalLink size={14} />
+                            <span style={{ color: '#6366f1', fontWeight: 'bold', fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: '5px' }}>
+                                Acessar Portal <ExternalLink size={14} />
                             </span>
                         </a>
                     </Reveal>

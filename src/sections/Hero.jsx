@@ -107,6 +107,9 @@ const GlowingProfile = () => {
             <img
                 src="/Foto_Perfil_Round.png"
                 alt="Prof. Alexsander Farias"
+                width={320}
+                height={320}
+                loading="eager"
                 style={{
                     width: '80%',
                     height: '80%',
@@ -349,6 +352,27 @@ const Hero = () => {
                                 onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 10px 25px -5px rgba(59, 130, 246, 0.5)'; }}
                             >
                                 Hub Fametro 🎓
+                            </a>
+
+                            <a href="https://adacademynet.vercel.app" target="_blank" rel="noopener noreferrer" className="btn" style={{
+                                background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%)',
+                                borderRadius: '30px',
+                                padding: '12px 32px',
+                                color: 'white',
+                                border: 'none',
+                                fontWeight: '600',
+                                fontSize: '1rem',
+                                letterSpacing: '0.5px',
+                                boxShadow: '0 10px 25px -5px rgba(139, 92, 246, 0.5)',
+                                transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: '8px'
+                            }}
+                                onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 20px 35px -5px rgba(139, 92, 246, 0.6)'; }}
+                                onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 10px 25px -5px rgba(139, 92, 246, 0.5)'; }}
+                            >
+                                AD Academy 🌐
                             </a>
 
                             <a href="#projects" style={{

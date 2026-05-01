@@ -229,11 +229,11 @@ const Navbar = ({ triggerMatrix }) => {
                                             Navegar no Ecossistema
                                         </div>
 
-                                        <a href="https://ad-academy-one.vercel.app" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '0.8rem', borderRadius: '8px', textDecoration: 'none', transition: 'background 0.2s' }} className="app-link">
-                                            <div style={{ width: '36px', height: '36px', background: '#0ea5e9', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 'bold' }}>AO</div>
+                                        <a href="https://adacademynet.vercel.app" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '0.8rem', borderRadius: '8px', textDecoration: 'none', transition: 'background 0.2s', background: 'rgba(99, 102, 241, 0.08)', border: '1px solid rgba(99, 102, 241, 0.15)' }} className="app-link">
+                                            <div style={{ width: '36px', height: '36px', background: 'linear-gradient(135deg, #6366f1, #8b5cf6)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 'bold', fontSize: '0.7rem' }}>AD</div>
                                             <div>
-                                                <div style={{ color: 'var(--text-heading)', fontWeight: '600', fontSize: '0.9rem' }}>Academy One</div>
-                                                <div style={{ color: 'var(--text-secondary)', fontSize: '0.75rem' }}>Formação Cisco</div>
+                                                <div style={{ color: 'var(--text-heading)', fontWeight: '600', fontSize: '0.9rem' }}>AD Academy <span style={{ fontSize: '0.65rem', background: 'rgba(99, 102, 241, 0.2)', color: '#a78bfa', padding: '1px 6px', borderRadius: '4px', marginLeft: '4px' }}>NOVO</span></div>
+                                                <div style={{ color: 'var(--text-secondary)', fontSize: '0.75rem' }}>Portal de Infraestrutura de TI</div>
                                             </div>
                                         </a>
 
@@ -310,9 +310,10 @@ const Navbar = ({ triggerMatrix }) => {
                     <div style={{ width: '100%', padding: '0 2rem', marginTop: '1rem', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '1.5rem' }}>
                         <span style={{ display: 'block', fontSize: '0.8rem', color: 'var(--text-secondary)', textTransform: 'uppercase', marginBottom: '1rem', textAlign: 'center' }}>Ecossistema</span>
                         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-                            <a href="https://ad-academy-one.vercel.app" target="_blank" className="mobile-app-card" style={{ background: 'var(--bg-secondary)', padding: '1rem', borderRadius: '12px', textAlign: 'center', textDecoration: 'none', border: '1px solid var(--border-color)' }}>
-                                <div style={{ width: '30px', height: '30px', background: '#0ea5e9', borderRadius: '6px', margin: '0 auto 0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '0.8rem', fontWeight: 'bold' }}>AO</div>
-                                <span style={{ display: 'block', color: 'var(--text-heading)', fontSize: '0.8rem', fontWeight: 'bold' }}>Academy One</span>
+                            <a href="https://adacademynet.vercel.app" target="_blank" className="mobile-app-card" style={{ background: 'rgba(99, 102, 241, 0.08)', padding: '1rem', borderRadius: '12px', textAlign: 'center', textDecoration: 'none', border: '1px solid rgba(99, 102, 241, 0.2)', gridColumn: 'span 2' }}>
+                                <div style={{ width: '30px', height: '30px', background: 'linear-gradient(135deg, #6366f1, #8b5cf6)', borderRadius: '6px', margin: '0 auto 0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '0.7rem', fontWeight: 'bold' }}>AD</div>
+                                <span style={{ display: 'block', color: 'var(--text-heading)', fontSize: '0.8rem', fontWeight: 'bold' }}>AD Academy Net</span>
+                                <span style={{ display: 'block', color: '#a78bfa', fontSize: '0.65rem', marginTop: '2px' }}>Portal de Infraestrutura</span>
                             </a>
                             <a href="https://ad-academy-treinamentos.vercel.app" target="_blank" className="mobile-app-card" style={{ background: 'var(--bg-secondary)', padding: '1rem', borderRadius: '12px', textAlign: 'center', textDecoration: 'none', border: '1px solid var(--border-color)' }}>
                                 <div style={{ width: '30px', height: '30px', background: '#ec4899', borderRadius: '6px', margin: '0 auto 0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '0.8rem', fontWeight: 'bold' }}>TR</div>
