@@ -26,7 +26,7 @@ const TopBanner = () => {
             boxShadow: '0 2px 10px rgba(0,0,0,0.2)'
         }}>
             <span>
-                🚀 <strong>Últimas Vagas:</strong> Mentoria Carreira TI do Zero. <a href="/mentoria" style={{ color: 'white', textDecoration: 'underline' }}>Garanta a sua aqui!</a>
+                🎓 <strong>Instrutor da Cisco Networking Academy</strong> — Formação oficial em Redes, Cibersegurança e Infraestrutura de TI.
             </span>
             <button
                 onClick={() => setIsVisible(false)}

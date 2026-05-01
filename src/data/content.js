@@ -222,7 +222,7 @@ export const portfolioContent = {
 
   skills: {
     hard: {
-      tech: ["React.js", "Node.js", "Full Stack Development", "UX/UI"],
+      tech: ["React.js", "Node.js", "PHP", "Full Stack Development", "UX/UI"],
       infra: ["Redes de Computadores", "Cibersegurança", "Cisco CCNA", "CyberOPS"],
       base: ["Engenharia de Software", "Sistemas Distribuídos", "Banco de Dados", "Sistemas Operacionais", "Lógica de Programação", "Estrutura de Dados I e II", "Análise e Modelagem de Sistemas", "Programação Estruturada e Orientada a Objetos"]
     },
