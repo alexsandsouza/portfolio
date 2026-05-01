@@ -74,17 +74,17 @@ const Navbar = ({ triggerMatrix }) => {
                         alignItems: 'center',
                         gap: '8px',
                         padding: '8px 16px',
-                        background: '#1e293b', // Solid dark for code look
-                        border: '1px solid rgba(255, 255, 255, 0.1)',
+                        background: 'var(--logo-bg)', // Use variable
+                        border: '1px solid var(--logo-border)',
                         borderRadius: '8px',
                         transition: 'all 0.3s ease',
                         cursor: 'pointer',
                         userSelect: 'none'
                     }}>
-                    <span style={{ color: '#c678dd' }}>const</span> {/* Purple for const */}
-                    <span style={{ color: '#e5c07b' }}>Prof</span> {/* Yellow/Gold for Variable */}
-                    <span style={{ color: '#abb2bf' }}>=</span>
-                    <span style={{ color: '#98c379' }}>'Alexsander'</span> {/* Green for String */}
+                    <span style={{ color: 'var(--logo-keyword)' }}>const</span>
+                    <span style={{ color: 'var(--logo-var)' }}>Prof</span>
+                    <span style={{ color: 'var(--logo-operator)' }}>=</span>
+                    <span style={{ color: 'var(--logo-string)' }}>'Alexsander'</span>
                     <span className="blinking-cursor">_</span>
 
                     {/* Tooltip on Hover */}
@@ -94,6 +94,24 @@ const Navbar = ({ triggerMatrix }) => {
                 </a>
 
                 <style>{`
+                    :root {
+                        --logo-bg: #1e293b;
+                        --logo-border: rgba(255, 255, 255, 0.1);
+                        --logo-keyword: #c678dd;
+                        --logo-var: #e5c07b;
+                        --logo-operator: #abb2bf;
+                        --logo-string: #98c379;
+                    }
+
+                    [data-theme="light"] {
+                        --logo-bg: rgba(15, 23, 42, 0.05);
+                        --logo-border: rgba(15, 23, 42, 0.1);
+                        --logo-keyword: #a626a4;
+                        --logo-var: #986801;
+                        --logo-operator: #383a42;
+                        --logo-string: #50a14f;
+                    }
+
                     .navbar {
                         background: transparent;
                         transition: all 0.3s ease;
@@ -106,18 +124,23 @@ const Navbar = ({ triggerMatrix }) => {
                         backdrop-filter: blur(10px);
                     }
                     [data-theme="light"] .navbar.scrolled {
-                        background: #ffffff !important;
-                        backdrop-filter: none !important;
-                        border-bottom: 1px solid rgba(0, 0, 0, 0.15) !important;
-                        box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1) !important;
+                        background: rgba(255, 255, 255, 0.9) !important;
+                        backdrop-filter: blur(10px) !important;
+                        border-bottom: 1px solid rgba(100, 116, 139, 0.1) !important;
+                        box-shadow: 0 4px 20px rgba(100, 116, 139, 0.08) !important;
                     }
 
                     .dev-logo:hover {
-                        background: rgba(30, 41, 59, 0.9) !important;
-                        border-color: rgba(99, 102, 241, 0.5) !important;
+                        background: var(--logo-bg) !important;
+                        filter: brightness(1.1);
+                        border-color: var(--primary-color) !important;
                         transform: translateY(-2px);
                         box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
                     }
+                    [data-theme="light"] .dev-logo:hover {
+                         background: rgba(15, 23, 42, 0.08) !important;
+                    }
+
                     .blinking-cursor {
                         display: inline-block;
                         width: 8px;
@@ -143,6 +166,13 @@ const Navbar = ({ triggerMatrix }) => {
                         pointer-events: none;
                         border: 1px solid rgba(255,255,255,0.1);
                         box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+                        z-index: 1002;
+                    }
+                    [data-theme="light"] .logo-tooltip {
+                        background: #fff;
+                        color: #383a42;
+                        border: 1px solid rgba(100, 116, 139, 0.2);
+                        box-shadow: 0 4px 15px rgba(100, 116, 139, 0.15);
                     }
                     .logo-tooltip::before {
                         content: '';
@@ -155,6 +185,10 @@ const Navbar = ({ triggerMatrix }) => {
                         transform: rotate(45deg);
                         border-left: 1px solid rgba(255,255,255,0.1);
                         border-top: 1px solid rgba(255,255,255,0.1);
+                    }
+                    [data-theme="light"] .logo-tooltip::before {
+                        background: #fff;
+                        border-color: rgba(100, 116, 139, 0.2);
                     }
                     .dev-logo:hover .logo-tooltip {
                         opacity: 1;

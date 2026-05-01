@@ -31,7 +31,21 @@ const TechBackground = () => (
             opacity: 0.8,
             animation: 'pulseGlow 8s ease-in-out infinite alternate'
         }}></div>
-        <style>{`@keyframes pulseGlow { 0% { transform: scale(1); opacity: 0.5; } 100% { transform: scale(1.2); opacity: 0.8; } }`}</style>
+
+        {/* Light Mode Mesh Gradient */}
+        <div className="mesh-gradient" style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(236, 72, 153, 0.05) 50%, rgba(34, 197, 94, 0.05) 100%)',
+            display: 'none', // Shown only in light mode
+            opacity: 0.8,
+            pointerEvents: 'none'
+        }}></div>
+
+        <style>{`
+            @keyframes pulseGlow { 0% { transform: scale(1); opacity: 0.5; } 100% { transform: scale(1.2); opacity: 0.8; } }
+            [data-theme="light"] .mesh-gradient { display: block; }
+        `}</style>
 
         {/* Moving Tech Lines */}
         <div className="tech-line" style={{ top: '20%', left: '-10%', animationDelay: '0s' }}></div>
@@ -251,7 +265,7 @@ const Hero = () => {
                     </Reveal>
 
                     <Reveal delay={200}>
-                        <div style={{
+                        <div className="availability-badge" style={{
                             display: 'inline-flex',
                             alignItems: 'center',
                             gap: '8px',
@@ -273,7 +287,14 @@ const Hero = () => {
                             }}></span>
                             Disponível para Projetos
                         </div>
-                        <style>{`@keyframes pulseGreen { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }`}</style>
+                        <style>{`
+                            @keyframes pulseGreen { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+                            [data-theme="light"] .availability-badge {
+                                background: rgba(34, 197, 94, 0.15) !important;
+                                border-color: rgba(34, 197, 94, 0.4) !important;
+                                color: #16a34a !important;
+                            }
+                        `}</style>
 
                         <h1 style={{ marginBottom: '1.5rem', lineHeight: '1.1', fontSize: 'clamp(2.5rem, 5vw, 4rem)' }}>
                             <span style={{ display: 'block', fontSize: '0.5em', color: 'var(--text-secondary)', fontWeight: '400', marginBottom: '0.5rem' }}>{greeting}, eu sou o</span>
