@@ -11,7 +11,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
-    "deploy": "npm run build && vercel link --project alexsander-farias --yes && vercel --prod && vercel link --project portfolio --yes && vercel --prod && vercel link --project alexsander-farias --yes"
+    "deploy": "npm run build && vercel link --project alexsanderfarias --yes && vercel --prod && vercel link --project alexsander-farias --yes && vercel --prod && vercel link --project portfolio --yes && vercel --prod && vercel link --project alexsanderfarias --yes"
   },
   "dependencies": {
     "canvas-confetti": "^1.9.4",

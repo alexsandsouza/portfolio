@@ -32,6 +32,7 @@ const Services = lazy(() => import('./sections/Services'));
 const Skills = lazy(() => import('./sections/Skills'));
 const Highlights = lazy(() => import('./sections/Highlights'));
 const Contact = lazy(() => import('./sections/Contact'));
+const BehavioralDiscovery = lazy(() => import('./sections/BehavioralDiscovery'));
 
 // Lazy-load all page routes (não carregados na entrada)
 const Feedback = lazy(() => import('./pages/Feedback'));
@@ -77,6 +78,7 @@ const TecnologiaWebActivity = lazy(() => import('./pages/fametro/disciplinas/Tec
 const TecnologiaWebRanking = lazy(() => import('./pages/fametro/disciplinas/TecnologiaWeb/RankingHTMLSemantic'));
 const Inovatech2026 = lazy(() => import('./pages/Inovatech2026'));
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
+const TechAffinityTest = lazy(() => import('./pages/TechAffinityTest'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 const Home = () => {
@@ -125,6 +127,7 @@ const Home = () => {
         <Testimonials />
         <MentorshipShowcase />
         <AcademyHub />
+        <BehavioralDiscovery />
         <Journey />
         <Services />
         <Skills />
@@ -145,6 +148,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/feedback" element={<Feedback />} />
+          <Route path="/teste-afinidade" element={<TechAffinityTest />} />
           <Route path="/mentoria" element={<MentorshipPage />} />
           <Route path="/mentoria/matricula" element={<MentorshipRegistration />} />
           <Route path="/mentoria/contrato" element={<MentorshipContract />} />

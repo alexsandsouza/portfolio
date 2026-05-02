@@ -28,6 +28,7 @@ const Navbar = ({ triggerMatrix }) => {
         { name: 'Expertise', href: '#backend' },
         { name: 'Experiência', href: '#experience' },
         { name: 'Projetos', href: '#projects' },
+        { name: 'DNA', href: '#behavioral' },
     ];
 
     return (
@@ -209,18 +210,18 @@ const Navbar = ({ triggerMatrix }) => {
                             <a href="/cv" target="_blank" className="nav-link" style={{ fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '4px' }}>
                                 CV <span style={{ fontSize: '1.1em' }}>↓</span>
                             </a>
-                            <a href="/mentoria" className="btn" style={{
+                            <a href="/teste-afinidade" className="btn" style={{
                                 padding: '0.6rem 1.5rem',
                                 fontSize: '0.9rem',
                                 marginLeft: '1rem',
                                 whiteSpace: 'nowrap',
-                                background: 'linear-gradient(90deg, #ec4899, #8b5cf6)',
+                                background: 'linear-gradient(90deg, #3b82f6, #8b5cf6)',
                                 color: 'white',
                                 border: 'none',
                                 fontWeight: 'bold',
-                                boxShadow: '0 4px 15px rgba(236, 72, 153, 0.4)'
+                                boxShadow: '0 4px 15px rgba(59, 130, 246, 0.4)'
                             }}>
-                                Mentoria 🚀
+                                Teste de Perfil 🧬
                             </a>
                             <a href="#contact" className="btn btn-primary" style={{ padding: '0.6rem 1.5rem', fontSize: '0.9rem', marginLeft: '1rem', whiteSpace: 'nowrap' }}>
                                 Contato
@@ -287,11 +288,11 @@ const Navbar = ({ triggerMatrix }) => {
                                             </div>
                                         </a>
 
-                                        <a href="/fametro" style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '0.8rem', borderRadius: '8px', textDecoration: 'none', transition: 'background 0.2s' }} className="app-link">
-                                            <div style={{ width: '36px', height: '36px', background: '#3b82f6', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 'bold' }}>F</div>
+                                        <a href="/teste-afinidade" style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '0.8rem', borderRadius: '8px', textDecoration: 'none', transition: 'background 0.2s' }} className="app-link">
+                                            <div style={{ width: '36px', height: '36px', background: 'linear-gradient(135deg, #6C63FF, #FF6B9D)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 'bold', fontSize: '0.8rem' }}>🧬</div>
                                             <div>
-                                                <div style={{ color: 'var(--text-heading)', fontWeight: '600', fontSize: '0.9rem' }}>Hub Fametro</div>
-                                                <div style={{ color: 'var(--text-secondary)', fontSize: '0.75rem' }}>Portal do Aluno</div>
+                                                <div style={{ color: 'var(--text-heading)', fontWeight: '600', fontSize: '0.9rem' }}>Perfil Comportamental</div>
+                                                <div style={{ color: 'var(--text-secondary)', fontSize: '0.75rem' }}>Teste IBC Coaching</div>
                                             </div>
                                         </a>
 
@@ -337,7 +338,7 @@ const Navbar = ({ triggerMatrix }) => {
                     <a href="/cv" target="_blank" className="mobile-link" style={{ fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '8px' }}>
                         CV <span style={{ fontSize: '0.8em' }}>↓</span>
                     </a>
-                    <a href="/mentoria" onClick={() => setIsOpen(false)} className="mobile-link" style={{ color: '#ec4899' }}>Mentoria 🚀</a>
+                    <a href="/teste-afinidade" onClick={() => setIsOpen(false)} className="mobile-link" style={{ color: '#3b82f6' }}>Teste de Perfil 🧬</a>
                     <a href="#contact" onClick={() => setIsOpen(false)} className="mobile-link" style={{ color: 'var(--primary-color)' }}>Contato</a>
 
                     {/* Mobile Apps Section */}
@@ -360,6 +361,11 @@ const Navbar = ({ triggerMatrix }) => {
                             <a href="/fametro" onClick={() => setIsOpen(false)} className="mobile-app-card" style={{ background: 'var(--bg-secondary)', padding: '1rem', borderRadius: '12px', textAlign: 'center', textDecoration: 'none', border: '1px solid var(--border-color)' }}>
                                 <div style={{ width: '30px', height: '30px', background: '#3b82f6', borderRadius: '6px', margin: '0 auto 0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '0.8rem', fontWeight: 'bold' }}>F</div>
                                 <span style={{ display: 'block', color: 'var(--text-heading)', fontSize: '0.8rem', fontWeight: 'bold' }}>Hub Fametro</span>
+                            </a>
+                            <a href="/teste-afinidade" onClick={() => setIsOpen(false)} className="mobile-app-card" style={{ background: 'var(--bg-secondary)', padding: '1rem', borderRadius: '12px', textAlign: 'center', textDecoration: 'none', border: '1px solid var(--border-color)', gridColumn: 'span 2' }}>
+                                <div style={{ width: '30px', height: '30px', background: 'linear-gradient(135deg, #6C63FF, #FF6B9D)', borderRadius: '6px', margin: '0 auto 0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '0.8rem', fontWeight: 'bold' }}>🧬</div>
+                                <span style={{ display: 'block', color: 'var(--text-heading)', fontSize: '0.8rem', fontWeight: 'bold' }}>Perfil Comportamental</span>
+                                <span style={{ display: 'block', color: 'var(--text-secondary)', fontSize: '0.65rem', marginTop: '2px' }}>Teste DNA Humano</span>
                             </a>
                             <a href="/links" onClick={() => setIsOpen(false)} className="mobile-app-card" style={{ background: 'var(--bg-secondary)', padding: '1rem', borderRadius: '12px', textAlign: 'center', textDecoration: 'none', border: '1px solid var(--border-color)' }}>
                                 <div style={{ width: '30px', height: '30px', background: '#8b5cf6', borderRadius: '6px', margin: '0 auto 0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '0.8rem', fontWeight: 'bold' }}>🔗</div>
