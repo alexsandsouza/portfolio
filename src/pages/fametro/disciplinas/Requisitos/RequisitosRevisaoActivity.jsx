@@ -554,7 +554,7 @@ function Quiz({ playerName, model, onFinish }) {
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 24, borderBottom: '1px solid rgba(255,255,255,0.08)', paddingBottom: 16 }}>
             <div>
               <div style={{ fontSize: 10, fontFamily: 'monospace', letterSpacing: 2, color: '#EF4444', textTransform: 'uppercase' }}>Parte 2 - Questão Discursiva</div>
-              <h2 style={{ fontSize: 22, fontWeight: 800, margin: '4px 0 0' }}>{studyCase.title}</h2>
+              <h2 style={{ fontSize: 22, fontWeight: 800, margin: '4px 0 0', color: '#fff' }}>{studyCase.title}</h2>
             </div>
             <div style={{ fontSize: 13, background: 'rgba(239,68,68,0.1)', color: '#EF4444', padding: '6px 12px', borderRadius: 20, fontWeight: 700, fontFamily: 'monospace' }}>
               Acertos Objetivas: {correct} / {questions.length} ({score} pts)
@@ -564,7 +564,7 @@ function Quiz({ playerName, model, onFinish }) {
           <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.05)', padding: 20, borderRadius: 10, fontSize: 14, color: '#CBD5E1', lineHeight: 1.6, maxHeight: 240, overflowY: 'auto', marginBottom: 24 }}>
             <h4 style={{ color: '#fff', marginTop: 0, marginBottom: 8, fontSize: 13, textTransform: 'uppercase', letterSpacing: 1 }}>Contexto e Estudo de Caso</h4>
             {studyCase.context.split('\n\n').map((p, idx) => (
-              <p key={idx} style={{ marginBottom: 12 }}>{p}</p>
+              <p key={idx} style={{ marginBottom: 12, color: '#CBD5E1' }}>{p}</p>
             ))}
           </div>
 
