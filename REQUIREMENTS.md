@@ -6,8 +6,6 @@
 **Autor:** Alexsander Farias  
 **URL Produção:** [alexsanderfarias.vercel.app](https://alexsanderfarias.vercel.app)
 
----
-
 ## 1. Visão Geral do Projeto
 
 ### 1.1 Objetivo
@@ -31,7 +29,6 @@ Plataforma digital profissional (portfolio) que centraliza a presença online do
 | Deploy | Vercel (CI/CD via GitHub) |
 | Testes | Vitest, Testing Library, jest-dom |
 
----
 
 ## 2. Requisitos Funcionais (RF)
 
@@ -70,8 +67,6 @@ Plataforma digital profissional (portfolio) que centraliza a presença online do
 - **Rankings:** Componente genérico `RankingModulo.jsx` com rota dinâmica
 - **Dados:** Rankings armazenados em Firebase Firestore (coleção `fametro_ranking`)
 
----
-
 ## 3. Requisitos Não-Funcionais (RNF)
 
 | ID | Requisito | Categoria | Métrica | Status |
@@ -89,7 +84,6 @@ Plataforma digital profissional (portfolio) que centraliza a presença online do
 | RNF-011 | Bundle otimizado com code splitting (lazy loading de rotas) | Performance | < 400KB initial | ⚠️ Parcial |
 | RNF-012 | Cobertura de testes > 70% dos módulos críticos | Qualidade | 74 testes | ✅ |
 
----
 
 ## 4. Regras de Negócio (RN)
 
@@ -103,7 +97,7 @@ Plataforma digital profissional (portfolio) que centraliza a presença online do
 | RN-006 | **Tema Visual** | O sistema deve suportar dark mode (padrão) e light mode. Cores não devem ser hardcoded em componentes; devem usar variáveis CSS. |
 | RN-007 | **Quiz Gamificado** | O quiz de jornada deve ter no mínimo 5 perguntas com 4 alternativas cada. A resposta correta deve estar entre os índices 0-3. |
 
----
+
 
 ## 5. Segurança da Informação
 
@@ -132,7 +126,7 @@ service cloud.firestore {
     }
   }
 }
-```
+
 
 > ⚠️ **Recomendação:** As regras atuais permitem escrita pública. Para produção, recomenda-se implementar validação de campos e rate limiting no nível do Firestore ou usar Cloud Functions como proxy.
 
@@ -147,7 +141,6 @@ service cloud.firestore {
 | Ranking de alunos | Público | Firestore | Dados acadêmicos sem PII |
 | Mensagens de contato | Confidencial | Email (via FormSubmit) | Dados de terceiros, não persistidos |
 
----
 
 ## 6. Conformidade LGPD (Lei 13.709/2018)
 
@@ -180,20 +173,18 @@ service cloud.firestore {
 4. **Implementar banner de cookies** (caso utilize analytics futuramente)
 5. **Documentar canal de contato para exercício de direitos** do titular (Art. 18)
 
----
 
 ## 7. Estratégia de Testes (TDD)
 
 ### 7.1 Estrutura de Testes
 
-```
+
 src/test/
 ├── setup.js              # Configuração global (mocks, matchers)
 ├── content.test.js       # Testes da camada de dados (27 testes)
 ├── security.test.js      # Testes de segurança e LGPD (11 testes)
 ├── seo.test.js           # Testes de SEO e acessibilidade (24 testes)
 └── routing.test.js       # Testes de roteamento (12 testes)
-```
 
 ### 7.2 Cobertura por Categoria
 
@@ -207,17 +198,14 @@ src/test/
 
 ### 7.3 Comandos
 
-```bash
+bash
 npm test               # Executar todos os testes
 npm run test:watch     # Modo watch (desenvolvimento)
 npm run test:coverage  # Gerar relatório de cobertura
-```
 
----
 
 ## 8. Arquitetura do Sistema
 
-```
 ┌─────────────────────────────────────────────────────┐
 │                    VERCEL (CDN)                      │
 │              HTTPS + Edge Network                    │
@@ -243,9 +231,7 @@ npm run test:coverage  # Gerar relatório de cobertura
 │  │             │  │  (Rankings) │  │            │  │
 │  └──────────────┘  └─────────────┘  └────────────┘  │
 └──────────────────────────────────────────────────────┘
-```
 
----
 
 ## 9. Glossário
 
@@ -269,7 +255,6 @@ npm run test:coverage  # Gerar relatório de cobertura
 | 1.0 | Abr/2026 | Versão inicial do portfolio |
 | 2.0 | Mai/2026 | Remoção AD Academy One, integração AD Academy Net, refatoração de rankings, testes unitários, documentação de requisitos, conformidade LGPD |
 
----
 
 > **Documento gerado e mantido como parte da documentação técnica do projeto.**  
 > **Próxima revisão:** Julho/2026

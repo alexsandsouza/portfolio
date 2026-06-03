@@ -71,6 +71,22 @@ export default function FametroHub() {
       badges: ['Quiz', 'Requisitos']
     },
     {
+      id: 2.5,
+      title: 'Revisão: Requisitos e Projetos',
+      course: 'Sistemas de Informação',
+      institution: 'Centro Universitário FAMETRO',
+      professor: 'Alexsander Farias',
+      period: '2026.1',
+      description: 'Simulado Avançado para a Avaliação Institucional (5º Período). Resolva os Modelos A e B com cenários reais.',
+      path: '/fametro/requisitos/revisao',
+      rankingPath: '/fametro/requisitos/revisao/ranking',
+      icon: <GraduationCap size={26} color="#EF4444" />,
+      buttonText: 'Iniciar Revisão',
+      status: 'active',
+      accentColor: '#EF4444',
+      badges: ['Revisão', 'Modelos A/B']
+    },
+    {
       id: 3,
       title: 'Sistemas Operacionais',
       course: 'Sistemas de Informação',
