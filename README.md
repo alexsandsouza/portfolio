@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./public/Alex_.png" alt="Alexsander Farias - Portfolio" width="100%" />
+  <img src="./public/Foto_Estudio2.png" alt="Prof. Alexsander Farias" width="180" style="border-radius: 50%;" />
 </p>
 
 <h1 align="center">🌐 Portfólio Prof. Alexsander Farias</h1>
