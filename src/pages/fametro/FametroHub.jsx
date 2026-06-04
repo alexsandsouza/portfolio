@@ -166,6 +166,22 @@ export default function FametroHub() {
       status: 'active',
       accentColor: '#EC4899',
       badges: ['HTML5', 'Semântica', 'Git']
+    },
+    {
+      id: 6,
+      title: 'Engenharia de Software',
+      course: 'Ciência da Computação',
+      institution: 'Centro Universitário FAMETRO',
+      professor: 'Alexsander F. de Souza',
+      period: '5º Período',
+      description: 'Avaliação Institucional N2: Resolva os Modelos A e B com cenários reais de evolução e manutenção de sistemas.',
+      path: '/fametro/eng-software/revisao',
+      rankingPath: '/fametro/eng-software/revisao/ranking',
+      icon: <FileText size={26} color="#14B8A6" />,
+      buttonText: 'Acessar Avaliação N2',
+      status: 'active',
+      accentColor: '#14B8A6',
+      badges: ['Avaliação N2', 'Modelos A/B']
     }
   ];
 
