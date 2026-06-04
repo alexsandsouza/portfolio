@@ -143,7 +143,7 @@ portfolio/
 
 ---
 
-## 📚 Módulo Educacional — FAMETRO
+## 📚 Módulo Educacional - FAMETRO
 
 Sistema completo de **avaliações online interativas** desenvolvido para a graduação em Tecnologia:
 
