@@ -337,10 +337,10 @@ function Intro({ onStart }) {
   const [model, setModel] = useState('A'); // 'A' | 'B'
 
   return (
-    <div style={{
+    <div className="req-intro-container" style={{
       minHeight: '100vh', background: '#070B14', color: '#F0F0F5',
       fontFamily: "'Inter', sans-serif", display: 'flex', flexDirection: 'column',
-      alignItems: 'center', justifyContent: 'center', padding: '40px 20px', textAlign: 'center',
+      alignItems: 'center', justifyContent: 'center', textAlign: 'center',
       backgroundImage: 'radial-gradient(ellipse at 10% 55%, rgba(239,68,68,0.08) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(59,130,246,0.05) 0%, transparent 50%)'
     }}>
       <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(255,255,255,0.01) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.01) 1px, transparent 1px)', backgroundSize: '40px 40px', pointerEvents: 'none', zIndex: 0 }} />
@@ -398,7 +398,7 @@ function Intro({ onStart }) {
           {/* Modelo Select */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8, textAlign: 'left' }}>
             <label style={{ fontSize: 11, fontWeight: 600, letterSpacing: 1.5, color: '#64748B', textTransform: 'uppercase' }}>Modelo de Simulado</label>
-            <div style={{ display: 'flex', gap: 10 }}>
+            <div className="req-model-btns" style={{ display: 'flex', gap: 10 }}>
               {['A', 'B'].map(opt => (
                 <button
                   key={opt}
@@ -592,7 +592,7 @@ function Quiz({ playerName, model, onFinish }) {
           </div>
 
           {showDiscursiveFeedback ? (
-            <div style={{ marginTop: 24, animation: 'fadeIn 0.4s ease' }}>
+            <div className="req-feedback-box" style={{ marginTop: 24, animation: 'fadeIn 0.4s ease' }}>
               <div style={{ border: '1px solid #10B981', background: 'rgba(16,185,129,0.04)', padding: 24, borderRadius: 10, marginBottom: 28 }}>
                 <h4 style={{ color: '#10B981', marginTop: 0, marginBottom: 12, fontSize: 14, textTransform: 'uppercase', letterSpacing: 1 }}>🔓 GABARITO OFICIAL DO PROFESSOR (DIRETRIZES)</h4>
                 <div style={{ fontSize: 14, color: '#D1D5DB', lineHeight: 1.6, whiteSpace: 'pre-line' }}>{studyCase.criteria}</div>
@@ -662,7 +662,7 @@ function Quiz({ playerName, model, onFinish }) {
       </div>
 
       {/* Body Grid */}
-      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '32px 24px', display: 'grid', gridTemplateColumns: '1fr 280px', gap: '32px', alignItems: 'start' }}>
+      <div className="req-grid req-body-padding" style={{ maxWidth: 1200, margin: '0 auto' }}>
         
         {/* Left Side: Question */}
         <div style={{ background: '#0D1321', border: '1px solid rgba(255,255,255,0.06)', padding: '32px', borderRadius: 16 }}>
@@ -704,6 +704,7 @@ function Quiz({ playerName, model, onFinish }) {
                   key={i}
                   disabled={showFeedback}
                   onClick={() => selectAnswer(i)}
+                  className="req-answer-btn"
                   style={{
                     display: 'flex', alignItems: 'flex-start', gap: 14, width: '100%',
                     padding: '18px 20px', borderRadius: 10, background: bg, border: `1px solid ${border}`,
@@ -749,7 +750,7 @@ function Quiz({ playerName, model, onFinish }) {
         </div>
 
         {/* Right Side: Sidebar */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+        <div className="req-minimap-side" style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
           {/* Progress minimap */}
           <div style={{ background: '#0D1321', border: '1px solid rgba(255,255,255,0.06)', padding: '20px', borderRadius: 12 }}>
             <div style={{ fontSize: 10, fontFamily: 'monospace', color: '#64748B', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 12 }}>Minimapa</div>
@@ -826,7 +827,7 @@ function Result({ playerName, model, data }) {
         PONTOS DE 100 (NOTA SIMULADO)
       </div>
 
-      <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 40 }}>
+      <div className="req-result-grid" style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 40 }}>
         {[
           { val: correct, label: 'ACERTOS', col: '#10B981' },
           { val: answered - correct, label: 'ERROS', col: '#EF4444' },
@@ -922,7 +923,31 @@ export default function RequisitosRevisaoActivity() {
     }
   }
 
-  if (screen === 'intro') return <Intro onStart={handleStart} />;
-  if (screen === 'quiz') return <Quiz playerName={playerName} model={model} onFinish={handleFinish} />;
-  if (screen === 'result') return <Result playerName={playerName} model={model} data={resultData} />;
+  return (
+    <>
+      <style>{`
+        .req-grid { display: grid; grid-template-columns: 1fr 280px; gap: 32px; align-items: start; }
+        .req-body-padding { padding: 32px 24px; }
+        .req-intro-container { padding: 120px 20px; }
+        @media (max-width: 900px) {
+          .req-grid { grid-template-columns: 1fr; }
+          .req-minimap-side { order: -1; margin-bottom: 8px; }
+        }
+        @media (max-width: 600px) {
+          .req-intro-container { padding: 60px 20px; }
+          .req-model-btns { flex-direction: column; }
+          .req-result-grid { flex-direction: column; width: 100%; }
+          .req-result-grid > div { width: 100%; }
+          .req-body-padding { padding: 24px 16px; }
+        }
+        .req-answer-btn:hover:not(:disabled) {
+          background: rgba(255,255,255,0.05) !important;
+          border-color: rgba(255,255,255,0.15) !important;
+        }
+      `}</style>
+      {screen === 'intro' && <Intro onStart={handleStart} />}
+      {screen === 'quiz' && <Quiz playerName={playerName} model={model} onFinish={handleFinish} />}
+      {screen === 'result' && <Result playerName={playerName} model={model} data={resultData} />}
+    </>
+  );
 }
