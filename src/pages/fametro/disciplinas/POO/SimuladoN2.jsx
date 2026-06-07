@@ -9,12 +9,11 @@ import {
 } from "lucide-react";
 
 // ─── QUESTIONS DATA - MODELO A ───────────────────────────────────────────────
-
 const QUESTIONS_A = [
   {
     id: 1,
     theme: "Swing & Concorrência",
-    text: "Uma empresa de logística de grande porte desenvolveu um módulo de monitoramento de frota utilizando a biblioteca Java Swing. A interface gráfica possui um botão de 'Atualizar Telemetria' que dispara uma consulta pesada em uma API externa, retornando dados de milhares de veículos para exibição em um mapa interativo. Durante a fase de homologação, os analistas de QA observaram que, ao acionar o botão, a interface do sistema fica temporariamente sem resposta, impossibilitando qualquer interação do usuário, como redimensionar a janela ou minimizar a aplicação até que o processo de rede finalize completamente. O desenvolvedor implementou a chamada de rede diretamente dentro do método que trata o evento de clique, sobrecarregando a execução principal da interface. A equipe de arquitetura precisa de uma solução que permita a atualização dos dados sem comprometer a fluidez da experiência do usuário, mantendo a consistência dos componentes visuais durante o carregamento. Considerando a arquitetura de thread única do Swing e a necessidade de manter a responsividade da aplicação, qual abordagem técnica é recomendada para gerenciar a execução da tarefa de rede sem bloquear a interface do usuário?",
+    text: "**Contexto Profissional:** Uma empresa de logística desenvolveu um módulo de monitoramento de frota usando Java Swing. O botão 'Atualizar Telemetria' dispara uma consulta pesada em uma API externa, retornando dados de milhares de veículos para exibição no mapa.\n\n**O Problema:** Durante a homologação, observou-se que a tela do sistema fica travada e sem responder a cliques, redimensionamento ou minimização até que o processo de rede termine, pois a chamada foi programada diretamente na Thread de Despacho de Eventos (EDT).\n\n**Questão:** Qual abordagem técnica é recomendada para gerenciar a execução da tarefa de rede sem congelar a interface gráfica?",
     options: [
       "A) Encapsular a lógica de rede em um objeto SwingWorker, que separa o processamento pesado do método de atualização de interface, integrando o resultado de forma segura à EDT.",
       "B) Iniciar uma nova instância de Thread dentro do método de clique e invocar o método sleep() para aguardar a resposta antes de atualizar os componentes visuais diretamente na thread principal.",
@@ -23,12 +22,12 @@ const QUESTIONS_A = [
       "E) Substituir a estrutura de eventos por um MouseListener que execute a consulta de rede em um processo separado, sem necessidade de sincronização de estados entre a thread de rede e a interface."
     ],
     answer: "A",
-    feedback: "O SwingWorker é a classe nativa do Java Swing para realizar tarefas em background. Ela divide a execução pesada (no método doInBackground) de atualizações visuais na Thread de Despacho de Eventos (EDT) através dos métodos process/done."
+    feedback: "O SwingWorker é a classe nativa do Java Swing para realizar tarefas em background. Ela divide a execução pesada (no método doInBackground) de atualizações visuais na Thread de Despacho de Eventos (EDT) através do método done()."
   },
   {
     id: 2,
     theme: "Design Patterns (Observer)",
-    text: "Em um sistema de gestão de prontuários médicos desenvolvido em Java, o painel de 'Dados do Paciente' deve notificar o painel de 'Histórico de Exames' sempre que um novo paciente for selecionado na lista principal. Atualmente, a classe responsável pela lista de pacientes possui referências diretas a todos os demais componentes gráficos do sistema para disparar atualizações manuais. Esse acoplamento excessivo tornou o sistema extremamente rígido, dificultando a inclusão de novos painéis ou a modificação de componentes existentes sem quebrar outras funcionalidades. A equipe de desenvolvimento foi instruída a desacoplar esses módulos, garantindo que a adição de um novo painel de visualização não exija modificações na lógica de seleção da lista de pacientes. É necessário implementar uma estratégia de comunicação que permita que os componentes reajam a mudanças de estado sem conhecer a implementação interna uns dos outros. Qual padrão de projeto deve ser adotado para permitir que múltiplos componentes gráficos sejam notificados automaticamente sobre alterações na seleção do paciente, reduzindo o acoplamento entre a lista e os painéis de exibição?",
+    text: "**Contexto Profissional:** Em um sistema de prontuários médicos em Java, o painel de 'Dados do Paciente' deve notificar o painel de 'Histórico de Exames' sempre que um novo paciente for selecionado na lista.\n\n**O Problema:** Atualmente, a classe responsável pela lista possui referências diretas a todos os outros painéis. Esse acoplamento excessivo torna a manutenção rígida, fazendo com que a adição de novos painéis exija alterações na lista.\n\n**Questão:** Qual padrão de projeto deve ser adotado para permitir que múltiplos componentes sejam notificados automaticamente sobre alterações na seleção, reduzindo o acoplamento?",
     options: [
       "A) Utilizar herança múltipla entre os painéis de visualização e a classe da lista, facilitando o acesso aos dados e aos métodos de atualização de forma nativa pela hierarquia.",
       "B) Criar uma classe controladora central que possua métodos para todos os painéis, delegando a responsabilidade de atualização para uma instância global de gerenciamento de UI.",
@@ -37,12 +36,12 @@ const QUESTIONS_A = [
       "E) Definir métodos estáticos em uma interface de utilitários que gerencie a referência de todos os painéis ativos no sistema, disparando atualizações conforme a necessidade."
     ],
     answer: "C",
-    feedback: "O padrão Observer é ideal para desacoplar remetentes de notificações de seus destinatários. Ao se registrar na lista, cada painel passa a ouvir alterações de seleção sem que a lista precise conhecê-los de forma concreta."
+    feedback: "O padrão Observer define uma dependência um-para-muitos entre objetos. Quando o estado da lista muda, todos os painéis registrados como ouvintes são notificados e atualizados automaticamente."
   },
   {
     id: 3,
     theme: "Eventos no Swing & JTextField",
-    text: "Durante o desenvolvimento de um terminal de vendas (PDV), o programador optou por utilizar JTextField para a entrada do código de barras dos produtos. O requisito exige que, assim que o usuário finaliza a digitação e pressiona 'Enter', o sistema valide o código, consulte o preço e exiba o resultado no rótulo da tela. O desenvolvedor percebeu que, ao utilizar o KeyListener, a captura do evento era inconsistente devido a variações de foco entre os componentes da interface. Além disso, o comportamento de entrada via leitor óptico (que simula teclas) gerava conflitos com o foco do campo. A equipe precisa de uma solução técnica que capture o momento exato em que a entrada de dados é confirmada pelo usuário, independentemente se o evento foi disparado pelo teclado físico, leitor óptico ou uma ação de confirmação via mouse, garantindo a integridade da operação de venda. Dentre as opções abaixo, qual representa o mecanismo mais adequado na API Java Swing para capturar a submissão de dados de um campo de texto, minimizando os conflitos gerados pelo gerenciamento de foco?",
+    text: "**Contexto Profissional:** No PDV de um supermercado, utiliza-se um JTextField para entrada do código de barras dos produtos. Quando o usuário digita e pressiona Enter, o sistema busca e insere o item no carrinho.\n\n**O Problema:** O uso do KeyListener gerou comportamento inconsistente com variações de foco e leitores de código de barras rápidos (que simulam digitação), gerando conflitos.\n\n**Questão:** Qual mecanismo é o mais adequado na API Java Swing para capturar com precisão e estabilidade a submissão de dados de um campo de texto?",
     options: [
       "A) Capturar o evento de perda de foco do componente via FocusListener, disparando a validação toda vez que o cursor sair do campo de entrada de texto.",
       "B) Associar um ActionListener ao JTextField, pois este evento dispara quando o usuário pressiona a tecla de confirmação (Enter), abstraindo a complexidade do foco e do teclado.",
@@ -51,12 +50,12 @@ const QUESTIONS_A = [
       "E) Utilizar um InputVerifier que bloqueie a saída do campo enquanto os dados digitados não coincidirem com um formato de código de barras válido no banco de dados."
     ],
     answer: "B",
-    feedback: "Associar um ActionListener ao JTextField permite capturar a submissão do texto por enter de maneira simplificada, abstraindo as variações causadas por leitores de código de barras e focos na janela."
+    feedback: "Associar um ActionListener ao JTextField intercepta o envio do campo de texto disparado pela tecla Enter (ou o caractere de terminação enviado por leitores de código de barras), o que garante estabilidade de captura."
   },
   {
     id: 4,
     theme: "Swing Custom Painting & paintComponent",
-    text: "Uma aplicação de desenho vetorial, desenvolvida em Java, utiliza um JPanel customizado onde o usuário adiciona formas geométricas com cliques do mouse. O desenvolvedor sobreescreveu o método paintComponent para renderizar as formas armazenadas em uma coleção. Após testes, constatou-se que ao maximizar ou redimensionar a janela, os elementos desenhados anteriormente desapareciam ou eram redesenhados de forma inconsistente. Analisando o ciclo de vida do componente, verificou-se que a lógica de desenho estava tentando persistir o estado gráfico diretamente no objeto Graphics de forma temporária, em vez de utilizar o modelo de dados do painel. A equipe de desenvolvimento precisa ajustar a estrutura da classe para que o componente seja capaz de redesenhar o estado atual de forma precisa em qualquer situação de redimensionamento da interface. Qual é o procedimento técnico correto para garantir que elementos gráficos permaneçam visíveis após eventos de redimensionamento ou minimização da janela em um JPanel customizado?",
+    text: "**Contexto Profissional:** Uma aplicação de desenho vetorial utiliza um JPanel customizado onde o usuário clica com o mouse para adicionar formas geométricas.\n\n**O Problema:** O desenvolvedor programou os desenhos diretamente no Graphics retornado na escuta do clique do mouse. Ao maximizar, minimizar ou mover outra janela por cima do aplicativo, os elementos desenhados desaparecem da tela.\n\n**Questão:** Qual procedimento técnico é correto para assegurar a persistência dos elementos gráficos em um JPanel customizado?",
     options: [
       "A) Invocar o método repaint() dentro do método mouseClicked, desenhando a forma diretamente no objeto Graphics passado pelo evento de mouse para garantir a permanência na tela.",
       "B) Armazenar as coordenadas e propriedades das formas em uma estrutura de dados e iterar sobre essa coleção dentro do método paintComponent para redesenhar o estado a cada chamada.",
@@ -65,12 +64,12 @@ const QUESTIONS_A = [
       "E) Utilizar uma biblioteca externa que capture a imagem do componente a cada clique e a aplique como plano de fundo, evitando a necessidade de redesenhar os objetos individuais."
     ],
     answer: "B",
-    feedback: "A pintura em Swing é reativa e sob demanda do sistema operacional. Para persistir os desenhos, as formas devem estar estruturadas em memória e serem ativamente repintadas dentro do ciclo do paintComponent."
+    feedback: "A pintura no Swing é reativa e pode ser redesenhada pelo sistema a qualquer momento. Para persistir as formas, deve-se salvá-las em um modelo de dados (como uma lista) e redesenhá-las iterativamente dentro de paintComponent(Graphics g)."
   },
   {
     id: 5,
     theme: "SOLID (Single Responsibility Principle)",
-    text: "Em um sistema bancário, a classe ProcessadorTransacao tornou-se o ponto central da lógica de negócio. Ela é responsável por calcular taxas de câmbio, formatar comprovantes em formato PDF, validar saldo em diferentes tipos de contas e enviar notificações por e-mail aos clientes. Com o tempo, a classe atingiu milhares de linhas de código, tornando a manutenção extremamente custosa. Qualquer alteração na regra de formatação de um comprovante exige a modificação da mesma classe que lida com a lógica complexa de transações financeiras, gerando riscos de introdução de novos erros (bugs) em áreas sensíveis do sistema. A equipe de arquitetura deseja refatorar este componente para que cada responsabilidade seja isolada, aumentando a coesão e facilitando a evolução do software sem impactar outras partes do sistema. Considerando os princípios de design de software orientados a objetos, qual mudança arquitetural deve ser aplicada para atender ao Princípio da Responsabilidade Única (SRP)?",
+    text: "**Contexto Profissional:** Em um sistema bancário, a classe ProcessadorTransacao gerencia cálculos de câmbio, formatação de PDF de comprovantes, validação de saldos em conta e envio de e-mails para os clientes.\n\n**O Problema:** Com milhares de linhas, a classe tornou-se difícil de manter. Alterar o design do PDF de comprovantes gera riscos de regressão no cálculo tributário de câmbio, violando a coesão.\n\n**Questão:** Qual mudança arquitetural atende de forma fidedigna ao princípio SOLID da Responsabilidade Única (SRP)?",
     options: [
       "A) Dividir a classe ProcessadorTransacao em classes menores, como CalculadorTaxa, GeradorComprovante, ValidadorSaldo e ServicoNotificacao, garantindo que cada uma tenha um motivo específico para mudança.",
       "B) Refatorar a classe para utilizar herança múltipla, criando subclasses especializadas que herdam a lógica central e sobrescrevem apenas os métodos de formatação e envio de mensagens.",
@@ -79,12 +78,12 @@ const QUESTIONS_A = [
       "E) Manter a estrutura atual, porém encapsulando a lógica de negócio em métodos privados, para que o código de formatação não acesse diretamente os dados financeiros da classe."
     ],
     answer: "A",
-    feedback: "O princípio SRP diz que uma classe deve ter um único motivo para mudar. Dividir o processador em classes coesas (taxa, comprovante, saldo, e-mail) isola o impacto de alterações regulatórias ou de infraestrutura."
+    feedback: "O SRP prega que uma classe deve ter apenas um motivo para mudar. Dividir o processador em classes coesas separa as diferentes razões de mudança (regras fiscais, formato do PDF, banco de dados, e-mails)."
   },
   {
     id: 6,
     theme: "Design Patterns (Strategy)",
-    text: "Uma empresa de e-commerce utiliza um motor de recomendação de produtos que aplica diferentes algoritmos baseados no perfil do usuário (ex: baseados em histórico de compras, baseados em popularidade, baseados em tendências sazonais). Atualmente, a classe que gerencia as recomendações possui uma sequência extensa de condicionais (if-else) que verifica o perfil do usuário para escolher o método de cálculo. Conforme a empresa planeja introduzir novos algoritmos de recomendação, o código da classe central fica cada vez mais complexo e difícil de testar, exigindo alterações frequentes no código-fonte já existente a cada nova estratégia comercial criada. A equipe técnica necessita de um padrão de design que possibilite a extensão do sistema com novos algoritmos sem alterar a lógica de consumo das recomendações. Qual padrão de projeto é mais adequado para encapsular algoritmos de recomendação distintos e permitir que sejam trocados em tempo de execução?",
+    text: "**Contexto Profissional:** Um e-commerce possui uma classe para gerenciar a recomendação de produtos com base no histórico de compras, popularidade e tendências sazonais.\n\n**O Problema:** A escolha da estratégia é executada por um bloco extenso de condicionais if-else. A inclusão de novas técnicas de recomendação exige modificar a classe central e expõe o código a falhas de regressão.\n\n**Questão:** Qual padrão de projeto GoF é indicado para encapsular e alternar algoritmos em tempo de execução?",
     options: [
       "A) Strategy, permitindo que cada algoritmo de recomendação seja encapsulado em uma classe dedicada, sendo intercambiável pela classe que consome o serviço.",
       "B) Singleton, assegurando que apenas uma instância de cada algoritmo de recomendação exista na memória, otimizando o consumo de recursos durante a execução.",
@@ -93,26 +92,26 @@ const QUESTIONS_A = [
       "E) Observer, permitindo que os algoritmos sejam notificados sempre que o perfil do usuário mudar, disparando a atualização do gráfico de recomendações automaticamente."
     ],
     answer: "A",
-    feedback: "O padrão Strategy é perfeito para encapsular comportamentos/algoritmos distintos sob uma mesma interface comum de execução, reduzindo o uso de desvios if-else complexos e facilitando a inclusão de novas regras."
+    feedback: "O padrão Strategy encapsula algoritmos intercambiáveis sob uma interface comum. Isso permite alterar ou estender os algoritmos de recomendação dinamicamente sem modificar a classe consumidora."
   },
   {
     id: 7,
     theme: "Java Collections & Estruturas de Dados",
-    text: "Um sistema de análise de tráfego de rede precisa armazenar logs de pacotes capturados para processamento posterior. Os logs chegam continuamente e, para manter a memória sob controle, o sistema deve remover os logs mais antigos assim que o buffer de armazenamento atinge um limite definido. O desenvolvedor utilizou inicialmente uma ArrayList para armazenar esses logs. No entanto, ele notou que a remoção de elementos no início da lista para liberar espaço é ineficiente, causando picos de lentidão na aplicação, pois a estrutura precisa deslocar todos os elementos subsequentes a cada remoção. É necessário trocar a estrutura de dados para uma que ofereça melhor desempenho para operações de remoção frequentes no início da coleção, sem perder a capacidade de armazenamento sequencial. Qual estrutura de dados da Java Collections Framework é a mais indicada para otimizar operações que exigem remoção frequente na primeira posição da coleção, visando maior eficiência?",
+    text: "**Contexto Profissional:** Um analisador de tráfego de rede armazena logs de pacotes e precisa remover o log mais antigo (posição 0) à medida que novas mensagens chegam e o buffer lota.\n\n**O Problema:** A equipe usou ArrayList para o buffer, mas a remoção constante do índice zero causou lentidão severa. O ArrayList precisa realizar o deslocamento (shift) em memória de todos os elementos restantes.\n\n**Questão:** Qual estrutura de dados de coleção otimiza a exclusão frequente no início sem perder a ordem sequencial?",
     options: [
       "A) LinkedList, pois sua estrutura de nós encadeados permite a remoção em tempo constante no início da lista, eliminando a necessidade de deslocamento de elementos.",
       "B) HashSet, pois a estrutura garante acesso imediato aos elementos e otimiza a remoção de dados sem a necessidade de manter a ordem sequencial dos logs de rede.",
       "C) Vector, pois a sincronização interna dos métodos garante que a remoção de elementos ocorra de forma segura entre múltiplas threads, mantendo o desempenho.",
       "D) TreeSet, pois a manutenção automática da ordem dos elementos facilita a busca pelos logs mais antigos, acelerando a operação de exclusão por comparação de tempo.",
-      "E) PriorityQueue, pois a estrutura organiza os elementos por prioridade de tempo de chegada, permitindo a remoção rápida do elemento com menor valor de timestamp."
+      "E) PriorityQueue, pois a estrutura organiza os elementos por prioridade de tempo de chegada, permitindo a remoção rápida del elemento com menor valor de timestamp."
     ],
     answer: "A",
-    feedback: "A LinkedList remove elementos das extremidades (como a primeira posição) em tempo constante O(1), enquanto a ArrayList exige tempo O(N) para mover o array restante de itens."
+    feedback: "A LinkedList organiza os itens em nós encadeados. Excluir o primeiro elemento da lista é uma operação de complexidade O(1) que apenas ajusta o ponteiro inicial, diferentemente do custo O(N) da ArrayList."
   },
   {
     id: 8,
     theme: "SOLID (Dependency Inversion Principle)",
-    text: "Em um projeto de sistemas de informações geográficas (SIG), o módulo de acesso a dados depende fortemente de uma biblioteca específica de persistência de um fornecedor de banco de dados comercial. Essa dependência direta tornou o sistema difícil de migrar para soluções de código aberto, pois toda a lógica de negócio foi escrita utilizando as classes concretas da biblioteca do fornecedor. A equipe deseja realizar uma refatoração arquitetural que desvincule a lógica de negócio da tecnologia de persistência, permitindo a substituição futura do motor de banco de dados sem que o código dos módulos de alto nível seja alterado. É imperativo seguir o princípio de que módulos de negócio não devem conhecer detalhes de implementação de módulos de infraestrutura. Qual princípio de design orientado a objetos deve ser aplicado para realizar essa dissociação e garantir a manutenibilidade do sistema a longo prazo?",
+    text: "**Contexto Profissional:** Em um sistema de informações geográficas, a camada de regras de negócio instancia e chama diretamente classes concretas de uma biblioteca de persistência Oracle.\n\n**O Problema:** A empresa precisa migrar a base de dados para PostgreSQL, mas o acoplamento rígido com as classes concretas do fornecedor exige uma refatoração em larga escala em todo o código.\n\n**Questão:** Qual princípio SOLID orienta a desacoplar a lógica de negócio dos detalhes da biblioteca de infraestrutura?",
     options: [
       "A) Encapsulamento de Dados, protegendo os métodos de acesso aos dados dentro de pacotes privados, acessíveis apenas através de métodos getters e setters na camada de negócio.",
       "B) Princípio de Substituição de Liskov, garantindo que qualquer implementação de banco de dados possa substituir a implementação anterior sem quebrar o comportamento do sistema.",
@@ -121,17 +120,16 @@ const QUESTIONS_A = [
       "E) Inversão de Dependência (DIP), fazendo com que as classes de negócio dependam de interfaces de abstração de persistência, e não de classes concretas de conexão."
     ],
     answer: "E",
-    feedback: "O Princípio de Inversão de Dependência (DIP) dita que módulos de alto nível (regras de negócio) não devem depender de módulos de baixo nível (infraestrutura, banco de dados). Ambos devem depender de abstrações (interfaces)."
+    feedback: "A Inversão de Dependência (DIP) dita que módulos de alto nível não devem depender de módulos de baixo nível (infraestrutura), mas sim de abstrações (interfaces), facilitando a troca do banco de dados."
   }
 ];
 
 // ─── QUESTIONS DATA - MODELO B ───────────────────────────────────────────────
-
 const QUESTIONS_B = [
   {
     id: 1,
     theme: "Swing & Concorrência",
-    text: "Um sistema de monitoramento meteorológico baseado em Java Swing possui um botão 'Importar Histórico Climático' que, ao ser clicado, realiza a importação de volumosos arquivos CSV armazenados localmente e atualiza a barra de progresso do painel principal. Durante a execução, o desenvolvedor percebeu que toda a tela congela e para de atualizar sua interface gráfica até que a leitura de todo o arquivo termine, impedindo o clique no botão 'Cancelar' ou a rolagem do relatório em exibição. O erro ocorreu porque a leitura dos arquivos foi codificada na thread principal do Swing. Qual é a técnica recomendada para assegurar que a barra de progresso seja atualizada em tempo real sem causar o congelamento visual da interface do Swing?",
+    text: "**Contexto Profissional:** Um sistema meteorológico desenvolvido em Java Swing possui o botão 'Importar Histórico Climático' que realiza a leitura de volumosos arquivos CSV.\n\n**O Problema:** O desenvolvedor implementou a rotina de leitura de arquivo diretamente na thread principal (EDT). Com isso, a interface congela e impede a atualização de uma barra de progresso ou o clique no botão 'Cancelar'.\n\n**Questão:** Qual é a técnica adequada para processar a leitura de arquivos mantendo a responsividade do Swing em tempo real?",
     options: [
       "A) Implementar a lógica de leitura no doInBackground de um SwingWorker, atualizando a barra de progresso via publish() e publicando o resultado final seguro na EDT.",
       "B) Utilizar herança direta para criar um botão personalizado que estenda a classe Thread e execute a leitura de arquivos dentro de blocos de processamento síncronos.",
@@ -140,12 +138,12 @@ const QUESTIONS_B = [
       "E) Configurar um manipulador de eventos do tipo MouseMotionListener que force a repintura da interface a cada pixel que o cursor se deslocar na tela da aplicação."
     ],
     answer: "A",
-    feedback: "Assim como no modelo A, o SwingWorker é projetado especificamente para rodar operações de E/S ou rede fora da Thread de Despacho de Eventos (EDT) e comunicar atualizações de progresso visuais com segurança através do método process."
+    feedback: "O SwingWorker executa a leitura longa em background (doInBackground) e fornece o método publish/process para atualizar de forma segura e responsiva a barra de progresso na EDT."
   },
   {
     id: 2,
     theme: "Design Patterns (Observer)",
-    text: "Um dashboard de controle de telemetria automotiva necessita atualizar dinamicamente três painéis visuais: o Velocímetro Digital, o Painel de Consumo de Bateria e o Registrador de Logs de Percurso, sempre que a velocidade do veículo mudar no sensor central. O programador acoplou a classe do Sensor diretamente às classes concretas desses três painéis, disparando atualizações internas manualmente a cada alteração. Isso gerou rigidez no design de software e impediu a inclusão fácil de novos visualizadores no painel automotivo. A fim de resolver a fragilidade da arquitetura, o time de engenharia optou por estabelecer um fluxo de comunicação dinâmico e desacoplado. Qual padrão deve ser utilizado para notificar os painéis de velocidade sem mantê-los rigidamente acoplados à lógica do sensor?",
+    text: "**Contexto Profissional:** No painel de telemetria de um veículo autônomo, a velocidade do carro precisa ser enviada instantaneamente para o Velocímetro, Consumo de Bateria e Histórico de Logs.\n\n**O Problema:** A classe do Sensor está diretamente acoplada às classes concretas das telas, chamando métodos individuais manualmente. Isso impede a adição de novos painéis sem alterar a classe do sensor.\n\n**Questão:** Qual padrão de projeto GoF deve ser utilizado para estabelecer uma comunicação indireta e flexível?",
     options: [
       "A) Definir todos os métodos de atualização como interfaces de execução síncrona dentro de classes internas protegidas pertencentes ao Velocímetro Digital.",
       "B) Adotar uma arquitetura de herança em cadeia onde o sensor herde de cada painel para acessar de maneira nativa as propriedades de formatação do painel.",
@@ -154,12 +152,12 @@ const QUESTIONS_B = [
       "E) Criar adaptadores de classe para converter a leitura de velocidade em formatos que os painéis interpretem por meio de utilitários estáticos no sistema."
     ],
     answer: "C",
-    feedback: "O Observer resolve o acoplamento um-para-muitos definindo a interface Subject (ou Observable) no sensor, permitindo que novos painéis simplesmente se cadastrem para receber novidades de alteração de dados de forma autônoma."
+    feedback: "O Observer permite que múltiplos painéis ouçam atualizações do sensor de velocidade sem criar conexões rígidas na estrutura de classes, estendendo o sistema facilmente."
   },
   {
     id: 3,
     theme: "Eventos no Swing & JTextField",
-    text: "Em um terminal de consulta de livros em uma biblioteca, o usuário digita o ISBN da obra em um JTextField e pressiona 'Enter' para submeter a pesquisa. O programador havia colocado um FocusListener para validar os dados do ISBN na perda do foco da caixa de texto, mas notou falhas contínuas de validação quando os leitores ópticos de código de barras faziam leituras velozes. Para resolver o comportamento e capturar a digitação e a submissão com o máximo de integridade nos terminais, qual abordagem da API Java Swing deve ser escolhida?",
+    text: "**Contexto Profissional:** Em um terminal de consulta de livros em uma biblioteca, o usuário digita o ISBN no JTextField e confirma a busca teclando Enter.\n\n**O Problema:** O FocusListener apresentou falhas de captura com leitores ópticos manuais, e o uso de KeyListener gerou eventos duplicados e problemas no foco das caixas de diálogo.\n\n**Questão:** Qual a melhor forma de escutar a submissão de dados desse JTextField de forma uniforme?",
     options: [
       "A) Implementar um KeyListener para capturar eventos de liberação de tecla (keyReleased), iniciando a pesquisa a cada caractere inserido pelo usuário.",
       "B) Associar um ActionListener ao JTextField, que intercepta o envio do campo de texto disparado nativamente pelo botão de confirmação ou tecla Enter.",
@@ -168,12 +166,12 @@ const QUESTIONS_B = [
       "E) Substituir o componente por um JTextArea e registrar listeners para capturar as coordenadas de mouse dentro da janela gráfica do formulário."
     ],
     answer: "B",
-    feedback: "O JTextField do Swing notifica os ouvintes registrados em seu ActionListener quando a tecla Enter (ou a quebra de linha simulada por leitores de código) é pressionada, tornando-se a abordagem ideal para submissões robustas."
+    feedback: "O ActionListener no JTextField capta o ato do Enter de forma robusta e abstrata, sendo a abordagem recomendada pela API Swing para submissão de texto."
   },
   {
     id: 4,
     theme: "Swing Custom Painting & paintComponent",
-    text: "Um programador desenvolveu um painel para exibição de fluxogramas elétricos estendendo o JPanel. A rotina de renderização das conexões elétricas foi inserida no mouseDragged utilizando g.drawLine() sobre o Graphics obtido de getGraphics(). Os testes demonstraram que, sempre que o usuário minimiza a janela e a restaura na tela, os diagramas elétricos desaparecem, forçando o redesenho manual de tudo. Qual é o procedimento técnico apropriado para garantir que a renderização permaneça e seja consistente a cada redesenho automático da tela da aplicação?",
+    text: "**Contexto Profissional:** Um painel de exibição de circuitos elétricos estende o JPanel e desenha as conexões dinâmicas utilizando g.drawLine() no método mouseDragged.\n\n**O Problema:** Ao minimizar e abrir novamente a janela, as conexões desenhadas desaparecem completamente da tela do sistema, indicando problemas no ciclo de vida de renderização.\n\n**Questão:** De que forma deve ser reestruturada a pintura para evitar a perda das conexões gráficas?",
     options: [
       "A) Configurar o repaint() para disparar loops curtos no sistema de modo a invalidar o layout e repintar a janela de forma forçada a cada clique.",
       "B) Exportar o layout do JPanel como imagem PNG em tempo real a cada atualização, aplicando a imagem como plano de fundo de forma síncrona.",
@@ -182,12 +180,12 @@ const QUESTIONS_B = [
       "E) Forçar a retenção do buffer na thread de despacho do sistema operacional para desabilitar o recebimento dos sinais automáticos de repintura."
     ],
     answer: "D",
-    feedback: "No ciclo de renderização do Swing, as telas são atualizadas constantemente. Pintar usando getGraphics() é temporário. O modo correto é guardar as coordenadas dos elementos em coleções e desenhá-los dentro de paintComponent."
+    feedback: "O objeto Graphics é volatil. Para reter o desenho, as entidades de circuito devem ser mantidas em uma lista de modelo de dados e desenhadas pelo ciclo do paintComponent."
   },
   {
     id: 5,
     theme: "SOLID (Single Responsibility Principle)",
-    text: "A classe AdministradorNotas de um sistema universitário é encarregada de computar a média final dos estudantes, formatar boletins acadêmicos em arquivos XML, persistir os boletins no banco de dados e realizar o envio de notificações sobre a média via SMS para os responsáveis. A manutenção da classe é complexa devido à falta de coesão, fazendo com que qualquer alteração de regras do banco de dados exija mexer nas rotinas que formatam o XML do boletim. Com base nos conceitos SOLID, qual alteração arquitetural atende de forma fidedigna ao Princípio da Responsabilidade Única (SRP)?",
+    text: "**Contexto Profissional:** A classe AdministradorNotas processa médias de alunos, exporta boletins em XML, grava registros na base de dados SQL e envia avisos por SMS.\n\n**O Problema:** A falta de coesão exige modificar a classe e testar novamente todas as regras financeiras e acadêmicas mesmo quando apenas o layout do XML ou o fornecedor do SMS muda.\n\n**Questão:** Qual refatoração atende ao princípio SOLID da Responsabilidade Única (SRP)?",
     options: [
       "A) Dividir a classe em classes independentes menores, como CalculadorMedias, GeradorBoletimXml, RepositorioBoletim e ServicoMensageriaSms.",
       "B) Sobrescrever os métodos com herança múltipla baseada em interfaces de negócio para cada tipo de cálculo de média das disciplinas.",
@@ -196,12 +194,12 @@ const QUESTIONS_B = [
       "E) Encapsular os parâmetros em estruturas internas privadas para isolar as chamadas do banco de dados das demais rotinas visuais."
     ],
     answer: "A",
-    feedback: "Ao quebrar a classe inflada em quatro classes menores dedicadas (calculador, gerador, repositório, mensageria), cada uma passa a ter um único papel lógico no ecossistema de software, garantindo maior coesão e isolamento de bugs."
+    feedback: "A divisão em quatro classes independentes e coesas (calculador, gerador, repositório, mensageria) reduz o acoplamento e restringe os motivos de alteração para cada módulo."
   },
   {
     id: 6,
     theme: "Design Patterns (Strategy)",
-    text: "Um software de cálculo fiscal empresarial precisa aplicar diferentes regras tributárias para o faturamento de produtos com base no estado do país (ex: regras específicas de ICMS de São Paulo, regras do Rio de Janeiro, impostos do Amazonas, etc.). A classe central CalculadoraImpostos possui um switch-case extenso que verifica a sigla do estado e implementa cada lógica de cálculo correspondente. Conforme novos estados e regras tributárias entram em vigor, a classe precisa ser aberta e modificada constantemente, violando a extensibilidade do sistema. Qual padrão de projeto GoF deve ser utilizado para encapsular esses impostos distintos e permitir que sejam modificados ou estendidos sem alterar o código-fonte da calculadora?",
+    text: "**Contexto Profissional:** Um motor de cálculo de impostos de faturamento precisa adotar lógicas fiscais complexas de acordo com a sigla do estado selecionado (ICMS, ISS, etc.).\n\n**O Problema:** A classe central possui um bloco switch-case robusto. A expansão para novos estados exige modificações diretas nesse fluxo condicional central, dificultando testes isolados.\n\n**Questão:** Qual padrão de projeto GoF deve ser utilizado para encapsular estes algoritmos dinâmicos?",
     options: [
       "A) Facade, para criar um subsistema robusto de cálculo e ocultar as chamadas complexas sob uma classe de persistência centralizada.",
       "B) Factory Method, para instanciar a calculadora de impostos por meio de parâmetros estáticos que representem o local tributário do cálculo.",
@@ -210,12 +208,12 @@ const QUESTIONS_B = [
       "E) Strategy, para definir uma interface comum de imposto e criar classes concretas para cada estado, alternando-as via composição na calculadora."
     ],
     answer: "E",
-    feedback: "O padrão Strategy desacopla o cálculo específico (algoritmo) do contexto. Ao criar estratégias concretas de impostos (ex: ImpostoAM, ImpostoSP), a calculadora simplesmente chama o método calcular() polimorficamente por composição."
+    feedback: "O padrão Strategy permite extrair as lógicas de impostos para classes separadas com uma interface comum, bastando injetá-las por composição na calculadora central."
   },
   {
     id: 7,
     theme: "Java Collections & Estruturas de Dados",
-    text: "Um editor de texto profissional implementa uma funcionalidade de buffer de desfazer (Undo History) com capacidade máxima para 500 operações de edição. Sempre que o buffer atinge seu tamanho limite, o sistema remove a operação mais antiga de edição (que está no primeiro índice, posição 0) para abrir espaço para o registro da nova ação de edição no final do histórico de comandos. O programador notou lentidão no software ao utilizar ArrayList para implementar o buffer. Qual estrutura de dados da API Java Collections resolveria o gargalo de performance no início da coleção sem comprometer o armazenamento sequencial das ações de desfazer?",
+    text: "**Contexto Profissional:** Em um editor de texto, o buffer do histórico de desfazer (Undo) armazena até 500 comandos. Ao lotar, o comando mais antigo no índice 0 é eliminado.\n\n**O Problema:** A utilização de ArrayList provocou gargalos de desempenho ao remover do início, pois a JVM precisa arrastar todos os demais elementos subsequentes em memória.\n\n**Questão:** Qual coleção da Java Collections Framework resolve a ineficiência de remoção do índice zero?",
     options: [
       "A) LinkedList, já que remove nós na primeira posição em tempo constante O(1) apenas redirecionando os apontadores de referência do nó inicial.",
       "B) HashSet, já que acelera a busca e remoção e mantém as ações de desfazer perfeitamente organizadas por ordem cronológica.",
@@ -224,12 +222,12 @@ const QUESTIONS_B = [
       "E) HashMap, mapeando o número do comando com a chave da coleção para eliminar o deslocamento físico de elementos internos."
     ],
     answer: "A",
-    feedback: "LinkedList é estruturada com nós duplamente encadeados. Remover o cabeçalho (posição 0) requer apenas alterar um ponteiro (tempo O(1)), sem o custo O(N) do ArrayList que precisa deslocar todos os outros 499 elementos."
+    feedback: "A LinkedList possui nós duplamente encadeados. A exclusão de um elemento na extremidade (índice 0) altera apenas o ponteiro do nó inicial (O(1)), sem necessitar de deslocamento físico."
   },
   {
     id: 8,
     theme: "SOLID (Dependency Inversion Principle)",
-    text: "Durante a construção de um gerador de relatórios corporativo, a classe RelatorioMensalService instancia diretamente o objeto OracleDBConnection para buscar dados de faturamento. A empresa iniciou um plano de substituição do banco de dados Oracle por uma solução aberta baseada em PostgreSQL. Durante a migração, a equipe observou alto acoplamento: todas as regras de faturamento e compilação do relatório dependiam de classes e assinaturas concretas do driver JDBC Oracle, exigindo refatoração em larga escala do negócio. Para evitar esse tipo de acoplamento rígido, qual princípio SOLID de desenvolvimento de software deve orientar a reestruturação desse relacionamento de classes?",
+    text: "**Contexto Profissional:** Uma classe de negócio de relatórios de faturamento instancia diretamente a conexão JDBC do Oracle para buscar dados.\n\n**O Problema:** A necessidade de migrar para o banco de dados PostgreSQL revelou que a classe de negócio está intimamente ligada a rotinas concretas da API do Oracle, gerando alto acoplamento.\n\n**Questão:** Qual princípio SOLID soluciona essa dependência de infraestrutura na engenharia de software?",
     options: [
       "A) Encapsulamento de dados, mantendo as credenciais de banco privadas na classe RelatorioMensalService com acesso via métodos getters.",
       "B) Substituição de Liskov (LSP), para permitir que novas subclasses concretas de OracleDBConnection acessem o PostgreSQL sem lançar exceções.",
@@ -238,12 +236,11 @@ const QUESTIONS_B = [
       "E) Inversão de Dependência (DIP), fazendo com que RelatorioMensalService dependa de uma interface de conexão genérica implementada por cada driver."
     ],
     answer: "E",
-    feedback: "A Inversão de Dependência (DIP) dita que o código de negócio (Alto Nível) não deve conhecer os detalhes concretos da infraestrutura de banco (Baixo Nível). Ao criar uma interface (ex: DBConnection), isolamos as implementações dos bancos de dados."
+    feedback: "O DIP (Dependency Inversion Principle) estipula que classes de alto nível não devem depender de implementações de baixo nível. Criando uma abstração (interface), isolamos o sistema de detalhes do banco de dados."
   }
 ];
 
 // ─── DISCURSIVE DATA ─────────────────────────────────────────────────────────
-
 const STUDY_CASE_A = {
   title: "Modernização da Startup DataCore Solutions",
   context: "A DataCore Solutions, uma startup voltada para a análise de tráfego de dados em redes de fibra óptica, enfrenta um desafio crítico em seu software principal. O sistema, desenvolvido em Java, coleta milhões de pacotes por segundo. A classe central, ProcessadorDeDados, é responsável por realizar a filtragem, a análise estatística e o armazenamento desses pacotes. Atualmente, o código está estruturado com uma sequência imensa de condicionais (if-else e switch-case) que verificam o tipo de pacote e, dependendo do tipo, executam uma lógica de processamento específica. Além disso, os dados são armazenados em uma ArrayList genérica. Com a expansão do negócio, a equipe precisa adicionar constantemente novos algoritmos de filtragem e novas estruturas de processamento. Toda vez que um novo requisito surge, a classe ProcessadorDeDados precisa ser aberta, modificada e testada novamente, o que tem gerado gargalos de performance e um alto índice de bugs em produção. O CTO da empresa busca um profissional que possa reestruturar o código utilizando Padrões de Projeto e escolhas adequadas de Estruturas de Dados, visando um sistema inovador, escalável e de fácil manutenção, sem que a alteração de um algoritmo de filtragem comprometa o funcionamento da estrutura de armazenamento dos dados.",
@@ -255,24 +252,10 @@ const STUDY_CASE_B = {
   title: "Arquitetura PixFlow para Processamento de Eventos",
   context: "A PixFlow, uma plataforma financeira que lida com o processamento de pagamentos digitais instantâneos, enfrenta um sério problema de instabilidade em seu barramento de dados. O sistema Java processa milhões de pagamentos Pix simultaneamente. A classe ProcessadorPix possui um loop central com condicionais switch-case de acordo com o canal emissor (Pix CPF, Pix CNPJ, Pix Chave Aleatória, Pix Copia e Cola) e executa validações fiscais e anti-fraude diretamente no loop, além de salvar os resultados em um ArrayList estático de controle. Sob carga extrema nas janelas de maior tráfego, as threads de processamento disparadas pelos servidores Web começam a lançar ConcurrentModificationException e a CPU do servidor trava em 100% devido ao overhead de redimensionamento e deslocamento do ArrayList na memória. O conselho executivo exige uma reestruturação para mitigar falhas em produção.",
   statement: "Considerando as regras de engenharia de software e orientação a objetos, elabore uma dissertação-argumentativa fundamentada tecnicamente (mínimo de 30 linhas) respondendo aos seguintes tópicos:\n\nA) Diagnostique os problemas estruturais de design e SOLID presentes na classe ProcessadorPix, bem como os riscos corporativos e técnicos de manter o sistema inalterado.\nB) Proponha o uso combinado de um padrão de projeto comportamental (para isolar os algoritmos de validação por tipo de Pix) e um padrão criacional (para fabricar esses validadores), detalhando como esses padrões reduzem o acoplamento do sistema.\nC) Justifique a fragilidade de utilizar ArrayList em ambientes multi-thread concorrentes de tempo real e recomende uma estrutura concorrente da API java.util.concurrent que estabilize o sistema, justificando com base no funcionamento interno de locks ou locks não-bloqueantes.\nD) Destaque como a habilidade de projetar soluções escaláveis alinha-se ao papel de um engenheiro de software que ajuda a reduzir o custo operacional e garante alta disponibilidade da plataforma.",
-  criteria: "DIRETRIZES DE RESPOSTA ESPERADA:\n\nA) Diagnóstico de Arquitetura e SOLID:\n• SRP (Single Responsibility): ProcessadorPix valida regras, analisa fraudes e gerencia o armazenamento de Pix.\n• OCP (Open-Closed): O loop do switch-case precisa ser modificado diretamente a cada novo modelo de transação Pix.\nRiscos: downtime financeiro, perda de transações, ConcurrentModificationException e custos elevados de homologação de novas releases.\n\nB) Design Patterns Recomendados:\n• Comportamental: Strategy ou State, para encapsular a lógica de validação de cada tipo de Pix em classes separadas.\n• Criacional: Factory (ou Simple Factory), para encapsular as regras de instanciação das estratégias correspondentes com base no payload recebido.\n• Redução do acoplamento: o coordenador não conhece a lógica interna das estratégias, apenas o contrato de sua interface.\n\nC) Concorrência e Estruturas de Dados:\n• ArrayList não é thread-safe. A inserção e redimensionamento simultâneos em memória por múltiplas threads geram corrupção nos arrays internos e falhas críticas.\n• Alternativa: ConcurrentLinkedQueue (fila FIFO eficiente baseada em algoritmos não-bloqueantes CAS - Compare-And-Swap) ou CopyOnWriteArrayList (caso haja raras escritas e muitas leituras, embora ineficiente para fluxos de escrita constante).\n• Para um pipeline Pix de processamento contínuo, a ConcurrentLinkedQueue ou LinkedBlockingQueue estabiliza o sistema e eleva o throughput.\n\nD) Visão Estratégica:\n• O engenheiro atua como um facilitador de negócios ao desenhar sistemas tolerantes a falhas que protegem a receita da fintech.\n• Arquiteturas resilientes minimizam custos de infraestrutura e viabilizam a evolução contínua da fintech em conformidade com as regras do Banco Central."
-};
-
-// ─── HELPERS ─────────────────────────────────────────────────────────────────
-
-const formatTime = (seconds) => {
-  const h = Math.floor(seconds / 3600);
-  const m = Math.floor((seconds % 3600) / 60);
-  const s = seconds % 60;
-  return [
-    h > 0 ? String(h).padStart(2, "0") : null,
-    String(m).padStart(2, "0"),
-    String(s).padStart(2, "0")
-  ].filter(Boolean).join(":");
+  criteria: "DIRETRIZES DE RESPOSTA ESPERADA:\n\nA) Diagnóstico de Arquitetura e SOLID:\n• SRP (Single Responsibility): ProcessadorPix valida regras, analisa fraudes e gerencia o armazenamento de Pix.\n• OCP (Open-Closed): O loop do switch-case precisa ser modificado diretamente a cada novo modelo de transação Pix.\nRiscos: downtime financeiro, perda de transações, ConcurrentModificationException e custos elevados de homologação de novas releases.\n\nB) Design Patterns Recomendados:\n• Comportamental: Strategy ou State, para encapsular a lógica de validação de cada tipo de Pix em classes separadas.\n• Criacional: Factory (ou Simple Factory), para encapsular as regras de instanciação das estratégias correspondentes com base no payload recebido.\n• Redução do acoplamento: o coordenador não conhece a lógica interna das estratégias, apenas o contrato de sua interface.\n\nC) Concorrência e Estruturas de Dados:\n• ArrayList não é thread-safe. A inserção e redimensionamento simultâneos em memória por múltiplas threads geram corrupção nos arrays internos e falhas críticas.\n• Alternativa: ConcurrentLinkedQueue (fila FIFO eficiente baseada em algoritmos não-bloqueantes CAS - Compare-And-Swap) ou LinkedBlockingQueue.\n• Para um pipeline Pix de processamento contínuo, a ConcurrentLinkedQueue ou LinkedBlockingQueue estabiliza o sistema e eleva o throughput.\n\nD) Visão Estratégica:\n• O engenheiro atua como um facilitador de negócios ao desenhar sistemas tolerantes a falhas que protegem a receita da fintech.\n• Arquiteturas resilientes minimizam custos de infraestrutura e viabilizam a evolução contínua da fintech em conformidade com as regras do Banco Central."
 };
 
 // ─── STYLING SYSTEM ──────────────────────────────────────────────────────────
-
 const theme = {
   bg: "#070B14",
   surface: "#0F172A",
@@ -290,8 +273,102 @@ const theme = {
   dangerBg: "rgba(239, 68, 68, 0.1)"
 };
 
-// ─── SUB-COMPONENTS ──────────────────────────────────────────────────────────
+// ─── UTILITY FUNCTIONS ───────────────────────────────────────────────────────
+function formatTime(seconds) {
+  const mins = Math.floor(seconds / 60);
+  const secs = seconds % 60;
+  return `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
+}
 
+function renderQuestionText(text) {
+  return text.split('\n\n').map((para, paraIdx) => {
+    const isContext = para.startsWith("**Contexto Profissional:**") || para.startsWith("Contexto Profissional:");
+    const isProblem = para.startsWith("**O Problema:**") || para.startsWith("O Problema:");
+    const isQuestion = para.startsWith("**Questão:**") || para.startsWith("Questão:");
+
+    let content = para;
+    let title = "";
+    let borderLeft = "";
+    let background = "";
+    let borderColor = "";
+
+    if (isContext) {
+      content = para.replace(/^\*\*Contexto Profissional:\*\*\s*/, "").replace(/^Contexto Profissional:\s*/, "");
+      title = "CONTEXTO PROFISSIONAL";
+      borderLeft = `4px solid ${theme.accent}`;
+      background = "rgba(59, 130, 246, 0.02)";
+      borderColor = "rgba(59, 130, 246, 0.1)";
+    } else if (isProblem) {
+      content = para.replace(/^\*\*O Problema:\*\*\s*/, "").replace(/^O Problema:\s*/, "");
+      title = "O DESAFIO TÉCNICO";
+      borderLeft = "4px solid #FBBF24";
+      background = "rgba(251, 191, 36, 0.02)";
+      borderColor = "rgba(251, 191, 36, 0.1)";
+    } else if (isQuestion) {
+      content = para.replace(/^\*\*Questão:\*\*\s*/, "").replace(/^Questão:\s*/, "");
+      title = "ENUNCIADO DA QUESTÃO";
+      borderLeft = "4px solid #10B981";
+      background = "rgba(16, 185, 129, 0.02)";
+      borderColor = "rgba(16, 185, 129, 0.1)";
+    }
+
+    if (isContext || isProblem || isQuestion) {
+      return (
+        <div 
+          key={paraIdx} 
+          style={{
+            borderLeft,
+            backgroundColor: background,
+            borderTop: `1px solid ${borderColor}`,
+            borderRight: `1px solid ${borderColor}`,
+            borderBottom: `1px solid ${borderColor}`,
+            borderRadius: "8px",
+            padding: "1rem 1.25rem",
+            marginBottom: "1rem",
+            textAlign: "left"
+          }}
+        >
+          <div style={{
+            fontSize: "0.7rem",
+            fontWeight: 900,
+            letterSpacing: "1.5px",
+            color: isContext ? theme.accent : isProblem ? "#FBBF24" : "#10B981",
+            marginBottom: "0.5rem"
+          }}>
+            {title}
+          </div>
+          <p style={{
+            fontSize: "0.95rem",
+            color: isQuestion ? theme.white : theme.text,
+            lineHeight: "1.6",
+            margin: 0,
+            fontWeight: isQuestion ? 600 : 400
+          }}
+          dangerouslySetInnerHTML={{
+            __html: content.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+          }}
+          />
+        </div>
+      );
+    }
+
+    return (
+      <p key={paraIdx} style={{
+        fontSize: "0.95rem",
+        color: theme.text,
+        lineHeight: "1.6",
+        margin: "0 0 1rem",
+        textAlign: "left"
+      }}
+      dangerouslySetInnerHTML={{
+        __html: para.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+      }}
+      />
+    );
+  });
+}
+
+// ─── WELCOME SUB-COMPONENT ───────────────────────────────────────────────────
 function Welcome({ name, setName, model, setModel, onStart }) {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -301,36 +378,35 @@ function Welcome({ name, setName, model, setModel, onStart }) {
   };
 
   return (
-    <div style={{
+    <div className="simulado-welcome-card" style={{
       backgroundColor: theme.surface,
       border: `1px solid ${theme.border}`,
       borderRadius: "24px",
-      padding: "3rem 2rem",
+      padding: "2.5rem 1.5rem",
       textAlign: "center",
       boxShadow: "0 10px 30px rgba(0,0,0,0.5)",
       position: "relative",
       overflow: "hidden"
     }}>
-      {/* Grid Overlay background */}
       <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(255,255,255,0.005) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.005) 1px, transparent 1px)', backgroundSize: '30px 30px', pointerEvents: 'none', zIndex: 0 }} />
 
       <div style={{ position: "relative", zIndex: 1 }}>
         <div style={{
-          width: "80px",
-          height: "80px",
+          width: "70px",
+          height: "70px",
           backgroundColor: theme.accentGlow,
-          borderRadius: "24px",
+          borderRadius: "20px",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           margin: "0 auto 1.5rem",
           border: `1px solid ${theme.borderActive}`
         }}>
-          <GraduationCap size={44} color={theme.accent} />
+          <GraduationCap size={38} color={theme.accent} />
         </div>
 
         <div style={{ 
-          fontSize: "0.8rem", 
+          fontSize: "0.75rem", 
           letterSpacing: "4px", 
           color: theme.accent, 
           fontWeight: 900, 
@@ -340,10 +416,10 @@ function Welcome({ name, setName, model, setModel, onStart }) {
         </div>
 
         <h1 style={{
-          fontSize: "2.2rem",
+          fontSize: "1.8rem",
           fontWeight: 900,
           color: theme.white,
-          margin: "0 0 1.5rem",
+          margin: "0 0 1rem",
           lineHeight: 1.2
         }}>
           Simulado Acadêmico · POO
@@ -352,49 +428,49 @@ function Welcome({ name, setName, model, setModel, onStart }) {
         <div style={{
           display: "flex",
           flexDirection: "column",
-          gap: "6px",
+          gap: "4px",
           maxWidth: "600px",
-          margin: "0 auto 2.5rem",
-          fontSize: "0.95rem",
+          margin: "0 auto 2rem",
+          fontSize: "0.9rem",
           color: theme.textMuted,
-          lineHeight: 1.6
+          lineHeight: 1.5
         }}>
           <div><strong>Curso:</strong> Análise e Desenvolvimento de Sistemas</div>
           <div><strong>Disciplina:</strong> Linguagem de Programação Orientada a Objetos</div>
           <div><strong>Professor:</strong> Alexsander Farias</div>
-          <p style={{ marginTop: "1rem" }}>
+          <p style={{ marginTop: "0.75rem" }}>
             Seja bem-vindo ao simulado N2. Teste seus conhecimentos em concorrência, Swing, SOLID e estruturas de dados sob a ótica de engenharia de software e padrões de projeto.
           </p>
         </div>
 
+        {/* Info Grid */}
         <div style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(130px, 1fr))",
-          gap: "1rem",
+          gap: "10px",
           maxWidth: "600px",
           margin: "0 auto 2.5rem"
         }}>
           {[
-            { label: "Múltipla Escolha", val: "8 questões" },
-            { label: "Discursiva", val: "Estilo ENADE" },
-            { label: "Pontuação Total", val: "100 pontos" },
+            { label: "Múltipla Escolha", val: "8 questões (0,75 cada)" },
+            { label: "Discursiva", val: "1 questão (4,0 pontos)" },
+            { label: "Pontuação Total", val: "10,0 pontos" },
             { label: "Cronômetro", val: "Tempo Real" }
           ].map(item => (
             <div key={item.label} style={{
               background: theme.surfaceLight,
-              padding: "1rem",
-              borderRadius: "16px",
+              padding: "0.85rem",
+              borderRadius: "14px",
               border: `1px solid ${theme.border}`
             }}>
-              <div style={{ fontSize: "0.75rem", color: theme.textMuted, marginBottom: "4px" }}>{item.label}</div>
-              <div style={{ fontSize: "1rem", color: theme.white, fontWeight: 700 }}>{item.val}</div>
+              <div style={{ fontSize: "0.7rem", color: theme.textMuted, marginBottom: "2px" }}>{item.label}</div>
+              <div style={{ fontSize: "0.9rem", color: theme.white, fontWeight: 700 }}>{item.val}</div>
             </div>
           ))}
         </div>
 
-        <form onSubmit={handleSubmit} style={{ maxWidth: "480px", margin: "0 auto", textAlign: "left" }}>
+        <form onSubmit={handleSubmit} style={{ maxWidth: "440px", margin: "0 auto", textAlign: "left" }}>
           
-          {/* Nome completo */}
           <div style={{ marginBottom: "1.25rem" }}>
             <label style={{ display: "block", fontSize: "0.85rem", color: theme.white, fontWeight: 600, marginBottom: "6px" }}>
               Nome Completo do Aluno
@@ -419,7 +495,6 @@ function Welcome({ name, setName, model, setModel, onStart }) {
             />
           </div>
 
-          {/* Seletor do Modelo */}
           <div style={{ marginBottom: "2rem" }}>
             <label style={{ display: "block", fontSize: "0.85rem", color: theme.white, fontWeight: 600, marginBottom: "8px" }}>
               Selecione o Modelo de Prova
@@ -455,13 +530,13 @@ function Welcome({ name, setName, model, setModel, onStart }) {
             type="submit" 
             style={{
               width: "100%",
-              padding: "16px",
+              padding: "15px",
               borderRadius: "14px",
               border: "none",
               background: theme.accent,
               color: theme.white,
               fontWeight: 800,
-              fontSize: "1rem",
+              fontSize: "0.95rem",
               cursor: "pointer",
               boxShadow: `0 8px 20px ${theme.accent}40`,
               transition: "transform 0.2s, filter 0.2s"
@@ -478,7 +553,6 @@ function Welcome({ name, setName, model, setModel, onStart }) {
 }
 
 // ─── MAIN COMPONENT ──────────────────────────────────────────────────────────
-
 export default function SimuladoN2() {
   const [step, setStep] = useState(0); // 0: Welcome, 1: Exam, 2: Final Report
   const [name, setName] = useState("");
@@ -486,12 +560,22 @@ export default function SimuladoN2() {
   const [activeQuestionIdx, setActiveQuestionIdx] = useState(0); // 0-7: Objectives, 8: Discursive
   const [answers, setAnswers] = useState({}); // { [questionId]: "A" | "B" | ... }
   const [discursiveAnswer, setDiscursiveAnswer] = useState("");
+  const [discursiveCriteria, setDiscursiveCriteria] = useState({
+    A: null,
+    B: null,
+    C: null,
+    D: null
+  });
   const [secondsElapsed, setSecondsElapsed] = useState(0);
   const [showCriteria, setShowCriteria] = useState(false);
   const [saveStatus, setSaveStatus] = useState(""); // "", "saving", "saved", "error"
   const [copied, setCopied] = useState(false);
 
   const timerRef = useRef(null);
+
+  const handlePrint = () => {
+    window.print();
+  };
 
   const questions = model === "A" ? QUESTIONS_A : QUESTIONS_B;
   const studyCase = model === "A" ? STUDY_CASE_A : STUDY_CASE_B;
@@ -533,20 +617,22 @@ export default function SimuladoN2() {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const handlePrint = () => {
-    window.print();
-  };
-
   const calculateTextareaLines = () => {
     if (!discursiveAnswer) return 0;
-    return discursiveAnswer.split("\n").length;
+    return discursiveAnswer.split("\n").filter(Boolean).length;
   };
 
-  // Grade
+  // Grade calculation
   const correctCount = questions.reduce((acc, q) => acc + (answers[q.id] === q.answer ? 1 : 0), 0);
   const incorrectCount = totalQuestions - correctCount;
-  // Each objective is worth 12.5 points (8 * 12.5 = 100)
-  const scoreTotal = correctCount * 12.5;
+  
+  // Multiple choice value: 0.75 points each (Total 6.0)
+  const objectiveScoreReal = correctCount * 0.75;
+  // Score to register in ranking out of 100 (percentage score of objectives, i.e., correctCount * 12.5)
+  const scoreTotalRanking = correctCount * 12.5;
+
+  // Discursive score calculated dynamically
+  const discursiveScore = Object.values(discursiveCriteria).reduce((acc, val) => acc + (val || 0), 0);
 
   const handleFinishExam = async () => {
     const unansweredCount = questions.filter(q => !answers[q.id]).length;
@@ -556,6 +642,9 @@ export default function SimuladoN2() {
     } else if (!discursiveAnswer.trim()) {
       const confirmSubmit = window.confirm("Sua resposta discursiva está em branco. Deseja finalizar o simulado mesmo assim?");
       if (!confirmSubmit) return;
+    } else if (Object.values(discursiveCriteria).some(val => val === null)) {
+      alert("Por favor, preencha todos os 4 critérios da autoavaliação discursiva antes de finalizar.");
+      return;
     } else {
       const confirmSubmit = window.confirm("Deseja realmente finalizar e entregar o simulado?");
       if (!confirmSubmit) return;
@@ -567,8 +656,8 @@ export default function SimuladoN2() {
     try {
       await addDoc(collection(db, "fametro_ranking"), {
         name: name.trim(),
-        score: scoreTotal,
-        duration: secondsElapsed * 1000, // milliseconds
+        score: scoreTotalRanking,
+        duration: secondsElapsed * 1000,
         timestamp: Date.now(),
         serverTimestamp: serverTimestamp(),
         activityId: "poo_simulado",
@@ -576,11 +665,15 @@ export default function SimuladoN2() {
         module: "POO",
         course: "Análise e Desenvolvimento de Sistemas",
         professor: "Alexsander Farias",
-        period: "2026.1"
+        period: "2026.1",
+        discursiveScore: discursiveScore,
+        discursiveCriteria: discursiveCriteria,
+        objectiveScoreReal: objectiveScoreReal,
+        totalScoreReal: objectiveScoreReal + discursiveScore
       });
       setSaveStatus("saved");
     } catch (e) {
-      console.error("Erro ao salvar simulado no Firebase: ", e);
+      console.error("Erro ao salvar no Firebase: ", e);
       setSaveStatus("error");
     }
   };
@@ -591,7 +684,7 @@ export default function SimuladoN2() {
       backgroundColor: theme.bg,
       color: theme.text,
       fontFamily: "'Inter', sans-serif",
-      padding: "6rem 1.5rem 4rem",
+      padding: "5rem 1.5rem 4rem",
       boxSizing: "border-box"
     }}>
       <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
@@ -604,14 +697,14 @@ export default function SimuladoN2() {
             gap: "8px",
             color: theme.textMuted,
             textDecoration: "none",
-            fontSize: "0.9rem",
-            marginBottom: "2rem",
+            fontSize: "0.85rem",
+            marginBottom: "1.5rem",
             transition: "color 0.2s"
           }}
           onMouseEnter={(e) => e.target.style.color = theme.white}
           onMouseLeave={(e) => e.target.style.color = theme.textMuted}
           >
-            <ArrowLeft size={16} /> Voltar para o Hub
+            <ArrowLeft size={14} /> Voltar para o Hub
           </Link>
         )}
 
@@ -628,7 +721,7 @@ export default function SimuladoN2() {
 
         {/* STEP 1: EXAM */}
         {step === 1 && (
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 280px", gap: "2rem", alignItems: "start" }}>
+          <div className="simulado-grid">
             
             {/* Left Box: Active Question */}
             <div>
@@ -638,14 +731,14 @@ export default function SimuladoN2() {
                   const q = questions[activeQuestionIdx];
                   const chosenOpt = answers[q.id];
                   return (
-                    <div style={{
+                    <div className="simulado-question-card" style={{
                       backgroundColor: theme.surface,
                       border: `1px solid ${theme.border}`,
                       borderRadius: "20px",
                       padding: "2rem",
                       boxShadow: "0 10px 30px rgba(0,0,0,0.3)"
                     }}>
-                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1rem" }}>
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.25rem" }}>
                         <span style={{
                           fontSize: "0.75rem",
                           fontWeight: 700,
@@ -662,15 +755,10 @@ export default function SimuladoN2() {
                         </span>
                       </div>
 
-                      <h2 style={{
-                        fontSize: "1.15rem",
-                        color: theme.white,
-                        lineHeight: 1.6,
-                        margin: "0 0 2rem",
-                        fontWeight: 600
-                      }}>
-                        {q.text}
-                      </h2>
+                      {/* Formatted Question Stem Paragraphs */}
+                      <div style={{ marginBottom: "2rem" }}>
+                        {renderQuestionText(q.text)}
+                      </div>
 
                       <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
                         {q.options.map(opt => {
@@ -688,7 +776,7 @@ export default function SimuladoN2() {
                                 border: `1.5px solid ${isSelected ? theme.borderActive : theme.border}`,
                                 backgroundColor: isSelected ? theme.accentGlow : "transparent",
                                 color: isSelected ? theme.white : theme.text,
-                                fontSize: "0.9rem",
+                                fontSize: "0.95rem",
                                 lineHeight: 1.5,
                                 cursor: "pointer",
                                 transition: "all 0.2s"
@@ -716,7 +804,7 @@ export default function SimuladoN2() {
                 })()
               ) : (
                 // Discursive Question
-                <div style={{
+                <div className="simulado-question-card" style={{
                   backgroundColor: theme.surface,
                   border: `1px solid ${theme.border}`,
                   borderRadius: "20px",
@@ -740,11 +828,11 @@ export default function SimuladoN2() {
                     </span>
                   </div>
 
-                  <h3 style={{ fontSize: "1.2rem", fontWeight: 800, color: theme.white, margin: "0 0 1rem" }}>
+                  <h3 style={{ fontSize: "1.25rem", fontWeight: 800, color: theme.white, margin: "0 0 1rem" }}>
                     {studyCase.title}
                   </h3>
 
-                  <p style={{
+                  <div style={{
                     fontSize: "0.95rem",
                     lineHeight: 1.6,
                     color: theme.textMuted,
@@ -756,14 +844,14 @@ export default function SimuladoN2() {
                     margin: "0 0 2rem"
                   }}>
                     "{studyCase.context}"
-                  </p>
+                  </div>
 
                   <h4 style={{ fontSize: "0.95rem", fontWeight: 700, color: theme.white, marginBottom: "1rem" }}>
                     ENUNCIADO DA ATIVIDADE E DIRETRIZES:
                   </h4>
 
                   <div style={{
-                    fontSize: "0.9rem",
+                    fontSize: "0.95rem",
                     lineHeight: 1.6,
                     color: theme.text,
                     paddingLeft: "12px",
@@ -862,10 +950,119 @@ export default function SimuladoN2() {
                           fontSize: "0.9rem",
                           lineHeight: 1.6,
                           color: theme.text,
-                          whiteSpace: "pre-wrap"
+                          whiteSpace: "pre-wrap",
+                          marginBottom: "1.5rem"
                         }}>
                           {studyCase.criteria}
                         </div>
+
+                        {/* Painel de Autoavaliação da Discursiva */}
+                        <div style={{
+                          borderTop: `1px dashed ${theme.success}`,
+                          paddingTop: "1.5rem",
+                          marginTop: "1.5rem"
+                        }}>
+                          <h4 style={{ color: "#FBBF24", margin: "0 0 0.5rem", fontSize: "0.95rem", fontWeight: 800 }}>
+                            ⭐ AUTOAVALIAÇÃO INSTRUCIONAL:
+                          </h4>
+                          <p style={{ fontSize: "0.85rem", color: theme.textMuted, margin: "0 0 1.5rem" }}>
+                            Com base nas diretrizes do gabarito acima, avalie sua resposta para cada um dos 4 requisitos técnicos da questão discursiva:
+                          </p>
+
+                          <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+                            {[
+                              { key: "A", label: "A) Diagnóstico de SOLID & Riscos Técnicos (1,0 ponto)", desc: "Identificou a violação do SRP e OCP na classe central e os riscos técnicos e de negócio." },
+                              { key: "B", label: "B) Proposta de Design Pattern (1,0 ponto)", desc: "Propôs o padrão Strategy (ou State/Factory para o Modelo B) com composição para eliminar condicionais." },
+                              { key: "C", label: "C) Concorrência & Estruturas de Dados (1,0 ponto)", desc: "Explicou a inadequação da ArrayList em ambientes multi-thread e sugeriu uma fila thread-safe robusta." },
+                              { key: "D", label: "D) Visão Estratégica do Profissional (1,0 ponto)", desc: "Abordou a habilidade de criar soluções escaláveis, reduzir a dívida técnica e apoiar a receita da empresa." }
+                            ].map(criterion => {
+                              const selectedVal = discursiveCriteria[criterion.key];
+                              return (
+                                <div key={criterion.key} style={{
+                                  background: "rgba(0,0,0,0.2)",
+                                  padding: "1rem",
+                                  borderRadius: "10px",
+                                  border: `1px solid ${selectedVal !== null ? "rgba(251, 191, 36, 0.2)" : theme.border}`
+                                }}>
+                                  <div style={{ fontSize: "0.85rem", color: theme.white, fontWeight: 700, marginBottom: "2px" }}>
+                                    {criterion.label}
+                                  </div>
+                                  <div style={{ fontSize: "0.75rem", color: theme.textMuted, marginBottom: "8px" }}>
+                                    {criterion.desc}
+                                  </div>
+                                  
+                                  <div style={{ display: "flex", gap: "8px" }}>
+                                    {[
+                                      { value: 0.0, label: "Não atendeu (0.0)" },
+                                      { value: 0.5, label: "Parcialmente (0.5)" },
+                                      { value: 1.0, label: "Totalmente (1.0)" }
+                                    ].map(opt => {
+                                      const isSelected = selectedVal === opt.value;
+                                      let btnBg = "transparent";
+                                      let btnBorder = `1px solid ${theme.border}`;
+                                      let btnColor = theme.textMuted;
+
+                                      if (isSelected) {
+                                        btnColor = theme.white;
+                                        if (opt.value === 0.0) {
+                                          btnBg = "rgba(239, 68, 68, 0.2)";
+                                          btnBorder = "1px solid #EF4444";
+                                        } else if (opt.value === 0.5) {
+                                          btnBg = "rgba(245, 158, 11, 0.2)";
+                                          btnBorder = "1px solid #F59E0B";
+                                        } else {
+                                          btnBg = "rgba(16, 185, 129, 0.2)";
+                                          btnBorder = "1px solid #10B981";
+                                        }
+                                      }
+
+                                      return (
+                                        <button
+                                          key={opt.value}
+                                          type="button"
+                                          onClick={() => setDiscursiveCriteria(prev => ({ ...prev, [criterion.key]: opt.value }))}
+                                          style={{
+                                            flex: 1,
+                                            padding: "6px 10px",
+                                            fontSize: "0.75rem",
+                                            borderRadius: "6px",
+                                            backgroundColor: btnBg,
+                                            border: btnBorder,
+                                            color: btnColor,
+                                            fontWeight: isSelected ? 700 : 400,
+                                            cursor: "pointer",
+                                            transition: "all 0.15s"
+                                          }}
+                                        >
+                                          {opt.label}
+                                        </button>
+                                      );
+                                    })}
+                                  </div>
+                                </div>
+                              );
+                            })}
+                          </div>
+
+                          <div style={{ 
+                            marginTop: "1.25rem", 
+                            display: "flex", 
+                            justifyContent: "space-between", 
+                            alignItems: "center",
+                            background: "rgba(251, 191, 36, 0.05)",
+                            padding: "10px 14px",
+                            borderRadius: "8px",
+                            border: "1px solid rgba(251, 191, 36, 0.2)"
+                          }}>
+                            <span style={{ fontSize: "0.85rem", color: theme.white, fontWeight: 700 }}>
+                              Nota da Discursiva Computada:
+                            </span>
+                            <span style={{ fontSize: "1.1rem", color: "#FBBF24", fontWeight: 900 }}>
+                              {discursiveScore.toFixed(2)} / 4.0
+                            </span>
+                          </div>
+                        </div>
+
                       </div>
                     )}
                   </div>
@@ -924,35 +1121,42 @@ export default function SimuladoN2() {
                     Próxima <ChevronRight size={18} />
                   </button>
                 ) : (
-                  <button
-                    onClick={handleFinishExam}
-                    disabled={!showCriteria}
-                    style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "8px",
-                      background: showCriteria ? theme.success : "rgba(255,255,255,0.02)",
-                      border: "none",
-                      color: showCriteria ? theme.white : theme.textMuted,
-                      padding: "12px 28px",
-                      borderRadius: "12px",
-                      cursor: showCriteria ? "pointer" : "not-allowed",
-                      fontSize: "0.95rem",
-                      fontWeight: 700,
-                      boxShadow: showCriteria ? `0 4px 15px ${theme.success}30` : "none"
-                    }}
-                  >
-                    Finalizar Simulado <Send size={16} />
-                  </button>
+                  <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end" }}>
+                    <button
+                      onClick={handleFinishExam}
+                      disabled={!showCriteria || Object.values(discursiveCriteria).some(val => val === null)}
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "8px",
+                        background: (showCriteria && !Object.values(discursiveCriteria).some(val => val === null)) ? theme.success : "rgba(255,255,255,0.02)",
+                        border: "none",
+                        color: (showCriteria && !Object.values(discursiveCriteria).some(val => val === null)) ? theme.white : theme.textMuted,
+                        padding: "12px 28px",
+                        borderRadius: "12px",
+                        cursor: (showCriteria && !Object.values(discursiveCriteria).some(val => val === null)) ? "pointer" : "not-allowed",
+                        fontSize: "0.95rem",
+                        fontWeight: 700,
+                        boxShadow: (showCriteria && !Object.values(discursiveCriteria).some(val => val === null)) ? `0 4px 15px ${theme.success}30` : "none"
+                      }}
+                    >
+                      Finalizar Simulado <Send size={16} />
+                    </button>
+                    {activeQuestionIdx === totalQuestions && showCriteria && Object.values(discursiveCriteria).some(val => val === null) && (
+                      <span style={{ fontSize: "0.75rem", color: "#FBBF24", marginTop: "6px", fontWeight: 600 }}>
+                        * Preencha os 4 critérios da autoavaliação discursiva.
+                      </span>
+                    )}
+                  </div>
                 )}
               </div>
             </div>
 
             {/* Right Box: Navigator & Time */}
-            <div style={{ position: "sticky", top: "7rem" }}>
+            <div className="simulado-sidebar">
               
               {/* Timer Widget */}
-              <div style={{
+              <div className="simulado-timer-card" style={{
                 backgroundColor: theme.surface,
                 border: `1px solid ${theme.border}`,
                 borderRadius: "20px",
@@ -982,7 +1186,7 @@ export default function SimuladoN2() {
               </div>
 
               {/* Navigator Panel */}
-              <div style={{
+              <div className="simulado-nav-card" style={{
                 backgroundColor: theme.surface,
                 border: `1px solid ${theme.border}`,
                 borderRadius: "20px",
@@ -1108,16 +1312,16 @@ export default function SimuladoN2() {
         {step === 2 && (
           <div style={{ animation: "fadeIn 0.6s ease-out" }}>
             
-            <div style={{
+            <div className="simulado-report-card" style={{
               backgroundColor: theme.surface,
               border: `1px solid ${theme.border}`,
               borderRadius: "24px",
-              padding: "2.5rem 2rem",
+              padding: "2.5rem 1.5rem",
               textAlign: "center",
               boxShadow: "0 10px 30px rgba(0,0,0,0.4)",
               marginBottom: "2rem"
             }}>
-              <div style={{ fontSize: "50px", marginBottom: "0.5rem" }}>🏆</div>
+              <div style={{ fontSize: "50px", marginBottom: "0.5rem" }}>🎓</div>
               
               <h2 style={{
                 fontSize: "1.8rem",
@@ -1125,41 +1329,41 @@ export default function SimuladoN2() {
                 color: theme.white,
                 margin: "0 0 6px"
               }}>
-                Simulado Entregue!
+                Simulado Concluído!
               </h2>
               
               <p style={{ color: theme.textMuted, fontSize: "0.95rem", margin: "0 0 2rem" }}>
                 Parabéns, <strong>{name}</strong>. Sua nota foi processada e enviada para o ranking do <strong>Modelo {model}</strong>.
               </p>
 
-              {/* Stats Box */}
+              {/* Stats Box - 0.75 each, 4.0 discursive */}
               <div style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
-                gap: "1.5rem",
+                gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
+                gap: "1rem",
                 maxWidth: "800px",
                 margin: "0 auto 2rem"
               }}>
                 {[
                   { 
-                    label: "Nota Objetiva Final", 
-                    val: `${scoreTotal} / 100`, 
-                    color: scoreTotal >= 70 ? theme.success : scoreTotal >= 40 ? "#FBBF24" : theme.danger 
+                    label: "Nota das Objetivas", 
+                    val: `${objectiveScoreReal.toFixed(2)} / 6.0`, 
+                    color: theme.accent 
                   },
                   { 
-                    label: "Acertos", 
+                    label: "Nota da Discursiva (Autoavaliada)", 
+                    val: `${discursiveScore.toFixed(2)} / 4.0`, 
+                    color: "#FBBF24" 
+                  },
+                  { 
+                    label: "Nota Final Consolidada", 
+                    val: `${(objectiveScoreReal + discursiveScore).toFixed(2)} / 10.0`, 
+                    color: (objectiveScoreReal + discursiveScore) >= 6.0 ? theme.success : theme.danger 
+                  },
+                  { 
+                    label: "Acertos Objetivos", 
                     val: `${correctCount} / ${totalQuestions}`, 
                     color: theme.success 
-                  },
-                  { 
-                    label: "Tempo Gasto", 
-                    val: formatTime(secondsElapsed), 
-                    color: theme.white 
-                  },
-                  { 
-                    label: "Desempenho", 
-                    val: `${((correctCount / totalQuestions) * 100).toFixed(0)}%`, 
-                    color: correctCount >= 6 ? theme.success : correctCount >= 4 ? "#FBBF24" : theme.danger 
                   }
                 ].map(item => (
                   <div key={item.label} style={{
@@ -1180,17 +1384,18 @@ export default function SimuladoN2() {
                   <div style={{ fontSize: "0.8rem", color: theme.textMuted }}>Sincronizando resultado com o servidor...</div>
                 )}
                 {saveStatus === "saved" && (
-                  <div style={{ fontSize: "0.8rem", color: theme.success }}>✓ Pontuação registrada e integrada ao ranking geral da disciplina.</div>
+                  <div style={{ fontSize: "0.8rem", color: theme.success }}>✓ Pontuação registrada e integrada ao ranking geral de POO.</div>
                 )}
                 {saveStatus === "error" && (
-                  <div style={{ fontSize: "0.8rem", color: theme.danger }}>⚠ Falha de conexão ao enviar. Imprima seu comprovante para validação do professor.</div>
+                  <div style={{ fontSize: "0.8rem", color: theme.danger }}>⚠ Falha de conexão. Imprima seu relatório para validação do professor.</div>
                 )}
               </div>
 
               <div style={{
                 display: "flex",
                 justifyContent: "center",
-                gap: "12px"
+                gap: "12px",
+                flexWrap: "wrap"
               }}>
                 <button
                   onClick={handlePrint}
@@ -1201,7 +1406,7 @@ export default function SimuladoN2() {
                     backgroundColor: "rgba(255,255,255,0.05)",
                     border: `1px solid ${theme.border}`,
                     color: theme.white,
-                    padding: "10px 20px",
+                    padding: "12px 20px",
                     borderRadius: "10px",
                     cursor: "pointer",
                     fontSize: "0.85rem",
@@ -1211,7 +1416,7 @@ export default function SimuladoN2() {
                   onMouseEnter={e => e.target.style.backgroundColor = "rgba(255,255,255,0.1)"}
                   onMouseLeave={e => e.target.style.backgroundColor = "rgba(255,255,255,0.05)"}
                 >
-                  <Printer size={16} /> Imprimir Relatório
+                  <Printer size={16} /> Imprimir Comprovante
                 </button>
 
                 <Link
@@ -1222,11 +1427,11 @@ export default function SimuladoN2() {
                     gap: "8px",
                     backgroundColor: theme.accent,
                     color: theme.white,
-                    padding: "10px 20px",
+                    padding: "12px 20px",
                     borderRadius: "10px",
                     cursor: "pointer",
                     fontSize: "0.85rem",
-                    fontWeight: 700,
+                    fontWeight: 750,
                     textDecoration: "none",
                     boxShadow: `0 4px 12px ${theme.accent}20`
                   }}
@@ -1237,7 +1442,7 @@ export default function SimuladoN2() {
             </div>
 
             {/* Discursive card proof */}
-            <div style={{
+            <div className="simulado-correction-card" style={{
               backgroundColor: theme.surface,
               border: `1px solid ${theme.border}`,
               borderRadius: "20px",
@@ -1287,8 +1492,8 @@ export default function SimuladoN2() {
               </div>
             </div>
 
-            {/* comentated feedback */}
-            <div style={{
+            {/* commented feedback */}
+            <div className="simulado-correction-card" style={{
               backgroundColor: theme.surface,
               border: `1px solid ${theme.border}`,
               borderRadius: "20px",
@@ -1316,6 +1521,7 @@ export default function SimuladoN2() {
                   return (
                     <div 
                       key={q.id} 
+                      className="simulado-correction-item"
                       style={{
                         padding: "1.5rem",
                         borderRadius: "16px",
@@ -1324,7 +1530,7 @@ export default function SimuladoN2() {
                         textAlign: "left"
                       }}
                     >
-                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1rem" }}>
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.25rem" }}>
                         <span style={{ fontSize: "0.85rem", fontWeight: 700, color: theme.white }}>
                           Questão {idx + 1} · {q.theme}
                         </span>
@@ -1342,7 +1548,7 @@ export default function SimuladoN2() {
                               padding: "4px 8px",
                               borderRadius: "6px"
                             }}>
-                              <CheckCircle size={12} /> Correta
+                              <CheckCircle size={12} /> Correta (+0.75)
                             </span>
                           ) : (
                             <span style={{
@@ -1356,20 +1562,16 @@ export default function SimuladoN2() {
                               padding: "4px 8px",
                               borderRadius: "6px"
                             }}>
-                              <XCircle size={12} /> Incorreta
+                              <XCircle size={12} /> Incorreta (+0.00)
                             </span>
                           )}
                         </div>
                       </div>
 
-                      <p style={{
-                        fontSize: "0.95rem",
-                        lineHeight: 1.6,
-                        color: theme.text,
-                        margin: "0 0 1.5rem"
-                      }}>
-                        {q.text}
-                      </p>
+                      {/* Enunciado formatado na tela de gabarito */}
+                      <div style={{ marginBottom: "1.5rem" }}>
+                        {renderQuestionText(q.text)}
+                      </div>
 
                       <div style={{
                         display: "flex",
@@ -1437,12 +1639,86 @@ export default function SimuladoN2() {
 
       </div>
       
-      {/* Styles injected locally */}
+      {/* Responsive Grid Styles & Print Styles injected locally */}
       <style>{`
+        .simulado-grid {
+          display: grid;
+          grid-template-columns: 1fr 280px;
+          gap: 2rem;
+          align-items: start;
+        }
+
         @keyframes fadeIn {
           from { opacity: 0; transform: translateY(10px); }
           to { opacity: 1; transform: translateY(0); }
         }
+
+        @media (max-width: 900px) {
+          .simulado-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+          }
+          .simulado-sidebar {
+            order: -1;
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+          }
+          .simulado-sidebar > div {
+            flex: 1;
+            margin-bottom: 0 !important;
+          }
+        }
+
+        @media (max-width: 600px) {
+          .simulado-sidebar {
+            flex-direction: column;
+            gap: 0.75rem;
+          }
+          .simulado-timer-card {
+            padding: 0.75rem !important;
+          }
+          .simulado-timer-card > div:first-child {
+            font-size: 0.65rem !important;
+          }
+          .simulado-timer-card > div:last-child {
+            font-size: 1.30rem !important;
+          }
+          .simulado-nav-card {
+            padding: 0.85rem !important;
+          }
+          .simulado-nav-card h3 {
+            margin-bottom: 0.75rem !important;
+            font-size: 0.8rem !important;
+            padding-bottom: 6px !important;
+          }
+          .simulado-nav-card button {
+            font-size: 0.75rem !important;
+            border-radius: 6px !important;
+          }
+          .simulado-question-card {
+            padding: 1.15rem !important;
+            border-radius: 16px !important;
+          }
+          .simulado-welcome-card {
+            padding: 1.5rem 1rem !important;
+            border-radius: 16px !important;
+          }
+          .simulado-report-card {
+            padding: 1.5rem 1rem !important;
+            border-radius: 16px !important;
+          }
+          .simulado-correction-card {
+            padding: 1.15rem !important;
+          }
+          .simulado-correction-item {
+            padding: 1rem !important;
+          }
+          div[style*="padding: 5rem 1.5rem 4rem"] {
+            padding: 4rem 0.75rem 2rem !important;
+          }
+        }
+
         @media print {
           body {
             background-color: #ffffff !important;
