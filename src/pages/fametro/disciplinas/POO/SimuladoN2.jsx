@@ -605,6 +605,12 @@ export default function SimuladoN2() {
     window.print();
   };
 
+  const formatTime = (secs) => {
+    const m = Math.floor(secs / 60);
+    const s = secs % 60;
+    return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+  };
+
   const questions = model === "A" ? QUESTIONS_A : QUESTIONS_B;
   const studyCase = model === "A" ? STUDY_CASE_A : STUDY_CASE_B;
   const totalQuestions = questions.length; // 8
@@ -716,6 +722,33 @@ export default function SimuladoN2() {
       boxSizing: "border-box"
     }}>
       <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
+        <style>{`
+          .simulado-grid {
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 2rem;
+            align-items: start;
+          }
+          .simulado-sidebar {
+            position: sticky;
+            top: 80px;
+          }
+          @media (max-width: 900px) {
+            .simulado-grid {
+              grid-template-columns: 1fr;
+              gap: 1.5rem;
+            }
+            .simulado-sidebar {
+              position: relative;
+              top: 0;
+            }
+          }
+          @media (max-width: 600px) {
+            .simulado-question-card, .simulado-report-card, .simulado-nav-card, .simulado-correction-card {
+              padding: 1.25rem !important;
+            }
+          }
+        `}</style>
         
         {/* Hub Back Link */}
         {step < 2 && (

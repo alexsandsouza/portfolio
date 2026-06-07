@@ -64,6 +64,13 @@ export default function RankingSimuladoN2() {
   }, []);
 
   async function clearAll() {
+    const pwd = window.prompt("Ação restrita. Insira a senha de administrador:");
+    if (pwd !== "admin123") {
+      alert("Senha incorreta. Ação bloqueada.");
+      setShowClear(false);
+      return;
+    }
+    
     try {
       const q = query(collection(db, "fametro_ranking"));
       const snapshot = await getDocs(q);
@@ -71,8 +78,13 @@ export default function RankingSimuladoN2() {
         .filter(d => d.data().activityId === "poo_simulado")
         .map(d => deleteDoc(doc(db, "fametro_ranking", d.id)));
       await Promise.all(dels);
+      alert("Ranking limpo com sucesso.");
       setShowClear(false);
-    } catch { }
+    } catch (error) {
+      alert("Erro ao limpar. Possivelmente as regras de segurança estão ativas e bloqueando deleções públicas no Firebase.");
+      console.error(error);
+      setShowClear(false);
+    }
   }
 
   const displayed = filterModel === "all"
