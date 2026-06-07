@@ -57,7 +57,9 @@ Desktop.ini
 
 # ─── Deploy ──────────────────────────────────────────────────────
 .vercel
+.vercel_backup
 .netlify
+tmp/
 
 # ─── Temporary Files ─────────────────────────────────────────────
 *.local
