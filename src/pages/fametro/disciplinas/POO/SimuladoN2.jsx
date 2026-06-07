@@ -7,6 +7,7 @@ import {
   FileText, ChevronLeft, ChevronRight, GraduationCap, 
   ArrowLeft, Copy, Check, Printer, AlertTriangle 
 } from "lucide-react";
+import ConteudoAulaSimuladoN2 from "./ConteudoAulaSimuladoN2";
 
 // ─── QUESTIONS DATA - MODELO A ───────────────────────────────────────────────
 const QUESTIONS_A = [
@@ -369,7 +370,7 @@ function renderQuestionText(text) {
 }
 
 // ─── WELCOME SUB-COMPONENT ───────────────────────────────────────────────────
-function Welcome({ name, setName, model, setModel, onStart }) {
+function Welcome({ name, setName, model, setModel, onStart, onOpenClass }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (name.trim()) {
@@ -526,31 +527,57 @@ function Welcome({ name, setName, model, setModel, onStart }) {
             </div>
           </div>
 
-          <button 
-            type="submit" 
-            style={{
-              width: "100%",
-              padding: "15px",
-              borderRadius: "14px",
-              border: "none",
-              background: theme.accent,
-              color: theme.white,
-              fontWeight: 800,
-              fontSize: "0.95rem",
-              cursor: "pointer",
-              boxShadow: `0 8px 20px ${theme.accent}40`,
-              transition: "transform 0.2s, filter 0.2s"
-            }}
-            onMouseEnter={e => e.target.style.filter = "brightness(1.15)"}
-            onMouseLeave={e => e.target.style.filter = "none"}
-          >
-            Iniciar Simulado ({model}) →
-          </button>
-        </form>
+            <button 
+              type="button" 
+              onClick={onOpenClass}
+              style={{
+                width: "100%",
+                padding: "15px",
+                borderRadius: "14px",
+                border: `1.5px solid ${theme.borderActive}`,
+                background: "rgba(59, 130, 246, 0.05)",
+                color: theme.white,
+                fontWeight: 800,
+                fontSize: "0.95rem",
+                cursor: "pointer",
+                marginBottom: "1rem",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "8px",
+                transition: "all 0.2s"
+              }}
+              onMouseEnter={e => { e.target.style.backgroundColor = "rgba(59, 130, 246, 0.15)"; }}
+              onMouseLeave={e => { e.target.style.backgroundColor = "rgba(59, 130, 246, 0.05)"; }}
+            >
+              💡 Aula Preparatória Interativa (Aprender Conceitos)
+            </button>
+
+            <button 
+              type="submit" 
+              style={{
+                width: "100%",
+                padding: "15px",
+                borderRadius: "14px",
+                border: "none",
+                background: theme.accent,
+                color: theme.white,
+                fontWeight: 800,
+                fontSize: "0.95rem",
+                cursor: "pointer",
+                boxShadow: `0 8px 20px ${theme.accent}40`,
+                transition: "transform 0.2s, filter 0.2s"
+              }}
+              onMouseEnter={e => e.target.style.filter = "brightness(1.15)"}
+              onMouseLeave={e => e.target.style.filter = "none"}
+            >
+              Iniciar Simulado ({model}) →
+            </button>
+          </form>
+        </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
 
 // ─── MAIN COMPONENT ──────────────────────────────────────────────────────────
 export default function SimuladoN2() {
@@ -567,6 +594,7 @@ export default function SimuladoN2() {
     D: null
   });
   const [secondsElapsed, setSecondsElapsed] = useState(0);
+  const [isClassOpen, setIsClassOpen] = useState(false);
   const [showCriteria, setShowCriteria] = useState(false);
   const [saveStatus, setSaveStatus] = useState(""); // "", "saving", "saved", "error"
   const [copied, setCopied] = useState(false);
@@ -716,6 +744,7 @@ export default function SimuladoN2() {
             model={model} 
             setModel={setModel} 
             onStart={handleStartExam} 
+            onOpenClass={() => setIsClassOpen(true)}
           />
         )}
 
@@ -1301,6 +1330,32 @@ export default function SimuladoN2() {
                   </div>
                 </div>
 
+                <button
+                  type="button"
+                  onClick={() => setIsClassOpen(true)}
+                  style={{
+                    width: "100%",
+                    marginTop: "1.5rem",
+                    padding: "10px",
+                    borderRadius: "10px",
+                    border: `1px dashed ${theme.borderActive}`,
+                    background: "rgba(59, 130, 246, 0.02)",
+                    color: theme.white,
+                    fontSize: "0.8rem",
+                    fontWeight: 700,
+                    cursor: "pointer",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "6px",
+                    transition: "all 0.2s"
+                  }}
+                  onMouseEnter={e => e.target.style.background = "rgba(59, 130, 246, 0.08)"}
+                  onMouseLeave={e => e.target.style.background = "rgba(59, 130, 246, 0.02)"}
+                >
+                  📖 Consultar Material de Aula
+                </button>
+
               </div>
 
             </div>
@@ -1744,6 +1799,11 @@ export default function SimuladoN2() {
           }
         }
       `}</style>
+
+      <ConteudoAulaSimuladoN2 
+        isOpen={isClassOpen} 
+        onClose={() => setIsClassOpen(false)} 
+      />
 
     </div>
   );
