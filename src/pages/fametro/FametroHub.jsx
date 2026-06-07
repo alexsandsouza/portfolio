@@ -55,6 +55,21 @@ export default function FametroHub() {
       badges: ['Labs', 'Construtor']
     },
     {
+      id: 1.9,
+      title: 'Simulado N2 – Avaliação Institucional',
+      course: 'Análise e Desenvolvimento de Sistemas',
+      institution: 'Centro Universitário FAMETRO',
+      professor: 'Alexsander Farias',
+      period: '2026.1',
+      description: 'Simulado acadêmico N2 de POO: 10 questões objetivas complexas e 1 discursiva estilo ENADE sobre SOLID, Design Patterns, Threads, Coleções e Swing.',
+      path: '/fametro/poo/simulado-n2',
+      icon: <GraduationCap size={26} color="#3b82f6" />,
+      buttonText: 'Iniciar Simulado N2',
+      status: 'active',
+      accentColor: '#3b82f6',
+      badges: ['Simulado N2', 'ENADE', 'POO']
+    },
+    {
       id: 2,
       title: 'Análise de Requisitos',
       course: 'Sistemas de Informação',
