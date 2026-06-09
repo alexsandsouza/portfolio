@@ -82,6 +82,8 @@ const RankingSOSimuladoN2 = lazy(() => import('./pages/fametro/disciplinas/SO/Ra
 const MatrizesActivity = lazy(() => import('./pages/fametro/disciplinas/AED/MatrizesActivity'));
 const MatrizesRanking = lazy(() => import('./pages/fametro/disciplinas/AED/MatrizesRanking'));
 const MatrizesLab = lazy(() => import('./pages/fametro/disciplinas/AED/MatrizesLab'));
+const AEDSimuladoN2 = lazy(() => import('./pages/fametro/disciplinas/AED/AEDSimuladoN2'));
+const RankingAEDSimuladoN2 = lazy(() => import('./pages/fametro/disciplinas/AED/RankingAEDSimuladoN2'));
 const TecnologiaWebActivity = lazy(() => import('./pages/fametro/disciplinas/TecnologiaWeb/HTMLSemanticActivity'));
 const TecnologiaWebRanking = lazy(() => import('./pages/fametro/disciplinas/TecnologiaWeb/RankingHTMLSemantic'));
 const TecnologiaWebSimuladoN2 = lazy(() => import('./pages/fametro/disciplinas/TecnologiaWeb/TecnologiaWebSimuladoN2'));
@@ -208,6 +210,8 @@ function App() {
           <Route path="/fametro/aed/matrizes" element={<MatrizesActivity />} />
           <Route path="/fametro/aed/matrizes/ranking" element={<MatrizesRanking />} />
           <Route path="/fametro/aed/matrizes/lab" element={<MatrizesLab />} />
+          <Route path="/fametro/aed/simulado-n2" element={<AEDSimuladoN2 />} />
+          <Route path="/fametro/aed/simulado-n2/ranking" element={<RankingAEDSimuladoN2 />} />
           <Route path="/fametro/tecnologia-web/html-semantico" element={<TecnologiaWebActivity />} />
           <Route path="/fametro/tecnologia-web/html-semantico/ranking" element={<TecnologiaWebRanking />} />
           <Route path="/fametro/tecnologia-web/simulado-n2" element={<TecnologiaWebSimuladoN2 />} />

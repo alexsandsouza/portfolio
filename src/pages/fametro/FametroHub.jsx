@@ -200,6 +200,22 @@ export default function FametroHub() {
       badges: ['ENADE', 'Prática', 'Matrizes']
     },
     {
+      id: 4.5,
+      title: 'Simulado N2 – Avaliação Institucional',
+      course: 'Engenharia de Computação',
+      institution: 'Centro Universitário FAMETRO',
+      professor: 'Alexsander Farias',
+      period: '2026.1',
+      description: 'Simulado acadêmico N2 de Algoritmos e Estrutura de Dados I: 8 questões objetivas e 1 discursiva com critérios de autoavaliação guiada sobre ponteiros, aritmética de ponteiros, alocação de memória, structs, arquivos e listas encadeadas.',
+      path: '/fametro/aed/simulado-n2',
+      rankingPath: '/fametro/aed/simulado-n2/ranking',
+      icon: <GraduationCap size={26} color="#6366f1" />,
+      buttonText: 'Iniciar Simulado N2',
+      status: 'active',
+      accentColor: '#6366f1',
+      badges: ['Simulado N2', 'C Language', 'AED I']
+    },
+    {
       id: 5,
       title: 'Tecnologia Web I',
       course: 'Sistemas de Informação',
