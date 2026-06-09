@@ -51,3 +51,11 @@ ou reverter a `main` para este ponto.
 *   O código está salvo localmente na sua máquina.
 *   O código está salvo remotamente no GitHub (backup em nuvem).
 *   As Tags servem como snapshots imutáveis de versões que funcionaram.
+
+## 5. Diretrizes Arquiteturais (Modularidade e Microsserviços)
+
+Para garantir escalabilidade, testabilidade e manutenibilidade contínua do portfólio, adotaremos as seguintes práticas:
+
+*   **Sistemas Modulares (Frontend)**: O código deve ser organizado em módulos autocontidos e isolados por contexto (ex: disciplinas acadêmicas independentes como `/SO`, `/AED`, `/POO`). Componentes pesados ou específicos devem ser importados sob demanda via *Lazy Loading* (`lazy` e `Suspense`) para otimizar o tempo de carregamento.
+*   **Abstração e Microsserviços**: Toda integração de dados (seja com Firebase Firestore, APIs externas de telemetria ou sistemas parceiros) deve ser desacoplada da lógica de renderização visual, operando como serviços autocontidos que podem ser facilmente substituídos, migrados para microsserviços em nuvem (ex: Cloud Functions ou rotas serverless) ou mockados para testes.
+
