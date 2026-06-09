@@ -69,6 +69,8 @@ const RequisitosActivity = lazy(() => import('./pages/fametro/disciplinas/Requis
 const RequisitosRevisaoActivity = lazy(() => import('./pages/fametro/disciplinas/Requisitos/RequisitosRevisaoActivity'));
 const RankingRequisitos = lazy(() => import('./pages/fametro/disciplinas/Requisitos/RankingRequisitos'));
 const RankingRequisitosRevisao = lazy(() => import('./pages/fametro/disciplinas/Requisitos/RankingRequisitosRevisao'));
+const RequisitosSimuladoN2 = lazy(() => import('./pages/fametro/disciplinas/Requisitos/RequisitosSimuladoN2'));
+const RankingRequisitosSimuladoN2 = lazy(() => import('./pages/fametro/disciplinas/Requisitos/RankingRequisitosSimuladoN2'));
 const SOActivity = lazy(() => import('./pages/fametro/disciplinas/SO/SOActivity'));
 const SORanking = lazy(() => import('./pages/fametro/disciplinas/SO/SORanking'));
 const SOUnidade1Activity = lazy(() => import('./pages/fametro/disciplinas/SO/SOUnidade1Activity'));
@@ -189,6 +191,8 @@ function App() {
           <Route path="/fametro/requisitos/revisao" element={<RequisitosRevisaoActivity />} />
           <Route path="/fametro/requisitos/ranking" element={<RankingRequisitos />} />
           <Route path="/fametro/requisitos/revisao/ranking" element={<RankingRequisitosRevisao />} />
+          <Route path="/fametro/requisitos/simulado-n2" element={<RequisitosSimuladoN2 />} />
+          <Route path="/fametro/requisitos/simulado-n2/ranking" element={<RankingRequisitosSimuladoN2 />} />
           <Route path="/fametro/so" element={<SOActivity />} />
           <Route path="/fametro/so/ranking" element={<SORanking />} />
           <Route path="/fametro/so/unidade1" element={<SOUnidade1Activity />} />

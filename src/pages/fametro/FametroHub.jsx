@@ -103,6 +103,22 @@ export default function FametroHub() {
       badges: ['Revisão', 'Modelos A/B']
     },
     {
+      id: 2.8,
+      title: 'Simulado N2 – Avaliação Institucional',
+      course: 'Análise e Desenvolvimento de Sistemas',
+      institution: 'Centro Universitário FAMETRO',
+      professor: 'Alexsander Farias',
+      period: '2026.1',
+      description: 'Simulado acadêmico N2 de Requisitos: 8 questões objetivas baseadas nos Modelos A/B e 1 discursiva com autoavaliação guiada por critérios (ANS/LGPD e reuso).',
+      path: '/fametro/requisitos/simulado-n2',
+      rankingPath: '/fametro/requisitos/simulado-n2/ranking',
+      icon: <GraduationCap size={26} color="#EF4444" />,
+      buttonText: 'Iniciar Simulado N2',
+      status: 'active',
+      accentColor: '#EF4444',
+      badges: ['Simulado N2', 'ENADE', 'Requisitos']
+    },
+    {
       id: 3,
       title: 'Sistemas Operacionais',
       course: 'Sistemas de Informação',
