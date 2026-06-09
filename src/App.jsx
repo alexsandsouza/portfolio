@@ -77,6 +77,8 @@ const SOUnidade1Activity = lazy(() => import('./pages/fametro/disciplinas/SO/SOU
 const SORankingU1 = lazy(() => import('./pages/fametro/disciplinas/SO/SORankingU1'));
 const SOAula5Activity = lazy(() => import('./pages/fametro/disciplinas/SO/SOAula5Activity'));
 const SORankingAula5 = lazy(() => import('./pages/fametro/disciplinas/SO/SORankingAula5'));
+const SOSimuladoN2 = lazy(() => import('./pages/fametro/disciplinas/SO/SOSimuladoN2'));
+const RankingSOSimuladoN2 = lazy(() => import('./pages/fametro/disciplinas/SO/RankingSOSimuladoN2'));
 const MatrizesActivity = lazy(() => import('./pages/fametro/disciplinas/AED/MatrizesActivity'));
 const MatrizesRanking = lazy(() => import('./pages/fametro/disciplinas/AED/MatrizesRanking'));
 const MatrizesLab = lazy(() => import('./pages/fametro/disciplinas/AED/MatrizesLab'));
@@ -200,6 +202,8 @@ function App() {
           <Route path="/fametro/so/unidade1" element={<SOUnidade1Activity />} />
           <Route path="/fametro/so/aula5" element={<SOAula5Activity />} />
           <Route path="/fametro/so/aula5/ranking" element={<SORankingAula5 />} />
+          <Route path="/fametro/so/simulado-n2" element={<SOSimuladoN2 />} />
+          <Route path="/fametro/so/simulado-n2/ranking" element={<RankingSOSimuladoN2 />} />
           <Route path="/fametro/so-u1/ranking" element={<SORankingU1 />} />
           <Route path="/fametro/aed/matrizes" element={<MatrizesActivity />} />
           <Route path="/fametro/aed/matrizes/ranking" element={<MatrizesRanking />} />
