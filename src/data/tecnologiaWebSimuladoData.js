@@ -1,120 +1,120 @@
-// ─── QUESTIONS DATA - MODELO A (ORIGINAL) ───────────────────────────────────────────────
+// ─── QUESTIONS DATA - MODELO A (SIMULADO INÉDITO) ───────────────────────────────────────────────
 export const QUESTIONS_A = [
   {
     id: 1,
     theme: "Spring Data JPA & ORM",
-    text: "**Contexto Profissional:** Uma empresa de desenvolvimento de software contratou um analista recém-formado para trabalhar em um projeto de gestão de clientes. O coordenador técnico explicou que a equipe utiliza o Spring Data JPA para persistência de dados e que o mapeamento entre as classes Java e as tabelas do banco de dados é feito automaticamente pelo framework.\n\n**O Problema:** O analista ficou responsável por criar a classe que representará a entidade 'Cliente' no sistema, garantindo que ela seja corretamente reconhecida pelo mecanismo de ORM (Object-Relational Mapping) do Spring.\n\n**Questão:** Considerando que o Spring Data JPA utiliza o padrão ORM para abstrair a camada de persistência, qual conjunto de anotações deve ser utilizado na classe Cliente para que o framework reconheça corretamente a entidade, defina sua tabela correspondente no banco de dados, identifique a chave primária e configure a geração automática de valores para essa chave?",
+    text: "**Contexto Profissional:** Uma software house está integrando um novo desenvolvedor em sua equipe técnica para atuar no projeto de um sistema de prontuários médicos. O coordenador do time detalhou que a persistência de dados utiliza o ecossistema Spring Data JPA, de forma que o mapeamento entre classes Java e tabelas do banco de dados relacional PostgreSQL é gerenciado de forma transparente pelo ORM.\n\n**O Problema:** O desenvolvedor ficou responsável por criar a classe de modelo correspondente à entidade 'Medico' no sistema, mapeando-a para a tabela física chamada 'medicos', configurando seu identificador único como chave primária autoincrementada pelo banco de dados PostgreSQL.\n\n**Questão:** Para que o mecanismo de mapeamento objeto-relacional (ORM) do JPA reconheça a entidade e configure adequadamente sua tabela, chave primária e autoincremento, qual combinação de anotações deve ser declarada na classe Medico?",
     options: [
       "A) @RestController, @RequestMapping, @GetMapping e @PostMapping",
-      "B) @Entity, @Table(name = \"clientes\"), @Id e @GeneratedValue(strategy = GenerationType.IDENTITY)",
+      "B) @Entity, @Table(name = \"medicos\"), @Id e @GeneratedValue(strategy = GenerationType.IDENTITY)",
       "C) @Component, @Service, @Autowired e @Transactional",
       "D) @Repository, @Query, @Modifying e @Param",
       "E) @Configuration, @Bean, @Value e @PropertySource"
     ],
     answer: "B",
-    feedback: "No ecossistema JPA/Hibernate, a anotação @Entity define a classe como uma entidade persistente, @Table especifica o nome da tabela física no banco, @Id indica o atributo chave primária, e @GeneratedValue configura o autoincremento (IDENTITY) no banco de dados."
+    feedback: "A anotação @Entity define a classe como uma entidade persistente do JPA. @Table define o nome físico da tabela no banco ('medicos'). @Id marca a propriedade como chave primária e @GeneratedValue(strategy = GenerationType.IDENTITY) delega o autoincremento ao banco PostgreSQL."
   },
   {
     id: 2,
     theme: "Arquitetura em Camadas (MVC)",
-    text: "**Contexto Profissional:** Um desenvolvedor júnior foi designado para implementar a funcionalidade de cadastro de produtos em um sistema de e-commerce construído com Spring Boot. O arquiteto do projeto orientou que, seguindo as boas práticas de arquitetura em camadas, a lógica de criação de novos registros deve ser separada da camada de apresentação.\n\n**O Problema:** O desenvolvedor precisa criar uma classe que receba as requisições HTTP, delegue a lógica de negócio para a camada de serviço e, por fim, persista os dados utilizando o Spring Data JPA.\n\n**Questão:** Diante dessa arquitetura em camadas, qual é a sequência correta de componentes e suas responsabilidades no fluxo de criação de um novo produto, desde a recepção da requisição até a persistência no banco de dados?",
+    text: "**Contexto Profissional:** Um programador iniciante foi designado para desenvolver a funcionalidade de matrícula de estudantes em um sistema de controle acadêmico em Spring Boot. A gerência de engenharia orientou que, atendendo a boas práticas de design de software e arquitetura em camadas, a lógica de validação acadêmica do aluno não deve residir na classe que gerencia os endpoints da interface web.\n\n**O Problema:** O programador precisa estruturar um fluxo no qual o sistema capte as chamadas HTTP de cadastro, repasse a validação de regras de matrícula para a camada de serviços e execute a persistência das informações no PostgreSQL através do Spring Data JPA.\n\n**Questão:** Considerando a separação de conceitos na arquitetura em camadas do Spring Boot, qual a sequência correta de chamada e responsabilidade de cada componente no fluxo de matrícula do estudante?",
     options: [
-      "A) Repository recebe a requisição, Service valida os dados e Controller persiste no banco",
-      "B) Service recebe a requisição, Repository processa a lógica e Controller persiste no banco",
-      "C) Controller valida os dados, Repository processa a lógica de negócio e Service persiste no banco",
-      "D) Controller recebe a requisição, Service processa a lógica de negócio e Repository persiste os dados",
-      "E) Service recebe a requisição, Controller processa a lógica e Repository valida os dados"
+      "A) Repository lida com a requisição, Service executa as validações de matrícula e Controller gerencia a gravação.",
+      "B) Service lida com a requisição, Repository executa as validações de matrícula e Controller gerencia a gravação.",
+      "C) Controller intercepta a requisição, Repository executa as validações de matrícula e Service gerencia a gravação.",
+      "D) Controller recebe os dados de matrícula, Service processa as regras de negócio de validação e Repository persiste o registro.",
+      "E) Service recebe os dados de matrícula, Controller processa as regras de negócio de validação e Repository persiste o registro."
     ],
     answer: "D",
-    feedback: "O fluxo de controle correto no padrão MVC adotado no Spring Boot é: a requisição HTTP é capturada pelo Controller (camada de apresentação), que delega a lógica de negócio para a Service (camada de serviço), que por sua vez utiliza o Repository (camada de persistência) para salvar os dados no banco relacional."
+    feedback: "No fluxo de uma aplicação em camadas do Spring Boot, o Controller (Apresentação) intercepta as requisições e faz a validação de entrada, o Service (Negócio) executa as regras lógicas e validações acadêmicas, e o Repository (Persistência) lida com a gravação física no banco."
   },
   {
     id: 3,
     theme: "Endpoints RESTful",
-    text: "**Contexto Profissional:** Uma equipe de desenvolvimento está construindo uma API REST para gerenciamento de pedidos em um sistema de vendas. Após implementar as operações de criação e listagem, os desenvolvedores precisam agora disponibilizar endpoints para buscar um pedido específico pelo seu identificador e para atualizar as informações de um pedido existente.\n\n**O Problema:** O tech lead orientou que essas operações devem seguir os padrões RESTful e utilizar corretamente os verbos HTTP e as anotações de mapeamento do Spring.\n\n**Questão:** Considerando os padrões RESTful e as anotações do Spring Boot para mapeamento de requisições, qual combinação de verbo HTTP e anotação correspondente deve ser utilizada para implementar, respectivamente, a busca de um pedido por ID e a atualização completa dos dados de um pedido existente?",
+    text: "**Contexto Profissional:** Uma equipe técnica está desenvolvendo a API REST de controle de frotas corporativas. O time precisa implementar endpoints para buscar as informações detalhadas de um `Veiculo` específico por seu identificador único no sistema e para substituir por completo todos os dados de cadastro de um veículo já existente no banco.\n\n**O Problema:** O líder do projeto exigiu a observância de contratos de comunicação padronizados que respeitem a semântica dos verbos HTTP e as respectivas diretivas de mapeamento do Spring Boot.\n\n**Questão:** Para implementar a busca e a substituição completa dos dados do veículo conforme as diretrizes RESTful, quais verbos HTTP e anotações do Spring devem ser declarados no Controller?",
     options: [
-      "A) POST com @PostMapping para busca e PUT com @PutMapping para atualização",
-      "B) PUT com @PutMapping para busca e POST com @PostMapping para atualização",
-      "C) GET com @GetMapping(\"/{id}\") para busca e PUT com @PutMapping(\"/{id}\") para atualização",
-      "D) GET com @GetMapping para busca e PATCH com @PatchMapping para atualização",
-      "E) DELETE com @DeleteMapping para busca e POST com @PostMapping para atualização"
+      "A) POST com @PostMapping para localização e PUT com @PutMapping para substituição",
+      "B) PUT com @PutMapping para localização e POST com @PostMapping para substituição",
+      "C) GET com @GetMapping(\"/{id}\") para localização e PUT com @PutMapping(\"/{id}\") para substituição completa",
+      "D) GET com @GetMapping para localização e PATCH com @PatchMapping para substituição completa",
+      "E) DELETE com @DeleteMapping para localização e POST com @PostMapping para substituição completa"
     ],
     answer: "C",
-    feedback: "Segundo o padrão REST, operações de consulta segura de recursos pelo ID devem usar o método HTTP GET mapeado por @GetMapping(\"/{id}\"), enquanto atualizações totais de recursos devem usar o método PUT mapeado por @PutMapping(\"/{id}\")."
+    feedback: "A busca por identificador utiliza o método HTTP GET, mapeado por @GetMapping(\"/{id}\"). A atualização integral do recurso utiliza o método HTTP PUT, mapeado por @PutMapping(\"/{id}\"), especificando o identificador do recurso na URL."
   },
   {
     id: 4,
     theme: "Tratamento de Exceções & Integridade",
-    text: "**Contexto Profissional:** Um sistema de gestão acadêmica desenvolvido em Spring Boot apresentou falhas durante a exclusão de registros de disciplinas. Os usuários relataram que, ao tentarem remover uma disciplina que possuía turmas vinculadas, o sistema retornava um erro genérico de servidor (HTTP 500) sem informar a causa real do problema.\n\n**O Problema:** O gestor de TI solicitou ao time de desenvolvimento que implementasse um tratamento adequado de exceções, garantindo que o sistema retornasse mensagens claras ao usuário e mantivesse a integridade dos dados.\n\n**Questão:** Considerando as boas práticas de tratamento de exceções em aplicações Spring Boot e a necessidade de manter a integridade referencial dos dados, qual abordagem representa a solução mais adequada para tratar o cenário de exclusão de uma disciplina com dependências vinculadas?",
+    text: "**Contexto Profissional:** Em um ERP de vendas de varejo estruturado em Spring Boot, usuários reportaram falhas de execução ao deletar uma Categoria de produtos. Sempre que tentavam remover uma categoria que ainda possuía produtos ativos associados, o sistema exibia na tela um erro 500 de servidor.\n\n**O Problema:** O programador foi instruído a tratar essa falha de violação de chave estrangeira, impedindo que a transação inválida quebre a integridade das informações e retornando uma notificação útil para o usuário na interface.\n\n**Questão:** Diante das diretrizes de desenvolvimento do Spring Boot para tratamento de exceções de persistência e integridade referencial, qual a melhor estratégia para sanar esse problema?",
     options: [
-      "A) Utilizar @SuppressWarnings para ignorar a exceção e permitir a exclusão forçada no banco de dados",
-      "B) Deixar a exceção propagar sem tratamento, pois o erro HTTP 500 já é suficiente para o usuário final",
-      "C) Utilizar System.out.println() no console do servidor para registrar o erro e retornar HTTP 200 com corpo vazio",
-      "D) Excluir primeiro todas as turmas vinculadas automaticamente, sem consultar o usuário, e depois excluir a disciplina",
-      "E) Capturar a exceção com @ExceptionHandler ou ControllerAdvice, retornar uma resposta HTTP 409 (Conflict) com mensagem explicativa e impedir a exclusão que violaria integridade referencial"
+      "A) Utilizar @SuppressWarnings para omitir o erro e permitir que a exclusão continue mesmo com órfãos.",
+      "B) Propagar a exceção original de banco diretamente para o cliente, pois o erro HTTP 500 já é autoexplicativo.",
+      "C) Inserir um console logger na aplicação, ocultando a falha do usuário e retornando HTTP 200 com corpo vazio.",
+      "D) Forçar a exclusão silenciosa em lote de todos os produtos ativos do banco sem consulta prévia ao administrador.",
+      "E) Tratar a exceção de violação de dados com @ExceptionHandler ou @ControllerAdvice, gerando um status HTTP 409 (Conflict) com uma resposta estruturada de bloqueio."
     ],
     answer: "E",
-    feedback: "Erros de integridade no banco (DataIntegrityViolationException) não devem vazar como HTTP 500. A melhor prática é capturá-los com uma classe de aconselhamento global (@ControllerAdvice) e responder com HTTP 409 (Conflict), instruindo o usuário a desvincular as turmas antes da exclusão."
+    feedback: "A melhor abordagem é interceptar globalmente a exceção de banco de dados (como DataIntegrityViolationException) por um handler gerenciado por @ControllerAdvice e retornar o status HTTP 409 (Conflict) informando ao usuário que a remoção não é possível enquanto houver dependências ativas."
   },
   {
     id: 5,
     theme: "Thymeleaf Template Engine",
-    text: "**Contexto Profissional:** Uma startup de tecnologia decidiu evoluir sua API REST pura para uma aplicação web completa com interface visual. O arquiteto de software sugeriu a adoção do Thymeleaf como template engine, argumentando que essa tecnologia se integra nativamente ao ecossistema Spring e permite a criação de páginas HTML dinâmicas sem a necessidade de frameworks JavaScript complexos no front-end.\n\n**O Problema:** A equipe precisou estudar os fundamentos dessa tecnologia para implementar as primeiras views do projeto.\n\n**Questão:** Considerando as características do Thymeleaf como template engine para aplicações Spring Boot, qual afirmação descreve corretamente seu funcionamento e principal vantagem no contexto de uma aplicação full stack com arquitetura server-side rendering?",
+    text: "**Contexto Profissional:** Uma empresa de monitoramento energético substituiu seu front-end estático por páginas HTML processadas e geradas dinamicamente no servidor com o motor Thymeleaf integrado ao ecossistema do Spring Boot.\n\n**O Problema:** A equipe de desenvolvedores precisa documentar os fundamentos e explicar os benefícios de Server-Side Rendering (SSR) e a vantagem técnica em utilizar o Thymeleaf em detrimento de abordagens SPA complexas no cliente.\n\n**Questão:** Qual afirmativa define corretamente o mecanismo de renderização do Thymeleaf e seu principal benefício técnico?",
     options: [
-      "A) Thymeleaf processa templates no servidor antes de enviar HTML puro ao cliente, permitindo que desenvolvedores utilizem atributos especiais em HTML para iterar dados e criar páginas dinâmicas sem JavaScript no front-end",
-      "B) Thymeleaf é um framework JavaScript que executa no navegador e substitui completamente o uso de HTML estático",
-      "C) Thymeleaf é uma biblioteca de estilos CSS que aplica temas visuais automaticamente às páginas HTML do Spring Boot",
-      "D) Thymeleaf funciona exclusivamente como motor de envio de e-mails e não pode renderizar páginas web completas",
-      "E) Thymeleaf requer a instalação de um servidor Node.js separado para compilar os templates antes do deployment"
+      "A) O Thymeleaf processa as diretivas e insere os dados no servidor para gerar o HTML puro enviado ao cliente, permitindo criar telas dinâmicas através de atributos sem depender de frameworks JS complexos.",
+      "B) O Thymeleaf funciona como um framework de scripts cliente, sendo processado e interpretado diretamente no navegador do usuário.",
+      "C) O Thymeleaf atua como uma folha de estilo CSS pré-processada que estiliza os componentes do Spring Boot.",
+      "D) O Thymeleaf é restrito à criação de relatórios em formato PDF e planilhas e não é adequado para compilar views web.",
+      "E) O Thymeleaf depende de um servidor executável Node.js para interpretar os arquivos HTML dinâmicos da aplicação."
     ],
     answer: "A",
-    feedback: "Thymeleaf é um motor de template Java para processamento do lado do servidor (Server-Side Rendering). Ele interpreta o código HTML estendido com atributos especiais (ex: th:text, th:each) gerando um arquivo HTML5 limpo que pode ser aberto diretamente pelo navegador sem servidores front-end adicionais."
+    feedback: "Thymeleaf realiza a renderização no servidor (SSR). O servidor lê as expressões contidas no template, processa os dados da lógica de negócio e gera HTML5 nativo e limpo para que os navegadores apenas o renderizem, reduzindo processamento no cliente."
   },
   {
     id: 6,
     theme: "Integração MVC & Thymeleaf",
-    text: "**Contexto Profissional:** Um desenvolvedor está implementando a primeira funcionalidade de integração full stack em um projeto Spring Boot com Thymeleaf. A tarefa consiste em exibir uma lista de fornecedores cadastrados no banco de dados em uma página HTML. O desenvolvedor já criou a entidade, o repositório e o controller que recupera os dados.\n\n**O Problema:** Agora, ele precisa configurar corretamente o controller para enviar a lista de fornecedores à view e utilizar a sintaxe Thymeleaf para renderizar esses dados na página.\n\n**Questão:** Considerando o padrão MVC e a integração entre Spring Boot e Thymeleaf, qual é a forma correta de adicionar a lista de fornecedores ao modelo da view no controller e, consequentemente, iterar sobre essa lista no template Thymeleaf para exibição em uma tabela HTML?",
+    text: "**Contexto Profissional:** Um engenheiro de software precisa exibir uma lista de Funcionários vinculados a um departamento em uma tabela HTML dinâmica da aplicação.\n\n**O Problema:** O engenheiro precisa injetar a coleção de registros obtidos do banco no escopo da view no Controller e depois utilizar as diretivas de iteração e exibição textual nativas do Thymeleaf no template HTML para desenhar a listagem.\n\n**Questão:** Qual a sintaxe e métodos corretos no Controller e no HTML para efetuar essa integração?",
     options: [
-      "A) No controller, retornar apenas o nome da view como String sem parâmetros; no template, usar JavaScript puro para fazer requisição AJAX ao endpoint da API",
-      "B) No controller, utilizar model.addAttribute(\"fornecedores\", lista) e retornar o nome da view; no template, usar th:each=\"fornecedor : ${fornecedores}\" para iterar e th:text=\"${fornecedor.nome}\" para exibir os dados",
-      "C) No controller, utilizar @ResponseBody para retornar JSON; no template, usar th:object para converter JSON em HTML automaticamente",
-      "D) No controller, salvar a lista diretamente no application.properties; no template, usar th:property para ler do arquivo de configuração",
-      "E) No controller, utilizar System.out.println() para imprimir a lista; no template, usar th:print para capturar a saída do console"
+      "A) O controller deve retornar a view sem propriedades e a página HTML deve rodar requisições AJAX assíncronas em JavaScript para obter a lista.",
+      "B) O controller deve invocar model.addAttribute(\"funcionarios\", lista) e retornar a view; a tela deve iterar por th:each=\"f : ${funcionarios}\" e ler dados por th:text=\"${f.nome}\".",
+      "C) O controller deve usar @ResponseBody e o Thymeleaf traduzirá o JSON resultante de forma automática por meio do atributo th:object.",
+      "D) O controller deve persistir a coleção de dados diretamente nas configurações do arquivo application.properties e ler no HTML por th:property.",
+      "E) O controller deve direcionar a lista para a saída do console e o Thymeleaf interceptará a string de log através da tag th:print."
     ],
     answer: "B",
-    feedback: "A integração se dá injetando a interface Model no parâmetro do método do Controller, inserindo a lista através de addAttribute, e recuperando-a no Thymeleaf via expressão de variável ${fornecedores} associada ao iterador th:each."
+    feedback: "O Controller preenche a chave da variável no Model utilizando `model.addAttribute(\"chave\", coleção)`. O Thymeleaf itera sobre a chave no HTML por `th:each=\"ponteiro : ${chave}\"` e exibe os atributos com `th:text=\"${ponteiro.atributo}\"`."
   },
   {
     id: 7,
     theme: "Padrões de Projeto & Desacoplamento",
-    text: "**Contexto Profissional:** Uma empresa de consultoria em software foi contratada para revisar a arquitetura de um sistema legado que apresentava alto acoplamento entre a camada de apresentação e a camada de acesso a dados.\n\n**O Problema:** Os consultores identificaram que as classes de controller acessavam diretamente as queries SQL, dificultando a manutenção, os testes unitários e a substituição do banco de dados. A proposta de modernização envolveu a adoção de padrões de projeto e arquitetura que promovessem a separação de responsabilidades e a testabilidade do código.\n\n**Questão:** Considerando os padrões de projeto e arquitetura apresentados no contexto de aplicações Spring Boot, qual conjunto de camadas e padrões representa a solução adequada para desacoplar a apresentação da persistência, promovendo testabilidade e manutenibilidade?",
+    text: "**Contexto Profissional:** Em uma auditoria técnica de um sistema contábil legado, identificou-se que as classes controladoras faziam chamadas JDBC diretas de banco de dados e continham trechos de consultas SQL embutidos em seus métodos.\n\n**O Problema:** Esse acoplamento severo impedia a criação de testes de unidade eficientes e dificultava a alteração do fornecedor do banco de dados relacional. A equipe propôs modernizar a estrutura técnica da aplicação.\n\n**Questão:** No ecossistema do Spring Boot, qual padrão de projeto e arquitetura de software é adequado para desacoplar as telas de apresentação da persistência, garantindo testabilidade?",
     options: [
-      "A) Utilizar apenas o padrão MVC, concentrando toda a lógica no Controller e acessando o banco via JDBC diretamente",
-      "B) Criar uma única classe Facade que contenha todas as operações do sistema, eliminando a necessidade de separação",
-      "C) Implementar o padrão Singleton em todas as classes e utilizar herança múltipla para compartilhar métodos de acesso a dados",
-      "D) Adotar a arquitetura em camadas com Controller (MVC), Service (regras de negócio), Repository (padrão Repository com Spring Data JPA) e injeção de dependências entre as camadas",
-      "E) Utilizar o padrão SOA criando um serviço web separado para cada tabela do banco de dados, comunicando-se via SOAP"
+      "A) Concentrar as chamadas de banco no método do Controller, usando conexões JDBC diretas para acelerar a execução.",
+      "B) Unificar todas as rotinas lógicas em um único controlador global que elimine a necessidade de criar classes e subcamadas no projeto.",
+      "C) Criar heranças complexas entre as classes de dados e de apresentação, compartilhando dados diretamente pela árvore de herança.",
+      "D) Adotar a estruturação em camadas com Controller (camada Web), Service (regras de negócio), Repository (abstração de acesso via Spring Data JPA) e injeção de dependências.",
+      "E) Criar web services independentes baseados no protocolo SOAP para cada tabela física do banco de dados relacional."
     ],
     answer: "D",
-    feedback: "Adotar camadas bem definidas acopladas levemente por injeção de dependências (DI) é a melhor prática em Spring Boot. O Controller lida com a requisição, o Service encapsula as regras de negócio, e o Repository lida exclusivamente com o acesso aos dados."
+    feedback: "A divisão clássica em camadas do Spring MVC separa as preocupações de forma clara: Controller trata as rotas e requisições HTTP, Service gerencia regras de negócio e validações lógicas, e o Repository lida com operações físicas de banco via JPA."
   },
   {
     id: 8,
     theme: "Metodologia de Desenvolvimento CRUD",
-    text: "**Contexto Profissional:** Um projeto acadêmico de conclusão de curso em Sistemas de Informação envolve a construção de um sistema completo de gerenciamento de biblioteca. Os alunos precisam entregar uma aplicação full stack que permita o cadastro, consulta, atualização e exclusão de livros, autores e empréstimos.\n\n**O Problema:** O orientador exigiu que o projeto utilizasse Spring Boot no back-end, Thymeleaf no front-end, seguisse o padrão arquitetural MVC e implementasse todas as operações CRUD com tratamento adequado de erros.\n\n**Questão:** Considerando os requisitos do projeto final e a necessidade de integração completa entre todas as camadas da aplicação, qual sequência de implementação representa a abordagem metodologicamente correta para finalizar o projeto CRUD full stack, garantindo que cada camada seja construída sobre bases sólidas e testáveis?",
+    text: "**Contexto Profissional:** Uma equipe de desenvolvedores recebeu a incumbência de criar um CRUD completo de reservas de veículos para uma locadora de automóveis.\n\n**O Problema:** O líder do projeto determinou que o desenvolvimento deve seguir uma ordem de passos que garanta que a modelagem lógica e o acesso aos dados sejam implementados e validados antes de integrar a visualização das telas com o usuário final.\n\n**Questão:** Qual a sequência metodológica lógica correta para finalizar o projeto CRUD full stack no Spring Boot e Thymeleaf?",
     options: [
-      "A) Iniciar pela criação das páginas HTML estáticas, depois adicionar CSS e, por último, tentar conectar ao banco de dados via scripts JavaScript no navegador",
-      "B) Criar diretamente os controllers REST com @RestController, retornando JSON para todas as requisições, e utilizar um framework front-end separado como React, ignorando o Thymeleaf",
-      "C) Modelar as entidades de domínio, criar os repositórios Spring Data JPA, implementar os services com regras de negócio, construir os controllers com endpoints CRUD, desenvolver as views Thymeleaf e, por fim, adicionar tratamento global de exceções",
-      "D) Implementar primeiro o banco de dados via SQL puro, depois criar procedures armazenadas para todas as operações e, por fim, chamar essas procedures diretamente dos templates Thymeleaf",
-      "E) Desenvolver o sistema completo em uma única classe Java com método main, contendo toda a lógica de apresentação, negócio e persistência em sequência procedural"
+      "A) Escrever primeiro as páginas HTML estáticas, aplicar estilos CSS e, em seguida, codificar rotinas JavaScript no cliente para gravar os dados.",
+      "B) Programar a API REST com @RestController retornando JSON e criar um front-end apartado em React, dispensando o suporte do Thymeleaf.",
+      "C) Desenhar o modelo de entidades de domínio, construir as interfaces Repository (JPA), implementar a lógica de negócio (Services), estruturar os Controllers (MVC), elaborar as views Thymeleaf e configurar o tratamento global de exceções.",
+      "D) Codificar stored procedures no banco de dados e acioná-las diretamente de blocos de script embutidos nos arquivos HTML do Thymeleaf.",
+      "E) Codificar a lógica inteira de interface, persistência e negócio em um único arquivo de classe contendo o método de execução procedural main."
     ],
     answer: "C",
-    feedback: "A metodologia clássica e segura consiste em modelar de dentro para fora: Banco/Entidades de Domínio -> Camada de Persistência (Repository) -> Camada de Negócio (Service) -> Camada de Controle (Controller) -> Telas (Thymeleaf/CSS/HTML) -> Ajustes de qualidade como tratamento de erros global."
+    feedback: "Desenvolver de dentro para fora (Entidades -> Repositories -> Services -> Controllers -> Views -> Exception Handlers) assegura que a infraestrutura e lógica estejam estáveis e testadas antes de acoplar a visualização."
   }
 ];
 
-// ─── QUESTIONS DATA - MODELO B (SIMULADO) ───────────────────────────────────────────────
+// ─── QUESTIONS DATA - MODELO B (SIMULADO INÉDITO VARIANTE) ───────────────────────────────────────────────
 export const QUESTIONS_B = [
   {
     id: 1,
@@ -198,7 +198,7 @@ export const QUESTIONS_B = [
       "E) Imprimir a lista no console usando System.out.print; no HTML, invocar o comando de console th:print para capturar o buffer."
     ],
     answer: "B",
-    feedback: "No controller injeta-se o Model para fazer `model.addAttribute(\"chave\", valor)`. No template, a iteração de coleções é feita pelo atributo `th:each=\"variável : ${chave}\"` e a impressão textual pelo `th:text=\"${variável.atributo}\"`."
+    feedback: "No controller injeta-se o Model para fazer `model.addAttribute(\"tarefas\", lista)`. No template, a iteração de coleções é feita pelo atributo `th:each=\"t : ${tarefas}\"` e a impressão textual pelo `th:text=\"${t.descricao}\"`."
   },
   {
     id: 7,
@@ -207,7 +207,7 @@ export const QUESTIONS_B = [
     options: [
       "A) Concentrar as chamadas de banco no arquivo index.html e acionar consultas SQL diretamente por JavaScript no front-end.",
       "B) Agrupar toda a lógica de negócio e queries de banco de dados em uma única classe utilitária do tipo Helper com métodos estáticos.",
-      "C) Adotar herança múltipla de interfaces de persistência e expor o banco diretamente para a camada de visualização.",
+      "C) Adotar herança múltipla de interfaces de referência e expor o banco diretamente para a camada de visualização.",
       "D) Adotar uma arquitetura estruturada com Controller (camada web), Service (lógica de negócios), Repository (acesso aos dados) e injeção de dependências.",
       "E) Criar microserviços isolados para cada método de tabela de banco de dados, estabelecendo comunicação restrita via XML e SOAP."
     ],
@@ -232,10 +232,10 @@ export const QUESTIONS_B = [
 
 // ─── DISCURSIVE DATA ─────────────────────────────────────────────────────────
 export const STUDY_CASE_A = {
-  title: "Modernização do Sistema Amazônia Logística",
-  context: "A startup TechSolutions, sediada em Manaus, desenvolve sistemas de gestão para pequenas e médias empresas da região Norte. Recentemente, foi contratada pela Amazônia Logística, empresa de transporte de cargas que opera em quatro estados amazônicos. O desafio consiste em modernizar o sistema de cadastro de motoristas, veículos e rotas, que atualmente utiliza planilhas Excel e apresenta sérios problemas de integridade de dados, redundância e dificuldade de consulta. O arquiteto de software da TechSolutions propôs a adoção do ecossistema Spring Boot com Spring Data JPA para persistência, argumentando que o padrão ORM (Object-Relational Mapping) eliminaria a necessidade de escrever SQL manualmente, aumentaria a produtividade da equipe e padronizaria o acesso ao banco de dados relacional PostgreSQL. No entanto, dois desenvolvedores seniores discordaram: um defendeu o uso de JDBC puro para maior controle das queries; outro sugeriu o padrão DAO (Data Access Object) tradicional sem frameworks. A equipe de desenvolvimento, composta por estagiários e juniores, possui pouca experiência com JPA e conceitos de mapeamento objeto-relacional. O prazo de entrega é de 60 dias, e o sistema precisa suportar operações de cadastro, consulta por múltiplos critérios, atualização de status de veículos e exclusão lógica de motoristas inativos. A Amazônia Logística exige que o sistema seja documentado e que a transição dos dados das planilhas para o banco relacional ocorra sem perda de informação. Diante desse cenário, você foi designado como desenvolvedor responsável pela modelagem das entidades e pela configuração do mapeamento ORM.",
-  statement: "Considerando as competências profissionais requeridas na Tecnologia da Informação — incluindo capacidade de tomada de decisão arquitetural, domínio conceitual e injeção de boas práticas de performance —, redija um texto dissertativo-argumentativo (com mínimo de 30 linhas) abordando os seguintes aspectos estruturantes:\n\nA) Justifique a escolha do Spring Data JPA em detrimento do JDBC puro e do padrão DAO tradicional para o projeto da Amazônia Logística, considerando produtividade, manutenibilidade e curva de aprendizado da equipe.\nB) Explique como o mecanismo de ORM (Object-Relational Mapping) do JPA resolve o problema de impedância entre o modelo orientado a objetos (classes Java) e o modelo relacional (tabelas do PostgreSQL), citando as principais anotações de persistência (@Entity, @Table, @Id, @GeneratedValue).\nC) Discuta a importância das anotações @Column e @OneToMany na modelagem das entidades Motorista, Veiculo e Rota, apresentando conceitualmente e por meio de exemplo prático as relações e mapeamento dessas classes.\nD) Avalie criticamente os limites e cuidados necessários ao utilizar ORM em projetos com grande volume de dados e consultas complexas, propondo estratégias (como lazy loading e consultas customizadas via JPQL com JOIN FETCH) para mitigar problemas de performance no Spring Data JPA.",
-  criteria: "DIRETRIZES DE RESPOSTA ESPERADA:\n\nA) Justificativa Tecnológica:\n• Produtividade: O Spring Data JPA reduz linhas de código boilerplates criando CRUDs básicos de forma transparente.\n• Curva de aprendizado: A equipe júnior/estagiários ganha tempo ao focar nas regras de negócio em vez de gerenciar transações JDBC manuais.\n• Manutenibilidade: Padronização arquitetural nativa que substitui as classes DAO proprietárias complexas.\n\nB) Resolução do Problema de Impedância ORM:\n• O ORM conecta o modelo relacional baseado em chaves e tabelas ao modelo orientado a objetos baseado em classes e herança.\n• Explicação das anotações: @Entity (indica entidade JPA), @Table (vincula à tabela do PostgreSQL), @Id (chave primária) e @GeneratedValue (autoincremento).\n\nC) Mapeamentos e Relações:\n• @Column: Configura as restrições dos campos (nullability, length, unique).\n• @OneToMany: Mapeamento de relacionamentos 1-para-N (ex: uma Rota contém múltiplos Veículos vinculados).\n• Apresentação de um exemplo de mapeamento polimórfico ou estruturado das associações entre as entidades do domínio.\n\nD) Limites e Performance:\n• Problema do N+1: O carregamento inapropriado de coleções causa avalanche de consultas SQL ao banco.\n• Solução: Ajustar coleções para LAZY por padrão; implementar consultas otimizadas utilizando JPQL com 'JOIN FETCH' no Repository para carregar as relações em uma única query; utilizar DTOs projetados (Projections) para queries parciais."
+  title: "Modernização Tecnológica do Sistema Rápido Amazonas",
+  context: "A startup NorteSistemas, sediada em Manaus, foi contratada pela Rápido Amazonas, uma tradicional empresa de transportes de cargas que atua no transporte fluvial e rodoviário de mercadorias no Amazonas, Roraima e Pará. O desafio consiste em reestruturar e modernizar o sistema de cadastro e rastreamento de portos, embarcações, fretes e motoristas, eliminando planilhas de controle local que geravam duplicidades e falhas graves de integridade. O arquiteto técnico da NorteSistemas propôs a adoção do Spring Boot com Spring Data JPA e banco de dados PostgreSQL. Dois desenvolvedores sêniores da equipe, habituados a sistemas legados, discordaram da decisão: um propôs manter queries SQL manuais nativas via JDBC sob o pretexto de otimizar a velocidade das consultas; outro sugeriu o padrão DAO sem uso de frameworks de mercado. A equipe de desenvolvimento do projeto é formada predominantemente por desenvolvedores júniores e estagiários com poucos meses de experiência prática em ORM (Object-Relational Mapping). O prazo limite de entrega é de 60 dias. O sistema precisará suportar operações completas de CRUD, consultas por múltiplos critérios dinâmicos e exclusão lógica de registros.",
+  statement: "Considerando as diretrizes acadêmicas de Tecnologia Web e orientação arquitetural de software, redija um texto dissertativo-argumentativo (mínimo de 30 linhas) abordando, de forma integrada, os seguintes quesitos:\n\nA) Justifique a escolha do Spring Data JPA no projeto da Rápido Amazonas em detrimento do JDBC puro e do padrão DAO tradicional, sob a perspectiva de produtividade da equipe júnior, manutenibilidade do código e curva de aprendizado.\nB) Detalhe o mecanismo de ORM (Object-Relational Mapping), explicando como a especificação JPA resolve o abismo de impedância conceitual entre classes Java e tabelas relacionais do PostgreSQL, e descreva o papel das anotações básicas de mapeamento da entidade Embarcacao (@Entity, @Table, @Id, @GeneratedValue).\nC) Explique a importância e o uso das anotações @Column e @OneToMany no mapeamento das associações de dados entre Porto, Embarcacao e Frete, fornecendo um exemplo conceitual de código ou lógica de relacionamento entre essas classes Java.\nD) Faça uma análise crítica sobre os limites e riscos de performance inerentes ao uso de ORMs em larga escala (como o problema do N+1 e a sobrecarga de memória) e descreva estratégias práticas de otimização (como FetchType.LAZY e JOIN FETCH via JPQL) sem abrir mão do Spring Data JPA.",
+  criteria: "DIRETRIZES DE RESPOSTA ESPERADA:\n\nA) Justificativa e Produtividade:\n• JPA fornece repositórios gerados automaticamente pelo Spring, reduzindo drasticamente o código repetitivo.\n• A injeção de dependências do Spring simplifica o trabalho da equipe júnior, acelerando as entregas dentro do prazo de 60 dias.\n• Manutibilidade de consultas básicas delegada ao framework, facilitando a portabilidade do banco de dados.\n\nB) Reconciliação ORM e Impedância:\n• O mapeamento converte a lógica orientada a objetos (associações, herança, tipos Java) em tabelas relacionais.\n• Anotações básicas: @Entity (declara a entidade persistente), @Table (nome no banco relacional), @Id (chave primária) e @GeneratedValue (estratégia de incremento).\n\nC) Associações e @OneToMany:\n• @Column: Regula restrições físicas das colunas no PostgreSQL (nullable, length, unique).\n• @OneToMany: Define associação de 1-para-N (um Porto possui várias Embarcações; uma Embarcação possui vários Fretes).\n• Exemplo que demonstre como as chaves estrangeiras são representadas em coleções na orientação a objetos.\n\nD) Limites e Otimização:\n• Risco de N+1 consultas adicionais no banco ao carregar coleções em loops.\n• Otimizações: Habilitar FetchType.LAZY nas anotações de relacionamento; usar 'JOIN FETCH' em métodos de consultas customizadas com @Query no Repository para agrupar as buscas de filhos; usar Projections (interfaces DTO) para evitar carregar colunas desnecessárias na memória do servidor."
 };
 
 export const STUDY_CASE_B = {
