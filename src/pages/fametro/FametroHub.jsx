@@ -200,6 +200,22 @@ export default function FametroHub() {
       badges: ['HTML5', 'Semântica', 'Git']
     },
     {
+      id: 5.5,
+      title: 'Simulado N2 – Avaliação Institucional',
+      course: 'Sistemas de Informação',
+      institution: 'Centro Universitário FAMETRO',
+      professor: 'Alexsander Farias',
+      period: '2026.1',
+      description: 'Simulado acadêmico N2 de Tecnologia Web: 8 questões objetivas sobre Spring Boot, JPA/ORM e Thymeleaf e 1 discursiva com autoavaliação guiada por critérios.',
+      path: '/fametro/tecnologia-web/simulado-n2',
+      rankingPath: '/fametro/tecnologia-web/simulado-n2/ranking',
+      icon: <GraduationCap size={26} color="#EC4899" />,
+      buttonText: 'Iniciar Simulado N2',
+      status: 'active',
+      accentColor: '#EC4899',
+      badges: ['Simulado N2', 'ENADE', 'Spring Boot']
+    },
+    {
       id: 6,
       title: 'Engenharia de Software',
       course: 'Ciência da Computação',
