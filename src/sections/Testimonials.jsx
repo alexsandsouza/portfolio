@@ -1,10 +1,8 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { portfolioContent } from '../data/content';
 import { Reveal } from '../components/Reveal';
 import { useHoverCard } from '../hooks/useHoverCard';
 import { Link } from 'react-router-dom';
-import { db } from '../firebase';
-import { collection, query, orderBy, onSnapshot } from 'firebase/firestore';
 
 const TestimonialCard = ({ item }) => {
     // 3D Tilt Hook
@@ -123,39 +121,28 @@ const TestimonialCard = ({ item }) => {
 const Testimonials = () => {
     const { testimonials: staticData } = portfolioContent;
     const [dynamicFeedbacks, setDynamicFeedbacks] = useState([]);
-
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        try {
-            // Removing orderBy("createdAt", "desc") to avoid "Missing Index" errors for now
-            // We will sort client-side
-            const q = query(collection(db, "feedbacks"));
-
-            const unsubscribe = onSnapshot(q, (snapshot) => {
-                const feeds = snapshot.docs.map(doc => ({
-                    id: doc.id,
-                    ...doc.data()
-                }));
-
-                // Client-side sort
-                feeds.sort((a, b) => {
-                    const tA = a.createdAt?.seconds || 0;
-                    const tB = b.createdAt?.seconds || 0;
-                    return tB - tA;
-                });
-
-                setDynamicFeedbacks(feeds);
-                setError(null);
-            }, (err) => {
-                console.error("Firestore Error:", err);
-                setError("Erro de conexão com banco de dados. Verifique as Regras no Firebase Console.");
-            });
-            return () => unsubscribe();
-        } catch (e) {
-            console.log("Firebase not initialized");
-            setError("Firebase não inicializado.");
+        let isMounted = true;
+        async function fetchFeedbacks() {
+            try {
+                const res = await fetch('/api/feedback');
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                const feeds = await res.json();
+                if (isMounted) {
+                    setDynamicFeedbacks(feeds);
+                    setError(null);
+                }
+            } catch (err) {
+                console.error("Error fetching feedbacks:", err);
+                if (isMounted) {
+                    setError("Erro ao carregar depoimentos dinâmicos.");
+                }
+            }
         }
+        fetchFeedbacks();
+        return () => { isMounted = false; };
     }, []);
 
     const displayList = [

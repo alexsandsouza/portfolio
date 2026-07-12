@@ -8,21 +8,6 @@
 
 <!-- Firebase SDK -->
 <script type="module">
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js';
-import { getFirestore, collection, onSnapshot, query, orderBy, deleteDoc, doc } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js';
-
-const firebaseConfig = {
-  apiKey: "AIzaSyAwxl9Sm6Q3X4z6GnFuUjm-lqf2tH2_a4Y",
-  authDomain: "portfolio-b6e32.firebaseapp.com",
-  projectId: "portfolio-b6e32",
-  storageBucket: "portfolio-b6e32.firebasestorage.app",
-  messagingSenderId: "809040838176",
-  appId: "1:809040838176:web:fff2480b3c4c23cee48645"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
 let allResults = [];
 
 const profileData = {
@@ -64,20 +49,36 @@ const profileData = {
   }
 };
 
-// Listener em tempo real
-const q = query(collection(db, 'perfil_comportamental'), orderBy('timestamp', 'desc'));
-onSnapshot(q, (snapshot) => {
-  allResults = snapshot.docs.map(d => ({ id: d.id, ...d.data() }));
-  render(allResults);
-  document.getElementById('loadingMsg').style.display = 'none';
-}, (err) => {
-  console.error(err);
-  document.getElementById('loadingMsg').textContent = '⚠️ Erro ao carregar dados. Verifique a conexão.';
-});
+// Carrega os dados da API
+async function loadData() {
+  try {
+    const res = await fetch('/api/perfil');
+    if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+    allResults = await res.json();
+    render(allResults);
+    document.getElementById('loadingMsg').style.display = 'none';
+  } catch (err) {
+    console.error('Erro ao buscar perfis:', err);
+    document.getElementById('loadingMsg').textContent = '⚠️ Erro ao carregar dados. Verifique a conexão.';
+  }
+}
+loadData();
 
 window._deleteResult = async function(id) {
   if (!confirm('Remover este resultado?')) return;
-  await deleteDoc(doc(db, 'perfil_comportamental', id));
+  try {
+    // Adiciona o código secreto do administrador se necessário
+    const response = await fetch(`/api/perfil?id=${id}`, {
+      method: 'DELETE'
+    });
+    if (!response.ok) {
+      throw new Error(`Exclusão falhou com status ${response.status}`);
+    }
+    await loadData();
+  } catch (error) {
+    console.error('Erro ao deletar resultado:', error);
+    alert('Erro ao remover resultado. Verifique se possui permissões administrativas configuradas no servidor.');
+  }
 };
 
 window._filterAndRender = function() {
@@ -94,15 +95,22 @@ window._filterAndRender = function() {
 window._exportCSV = function() {
   if (!allResults.length) return;
   const header = ['Nome','Perfil Dominante','Águia %','Gato %','Lobo %','Tubarão %','Data'];
-  const rows = allResults.map(r => [
-    r.nome || '',
-    r.perfilDominante || '',
-    r.pctAguia || 0,
-    r.pctGato || 0,
-    r.pctLobo || 0,
-    r.pctTubarao || 0,
-    r.timestamp ? new Date(r.timestamp.toDate()).toLocaleString('pt-BR') : ''
-  ]);
+  const rows = allResults.map(r => {
+    let dateStr = '';
+    if (r.timestamp) {
+      const d = r.timestamp.seconds ? new Date(r.timestamp.seconds * 1000) : new Date(r.timestamp);
+      dateStr = d.toLocaleString('pt-BR');
+    }
+    return [
+      r.nome || '',
+      r.perfilDominante || '',
+      r.pctAguia || 0,
+      r.pctGato || 0,
+      r.pctLobo || 0,
+      r.pctTubarao || 0,
+      dateStr
+    ];
+  });
   const csv = [header, ...rows].map(r => r.join(';')).join('\n');
   const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
   const url = URL.createObjectURL(blob);
@@ -215,7 +223,11 @@ function render(results) {
   }
   tbody.innerHTML = results.map((r, i) => {
     const p = profiles.find(p => p.key === r.perfilKey) || { key: '?', color: '#888', icon: '?', name: r.perfilDominante || '—' };
-    const date = r.timestamp ? new Date(r.timestamp.toDate()).toLocaleString('pt-BR', { day:'2-digit', month:'2-digit', year:'2-digit', hour:'2-digit', minute:'2-digit' }) : '—';
+    let dateStr = '—';
+    if (r.timestamp) {
+      const d = r.timestamp.seconds ? new Date(r.timestamp.seconds * 1000) : new Date(r.timestamp);
+      dateStr = d.toLocaleString('pt-BR', { day:'2-digit', month:'2-digit', year:'2-digit', hour:'2-digit', minute:'2-digit' });
+    }
     return `<tr class="trow" style="animation-delay:${i*30}ms">
       <td><span class="row-num">${i+1}</span></td>
       <td><strong style="color:#e0e0e0">${r.nome || '—'}</strong></td>
@@ -228,7 +240,7 @@ function render(results) {
       <td><div class="mini-bar-wrap"><div class="mini-bar"><div class="mini-bar-fill" style="width:${r.pctGato||0}%;background:#FF6B9D"></div></div><span>${r.pctGato||0}%</span></div></td>
       <td><div class="mini-bar-wrap"><div class="mini-bar"><div class="mini-bar-fill" style="width:${r.pctLobo||0}%;background:#00B894"></div><span>${r.pctLobo||0}%</span></div></td>
       <td><div class="mini-bar-wrap"><div class="mini-bar"><div class="mini-bar-fill" style="width:${r.pctTubarao||0}%;background:#FF7675"></div><span>${r.pctTubarao||0}%</span></div></td>
-      <td style="font-size:11px;color:#4a6a8a;white-space:nowrap">${date}</td>
+      <td style="font-size:11px;color:#4a6a8a;white-space:nowrap">${dateStr}</td>
       <td><button class="btn-del" onclick="window._deleteResult('${r.id}')" title="Remover">✕</button></td>
     </tr>`;
   }).join('');

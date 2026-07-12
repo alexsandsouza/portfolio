@@ -17,6 +17,14 @@ export const useHoverCard = ({
         const card = ref.current;
         if (!card) return;
 
+        const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+        const checkMotion = () => mediaQuery.matches;
+
+        if (checkMotion()) {
+            setStyles({ transform: 'none', transition: 'none', glow: 'none' });
+            return;
+        }
+
         const handleMouseMove = (e) => {
             const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left;
@@ -50,9 +58,22 @@ export const useHoverCard = ({
         card.addEventListener('mousemove', handleMouseMove);
         card.addEventListener('mouseleave', handleMouseLeave);
 
+        const motionListener = (e) => {
+            if (e.matches) {
+                setStyles({ transform: 'none', transition: 'none', glow: 'none' });
+                card.removeEventListener('mousemove', handleMouseMove);
+                card.removeEventListener('mouseleave', handleMouseLeave);
+            } else {
+                card.addEventListener('mousemove', handleMouseMove);
+                card.addEventListener('mouseleave', handleMouseLeave);
+            }
+        };
+        mediaQuery.addEventListener('change', motionListener);
+
         return () => {
             card.removeEventListener('mousemove', handleMouseMove);
             card.removeEventListener('mouseleave', handleMouseLeave);
+            mediaQuery.removeEventListener('change', motionListener);
         };
     }, [perspective, scale, maxRotation, glowOpacity]);
 

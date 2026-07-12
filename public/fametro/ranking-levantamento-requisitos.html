@@ -7,54 +7,45 @@
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
 <script type="module">
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js';
-import { getFirestore, collection, query, where, orderBy, onSnapshot } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js';
-
-const firebaseConfig = {
-  apiKey: "AIzaSyAwxl9Sm6Q3X4z6GnFuUjm-lqf2tH2_a4Y",
-  authDomain: "portfolio-b6e32.firebaseapp.com",
-  projectId: "portfolio-b6e32",
-  storageBucket: "portfolio-b6e32.firebasestorage.app",
-  messagingSenderId: "809040838176",
-  appId: "1:809040838176:web:fff2480b3c4c23cee48645"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-const q = query(
-  collection(db, "fametro_ranking"),
-  where("category", "==", "ER_Aula06"),
-  orderBy("score", "desc"),
-  orderBy("timestamp", "asc")
-);
-
-onSnapshot(q, (snapshot) => {
+async function loadRanking() {
   const tbody = document.getElementById('ranking-body');
-  tbody.innerHTML = '';
-  
-  if (snapshot.empty) {
-    tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;padding:40px;color:#666">Nenhum cadete completou a missão ainda.</td></tr>';
-    return;
+  try {
+    const res = await fetch('/api/ranking?category=ER_Aula06');
+    if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+    const data = await res.json();
+    tbody.innerHTML = '';
+
+    if (data.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;padding:40px;color:#666">Nenhum cadete completou a missão ainda.</td></tr>';
+      return;
+    }
+
+    data.forEach((item, index) => {
+      const tr = document.createElement('tr');
+      tr.className = index < 3 ? `top-${index + 1}` : '';
+      
+      const medal = index === 0 ? "🥇" : index === 1 ? "🥈" : index === 2 ? "🥉" : index + 1;
+      
+      let dateStr = '-';
+      if (item.timestamp) {
+        const d = item.timestamp.seconds ? new Date(item.timestamp.seconds * 1000) : new Date(item.timestamp);
+        dateStr = d.toLocaleDateString('pt-BR');
+      }
+
+      tr.innerHTML = `
+        <td><span class="rank-num">${medal}</span></td>
+        <td class="name-cell">${item.name}</td>
+        <td class="score-cell">${item.score} <span>XP</span></td>
+        <td class="date-cell">${dateStr}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+  } catch (err) {
+    console.error('Erro ao carregar ranking:', err);
+    tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;padding:40px;color:#666">Erro ao carregar o ranking central.</td></tr>';
   }
-
-  snapshot.docs.forEach((doc, index) => {
-    const data = doc.data();
-    const tr = document.createElement('tr');
-    tr.className = index < 3 ? `top-${index + 1}` : '';
-    
-    const medal = index === 0 ? "🥇" : index === 1 ? "🥈" : index === 2 ? "🥉" : index + 1;
-    const date = data.timestamp ? new Date(data.timestamp.toDate()).toLocaleDateString('pt-BR') : '-';
-
-    tr.innerHTML = `
-      <td><span class="rank-num">${medal}</span></td>
-      <td class="name-cell">${data.name}</td>
-      <td class="score-cell">${data.score} <span>XP</span></td>
-      <td class="date-cell">${date}</td>
-    `;
-    tbody.appendChild(tr);
-  });
-});
+}
+loadRanking();
 </script>
 
 <style>

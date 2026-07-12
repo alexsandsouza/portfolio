@@ -28,7 +28,7 @@ const Navbar = ({ triggerMatrix }) => {
         { name: 'Expertise', href: '#backend' },
         { name: 'Experiência', href: '#experience' },
         { name: 'Projetos', href: '#projects' },
-        { name: 'DNA', href: '#behavioral' },
+        { name: 'Diferenciais', href: '#behavioral' },
     ];
 
     return (
@@ -316,7 +316,9 @@ const Navbar = ({ triggerMatrix }) => {
                 <button
                     className="mobile-toggle"
                     onClick={() => setIsOpen(!isOpen)}
-                    aria-label="Menu"
+                    aria-label="Menu de navegação"
+                    aria-expanded={isOpen}
+                    aria-controls="mobile-navigation-menu"
                 >
                     <div style={{ width: '24px', height: '2px', background: 'var(--text-heading)', marginBottom: '6px', transform: isOpen ? 'rotate(45deg) translate(5px, 6px)' : 'none', transition: '0.3s' }}></div>
                     <div style={{ width: '24px', height: '2px', background: 'var(--text-heading)', opacity: isOpen ? 0 : 1, transition: '0.3s' }}></div>
@@ -324,7 +326,7 @@ const Navbar = ({ triggerMatrix }) => {
                 </button>
 
                 {/* Mobile Menu Overlay */}
-                <div className={`mobile-menu ${isOpen ? 'open' : ''}`}>
+                <div id="mobile-navigation-menu" className={`mobile-menu ${isOpen ? 'open' : ''}`} role="navigation" aria-label="Menu mobile">
                     {navLinks.map((link) => (
                         <a
                             key={link.name}

@@ -1,18 +1,59 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Coleção de ranking de atividades — acesso público (Somente leitura e inserção)
+    
+    // Coleção de ranking de atividades — acesso público (Somente leitura e inserção com validação de esquema)
     match /fametro_ranking/{doc} {
       allow read: if true;
       allow create: if request.resource.data.keys().hasAll(['name', 'score']) &&
                        request.resource.data.name is string &&
-                       request.resource.data.name.size() < 60 &&
-                       request.resource.data.score is number;
+                       request.resource.data.name.size() < 100 &&
+                       request.resource.data.score is number &&
+                       request.resource.data.score >= 0 &&
+                       request.resource.data.score <= 100;
       allow update, delete: if false;
     }
-    // Coleção de perfil comportamental — alunos escrevem, todos leem
+
+    // Coleção de perfil comportamental — alunos escrevem, todos leem (com validação estrita de esquema)
     match /perfil_comportamental/{doc} {
-      allow read, create: if true;
+      allow read: if true;
+      allow create: if request.resource.data.keys().hasAll(['nome', 'perfilDominante', 'perfilKey', 'pctAguia', 'pctGato', 'pctLobo', 'pctTubarao', 'respostas']) &&
+                       request.resource.data.nome is string &&
+                       request.resource.data.nome.size() >= 2 &&
+                       request.resource.data.nome.size() < 100 &&
+                       request.resource.data.perfilDominante is string &&
+                       request.resource.data.perfilKey is string &&
+                       request.resource.data.pctAguia is number &&
+                       request.resource.data.pctAguia >= 0 &&
+                       request.resource.data.pctAguia <= 100 &&
+                       request.resource.data.pctGato is number &&
+                       request.resource.data.pctGato >= 0 &&
+                       request.resource.data.pctGato <= 100 &&
+                       request.resource.data.pctLobo is number &&
+                       request.resource.data.pctLobo >= 0 &&
+                       request.resource.data.pctLobo <= 100 &&
+                       request.resource.data.pctTubarao is number &&
+                       request.resource.data.pctTubarao >= 0 &&
+                       request.resource.data.pctTubarao <= 100 &&
+                       request.resource.data.respostas is list;
+      allow update, delete: if false;
+    }
+
+    // Coleção de feedbacks de depoimentos — leitores leem, usuários submetem feedback com validação
+    match /feedbacks/{doc} {
+      allow read: if true;
+      allow create: if request.resource.data.keys().hasAll(['name', 'role', 'message', 'permission', 'approved']) &&
+                       request.resource.data.name is string &&
+                       request.resource.data.name.size() >= 2 &&
+                       request.resource.data.name.size() < 100 &&
+                       request.resource.data.role is string &&
+                       request.resource.data.role.size() >= 2 &&
+                       request.resource.data.role.size() < 100 &&
+                       request.resource.data.message is string &&
+                       request.resource.data.message.size() >= 5 &&
+                       request.resource.data.message.size() < 1000 &&
+                       request.resource.data.permission is bool &&
+                       request.resource.data.approved is bool;
       allow update, delete: if false;
     }
   }

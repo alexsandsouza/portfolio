@@ -7,35 +7,28 @@
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 <!-- Firebase SDK -->
-<script type="module">
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js';
-import { getFirestore, collection, addDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js';
-
-const firebaseConfig = {
-  apiKey: "AIzaSyAwxl9Sm6Q3X4z6GnFuUjm-lqf2tH2_a4Y",
-  authDomain: "portfolio-b6e32.firebaseapp.com",
-  projectId: "portfolio-b6e32",
-  storageBucket: "portfolio-b6e32.firebasestorage.app",
-  messagingSenderId: "809040838176",
-  appId: "1:809040838176:web:fff2480b3c4c23cee48645"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
+<script>
 window._saveScoreToFirebase = async function(name, score) {
   try {
-    await addDoc(collection(db, 'fametro_ranking'), {
-      name: name,
-      score: score,
-      category: 'ER_Aula06',
-      materia: 'Engenharia de Requisitos',
-      unidade: 'Aula 06 - Levantamento',
-      timestamp: serverTimestamp()
+    const response = await fetch('/api/ranking', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: name,
+        score: score,
+        category: 'ER_Aula06',
+        materia: 'Engenharia de Requisitos',
+        unidade: 'Aula 06 - Levantamento'
+      })
     });
-    console.log('✅ Score salvo com sucesso!');
+    if (!response.ok) {
+      throw new Error(`Server responded with status ${response.status}`);
+    }
+    console.log('✅ Score salvo com sucesso via API!');
   } catch(e) {
-    console.error('❌ Erro ao salvar score:', e);
+    console.error('❌ Erro ao salvar score via API:', e);
   }
 };
 </script>

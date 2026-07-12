@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Reveal } from '../components/Reveal';
-import { db } from '../firebase';
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 const Feedback = () => {
     const [formData, setFormData] = useState({
@@ -18,11 +16,16 @@ const Feedback = () => {
         e.preventDefault();
         setIsSubmitting(true);
         try {
-            await addDoc(collection(db, "feedbacks"), {
-                ...formData,
-                createdAt: serverTimestamp(),
-                approved: true // Auto-approved for demo purposes
+            const response = await fetch('/api/feedback', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
             });
+            if (!response.ok) {
+                throw new Error(`Server responded with status ${response.status}`);
+            }
             setSubmitted(true);
         } catch (error) {
             console.error("Erro ao enviar feedback:", error);

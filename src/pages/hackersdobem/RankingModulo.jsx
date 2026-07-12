@@ -87,22 +87,6 @@ export default function RankingModulo() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const entriesRef = useRef([]);
 
-  // Fallback if module not found
-  if (!config) {
-    return (
-      <div style={{ minHeight: '100vh', background: '#0A0A12', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--hdb-main-font)' }}>
-        <div style={{ textAlign: 'center' }}>
-          <div style={{ fontSize: 60, marginBottom: 20 }}>❌</div>
-          <h1 style={{ fontSize: 28 }}>Módulo não encontrado</h1>
-          <p style={{ color: 'rgba(255,255,255,0.4)', marginTop: 10 }}>O módulo "{modulo}" não existe.</p>
-          <Link to="/hackersdobem" style={{ color: '#00FF88', display: 'block', marginTop: 20 }}>← VOLTAR AO HUB</Link>
-        </div>
-      </div>
-    );
-  }
-
-  const moduleNum = modulo.replace('m', '').toUpperCase();
-
   useEffect(() => {
     const handleMouse = (e) => setMousePos({ x: e.clientX, y: e.clientY });
     window.addEventListener('mousemove', handleMouse);
@@ -110,6 +94,7 @@ export default function RankingModulo() {
   }, []);
 
   useEffect(() => {
+    if (!config) return;
     const q = query(collection(db, "fametro_ranking"));
     const unsubscribe = onSnapshot(q, (snapshot) => {
       let loaded = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
@@ -127,7 +112,23 @@ export default function RankingModulo() {
       entriesRef.current = loaded;
     });
     return () => unsubscribe();
-  }, [filter, config.id]);
+  }, [filter, config?.id]);
+
+  // Fallback if module not found (placed after all hook declarations)
+  if (!config) {
+    return (
+      <div style={{ minHeight: '100vh', background: '#0A0A12', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--hdb-main-font)' }}>
+        <div style={{ textAlign: 'center' }}>
+          <div style={{ fontSize: 60, marginBottom: 20 }}>❌</div>
+          <h1 style={{ fontSize: 28 }}>Módulo não encontrado</h1>
+          <p style={{ color: 'rgba(255,255,255,0.4)', marginTop: 10 }}>O módulo "{modulo}" não existe.</p>
+          <Link to="/hackersdobem" style={{ color: '#00FF88', display: 'block', marginTop: 20 }}>← VOLTAR AO HUB</Link>
+        </div>
+      </div>
+    );
+  }
+
+  const moduleNum = modulo ? modulo.replace('m', '').toUpperCase() : '';
 
   const filteredEntries = entries.filter(e => 
     e.name.toLowerCase().includes(searchTerm.toLowerCase())

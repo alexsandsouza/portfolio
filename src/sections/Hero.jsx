@@ -124,6 +124,7 @@ const GlowingProfile = () => {
                 width={320}
                 height={320}
                 loading="eager"
+                fetchPriority="high"
                 className="hero-profile-img"
                 style={{
                     width: '80%',
@@ -165,37 +166,71 @@ const GlowingProfile = () => {
     );
 };
 
-const Typewriter = ({ text, speed = 100, delay = 1000 }) => {
+const Typewriter = ({ text, speed = 80, delay = 2000, deleteSpeed = 40 }) => {
     const [currentText, setCurrentText] = useState('');
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [isDeleting, setIsDeleting] = useState(false);
-    const [loopNum, setLoopNum] = useState(0);
+    const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
     useEffect(() => {
-        const i = loopNum % text.length;
-        const fullText = text[i];
+        const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+        setPrefersReducedMotion(mediaQuery.matches);
+        const listener = (e) => setPrefersReducedMotion(e.matches);
+        mediaQuery.addEventListener('change', listener);
+        return () => mediaQuery.removeEventListener('change', listener);
+    }, []);
 
-        const handleType = () => {
-            setCurrentText(isDeleting
-                ? fullText.substring(0, currentText.length - 1)
-                : fullText.substring(0, currentText.length + 1)
-            );
+    useEffect(() => {
+        if (prefersReducedMotion) {
+            setCurrentText(text.join(' | '));
+            return;
+        }
 
-            if (!isDeleting && currentText === fullText) {
-                setTimeout(() => setIsDeleting(true), delay);
-            } else if (isDeleting && currentText === '') {
-                setIsDeleting(false);
-                setLoopNum(loopNum + 1);
+        let isMounted = true;
+        let currentWordIndex = 0;
+        let currentCharIndex = 0;
+        let isDeletingWord = false;
+        let timeoutId;
+
+        const type = () => {
+            const currentWord = text[currentWordIndex % text.length];
+            
+            if (isDeletingWord) {
+                currentCharIndex--;
+            } else {
+                currentCharIndex++;
             }
+
+            if (isMounted) {
+                setCurrentText(currentWord.substring(0, currentCharIndex));
+            }
+
+            let nextSpeed = isDeletingWord ? deleteSpeed : speed;
+
+            if (!isDeletingWord && currentCharIndex === currentWord.length) {
+                nextSpeed = delay;
+                isDeletingWord = true;
+            } else if (isDeletingWord && currentCharIndex === 0) {
+                isDeletingWord = false;
+                currentWordIndex++;
+                nextSpeed = 500;
+            }
+
+            timeoutId = setTimeout(type, nextSpeed);
         };
 
-        const timer = setTimeout(handleType, isDeleting ? 30 : speed);
+        timeoutId = setTimeout(type, speed);
 
-        return () => clearTimeout(timer);
-    }, [currentText, isDeleting, loopNum, text, speed, delay]);
+        return () => {
+            isMounted = false;
+            clearTimeout(timeoutId);
+        };
+    }, [prefersReducedMotion, text, speed, delay, deleteSpeed]);
+
+    if (prefersReducedMotion) {
+        return <span>{currentText}</span>;
+    }
 
     return (
-        <span>
+        <span aria-hidden="true">
             {currentText}
             <span className="cursor" style={{ color: 'var(--accent-color)' }}>|</span>
         </span>
@@ -204,14 +239,11 @@ const Typewriter = ({ text, speed = 100, delay = 1000 }) => {
 
 const Hero = () => {
     const { hero } = portfolioContent;
-    const [greeting, setGreeting] = useState('Olá');
-
-    useEffect(() => {
-        const hour = new Date().getHours();
-        if (hour < 12) setGreeting('Bom dia');
-        else if (hour < 18) setGreeting('Boa tarde');
-        else setGreeting('Boa noite');
-    }, []);
+    const hour = new Date().getHours();
+    let greeting = 'Olá';
+    if (hour < 12) greeting = 'Bom dia';
+    else if (hour < 18) greeting = 'Boa tarde';
+    else greeting = 'Boa noite';
 
     return (
         <section className="section" style={{
@@ -314,10 +346,11 @@ const Hero = () => {
                             borderLeft: '4px solid var(--secondary-color)',
                             paddingLeft: '1.5rem',
                             marginBottom: '2.5rem',
-                            minHeight: '2em', // Prevent layout shift
+                            minHeight: '2.4em', // Prevent layout shift
                             display: 'flex',
                             alignItems: 'center'
                         }}>
+                            <span className="sr-only">{hero.title.split('\n').join(', ')}</span>
                             <Typewriter text={hero.title.split('\n')} speed={50} delay={1500} />
                         </h2>
                     </Reveal>

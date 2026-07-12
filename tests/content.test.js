@@ -15,7 +15,7 @@
  * - RF-010: Dados de SEO presentes
  */
 import { describe, it, expect } from 'vitest';
-import { portfolioContent } from '../data/content';
+import { portfolioContent } from '../src/data/content';
 
 describe('Camada de Dados — content.js', () => {
 

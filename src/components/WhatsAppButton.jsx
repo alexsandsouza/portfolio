@@ -17,13 +17,14 @@ const WhatsAppButton = ({ message }) => {
     }, []);
 
     return (
-        <div style={{ position: 'fixed', bottom: '100px', right: '2rem', zIndex: 10002 }}>
+        <div style={{ position: 'fixed', bottom: '100px', right: '2rem', zIndex: 90 }}>
             {/* Notification Bubble */}
             <div className={`wa-notification ${showNotification ? 'show' : ''}`}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                     <span>👋 Vamos conversar sobre seu projeto?</span>
                     <button
                         onClick={(e) => { e.preventDefault(); e.stopPropagation(); setShowNotification(false); }}
+                        aria-label="Fechar notificação"
                         style={{ background: 'none', border: 'none', color: '#666', cursor: 'pointer', fontSize: '14px', padding: '0 4px' }}
                     >
                         ×
@@ -112,10 +113,9 @@ const WhatsAppButton = ({ message }) => {
 
                 @media (max-width: 768px) {
                     .whatsapp-float {
-                        width: 45px;
-                        height: 45px;
+                        width: 48px;
+                        height: 48px;
                     }
-                    /* Adjust wrapper positioning logic manually if needed */
                 }
             `}</style>
         </div>

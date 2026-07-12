@@ -12,7 +12,7 @@
  * - RNF-008: Links externos seguros
  */
 import { describe, it, expect } from 'vitest';
-import { portfolioContent } from '../data/content';
+import { portfolioContent } from '../src/data/content';
 import fs from 'fs';
 import path from 'path';
 

@@ -768,3 +768,36 @@ a:focus-visible {
   90% { opacity: 1; }
   100% { transform: translateY(1100%); opacity: 0; }
 }
+
+/* Screen reader only utility class */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* Accessibility skip link */
+.skip-link {
+  position: absolute;
+  top: -60px;
+  left: 10px;
+  background: var(--primary-color);
+  color: white;
+  padding: 10px 20px;
+  z-index: 100000;
+  transition: top 0.2s ease;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 2px solid var(--accent-color);
+}

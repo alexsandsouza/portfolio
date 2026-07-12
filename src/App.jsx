@@ -123,6 +123,7 @@ const Home = () => {
 
   return (
     <>
+      <a href="#main-content" className="skip-link">Pular para o conteúdo principal</a>
       {showMatrix && <MatrixEffect onClose={() => setShowMatrix(false)} />}
       {showChallenge && <SecretChallenge onClose={() => setShowChallenge(false)} />}
       <Terminal isOpen={showTerminal} onClose={() => setShowTerminal(false)} triggerMatrix={() => setShowMatrix(true)} />
@@ -131,24 +132,26 @@ const Home = () => {
       <ScrollProgress />
       <ThemeToggle />
       <Navbar triggerMatrix={() => setShowMatrix(true)} />
-      <Hero />
-      <About />
-      <Suspense fallback={null}>
-        <Areas />
-        <BackendExpertise />
-        <Experience />
-        <Projects />
-        <Testimonials />
-        <MentorshipShowcase />
-        <AcademyHub />
-        <BehavioralDiscovery />
-        <Journey />
-        <Services />
-        <Skills />
-        <Education />
-        <Highlights />
-        <Contact />
-      </Suspense>
+      <main id="main-content">
+        <Hero />
+        <About />
+        <Suspense fallback={null}>
+          <Areas />
+          <BackendExpertise />
+          <Experience />
+          <Projects />
+          <Testimonials />
+          <MentorshipShowcase />
+          <AcademyHub />
+          <BehavioralDiscovery />
+          <Journey />
+          <Services />
+          <Skills />
+          <Education />
+          <Highlights />
+          <Contact />
+        </Suspense>
+      </main>
       <WhatsAppButton />
       <ScrollToTop />
     </>

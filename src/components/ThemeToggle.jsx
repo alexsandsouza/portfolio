@@ -37,7 +37,7 @@ const ThemeToggle = () => {
                     position: fixed;
                     bottom: 2rem;
                     right: 2rem;
-                    z-index: 9999;
+                    z-index: 90;
                     background: var(--surface-color);
                     border: 1px solid var(--border-color);
                     color: var(--text-primary);
