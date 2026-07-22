@@ -9,6 +9,22 @@ export default function FametroHub() {
 
   const disciplines = [
     {
+      id: 0,
+      title: 'Formação Docente 2026.2: IA & Padrão ENADE',
+      course: 'Capacitação Docente Institucional',
+      institution: 'Centro Universitário FAMETRO',
+      professor: 'Alexsander Farias',
+      period: '2026.2',
+      description: 'Engenharia de Prompts com IA Generativa (ChatGPT, Gemini e Claude) para Elaboração de Questões no Padrão ENADE e Avalia 2.0.',
+      path: '/formacao-docente',
+      rankingPath: '/formacao-docente/ranking',
+      icon: <Sparkles size={26} color="#8b5cf6" />,
+      buttonText: 'Acessar Oficina Gamificada',
+      status: 'active',
+      accentColor: '#8b5cf6',
+      badges: ['Formação Docente', 'IA & ENADE', '2026.2']
+    },
+    {
       id: 1,
       title: 'Orientação à Objetos - POO',
       course: 'Sistemas de Informação',

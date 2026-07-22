@@ -90,6 +90,8 @@ const TecnologiaWebSimuladoN2 = lazy(() => import('./pages/fametro/disciplinas/T
 const RankingTecnologiaWebSimuladoN2 = lazy(() => import('./pages/fametro/disciplinas/TecnologiaWeb/RankingTecnologiaWebSimuladoN2'));
 const EngSoftwareRevisaoActivity = lazy(() => import('./pages/fametro/disciplinas/EngSoftware/EngSoftwareRevisaoActivity'));
 const RankingEngSoftwareRevisao = lazy(() => import('./pages/fametro/disciplinas/EngSoftware/RankingEngSoftwareRevisao'));
+const FormacaoDocenteActivity = lazy(() => import('./pages/fametro/disciplinas/FormacaoDocente/FormacaoDocenteActivity'));
+const RankingFormacaoDocente = lazy(() => import('./pages/fametro/disciplinas/FormacaoDocente/RankingFormacaoDocente'));
 const Inovatech2026 = lazy(() => import('./pages/Inovatech2026'));
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
 const TechAffinityTest = lazy(() => import('./pages/TechAffinityTest'));
@@ -221,6 +223,10 @@ function App() {
           <Route path="/fametro/tecnologia-web/simulado-n2/ranking" element={<RankingTecnologiaWebSimuladoN2 />} />
           <Route path="/fametro/eng-software/revisao" element={<EngSoftwareRevisaoActivity />} />
           <Route path="/fametro/eng-software/revisao/ranking" element={<RankingEngSoftwareRevisao />} />
+          <Route path="/formacao-docente" element={<FormacaoDocenteActivity />} />
+          <Route path="/formacao-docente/ranking" element={<RankingFormacaoDocente />} />
+          <Route path="/fametro/formacao-docente" element={<FormacaoDocenteActivity />} />
+          <Route path="/fametro/formacao-docente/ranking" element={<RankingFormacaoDocente />} />
           <Route path="/inovatech2026" element={<Inovatech2026 />} />
           <Route path="/privacidade" element={<PrivacyPolicy />} />
           <Route path="*" element={<NotFound />} />

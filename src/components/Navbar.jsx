@@ -211,9 +211,9 @@ const Navbar = ({ triggerMatrix }) => {
                                 CV <span style={{ fontSize: '1.1em' }}>↓</span>
                             </a>
                             <a href="/teste-afinidade" className="btn" style={{
-                                padding: '0.6rem 1.5rem',
-                                fontSize: '0.9rem',
-                                marginLeft: '1rem',
+                                padding: '0.6rem 1.2rem',
+                                fontSize: '0.85rem',
+                                marginLeft: '0.75rem',
                                 whiteSpace: 'nowrap',
                                 background: 'linear-gradient(90deg, #3b82f6, #8b5cf6)',
                                 color: 'white',
@@ -222,6 +222,19 @@ const Navbar = ({ triggerMatrix }) => {
                                 boxShadow: '0 4px 15px rgba(59, 130, 246, 0.4)'
                             }}>
                                 Teste de Perfil 🧬
+                            </a>
+                            <a href="/formacao-docente" className="btn" style={{
+                                padding: '0.6rem 1.2rem',
+                                fontSize: '0.85rem',
+                                marginLeft: '0.75rem',
+                                whiteSpace: 'nowrap',
+                                background: 'linear-gradient(90deg, #7c3aed, #2563eb)',
+                                color: 'white',
+                                border: 'none',
+                                fontWeight: 'bold',
+                                boxShadow: '0 4px 15px rgba(124, 58, 237, 0.5)'
+                            }}>
+                                Formação Docente 🎓
                             </a>
                             <a href="#contact" className="btn btn-primary" style={{ padding: '0.6rem 1.5rem', fontSize: '0.9rem', marginLeft: '1rem', whiteSpace: 'nowrap' }}>
                                 Contato
@@ -340,6 +353,7 @@ const Navbar = ({ triggerMatrix }) => {
                     <a href="/cv" target="_blank" className="mobile-link" style={{ fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '8px' }}>
                         CV <span style={{ fontSize: '0.8em' }}>↓</span>
                     </a>
+                    <a href="/formacao-docente" onClick={() => setIsOpen(false)} className="mobile-link" style={{ color: '#8b5cf6', fontWeight: 'bold' }}>Formação Docente 2026.2 🎓</a>
                     <a href="/teste-afinidade" onClick={() => setIsOpen(false)} className="mobile-link" style={{ color: '#3b82f6' }}>Teste de Perfil 🧬</a>
                     <a href="#contact" onClick={() => setIsOpen(false)} className="mobile-link" style={{ color: 'var(--primary-color)' }}>Contato</a>
 
