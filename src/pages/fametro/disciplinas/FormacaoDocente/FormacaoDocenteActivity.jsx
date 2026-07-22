@@ -5,7 +5,7 @@ import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { 
   BookOpen, Trophy, Clock, CheckCircle, XCircle, Send, 
   ChevronLeft, ChevronRight, GraduationCap, ArrowLeft, 
-  Sparkles, Award, RefreshCw, Cpu, Check, Copy, Share2 
+  Sparkles, Award, RefreshCw, Cpu, UserCheck, Lock, FileText, Check 
 } from "lucide-react";
 
 import { WORKSHOP_INFO, QUESTIONS_FORMACAO_DOCENTE } from "../../../../data/formacaoDocenteData";
@@ -38,6 +38,14 @@ function formatTime(seconds) {
 
 export default function FormacaoDocenteActivity() {
   const [activeTab, setActiveTab] = useState("quiz"); // 'quiz' | 'ranking'
+  
+  // Mandatory Docente Registration
+  const [docenteName, setDocenteName] = useState("");
+  const [docenteDept, setDocenteDept] = useState("");
+  const [isRegistered, setIsRegistered] = useState(false);
+  const [regError, setRegError] = useState("");
+
+  // Quiz state
   const [currentIdx, setCurrentIdx] = useState(0);
   const [answers, setAnswers] = useState({}); // { [questionId]: optionIndex }
   const [confirmedAnswers, setConfirmedAnswers] = useState({}); // { [questionId]: true }
@@ -46,30 +54,46 @@ export default function FormacaoDocenteActivity() {
 
   // Timer
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
-  const [timerActive, setTimerActive] = useState(true);
+  const [timerActive, setTimerActive] = useState(false);
 
-  // User details for ranking submission
-  const [userName, setUserName] = useState("");
-  const [userDepartment, setUserDepartment] = useState("");
+  // Ranking Submission State
   const [submitting, setSubmitting] = useState(false);
   const [submittedToRanking, setSubmittedToRanking] = useState(false);
 
   const timerRef = useRef(null);
 
-  // Start timer on mount
+  // Timer interval
   useEffect(() => {
     if (timerActive) {
       timerRef.current = setInterval(() => {
         setElapsedSeconds(prev => prev + 1);
       }, 1000);
+    } else {
+      clearInterval(timerRef.current);
     }
     return () => clearInterval(timerRef.current);
   }, [timerActive]);
 
   const questions = QUESTIONS_FORMACAO_DOCENTE;
   const currentQ = questions[currentIdx];
-  const selectedOption = answers[currentQ.id];
-  const isConfirmed = confirmedAnswers[currentQ.id];
+  const selectedOption = answers[currentQ?.id];
+  const isConfirmed = confirmedAnswers[currentQ?.id];
+
+  // Handle Initial Docente Registration Submission
+  const handleStartRegistration = (e) => {
+    e.preventDefault();
+    if (!docenteName.trim()) {
+      setRegError("O nome completo do docente participante é obrigatório.");
+      return;
+    }
+    if (!docenteDept.trim()) {
+      setRegError("Por favor, informe seu curso ou unidade de ensino.");
+      return;
+    }
+    setRegError("");
+    setIsRegistered(true);
+    setTimerActive(true);
+  };
 
   const handleSelectOption = (idx) => {
     if (isConfirmed || isFinished) return;
@@ -95,7 +119,7 @@ export default function FormacaoDocenteActivity() {
     }
   };
 
-  const finishQuiz = () => {
+  const finishQuiz = async () => {
     setTimerActive(false);
     clearInterval(timerRef.current);
 
@@ -110,32 +134,26 @@ export default function FormacaoDocenteActivity() {
     const finalScore = Math.round(totalPoints);
     setScore(finalScore);
     setIsFinished(true);
-  };
 
-  const handleRankingSubmit = async (e) => {
-    e.preventDefault();
-    if (!userName.trim() || submitting || submittedToRanking) return;
-
+    // Auto-save result to Firestore ranking
     setSubmitting(true);
     try {
       await addDoc(collection(db, "fametro_ranking"), {
         activityId: "formacao_docente_2026_2",
-        userName: userName.trim(),
-        department: userDepartment.trim() || "Docente FAMETRO",
-        score: score,
+        userName: docenteName.trim(),
+        department: docenteDept.trim(),
+        score: finalScore,
         duration: elapsedSeconds * 1000,
         createdAt: serverTimestamp()
       });
       setSubmittedToRanking(true);
-      setSubmitting(false);
-      setActiveTab("ranking");
     } catch (err) {
-      console.error("Erro ao salvar pontuação no Firestore:", err);
+      console.error("Erro ao salvar resultado no Firestore:", err);
+    } finally {
       setSubmitting(false);
     }
   };
 
-  const answeredCount = Object.keys(answers).length;
   const progressPercent = Math.round(((currentIdx + 1) / questions.length) * 100);
 
   return (
@@ -146,7 +164,7 @@ export default function FormacaoDocenteActivity() {
       fontFamily: "'Inter', system-ui, -apple-system, sans-serif",
       paddingBottom: "4rem"
     }}>
-      {/* Top Banner Navigation Header */}
+      {/* Navigation Header */}
       <header style={{
         background: "linear-gradient(180deg, rgba(15, 23, 42, 0.95) 0%, rgba(7, 11, 20, 0.8) 100%)",
         borderBottom: `1px solid ${theme.border}`,
@@ -165,7 +183,7 @@ export default function FormacaoDocenteActivity() {
           flexWrap: "wrap",
           gap: "1rem"
         }}>
-          {/* Brand & Workshop Info */}
+          {/* Institution & Workshop info */}
           <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
             <Link to="/fametro" style={{
               color: theme.textMuted,
@@ -176,7 +194,7 @@ export default function FormacaoDocenteActivity() {
               fontSize: "0.85rem",
               fontWeight: "600"
             }}>
-              <ArrowLeft size={16} /> Fametro
+              <ArrowLeft size={16} /> Hub FAMETRO
             </Link>
             <div style={{ height: "20px", width: "1px", background: theme.border }}></div>
             <div>
@@ -189,7 +207,7 @@ export default function FormacaoDocenteActivity() {
             </div>
           </div>
 
-          {/* Tab Switcher & Timer */}
+          {/* Navigation & Timer */}
           <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
             <div style={{
               background: "rgba(15, 23, 42, 0.8)",
@@ -216,7 +234,7 @@ export default function FormacaoDocenteActivity() {
                   transition: "all 0.2s"
                 }}
               >
-                <BookOpen size={14} /> Atividade
+                <BookOpen size={14} /> Atividade Gamificada
               </button>
 
               <button
@@ -260,15 +278,153 @@ export default function FormacaoDocenteActivity() {
         </div>
       </header>
 
-      {/* Main Content Area */}
+      {/* Main View Router */}
       {activeTab === "ranking" ? (
         <RankingFormacaoDocente onSwitchToQuiz={() => setActiveTab("quiz")} />
       ) : (
         <main style={{ maxWidth: "900px", margin: "2rem auto 0", padding: "0 1.5rem" }}>
           
-          {!isFinished ? (
+          {/* STEP 1: MANDATORY DOCENTE REGISTRATION MODAL */}
+          {!isRegistered ? (
+            <div style={{
+              background: theme.surface,
+              border: `1px solid ${theme.border}`,
+              borderRadius: "24px",
+              padding: "2.5rem 2rem",
+              maxWidth: "550px",
+              margin: "2rem auto 0",
+              boxShadow: "0 25px 50px rgba(0,0,0,0.5)",
+              textAlign: "center"
+            }}>
+              <div style={{
+                width: "70px", height: "70px",
+                borderRadius: "50%",
+                background: "rgba(139, 92, 246, 0.15)",
+                border: "1px solid rgba(139, 92, 246, 0.3)",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                margin: "0 auto 1.25rem",
+                color: "#A78BFA"
+              }}>
+                <UserCheck size={36} />
+              </div>
+
+              <div style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "6px",
+                background: "rgba(225, 29, 72, 0.15)",
+                border: "1px solid rgba(225, 29, 72, 0.3)",
+                padding: "4px 14px",
+                borderRadius: "20px",
+                color: "#F43F5E",
+                fontSize: "0.75rem",
+                fontWeight: "800",
+                letterSpacing: "1px",
+                textTransform: "uppercase",
+                marginBottom: "1rem"
+              }}>
+                <Lock size={12} /> Identificação Obrigatória do Docente
+              </div>
+
+              <h2 style={{ fontSize: "1.6rem", fontWeight: "900", color: theme.white, margin: "0 0 0.5rem" }}>
+                Credenciamento da Oficina
+              </h2>
+
+              <p style={{ color: theme.textMuted, fontSize: "0.9rem", lineHeight: "1.6", marginBottom: "2rem" }}>
+                Por favor, preencha os dados abaixo para iniciar a resolução do quiz gamificado e computar o seu resultado no Placar ao Vivo do CEUNI-FAMETRO.
+              </p>
+
+              <form onSubmit={handleStartRegistration} style={{ textAlign: "left" }}>
+                {regError && (
+                  <div style={{
+                    background: theme.dangerBg,
+                    border: `1px solid ${theme.danger}`,
+                    color: theme.danger,
+                    borderRadius: "10px",
+                    padding: "0.75rem 1rem",
+                    fontSize: "0.85rem",
+                    fontWeight: "600",
+                    marginBottom: "1.25rem"
+                  }}>
+                    {regError}
+                  </div>
+                )}
+
+                <div style={{ marginBottom: "1.25rem" }}>
+                  <label style={{ display: "block", fontSize: "0.85rem", color: theme.white, fontWeight: "700", marginBottom: "0.5rem" }}>
+                    Nome Completo do Docente *
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Ex: Prof. Dr. Alexsander Farias"
+                    value={docenteName}
+                    onChange={e => setDocenteName(e.target.value)}
+                    style={{
+                      width: "100%",
+                      padding: "0.85rem 1.1rem",
+                      borderRadius: "12px",
+                      background: "rgba(30, 41, 59, 0.8)",
+                      border: `1px solid ${theme.border}`,
+                      color: "#FFF",
+                      fontSize: "0.95rem",
+                      boxSizing: "border-box",
+                      outline: "none"
+                    }}
+                  />
+                </div>
+
+                <div style={{ marginBottom: "2rem" }}>
+                  <label style={{ display: "block", fontSize: "0.85rem", color: theme.white, fontWeight: "700", marginBottom: "0.5rem" }}>
+                    Curso / Unidade de Ensino FAMETRO *
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Ex: Ciência da Computação • Unidade Sede"
+                    value={docenteDept}
+                    onChange={e => setDocenteDept(e.target.value)}
+                    style={{
+                      width: "100%",
+                      padding: "0.85rem 1.1rem",
+                      borderRadius: "12px",
+                      background: "rgba(30, 41, 59, 0.8)",
+                      border: `1px solid ${theme.border}`,
+                      color: "#FFF",
+                      fontSize: "0.95rem",
+                      boxSizing: "border-box",
+                      outline: "none"
+                    }}
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  style={{
+                    width: "100%",
+                    background: "linear-gradient(135deg, #7C3AED, #2563EB)",
+                    color: "#FFF",
+                    border: "none",
+                    borderRadius: "14px",
+                    padding: "0.95rem",
+                    fontWeight: "800",
+                    fontSize: "1rem",
+                    cursor: "pointer",
+                    boxShadow: "0 8px 25px rgba(124, 58, 237, 0.4)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "8px"
+                  }}
+                >
+                  <Sparkles size={18} /> Iniciar Atividade Gamificada
+                </button>
+              </form>
+            </div>
+          ) : !isFinished ? (
+            /* STEP 2: ACTIVE QUIZ QUESTION SCREEN */
             <div>
-              {/* Progress & Meta bar */}
+              {/* Docente info & Progress Header */}
               <div style={{
                 background: theme.surface,
                 border: `1px solid ${theme.border}`,
@@ -276,12 +432,14 @@ export default function FormacaoDocenteActivity() {
                 padding: "1.25rem",
                 marginBottom: "1.5rem"
               }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.75rem" }}>
-                  <span style={{ fontSize: "0.85rem", fontWeight: "700", color: theme.white, display: "flex", alignItems: "center", gap: "8px" }}>
-                    <Sparkles size={16} color="#8B5CF6" /> Questão {currentIdx + 1} de {questions.length}
-                  </span>
-                  <span style={{ fontSize: "0.75rem", fontWeight: "800", color: theme.accent, background: theme.accentGlow, padding: "3px 10px", borderRadius: "12px" }}>
-                    {currentQ.category}
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "0.5rem", marginBottom: "0.75rem" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                    <span style={{ fontSize: "0.85rem", fontWeight: "700", color: theme.white, display: "flex", alignItems: "center", gap: "8px" }}>
+                      <UserCheck size={16} color="#8B5CF6" /> Docente: <strong style={{ color: "#A78BFA" }}>{docenteName}</strong> ({docenteDept})
+                    </span>
+                  </div>
+                  <span style={{ fontSize: "0.75rem", fontWeight: "800", color: theme.accent, background: theme.accentGlow, padding: "4px 12px", borderRadius: "12px" }}>
+                    Questão {currentIdx + 1} de {questions.length} • {currentQ.category}
                   </span>
                 </div>
 
@@ -297,7 +455,7 @@ export default function FormacaoDocenteActivity() {
                 </div>
               </div>
 
-              {/* Question Card */}
+              {/* Main Question Card */}
               <div style={{
                 background: theme.surface,
                 border: `1px solid ${theme.border}`,
@@ -306,16 +464,21 @@ export default function FormacaoDocenteActivity() {
                 marginBottom: "1.5rem",
                 boxShadow: "0 15px 35px rgba(0,0,0,0.4)"
               }}>
-                {/* Bloom Level Badge */}
-                <div style={{ display: "inline-flex", alignItems: "center", gap: "6px", background: "rgba(59, 130, 246, 0.1)", border: "1px solid rgba(59, 130, 246, 0.2)", padding: "4px 12px", borderRadius: "20px", color: "#60A5FA", fontSize: "0.75rem", fontWeight: "700", marginBottom: "1.25rem" }}>
-                  <GraduationCap size={14} /> Nível Cognitivo Bloom: {currentQ.bloomLevel}
+                {/* Reference & Bloom Level Badge */}
+                <div style={{ display: "flex", gap: "10px", flexWrap: "wrap", marginBottom: "1.25rem" }}>
+                  <div style={{ display: "inline-flex", alignItems: "center", gap: "6px", background: "rgba(139, 92, 246, 0.1)", border: "1px solid rgba(139, 92, 246, 0.3)", padding: "4px 12px", borderRadius: "20px", color: "#A78BFA", fontSize: "0.75rem", fontWeight: "700" }}>
+                    <FileText size={14} /> {currentQ.slideRef}
+                  </div>
+                  <div style={{ display: "inline-flex", alignItems: "center", gap: "6px", background: "rgba(59, 130, 246, 0.1)", border: "1px solid rgba(59, 130, 246, 0.3)", padding: "4px 12px", borderRadius: "20px", color: "#60A5FA", fontSize: "0.75rem", fontWeight: "700" }}>
+                    <GraduationCap size={14} /> Nível Cognitivo Bloom: {currentQ.bloomLevel}
+                  </div>
                 </div>
 
                 {/* Professional Context (Texto-Base / Situação-Problema) */}
                 <div style={{
                   background: "rgba(30, 41, 59, 0.5)",
                   borderLeft: `4px solid ${theme.accent}`,
-                  borderRadius: "8px",
+                  borderRadius: "10px",
                   padding: "1.25rem",
                   marginBottom: "1.5rem",
                   lineHeight: "1.7",
@@ -330,7 +493,7 @@ export default function FormacaoDocenteActivity() {
 
                 {/* Question Prompt Command */}
                 <h2 style={{
-                  fontSize: "1.1rem",
+                  fontSize: "1.05rem",
                   fontWeight: "700",
                   color: theme.white,
                   lineHeight: "1.6",
@@ -339,7 +502,7 @@ export default function FormacaoDocenteActivity() {
                   {currentQ.text}
                 </h2>
 
-                {/* Answer Options */}
+                {/* Options List (Strict Equal Height / Line Count) */}
                 <div style={{ display: "flex", flexDirection: "column", gap: "0.85rem" }}>
                   {currentQ.answers.map((optText, optIdx) => {
                     const isSelected = selectedOption === optIdx;
@@ -386,10 +549,12 @@ export default function FormacaoDocenteActivity() {
                           borderRadius: "14px",
                           textAlign: "left",
                           cursor: isConfirmed ? "default" : "pointer",
-                          fontSize: "0.92rem",
+                          fontSize: "0.9rem",
                           lineHeight: "1.6",
                           fontWeight: isSelected ? "600" : "400",
                           transition: "all 0.2s ease",
+                          minHeight: "4rem", // Guarantee uniform option height
+                          boxSizing: "border-box",
                           ...optionStyle
                         }}
                       >
@@ -410,17 +575,17 @@ export default function FormacaoDocenteActivity() {
                           fontSize: "0.8rem",
                           display: "flex",
                           alignItems: "center",
-                          justify: "center",
+                          justifyContent: "center",
                           marginTop: "2px"
                         }}>
                           {String.fromCharCode(65 + optIdx)}
                         </div>
 
-                        <div style={{ flex: 1 }}>{optText}</div>
+                        <div style={{ flex: 1, paddingRight: "0.5rem" }}>{optText}</div>
 
                         {/* Status Icon when Confirmed */}
-                        {isConfirmed && isCorrect && <CheckCircle size={20} color={theme.success} style={{ marginTop: "2px" }} />}
-                        {isConfirmed && isSelected && !isCorrect && <XCircle size={20} color={theme.danger} style={{ marginTop: "2px" }} />}
+                        {isConfirmed && isCorrect && <CheckCircle size={20} color={theme.success} style={{ marginTop: "2px", flexShrink: 0 }} />}
+                        {isConfirmed && isSelected && !isCorrect && <XCircle size={20} color={theme.danger} style={{ marginTop: "2px", flexShrink: 0 }} />}
                       </button>
                     );
                   })}
@@ -527,7 +692,7 @@ export default function FormacaoDocenteActivity() {
               </div>
             </div>
           ) : (
-            /* Results Screen */
+            /* STEP 3: RESULTS SCREEN & LEADERBOARD ENTRY CONFIRMATION */
             <div style={{
               background: theme.surface,
               border: `1px solid ${theme.border}`,
@@ -549,11 +714,11 @@ export default function FormacaoDocenteActivity() {
               </div>
 
               <h2 style={{ fontSize: "2rem", fontWeight: "900", color: theme.white, margin: "0 0 0.5rem" }}>
-                Oficina Concluída com Sucesso!
+                Oficina Concluída!
               </h2>
 
               <p style={{ color: theme.textMuted, maxWidth: "500px", margin: "0 auto 2rem", fontSize: "0.95rem" }}>
-                Parabéns por completar o módulo prático de Engenharia de Prompts com IA Generativa para o Padrão ENADE.
+                Docente: <strong style={{ color: theme.white }}>{docenteName}</strong> ({docenteDept})
               </p>
 
               {/* Score Display Card */}
@@ -566,109 +731,31 @@ export default function FormacaoDocenteActivity() {
                 margin: "0 auto 2.5rem"
               }}>
                 <div style={{ fontSize: "0.8rem", color: theme.textMuted, textTransform: "uppercase", fontWeight: "800", letterSpacing: "1px", marginBottom: "0.5rem" }}>
-                  Sua Pontuação Final
+                  Pontuação Final da Oficina
                 </div>
-                <div style={{ fontSize: "3.5rem", fontWeight: "900", color: "#8B5CF6", lineHeight: 1, marginBottom: "0.5rem" }}>
+                <div style={{ fontSize: "3.8rem", fontWeight: "900", color: "#8B5CF6", lineHeight: 1, marginBottom: "0.5rem" }}>
                   {score}%
                 </div>
                 <div style={{ fontSize: "0.85rem", color: theme.text, display: "flex", justifyContent: "center", gap: "15px" }}>
-                  <span>Tempo: <strong>{formatTime(elapsedSeconds)}</strong></span>
+                  <span>Tempo de Resolução: <strong>{formatTime(elapsedSeconds)}</strong></span>
                   <span>•</span>
                   <span>Acertos: <strong>{Object.keys(answers).filter(qId => answers[qId] === questions.find(q => q.id === Number(qId))?.correct).length}/{questions.length}</strong></span>
                 </div>
               </div>
 
-              {/* Form to submit to Leaderboard */}
-              {!submittedToRanking ? (
-                <form onSubmit={handleRankingSubmit} style={{
-                  maxWidth: "450px",
-                  margin: "0 auto",
-                  background: "rgba(15, 23, 42, 0.8)",
-                  border: `1px solid ${theme.border}`,
-                  borderRadius: "16px",
-                  padding: "1.5rem",
-                  textAlign: "left"
-                }}>
-                  <h3 style={{ fontSize: "1rem", fontWeight: "800", color: theme.white, margin: "0 0 1rem" }}>
-                    🏆 Registrar seu Nome no Placar ao Vivo
-                  </h3>
-
-                  <div style={{ marginBottom: "1rem" }}>
-                    <label style={{ display: "block", fontSize: "0.8rem", color: theme.textMuted, fontWeight: "700", marginBottom: "0.4rem" }}>
-                      Nome Completo do Docente *
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="Ex: Prof. Dr. João Silva"
-                      value={userName}
-                      onChange={e => setUserName(e.target.value)}
-                      style={{
-                        width: "100%",
-                        padding: "0.75rem 1rem",
-                        borderRadius: "10px",
-                        background: "rgba(30, 41, 59, 0.8)",
-                        border: `1px solid ${theme.border}`,
-                        color: "#FFF",
-                        fontSize: "0.9rem",
-                        boxSizing: "border-box"
-                      }}
-                    />
-                  </div>
-
-                  <div style={{ marginBottom: "1.5rem" }}>
-                    <label style={{ display: "block", fontSize: "0.8rem", color: theme.textMuted, fontWeight: "700", marginBottom: "0.4rem" }}>
-                      Curso / Unidade de Ensino
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="Ex: Computação - FAMETRO Centro"
-                      value={userDepartment}
-                      onChange={e => setUserDepartment(e.target.value)}
-                      style={{
-                        width: "100%",
-                        padding: "0.75rem 1rem",
-                        borderRadius: "10px",
-                        background: "rgba(30, 41, 59, 0.8)",
-                        border: `1px solid ${theme.border}`,
-                        color: "#FFF",
-                        fontSize: "0.9rem",
-                        boxSizing: "border-box"
-                      }}
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    disabled={submitting}
-                    style={{
-                      width: "100%",
-                      background: "linear-gradient(135deg, #10B981, #059669)",
-                      color: "#FFF",
-                      border: "none",
-                      borderRadius: "10px",
-                      padding: "0.8rem",
-                      fontWeight: "800",
-                      fontSize: "0.95rem",
-                      cursor: "pointer",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      gap: "8px"
-                    }}
-                  >
-                    {submitting ? <RefreshCw size={16} className="spin" /> : <Send size={16} />}
-                    Enviar Resultado para o Ranking
-                  </button>
-                </form>
-              ) : (
+              {/* Firestore Submission Status */}
+              {submitting ? (
+                <div style={{ color: theme.accent, fontSize: "0.9rem", display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", marginBottom: "1.5rem" }}>
+                  <RefreshCw size={16} className="spin" /> Registrando resultado no Placar ao Vivo...
+                </div>
+              ) : submittedToRanking ? (
                 <div style={{
                   background: theme.successBg,
                   border: `1px solid ${theme.success}`,
                   borderRadius: "14px",
-                  padding: "1.25rem",
+                  padding: "1rem 1.5rem",
                   maxWidth: "450px",
-                  margin: "0 auto 1.5rem",
+                  margin: "0 auto 2rem",
                   color: theme.success,
                   fontWeight: "700",
                   fontSize: "0.9rem",
@@ -677,11 +764,11 @@ export default function FormacaoDocenteActivity() {
                   justifyContent: "center",
                   gap: "8px"
                 }}>
-                  <CheckCircle size={20} /> Resultado registrado com sucesso no Placar ao Vivo!
+                  <CheckCircle size={20} /> Seu resultado foi registrado com sucesso no Placar ao Vivo!
                 </div>
-              )}
+              ) : null}
 
-              <div style={{ display: "flex", justifyContent: "center", gap: "1rem", marginTop: "2rem" }}>
+              <div style={{ display: "flex", justifyContent: "center", gap: "1rem", marginTop: "1rem" }}>
                 <button
                   onClick={() => setActiveTab("ranking")}
                   style={{
