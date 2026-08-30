@@ -11,7 +11,7 @@ export const portfolioContent = {
     title: "Professor Universitário\nDev Full Stack\nAvaliador de TCC e Projetos",
     positioning: "Atuação consolidada na formação de talentos, projetos inovadores e soluções tecnológicas reais.",
     ctaPrimary: "Ver Atuação",
-    ctaSecondary: "Entrar em Contato"
+    ctaSecondary: "Mentoria"
   },
 
   about: {

@@ -6,7 +6,7 @@ import { Reveal } from '../components/Reveal';
 const Links = () => {
     const mainLinks = [
         {
-            label: 'Matrícula Mentoria Tech',
+            label: 'Mentoria: próxima turma',
             url: '/mentoria',
             icon: <ArrowRight size={22} />,
             highlight: true,

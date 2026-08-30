@@ -55,7 +55,7 @@ const MentorshipShowcase = () => {
             <div className="container" style={{ textAlign: 'center', marginTop: '3rem' }}>
                 <Reveal delay={200}>
                     <a href="/mentoria" className="btn btn-primary" style={{ padding: '1rem 2.5rem', fontSize: '1.1rem' }}>
-                        👉 Ver Detalhes da Mentoria <ArrowRight size={20} style={{ marginLeft: '8px' }} />
+                        Ver a próxima turma <ArrowRight size={20} style={{ marginLeft: '8px' }} />
                     </a>
                 </Reveal>
             </div>

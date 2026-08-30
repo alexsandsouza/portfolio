@@ -116,6 +116,13 @@ const WhatsAppButton = ({ message }) => {
                         width: 48px;
                         height: 48px;
                     }
+                    .wa-notification {
+                        right: 0;
+                        left: auto;
+                        max-width: min(260px, calc(100vw - 5rem));
+                        white-space: normal;
+                        width: max-content;
+                    }
                 }
             `}</style>
         </div>

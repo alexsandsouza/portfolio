@@ -9,8 +9,9 @@ const Navbar = ({ triggerMatrix }) => {
     const [showApps, setShowApps] = useState(false);
 
     useEffect(() => {
-        const handleResize = () => setIsMobile(window.innerWidth <= 900);
-        handleResize(); // Initial check
+        // Hamburger antes de os CTAs serem cortados na borda direita
+        const handleResize = () => setIsMobile(window.innerWidth <= 1360);
+        handleResize();
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, []);
@@ -22,6 +23,16 @@ const Navbar = ({ triggerMatrix }) => {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    // Trava o scroll do body quando o menu mobile está aberto
+    useEffect(() => {
+        if (isOpen) {
+            const prev = document.body.style.overflow;
+            document.body.style.overflow = 'hidden';
+            return () => { document.body.style.overflow = prev; };
+        }
+        return undefined;
+    }, [isOpen]);
 
     const navLinks = [
         { name: 'Sobre', href: '#about' },
@@ -44,7 +55,7 @@ const Navbar = ({ triggerMatrix }) => {
                 display: 'flex',
                 alignItems: 'center'
             }}>
-            <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '100%' }}>
+            <div className="navbar-inner" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '100%', width: '100%', maxWidth: '1500px', margin: '0 auto', padding: '0 1.25rem', boxSizing: 'border-box', gap: '1rem', overflow: 'visible' }}>
                 <a href="#"
                     onClick={(e) => {
                         e.preventDefault();
@@ -63,7 +74,7 @@ const Navbar = ({ triggerMatrix }) => {
                         if (triggerMatrix && window.clickCount === 2) triggerMatrix(); // Keep double click behavior mostly
                     }}
                     className="dev-logo notranslate" translate="no" style={{
-                        fontSize: '1.2rem',
+                        fontSize: '1.05rem',
                         fontWeight: '700',
                         fontFamily: "'JetBrains Mono', monospace", // Code font
                         color: '#fff',
@@ -73,14 +84,15 @@ const Navbar = ({ triggerMatrix }) => {
                         textDecoration: 'none',
                         display: 'flex',
                         alignItems: 'center',
-                        gap: '8px',
-                        padding: '8px 16px',
+                        gap: '6px',
+                        padding: '6px 12px',
                         background: 'var(--logo-bg)', // Use variable
                         border: '1px solid var(--logo-border)',
                         borderRadius: '8px',
                         transition: 'all 0.3s ease',
                         cursor: 'pointer',
-                        userSelect: 'none'
+                        userSelect: 'none',
+                        flexShrink: 0
                     }}>
                     <span style={{ color: 'var(--logo-keyword)' }}>const</span>
                     <span style={{ color: 'var(--logo-var)' }}>Prof</span>
@@ -210,52 +222,52 @@ const Navbar = ({ triggerMatrix }) => {
                             <a href="/cv" target="_blank" className="nav-link" style={{ fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '4px' }}>
                                 CV <span style={{ fontSize: '1.1em' }}>↓</span>
                             </a>
-                            <a href="/teste-afinidade" className="btn" style={{
-                                padding: '0.6rem 1.2rem',
-                                fontSize: '0.85rem',
-                                marginLeft: '0.75rem',
+                            <a href="/teste-afinidade" title="Teste de Perfil" className="btn nav-cta" style={{
+                                padding: '0.45rem 0.75rem',
+                                fontSize: '0.78rem',
                                 whiteSpace: 'nowrap',
                                 background: 'linear-gradient(90deg, #3b82f6, #8b5cf6)',
                                 color: 'white',
                                 border: 'none',
                                 fontWeight: 'bold',
-                                boxShadow: '0 4px 15px rgba(59, 130, 246, 0.4)'
+                                boxShadow: '0 4px 15px rgba(59, 130, 246, 0.4)',
+                                flexShrink: 0
                             }}>
-                                Teste de Perfil 🧬
+                                Teste 🧬
                             </a>
-                            <a href="/formacao-docente" className="btn" style={{
-                                padding: '0.6rem 1.2rem',
-                                fontSize: '0.85rem',
-                                marginLeft: '0.75rem',
+                            <a href="/formacao-docente" title="Formação Docente" className="btn nav-cta" style={{
+                                padding: '0.45rem 0.75rem',
+                                fontSize: '0.78rem',
                                 whiteSpace: 'nowrap',
                                 background: 'linear-gradient(90deg, #7c3aed, #2563eb)',
                                 color: 'white',
                                 border: 'none',
                                 fontWeight: 'bold',
-                                boxShadow: '0 4px 15px rgba(124, 58, 237, 0.5)'
+                                boxShadow: '0 4px 15px rgba(124, 58, 237, 0.5)',
+                                flexShrink: 0
                             }}>
-                                Formação Docente 🎓
+                                Docente 🎓
                             </a>
-                            <a href="#contact" className="btn btn-primary" style={{ padding: '0.6rem 1.5rem', fontSize: '0.9rem', marginLeft: '1rem', whiteSpace: 'nowrap' }}>
+                            <a href="#contact" className="btn btn-primary nav-cta" style={{ padding: '0.45rem 1rem', fontSize: '0.8rem', whiteSpace: 'nowrap', flexShrink: 0 }}>
                                 Contato
                             </a>
                             <button
                                 onClick={() => setShowQR(true)}
-                                className="nav-link"
-                                style={{ background: 'transparent', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center' }}
+                                className="nav-link nav-icon-btn"
+                                style={{ background: 'transparent', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', flexShrink: 0, padding: '0.35rem' }}
                                 title="Gerar QR Code"
                             >
-                                <QrCode size={20} />
+                                <QrCode size={18} />
                             </button>
 
-                            <div style={{ position: 'relative' }}>
+                            <div style={{ position: 'relative', flexShrink: 0 }}>
                                 <button
                                     onClick={() => setShowApps(!showApps)}
-                                    className="nav-link"
-                                    style={{ background: 'transparent', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', marginLeft: '0.5rem' }}
+                                    className="nav-link nav-icon-btn"
+                                    style={{ background: 'transparent', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', padding: '0.35rem' }}
                                     title="Ecossistema Alexsander"
                                 >
-                                    <Grid size={20} />
+                                    <Grid size={18} />
                                 </button>
                                 {showApps && (
                                     <div style={{
@@ -301,6 +313,22 @@ const Navbar = ({ triggerMatrix }) => {
                                             </div>
                                         </a>
 
+                                        <a href="/fametro" style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '0.8rem', borderRadius: '8px', textDecoration: 'none', transition: 'background 0.2s' }} className="app-link">
+                                            <div style={{ width: '36px', height: '36px', background: '#3b82f6', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 'bold' }}>F</div>
+                                            <div>
+                                                <div style={{ color: 'var(--text-heading)', fontWeight: '600', fontSize: '0.9rem' }}>Hub Fametro</div>
+                                                <div style={{ color: 'var(--text-secondary)', fontSize: '0.75rem' }}>Atividades e rankings</div>
+                                            </div>
+                                        </a>
+
+                                        <a href="/mentoria" style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '0.8rem', borderRadius: '8px', textDecoration: 'none', transition: 'background 0.2s' }} className="app-link">
+                                            <div style={{ width: '36px', height: '36px', background: '#a855f7', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 'bold' }}>M</div>
+                                            <div>
+                                                <div style={{ color: 'var(--text-heading)', fontWeight: '600', fontSize: '0.9rem' }}>Mentoria</div>
+                                                <div style={{ color: 'var(--text-secondary)', fontSize: '0.75rem' }}>Próxima turma</div>
+                                            </div>
+                                        </a>
+
                                         <a href="/teste-afinidade" style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '0.8rem', borderRadius: '8px', textDecoration: 'none', transition: 'background 0.2s' }} className="app-link">
                                             <div style={{ width: '36px', height: '36px', background: 'linear-gradient(135deg, #6C63FF, #FF6B9D)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 'bold', fontSize: '0.8rem' }}>🧬</div>
                                             <div>
@@ -340,59 +368,66 @@ const Navbar = ({ triggerMatrix }) => {
 
                 {/* Mobile Menu Overlay */}
                 <div id="mobile-navigation-menu" className={`mobile-menu ${isOpen ? 'open' : ''}`} role="navigation" aria-label="Menu mobile">
-                    {navLinks.map((link) => (
-                        <a
-                            key={link.name}
-                            href={link.href}
-                            onClick={() => setIsOpen(false)}
-                            className="mobile-link"
-                        >
-                            {link.name}
+                    <div className="mobile-menu-inner">
+                        {navLinks.map((link) => (
+                            <a
+                                key={link.name}
+                                href={link.href}
+                                onClick={() => setIsOpen(false)}
+                                className="mobile-link"
+                            >
+                                {link.name}
+                            </a>
+                        ))}
+                        <a href="/cv" target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)} className="mobile-link" style={{ fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                            CV <span style={{ fontSize: '0.8em' }}>↓</span>
                         </a>
-                    ))}
-                    <a href="/cv" target="_blank" className="mobile-link" style={{ fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        CV <span style={{ fontSize: '0.8em' }}>↓</span>
-                    </a>
-                    <a href="/formacao-docente" onClick={() => setIsOpen(false)} className="mobile-link" style={{ color: '#8b5cf6', fontWeight: 'bold' }}>Formação Docente 2026.2 🎓</a>
-                    <a href="/teste-afinidade" onClick={() => setIsOpen(false)} className="mobile-link" style={{ color: '#3b82f6' }}>Teste de Perfil 🧬</a>
-                    <a href="#contact" onClick={() => setIsOpen(false)} className="mobile-link" style={{ color: 'var(--primary-color)' }}>Contato</a>
+                        <a href="/mentoria" onClick={() => setIsOpen(false)} className="mobile-link" style={{ color: '#a855f7', fontWeight: 'bold' }}>Mentoria — próxima turma</a>
+                        <a href="/formacao-docente" onClick={() => setIsOpen(false)} className="mobile-link" style={{ color: '#8b5cf6', fontWeight: 'bold' }}>Formação Docente 2026.2 🎓</a>
+                        <a href="/teste-afinidade" onClick={() => setIsOpen(false)} className="mobile-link" style={{ color: '#3b82f6' }}>Teste de Perfil 🧬</a>
+                        <a href="#contact" onClick={() => setIsOpen(false)} className="mobile-link" style={{ color: 'var(--primary-color)' }}>Contato</a>
 
-                    {/* Mobile Apps Section */}
-                    <div style={{ width: '100%', padding: '0 2rem', marginTop: '1rem', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '1.5rem' }}>
-                        <span style={{ display: 'block', fontSize: '0.8rem', color: 'var(--text-secondary)', textTransform: 'uppercase', marginBottom: '1rem', textAlign: 'center' }}>Ecossistema</span>
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-                            <a href="https://adacademynet.vercel.app" target="_blank" className="mobile-app-card" style={{ background: 'rgba(99, 102, 241, 0.08)', padding: '1rem', borderRadius: '12px', textAlign: 'center', textDecoration: 'none', border: '1px solid rgba(99, 102, 241, 0.2)', gridColumn: 'span 2' }}>
-                                <div style={{ width: '30px', height: '30px', background: 'linear-gradient(135deg, #6366f1, #8b5cf6)', borderRadius: '6px', margin: '0 auto 0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '0.7rem', fontWeight: 'bold' }}>AD</div>
-                                <span style={{ display: 'block', color: 'var(--text-heading)', fontSize: '0.8rem', fontWeight: 'bold' }}>AD Academy Net</span>
-                                <span style={{ display: 'block', color: '#a78bfa', fontSize: '0.65rem', marginTop: '2px' }}>Portal de Infraestrutura</span>
-                            </a>
-                            <a href="https://ad-academy-treinamentos.vercel.app" target="_blank" className="mobile-app-card" style={{ background: 'var(--bg-secondary)', padding: '1rem', borderRadius: '12px', textAlign: 'center', textDecoration: 'none', border: '1px solid var(--border-color)' }}>
-                                <div style={{ width: '30px', height: '30px', background: '#ec4899', borderRadius: '6px', margin: '0 auto 0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '0.8rem', fontWeight: 'bold' }}>TR</div>
-                                <span style={{ display: 'block', color: 'var(--text-heading)', fontSize: '0.8rem', fontWeight: 'bold' }}>Treinamentos</span>
-                            </a>
-                            <a href="/hackersdobem" onClick={() => setIsOpen(false)} className="mobile-app-card" style={{ background: 'var(--bg-secondary)', padding: '1rem', borderRadius: '12px', textAlign: 'center', textDecoration: 'none', border: '1px solid var(--border-color)' }}>
-                                <div style={{ width: '30px', height: '30px', background: '#22c55e', borderRadius: '6px', margin: '0 auto 0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '0.8rem', fontWeight: 'bold' }}>H</div>
-                                <span style={{ display: 'block', color: 'var(--text-heading)', fontSize: '0.8rem', fontWeight: 'bold' }}>Hackers do Bem</span>
-                            </a>
-                            <a href="/fametro" onClick={() => setIsOpen(false)} className="mobile-app-card" style={{ background: 'var(--bg-secondary)', padding: '1rem', borderRadius: '12px', textAlign: 'center', textDecoration: 'none', border: '1px solid var(--border-color)' }}>
-                                <div style={{ width: '30px', height: '30px', background: '#3b82f6', borderRadius: '6px', margin: '0 auto 0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '0.8rem', fontWeight: 'bold' }}>F</div>
-                                <span style={{ display: 'block', color: 'var(--text-heading)', fontSize: '0.8rem', fontWeight: 'bold' }}>Hub Fametro</span>
-                            </a>
-                            <a href="/teste-afinidade" onClick={() => setIsOpen(false)} className="mobile-app-card" style={{ background: 'var(--bg-secondary)', padding: '1rem', borderRadius: '12px', textAlign: 'center', textDecoration: 'none', border: '1px solid var(--border-color)', gridColumn: 'span 2' }}>
-                                <div style={{ width: '30px', height: '30px', background: 'linear-gradient(135deg, #6C63FF, #FF6B9D)', borderRadius: '6px', margin: '0 auto 0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '0.8rem', fontWeight: 'bold' }}>🧬</div>
-                                <span style={{ display: 'block', color: 'var(--text-heading)', fontSize: '0.8rem', fontWeight: 'bold' }}>Perfil Comportamental</span>
-                                <span style={{ display: 'block', color: 'var(--text-secondary)', fontSize: '0.65rem', marginTop: '2px' }}>Teste DNA Humano</span>
-                            </a>
-                            <a href="/links" onClick={() => setIsOpen(false)} className="mobile-app-card" style={{ background: 'var(--bg-secondary)', padding: '1rem', borderRadius: '12px', textAlign: 'center', textDecoration: 'none', border: '1px solid var(--border-color)' }}>
-                                <div style={{ width: '30px', height: '30px', background: '#8b5cf6', borderRadius: '6px', margin: '0 auto 0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '0.8rem', fontWeight: 'bold' }}>🔗</div>
-                                <span style={{ display: 'block', color: 'var(--text-heading)', fontSize: '0.8rem', fontWeight: 'bold' }}>Meus Links (Bio)</span>
-                            </a>
+                        {/* Mobile Apps Section */}
+                        <div style={{ width: '100%', padding: '0 1.25rem', marginTop: '0.5rem', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '1.25rem' }}>
+                            <span style={{ display: 'block', fontSize: '0.75rem', color: 'var(--text-secondary)', textTransform: 'uppercase', marginBottom: '0.75rem', textAlign: 'center' }}>Ecossistema</span>
+                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
+                                <a href="https://adacademynet.vercel.app" target="_blank" rel="noopener noreferrer" className="mobile-app-card" style={{ background: 'rgba(99, 102, 241, 0.08)', padding: '0.85rem', borderRadius: '12px', textAlign: 'center', textDecoration: 'none', border: '1px solid rgba(99, 102, 241, 0.2)', gridColumn: 'span 2' }}>
+                                    <div style={{ width: '30px', height: '30px', background: 'linear-gradient(135deg, #6366f1, #8b5cf6)', borderRadius: '6px', margin: '0 auto 0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '0.7rem', fontWeight: 'bold' }}>AD</div>
+                                    <span style={{ display: 'block', color: 'var(--text-heading)', fontSize: '0.8rem', fontWeight: 'bold' }}>AD Academy Net</span>
+                                    <span style={{ display: 'block', color: '#a78bfa', fontSize: '0.65rem', marginTop: '2px' }}>Portal de Infraestrutura</span>
+                                </a>
+                                <a href="https://ad-academy-treinamentos.vercel.app" target="_blank" rel="noopener noreferrer" className="mobile-app-card" style={{ background: 'var(--bg-secondary)', padding: '0.85rem', borderRadius: '12px', textAlign: 'center', textDecoration: 'none', border: '1px solid var(--border-color)' }}>
+                                    <div style={{ width: '30px', height: '30px', background: '#ec4899', borderRadius: '6px', margin: '0 auto 0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '0.8rem', fontWeight: 'bold' }}>TR</div>
+                                    <span style={{ display: 'block', color: 'var(--text-heading)', fontSize: '0.8rem', fontWeight: 'bold' }}>Treinamentos</span>
+                                </a>
+                                <a href="/mentoria" onClick={() => setIsOpen(false)} className="mobile-app-card" style={{ background: 'var(--bg-secondary)', padding: '0.85rem', borderRadius: '12px', textAlign: 'center', textDecoration: 'none', border: '1px solid var(--border-color)' }}>
+                                    <div style={{ width: '30px', height: '30px', background: '#a855f7', borderRadius: '6px', margin: '0 auto 0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '0.8rem', fontWeight: 'bold' }}>M</div>
+                                    <span style={{ display: 'block', color: 'var(--text-heading)', fontSize: '0.8rem', fontWeight: 'bold' }}>Mentoria</span>
+                                </a>
+                                <a href="/hackersdobem" onClick={() => setIsOpen(false)} className="mobile-app-card" style={{ background: 'var(--bg-secondary)', padding: '0.85rem', borderRadius: '12px', textAlign: 'center', textDecoration: 'none', border: '1px solid var(--border-color)' }}>
+                                    <div style={{ width: '30px', height: '30px', background: '#22c55e', borderRadius: '6px', margin: '0 auto 0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '0.8rem', fontWeight: 'bold' }}>H</div>
+                                    <span style={{ display: 'block', color: 'var(--text-heading)', fontSize: '0.8rem', fontWeight: 'bold' }}>Hackers do Bem</span>
+                                </a>
+                                <a href="/fametro" onClick={() => setIsOpen(false)} className="mobile-app-card" style={{ background: 'var(--bg-secondary)', padding: '0.85rem', borderRadius: '12px', textAlign: 'center', textDecoration: 'none', border: '1px solid var(--border-color)' }}>
+                                    <div style={{ width: '30px', height: '30px', background: '#3b82f6', borderRadius: '6px', margin: '0 auto 0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '0.8rem', fontWeight: 'bold' }}>F</div>
+                                    <span style={{ display: 'block', color: 'var(--text-heading)', fontSize: '0.8rem', fontWeight: 'bold' }}>Hub Fametro</span>
+                                </a>
+                                <a href="/teste-afinidade" onClick={() => setIsOpen(false)} className="mobile-app-card" style={{ background: 'var(--bg-secondary)', padding: '0.85rem', borderRadius: '12px', textAlign: 'center', textDecoration: 'none', border: '1px solid var(--border-color)', gridColumn: 'span 2' }}>
+                                    <div style={{ width: '30px', height: '30px', background: 'linear-gradient(135deg, #6C63FF, #FF6B9D)', borderRadius: '6px', margin: '0 auto 0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '0.8rem', fontWeight: 'bold' }}>🧬</div>
+                                    <span style={{ display: 'block', color: 'var(--text-heading)', fontSize: '0.8rem', fontWeight: 'bold' }}>Perfil Comportamental</span>
+                                    <span style={{ display: 'block', color: 'var(--text-secondary)', fontSize: '0.65rem', marginTop: '2px' }}>Teste DNA Humano</span>
+                                </a>
+                                <a href="/links" onClick={() => setIsOpen(false)} className="mobile-app-card" style={{ background: 'var(--bg-secondary)', padding: '0.85rem', borderRadius: '12px', textAlign: 'center', textDecoration: 'none', border: '1px solid var(--border-color)', gridColumn: 'span 2' }}>
+                                    <div style={{ width: '30px', height: '30px', background: '#8b5cf6', borderRadius: '6px', margin: '0 auto 0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '0.8rem', fontWeight: 'bold' }}>🔗</div>
+                                    <span style={{ display: 'block', color: 'var(--text-heading)', fontSize: '0.8rem', fontWeight: 'bold' }}>Meus Links (Bio)</span>
+                                </a>
+                            </div>
                         </div>
-                    </div>
 
-                    <button onClick={() => { setShowQR(true); setIsOpen(false); }} className="mobile-link" style={{ background: 'transparent', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-heading)', marginTop: '1rem' }}>
-                        <QrCode size={24} /> Compartilhar
-                    </button>
+                        <button onClick={() => { setShowQR(true); setIsOpen(false); }} className="mobile-link" style={{ background: 'transparent', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-heading)', marginTop: '0.5rem', marginBottom: '2rem' }}>
+                            <QrCode size={22} /> Compartilhar
+                        </button>
+                    </div>
                 </div>
 
                 {/* QR Code Modal */}
@@ -429,19 +464,23 @@ const Navbar = ({ triggerMatrix }) => {
             </div>
 
             <style>{`
+                .navbar {
+                    overflow: visible;
+                }
                 .desktop-nav {
                     display: flex;
                     align-items: center;
-                    gap: 1rem; /* Reduced Gap */
-                    margin-left: 3rem; /* Force separation from Logo */
-                    flex-shrink: 0; /* Prevent shrinking too much */
+                    gap: 0.5rem;
+                    margin-left: auto;
+                    flex-shrink: 0;
                 }
                 .nav-link {
-                    font-size: 0.9rem;
+                    font-size: 0.8rem;
                     color: var(--text-secondary);
                     font-weight: 500;
                     transition: color 0.2s;
                     text-decoration: none;
+                    white-space: nowrap;
                 }
                 .nav-link:hover {
                     color: var(--text-heading);
@@ -451,27 +490,44 @@ const Navbar = ({ triggerMatrix }) => {
                     background: none;
                     border: none;
                     cursor: pointer;
-                    z-index: 10001; /* Above mobile menu (10000) */
+                    z-index: 10001;
                     padding: 0.5rem;
+                    flex-shrink: 0;
                 }
                 .mobile-menu {
-                    display: none; /* Hide on desktop */
+                    display: none;
                     position: fixed;
                     top: 0; left: 0; right: 0; bottom: 0;
-                    background: #0f172a !important; /* Force solid dark background */
-                    height: 100vh; /* Ensure full height */
+                    background: #0f172a !important;
+                    height: 100dvh;
+                    max-height: 100dvh;
                     flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    gap: 2rem;
+                    justify-content: flex-start;
+                    align-items: stretch;
                     transform: translateY(-100%);
                     opacity: 0;
                     visibility: hidden;
                     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
                     z-index: 10000;
+                    overflow: hidden;
                 }
-                @media (max-width: 1024px) {
+                .mobile-menu-inner {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 1rem;
+                    width: 100%;
+                    height: 100%;
+                    overflow-y: auto;
+                    overflow-x: hidden;
+                    -webkit-overflow-scrolling: touch;
+                    padding: 5.5rem 1rem 2.5rem;
+                    overscroll-behavior: contain;
+                }
+                @media (max-width: 1360px) {
                     .mobile-menu { display: flex; }
+                    .desktop-nav { display: none !important; }
+                    .mobile-toggle { display: block; }
                 }
                 [data-theme="light"] .mobile-menu {
                     background: #f8fafc !important;
@@ -482,15 +538,12 @@ const Navbar = ({ triggerMatrix }) => {
                     visibility: visible;
                 }
                 .mobile-link {
-                    font-size: 1.5rem;
+                    font-size: 1.25rem;
                     font-weight: bold;
                     color: var(--text-heading);
                     text-decoration: none;
-                }
-
-                @media (max-width: 1024px) {
-                    .desktop-nav { display: none !important; }
-                    .mobile-toggle { display: block; }
+                    text-align: center;
+                    padding: 0.15rem 0.5rem;
                 }
             `}</style>
         </nav >

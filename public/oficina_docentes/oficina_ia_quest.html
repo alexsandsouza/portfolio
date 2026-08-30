@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IA Quest — Formação Docente 2026 · FAMETRO</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#080E2A;--blue:#1B3FD8;--sky:#38BDF8;--purple:#7C3AED;--violet:#A855F7;--pink:#EC4899;--gold:#F59E0B;--green:#10B981;--red:#EF4444;--white:#FFFFFF;--muted:#64748B;--border:#1E3060;--glass:rgba(14,28,80,0.72);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:var(--navy);color:var(--white);min-height:100vh;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(56,189,248,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(56,189,248,.04) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;z-index:0}
+#particles{position:fixed;inset:0;pointer-events:none;z-index:0}
+.particle{position:absolute;border-radius:50%;opacity:0;animation:floatUp linear infinite}
+@keyframes floatUp{0%{transform:translateY(110vh) scale(0);opacity:0}10%{opacity:.25}90%{opacity:.25}100%{transform:translateY(-10vh) scale(1.2);opacity:0}}
+.wrap{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:16px 14px 40px}
+.screen{display:none}.screen.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}.anim{animation:fadeUp .45s ease-out both}
+.glass{background:var(--glass);border:1px solid var(--border);border-radius:18px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.hdr{text-align:center;padding:28px 0 18px}
+.hdr-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(56,189,248,.12);border:1px solid rgba(56,189,248,.3);border-radius:99px;padding:4px 14px;font-size:11px;font-weight:700;letter-spacing:2px;color:var(--sky);text-transform:uppercase;margin-bottom:10px}
+.hdr-title{font-size:38px;font-weight:900;letter-spacing:-1px;background:linear-gradient(135deg,var(--sky) 0%,var(--violet) 60%,var(--pink) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.1}
+.hdr-sub{font-size:13px;color:#93C5FD;margin-top:6px}
+.start-card{padding:30px 28px;margin:12px 0}
+.start-info{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0 24px}
+.info-box{background:rgba(56,189,248,.06);border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center}
+.info-box .big{font-size:26px;font-weight:900;color:var(--sky)}.info-box .small{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:2px}
+.rules-list{list-style:none;text-align:left;margin-bottom:24px;display:flex;flex-direction:column;gap:8px}
+.rules-list li{font-size:13px;color:#CBD5E1;padding:10px 14px;background:rgba(255,255,255,.03);border-radius:8px;border-left:3px solid var(--sky)}
+.rules-list li strong{color:var(--sky)}
+.name-wrap{margin-bottom:20px}.name-wrap label{font-size:12px;color:var(--muted);display:block;margin-bottom:6px;text-transform:uppercase;letter-spacing:1px}
+.name-input{width:100%;max-width:380px;display:block;margin:0 auto;padding:12px 18px;background:rgba(14,28,80,.8);border:1.5px solid var(--border);border-radius:10px;color:#fff;font-size:15px;font-family:'Inter',sans-serif;outline:none;text-align:center;transition:border-color .2s,box-shadow .2s}
+.name-input:focus{border-color:var(--sky);box-shadow:0 0 0 3px rgba(56,189,248,.18)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 30px;border-radius:12px;border:none;cursor:pointer;font-size:14px;font-weight:700;font-family:'Inter',sans-serif;transition:all .2s;letter-spacing:.3px}
+.btn-primary{background:linear-gradient(135deg,var(--sky),var(--blue));color:#fff;box-shadow:0 6px 24px rgba(56,189,248,.28)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(56,189,248,.4)}.btn-center{text-align:center;margin-top:18px}
+.hud{display:grid;grid-template-columns:80px 1fr 1fr 1fr 1fr;gap:10px;margin:14px 0 10px}
+.hud-card{background:var(--glass);border:1px solid var(--border);border-radius:12px;padding:10px 8px;text-align:center;backdrop-filter:blur(8px)}
+.hud-val{font-size:20px;font-weight:800;color:var(--sky)}.hud-lbl{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:2px}
+.timer-wrap{position:relative;width:60px;height:60px;margin:0 auto 2px}.timer-wrap svg{transform:rotate(-90deg);display:block}
+.t-bg{fill:none;stroke:var(--border);stroke-width:5}.t-arc{fill:none;stroke:var(--sky);stroke-width:5;stroke-dasharray:163.4;stroke-linecap:round;transition:stroke-dashoffset .9s linear,stroke .3s}
+.t-num{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800}
+.prog-bar{background:var(--border);border-radius:99px;height:6px;margin:8px 0 14px;overflow:hidden}
+.prog-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--sky),var(--violet));transition:width .5s ease}
+.trail{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+.tdot{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;border:2px solid var(--border);color:var(--muted);transition:all .3s}
+.tdot.done{background:var(--green);border-color:var(--green);color:#fff}.tdot.wrong-d{background:var(--red);border-color:var(--red);color:#fff}
+.tdot.active{background:rgba(56,189,248,.2);border-color:var(--sky);color:var(--sky);animation:pulse 1.4s infinite}.tdot.locked{opacity:.35}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(56,189,248,.5)}50%{box-shadow:0 0 0 8px rgba(56,189,248,0)}}
+.qpanel{padding:22px 22px 18px;margin-bottom:14px;transition:border-color .3s}
+.qmeta{display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.qnum{background:var(--sky);color:#fff;border-radius:8px;padding:3px 12px;font-size:11px;font-weight:800}.qtag{background:rgba(124,58,237,.2);border:1px solid rgba(124,58,237,.4);border-radius:6px;padding:3px 10px;font-size:10px;font-weight:700;color:var(--violet);text-transform:uppercase}.qbloom{background:rgba(245,158,11,.15);border:1px solid rgba(245,158,11,.3);border-radius:6px;padding:3px 10px;font-size:10px;font-weight:700;color:var(--gold);text-transform:uppercase}
+.ctx-box{background:rgba(56,189,248,.05);border-left:3px solid var(--sky);border-radius:0 10px 10px 0;padding:12px 16px;margin-bottom:16px;font-size:13px;color:#BAE6FD;line-height:1.65;font-style:italic}.ctx-box.hidden{display:none}
+.qtext{font-size:15px;font-weight:600;line-height:1.6;color:var(--white);margin-bottom:18px}
+.opts{display:flex;flex-direction:column;gap:9px}
+.opt{display:flex;align-items:flex-start;gap:12px;padding:13px 16px;background:rgba(14,28,80,.6);border:1.5px solid var(--border);border-radius:11px;cursor:pointer;font-size:13.5px;color:var(--white);transition:all .18s;line-height:1.5}
+.opt:hover:not(.dis){border-color:var(--sky);background:rgba(56,189,248,.08);transform:translateX(4px)}.opt.dis{cursor:default}
+.opt.correct{border-color:var(--green);background:rgba(16,185,129,.12);color:#A7F3D0}.opt.wrong{border-color:var(--red);background:rgba(239,68,68,.1);color:#FCA5A5}
+.okey{min-width:26px;height:26px;border-radius:7px;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0;margin-top:1px;transition:background .18s}
+.opt.correct .okey{background:var(--green)}.opt.wrong .okey{background:var(--red)}
+.fb{border-radius:10px;padding:13px 16px;font-size:13px;line-height:1.6;margin-top:14px;display:none}
+.fb.ok{background:rgba(16,185,129,.1);border:1px solid var(--green);color:#A7F3D0;display:block}
+.fb.no{background:rgba(239,68,68,.08);border:1px solid var(--red);color:#FCA5A5;display:block}
+.fb.tout{background:rgba(245,158,11,.08);border:1px solid var(--gold);color:#FDE68A;display:block}
+#nextWrap{text-align:center;margin-top:16px;display:none}
+#comboFloat{position:fixed;top:45%;left:50%;transform:translate(-50%,-50%);font-size:38px;font-weight:900;color:var(--gold);pointer-events:none;opacity:0;z-index:999;text-shadow:0 0 30px rgba(245,158,11,.7)}
+#comboFloat.pop{animation:comboPop 1.1s ease-out forwards}
+@keyframes comboPop{0%{opacity:1;transform:translate(-50%,-50%) scale(.5)}45%{opacity:1;transform:translate(-50%,-75%) scale(1.25)}100%{opacity:0;transform:translate(-50%,-115%) scale(1.05)}}
+.rank-sec{margin-top:22px}
+.rtitle{font-size:11px;color:var(--sky);text-transform:uppercase;letter-spacing:2px;font-weight:700;display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.rtitle::before,.rtitle::after{content:'';flex:1;height:1px;background:var(--border)}
+.ranking{display:flex;flex-direction:column;gap:6px}
+.rrow{display:flex;align-items:center;gap:10px;padding:9px 14px;border-radius:10px;background:rgba(14,28,80,.5);border:1px solid var(--border);transition:all .3s}
+.rrow.me{background:rgba(56,189,248,.08);border-color:var(--sky)}.rrow.r1{background:rgba(245,158,11,.08);border-color:var(--gold)}.rrow.r2{background:rgba(148,163,184,.05);border-color:#94A3B8}.rrow.r3{background:rgba(168,124,62,.08);border-color:#A87C3E}
+.rpos{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0}
+.p1c{background:var(--gold);color:#1A0E00}.p2c{background:#94A3B8;color:#fff}.p3c{background:#A87C3E;color:#fff}.pnc{background:var(--border);color:var(--muted)}
+.rname{flex:1;font-size:13px;font-weight:600}.rbar{flex:0 0 70px}.rbari{height:5px;border-radius:99px;background:rgba(56,189,248,.2);overflow:hidden}.rbarif{height:100%;border-radius:99px;transition:width .5s ease}
+.rpts{font-size:13px;font-weight:700;color:var(--sky);white-space:nowrap}.rpts.mepts{color:var(--gold)}
+.snd{position:fixed;top:12px;right:14px;z-index:200;background:var(--glass);border:1px solid var(--border);border-radius:8px;padding:7px 11px;cursor:pointer;font-size:16px;color:var(--white);backdrop-filter:blur(8px);transition:all .2s}.snd:hover{border-color:var(--sky)}
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-7px)}60%{transform:translateX(7px)}80%{transform:translateX(-4px)}}.shake{animation:shake .4s ease}
+.podium{display:flex;align-items:flex-end;justify-content:center;gap:12px;margin:24px 0}
+.pod{display:flex;flex-direction:column;align-items:center;border-radius:12px 12px 0 0;padding:14px 16px 0;min-width:120px}
+.pod.p1{background:linear-gradient(180deg,rgba(245,158,11,.2),rgba(245,158,11,.06));border:1px solid var(--gold);height:140px}
+.pod.p2{background:linear-gradient(180deg,rgba(148,163,184,.15),rgba(148,163,184,.04));border:1px solid #94A3B8;height:110px}
+.pod.p3{background:linear-gradient(180deg,rgba(168,124,62,.15),rgba(168,124,62,.04));border:1px solid #A87C3E;height:90px}
+.pcrown{font-size:26px;margin-bottom:4px}.pname{font-size:12px;font-weight:700;color:#fff;text-align:center}.ppts{font-size:11px;color:var(--muted);margin-top:2px}
+.estats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}
+.ebox{background:rgba(14,28,80,.5);border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center}.eval{font-size:24px;font-weight:900}.elbl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:3px}
+.trophymsg{text-align:center;padding:24px 20px}.ticon{font-size:56px;margin-bottom:10px}.tname{font-size:22px;font-weight:900}.tpts{font-size:14px;color:var(--sky);margin-top:4px}.trank{font-size:13px;color:var(--muted);margin-top:2px}
+@media(max-width:600px){.hud{grid-template-columns:70px 1fr 1fr}.hud-card:nth-child(4),.hud-card:nth-child(5){display:none}.hdr-title{font-size:28px}.pod{min-width:90px}}
+</style>
+</head>
+<body>
+<div id="particles"></div>
+<button class="snd" id="sndBtn" onclick="tglSnd()">🔊</button>
+<div id="comboFloat"></div>
+<div class="wrap">
+<div id="scr-start" class="screen active anim">
+<div class="hdr"><div class="hdr-badge">🎓 FAMETRO · Formação Docente 2026</div><div class="hdr-title">IA Quest</div><div class="hdr-sub">PromptAI × NeuroAI × ENADE · Alta Complexidade · Padrão Bloom</div></div>
+<div class="glass start-card">
+<div class="start-info"><div class="info-box"><div class="big">10</div><div class="small">Questões</div></div><div class="info-box"><div class="big">5s</div><div class="small">Por questão</div></div><div class="info-box"><div class="big">🏆</div><div class="small">Top 3 premiados</div></div></div>
+<ul class="rules-list">
+<li>Questões no <strong>padrão ENADE</strong> — contexto real + 4 alternativas equilibradas de tamanho equiparado</li>
+<li>Você tem <strong>5 segundos</strong> para cada questão — foco total e agilidade mental!</li>
+<li>Acertos consecutivos ativam o <strong>multiplicador de combo</strong> (até ×5!)</li>
+<li>O <strong>ranking ao vivo</strong> é atualizado após cada resposta — top 3 ganham brindes 🎁</li>
+<li>Frameworks: <strong>PromptAI</strong> (Persona-Contexto-Instrução-Formato) e <strong>NeuroAI</strong> (N-E-U-R-O-I-A)</li>
+</ul>
+<div class="name-wrap"><label>Seu nome completo:</label><input id="playerName" class="name-input" type="text" placeholder="Ex.: Prof. Maria Oliveira" oninput="if(this.value.length>2)this.style.borderColor='#38BDF8';else this.style.borderColor='#1E3060'"></div>
+<div class="btn-center" style="margin-top:0"><button class="btn btn-primary" style="font-size:15px;padding:14px 40px" onclick="startGame()">🚀 Iniciar Desafio</button></div>
+</div>
+<div class="rank-sec"><div class="rtitle">Ranking ao vivo</div><div class="ranking" id="rank-start"></div></div>
+</div>
+<div id="scr-game" class="screen">
+<div class="hdr" style="padding:14px 0 8px"><div class="hdr-badge" id="playerLabel">Jogador</div><div class="hdr-title" style="font-size:20px" id="stageLabel">Questão 1</div></div>
+<div class="hud">
+<div class="hud-card"><div class="timer-wrap"><svg viewBox="0 0 56 56" width="56" height="56"><circle class="t-bg" cx="28" cy="28" r="26"/><circle class="t-arc" id="tarc" cx="28" cy="28" r="26" stroke-dashoffset="0"/></svg><div class="t-num" id="tnum">5</div></div><div class="hud-lbl">Tempo</div></div>
+<div class="hud-card"><div class="hud-val" id="hScore">0</div><div class="hud-lbl">Pontos</div></div>
+<div class="hud-card"><div class="hud-val" id="hStep">1/10</div><div class="hud-lbl">Etapa</div></div>
+<div class="hud-card"><div class="hud-val" id="hCombo">×1</div><div class="hud-lbl">Combo</div></div>
+<div class="hud-card"><div class="hud-val" id="hCorrect">0</div><div class="hud-lbl">Acertos</div></div>
+</div>
+<div class="prog-bar"><div class="prog-fill" id="progFill" style="width:0%"></div></div>
+<div class="trail" id="trail"></div>
+<div class="glass qpanel" id="qPanel"><div class="qmeta"><span class="qnum" id="qnum">Q1</span><span class="qtag" id="qtag">—</span><span class="qbloom" id="qbloom">—</span></div><div class="ctx-box hidden" id="qctx"></div><div class="qtext" id="qtext"></div><div class="opts" id="optsCont"></div><div class="fb" id="fbBox"></div></div>
+<div id="nextWrap"><button class="btn btn-primary" id="nextBtn" onclick="nextQ()">Próxima →</button></div>
+<div class="rank-sec"><div class="rtitle">Ranking ao vivo</div><div class="ranking" id="rank-game"></div></div>
+</div>
+<div id="scr-end" class="screen anim">
+<div class="hdr"><div class="hdr-title">🏆 Resultado Final</div><div class="hdr-sub">IA Quest — Formação Docente FAMETRO 2026</div></div>
+<div class="rtitle">Pódio dos Campeões</div>
+<div class="podium" id="podium"></div>
+<div class="glass trophymsg anim" id="trophy"></div>
+<div class="estats" id="estats"></div>
+<div class="rank-sec"><div class="rtitle">Ranking Final</div><div class="ranking" id="rank-end"></div></div>
+<div class="btn-center" style="margin-top:24px"><button class="btn btn-primary" onclick="restartGame()">🔄 Jogar Novamente</button></div>
+</div>
+</div>
+<script>
+
+const QS = [
+{id:1,stage:"PromptAI — Os 4 Pilares do Prompt Profissional",tag:"PROMPT-IA",bloom:"Analisar",
+ctx:"Uma professora quer usar IA para elaborar uma questão ENADE sobre Requisitos de Software. Ela envia um prompt genérico sem restrições. A resposta resulta em um item raso com alternativas desequilibradas e distratores óbvios.",
+q:"Considerando os 4 Pilares do Prompt Profissional (Persona, Contexto, Instrução e Formato), qual alternativa apresenta uma estrutura de solicitação tecnicamente adequada?",
+opts:[
+"Solicitar apenas o tema central da questão e a quantidade de alternativas desejada, deixando o nível cognitivo e a persona a critério do modelo de IA.",
+"Especificar o papel profissional (Persona), o cenário de aplicação real (Contexto), o comando com verbo de ação (Instrução) e a estrutura com distratores (Formato).",
+"Definir explicitamente em qual alternativa deve ficar o gabarito correto antes da geração, garantindo que o modelo não altere a posição predefinida pelo docente.",
+"Fornecer um texto-base longo retirado da internet sem indicar os parâmetros de nivelamento cognitivo da Taxonomia de Bloom ou o público-alvo."
+],ans:1,xp:120,
+fb:"✅ Correto! O prompt profissional exige Persona (papel), Contexto (cenário real), Instrução (tarefa e comando) e Formato (padrão de entrega)."},
+
+{id:2,stage:"NeuroAI — Pilar U: Segmentação e Sobrecarga Cognitiva",tag:"NEURO-IA",bloom:"Avaliar",
+ctx:"Um docente planejou uma aula de 90 min sobre Normas ABNT com 70 min de exposição oral contínua e 58 slides densos antes de qualquer atividade prática.",
+q:"Qual análise aplica CORRETAMENTE a dimensão U (Unidades) do framework NeuroAI para reestruturar esse planejamento?",
+opts:[
+"Reduzir a quantidade total de slides mantendo a exposição contínua de 70 minutos sem interrupções para garantir que todo o conteúdo seja apresentado.",
+"Considerar a aula adequada, pois aulas universitárias possuem tolerância natural a longos blocos expositivos sem necessidade de fracionamento do tempo.",
+"Segmentar o conteúdo em blocos curtos intercalados com atividades de recuperação ativa, reduzindo a sobrecarga sobre a memória de trabalho dos estudantes.",
+"Eliminar completamente a etapa expositiva e aplicar um quiz sem suporte prévio de conteúdo, transferindo toda a responsabilidade de estudo para a extraclasse."
+],ans:2,xp:130,
+fb:"✅ Exato! A dimensão U (Unidades) orienta segmentar o conteúdo em blocos menores com pausas de processamento ativo para evitar a sobrecarga cognitiva."},
+
+{id:3,stage:"Questões ENADE — Taxonomia de Bloom: Nível Criar",tag:"BLOOM / ENADE",bloom:"Criar",
+ctx:"O ENADE prioriza itens de alta ordem cognitiva (Analisar, Avaliar e Criar). Professores discutem como formular enunciados alinhados ao nível máximo da taxonomia.",
+q:"Qual comando de enunciado opera no nível CRIAR da Taxonomia de Bloom revisada segundo os critérios do ENADE?",
+opts:[
+"Indique, com base no texto-base apresentado, o conceito teórico utilizado pelo autor para definir o problema avaliativo descritivo.",
+"Explique detalhadamente os principais tipos de avaliações educacionais, apresentando definições conceituais e exemplos simples de cada uma.",
+"Compare dois instrumentos avaliativos distintos apresentados no estudo de caso, destacando suas semelhanças formais e diferenças metodológicas.",
+"Elabore uma proposta de intervenção pedagógica integrada que articule avaliação formativa, rubricas analíticas e mecanismos de feedback reflexivo."
+],ans:3,xp:140,
+fb:"✅ Correto! O nível Criar exige sintetizar e produzir uma proposta original ou solução autoral a partir de um cenário complexo."},
+
+{id:4,stage:"PromptAI — Auditoria Humana e Validação Docente",tag:"AUDITORIA · ÉTICA",bloom:"Avaliar",
+ctx:"Um professor usou IA para gerar adaptações de atividades para estudantes neurodivergentes e aplicou diretamente no AVA sem conferência prévia.",
+q:"De acordo com o princípio da Auditoria Humana no framework PromptAI, qual das afirmações reflete a conduta correta do docente?",
+opts:[
+"A decisão pedagógica e a responsabilidade final são inalienáveis do professor, cabendo a ele revisar, validar e ajustar todas as sugestões da IA.",
+"A saída da IA deve ser aceita integralmente quando gerada por prompts bem estruturados, visto que o algoritmo possui neutralidade de análise.",
+"A validação humana só é necessária quando a atividade envolve cálculo de notas somativas, sendo dispensável em materiais de apoio formativo.",
+"A responsabilidade pelo conteúdo adaptado passa a ser da ferramenta tecnológica quando o docente registra no plano de ensino que usou IA."
+],ans:0,xp:140,
+fb:"✅ Correto! A IA apoia a produção, mas a decisão, a ética e a validação pedagógica são responsabilidades exclusivas do professor (Auditoria Humana)."},
+
+{id:5,stage:"NeuroAI — Pilar R: Recuperação Ativa de Memória",tag:"NEURO-IA",bloom:"Analisar",
+ctx:"Dois professores comparam estratégias de revisão antes da prova: leitura passiva de slides versus resolução de problemas práticos sem consulta.",
+q:"Qual fundamento da dimensão R (Recuperação) do NeuroAI explica a superioridade da resolução prática sem consulta?",
+opts:[
+"A leitura passiva de slides é mais eficiente para fixação de longo prazo por permitir a memorização de um volume significativamente maior de texto.",
+"A busca ativa de informações na memória fortalece as conexões neurais e consolida o aprendizado melhor do que a simples releitura passiva.",
+"Ambas as técnicas possuem eficácia idêntica na consolidação da memória, variando apenas o grau de satisfação subjetiva demonstrado pelos alunos.",
+"A recuperação sem consulta deve ser evitada em momentos de revisão por provocar estresse desnecessário e bloquear a retenção de dados novos."
+],ans:1,xp:140,
+fb:"✅ Perfeito! A prática de recuperação ativa (recordar sem consulta) fortalece os traços de memória e previne a ilusão de fluência gerada pela releitura."},
+
+{id:6,stage:"PromptAI — Estratégia Multi-Ferramentas de IA",tag:"PROMPT-IA",bloom:"Analisar",
+ctx:"Uma equipe docente planeja utilizar ChatGPT, Gemini e Claude de forma combinada na produção de itens de avaliação institucional.",
+q:"Qual das combinações estratégicas reflete a melhor prática de uso integrado dessas ferramentas de Inteligência Artificial?",
+opts:[
+"Utilizar uma única ferramenta para todas as etapas, pois a diversificação de modelos gera inconsistências conceituais nos itens produzidos.",
+"Empregar a IA para geração inicial, busca de dados atualizados e revisão crítica, submetendo o resultado final à validação humana docente.",
+"Substituir a validação docente pela concordância entre os resultados gerados por três modelos de IA distintos consultados em sequência.",
+"Delegar a formulação dos distratores ao modelo mais rápido e dispensar a revisão de contexto ou clareza conceitual do enunciado gerado."
+],ans:1,xp:130,
+fb:"✅ Correto! A estratégia multi-ferramentas combina especialidades (geração, pesquisa contextual e análise crítica) com a indispensável validação humana."},
+
+{id:7,stage:"NeuroAI — Pilar E: Engajamento Sem Excesso",tag:"NEURO-IA",bloom:"Avaliar",
+ctx:"Uma atividade gamificada foi desenhada com música contínua, cronômetros piscando, animações intensas e notificações visuais a cada segundo.",
+q:"Como a dimensão E (Engajamento) do NeuroAI avalia essa escolha de design pedagógico?",
+opts:[
+"Como uma estratégia excelente, pois a alta densidade de estímulos sensoriais amplia diretamente o foco e a retenção do conteúdo ministrado.",
+"Como um elemento gerador de sobrecarga sensorial e distração, prejudicando o processamento cognitivo focado no objetivo de aprendizagem.",
+"Como uma proposta neutra, visto que recursos visuais e sonoros não afetam a capacidade de trabalho e atenção da memória do estudante.",
+"Como inadequada apenas para estudantes de exatas, não apresentando qualquer impacto negativo sobre turmas das áreas de humanas ou saúde."
+],ans:1,xp:140,
+fb:"✅ Exato! Engajamento eficaz no NeuroAI significa criar relevância sem excesso sensorial, evitando disputar recursos atencionais da memória."},
+
+{id:8,stage:"Anatomia ENADE — Equilíbrio de Alternativas e Distratores",tag:"ENADE · DISTRATORES",bloom:"Criar",
+ctx:"Na elaboração de itens de múltipla escolha no padrão ENADE, a construção das alternativas e dos distratores exige rigor técnico.",
+q:"Qual característica é ESSENCIAL para a construção de distratores de alta qualidade em uma questão no padrão ENADE?",
+opts:[
+"Apresentar uma opção obviamente absurda ou cômica para facilitar a eliminação rápida por parte do estudante durante o exame.",
+"Manter simetria de extensão, linguagem homogênea e refletir equívocos conceituais plausíveis decorrentes do processo de aprendizagem.",
+"Inserir termos de negação dupla ou pegadinhas gramaticais no texto para induzir o erro de leitura nos candidatos desatentos.",
+"Garantir que a alternativa correta seja visivelmente mais longa e detalhada do que as demais opções elaboradas na questão."
+],ans:1,xp:150,
+fb:"✅ Correto! Distratores padrão ENADE são plausíveis, baseados em erros reais de raciocínio, e possuem extensão e estrutura gramatical equilibradas."},
+
+{id:9,stage:"PromptAI × NeuroAI — Integração do Framework PAN",tag:"INTEGRAÇÃO P-A-N",bloom:"Criar",
+ctx:"A integração entre PromptAI e NeuroAI resulta no framework PAN (Solicitação Clara + Aprendizagem Ativa + Decisão Responsável).",
+q:"Qual das opções exemplifica o uso completo do framework PAN na preparação de um plano de aula interativo?",
+opts:[
+"Gerar o plano via IA com prompt genérico e repassá-lo aos alunos sem fazer alterações ou explicitar a dinâmica de validação.",
+"Estruturar o prompt com os 4 pilares, prever momentos de aprendizagem ativa com segmentação e realizar a auditoria humana responsável.",
+"Focar apenas no engajamento multimídia da aula, desconsiderando a clareza da solicitação feita à IA e o registro do processo avaliativo.",
+"Utilizar a IA para corrigir trabalhos sem definir critérios ou rubricas prévias de avaliação, confiando na pontuação automática."
+],ans:1,xp:160,
+fb:"✅ Perfeito! O PAN integra a solicitação estruturada (PromptAI), a experiência focada em aprendizagem ativa (NeuroAI) e a decisão docente (Auditoria)."},
+
+{id:10,stage:"⚡ DESAFIO FINAL — Síntese da Formação Docente 2026",tag:"INTEGRADOR",bloom:"Avaliar + Criar",
+ctx:"No encerramento da oficina de formação, discute-se o verdadeiro papel da Inteligência Artificial na prática pedagógica universitária.",
+q:"Qual premissa reflete a SÍNTESE sobre o uso da IA na docência apresentada ao longo de toda a formação?",
+opts:[
+"A IA substitui a necessidade de planejamento docente, devendo assumir autonomamente a condução das etapas de ensino e avaliação.",
+"A inovação pedagógica não está na ferramenta em si, mas na qualidade das decisões que o professor toma a partir do suporte da IA.",
+"O uso de IA deve ser restrito à criação de imagens e slides, sendo vedado seu uso na formulação de itens ou planos de ensino.",
+"A eficiência no uso da IA é medida exclusivamente pela velocidade de geração, dispensando etapas de revisão ou contextualização."
+],ans:1,xp:200,
+fb:"🏆 EXCELENTE! A síntese da formação: A ferramenta propõe, mas a sensibilidade, a ética, o contexto e a decisão pedagógica permanecem sempre com o professor!"}
+];
+
+let ST={player:'',score:0,step:0,combo:1,maxCombo:1,correct:0,tval:5,tint:null,ans:[],snd:true};
+let RD=[
+  {name:'Prof. Ana Lima',score:0,me:false},
+  {name:'Prof. Carlos M.',score:0,me:false},
+  {name:'Prof. Beatriz S.',score:0,me:false},
+  {name:'Prof. Eduardo R.',score:0,me:false},
+  {name:'Prof. Fernanda C.',score:0,me:false}
+];
+
+function simOthers(ok){
+  RD.forEach(r=>{if(!r.me){const c=Math.random();if(ok&&c>.35)r.score+=Math.floor(Math.random()*140+60);else if(!ok&&c>.55)r.score+=Math.floor(Math.random()*100+40);}});
+}
+
+(function(){
+  const c=document.getElementById('particles');
+  const cols=['#38BDF8','#7C3AED','#A855F7','#EC4899','#10B981','#F59E0B'];
+  for(let i=0;i<28;i++){
+    const p=document.createElement('div');p.className='particle';
+    const sz=Math.random()*5+3;
+    p.style.cssText='width:'+sz+'px;height:'+sz+'px;left:'+(Math.random()*100)+'%;background:'+cols[Math.floor(Math.random()*cols.length)]+';animation-duration:'+(10+Math.random()*14)+'s;animation-delay:'+(Math.random()*18)+'s';
+    c.appendChild(p);
+  }
+})();
+
+let sndOn=true;
+function tglSnd(){sndOn=!sndOn;document.getElementById('sndBtn').textContent=sndOn?'🔊':'🔇';}
+function playS(type){
+  if(!sndOn)return;
+  try{
+    const ctx=new(window.AudioContext||window.webkitAudioContext)(),o=ctx.createOscillator(),g=ctx.createGain();
+    o.connect(g);g.connect(ctx.destination);
+    if(type==='ok'){o.type='sine';o.frequency.setValueAtTime(880,ctx.currentTime);o.frequency.exponentialRampToValueAtTime(1200,ctx.currentTime+.15);g.gain.setValueAtTime(.12,ctx.currentTime);g.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+.35);o.start();o.stop(ctx.currentTime+.35);}
+    else if(type==='no'){o.type='sawtooth';o.frequency.setValueAtTime(180,ctx.currentTime);g.gain.setValueAtTime(.08,ctx.currentTime);g.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+.4);o.start();o.stop(ctx.currentTime+.4);}
+    else if(type==='up'){[523,659,784,1047].forEach((f,i)=>{const o2=ctx.createOscillator(),g2=ctx.createGain();o2.connect(g2);g2.connect(ctx.destination);o2.frequency.value=f;g2.gain.setValueAtTime(.1,ctx.currentTime+i*.1);g2.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+i*.1+.18);o2.start(ctx.currentTime+i*.1);o2.stop(ctx.currentTime+i*.1+.2);});}
+    else if(type==='tick'){o.frequency.setValueAtTime(660,ctx.currentTime);g.gain.setValueAtTime(.05,ctx.currentTime);g.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+.06);o.start();o.stop(ctx.currentTime+.06);}
+  }catch(e){}
+}
+
+function showScr(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  const el=document.getElementById(id);el.classList.add('active');
+  el.classList.remove('anim');void el.offsetWidth;el.classList.add('anim');
+}
+
+function startGame(){
+  const name=document.getElementById('playerName').value.trim();
+  if(name.length<2){document.getElementById('playerName').style.borderColor='#EF4444';document.getElementById('playerName').placeholder='Digite seu nome!';return;}
+  ST.player=name;
+  const ex=RD.find(r=>r.name===name);
+  if(!ex)RD.push({name,score:0,me:true});else ex.me=true;
+  renderRank('rank-start');showScr('scr-game');
+  document.getElementById('playerLabel').textContent='🎓 '+name;
+  loadQ(0);
+}
+
+function loadQ(idx){
+  if(idx>=QS.length){endGame();return;}
+  ST.step=idx;
+  const q=QS[idx],isFinal=idx===QS.length-1;
+  document.getElementById('stageLabel').textContent=q.stage;
+  document.getElementById('hStep').textContent=(idx+1)+'/10';
+  document.getElementById('progFill').style.width=(idx/QS.length*100)+'%';
+  const qnum=document.getElementById('qnum');
+  qnum.textContent=isFinal?'⚡ FINAL':'Q'+(idx+1);
+  qnum.style.background=isFinal?'linear-gradient(135deg,#F59E0B,#B45309)':'';
+  document.getElementById('qtag').textContent=q.tag;
+  document.getElementById('qbloom').textContent='Bloom: '+q.bloom;
+  const ctx=document.getElementById('qctx');
+  if(q.ctx){ctx.textContent=q.ctx;ctx.classList.remove('hidden');}else ctx.classList.add('hidden');
+  document.getElementById('qtext').textContent=q.q;
+  const cont=document.getElementById('optsCont');cont.innerHTML='';
+  ['A','B','C','D'].forEach((k,i)=>{
+    const d=document.createElement('div');d.className='opt';d.dataset.i=i;
+    d.innerHTML='<span class="okey">'+k+'</span>'+q.opts[i];
+    d.onclick=()=>selAns(i);cont.appendChild(d);
+  });
+  const fb=document.getElementById('fbBox');fb.className='fb';fb.textContent='';
+  document.getElementById('nextWrap').style.display='none';
+  buildTrail(idx);
+  const panel=document.getElementById('qPanel');
+  panel.style.borderColor=isFinal?'#F59E0B':'';
+  panel.style.background=isFinal?'rgba(30,16,0,.6)':'';
+  startTimer();
+}
+
+function buildTrail(cur){
+  const t=document.getElementById('trail');t.innerHTML='';
+  QS.forEach((_,i)=>{
+    const d=document.createElement('div');d.className='tdot';
+    const a=ST.ans[i];
+    if(a!==undefined){d.classList.add(a?'done':'wrong-d');d.textContent=a?'✓':'✗';}
+    else if(i===cur){d.classList.add('active');d.textContent=i+1;}
+    else{d.classList.add('locked');d.textContent=i+1;}
+    t.appendChild(d);
+  });
+}
+
+const TSEC=5, CIRC=2*Math.PI*26;
+function startTimer(){
+  clearInterval(ST.tint);ST.tval=TSEC;updTimer();
+  ST.tint=setInterval(()=>{ST.tval--;updTimer();if(ST.tval<=2)playS('tick');if(ST.tval<=0){clearInterval(ST.tint);timeOut();}},1000);
+}
+function updTimer(){
+  const t=ST.tval;
+  document.getElementById('tnum').textContent=t;
+  const arc=document.getElementById('tarc');
+  arc.style.strokeDashoffset=CIRC*(1-t/TSEC);
+  arc.style.stroke=t>3?'#38BDF8':t>1?'#F59E0B':'#EF4444';
+  document.getElementById('tnum').style.color=t>1?'#fff':'#FCA5A5';
+}
+function timeOut(){
+  const q=QS[ST.step];
+  document.querySelectorAll('.opt').forEach(o=>{o.classList.add('dis');o.onclick=null;if(parseInt(o.dataset.i)===q.ans)o.classList.add('correct');});
+  const fb=document.getElementById('fbBox');fb.className='fb tout';
+  fb.textContent='⏱️ Tempo esgotado! Resposta correta: '+['A','B','C','D'][q.ans]+'. '+q.fb;
+  ST.combo=1;ST.ans[ST.step]=false;updHUD();buildTrail(ST.step);
+  document.getElementById('nextWrap').style.display='block';
+  document.getElementById('nextBtn').textContent=ST.step===QS.length-1?'🏆 Ver Resultado':'Próxima →';
+  simOthers(false);renderRank('rank-game');
+}
+
+function selAns(ch){
+  clearInterval(ST.tint);
+  const q=QS[ST.step],ok=ch===q.ans;
+  const tb=Math.floor(ST.tval/TSEC*100);
+  document.querySelectorAll('.opt').forEach((o,i)=>{
+    o.classList.add('dis');o.onclick=null;
+    if(i===ch)o.classList.add(ok?'correct':'wrong');
+    if(!ok&&i===q.ans)o.classList.add('correct');
+  });
+  const fb=document.getElementById('fbBox');
+  if(ok){
+    playS('ok');
+    const pts=Math.round(q.xp*(1+tb/100)*ST.combo);
+    ST.score+=pts;ST.correct++;
+    ST.combo=Math.min(ST.combo+1,5);ST.maxCombo=Math.max(ST.maxCombo,ST.combo);
+    ST.ans[ST.step]=true;fb.className='fb ok';fb.textContent=q.fb;
+    if(ST.combo>2)showCombo(ST.combo);
+    if(ST.combo===5)playS('up');
+  }else{
+    playS('no');
+    document.getElementById('qPanel').classList.add('shake');
+    setTimeout(()=>document.getElementById('qPanel').classList.remove('shake'),450);
+    ST.combo=1;ST.ans[ST.step]=false;fb.className='fb no';fb.textContent='❌ Resposta incorreta. '+q.fb;
+  }
+  updRankMe(ST.score);simOthers(ok);updHUD();buildTrail(ST.step);renderRank('rank-game');
+  document.getElementById('nextWrap').style.display='block';
+  document.getElementById('nextBtn').textContent=ST.step===QS.length-1?'🏆 Ver Resultado':'Próxima →';
+}
+
+function nextQ(){document.getElementById('nextWrap').style.display='none';loadQ(ST.step+1);}
+
+function updHUD(){
+  document.getElementById('hScore').textContent=ST.score.toLocaleString('pt-BR');
+  document.getElementById('hCombo').textContent='×'+ST.combo;
+  document.getElementById('hCorrect').textContent=ST.correct;
+}
+
+function showCombo(c){
+  const el=document.getElementById('comboFloat');
+  el.textContent={3:'⚡ COMBO ×3',4:'🔥 COMBO ×4',5:'💥 MAX COMBO ×5!!'}[c]||'×'+c;
+  el.classList.remove('pop');void el.offsetWidth;el.classList.add('pop');
+}
+
+function updRankMe(s){const me=RD.find(r=>r.me);if(me)me.score=s;RD.sort((a,b)=>b.score-a.score);}
+function renderRank(id){
+  const el=document.getElementById(id);if(!el)return;
+  const sorted=[...RD].sort((a,b)=>b.score-a.score);
+  const max=sorted[0]?.score||1;
+  const pc=['p1c','p2c','p3c'],rc=['r1','r2','r3'],bc=['#F59E0B','#94A3B8','#A87C3E'];
+  const mdl=['👑','🥈','🥉'];
+  el.innerHTML=sorted.slice(0,8).map((r,i)=>{
+    const pct=max>0?Math.round(r.score/max*100):0;
+    const posC=i<3?pc[i]:'pnc',rowC=r.me?'me':(i<3?rc[i]:'');
+    const barC=r.me?'#38BDF8':(i<3?bc[i]:'#1E3060');
+    return '<div class="rrow '+rowC+'">' +
+      '<div class="rpos '+posC+'">'+(i<3?mdl[i]:i+1)+'</div>' +
+      '<div class="rname">'+r.name+(r.me?' <span style="font-size:10px;color:#38BDF8">(você)</span>':'')+'</div>' +
+      '<div class="rbar"><div class="rbari"><div class="rbarif" style="width:'+pct+'%;background:'+barC+'"></div></div></div>' +
+      '<div class="rpts '+(r.me?'mepts':'')+'">'+r.score.toLocaleString('pt-BR')+' pts</div>' +
+    '</div>';
+  }).join('');
+}
+
+function endGame(){
+  clearInterval(ST.tint);updRankMe(ST.score);
+  document.getElementById('progFill').style.width='100%';
+  const sorted=[...RD].sort((a,b)=>b.score-a.score);
+  const myRank=sorted.findIndex(r=>r.me)+1;
+  const acc=Math.round(ST.correct/QS.length*100);
+  const top3=sorted.slice(0,3);
+  const podOrd=[
+    top3[1]?{...top3[1],css:'p2',crown:'🥈'}:null,
+    top3[0]?{...top3[0],css:'p1',crown:'👑'}:null,
+    top3[2]?{...top3[2],css:'p3',crown:'🥉'}:null
+  ].filter(Boolean);
+  document.getElementById('podium').innerHTML=podOrd.map(p=>
+    '<div class="pod '+p.css+'">' +
+      '<div class="pcrown">'+p.crown+'</div>' +
+      '<div class="pname">'+p.name+'</div>' +
+      '<div class="ppts">'+p.score.toLocaleString('pt-BR')+' pts</div>' +
+    '</div>').join('');
+  const icons=['🏆','🥈','🥉','🎖️','🎗️'];
+  const prize=myRank<=3?'<div style="color:var(--gold);font-size:14px;margin-top:8px;font-weight:700">🎁 Parabéns! Você ganhou um brinde!</div>':'';
+  const col=myRank===1?'#F59E0B':myRank===2?'#94A3B8':myRank===3?'#A87C3E':'var(--sky)';
+  document.getElementById('trophy').innerHTML=
+    '<div class="ticon">'+icons[Math.min(myRank-1,4)]+'</div>' +
+    '<div class="tname" style="color:'+col+'">'+ST.player+'</div>' +
+    '<div class="tpts">'+ST.score.toLocaleString('pt-BR')+' pontos</div>' +
+    '<div class="trank">Posição: #'+myRank+' de '+sorted.length+' participantes</div>' +
+    prize;
+  document.getElementById('estats').innerHTML=
+    '<div class="ebox"><div class="eval" style="color:var(--green)">'+acc+'%</div><div class="elbl">Acurácia</div></div>' +
+    '<div class="ebox"><div class="eval" style="color:var(--gold)">×'+ST.maxCombo+'</div><div class="elbl">Combo Máx.</div></div>' +
+    '<div class="ebox"><div class="eval" style="color:var(--violet)">#'+myRank+'</div><div class="elbl">Posição Final</div></div>';
+  renderRank('rank-end');playS('up');showScr('scr-end');
+}
+
+function restartGame(){
+  clearInterval(ST.tint);
+  RD.forEach(r=>{if(!r.me)r.score=0;});
+  const me=RD.find(r=>r.me);if(me)me.score=0;
+  const name=ST.player;
+  ST={player:name,score:0,step:0,combo:1,maxCombo:1,correct:0,tval:TSEC,tint:null,ans:[],snd:sndOn};
+  updHUD();showScr('scr-game');loadQ(0);
+}
+
+renderRank('rank-start');
+</script>
+</body>
+</html>

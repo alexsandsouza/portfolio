@@ -86,7 +86,7 @@ const parseStatValue = (value) => {
 };
 
 const useCountUp = (target, duration, triggered) => {
-    const [count, setCount] = useState(0);
+    const [count, setCount] = useState(target);
     useEffect(() => {
         if (!triggered) return;
         let startTime = null;
@@ -120,7 +120,7 @@ const HolographicStats = ({ stats }) => {
                     observer.disconnect();
                 }
             },
-            { threshold: 0.5 }
+            { threshold: 0.15 }
         );
         if (containerRef.current) observer.observe(containerRef.current);
         return () => observer.disconnect();
