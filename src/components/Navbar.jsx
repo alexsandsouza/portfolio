@@ -55,7 +55,7 @@ const Navbar = ({ triggerMatrix }) => {
                 display: 'flex',
                 alignItems: 'center'
             }}>
-            <div className="navbar-inner" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '100%', width: '100%', maxWidth: '1500px', margin: '0 auto', padding: '0 1.25rem', boxSizing: 'border-box', gap: '1rem', overflow: 'visible' }}>
+            <div className="container navbar-inner" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '100%', gap: '1rem', overflow: 'visible' }}>
                 <a href="#"
                     onClick={(e) => {
                         e.preventDefault();
