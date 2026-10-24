@@ -76,12 +76,25 @@ export function summarize(state, now, currentId) {
     };
 }
 
+export function applyFlags(state, { incrementTotal, incrementToday, now }) {
+    const day = manausDay(now);
+    const days = { ...state.days };
+    let total = state.total;
+    if (incrementTotal) total += 1;
+    if (incrementToday) days[day] = (days[day] || 0) + 1;
+    return {
+        state: { total, days, seen: state.seen },
+        view: { total, today: days[day] || 0 }
+    };
+}
+
 export function audiencePhrase(snapshot) {
     if (!snapshot || typeof snapshot.total !== 'number') return '';
     const people = snapshot.total === 1
         ? '1 pessoa já passou por aqui'
         : `${snapshot.total} pessoas já passaram por aqui`;
     const today = snapshot.today === 1 ? '1 hoje' : `${snapshot.today} hoje`;
+    if (typeof snapshot.online !== 'number') return `${people} - ${today}`;
     const online = snapshot.online === 1 ? '1 agora' : `${snapshot.online} agora`;
     return `${people} - ${today} - ${online}`;
 }

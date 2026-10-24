@@ -1,4 +1,4 @@
-import { applyVisit, emptyState, summarize } from './logic.js';
+import { applyFlags, applyVisit, emptyState, summarize } from './logic.js';
 
 let state = emptyState();
 
@@ -8,6 +8,12 @@ export function resetAudienceMemory() {
 
 export function readMemory(now = Date.now(), currentId) {
     return summarize(state, now, currentId);
+}
+
+export function visitFlags({ incrementTotal = false, incrementToday = false, now = Date.now() }) {
+    const result = applyFlags(state, { incrementTotal, incrementToday, now });
+    state = result.state;
+    return result.view;
 }
 
 export function visitMemory({ id, path, now = Date.now() }) {

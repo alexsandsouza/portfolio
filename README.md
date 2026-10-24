@@ -36,7 +36,7 @@
 
 Site público do Prof. Alexsander Farias: palestrante em IA e cibersegurança, professor universitário, mentor e orientador em carreira de TI, instrutor Cisco certificado e fundador da AD Academy. Mais de 20 anos de ensino, 10 mil alunos formados e mais de 50 projetos.
 
-O endereço de produção é **[https://alexsanderfarias.vercel.app](https://alexsanderfarias.vercel.app)**. A mesma versão também fica em **[https://alexsandsouza.github.io/portfolio/](https://alexsandsouza.github.io/portfolio/)**.
+O endereço de produção é **[https://alexsanderfarias.vercel.app](https://alexsanderfarias.vercel.app)**. A mesma versão também fica em **[https://alexsandsouza.github.io](https://alexsandsouza.github.io)**.
 
 Além da vitrine profissional, o projeto reúne o blog de eventos, a newsletter **Além do Algoritmo**, o currículo e os hubs de aula.
 

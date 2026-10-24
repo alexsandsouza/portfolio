@@ -1,4 +1,4 @@
-import { isCountedPath, isUuid } from '../../api/audience/logic.js';
+import { isCountedPath, isUuid, manausDay } from '../../api/audience/logic.js';
 
 const STORAGE_KEY = 'portfolio-audience-id';
 const listeners = new Set();
@@ -36,14 +36,19 @@ export async function recordVisit(pathname) {
         const endpoint = window.location.hostname.endsWith('github.io')
             ? 'https://alexsanderfarias.vercel.app/api/audience'
             : '/api/audience';
+        const day = manausDay(Date.now());
+        const incrementTotal = localStorage.getItem('portfolio-audience-counted') !== '1';
+        const incrementToday = localStorage.getItem('portfolio-audience-day') !== day;
         const response = await fetch(endpoint, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-            body: JSON.stringify({ id, path: pathname })
+            body: JSON.stringify({ path: pathname, incrementTotal, incrementToday })
         });
         if (!response.ok) return;
         const data = await response.json();
         if (typeof data.total !== 'number') return;
+        localStorage.setItem('portfolio-audience-counted', '1');
+        localStorage.setItem('portfolio-audience-day', day);
         publish(data);
     } catch {
         // A página segue sem número inventado.

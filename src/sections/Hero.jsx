@@ -3,6 +3,7 @@ import { portfolioContent } from '../data/content';
 import { Reveal } from '../components/Reveal';
 import { useHoverCard } from '../hooks/useHoverCard';
 import { sitePath } from '../utils/sitePath';
+import { AudienceLive } from '../components/AudiencePlateia';
 
 const TechBackground = () => (
     <div style={{
@@ -367,6 +368,7 @@ const Hero = () => {
                             </a>
                         </div>
                     </Reveal>
+                    <AudienceLive />
                 </div>
 
                 <div className="flex-center">

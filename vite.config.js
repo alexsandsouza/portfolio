@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { isCountedPath, isUuid } from './api/audience/logic.js'
-import { readMemory, visitMemory } from './api/audience/memory.js'
+import { isCountedPath } from './api/audience/logic.js'
+import { readMemory, visitFlags } from './api/audience/memory.js'
 
 function readJson(req) {
   return new Promise((resolve, reject) => {
@@ -35,13 +35,12 @@ function audienceDevPlugin() {
             return
           }
           const body = await readJson(req)
-          if (!isUuid(body.id)) {
-            res.statusCode = 400
-            res.end(JSON.stringify({ error: 'Identificador inválido.' }))
-            return
-          }
           const path = typeof body.path === 'string' ? body.path : '/'
-          const view = isCountedPath(path) ? visitMemory({ id: body.id, path }) : readMemory(Date.now(), body.id)
+          const counted = isCountedPath(path)
+          const view = visitFlags({
+            incrementTotal: counted && body.incrementTotal === true,
+            incrementToday: counted && body.incrementToday === true
+          })
           res.end(JSON.stringify(view))
         } catch {
           res.statusCode = 400
@@ -54,7 +53,6 @@ function audienceDevPlugin() {
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: process.env.GITHUB_PAGES === 'true' ? '/portfolio/' : '/',
   plugins: [react(), audienceDevPlugin()],
   test: {
     globals: true,

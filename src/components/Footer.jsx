@@ -1,12 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import AudiencePlateia from './AudiencePlateia';
-import { subscribeAudience } from '../utils/audienceClient';
+import React from 'react';
+import { AudienceLive } from './AudiencePlateia';
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
-    const [audience, setAudience] = useState(null);
-
-    useEffect(() => subscribeAudience(setAudience), []);
 
     const linkStyle = {
         color: 'var(--text-secondary)',
@@ -131,7 +127,7 @@ const Footer = () => {
                     </div>
                 </div>
 
-                <AudiencePlateia snapshot={audience} />
+                <AudienceLive />
 
                 {/* Divider */}
                 <div style={{

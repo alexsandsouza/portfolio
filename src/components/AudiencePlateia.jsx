@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { audiencePhrase } from '../../api/audience/logic.js';
+import { subscribeAudience } from '../utils/audienceClient';
 
 const AudiencePlateia = ({ snapshot }) => {
     const phrase = audiencePhrase(snapshot);
@@ -31,5 +32,11 @@ const AudiencePlateia = ({ snapshot }) => {
         </div>
     );
 };
+
+export function AudienceLive() {
+    const [snapshot, setSnapshot] = useState(null);
+    useEffect(() => subscribeAudience(setSnapshot), []);
+    return <AudiencePlateia snapshot={snapshot} />;
+}
 
 export default AudiencePlateia;

@@ -1,7 +1,7 @@
 import { createElement } from 'react';
 import { describe, expect, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { applyVisit, audiencePhrase, emptyState, isCountedPath, summarize } from '../api/audience/logic.js';
+import { applyFlags, applyVisit, audiencePhrase, emptyState, isCountedPath, summarize } from '../api/audience/logic.js';
 import AudiencePlateia from '../src/components/AudiencePlateia.jsx';
 
 const id = '11111111-1111-4111-8111-111111111111';
@@ -44,6 +44,13 @@ describe('contador de visitantes', () => {
     it('esconde a plateia quando a contagem não chega', () => {
         const { container } = render(createElement(AudiencePlateia, { snapshot: null }));
         expect(container).toBeEmptyDOMElement();
+    });
+
+    it('soma o total e o dia só quando a visita é nova', () => {
+        const first = applyFlags(emptyState(), { incrementTotal: true, incrementToday: true, now: sameDay });
+        const second = applyFlags(first.state, { incrementTotal: false, incrementToday: false, now: sameDay + 1000 });
+        expect(second.view).toEqual({ total: 1, today: 1 });
+        expect(audiencePhrase(second.view)).toBe('1 pessoa já passou por aqui - 1 hoje');
     });
 
     it('mostra total, hoje e agora com hífen', () => {
