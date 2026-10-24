@@ -1,4 +1,4 @@
-# Diretrizes de Segurança e LGPD — Portfólio Profissional
+# Diretrizes de Segurança e LGPD - Portfólio Profissional
 
 Esta documentação resume as auditorias de segurança aplicadas ao portfólio profissional e as regras de controle de privacidade LGPD adotadas.
 

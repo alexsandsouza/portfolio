@@ -152,7 +152,7 @@ export default function FametroHub() {
     },
     {
       id: 3.5,
-      title: 'SO Quest — Unidade I',
+      title: 'SO Quest - Unidade I',
       course: 'Sistemas de Informação',
       institution: 'Centro Universitário FAMETRO',
       professor: 'Alexsander Farias',
@@ -168,7 +168,7 @@ export default function FametroHub() {
     },
     {
       id: 3.6,
-      title: 'SO Quest — Aula 05',
+      title: 'SO Quest - Aula 05',
       course: 'Sistemas de Informação',
       institution: 'Centro Universitário FAMETRO',
       professor: 'Alexsander Farias',

@@ -32,7 +32,7 @@ const QUESTIONS_POOL = [
   { type:"hangman", category:"AUTORIZACAO", text:"Técnica de segurança que exige a separação de responsabilidades críticas entre diferentes usuários para evitar fraudes.", answer:"SEGREGACAO", feedback:"A Segregação de Funções é um controle fundamental: nenhum único usuário deve controlar uma transação do início ao fim.", points:10 },
   { type:"hangman", category:"POLITICAS", text:"Campanha de simulação de ataque enviada internamente para treinar funcionários a identificar e-mails maliciosos.", answer:"PHISHING", feedback:"Campanhas de phishing simulado são fundamentais para medir e melhorar a consciência de segurança da equipe.", points:10 },
   // Anagramas - Scramble
-  { type:"scrambled", category:"AUTORIZACAO", text:"Padrão de autorização que permite que aplicativos acessem recursos em nome do usuário sem revelar credenciais.", answer:"OAUTH", feedback:"OAuth 2.0 é a base de autorização de muitas integrações modernas — como 'Entrar com Google' em aplicativos de terceiros.", points:8 },
+  { type:"scrambled", category:"AUTORIZACAO", text:"Padrão de autorização que permite que aplicativos acessem recursos em nome do usuário sem revelar credenciais.", answer:"OAUTH", feedback:"OAuth 2.0 é a base de autorização de muitas integrações modernas - como 'Entrar com Google' em aplicativos de terceiros.", points:8 },
   { type:"scrambled", category:"IAM", text:"Modelo de segurança chamado 'Confiança Zero', que nunca presume acesso legítimo sem verificação contínua.", answer:"ZEROTRUST", feedback:"Zero Trust assume que qualquer rede, interna ou externa, é potencialmente hostil e exige verificação contínua.", points:8 },
 ];
 

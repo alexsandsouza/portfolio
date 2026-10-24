@@ -15,7 +15,7 @@ function getLevel(score) {
 }
 
 function timeAgo(ts) {
-  if (!ts) return "—";
+  if (!ts) return "-";
   const diff = Math.floor((Date.now() - ts) / 1000);
   if (diff < 60) return `${diff}s atrás`;
   if (diff < 3600) return `${Math.floor(diff / 60)}min atrás`;
@@ -154,7 +154,7 @@ export default function RankingM5M6Desafio() {
               { label: "Participantes", value: stats.total, color: "#3b82f6", icon: "👥" },
               { label: "Média Global", value: stats.avg, color: "#22d3ee", icon: "📊" },
               { label: "Alunos Alpha", value: stats.perfect, color: "#eab308", icon: "👑" },
-              { label: "Top Player", value: stats.top?.name || "—", color: "#a855f7", icon: "🏆" }
+              { label: "Top Player", value: stats.top?.name || "-", color: "#a855f7", icon: "🏆" }
             ].map(s => (
               <div key={s.label} style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 20, padding: "20px", display: "flex", alignItems: "center", gap: 15 }}>
                 <span style={{ fontSize: 32 }}>{s.icon}</span>

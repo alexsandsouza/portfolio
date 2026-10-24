@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IA Quest — Formação Docente 2026 · FAMETRO</title>
+<title>IA Quest - Formação Docente 2026 · FAMETRO</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root{--navy:#080E2A;--blue:#1B3FD8;--sky:#38BDF8;--purple:#7C3AED;--violet:#A855F7;--pink:#EC4899;--gold:#F59E0B;--green:#10B981;--red:#EF4444;--white:#FFFFFF;--muted:#64748B;--border:#1E3060;--glass:rgba(14,28,80,0.72);}
@@ -100,10 +100,10 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 <div class="glass start-card">
 <div class="start-info"><div class="info-box"><div class="big">10</div><div class="small">Questões</div></div><div class="info-box"><div class="big">5s</div><div class="small">Por questão</div></div><div class="info-box"><div class="big">🏆</div><div class="small">Top 3 premiados</div></div></div>
 <ul class="rules-list">
-<li>Questões no <strong>padrão ENADE</strong> — contexto real + 4 alternativas equilibradas de tamanho equiparado</li>
-<li>Você tem <strong>5 segundos</strong> para cada questão — foco total e agilidade mental!</li>
+<li>Questões no <strong>padrão ENADE</strong> - contexto real + 4 alternativas equilibradas de tamanho equiparado</li>
+<li>Você tem <strong>5 segundos</strong> para cada questão - foco total e agilidade mental!</li>
 <li>Acertos consecutivos ativam o <strong>multiplicador de combo</strong> (até ×5!)</li>
-<li>O <strong>ranking ao vivo</strong> é atualizado após cada resposta — top 3 ganham brindes 🎁</li>
+<li>O <strong>ranking ao vivo</strong> é atualizado após cada resposta - top 3 ganham brindes 🎁</li>
 <li>Frameworks: <strong>PromptAI</strong> (Persona-Contexto-Instrução-Formato) e <strong>NeuroAI</strong> (N-E-U-R-O-I-A)</li>
 </ul>
 <div class="name-wrap"><label>Seu nome completo:</label><input id="playerName" class="name-input" type="text" placeholder="Ex.: Prof. Maria Oliveira" oninput="if(this.value.length>2)this.style.borderColor='#38BDF8';else this.style.borderColor='#1E3060'"></div>
@@ -122,12 +122,12 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 </div>
 <div class="prog-bar"><div class="prog-fill" id="progFill" style="width:0%"></div></div>
 <div class="trail" id="trail"></div>
-<div class="glass qpanel" id="qPanel"><div class="qmeta"><span class="qnum" id="qnum">Q1</span><span class="qtag" id="qtag">—</span><span class="qbloom" id="qbloom">—</span></div><div class="ctx-box hidden" id="qctx"></div><div class="qtext" id="qtext"></div><div class="opts" id="optsCont"></div><div class="fb" id="fbBox"></div></div>
+<div class="glass qpanel" id="qPanel"><div class="qmeta"><span class="qnum" id="qnum">Q1</span><span class="qtag" id="qtag">-</span><span class="qbloom" id="qbloom">-</span></div><div class="ctx-box hidden" id="qctx"></div><div class="qtext" id="qtext"></div><div class="opts" id="optsCont"></div><div class="fb" id="fbBox"></div></div>
 <div id="nextWrap"><button class="btn btn-primary" id="nextBtn" onclick="nextQ()">Próxima →</button></div>
 <div class="rank-sec"><div class="rtitle">Ranking ao vivo</div><div class="ranking" id="rank-game"></div></div>
 </div>
 <div id="scr-end" class="screen anim">
-<div class="hdr"><div class="hdr-title">🏆 Resultado Final</div><div class="hdr-sub">IA Quest — Formação Docente FAMETRO 2026</div></div>
+<div class="hdr"><div class="hdr-title">🏆 Resultado Final</div><div class="hdr-sub">IA Quest - Formação Docente FAMETRO 2026</div></div>
 <div class="rtitle">Pódio dos Campeões</div>
 <div class="podium" id="podium"></div>
 <div class="glass trophymsg anim" id="trophy"></div>
@@ -139,7 +139,7 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 <script>
 
 const QS = [
-{id:1,stage:"PromptAI — Os 4 Pilares do Prompt Profissional",tag:"PROMPT-IA",bloom:"Analisar",
+{id:1,stage:"PromptAI - Os 4 Pilares do Prompt Profissional",tag:"PROMPT-IA",bloom:"Analisar",
 ctx:"Uma professora quer usar IA para elaborar uma questão ENADE sobre Requisitos de Software. Ela envia um prompt genérico sem restrições. A resposta resulta em um item raso com alternativas desequilibradas e distratores óbvios.",
 q:"Considerando os 4 Pilares do Prompt Profissional (Persona, Contexto, Instrução e Formato), qual alternativa apresenta uma estrutura de solicitação tecnicamente adequada?",
 opts:[
@@ -150,7 +150,7 @@ opts:[
 ],ans:1,xp:120,
 fb:"✅ Correto! O prompt profissional exige Persona (papel), Contexto (cenário real), Instrução (tarefa e comando) e Formato (padrão de entrega)."},
 
-{id:2,stage:"NeuroAI — Pilar U: Segmentação e Sobrecarga Cognitiva",tag:"NEURO-IA",bloom:"Avaliar",
+{id:2,stage:"NeuroAI - Pilar U: Segmentação e Sobrecarga Cognitiva",tag:"NEURO-IA",bloom:"Avaliar",
 ctx:"Um docente planejou uma aula de 90 min sobre Normas ABNT com 70 min de exposição oral contínua e 58 slides densos antes de qualquer atividade prática.",
 q:"Qual análise aplica CORRETAMENTE a dimensão U (Unidades) do framework NeuroAI para reestruturar esse planejamento?",
 opts:[
@@ -161,7 +161,7 @@ opts:[
 ],ans:2,xp:130,
 fb:"✅ Exato! A dimensão U (Unidades) orienta segmentar o conteúdo em blocos menores com pausas de processamento ativo para evitar a sobrecarga cognitiva."},
 
-{id:3,stage:"Questões ENADE — Taxonomia de Bloom: Nível Criar",tag:"BLOOM / ENADE",bloom:"Criar",
+{id:3,stage:"Questões ENADE - Taxonomia de Bloom: Nível Criar",tag:"BLOOM / ENADE",bloom:"Criar",
 ctx:"O ENADE prioriza itens de alta ordem cognitiva (Analisar, Avaliar e Criar). Professores discutem como formular enunciados alinhados ao nível máximo da taxonomia.",
 q:"Qual comando de enunciado opera no nível CRIAR da Taxonomia de Bloom revisada segundo os critérios do ENADE?",
 opts:[
@@ -172,7 +172,7 @@ opts:[
 ],ans:3,xp:140,
 fb:"✅ Correto! O nível Criar exige sintetizar e produzir uma proposta original ou solução autoral a partir de um cenário complexo."},
 
-{id:4,stage:"PromptAI — Auditoria Humana e Validação Docente",tag:"AUDITORIA · ÉTICA",bloom:"Avaliar",
+{id:4,stage:"PromptAI - Auditoria Humana e Validação Docente",tag:"AUDITORIA · ÉTICA",bloom:"Avaliar",
 ctx:"Um professor usou IA para gerar adaptações de atividades para estudantes neurodivergentes e aplicou diretamente no AVA sem conferência prévia.",
 q:"De acordo com o princípio da Auditoria Humana no framework PromptAI, qual das afirmações reflete a conduta correta do docente?",
 opts:[
@@ -183,7 +183,7 @@ opts:[
 ],ans:0,xp:140,
 fb:"✅ Correto! A IA apoia a produção, mas a decisão, a ética e a validação pedagógica são responsabilidades exclusivas do professor (Auditoria Humana)."},
 
-{id:5,stage:"NeuroAI — Pilar R: Recuperação Ativa de Memória",tag:"NEURO-IA",bloom:"Analisar",
+{id:5,stage:"NeuroAI - Pilar R: Recuperação Ativa de Memória",tag:"NEURO-IA",bloom:"Analisar",
 ctx:"Dois professores comparam estratégias de revisão antes da prova: leitura passiva de slides versus resolução de problemas práticos sem consulta.",
 q:"Qual fundamento da dimensão R (Recuperação) do NeuroAI explica a superioridade da resolução prática sem consulta?",
 opts:[
@@ -194,7 +194,7 @@ opts:[
 ],ans:1,xp:140,
 fb:"✅ Perfeito! A prática de recuperação ativa (recordar sem consulta) fortalece os traços de memória e previne a ilusão de fluência gerada pela releitura."},
 
-{id:6,stage:"PromptAI — Estratégia Multi-Ferramentas de IA",tag:"PROMPT-IA",bloom:"Analisar",
+{id:6,stage:"PromptAI - Estratégia Multi-Ferramentas de IA",tag:"PROMPT-IA",bloom:"Analisar",
 ctx:"Uma equipe docente planeja utilizar ChatGPT, Gemini e Claude de forma combinada na produção de itens de avaliação institucional.",
 q:"Qual das combinações estratégicas reflete a melhor prática de uso integrado dessas ferramentas de Inteligência Artificial?",
 opts:[
@@ -205,7 +205,7 @@ opts:[
 ],ans:1,xp:130,
 fb:"✅ Correto! A estratégia multi-ferramentas combina especialidades (geração, pesquisa contextual e análise crítica) com a indispensável validação humana."},
 
-{id:7,stage:"NeuroAI — Pilar E: Engajamento Sem Excesso",tag:"NEURO-IA",bloom:"Avaliar",
+{id:7,stage:"NeuroAI - Pilar E: Engajamento Sem Excesso",tag:"NEURO-IA",bloom:"Avaliar",
 ctx:"Uma atividade gamificada foi desenhada com música contínua, cronômetros piscando, animações intensas e notificações visuais a cada segundo.",
 q:"Como a dimensão E (Engajamento) do NeuroAI avalia essa escolha de design pedagógico?",
 opts:[
@@ -216,7 +216,7 @@ opts:[
 ],ans:1,xp:140,
 fb:"✅ Exato! Engajamento eficaz no NeuroAI significa criar relevância sem excesso sensorial, evitando disputar recursos atencionais da memória."},
 
-{id:8,stage:"Anatomia ENADE — Equilíbrio de Alternativas e Distratores",tag:"ENADE · DISTRATORES",bloom:"Criar",
+{id:8,stage:"Anatomia ENADE - Equilíbrio de Alternativas e Distratores",tag:"ENADE · DISTRATORES",bloom:"Criar",
 ctx:"Na elaboração de itens de múltipla escolha no padrão ENADE, a construção das alternativas e dos distratores exige rigor técnico.",
 q:"Qual característica é ESSENCIAL para a construção de distratores de alta qualidade em uma questão no padrão ENADE?",
 opts:[
@@ -227,7 +227,7 @@ opts:[
 ],ans:1,xp:150,
 fb:"✅ Correto! Distratores padrão ENADE são plausíveis, baseados em erros reais de raciocínio, e possuem extensão e estrutura gramatical equilibradas."},
 
-{id:9,stage:"PromptAI × NeuroAI — Integração do Framework PAN",tag:"INTEGRAÇÃO P-A-N",bloom:"Criar",
+{id:9,stage:"PromptAI × NeuroAI - Integração do Framework PAN",tag:"INTEGRAÇÃO P-A-N",bloom:"Criar",
 ctx:"A integração entre PromptAI e NeuroAI resulta no framework PAN (Solicitação Clara + Aprendizagem Ativa + Decisão Responsável).",
 q:"Qual das opções exemplifica o uso completo do framework PAN na preparação de um plano de aula interativo?",
 opts:[
@@ -238,7 +238,7 @@ opts:[
 ],ans:1,xp:160,
 fb:"✅ Perfeito! O PAN integra a solicitação estruturada (PromptAI), a experiência focada em aprendizagem ativa (NeuroAI) e a decisão docente (Auditoria)."},
 
-{id:10,stage:"⚡ DESAFIO FINAL — Síntese da Formação Docente 2026",tag:"INTEGRADOR",bloom:"Avaliar + Criar",
+{id:10,stage:"⚡ DESAFIO FINAL - Síntese da Formação Docente 2026",tag:"INTEGRADOR",bloom:"Avaliar + Criar",
 ctx:"No encerramento da oficina de formação, discute-se o verdadeiro papel da Inteligência Artificial na prática pedagógica universitária.",
 q:"Qual premissa reflete a SÍNTESE sobre o uso da IA na docência apresentada ao longo de toda a formação?",
 opts:[

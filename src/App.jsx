@@ -189,7 +189,7 @@ function App() {
           <Route path="/hackersdobem/atividade-m10" element={<AtividadeHDBM10 />} />
           <Route path="/hackersdobem/atividade-m11" element={<AtividadeHDBM11 />} />
           <Route path="/hackersdobem/atividade-m12" element={<AtividadeHDBM12 />} />
-          {/* Ranking genérico — substitui 12 arquivos individuais */}
+          {/* Ranking genérico - substitui 12 arquivos individuais */}
           <Route path="/hackersdobem/ranking-:modulo" element={<RankingModulo />} />
           <Route path="/fametro" element={<FametroHub />} />
           <Route path="/fametro/poo/atividade" element={<POOActivity />} />

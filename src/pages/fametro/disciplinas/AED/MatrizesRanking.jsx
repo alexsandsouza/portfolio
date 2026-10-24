@@ -118,7 +118,7 @@ export default function MatrizesRanking() {
         
         <div style={{ textAlign: 'center', marginBottom: 40 }}>
            <div style={{ fontSize: 12, letterSpacing: 4, color: "#6366f1", fontWeight: 700, textTransform: 'uppercase', marginBottom: 8, fontFamily: 'JetBrains Mono' }}>AED · Estrutura de Dados · 2026.1</div>
-           <h1 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: 900, margin: 0, background: 'linear-gradient(135deg, #6366f1, #0EA5E9)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>📊 Ranking — Matrix Quest</h1>
+           <h1 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: 900, margin: 0, background: 'linear-gradient(135deg, #6366f1, #0EA5E9)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>📊 Ranking - Matrix Quest</h1>
            <p style={{ color: '#94A3B8' }}>Top Performers em Cenários Reais de Matrizes (Estilo ENADE)</p>
         </div>
 
@@ -126,7 +126,7 @@ export default function MatrizesRanking() {
           {[
             { label: "Estudantes", value: stats.total, icon: "👤" },
             { label: "Média de XP", value: stats.avg, icon: "⚡" },
-            { label: "O Melhor Rank", value: stats.top ? stats.top.name : "—", icon: "🔥" },
+            { label: "O Melhor Rank", value: stats.top ? stats.top.name : "-", icon: "🔥" },
           ].map(s => (
             <div key={s.label} style={{ background: '#0a1025', border: '1px solid #1e2a4a', borderRadius: 20, padding: 24, textAlign: 'center' }}>
               <div style={{ fontSize: 32, marginBottom: 8 }}>{s.icon}</div>

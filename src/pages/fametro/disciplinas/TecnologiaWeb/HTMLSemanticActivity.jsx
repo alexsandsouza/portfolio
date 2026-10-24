@@ -570,7 +570,7 @@ function Quiz({ playerName, onFinish }) {
       const updated = [...current, ...newOnes.map(b => b.id)];
       setEarnedBadges(updated);
       newOnes.forEach(b => {
-        showNotif(`🏅 Conquista!`, `${b.emoji} ${b.name} — ${b.desc}`);
+        showNotif(`🏅 Conquista!`, `${b.emoji} ${b.name} - ${b.desc}`);
       });
     }
   }

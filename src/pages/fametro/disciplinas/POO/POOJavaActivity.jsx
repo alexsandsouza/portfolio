@@ -19,7 +19,7 @@ const STAGES = [
     title: "Criando uma Classe",
     desc: "Crie uma classe chamada Pessoa com os seguintes atributos: String nome, int idade, String email.",
     placeholder: "// Crie a classe Pessoa com os atributos indicados\n",
-    hint: "class NomeDaClasse { TipoAtributo nomeAtributo; } — use String para texto e int para número inteiro.",
+    hint: "class NomeDaClasse { TipoAtributo nomeAtributo; } - use String para texto e int para número inteiro.",
     keywords: ["class Pessoa", "String nome", "int idade", "String email"],
     gabarito: `class Pessoa {\n    String nome;\n    int idade;\n    String email;\n}`
   },
@@ -29,7 +29,7 @@ const STAGES = [
     title: "Métodos GET",
     desc: "Adicione à classe Pessoa os três métodos get: getNome(), getIdade(), getEmail().",
     placeholder: "class Pessoa {\n    String nome;\n    int idade;\n    String email;\n\n    // Adicione os métodos get aqui\n\n}",
-    hint: "String getNome() { return this.nome; } — o tipo de retorno deve corresponder ao tipo do atributo.",
+    hint: "String getNome() { return this.nome; } - o tipo de retorno deve corresponder ao tipo do atributo.",
     keywords: ["getNome", "getIdade", "getEmail", "return this.nome", "return this.idade", "return this.email"],
     gabarito: `class Pessoa {\n    String nome;\n    int idade;\n    String email;\n\n    String getNome() {\n        return this.nome;\n    }\n\n    int getIdade() {\n        return this.idade;\n    }\n\n    String getEmail() {\n        return this.email;\n    }\n}`
   },
@@ -39,7 +39,7 @@ const STAGES = [
     title: "Métodos SET",
     desc: "Adicione à classe Pessoa os três métodos set: setNome(String nome), setIdade(int idade), setEmail(String email).",
     placeholder: "class Pessoa {\n    String nome;\n    int idade;\n    String email;\n\n    // Gets de antes + novos Sets\n\n}",
-    hint: "void setNome(String nome) { this.nome = nome; } — use void pois set não retorna valor.",
+    hint: "void setNome(String nome) { this.nome = nome; } - use void pois set não retorna valor.",
     keywords: ["setNome", "setIdade", "setEmail", "void", "this.nome = nome", "this.idade = idade", "this.email = email"],
     gabarito: `class Pessoa {\n    String nome;\n    int idade;\n    String email;\n\n    String getNome() { return this.nome; }\n    int getIdade() { return this.idade; }\n    String getEmail() { return this.email; }\n\n    void setNome(String nome) {\n        this.nome = nome;\n    }\n\n    void setIdade(int idade) {\n        this.idade = idade;\n    }\n\n    void setEmail(String email) {\n        this.email = email;\n    }\n}`
   },

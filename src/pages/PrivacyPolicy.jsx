@@ -2,7 +2,7 @@ import React from 'react';
 import { usePageTitle } from '../hooks/usePageTitle';
 
 /**
- * PrivacyPolicy — Página de Política de Privacidade
+ * PrivacyPolicy - Página de Política de Privacidade
  * 
  * Conformidade com a LGPD (Lei 13.709/2018)
  * Artigos: 6º, 7º, 9º, 11, 18, 46
@@ -64,7 +64,7 @@ const PrivacyPolicy = () => {
                             Esta Política de Privacidade descreve como o site <strong style={{ color: 'var(--text-primary)' }}>alexsanderfarias.vercel.app</strong> ("Portfolio"),
                             de titularidade de <strong style={{ color: 'var(--text-primary)' }}>Prof. Alexsander Farias</strong>, coleta, utiliza e protege
                             as informações pessoais dos visitantes, em conformidade com a <strong style={{ color: 'var(--text-primary)' }}>Lei Geral de Proteção de
-                            Dados Pessoais (LGPD — Lei nº 13.709/2018)</strong>.
+                            Dados Pessoais (LGPD - Lei nº 13.709/2018)</strong>.
                         </p>
                     </Section>
 
@@ -101,9 +101,9 @@ const PrivacyPolicy = () => {
                     <Section title="3. Cookies e Tecnologias">
                         <p>Este site utiliza:</p>
                         <ul style={ulStyle}>
-                            <li><strong style={{ color: 'var(--text-primary)' }}>localStorage</strong> — Para armazenar preferência de tema (claro/escuro), consentimento de cookies e progresso em atividades educacionais. Nenhum dado é enviado a terceiros.</li>
-                            <li><strong style={{ color: 'var(--text-primary)' }}>Firebase Firestore</strong> — Para rankings de atividades acadêmicas. Os dados são armazenados em servidores do Google Cloud com criptografia em trânsito e em repouso.</li>
-                            <li><strong style={{ color: 'var(--text-primary)' }}>FormSubmit.co</strong> — Para processamento do formulário de contato. Os dados são encaminhados por email e não são persistidos em banco de dados.</li>
+                            <li><strong style={{ color: 'var(--text-primary)' }}>localStorage</strong> - Para armazenar preferência de tema (claro/escuro), consentimento de cookies e progresso em atividades educacionais. Nenhum dado é enviado a terceiros.</li>
+                            <li><strong style={{ color: 'var(--text-primary)' }}>Firebase Firestore</strong> - Para rankings de atividades acadêmicas. Os dados são armazenados em servidores do Google Cloud com criptografia em trânsito e em repouso.</li>
+                            <li><strong style={{ color: 'var(--text-primary)' }}>FormSubmit.co</strong> - Para processamento do formulário de contato. Os dados são encaminhados por email e não são persistidos em banco de dados.</li>
                         </ul>
                     </Section>
 
@@ -151,7 +151,7 @@ const PrivacyPolicy = () => {
 
                     <Section title="8. Retenção de Dados">
                         <p>
-                            Dados do formulário de contato não são armazenados — são enviados diretamente ao email do titular do site.
+                            Dados do formulário de contato não são armazenados - são enviados diretamente ao email do titular do site.
                             Dados de rankings acadêmicos são mantidos enquanto o semestre letivo estiver ativo.
                             A preferência de cookies é armazenada localmente no seu navegador e pode ser apagada a qualquer momento limpando os dados do site.
                         </p>
@@ -174,7 +174,7 @@ const PrivacyPolicy = () => {
                     color: 'var(--text-secondary)',
                     fontSize: '0.85rem',
                 }}>
-                    <p>© {new Date().getFullYear()} Prof. Alexsander Farias — Todos os direitos reservados.</p>
+                    <p>© {new Date().getFullYear()} Prof. Alexsander Farias - Todos os direitos reservados.</p>
                     <a href="/" style={{ color: 'var(--primary-color)', textDecoration: 'none', fontSize: '0.85rem' }}>
                         ← Voltar ao Portfolio
                     </a>

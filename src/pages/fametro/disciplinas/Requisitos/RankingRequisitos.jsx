@@ -136,7 +136,7 @@ export default function RankingRequisitos() {
                   FAMETRO · Análise de Requisitos · Aula 04
                 </div>
                 <h1 style={{ margin: "4px 0 0", fontSize: 22, fontWeight: 900, color: "#fff", lineHeight: 1.1, fontFamily: "'Syne', sans-serif" }}>
-                  REQQUEST — Ranking ao Vivo
+                  REQQUEST - Ranking ao Vivo
                 </h1>
               </div>
             </div>
@@ -167,9 +167,9 @@ export default function RankingRequisitos() {
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 12, marginBottom: 28 }}>
           {[
             { label: "Alunos Finalizaram", value: stats.total, icon: "👥", color: "#FF7675" },
-            { label: "Média da Turma", value: stats.total ? `${stats.avg} pts` : "—", icon: "📊", color: "#C0392B" },
+            { label: "Média da Turma", value: stats.total ? `${stats.avg} pts` : "-", icon: "📊", color: "#C0392B" },
             { label: "Notas Perfeitas", value: stats.perfect, icon: "💯", color: "#FFD700" },
-            { label: "Líder Atual", value: stats.top ? stats.top.name.split(" ")[0] : "—", icon: "🏆", color: "#F5A623" },
+            { label: "Líder Atual", value: stats.top ? stats.top.name.split(" ")[0] : "-", icon: "🏆", color: "#F5A623" },
           ].map(card => (
             <div key={card.label} style={{
               background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)",
@@ -191,7 +191,7 @@ export default function RankingRequisitos() {
         {entries.length >= 3 && (
           <div style={{ marginBottom: 28 }}>
             <div style={{ fontSize: 11, letterSpacing: 3, color: "rgba(255,255,255,0.3)", fontFamily: "'JetBrains Mono', monospace", marginBottom: 16 }}>
-              TOP 3 — PÓDIO
+              TOP 3 - PÓDIO
             </div>
             <div style={{ display: "flex", alignItems: "flex-end", gap: 12, justifyContent: "center" }}>
               {[1, 0, 2].map((rankIdx, i) => {
@@ -300,7 +300,7 @@ export default function RankingRequisitos() {
                       {isNew && <span style={{ fontSize: 10, background: "#C0392B", color: "#fff", padding: "2px 6px", borderRadius: 10, fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1 }}>NOVO!</span>}
                     </div>
                     <div style={{ fontSize: 11, color: "rgba(255,255,255,0.25)", marginTop: 2 }}>
-                      Análise de Requisitos — Aula 04
+                      Análise de Requisitos - Aula 04
                     </div>
                   </div>
                   <div style={{ textAlign: "center" }}>

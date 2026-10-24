@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Avaliação de Perfil Comportamental — IBC</title>
+<title>Avaliação de Perfil Comportamental - IBC</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <!-- Firebase SDK -->
 <script>
@@ -348,10 +348,10 @@ window._savePerfilToFirebase = async function(data) {
   </div>
 
   <div class="animals-row">
-    <div class="animal-chip aguia">🦅 Águia — Fazer Diferente</div>
-    <div class="animal-chip gato">🐱 Gato — Fazer Junto</div>
-    <div class="animal-chip lobo">🐺 Lobo — Fazer Certo</div>
-    <div class="animal-chip tubarao">🦈 Tubarão — Fazer Rápido</div>
+    <div class="animal-chip aguia">🦅 Águia - Fazer Diferente</div>
+    <div class="animal-chip gato">🐱 Gato - Fazer Junto</div>
+    <div class="animal-chip lobo">🐺 Lobo - Fazer Certo</div>
+    <div class="animal-chip tubarao">🦈 Tubarão - Fazer Rápido</div>
   </div>
 
   <div class="start-card">
@@ -359,7 +359,7 @@ window._savePerfilToFirebase = async function(data) {
     <div class="start-title">Como funciona?</div>
     <div class="start-desc">
       Você responderá <strong>25 questões</strong>. Em cada uma, escolha a alternativa que
-      <strong>mais representa você</strong> — seja honesto(a), não existe resposta certa ou errada!
+      <strong>mais representa você</strong> - seja honesto(a), não existe resposta certa ou errada!
       Ao final, o sistema calculará seu <strong>Perfil Comportamental Dominante</strong>.
     </div>
     <div class="info-grid">
@@ -371,7 +371,7 @@ window._savePerfilToFirebase = async function(data) {
     <button class="btn btn-primary" onclick="startQuiz()" id="btnStart">
       🚀 Iniciar Avaliação
     </button>
-    <p class="hint" style="margin-top:14px">Escolha a alternativa que mais te representa — seja espontâneo(a)!</p>
+    <p class="hint" style="margin-top:14px">Escolha a alternativa que mais te representa - seja espontâneo(a)!</p>
   </div>
 </div>
 
@@ -441,7 +441,7 @@ window._savePerfilToFirebase = async function(data) {
 
 <script>
 // ══════════════════════════════════════════════════
-// QUESTIONS — 25 questões (I=Águia, C=Gato, O=Lobo, A=Tubarão)
+// QUESTIONS - 25 questões (I=Águia, C=Gato, O=Lobo, A=Tubarão)
 // ══════════════════════════════════════════════════
 const QUESTIONS = [
   {
@@ -690,7 +690,7 @@ const PROFILES = {
     motivTitle: "O que te motiva",
     motiv: ["Liberdade de expressão", "Ausência de controles rígidos", "Ambiente de trabalho descentralizado", "Liberdade para fazer exceções", "Oportunidade para delegar tarefas e detalhes"],
     comportTitle: "Comportamentos Característicos",
-    comportamentos: ["Provoca mudanças radicais", "Antecipa o futuro", "Criatividade — Passado, Presente e Futuro"]
+    comportamentos: ["Provoca mudanças radicais", "Antecipa o futuro", "Criatividade - Passado, Presente e Futuro"]
   },
   C: {
     name: "Gato",
@@ -722,7 +722,7 @@ const PROFILES = {
     melhoriaTitle: "Pontos de Melhoria",
     melhoria: ["Dificuldades de se adaptar às mudanças", "Pode impedir o progresso por excesso de cautela", "Detalhista e demasiadamente sistematizado", "Resistência ao novo e ao imprevisto"],
     motivTitle: "O que te motiva",
-    motiv: ["Certeza e compreensão exata das regras", "Conhecimento específico do trabalho", "Ausência de riscos e erros", "Ver o produto acabado — começo, meio e fim", "Segurança e previsibilidade"],
+    motiv: ["Certeza e compreensão exata das regras", "Conhecimento específico do trabalho", "Ausência de riscos e erros", "Ver o produto acabado - começo, meio e fim", "Segurança e previsibilidade"],
     comportTitle: "Comportamentos Característicos",
     comportamentos: ["Fazer que funcione", "Parar com a burocracia desnecessária", "Ver o produto final com qualidade"]
   },
@@ -733,7 +733,7 @@ const PROFILES = {
     color: "var(--tubarao)",
     colorClass: "tubarao",
     traits: ["Senso de urgência","Ação e iniciativa","Impulsivo","Vencer desafios","Aqui e agora","Autossuficiente","Prático","Determinado"],
-    desc: "O Tubarão é movido por resultados, velocidade e competição. Você age com urgência, enfoca no presente e quer ver resultados concretos o mais rápido possível. É autossuficiente, prático e determinado a vencer. Não tem medo de desafios — na verdade, os busca ativamente.",
+    desc: "O Tubarão é movido por resultados, velocidade e competição. Você age com urgência, enfoca no presente e quer ver resultados concretos o mais rápido possível. É autossuficiente, prático e determinado a vencer. Não tem medo de desafios - na verdade, os busca ativamente.",
     pontosFortesTitle: "Pontos Fortes",
     pontosFortes: ["Senso de urgência e ação imediata", "Alta capacidade de execução", "Foco total em resultados e metas", "Resiliência e perseverança", "Capacidade de motivar equipes a entregar"],
     melhoriaTitle: "Pontos de Melhoria",
@@ -1026,7 +1026,7 @@ function shareResult() {
   const { pcts } = calcScores();
   const dominant = getDominant(pcts);
   const profile = PROFILES[dominant];
-  const text = `🧭 Meu Perfil Comportamental é ${profile.animal} ${profile.name} ${profile.slogan}!\n📊 Águia: ${pcts.I}% | Gato: ${pcts.C}% | Lobo: ${pcts.O}% | Tubarão: ${pcts.A}%\n\nAvaliação de Perfil Comportamental — CEUNI-FAMETRO / IBC`;
+  const text = `🧭 Meu Perfil Comportamental é ${profile.animal} ${profile.name} ${profile.slogan}!\n📊 Águia: ${pcts.I}% | Gato: ${pcts.C}% | Lobo: ${pcts.O}% | Tubarão: ${pcts.A}%\n\nAvaliação de Perfil Comportamental - CEUNI-FAMETRO / IBC`;
   if (navigator.share) {
     navigator.share({ title: 'Meu Perfil Comportamental', text });
   } else {

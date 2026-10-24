@@ -5,7 +5,7 @@ const NotFound = () => {
     const [glitch, setGlitch] = useState(false);
 
     useEffect(() => {
-        document.title = "404 — Página não encontrada";
+        document.title = "404 - Página não encontrada";
         const interval = setInterval(() => {
             setGlitch(true);
             setTimeout(() => setGlitch(false), 300);

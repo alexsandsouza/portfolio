@@ -26,28 +26,28 @@ const STAGES = [
         text: "O servidor da empresa armazena e distribui chaves criptográficas usadas para cifrar dados sensíveis. O dispositivo responsável é um HSM.",
         options: ["Smart-Card", "RADIUS", "Dispositivo de Gerenciamento de Chaves", "Token USB", "IEEE 802.1X"],
         answer: "Dispositivo de Gerenciamento de Chaves",
-        feedback: "HSMs (Hardware Security Modules) são exemplos de Dispositivos de Gerenciamento de Chaves — responsáveis por gerar, armazenar e distribuir chaves criptográficas."
+        feedback: "HSMs (Hardware Security Modules) são exemplos de Dispositivos de Gerenciamento de Chaves - responsáveis por gerar, armazenar e distribuir chaves criptográficas."
       },
       {
         id: "q1_3", pts: 4,
         text: "Ao conectar o notebook à rede corporativa via cabo, o switch exige autenticação antes de liberar o acesso à rede.",
         options: ["RADIUS", "TOTP", "IEEE 802.1X", "Smart-Card", "Código Estático"],
         answer: "IEEE 802.1X",
-        feedback: "O IEEE 802.1X é o protocolo de controle de acesso à rede — eficaz em redes com fio e sem fio, amplamente usado em ambientes corporativos."
+        feedback: "O IEEE 802.1X é o protocolo de controle de acesso à rede - eficaz em redes com fio e sem fio, amplamente usado em ambientes corporativos."
       },
       {
         id: "q1_4", pts: 4,
         text: "Um aplicativo gera um código de 6 dígitos que muda a cada 30 segundos, baseado no horário atual e numa chave secreta compartilhada.",
         options: ["HOTP", "Código Estático", "TOTP", "Smart-Card", "Token USB"],
         answer: "TOTP",
-        feedback: "TOTP (Time-based One-Time Password) gera senhas únicas com base no tempo atual — exige sincronia temporal entre dispositivo e servidor."
+        feedback: "TOTP (Time-based One-Time Password) gera senhas únicas com base no tempo atual - exige sincronia temporal entre dispositivo e servidor."
       },
       {
         id: "q1_5", pts: 4,
         text: "Carlos usa um código PIN fixo para entrar no datacenter. Esse código não muda ao longo do tempo.",
         options: ["HOTP", "TOTP", "Código Estático", "Smart-Card", "RADIUS"],
         answer: "Código Estático",
-        feedback: "Códigos Estáticos são senhas ou PINs que permanecem constantes — práticos, mas com maior risco de comprometimento por reutilização."
+        feedback: "Códigos Estáticos são senhas ou PINs que permanecem constantes - práticos, mas com maior risco de comprometimento por reutilização."
       },
     ]
   },
@@ -81,7 +81,7 @@ const STAGES = [
         text: "Algoritmo baseado em HMAC que gera senhas únicas usando uma chave secreta combinada com um CONTADOR.",
         options: ["TOTP", "HOTP", "RADIUS", "IEEE 802.1X", "TPM"],
         answer: "HOTP",
-        feedback: "HOTP (HMAC-based OTP) usa um contador incremental. Diferente do TOTP, os códigos são válidos até serem usados — sem dependência de sincronização de tempo."
+        feedback: "HOTP (HMAC-based OTP) usa um contador incremental. Diferente do TOTP, os códigos são válidos até serem usados - sem dependência de sincronização de tempo."
       },
       {
         id: "q2_4", pts: 5,
@@ -107,7 +107,7 @@ const STAGES = [
         id: "q3_1", pts: 4,
         text: "O token USB de autenticação foi perdido por um funcionário, mas nenhuma medida foi tomada pois ele também precisa de senha.",
         answer: "RISCO",
-        feedback: "RISCO! Um dispositivo comprometido (perdido/roubado) expõe a autenticação. A proteção do token deve ser imediata — revogar e emitir novo token é obrigatório."
+        feedback: "RISCO! Um dispositivo comprometido (perdido/roubado) expõe a autenticação. A proteção do token deve ser imediata - revogar e emitir novo token é obrigatório."
       },
       {
         id: "q3_2", pts: 4,
@@ -125,7 +125,7 @@ const STAGES = [
         id: "q3_4", pts: 4,
         text: "Os certificados digitais da empresa são criados por uma HSM e armazenados com controle de acesso físico rigoroso.",
         answer: "SEGURO",
-        feedback: "PRÁTICA SEGURA! HSMs com proteção física evitam acesso não autorizado às chaves criptográficas — implementação ideal para criação de certificados digitais."
+        feedback: "PRÁTICA SEGURA! HSMs com proteção física evitam acesso não autorizado às chaves criptográficas - implementação ideal para criação de certificados digitais."
       },
       {
         id: "q3_5", pts: 4,
@@ -138,7 +138,7 @@ const STAGES = [
   {
     id: 4,
     emoji: "🔄",
-    title: "HOTP vs. TOTP — Classificação",
+    title: "HOTP vs. TOTP - Classificação",
     subtitle: "Classifique cada característica como HOTP, TOTP ou AMBOS",
     color: "#004D40",
     accent: "#00695C",
@@ -151,7 +151,7 @@ const STAGES = [
         text: "O fator de geração do código é baseado no TEMPO ATUAL, não em um contador.",
         options: ["Apenas HOTP", "Apenas TOTP", "Ambos (HOTP e TOTP)", "Nenhum dos dois", "RADIUS"],
         answer: "Apenas TOTP",
-        feedback: "TOTP usa o tempo como fator variável — gera um código novo a cada intervalo (ex: 30 segundos). O HOTP usa um contador incremental."
+        feedback: "TOTP usa o tempo como fator variável - gera um código novo a cada intervalo (ex: 30 segundos). O HOTP usa um contador incremental."
       },
       {
         id: "q4_2", pts: 4,
@@ -165,14 +165,14 @@ const STAGES = [
         text: "Exige SINCRONIA TEMPORAL entre o dispositivo do usuário e o servidor de autenticação.",
         options: ["Apenas HOTP", "Apenas TOTP", "Ambos (HOTP e TOTP)", "Nenhum dos dois", "IEEE 802.1X"],
         answer: "Apenas TOTP",
-        feedback: "O TOTP depende do horário sincronizado entre cliente e servidor. O HOTP não precisa de sincronia temporal — usa um contador compartilhado."
+        feedback: "O TOTP depende do horário sincronizado entre cliente e servidor. O HOTP não precisa de sincronia temporal - usa um contador compartilhado."
       },
       {
         id: "q4_4", pts: 4,
         text: "Utiliza uma CHAVE SECRETA compartilhada entre o servidor e o dispositivo do usuário para gerar os códigos.",
         options: ["Apenas HOTP", "Apenas TOTP", "Ambos (HOTP e TOTP)", "Nenhum dos dois", "Código Estático"],
         answer: "Ambos (HOTP e TOTP)",
-        feedback: "Tanto HOTP quanto TOTP compartilham uma chave secreta entre servidor e cliente — a diferença é o fator variável: contador (HOTP) ou tempo (TOTP)."
+        feedback: "Tanto HOTP quanto TOTP compartilham uma chave secreta entre servidor e cliente - a diferença é o fator variável: contador (HOTP) ou tempo (TOTP)."
       },
       {
         id: "q4_5", pts: 4,
@@ -215,7 +215,7 @@ const STAGES = [
         type: "single",
         options: ["Código Estático mais complexo", "Verificação em Duas Etapas (2FA)", "Atualização do Windows", "Firewall de rede"],
         answer: "Verificação em Duas Etapas (2FA)",
-        feedback: "O 2FA (ex: TOTP via Google Authenticator) exigiria um segundo fator além da senha — mesmo com a senha comprometida, o acesso seria bloqueado sem o token."
+        feedback: "O 2FA (ex: TOTP via Google Authenticator) exigiria um segundo fator além da senha - mesmo com a senha comprometida, o acesso seria bloqueado sem o token."
       },
       {
         id: "q5_3", pts: 5,
@@ -228,7 +228,7 @@ const STAGES = [
           "Porque o TOTP dispensa servidor de autenticação"
         ],
         answer: "Porque o TOTP expira por tempo, dificultando ataques de replay",
-        feedback: "O TOTP expira automaticamente após um curto período — mesmo que o código seja interceptado, ele rapidamente se torna inválido, protegendo contra ataques de replay."
+        feedback: "O TOTP expira automaticamente após um curto período - mesmo que o código seja interceptado, ele rapidamente se torna inválido, protegendo contra ataques de replay."
       },
       {
         id: "q5_4", pts: 5,
@@ -445,7 +445,7 @@ function RiskStage({ stage, onComplete }) {
               })}
             </div>
             {submitted && <p style={{ margin: "10px 0 0", fontSize: 13, color: isRight ? "#69F0AE" : "#FFAB91", fontStyle: "italic" }}>
-              {isRight ? "✓" : `✗ Correto: ${q.answer}`} — {q.feedback}
+              {isRight ? "✓" : `✗ Correto: ${q.answer}`} - {q.feedback}
             </p>}
           </div>
         );
@@ -582,7 +582,7 @@ function Welcome({ onStart }) {
   return (
     <div style={{ maxWidth: 540, margin: "0 auto", textAlign: "center", padding: "40px 20px" }}>
       <div style={{ fontSize: 64, marginBottom: 16 }}>🔐</div>
-      <div style={{ fontSize: 11, letterSpacing: 4, color: "#00E676", fontFamily: "'Space Mono', monospace", marginBottom: 8 }}>HACKERS DO BEM — MÓDULO 04</div>
+      <div style={{ fontSize: 11, letterSpacing: 4, color: "#00E676", fontFamily: "'Space Mono', monospace", marginBottom: 8 }}>HACKERS DO BEM - MÓDULO 04</div>
       <h1 style={{ fontSize: 32, fontWeight: 900, color: "#fff", margin: "0 0 8px", lineHeight: 1.2, fontFamily: "'DM Sans', sans-serif" }}>
         Missão: Proteja a<br /><span style={{ color: "#40C4FF" }}>Autenticação da TechSafe</span>
       </h1>
@@ -629,7 +629,7 @@ function FinalResult({ name, scores }) {
         <div style={{ fontSize: 64, marginBottom: 8 }}>🏆</div>
         <div style={{ fontSize: 11, letterSpacing: 4, color: "#00E676", fontFamily: "'Space Mono', monospace", marginBottom: 12 }}>RESULTADO FINAL</div>
         <h2 style={{ fontSize: 28, fontWeight: 900, color: "#fff", margin: "0 0 4px" }}>{name}</h2>
-        <p style={{ color: "rgba(255,255,255,0.4)", margin: 0, fontSize: 14 }}>Hackers do Bem — Módulo 04, Aula 03</p>
+        <p style={{ color: "rgba(255,255,255,0.4)", margin: 0, fontSize: 14 }}>Hackers do Bem - Módulo 04, Aula 03</p>
       </div>
 
       <div style={{

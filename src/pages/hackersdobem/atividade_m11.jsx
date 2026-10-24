@@ -151,7 +151,7 @@ const QUESTIONS_POOL = [
     category: "ARQUITETURA",
     text: "Modelo de segurança que não confia em absolutamente nada por padrão, nem interno.",
     answer: "ZERO TRUST",
-    feedback: "Confiança Zero — Validação contínua mesmo depois do login.",
+    feedback: "Confiança Zero - Validação contínua mesmo depois do login.",
     points: 10
   },
   {

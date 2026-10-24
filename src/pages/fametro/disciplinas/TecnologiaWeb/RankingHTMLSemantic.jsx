@@ -142,7 +142,7 @@ export default function RankingHTMLSemantic() {
                   FAMETRO · Tecnologia Web I · Aula 01
                 </div>
                 <h1 style={{ margin: "4px 0 0", fontSize: 22, fontWeight: 900, color: "#fff", lineHeight: 1.1, fontFamily: "'Syne', sans-serif" }}>
-                  SEMANTICQUEST — Ranking Oficial
+                  SEMANTICQUEST - Ranking Oficial
                 </h1>
               </div>
             </div>
@@ -170,9 +170,9 @@ export default function RankingHTMLSemantic() {
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 12, marginBottom: 28 }}>
           {[
             { label: "Finalizaram", value: stats.total, icon: "👥", color: "#FF7675" },
-            { label: "Média da Turma", value: stats.total ? `${stats.avg} pts` : "—", icon: "📊", color: "#E44D26" },
+            { label: "Média da Turma", value: stats.total ? `${stats.avg} pts` : "-", icon: "📊", color: "#E44D26" },
             { label: "Excelentes", value: stats.perfect, icon: "💯", color: "#FFD700" },
-            { label: "Líder", value: stats.top ? stats.top.name.split(" ")[0] : "—", icon: "🏆", color: "#F5A623" },
+            { label: "Líder", value: stats.top ? stats.top.name.split(" ")[0] : "-", icon: "🏆", color: "#F5A623" },
           ].map(card => (
             <div key={card.label} style={{
               background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)",

@@ -295,11 +295,11 @@ input[type=range]::-webkit-slider-thumb {
 
 <!-- FASE NAV -->
 <div class="phase-nav" id="phase-nav">
-  <button class="phase-btn active" onclick="goto(0)"><span class="dot"></span>Fase 1 — Dor</button>
-  <button class="phase-btn" onclick="goto(1)"><span class="dot"></span>Fase 2 — Solução</button>
-  <button class="phase-btn" onclick="goto(2)"><span class="dot"></span>Fase 3 — Viabilidade</button>
-  <button class="phase-btn" onclick="goto(3)"><span class="dot"></span>Fase 4 — MVP</button>
-  <button class="phase-btn" onclick="goto(4)"><span class="dot"></span>Fase 5 — Validação IA</button>
+  <button class="phase-btn active" onclick="goto(0)"><span class="dot"></span>Fase 1 - Dor</button>
+  <button class="phase-btn" onclick="goto(1)"><span class="dot"></span>Fase 2 - Solução</button>
+  <button class="phase-btn" onclick="goto(2)"><span class="dot"></span>Fase 3 - Viabilidade</button>
+  <button class="phase-btn" onclick="goto(3)"><span class="dot"></span>Fase 4 - MVP</button>
+  <button class="phase-btn" onclick="goto(4)"><span class="dot"></span>Fase 5 - Validação IA</button>
 </div>
 
 <!-- ============ FASE 1 ============ -->
@@ -307,7 +307,7 @@ input[type=range]::-webkit-slider-thumb {
   <div class="section-head">
     <div class="section-icon" style="background:#d4edda">🌱</div>
     <div>
-      <h2>Fase 1 — Identifique a Dor</h2>
+      <h2>Fase 1 - Identifique a Dor</h2>
       <p>Todo bom projeto começa com um problema real. Escolha o contexto amazônico que mais te move.</p>
     </div>
   </div>
@@ -321,7 +321,7 @@ input[type=range]::-webkit-slider-thumb {
       <div class="opt" onclick="selectOpt(this,'q1','A','A')"><span class="opt-letter">A</span>Agricultores familiares não conseguem vender produtos sem intermediários que ficam com 60–70% do lucro</div>
       <div class="opt" onclick="selectOpt(this,'q1','B','A')"><span class="opt-letter">B</span>Turistas têm dificuldade de encontrar roteiros ecológicos certificados e confiáveis na região</div>
       <div class="opt" onclick="selectOpt(this,'q1','C','A')"><span class="opt-letter">C</span>Populações ribeirinhas perdem horas por semana sem acesso a serviços públicos básicos de saúde</div>
-      <div class="opt" onclick="selectOpt(this,'q1','D','A')"><span class="opt-letter">D</span>Todas acima representam dores reais — o critério é impacto mensurável e escalabilidade</div>
+      <div class="opt" onclick="selectOpt(this,'q1','D','A')"><span class="opt-letter">D</span>Todas acima representam dores reais - o critério é impacto mensurável e escalabilidade</div>
     </div>
     <div class="feedback-box fb-green" id="fb-q1-A" style="display:none">✅ Certo! Mas a opção D é a mais completa: qualquer das dores é válida desde que você consiga medir o impacto. +30 XP</div>
     <div class="feedback-box fb-amber" id="fb-q1-B" style="display:none">⚠️ Verdade, mas não é a dor de maior alcance social. O critério principal é escala e impacto mensurável. Tente D.</div>
@@ -331,7 +331,7 @@ input[type=range]::-webkit-slider-thumb {
 
   <!-- Q2 TEMA -->
   <div class="q-card">
-    <div class="q-label" style="color:#1a7a4a">Questão 2 — Escolha seu Tema <span class="q-pts">+20 XP</span></div>
+    <div class="q-label" style="color:#1a7a4a">Questão 2 - Escolha seu Tema <span class="q-pts">+20 XP</span></div>
     <div class="q-text">Selecione o eixo temático do seu projeto de software:</div>
     <div class="tag-grid" id="tema-tags">
       <div class="tag" onclick="pickTema(this,'agro')">🌾 AgroTech Florestal</div>
@@ -346,7 +346,7 @@ input[type=range]::-webkit-slider-thumb {
 
   <!-- Q3 Descrição da dor -->
   <div class="q-card">
-    <div class="q-label" style="color:#1a7a4a">Questão 3 — Descreva a Dor <span class="q-pts">+50 XP</span></div>
+    <div class="q-label" style="color:#1a7a4a">Questão 3 - Descreva a Dor <span class="q-pts">+50 XP</span></div>
     <div class="q-text">Descreva a problemática real que seu software vai resolver em 2–3 frases.</div>
     <div class="q-sub">Use o formato: <strong>Quem sofre → O que acontece → Qual a consequência</strong></div>
     <textarea id="dor-txt" placeholder="Ex.: Pequenos produtores de açaí do Marajó (quem) não têm acesso direto a compradores urbanos (o que), perdendo até 70% da receita para atravessadores (consequência)." rows="4"></textarea>
@@ -366,7 +366,7 @@ input[type=range]::-webkit-slider-thumb {
   <div class="section-head">
     <div class="section-icon" style="background:#dceeff">💡</div>
     <div>
-      <h2>Fase 2 — Defina a Solução</h2>
+      <h2>Fase 2 - Defina a Solução</h2>
       <p>Transforme a dor em uma solução de software com proposta de valor clara.</p>
     </div>
   </div>
@@ -389,7 +389,7 @@ input[type=range]::-webkit-slider-thumb {
 
   <!-- Q5 Proposta de valor -->
   <div class="q-card">
-    <div class="q-label" style="color:#1a4e8a">Questão 5 — Nome e Proposta de Valor <span class="q-pts">+40 XP</span></div>
+    <div class="q-label" style="color:#1a4e8a">Questão 5 - Nome e Proposta de Valor <span class="q-pts">+40 XP</span></div>
     <div class="q-text">Dê um nome ao seu software e escreva uma proposta de valor em 1 frase.</div>
     <div class="q-sub">Formato: <strong>[Nome]</strong> ajuda <strong>[quem]</strong> a <strong>[fazer o quê]</strong> sem <strong>[dor/obstáculo]</strong>.</div>
     <textarea id="proposta-txt" placeholder="Ex.: AçaíDireto ajuda produtores ribeirinhos a vender direto para restaurantes e mercados urbanos sem depender de atravessadores." rows="3"></textarea>
@@ -410,7 +410,7 @@ input[type=range]::-webkit-slider-thumb {
   <div class="section-head">
     <div class="section-icon" style="background:#fff3cc">💰</div>
     <div>
-      <h2>Fase 3 — Viabilidade e Finanças</h2>
+      <h2>Fase 3 - Viabilidade e Finanças</h2>
       <p>Uma boa ideia precisa ser sustentável. Avalie o modelo de negócio e os números.</p>
     </div>
   </div>
@@ -433,7 +433,7 @@ input[type=range]::-webkit-slider-thumb {
 
   <!-- Calculadora financeira -->
   <div class="q-card">
-    <div class="q-label" style="color:#c07a10">Questão 7 — Calculadora de Viabilidade <span class="q-pts">+50 XP</span></div>
+    <div class="q-label" style="color:#c07a10">Questão 7 - Calculadora de Viabilidade <span class="q-pts">+50 XP</span></div>
     <div class="q-text">Simule as métricas financeiras do seu projeto:</div>
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px">
@@ -470,7 +470,7 @@ input[type=range]::-webkit-slider-thumb {
       </div>
       <div class="mvp-item">
         <h4>Break-even est.</h4>
-        <p style="font-size:16px;font-weight:700;color:#c07a10" id="calc-be">— meses</p>
+        <p style="font-size:16px;font-weight:700;color:#c07a10" id="calc-be">- meses</p>
       </div>
     </div>
 
@@ -491,7 +491,7 @@ input[type=range]::-webkit-slider-thumb {
   <div class="section-head">
     <div class="section-icon" style="background:#ffe8e0">🚀</div>
     <div>
-      <h2>Fase 4 — Construa seu MVP</h2>
+      <h2>Fase 4 - Construa seu MVP</h2>
       <p>MVP = Produto Mínimo Viável. O que é o mínimo necessário para testar sua hipótese?</p>
     </div>
   </div>
@@ -507,8 +507,8 @@ input[type=range]::-webkit-slider-thumb {
       <div class="opt" onclick="selectOpt(this,'q8','D','D')"><span class="opt-letter">D</span>A versão mais simples que entrega valor real ao usuário e permite aprendizado validado</div>
     </div>
     <div class="feedback-box fb-red" id="fb-q8-A">❌ Barato ≠ mínimo. MVP foca em aprendizado, não só em custo.</div>
-    <div class="feedback-box fb-red" id="fb-q8-B">❌ Produto completo não é MVP — é o contrário da metodologia lean.</div>
-    <div class="feedback-box fb-amber" id="fb-q8-C">⚠️ Protótipo de tela pode ser etapa do MVP, mas não é o MVP em si — precisa ter funcionalidade testável.</div>
+    <div class="feedback-box fb-red" id="fb-q8-B">❌ Produto completo não é MVP - é o contrário da metodologia lean.</div>
+    <div class="feedback-box fb-amber" id="fb-q8-C">⚠️ Protótipo de tela pode ser etapa do MVP, mas não é o MVP em si - precisa ter funcionalidade testável.</div>
     <div class="feedback-box fb-green" id="fb-q8-D">🏆 Perfeito! MVP = valor mínimo entregável + hipótese testável + aprendizado mensurável. +30 XP</div>
   </div>
 
@@ -553,7 +553,7 @@ input[type=range]::-webkit-slider-thumb {
   <div class="section-head">
     <div class="section-icon" style="background:#e8e0ff">🤖</div>
     <div>
-      <h2>Fase 5 — Validação com Mentor IA</h2>
+      <h2>Fase 5 - Validação com Mentor IA</h2>
       <p>Envie seu projeto para análise automatizada. A IA avalia pré-requisitos, viabilidade, modelo financeiro e MVP.</p>
     </div>
   </div>
@@ -566,23 +566,23 @@ input[type=range]::-webkit-slider-thumb {
     </div>
     <div id="radar-filled" style="display:none">
       <div class="meter">
-        <div class="meter-label"><span>Clareza da Dor</span><span id="m1-val">—</span></div>
+        <div class="meter-label"><span>Clareza da Dor</span><span id="m1-val">-</span></div>
         <div class="meter-track"><div class="meter-fill" id="m1" style="background:#23a65e"></div></div>
       </div>
       <div class="meter">
-        <div class="meter-label"><span>Adequação da Solução</span><span id="m2-val">—</span></div>
+        <div class="meter-label"><span>Adequação da Solução</span><span id="m2-val">-</span></div>
         <div class="meter-track"><div class="meter-fill" id="m2" style="background:#2a7cd4"></div></div>
       </div>
       <div class="meter">
-        <div class="meter-label"><span>Viabilidade Financeira</span><span id="m3-val">—</span></div>
+        <div class="meter-label"><span>Viabilidade Financeira</span><span id="m3-val">-</span></div>
         <div class="meter-track"><div class="meter-fill" id="m3" style="background:#f0a830"></div></div>
       </div>
       <div class="meter">
-        <div class="meter-label"><span>Completude do MVP</span><span id="m4-val">—</span></div>
+        <div class="meter-label"><span>Completude do MVP</span><span id="m4-val">-</span></div>
         <div class="meter-track"><div class="meter-fill" id="m4" style="background:#e05030"></div></div>
       </div>
       <div class="meter">
-        <div class="meter-label"><span>Impacto Amazônico</span><span id="m5-val">—</span></div>
+        <div class="meter-label"><span>Impacto Amazônico</span><span id="m5-val">-</span></div>
         <div class="meter-track"><div class="meter-fill" id="m5" style="background:#9b59b6"></div></div>
       </div>
     </div>
@@ -818,9 +818,9 @@ function sendToAI(){
   fb.style.display='block';
   document.getElementById('result-section').style.display='block';
   document.getElementById('result-score').textContent=state.xp+' XP';
-  const lvl=state.xp>=400?'🥇 Nível Ouro — Projeto Aprovado para a Feira!':
-             state.xp>=250?'🥈 Nível Prata — Bom potencial, refine os pontos indicados.':
-             '🥉 Nível Bronze — Continue desenvolvendo sua ideia!';
+  const lvl=state.xp>=400?'🥇 Nível Ouro - Projeto Aprovado para a Feira!':
+             state.xp>=250?'🥈 Nível Prata - Bom potencial, refine os pontos indicados.':
+             '🥉 Nível Bronze - Continue desenvolvendo sua ideia!';
   document.getElementById('result-level').textContent=lvl;
   const badges=[];
   if(state.tema)badges.push('<span class="chip chip-green">🌿 Tema Definido</span>');

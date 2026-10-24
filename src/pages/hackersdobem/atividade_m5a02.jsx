@@ -8,7 +8,7 @@ import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 const QUESTION_BANK = [
   {
     id: 1,
-    level: "Nível 1 — Iniciante",
+    level: "Nível 1 - Iniciante",
     scenario: "Um administrador está configurando novos usuários no sistema do RH. Ele insere nome completo, e-mail, telefone e o departamento ao qual os usuários pertencem.",
     text: "No contexto de Gerenciamento de Identidades e Contas, essas informações inseridas (nome, e-mail, telefone e departamento) representam o quê?",
     options: [
@@ -22,7 +22,7 @@ const QUESTION_BANK = [
   },
   {
     id: 2,
-    level: "Nível 1 — Iniciante",
+    level: "Nível 1 - Iniciante",
     scenario: "Uma empresa precisa garantir que todos os funcionários alterem suas senhas a cada 90 dias, além de exigir no mínimo 8 caracteres contendo letras e números.",
     text: "Qual mecanismo o administrador deve utilizar para implementar e forçar obrigatoriamente essa regra para todos no ambiente do Windows?",
     options: [
@@ -36,7 +36,7 @@ const QUESTION_BANK = [
   },
   {
     id: 3,
-    level: "Nível 2 — Básico",
+    level: "Nível 2 - Básico",
     scenario: "O departamento de segurança percebeu que muitos usuários estavam usando '123456' ou 'senha' como credencial de acesso.",
     text: "Quais aspectos de uma política de configurações de senhas de conta o administrador deve priorizar para resolver o problema de senhas fracas?",
     options: [
@@ -50,7 +50,7 @@ const QUESTION_BANK = [
   },
   {
     id: 4,
-    level: "Nível 2 — Básico",
+    level: "Nível 2 - Básico",
     scenario: "A empresa possui um aplicativo em dispositivos móveis que só deve poder ser usado caso o funcionário esteja fisicamente dentro da área da fábrica.",
     text: "Como se chama a tecnologia de controle de acesso espacial que verifica a localização física do dispositivo para conceder o acesso?",
     options: [
@@ -64,7 +64,7 @@ const QUESTION_BANK = [
   },
   {
     id: 5,
-    level: "Nível 3 — Intermediário",
+    level: "Nível 3 - Intermediário",
     scenario: "Um ataque de força bruta foi deflagrado e um invasor tentou adivinhar a senha do diretor logando sem sucesso 15 vezes em menos de um minuto.",
     text: "Para defender as contas da empresa contra esse tipo de ataque, qual regra de segurança deve estar configurada?",
     options: [
@@ -78,7 +78,7 @@ const QUESTION_BANK = [
   },
   {
     id: 6,
-    level: "Nível 3 — Intermediário",
+    level: "Nível 3 - Intermediário",
     scenario: "O analista do centro de operações de segurança (SOC) identificou que o mesmo arquivo confidencial foi alterado por três usuários não autorizados nos últimos dois dias.",
     text: "Qual processo a equipe deve executar para revisar o histórico das atividades desses três usuários com o intuito de aplicar uma ação disciplinar?",
     options: [
@@ -92,7 +92,7 @@ const QUESTION_BANK = [
   },
   {
     id: 7,
-    level: "Nível 3 — Intermediário",
+    level: "Nível 3 - Intermediário",
     scenario: "Um analista precisa abrir vários PDFs que contêm faturas na pasta do servidor, no entanto, ele não deve ser capaz de modificar ou apagar essas faturas.",
     text: "Quais permissões mínimas devem ser atribuídas à conta deste usuário na pasta do servidor de arquivos?",
     options: [
@@ -106,7 +106,7 @@ const QUESTION_BANK = [
   },
   {
     id: 8,
-    level: "Nível 4 — Avançado",
+    level: "Nível 4 - Avançado",
     scenario: "Um funcionário pediu desligamento e deixou a organização. Para garantir que ninguém fará o uso ilegítimo de sua conta por engano no futuro.",
     text: "A medida administrativa mais recomendada sobre o status dessa conta após sua saída deve ser:",
     options: [
@@ -120,7 +120,7 @@ const QUESTION_BANK = [
   },
   {
     id: 9,
-    level: "Nível 4 — Avançado",
+    level: "Nível 4 - Avançado",
     scenario: "A equipe de TI da organização precisa que o estagiário execute um de seus scripts que processam dados diariamente. O programa precisa abrir o arquivo, aplicar fórmulas e salvar as mudanças no mesmo lugar.",
     text: "Para que o script funcione perfeitamente com interações de arquivo, quais permissões básicas devem ser atribuídas ao estagiário?",
     options: [
@@ -134,7 +134,7 @@ const QUESTION_BANK = [
   },
   {
     id: 10,
-    level: "Nível 4 — Avançado",
+    level: "Nível 4 - Avançado",
     scenario: "Uma empresa decidiu implementar auditoria em sua rede, mas o administrador de rede argumenta que auditar todas as ações de cada usuário vai sobrecarregar o armazenamento.",
     text: "Considerando as práticas ideais de gerenciamento e auditoria de contas, o que o administrador deve configurar?",
     options: [
@@ -148,7 +148,7 @@ const QUESTION_BANK = [
   },
   {
     id: 11,
-    level: "Nível 5 — Especialista",
+    level: "Nível 5 - Especialista",
     scenario: "O departamento de segurança precisa restringir o acesso remoto dos administradores, limitando-os das 08h às 18h em dias de semana e criando um controle rígido baseado na localização IP corporativa.",
     text: "Essas restrições enquadram-se principalmente em qual objetivo das Políticas de Contas?",
     options: [
@@ -162,7 +162,7 @@ const QUESTION_BANK = [
   },
   {
     id: 12,
-    level: "Nível 5 — Especialista",
+    level: "Nível 5 - Especialista",
     scenario: "Durante uma investigação minuciosa com foco forense, descobriu-se que após uma tentativa mal sucedida de intrusão com força bruta a conta foi travada. Porém, o atacante mudou para outra conta esquecida e invadiu o sistema.",
     text: "Essa ocorrência demonstra falta do quê no ciclo de gerenciamento dessa segunda conta atacada?",
     options: [
@@ -176,7 +176,7 @@ const QUESTION_BANK = [
   },
   {
     id: 13,
-    level: "Nível 2 — Básico",
+    level: "Nível 2 - Básico",
     scenario: "O analista precisa conceder o controle para que uma nova aplicação funcione consumindo os dados do AD do usuário (ex: cargo, telefone e email), sem deixar alterar nada.",
     text: "Para que o aplicativo possa apenas reconhecer e obter essas informações, o que será consumido da conta?",
     options: [
@@ -190,7 +190,7 @@ const QUESTION_BANK = [
   },
   {
     id: 14,
-    level: "Nível 3 — Intermediário",
+    level: "Nível 3 - Intermediário",
     scenario: "Muitos usuários de escritório criam planilhas que as lideranças precisam ler e comentar no mesmo arquivo da rede corporativa.",
     text: "Como as políticas orientam para dar apenas a permissão adequada as lideranças, em prol da restrição condicional?",
     options: [
@@ -204,7 +204,7 @@ const QUESTION_BANK = [
   },
   {
     id: 15,
-    level: "Nível 4 — Avançado",
+    level: "Nível 4 - Avançado",
     scenario: "Há um aumento do risco interno após diversas senhas de colaboradores terem sido descobertas recentemente em listas públicas ou fóruns (senhas como 'brasil123').",
     text: "Qual configuração na política deve ser enrijecida primeiramente?",
     options: [

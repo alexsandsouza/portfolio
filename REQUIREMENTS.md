@@ -148,14 +148,14 @@ service cloud.firestore {
 
 | Artigo LGPD | Requisito | Status | Implementação |
 |-------------|-----------|--------|---------------|
-| Art. 6º, I | **Finalidade** — Dados coletados para finalidade específica | ✅ | Formulário coleta apenas nome, email e mensagem para contato profissional |
-| Art. 6º, II | **Adequação** — Compatível com a finalidade informada | ✅ | Campos do formulário são adequados ao propósito de contato |
-| Art. 6º, III | **Necessidade** — Coleta mínima necessária | ✅ | Apenas 3 campos: nome, email, mensagem. Sem coleta de CPF, RG ou dados sensíveis |
-| Art. 6º, VII | **Segurança** — Medidas técnicas de proteção | ✅ | HTTPS, XSS prevention, FormSubmit.co com encriptação |
-| Art. 7º, I | **Consentimento** — Base legal para tratamento | ⚠️ | Recomendação: adicionar checkbox de consentimento no formulário |
-| Art. 11 | **Dados Sensíveis** — Não coletar sem necessidade | ✅ | Nenhum dado sensível é coletado (religião, biometria, etc.) |
-| Art. 18 | **Direitos do Titular** — Acesso, correção, exclusão | ℹ️ | Dados de contato não são persistidos; titular pode solicitar via email |
-| Art. 46 | **Medidas de Segurança** — Proteção contra acesso não autorizado | ✅ | Firebase rules, HTTPS, variáveis de ambiente |
+| Art. 6º, I | **Finalidade** - Dados coletados para finalidade específica | ✅ | Formulário coleta apenas nome, email e mensagem para contato profissional |
+| Art. 6º, II | **Adequação** - Compatível com a finalidade informada | ✅ | Campos do formulário são adequados ao propósito de contato |
+| Art. 6º, III | **Necessidade** - Coleta mínima necessária | ✅ | Apenas 3 campos: nome, email, mensagem. Sem coleta de CPF, RG ou dados sensíveis |
+| Art. 6º, VII | **Segurança** - Medidas técnicas de proteção | ✅ | HTTPS, XSS prevention, FormSubmit.co com encriptação |
+| Art. 7º, I | **Consentimento** - Base legal para tratamento | ⚠️ | Recomendação: adicionar checkbox de consentimento no formulário |
+| Art. 11 | **Dados Sensíveis** - Não coletar sem necessidade | ✅ | Nenhum dado sensível é coletado (religião, biometria, etc.) |
+| Art. 18 | **Direitos do Titular** - Acesso, correção, exclusão | ℹ️ | Dados de contato não são persistidos; titular pode solicitar via email |
+| Art. 46 | **Medidas de Segurança** - Proteção contra acesso não autorizado | ✅ | Firebase rules, HTTPS, variáveis de ambiente |
 
 ### 6.2 Dados Coletados
 
@@ -237,14 +237,14 @@ npm run test:coverage  # Gerar relatório de cobertura
 
 | Termo | Definição |
 |-------|-----------|
-| **SPA** | Single Page Application — aplicação de página única |
+| **SPA** | Single Page Application - aplicação de página única |
 | **Code Splitting** | Divisão do bundle em chunks carregados sob demanda |
 | **LGPD** | Lei Geral de Proteção de Dados (Lei 13.709/2018) |
 | **PII** | Personally Identifiable Information (Dados Pessoais Identificáveis) |
-| **LCP** | Largest Contentful Paint — métrica de performance web |
-| **XSS** | Cross-Site Scripting — tipo de vulnerabilidade de injeção |
-| **BaaS** | Backend as a Service — backend gerenciado (Firebase) |
-| **TDD** | Test-Driven Development — desenvolvimento orientado a testes |
+| **LCP** | Largest Contentful Paint - métrica de performance web |
+| **XSS** | Cross-Site Scripting - tipo de vulnerabilidade de injeção |
+| **BaaS** | Backend as a Service - backend gerenciado (Firebase) |
+| **TDD** | Test-Driven Development - desenvolvimento orientado a testes |
 
 ---
 

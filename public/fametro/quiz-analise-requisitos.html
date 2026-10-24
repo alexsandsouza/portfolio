@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>REQQUEST — Quiz de Análise de Requisitos</title>
+<title>REQQUEST - Quiz de Análise de Requisitos</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -899,7 +899,7 @@
       </div>
     </div>
     <div class="score-display">⬡ <span id="liveScore">0</span> pts</div>
-    <div class="player-tag" id="playerTag">—</div>
+    <div class="player-tag" id="playerTag">-</div>
   </div>
 
   <div class="quiz-body">
@@ -987,7 +987,7 @@ const QUESTIONS = [
     text: "O que define uma Inconsistência Lógica nos requisitos?",
     answers: [
       "Requisitos redigidos em idiomas diferentes",
-      "Quando um requisito anula o outro — ex: 'sistema rápido' vs 'segurança máxima que o torne lento'",
+      "Quando um requisito anula o outro - ex: 'sistema rápido' vs 'segurança máxima que o torne lento'",
       "Requisitos duplicados com mesmo conteúdo",
       "Requisitos sem identificador único"
     ],
@@ -1051,10 +1051,10 @@ const QUESTIONS = [
     category: "ANÁLISE DE VIABILIDADE",
     text: "Qual métrica financeira é frequentemente usada para justificar a decisão de seguir em frente com um projeto?",
     answers: [
-      "NPS — Net Promoter Score",
-      "ROI — Retorno sobre o Investimento",
-      "KPI — Key Performance Indicator",
-      "SLA — Service Level Agreement"
+      "NPS - Net Promoter Score",
+      "ROI - Retorno sobre o Investimento",
+      "KPI - Key Performance Indicator",
+      "SLA - Service Level Agreement"
     ],
     correct: 1,
     feedback: "O ROI (Retorno sobre o Investimento) e a análise de custo-benefício são as métricas mais usadas para justificar a decisão de prosseguir com o projeto.",
@@ -1077,10 +1077,10 @@ const QUESTIONS = [
     category: "PRIORIZAÇÃO",
     text: "O que significa a letra 'M' na técnica MoSCoW?",
     answers: [
-      "Moderado — pode aguardar",
-      "Must — requisito obrigatório",
-      "Mínimo — escopo reduzido",
-      "Melhor — ideal mas não necessário"
+      "Moderado - pode aguardar",
+      "Must - requisito obrigatório",
+      "Mínimo - escopo reduzido",
+      "Melhor - ideal mas não necessário"
     ],
     correct: 1,
     feedback: "Na técnica MoSCoW: M = Must (Obrigatório), S = Should (Importante), C = Could (Desejável), W = Won't (Não essencial agora).",
@@ -1441,7 +1441,7 @@ function checkBadges() {
       state.earnedBadges.push(b.id);
       const el = document.getElementById(`badge-${b.id}`);
       if (el) el.classList.add('earned');
-      showNotification(`🏅 Conquista Desbloqueada!`, `${b.emoji} ${b.name} — ${b.desc}`);
+      showNotification(`🏅 Conquista Desbloqueada!`, `${b.emoji} ${b.name} - ${b.desc}`);
     }
   });
 }

@@ -1,4 +1,4 @@
-# Infraestrutura e Deploy — Portfólio Profissional
+# Infraestrutura e Deploy - Portfólio Profissional
 
 Esta documentação descreve o fluxo de deploy contínuo, a configuração do servidor da Vercel e o gerenciamento de variáveis de ambiente.
 
@@ -7,8 +7,8 @@ Esta documentação descreve o fluxo de deploy contínuo, a configuração do se
 ## 1. Fluxo de Deploy Contínuo (CI/CD)
 
 O deploy de produção é hospedado na **Vercel** com integração direta ao repositório GitHub do projeto.
-- **Branch de Produção**: `main` — Qualquer alteração integrada à branch `main` dispara o build automático e a publicação global na Vercel CDN.
-- **Branch de Refatoração**: `refactor/portfolio-profissional` — Usada para homologar melhorias e testes de segurança em ambientes de Preview antes do merge final.
+- **Branch de Produção**: `main` - Qualquer alteração integrada à branch `main` dispara o build automático e a publicação global na Vercel CDN.
+- **Branch de Refatoração**: `refactor/portfolio-profissional` - Usada para homologar melhorias e testes de segurança em ambientes de Preview antes do merge final.
 
 ---
 

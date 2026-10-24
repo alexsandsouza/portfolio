@@ -186,7 +186,7 @@ const STAGES = [
     points: 20,
     time: 300,
     type: "boss",
-    scenario: "Você está desenhando um sistema para um Zoológico. Você sabe que todo Animal deve ter um método 'fazerSom()', mas um 'Animal' genérico não faz som sozinho — apenas os bichos específicos (Leão, Pássaro). Além disso, alguns animais podem 'Voar' e outros não.",
+    scenario: "Você está desenhando um sistema para um Zoológico. Você sabe que todo Animal deve ter um método 'fazerSom()', mas um 'Animal' genérico não faz som sozinho - apenas os bichos específicos (Leão, Pássaro). Além disso, alguns animais podem 'Voar' e outros não.",
     questions: [
       {
         id: "q5_1", pts: 5,

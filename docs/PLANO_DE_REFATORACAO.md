@@ -1,4 +1,4 @@
-# Plano de Refatoração — Portfólio Profissional Prof. Alexsander Farias
+# Plano de Refatoração - Portfólio Profissional Prof. Alexsander Farias
 
 Este plano detalha as etapas de implementação para resolver todos os problemas levantados na Auditoria Técnica e os respectivos critérios de validação para garantir a integridade do portfólio profissional em produção.
 

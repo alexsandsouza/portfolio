@@ -97,7 +97,7 @@ Clique no botão "+" (canto superior direito) > "New repository".
 3 
 Configure o repositório 
 Repository name: portfolio-seu-nome (ex: portfolio-joao-silva). Visibilidade: Public 
-(obrigatório para GitHub Pages gratuito). NÃO marque "Initialize this repository" — o 
+(obrigatório para GitHub Pages gratuito). NÃO marque "Initialize this repository" - o 
 código virá do seu computador. 
  
 4 
@@ -200,17 +200,17 @@ git push
 # O GitHub Pages atualiza automaticamente em 1-2 minutos 
  
 Boas práticas de mensagens de commit: 
-Prefixo Quando usar — exemplo 
+Prefixo Quando usar - exemplo 
 feat: 
-Nova funcionalidade — feat: adiciona seção de certificados 
+Nova funcionalidade - feat: adiciona seção de certificados 
 fix: 
-Correção de erro — fix: corrige link quebrado no footer 
+Correção de erro - fix: corrige link quebrado no footer 
 style: 
-Ajuste visual — style: melhora responsividade do header 
+Ajuste visual - style: melhora responsividade do header 
 docs: 
-Documentação — docs: adiciona README ao repositório 
+Documentação - docs: adiciona README ao repositório 
 refactor: 
-Refatoração — refactor: reorganiza estrutura do CSS 
+Refatoração - refactor: reorganiza estrutura do CSS 
  
 PASSO 7 - ADICIONANDO UM README AO REPOSITÓRIO 
 
@@ -218,10 +218,10 @@ Um bom README transforma o repositório em um cartão de visitas técnico. Crie 
 README.md na pasta portfolio/: 
  
  
-# Portfólio — Seu Nome 
+# Portfólio - Seu Nome 
  
 Portfólio pessoal desenvolvido como projeto final da disciplina 
-**Tecnologia Web I** — CEUNI FAMETRO (2026.1). 
+**Tecnologia Web I** - CEUNI FAMETRO (2026.1). 
  
 ## Tecnologias utilizadas 
 - HTML5 (semântico) 
@@ -237,7 +237,7 @@ https://seu-usuario.github.io/portfolio-seu-nome
 - Formação e Experiência 
 - Contato 
  
-## Autor**Seu Nome** | Sistemas de Informação — CEUNI FAMETRO 
+## Autor**Seu Nome** | Sistemas de Informação - CEUNI FAMETRO 
  
  
 # Após criar o README.md, envie para o GitHub: 
@@ -253,7 +253,7 @@ GitHub Pages mostra página em
 branco 
 Confirme que o arquivo principal se chama exatamente 
 index.html (minúsculas) na raiz do repositório. 
-GitHub Pages não encontra o CSS O caminho no HTML deve ser href="css/style.css" — 
+GitHub Pages não encontra o CSS O caminho no HTML deve ser href="css/style.css" - 
 caminho relativo, sem /. Caminhos absolutos não 
 funcionam no GitHub Pages gratuito. 
 Imagens não aparecem no GitHub 
@@ -265,7 +265,7 @@ são arquivos diferentes.
 Branch rejeitada (not found) Execute git branch -M main para garantir que a branch se 
 chama main antes do push. 
  
-CHECKLIST DO ENTREGÁVEL FINAL — AULA 05 
+CHECKLIST DO ENTREGÁVEL FINAL - AULA 05 
 ☐ 
 Portfólio revisado: HTML válido, CSS aplicado, imagens carregando, formulário funcional 
 ☐ 
@@ -289,7 +289,7 @@ README.md criado e enviado ao repositório
 Links do repositório e do GitHub Pages enviados ao professor conforme instrução 
  
   PARABÉNS - PORTFÓLIO CONCLUÍDO! 
-Ao completar esta aula, você terá desenvolvido do zero um portfólio pessoal completo — 
+Ao completar esta aula, você terá desenvolvido do zero um portfólio pessoal completo - 
 estruturado em HTML5 semântico, estilizado com CSS3 e Flexbox, responsivo para mobile e 
 publicado online com uma URL permanente. Você agora tem um portfólio real para mostrar em 
 entrevistas, processos seletivos e redes profissionais! 
@@ -316,9 +316,9 @@ e-mails, e explorar CSS Grid para layouts mais complexos.
  
 ___________________________________ 
 Prof. Alexsander Farias 
-Tecnologia Web I — CEUNI FAMETRO 
+Tecnologia Web I - CEUNI FAMETRO 
   
 ___________________________________ 
 Aluno(a) 
 Matrícula: ______________________ 
-Manaus, AM — 2026.1 
+Manaus, AM - 2026.1 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 /**
- * CookieConsent — Banner de consentimento LGPD
+ * CookieConsent - Banner de consentimento LGPD
  * 
  * Exibe um banner fixo no rodapé pedindo consentimento para cookies
  * e uso de dados conforme a LGPD (Lei 13.709/2018).

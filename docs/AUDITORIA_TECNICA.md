@@ -1,4 +1,4 @@
-# Auditoria Técnica Completa — Portfólio Profissional Prof. Alexsander Farias
+# Auditoria Técnica Completa - Portfólio Profissional Prof. Alexsander Farias
 
 ## Resumo Executivo
 Esta auditoria avaliou a base de código do portfólio profissional do Prof. Alexsander Farias, com foco em arquitetura, qualidade de código, performance, acessibilidade, segurança e SEO. O projeto é um ecossistema React estruturado com Vite, possuindo integrações complexas de simulação acadêmica e testes comportamentais que atendem centenas de alunos das disciplinas ministradas pelo professor e participantes de programas como o Hackers do Bem. A auditoria identificou vulnerabilidades de segurança, problemas de layout shift, corte de texto no Hero, falta de conformidade de acessibilidade WCAG e organização de arquivos que serão corrigidos neste ciclo de refatoração.
@@ -25,7 +25,7 @@ A estrutura de arquivos do projeto se encontra em estado misto, com arquivos de 
 
 ## Diagnóstico Geral de Problemas por Prioridade
 
-### P0 — Crítico (Segurança e Integridade do Sistema)
+### P0 - Crítico (Segurança e Integridade do Sistema)
 1. **Regras Incompletas do Firestore**:
    - **Impacto**: Alta vulnerabilidade de segurança. A coleção `feedbacks` usada no site (em `Feedback.jsx` e `Testimonials.jsx`) não possui nenhuma regra cadastrada no `firestore.rules`.
    - **Risco**: Escritas e leituras de feedback podem falhar em produção ou estar vulneráveis, e a coleção `perfil_comportamental` permite gravação irrestrita (`allow read, create: if true`) sem checagem de tipos ou sanitização.
@@ -36,7 +36,7 @@ A estrutura de arquivos do projeto se encontra em estado misto, com arquivos de 
    - **Arquivos envolvidos**: [perfil-comportamental.html](file:///c:/Users/alexs/OneDrive/Documentos/Alexsander_Farias/portfolio/public/fametro/perfil-comportamental.html), [perfil-dashboard.html](file:///c:/Users/alexs/OneDrive/Documentos/Alexsander_Farias/portfolio/public/fametro/perfil-dashboard.html)
    - **Solução recomendada**: Enrijecer as regras do Firestore para aceitar apenas documentos estruturados corretamente, minimizando o risco de gravação de lixo eletrônico.
 
-### P1 — Alta Prioridade (UX/UI, Responsividade e Performance)
+### P1 - Alta Prioridade (UX/UI, Responsividade e Performance)
 1. **Efeito Typewriter Incompleto (Corte de Texto e Layout Shift)**:
    - **Impacto**: O cargo do professor no Hero aparece cortado como "Professor Univ". A animação recalcula dinamicamente a largura do contêiner a cada caractere digitado, provocando oscilações visuais constantes na largura da página (layout shift).
    - **Risco**: Má experiência de usabilidade visual e impacto negativo na pontuação do CLS (Cumulative Layout Shift).
@@ -56,7 +56,7 @@ A estrutura de arquivos do projeto se encontra em estado misto, com arquivos de 
    - **Arquivos envolvidos**: [Navbar.jsx](file:///c:/Users/alexs/OneDrive/Documentos/Alexsander_Farias/portfolio/src/components/Navbar.jsx)
    - **Solução recomendada**: Renomear a âncora para "Diferenciais" ou "Soft Skills", garantindo fácil assimilação e mantendo o contexto pedagógico.
 
-### P2 — Média Prioridade (Arquitetura e Organização)
+### P2 - Média Prioridade (Arquitetura e Organização)
 1. **Scripts Soltos na Raiz do Projeto**:
    - **Impacto**: Bagunça estrutural e potencial execução indevida por outros desenvolvedores.
    - **Arquivos envolvidos**: `extract_all.js`, `extract_pdf.js`, `read-pdfs.cjs`, `read-pdfs.js`, `update_css.cjs`
@@ -68,7 +68,7 @@ A estrutura de arquivos do projeto se encontra em estado misto, com arquivos de 
    - **Impacto**: A imagem principal do portfólio no Hero (`/Foto_Perfil_Round.png`) precisa de maior prioridade de renderização para melhorar a métrica de LCP (Largest Contentful Paint).
    - **Solução recomendada**: Definir explicitamente o atributo `fetchpriority="high"` e assegurar que as extensões de imagem corretas sejam usadas.
 
-### P3 — Melhoria Futura
+### P3 - Melhoria Futura
 1. **Migração do Dashboard Acadêmico para Componente React**:
    - **Impacto**: Atualmente, `perfil-dashboard.html` e `perfil-comportamental.html` rodam como arquivos HTML puros copiados para a pasta `public/`. Consolidá-los como rotas dinâmicas no React Router simplificaria a arquitetura.
    - **Solução recomendada**: Planejar para o futuro a incorporação completa dessas páginas em componentes React sob `src/pages/fametro/`.

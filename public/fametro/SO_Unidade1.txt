@@ -12,7 +12,7 @@ Introdução aos Sistemas Operacionais
 e Conceitos de Hardware
 341 Conceitos & História342 Tipos de SO343 Memória
 344 E/S & Barramento345 Tradutor & Loader
-Baseado em: Tanenbaum, A. S. —Sistemas Operacionais Modernos, 4ª ed., 2019
+Baseado em: Tanenbaum, A. S. -Sistemas Operacionais Modernos, 4ª ed., 2019
 
 341
 Conceitos iniciais, História e Função dos 
@@ -30,7 +30,7 @@ Analogia do dia a dia:
 •Pense no SO como o gerente de um hotel.
 •Os hóspedes (programas) fazem pedidos e o gerente 
 (SO) aloca quartos (memória), organiza limpeza (CPU), 
-atende ligações (E/S) —tudo sem que o hóspede 
+atende ligações (E/S) -tudo sem que o hóspede 
 precise saber como funciona.
 Exemplos de SOs:
 •Windows, macOS, Linux, Android, iOS
@@ -61,7 +61,7 @@ término)
 •Interface com o usuário (GUI ou CLI)
 Comparando com o cotidiano:
 •Abrir o Spotify enquanto baixa um arquivo e navega 
-no Chrome —o SO gerencia a CPU entre esses 3 
+no Chrome -o SO gerencia a CPU entre esses 3 
 processos, sem que você perceba a troca.
 Modo Kernel vs Modo Usuário:
 •O SO roda em modo privilegiado (kernel) com acesso 
@@ -79,7 +79,7 @@ Executa um único programa por vez. Toda a memória e CPU disponíveis
 para aquele único processo.
 Problema: Ociosidade
 Enquanto o programa aguarda leitura de disco (lenta), a CPU fica 
-parada —DESPERDÍCIO!
+parada -DESPERDÍCIO!
 Exemplo Histórico
 MS-DOS: ao rodar um programa, o usuário não podia fazer outra coisa. 
 Semáforo vermelho permanente.
@@ -110,13 +110,13 @@ SO
 •NUMA: acesso não-uniforme à memória
 •Multicore: vários núcleos no mesmo chip
 •Cluster: múltiplas máquinas trabalhando juntas
-Dia a dia —seu smartphone:
+Dia a dia -seu smartphone:
 •Um Snapdragon com 8 núcleos divide tarefas: núcleos 
 grandes fazem processamento pesado (jogo/vídeo), 
 núcleos pequenos tratam notificações em background 
-—economizando bateria.
+-economizando bateria.
 Desafio principal:
-•Sincronização e condição de corrida —dois processos 
+•Sincronização e condição de corrida -dois processos 
 tentando modificar o mesmo dado ao mesmo tempo 
 pode causar erros. O SO precisa garantir consistência.
 
@@ -129,7 +129,7 @@ Hardware vs Software
 343
 •Hardware: componentes físicos do computador
 •CPU, RAM, HD/SSD, placa-mãe, teclado, monitor
-•Software: programas e dados —intangível
+•Software: programas e dados -intangível
 •Software de sistema: SO, drivers, utilitários
 •Software de aplicação: navegador, jogo, Word
 •Firmware: software gravado no hardware 
@@ -137,7 +137,7 @@ Hardware vs Software
 Analogia:
 •Hardware é o corpo humano (estrutura física). 
 Software é a mente e os pensamentos (instruções e 
-dados). O SO é o sistema nervoso —conecta tudo.
+dados). O SO é o sistema nervoso -conecta tudo.
 Camadas do sistema:
 •Aplicativos → SO → Drivers → Hardware
 •Cada camada abstrai a complexidade da camada 
@@ -152,7 +152,7 @@ Cache (L1/L2/L3)
 Memória SRAM ultrarrápida entre CPU e RAM. Guarda dados usados 
 com frequência. Tamanho: KB a MB.
 RAM (Memória Principal)
-Memória de trabalho. Volátil —perde dados ao desligar. Ex: 8/16 GB 
+Memória de trabalho. Volátil -perde dados ao desligar. Ex: 8/16 GB 
 no seu PC. Velocidade: nanosegundos.
 Armazenamento Secundário
 HDD e SSD: persistente. Guarda sistema, arquivos e programas. 
@@ -202,7 +202,7 @@ comunicar com cada mesa. Sem o garçom certo, o
 chef não entende o pedido.
 DMA (Direct Memory Access):
 •Dispositivos rápidos (disco, rede) transferem dados 
-direto para a RAM sem passar pela CPU —como um 
+direto para a RAM sem passar pela CPU -como um 
 entregador que vai diretamente ao almoxarifado, sem 
 interromper o chef.
 
@@ -220,7 +220,7 @@ Indica qual posição de memória será acessada. 32 bits = 4 GB
 endereçáveis. 64 bits = praticamente ilimitado.
 Barramento de Controle
 Sinais de leitura/escrita, interrupções, clock. Coordena quem usa o 
-barramento e quando —evita colisões.
+barramento e quando -evita colisões.
 
 Pipelining: A Linha de Montagem da CPU
 344
@@ -236,7 +236,7 @@ Analogia da fábrica de carros:
 •Sem pipeline: um carro completo antes de começar o 
 próximo. Com pipeline: enquanto carro 3 está sendo 
 pintado, carro 4 recebe motor, carro 5 recebe chassi 
-—tudo simultâneo!
+-tudo simultâneo!
 Hazards (Perigos):
 •Data hazard: instrução 2 precisa do resultado da 
 instrução 1 (ainda não pronto). Control hazard: desvio 
@@ -273,7 +273,7 @@ erros
 •Executar passo a passo (step-by-step)
 •Exemplos: GDB (Linux), Visual Studio Debugger, 
 Chrome DevTools
-Fluxo completo —Exemplo em C:
+Fluxo completo -Exemplo em C:
 •1. Você escreve hello.c (código-fonte)
 •2. gcc compila → hello.o (objeto)
 •3. Linker une hello.o + libc.a → hello (executável)
@@ -282,9 +282,9 @@ Fluxo completo —Exemplo em C:
 JIT (Just-In-Time):
 •Java e C# compilam para bytecode intermediário. Na 
 execução, a JVM/CLR compila partes críticas para 
-código nativo —híbrido compilado+interpretado.
+código nativo -híbrido compilado+interpretado.
 
-Resumo —Unidade Didática I
+Resumo -Unidade Didática I
 341
 Conceitos & História
 342

@@ -61,7 +61,7 @@ Explorer.
 1.3  Criando os arquivos 
  
 1. Dentro da pasta portfolio, crie um arquivo chamado index.html (arquivo principal). 
-2. Dentro da pasta css, crie o arquivo style.css (será preenchido na Aula 3 — deixe vazio por 
+2. Dentro da pasta css, crie o arquivo style.css (será preenchido na Aula 3 - deixe vazio por 
 enquanto). 
 3. Abra o arquivo index.html no VS Code para começar a codificar. 
 PASSO 2 - ESTRUTURA BÁSICA DO DOCUMENTO HTML5 
@@ -100,7 +100,7 @@ Contém informações invisíveis ao usuário: metadados, título, links para
 CSS etc. 
 <meta charset="UTF-
 8"> 
-Define a codificação de caracteres — permite exibir acentos e caracteres 
+Define a codificação de caracteres - permite exibir acentos e caracteres 
 especiais. 
 
 <meta 
@@ -164,7 +164,7 @@ código abaixo substituindo index.html pelo conteúdo completo:
 
   <meta charset="UTF-8"> 
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-  <title>Portfólio — Seu Nome</title> 
+  <title>Portfólio - Seu Nome</title> 
   <link rel="stylesheet" href="css/style.css"> 
 </head> 
  
@@ -231,7 +231,7 @@ arquivo index.html e selecione "Open with Live Server".
 3 
 Observe o resultado 
 O navegador abrirá automaticamente em http://127.0.0.1:5500/index.html. A página 
-estará em branco — isso é esperado! Ainda não adicionamos conteúdo visível. 
+estará em branco - isso é esperado! Ainda não adicionamos conteúdo visível. 
  
 4 
 Inspecione com o DevTools 

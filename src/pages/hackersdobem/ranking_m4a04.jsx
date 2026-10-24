@@ -151,7 +151,7 @@ export default function RankingHackersDoBemM4A04() {
                   HACKERS DO BEM · MÓDULO 04
                 </div>
                 <h1 style={{ margin: 0, fontSize: 20, fontWeight: 900, color: "#fff", lineHeight: 1.1 }}>
-                  Ranking ao Vivo — Biometria
+                  Ranking ao Vivo - Biometria
                 </h1>
               </div>
             </div>
@@ -184,9 +184,9 @@ export default function RankingHackersDoBemM4A04() {
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 12, marginBottom: 28 }}>
           {[
             { label: "Alunos Finalizaram", value: stats.total, icon: "👥", color: "#40C4FF" },
-            { label: "Média da Turma", value: stats.total ? `${stats.avg} pts` : "—", icon: "📊", color: "#00E676" },
+            { label: "Média da Turma", value: stats.total ? `${stats.avg} pts` : "-", icon: "📊", color: "#00E676" },
             { label: "Notas Perfeitas", value: stats.perfect, icon: "💯", color: "#FFD700" },
-            { label: "Líder Atual", value: stats.top ? stats.top.name.split(" ")[0] : "—", icon: "🏆", color: "#FF6B9D" },
+            { label: "Líder Atual", value: stats.top ? stats.top.name.split(" ")[0] : "-", icon: "🏆", color: "#FF6B9D" },
           ].map(card => (
             <div key={card.label} style={{
               background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)",
@@ -208,7 +208,7 @@ export default function RankingHackersDoBemM4A04() {
         {entries.length >= 3 && (
           <div style={{ marginBottom: 28 }}>
             <div style={{ fontSize: 11, letterSpacing: 3, color: "rgba(255,255,255,0.3)", fontFamily: "'Space Mono', monospace", marginBottom: 16 }}>
-              TOP 3 — PÓDIO
+              TOP 3 - PÓDIO
             </div>
             <div style={{ display: "flex", alignItems: "flex-end", gap: 12, justifyContent: "center" }}>
               {[1, 0, 2].map((rankIdx, i) => {

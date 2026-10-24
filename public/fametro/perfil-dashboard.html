@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard — Perfis Comportamentais | CEUNI-FAMETRO</title>
+<title>Dashboard - Perfis Comportamentais | CEUNI-FAMETRO</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
 <!-- Firebase SDK -->
@@ -222,15 +222,15 @@ function render(results) {
     return;
   }
   tbody.innerHTML = results.map((r, i) => {
-    const p = profiles.find(p => p.key === r.perfilKey) || { key: '?', color: '#888', icon: '?', name: r.perfilDominante || '—' };
-    let dateStr = '—';
+    const p = profiles.find(p => p.key === r.perfilKey) || { key: '?', color: '#888', icon: '?', name: r.perfilDominante || '-' };
+    let dateStr = '-';
     if (r.timestamp) {
       const d = r.timestamp.seconds ? new Date(r.timestamp.seconds * 1000) : new Date(r.timestamp);
       dateStr = d.toLocaleString('pt-BR', { day:'2-digit', month:'2-digit', year:'2-digit', hour:'2-digit', minute:'2-digit' });
     }
     return `<tr class="trow" style="animation-delay:${i*30}ms">
       <td><span class="row-num">${i+1}</span></td>
-      <td><strong style="color:#e0e0e0">${r.nome || '—'}</strong></td>
+      <td><strong style="color:#e0e0e0">${r.nome || '-'}</strong></td>
       <td>
         <span class="perfil-badge clickable" onclick="window._showReport('${r.perfilKey}')" style="background:${p.color}20;color:${p.color};border:1px solid ${p.color}50">
           ${p.icon} ${p.name}

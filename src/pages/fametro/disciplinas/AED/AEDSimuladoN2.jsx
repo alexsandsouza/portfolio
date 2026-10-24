@@ -1242,7 +1242,7 @@ export default function AEDSimuladoN2() {
                   }}>
                     <div style={{ fontSize: "0.75rem", color: theme.textMuted }}>{crit.name}</div>
                     <div style={{ fontSize: "1.1rem", fontWeight: 800, color: "#FBBF24" }}>
-                      {crit.val !== null ? `${crit.val.toFixed(1)} / 1,0` : "— / 1,0"}
+                      {crit.val !== null ? `${crit.val.toFixed(1)} / 1,0` : "- / 1,0"}
                     </div>
                   </div>
                 ))}

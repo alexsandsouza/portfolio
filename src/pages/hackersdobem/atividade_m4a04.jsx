@@ -21,14 +21,14 @@ const STAGES = [
         text: "Qual princípio da biometria garante que as características físicas ou comportamentais são ÚNICAS para cada indivíduo?",
         options: ["Universalidade", "Permanência", "Singularidade", "Coleta não invasiva", "Throughput"],
         answer: "Singularidade",
-        feedback: "A Singularidade é o princípio que garante que as características biométricas são únicas para cada indivíduo — nenhuma pessoa possui impressão digital ou íris idênticas a de outra."
+        feedback: "A Singularidade é o princípio que garante que as características biométricas são únicas para cada indivíduo - nenhuma pessoa possui impressão digital ou íris idênticas a de outra."
       },
       {
         id: "q1_2", pts: 4,
         text: "O princípio que indica que as características biométricas SEMPRE estão presentes em todos os seres humanos é chamado de:",
         options: ["Singularidade", "Permanência", "Universalidade", "Coleta não invasiva", "Scanning"],
         answer: "Universalidade",
-        feedback: "Universalidade significa que todos os seres humanos possuem as características biométricas utilizadas pelo sistema — como rosto, voz, impressão digital."
+        feedback: "Universalidade significa que todos os seres humanos possuem as características biométricas utilizadas pelo sistema - como rosto, voz, impressão digital."
       },
       {
         id: "q1_3", pts: 4,
@@ -42,7 +42,7 @@ const STAGES = [
         text: "Qual característica biométrica é classificada como física E é citada como a mais amplamente implementada?",
         options: ["Assinatura dinâmica", "Padrão de digitação", "Impressão digital", "Comportamento com mouse", "Voz"],
         answer: "Impressão digital",
-        feedback: "A impressão digital é o método biométrico físico mais amplamente implementado — relativamente barato, não intrusivo e de processo simples, apesar de poder ser afetado por umidade ou sujeira."
+        feedback: "A impressão digital é o método biométrico físico mais amplamente implementado - relativamente barato, não intrusivo e de processo simples, apesar de poder ser afetado por umidade ou sujeira."
       },
       {
         id: "q1_5", pts: 4,
@@ -114,7 +114,7 @@ const STAGES = [
           "Impossibilidade de uso em smartphones"
         ],
         answer: "Questões legais de privacidade e altas taxas de falsa aceitação/rejeição",
-        feedback: "O reconhecimento facial apresenta desafios éticos e legais de privacidade, além de possuir altas taxas de falsa aceitação, falsa rejeição e vulnerabilidade à falsificação — limitações importantes a considerar na implementação."
+        feedback: "O reconhecimento facial apresenta desafios éticos e legais de privacidade, além de possuir altas taxas de falsa aceitação, falsa rejeição e vulnerabilidade à falsificação - limitações importantes a considerar na implementação."
       },
     ]
   },
@@ -134,28 +134,28 @@ const STAGES = [
         text: "João está cadastrado no sistema biométrico, mas o sistema NÃO o reconhece e nega seu acesso. Qual métrica está relacionada a este caso?",
         options: ["FAR (False Acceptance Rate)", "CER (Equal Error Rate)", "FRR (False Rejection Rate)", "FER (Failure Enroll Rate)", "Throughput Speed"],
         answer: "FRR (False Rejection Rate)",
-        feedback: "A FRR (Taxa de Falsos Rejeitos) mede a frequência com que usuários legítimos e cadastrados são incorretamente negados pelo sistema — exatamente o caso de João."
+        feedback: "A FRR (Taxa de Falsos Rejeitos) mede a frequência com que usuários legítimos e cadastrados são incorretamente negados pelo sistema - exatamente o caso de João."
       },
       {
         id: "q3_2", pts: 5,
         text: "Um impostor tenta acessar o sistema biométrico usando características falsas e o sistema ACEITA a entrada. Qual métrica registra esse tipo de falha?",
         options: ["FRR (False Rejection Rate)", "FER (Failure Enroll Rate)", "CER (Equal Error Rate)", "FAR (False Acceptance Rate)", "Throughput Speed"],
         answer: "FAR (False Acceptance Rate)",
-        feedback: "A FAR (Taxa de Falsos Aceitos) mede a frequência com que impostores são aceitos incorretamente pelo sistema — um dos erros mais críticos em segurança biométrica."
+        feedback: "A FAR (Taxa de Falsos Aceitos) mede a frequência com que impostores são aceitos incorretamente pelo sistema - um dos erros mais críticos em segurança biométrica."
       },
       {
         id: "q3_3", pts: 5,
         text: "O gestor de segurança precisa de uma métrica que mostre o PONTO DE EQUILÍBRIO entre os erros de falsa aceitação e falsa rejeição. Qual métrica usar?",
         options: ["FAR", "FRR", "FER", "CER (Equal Error Rate)", "Throughput Speed"],
         answer: "CER (Equal Error Rate)",
-        feedback: "A CER (Taxa de Erro de Equalização) indica o ponto onde FAR e FRR são iguais — quanto menor a CER, mais preciso e eficaz é o sistema biométrico. É a principal métrica de comparação entre sistemas."
+        feedback: "A CER (Taxa de Erro de Equalização) indica o ponto onde FAR e FRR são iguais - quanto menor a CER, mais preciso e eficaz é o sistema biométrico. É a principal métrica de comparação entre sistemas."
       },
       {
         id: "q3_4", pts: 5,
         text: "Durante a implantação do sistema, alguns funcionários não conseguem ter suas características biométricas CADASTRADAS com sucesso. Qual métrica avalia isso?",
         options: ["FAR", "FRR", "CER", "FER (Failure Enroll Rate)", "Throughput Speed"],
         answer: "FER (Failure Enroll Rate)",
-        feedback: "A FER (Taxa de Erro de Falha no Cadastro) mede a porcentagem de usuários que não conseguem ter suas características biométricas cadastradas com sucesso — importante avaliar na implantação do sistema."
+        feedback: "A FER (Taxa de Erro de Falha no Cadastro) mede a porcentagem de usuários que não conseguem ter suas características biométricas cadastradas com sucesso - importante avaliar na implantação do sistema."
       },
     ]
   },
@@ -180,7 +180,7 @@ const STAGES = [
         id: "q4_2", pts: 4,
         text: "Os modelos biométricos dos funcionários são armazenados usando criptografia em um servidor seguro com controle de acesso físico rigoroso.",
         answer: "SEGURO",
-        feedback: "PRÁTICA SEGURA! O armazenamento criptografado das informações biométricas com controle de acesso físico protege dados sensíveis e irreversíveis — uma vez comprometidos, não é possível alterar características biométricas."
+        feedback: "PRÁTICA SEGURA! O armazenamento criptografado das informações biométricas com controle de acesso físico protege dados sensíveis e irreversíveis - uma vez comprometidos, não é possível alterar características biométricas."
       },
       {
         id: "q4_3", pts: 4,
@@ -192,13 +192,13 @@ const STAGES = [
         id: "q4_4", pts: 4,
         text: "A empresa implementa biometria comportamental (padrão de digitação) como camada adicional de autenticação contínua em sistemas críticos.",
         answer: "SEGURO",
-        feedback: "PRÁTICA SEGURA! A biometria comportamental como autenticação contínua é uma excelente camada adicional — monitora o comportamento durante toda a sessão, detectando acessos não autorizados mesmo após login inicial."
+        feedback: "PRÁTICA SEGURA! A biometria comportamental como autenticação contínua é uma excelente camada adicional - monitora o comportamento durante toda a sessão, detectando acessos não autorizados mesmo após login inicial."
       },
       {
         id: "q4_5", pts: 4,
         text: "Fotografias de funcionários são coletadas e usadas para alimentar o sistema de reconhecimento facial sem consentimento explícito ou política de privacidade.",
         answer: "RISCO",
-        feedback: "RISCO! A coleta de dados biométricos sem consentimento viola leis de privacidade (como a LGPD). Dados biométricos são dados pessoais sensíveis — sua coleta e uso exigem bases legais claras e consentimento."
+        feedback: "RISCO! A coleta de dados biométricos sem consentimento viola leis de privacidade (como a LGPD). Dados biométricos são dados pessoais sensíveis - sua coleta e uso exigem bases legais claras e consentimento."
       },
     ]
   },
@@ -234,7 +234,7 @@ const STAGES = [
         type: "single",
         options: ["FRR (Taxa de Falsos Rejeitos)", "FER (Failure Enroll Rate)", "FAR (Taxa de Falsos Aceitos)", "Throughput Speed"],
         answer: "FAR (Taxa de Falsos Aceitos)",
-        feedback: "A FAR (Taxa de Falsos Aceitos) mede exatamente isso — quando um impostor é aceito pelo sistema. Uma FAR alta indica que o sistema aceita características falsas ou falsificações, como uma foto."
+        feedback: "A FAR (Taxa de Falsos Aceitos) mede exatamente isso - quando um impostor é aceito pelo sistema. Uma FAR alta indica que o sistema aceita características falsas ou falsificações, como uma foto."
       },
       {
         id: "q5_3", pts: 5,
@@ -247,7 +247,7 @@ const STAGES = [
           "Tempo de exposição maior da câmera"
         ],
         answer: "Detecção de vivacidade (liveness detection)",
-        feedback: "A detecção de vivacidade (liveness detection) verifica se o que está sendo apresentado à câmera é uma pessoa real e viva, e não uma foto, vídeo ou máscara — tecnologia essencial em sistemas robustos de reconhecimento facial."
+        feedback: "A detecção de vivacidade (liveness detection) verifica se o que está sendo apresentado à câmera é uma pessoa real e viva, e não uma foto, vídeo ou máscara - tecnologia essencial em sistemas robustos de reconhecimento facial."
       },
       {
         id: "q5_4", pts: 5,
@@ -260,7 +260,7 @@ const STAGES = [
           "O sensor biométrico precisa de limpeza"
         ],
         answer: "Viés algorítmico e discriminação nos dados de treinamento",
-        feedback: "A FRR diferenciada por grupos étnicos indica viés algorítmico — quando o modelo foi treinado com dados pouco representativos, gerando discriminação. É uma das preocupações éticas mais sérias na biometria moderna."
+        feedback: "A FRR diferenciada por grupos étnicos indica viés algorítmico - quando o modelo foi treinado com dados pouco representativos, gerando discriminação. É uma das preocupações éticas mais sérias na biometria moderna."
       },
     ]
   }
@@ -462,7 +462,7 @@ function RiskStage({ stage, onComplete }) {
               })}
             </div>
             {submitted && <p style={{ margin: "10px 0 0", fontSize: 13, color: isRight ? "#69F0AE" : "#FFAB91", fontStyle: "italic" }}>
-              {isRight ? "✓" : `✗ Correto: ${q.answer}`} — {q.feedback}
+              {isRight ? "✓" : `✗ Correto: ${q.answer}`} - {q.feedback}
             </p>}
           </div>
         );
@@ -599,7 +599,7 @@ function Welcome({ onStart }) {
   return (
     <div style={{ maxWidth: 540, margin: "0 auto", textAlign: "center", padding: "40px 20px" }}>
       <div style={{ fontSize: 64, marginBottom: 16 }}>🧬</div>
-      <div style={{ fontSize: 11, letterSpacing: 4, color: "#00E676", fontFamily: "'Space Mono', monospace", marginBottom: 8 }}>HACKERS DO BEM — MÓDULO 04</div>
+      <div style={{ fontSize: 11, letterSpacing: 4, color: "#00E676", fontFamily: "'Space Mono', monospace", marginBottom: 8 }}>HACKERS DO BEM - MÓDULO 04</div>
       <h1 style={{ fontSize: 32, fontWeight: 900, color: "#fff", margin: "0 0 8px", lineHeight: 1.2, fontFamily: "'DM Sans', sans-serif" }}>
         Missão: Proteja a<br /><span style={{ color: "#40C4FF" }}>BioSec com Biometria</span>
       </h1>
@@ -646,7 +646,7 @@ function FinalResult({ name, scores }) {
         <div style={{ fontSize: 64, marginBottom: 8 }}>🏆</div>
         <div style={{ fontSize: 11, letterSpacing: 4, color: "#00E676", fontFamily: "'Space Mono', monospace", marginBottom: 12 }}>RESULTADO FINAL</div>
         <h2 style={{ fontSize: 28, fontWeight: 900, color: "#fff", margin: "0 0 4px" }}>{name}</h2>
-        <p style={{ color: "rgba(255,255,255,0.4)", margin: 0, fontSize: 14 }}>Hackers do Bem — Módulo 04, Aula 04</p>
+        <p style={{ color: "rgba(255,255,255,0.4)", margin: 0, fontSize: 14 }}>Hackers do Bem - Módulo 04, Aula 04</p>
       </div>
 
       <div style={{

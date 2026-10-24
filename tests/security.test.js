@@ -149,7 +149,7 @@ describe('Conformidade LGPD', () => {
   // ============================================================
   describe('RNF-007: Formulário de Contato', () => {
     it('o formulário deve usar serviço externo sem armazenar dados localmente', () => {
-      // O Contact.jsx usa formsubmit.co — dados não ficam no Firebase
+      // O Contact.jsx usa formsubmit.co - dados não ficam no Firebase
       const contactPath = path.resolve(process.cwd(), 'src/sections/Contact.jsx');
       const content = fs.readFileSync(contactPath, 'utf-8');
       

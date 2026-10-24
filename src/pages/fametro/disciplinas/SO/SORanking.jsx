@@ -129,7 +129,7 @@ export default function SORanking() {
           {[
             { label: "Participantes", value: stats.total, icon: "👥" },
             { label: "Média Global", value: stats.avg, icon: "〽️" },
-            { label: "Líder Atual", value: stats.top ? stats.top.name : "—", icon: "👑" },
+            { label: "Líder Atual", value: stats.top ? stats.top.name : "-", icon: "👑" },
           ].map(s => (
             <div key={s.label} style={{ background: '#0A1E5C', border: '1px solid #1E3A6E', borderRadius: 20, padding: 24, textAlign: 'center' }}>
               <div style={{ fontSize: 32, marginBottom: 8 }}>{s.icon}</div>

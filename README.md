@@ -94,7 +94,7 @@ Além da vitrine profissional, o projeto reúne o blog de eventos, a newsletter 
 <table>
   <tr>
     <td>🎨 <strong>Cyber Aesthetic</strong></td>
-    <td>Tema escuro profundo com acentos em neon — Indigo, Cyan e Emerald</td>
+    <td>Tema escuro profundo com acentos em neon - Indigo, Cyan e Emerald</td>
   </tr>
   <tr>
     <td>🧊 <strong>Glassmorphism</strong></td>
@@ -110,7 +110,7 @@ Além da vitrine profissional, o projeto reúne o blog de eventos, a newsletter 
   </tr>
   <tr>
     <td>📱 <strong>Responsividade</strong></td>
-    <td>Layout fluido — de grandes desktops a dispositivos móveis com harmonização perfeita</td>
+    <td>Layout fluido - de grandes desktops a dispositivos móveis com harmonização perfeita</td>
   </tr>
   <tr>
     <td>🎯 <strong>Gamificação</strong></td>
@@ -229,6 +229,6 @@ O projeto é implantado automaticamente via **Vercel** a cada push na branch `ma
 <p align="center">
   Desenvolvido com 💜 por <strong>Prof. Alexsander Farias</strong>
   <br/>
-  <em>Palestrante em IA e Cibersegurança — Manaus, AM 🇧🇷</em><br/>
+  <em>Palestrante em IA e Cibersegurança - Manaus, AM 🇧🇷</em><br/>
   <a href="https://alexsanderfarias.vercel.app">alexsanderfarias.vercel.app</a>
 </p>

@@ -23,7 +23,7 @@ Problema 2: O usuário não sabe o que
 não sabe
 Necessidades implícitas do dia a dia 
 ficam invisíveis. Ninguém fala do que é 
-óbvio —e óbvio para ele pode ser 
+óbvio -e óbvio para ele pode ser 
 novidade para o sistema.
 Problema 3: Stakeholders diferentes 
 querem coisas opostas
@@ -39,7 +39,7 @@ VORD é um método de levantamento de requisitos que organiza as
 necessidades do sistema a partir dos diferentes pontos de vista 
 (viewpoints) de cada tipo de stakeholder.
 Em vez de misturar tudo numa lista única, o VORD separa: "O que o 
-SISTEMA 1 precisa?", "O que o SISTEMA 2 precisa?" —e depois analisa 
+SISTEMA 1 precisa?", "O que o SISTEMA 2 precisa?" -e depois analisa 
 onde eles se cruzam ou conflitam.
 Viewpoint = qualquer pessoa, sistema ou organização que tem 
 interesse no software ou é afetado por ele.
@@ -56,7 +56,7 @@ Todas mostram o mesmo sistema
 de ângulos diferentes.
 
 VORD -Exemplo Prático: A Praça Pública
-Cada pessoa quer a mesma praça —mas uma praça diferente
+Cada pessoa quer a mesma praça -mas uma praça diferente
 Você foi contratado para reformar uma praça. Antes de fazer qualquer projeto, você pergunta aos stakeholders o que eles 
 querem:
 Dona de casa
@@ -74,13 +74,13 @@ baixo custo de manutenção"
 Perceba: o mesmo projeto tem 4 realidades diferentes. Se você ouvir só um, vai frustrar os outros três.
 
 VORD -Os 4 Passos
-Como aplicar na prática —exemplo: app de delivery
+Como aplicar na prática -exemplo: app de delivery
 01
 Identificar os Viewpoints
 Liste TODOS os tipos de pessoas/sistemas afetados.
 No delivery: cliente, restaurante, entregador, admin, 
 suporte.
-Pergunta-chave: "Quem se importa com esse sistema —e 
+Pergunta-chave: "Quem se importa com esse sistema -e 
 por quê?"
 02
 Extrair Requisitos por Viewpoint
@@ -148,7 +148,7 @@ INSIGHT CENTRAL
 Usuários mentem -sem querer.
 Não porque são desonestos, mas porque descrevem como 
 acham que deveriam agir, não como agem de fato.
-A Etnografia captura o comportamento real —não o 
+A Etnografia captura o comportamento real -não o 
 comportamento relatado.
 
 Etnografia -Como Aplicar na Prática
@@ -168,7 +168,7 @@ problemáticos.
 Não interrompa. Não sugira. Não critique. Só observe.
 03
 Registro das Gambiarras
-Anote tudo —especialmente os improvisos.
+Anote tudo -especialmente os improvisos.
 Caderninho físico = requisito não atendido.
 Grupo no WhatsApp = necessidade de comunicação em 
 tempo real.
@@ -258,29 +258,29 @@ Reunião de pais e mestres:
 →  Decisão com legitimidade coletiva
 
 Workshop vs. Entrevista -Comparação Direta
-Nenhuma substitui aoutra —são complementares
+Nenhuma substitui aoutra -são complementares
 VS
 WORKSHOP
-FormatoGrupo —5 a 15 pessoas
+FormatoGrupo -5 a 15 pessoas
 Duração4 a8 horas
 Melhor paraAlinhar visões conflitantes
 RiscoDominância de voz
 Quando usarInício do projeto, conflitos visíveis
 FerramentasPost-its, brainstorming, dot voting
 ENTREVISTA
-FormatoIndividual —1 a 1
+FormatoIndividual -1 a 1
 Duração30 a 90 minutos
 Melhor paraProfundidade individual
 RiscoVisão de túnel
 Quando usarDetalhar requisitos específicos
 FerramentasPerguntas abertas, escuta ativa
-Entrevista dá profundidade. Workshop dá alinhamento. Use as duas no mesmo projeto —em momentos diferentes.
+Entrevista dá profundidade. Workshop dá alinhamento. Use as duas no mesmo projeto -em momentos diferentes.
 
 Como Escolher a Técnica Certa?
-Mapa de decisão —o que perguntar antes de escolher
+Mapa de decisão -o que perguntar antes de escolher
 SE: Vários tipos de usuário com interesses diferentes
 → VORD
-Ele organiza o mundo por perspectivas —sem 
+Ele organiza o mundo por perspectivas -sem 
 confundir necessidades opostas
 SE: Usuário leigo que não consegue verbalizar o que precisa
 → Etnografia
@@ -288,7 +288,7 @@ Ver o trabalho real revela o que nenhuma entrevista
 conseguiria extrair
 SE: Início do projeto com visões conflitantes entre áreas
 → Workshop
-A decisão coletiva tem mais legitimidade —e 
+A decisão coletiva tem mais legitimidade -e 
 resolve conflitos na fonte
 SE: Um stakeholder-chave com conhecimento único e específico
 → Entrevista
@@ -304,7 +304,7 @@ Gambiarras e improvisos do dia a dia = requisitos
 escondidos valiosos
 
 Resumo: As 3 Técnicas em Uma Visão
-Coloque no caderno —vai cair na prova e na vida real
+Coloque no caderno -vai cair na prova e na vida real
 VORD
 O que é:
 Viewpoint-Oriented Requirements Definition
@@ -329,7 +329,7 @@ Como funciona:
 Vai a campo → observa sem interferir → registra 
 gambiarras → transforma em requisitos
 Analogia:
-Câmera escondida —mascom permissão
+Câmera escondida -mascom permissão
 Exemplo:
 Observar garis por 3 dias antes de criar app de 
 logística

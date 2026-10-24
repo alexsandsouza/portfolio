@@ -8,7 +8,7 @@ import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 const QUESTION_BANK = [
   {
     id: 1,
-    level: "Nível 1 — Iniciante",
+    level: "Nível 1 - Iniciante",
     scenario: "A SeguraTech contratou um novo analista de suporte. O gestor de TI precisa criar a conta de acesso ao sistema interno e definir as permissões adequadas ao cargo.",
     text: "Qual abordagem está alinhada ao princípio de Menor Privilégio no processo de provisionamento dessa conta?",
     options: [
@@ -22,7 +22,7 @@ const QUESTION_BANK = [
   },
   {
     id: 2,
-    level: "Nível 1 — Iniciante",
+    level: "Nível 1 - Iniciante",
     scenario: "Um fornecedor externo precisa acessar temporariamente o servidor de arquivos da SeguraTech para entregar um relatório. O prazo é de 48 horas.",
     text: "Qual tipo de conta é tecnicamente mais adequado para atender a essa demanda com segurança?",
     options: [
@@ -36,7 +36,7 @@ const QUESTION_BANK = [
   },
   {
     id: 3,
-    level: "Nível 2 — Básico",
+    level: "Nível 2 - Básico",
     scenario: "Durante uma auditoria, o time de segurança da SeguraTech identificou que o mesmo colaborador autoriza e executa transferências financeiras no sistema ERP sem nenhuma revisão por terceiros.",
     text: "Qual política de pessoal deveria ter sido implementada para mitigar esse risco operacional?",
     options: [
@@ -50,7 +50,7 @@ const QUESTION_BANK = [
   },
   {
     id: 4,
-    level: "Nível 2 — Básico",
+    level: "Nível 2 - Básico",
     scenario: "A SeguraTech precisa que um processo de backup rode automaticamente toda madrugada no servidor Windows, acessando recursos de rede como compartilhamentos de arquivo sem interação humana.",
     text: "Qual categoria de conta deve ser utilizada para executar corretamente esse processo automatizado?",
     options: [
@@ -64,7 +64,7 @@ const QUESTION_BANK = [
   },
   {
     id: 5,
-    level: "Nível 3 — Intermediário",
+    level: "Nível 3 - Intermediário",
     scenario: "Um analista da SeguraTech precisa autenticar-se via SSH em múltiplos servidores Linux para tarefas de manutenção. O gestor de segurança avalia qual método de autenticação adotar.",
     text: "Considerando segurança e resistência a ataques, qual método oferece melhor proteção para esse cenário?",
     options: [
@@ -74,11 +74,11 @@ const QUESTION_BANK = [
       { letter: "D", text: "Certificado digital emitido pela AC corporativa armazenado em smart card do analista." },
     ],
     correct: 1,
-    explanation: "Chaves SSH usam pares criptográficos (chave pública e privada), sendo mais difíceis de comprometer por ataques de força bruta e menos suscetíveis a phishing do que senhas convencionais — vantagem técnica direta sobre os demais métodos."
+    explanation: "Chaves SSH usam pares criptográficos (chave pública e privada), sendo mais difíceis de comprometer por ataques de força bruta e menos suscetíveis a phishing do que senhas convencionais - vantagem técnica direta sobre os demais métodos."
   },
   {
     id: 6,
-    level: "Nível 3 — Intermediário",
+    level: "Nível 3 - Intermediário",
     scenario: "A SeguraTech implementou um sistema de Single Sign-On (SSO) integrado a um Provedor de Identidade (IdP). Um incidente de segurança revelou que tokens de sessão foram interceptados e reutilizados.",
     text: "Qual vulnerabilidade técnica esse incidente evidencia no modelo de autenticação por tokens?",
     options: [
@@ -92,7 +92,7 @@ const QUESTION_BANK = [
   },
   {
     id: 7,
-    level: "Nível 3 — Intermediário",
+    level: "Nível 3 - Intermediário",
     scenario: "Um gerente financeiro da SeguraTech foi promovido e acumulou, ao longo de três anos, permissões de diferentes cargos anteriores. O time de TI nunca revogou os acessos antigos.",
     text: "Qual falha no processo de gestão de identidade esse cenário caracteriza tecnicamente?",
     options: [
@@ -106,7 +106,7 @@ const QUESTION_BANK = [
   },
   {
     id: 8,
-    level: "Nível 4 — Avançado",
+    level: "Nível 4 - Avançado",
     scenario: "A SeguraTech contratou uma empresa parceira para um projeto de 6 meses. O contrato exige que os dados estratégicos compartilhados sejam mantidos em sigilo mesmo após o término do projeto.",
     text: "Qual instrumento jurídico-operacional deve ser formalizado durante o onboarding para garantir essa proteção?",
     options: [
@@ -120,7 +120,7 @@ const QUESTION_BANK = [
   },
   {
     id: 9,
-    level: "Nível 4 — Avançado",
+    level: "Nível 4 - Avançado",
     scenario: "A SeguraTech detectou que um colaborador demitido há duas semanas ainda possui credenciais ativas no sistema de e-mail corporativo e acesso à VPN da empresa.",
     text: "Qual etapa do processo de offboarding foi negligenciada e que falha de segurança esse cenário representa?",
     options: [
@@ -134,7 +134,7 @@ const QUESTION_BANK = [
   },
   {
     id: 10,
-    level: "Nível 4 — Avançado",
+    level: "Nível 4 - Avançado",
     scenario: "O administrador de redes da SeguraTech identificou que a conta 'root' do servidor Linux está sendo utilizada diretamente por três analistas diferentes para tarefas cotidianas de administração.",
     text: "Qual risco de segurança essa prática introduz e qual é a ação corretiva mais adequada?",
     options: [
@@ -148,7 +148,7 @@ const QUESTION_BANK = [
   },
   {
     id: 11,
-    level: "Nível 5 — Especialista",
+    level: "Nível 5 - Especialista",
     scenario: "A SeguraTech está avaliando a adoção de certificados digitais para autenticar dispositivos na rede interna. A equipe discute onde armazenar os certificados emitidos pela Autoridade Certificadora (AC) interna.",
     text: "Qual solução de armazenamento oferece maior segurança física e lógica para os certificados digitais dos dispositivos?",
     options: [
@@ -162,7 +162,7 @@ const QUESTION_BANK = [
   },
   {
     id: 12,
-    level: "Nível 5 — Especialista",
+    level: "Nível 5 - Especialista",
     scenario: "A SeguraTech implementou um Provedor de Identidade (IdP) federado para que colaboradores acessem sistemas internos e serviços de parceiros usando uma única identidade corporativa.",
     text: "Qual benefício operacional direto esse modelo de federação de identidade proporciona aos usuários?",
     options: [
@@ -176,7 +176,7 @@ const QUESTION_BANK = [
   },
   {
     id: 13,
-    level: "Nível 2 — Básico",
+    level: "Nível 2 - Básico",
     scenario: "Durante o processo seletivo para uma vaga de analista financeiro sênior na SeguraTech, o RH recebe o currículo de um candidato com histórico profissional extenso, mas sem referências verificáveis.",
     text: "Qual procedimento de segurança de pessoal é mandatório para cargos com acesso a transações de alto valor?",
     options: [
@@ -190,7 +190,7 @@ const QUESTION_BANK = [
   },
   {
     id: 14,
-    level: "Nível 3 — Intermediário",
+    level: "Nível 3 - Intermediário",
     scenario: "A SeguraTech identificou que um analista de infraestrutura atua no mesmo cargo há cinco anos sem rotação. Durante esse período, ele acumulou conhecimento exclusivo sobre configurações críticas de firewall.",
     text: "Qual risco organizacional essa situação representa e qual política mitiga esse problema?",
     options: [
@@ -204,7 +204,7 @@ const QUESTION_BANK = [
   },
   {
     id: 15,
-    level: "Nível 4 — Avançado",
+    level: "Nível 4 - Avançado",
     scenario: "O gestor de segurança da SeguraTech suspeita que um colaborador está manipulando registros financeiros. Ele solicita ao RH que o colaborador seja afastado por 15 dias para uma investigação interna.",
     text: "Qual política de segurança de pessoal é aplicada nesse cenário e qual seu objetivo técnico-operacional?",
     options: [
@@ -406,7 +406,7 @@ export default function AtividadeExtraM05() {
       { min: 20, emoji: "🛡️", label: "Analista Iniciante", color: "#00e5ff" },
       { min: 40, emoji: "⚡", label: "Especialista em Acesso", color: "#00ff88" },
       { min: 70, emoji: "🔑", label: "Guardião de Identidades", color: "#ffd600" },
-      { min: 100, emoji: "🏆", label: "Hacker do Bem — Elite!", color: "#ffd600" },
+      { min: 100, emoji: "🏆", label: "Hacker do Bem - Elite!", color: "#ffd600" },
     ];
     let lvl = levels[0];
     levels.forEach(l => { if (s >= l.min) lvl = l; });

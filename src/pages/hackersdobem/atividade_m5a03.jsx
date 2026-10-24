@@ -8,7 +8,7 @@ import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 const QUESTION_BANK = [
   {
     id: 1,
-    level: "Nível 1 — Iniciante",
+    level: "Nível 1 - Iniciante",
     scenario: "Em uma pequena clínica, o médico que criou uma pasta de exames pode decidir independentemente quem mais na equipe tem permissão para acessá-la ou não, utilizando configurações do próprio sistema operacional.",
     text: "Qual modelo de controle de acesso está sendo utilizado, onde os próprios proprietários determinam as operações de outros?",
     options: [
@@ -22,7 +22,7 @@ const QUESTION_BANK = [
   },
   {
     id: 2,
-    level: "Nível 1 — Iniciante",
+    level: "Nível 1 - Iniciante",
     scenario: "Um novo analista financeiro foi contratado. O sistema automaticamente concede a ele as mesmas permissões do analista sênior, simplesmente por ele assumir o cargo 'Analista Financeiro'.",
     text: "Qual modelo de autorização, muito comum nas empresas, aplica permissões baseando-se nos cargos exercidos organizacionalmente?",
     options: [
@@ -36,7 +36,7 @@ const QUESTION_BANK = [
   },
   {
     id: 3,
-    level: "Nível 2 — Básico",
+    level: "Nível 2 - Básico",
     scenario: "O governo implantou um sistema militar rigoroso em que dados confidenciais recebem rótulos de 'Alto' e só podem ser manipulados se o nível de segurança exigido pela política central do sistema for validado.",
     text: "Esse formato estrito centralizado em políticas mandatórias e rótulos de segurança é determinado por qual modelo?",
     options: [
@@ -50,7 +50,7 @@ const QUESTION_BANK = [
   },
   {
     id: 4,
-    level: "Nível 2 — Básico",
+    level: "Nível 2 - Básico",
     scenario: "A permissão sobre um arquivo '.sh' no Linux é 'rwxr-xr-x'. Durante um incidente, um atacante com permissões de usuário padrão conseguiu descobrir o conteúdo exato do script observando o sistema de arquivos.",
     text: "Qual das permissões explícitas deste arquivo propiciou que o atacante lesse seu conteúdo?",
     options: [
@@ -64,7 +64,7 @@ const QUESTION_BANK = [
   },
   {
     id: 5,
-    level: "Nível 3 — Intermediário",
+    level: "Nível 3 - Intermediário",
     scenario: "Com o aumento das ameaças internas, a organização precisa gerir e rastrear profundamente todas as credenciais sensíveis (ex. senhas de conta root ou administrator), além de implementar rotação de senhas e cofre seguro.",
     text: "Como se chama o procedimento focado em controlar exclusivamente o ciclo e atividades do acesso administrativo de alto nível?",
     options: [
@@ -78,7 +78,7 @@ const QUESTION_BANK = [
   },
   {
     id: 6,
-    level: "Nível 3 — Intermediário",
+    level: "Nível 3 - Intermediário",
     scenario: "A infraestrutura da empresa cresceu consideravelmente e a equipe precisa de um repositório hierárquico, leve, ágil e em formato de diretório onde o email seja associado aos dados da filial para organizar as listagens.",
     text: "Qual protocolo e formato atende especificamente ao serviço de armazenamento de diretórios sendo uma versão viável baseada no X.500?",
     options: [
@@ -92,7 +92,7 @@ const QUESTION_BANK = [
   },
   {
     id: 7,
-    level: "Nível 3 — Intermediário",
+    level: "Nível 3 - Intermediário",
     scenario: "Ao analisar a configuração de usuários do Microsoft Active Directory, o analista visualizou a propriedade indicando que um objeto fazia parte de 'ou=RH,dc=empresa,dc=com'.",
     text: "O que 'OU' e 'DC' respectivamente representam em um diretório LDAP/X.500?",
     options: [
@@ -106,7 +106,7 @@ const QUESTION_BANK = [
   },
   {
     id: 8,
-    level: "Nível 4 — Avançado",
+    level: "Nível 4 - Avançado",
     scenario: "Três diferentes empresas hospitalares formaram um consórcio. O médico da Empresa A quer usar as mesmas credenciais corporativas que já tem para fazer login diretamente no portal do hospital filial Empresa B, sem recriar senha.",
     text: "Qual modelo permite que várias organizações confiem nas identidades gerenciadas umas pelas outras para uma autenticação sem atrito interinstitucional?",
     options: [
@@ -120,7 +120,7 @@ const QUESTION_BANK = [
   },
   {
     id: 9,
-    level: "Nível 4 — Avançado",
+    level: "Nível 4 - Avançado",
     scenario: "Durante o processo de autenticação corporativa via Single Sign-On, o fluxo emitiu para o serviço solicitado tokens baseados em XML, chamados de 'Afirmações', para transacionar a autenticação entre os dois domínios.",
     text: "Esse documento de autenticação formatado em XML e emitido pelo IdP baseia-se em qual importante protocolo de Segurança de Rede?",
     options: [
@@ -134,7 +134,7 @@ const QUESTION_BANK = [
   },
   {
     id: 10,
-    level: "Nível 4 — Avançado",
+    level: "Nível 4 - Avançado",
     scenario: "Uma integração em lote (batch-run) utiliza trocas de mensagens robustas onde todas as requisições estão envolvidas em um Envelope contendo cabeçalho e corpo com esquemas sintaticamente padronizados em XML.",
     text: "Este cenário define a implementação de integração entre aplicativos baseada em qual protocolo de chamadas remotas de serviço?",
     options: [
@@ -148,7 +148,7 @@ const QUESTION_BANK = [
   },
   {
     id: 11,
-    level: "Nível 5 — Especialista",
+    level: "Nível 5 - Especialista",
     scenario: "Uma startup liberou uma aplicação web moderna que pede ao usuário que autorize a plataforma a acessar seus arquivos em seu Google Drive. Isso ocorre através do fluxo clássico de delegação utilizando Tokens sem entregar a senha do Gmail do usuário ao aplicativo de terceiros.",
     text: "Esta delegação de autorização web em que terceiros podem assumir um papel restrito sem o conhecimento da credencial original do dono baseia-se em qual protocolo de mercado?",
     options: [
@@ -162,7 +162,7 @@ const QUESTION_BANK = [
   },
   {
     id: 12,
-    level: "Nível 5 — Especialista",
+    level: "Nível 5 - Especialista",
     scenario: "Além do provedor autorizar o acesso remoto (OAuth 2), o app deseja especificamente autenticar e coletar o perfil digital de uma pessoa (IDToken) de forma previsível (em JSON) com suporte nativo na arquitetura de Nuvem.",
     text: "Qual protocolo atua como uma 'camada superior de autenticação' construída em cima do protocolo de autorização OAuth 2.0?",
     options: [
@@ -176,7 +176,7 @@ const QUESTION_BANK = [
   },
   {
     id: 13,
-    level: "Nível 2 — Básico",
+    level: "Nível 2 - Básico",
     scenario: "O analista desenha uma regra de controle na qual 'Vendedores' só podem emitir nota se 'horário=Trabalho'. Se o vendedor for de homeoffice, há um contexto extra.",
     text: "Essa autorização minuciosa e dinâmica considerando quem é (cargo=Vendedor), ambiente (horário=Trabalho e localização=HomeOffice) e recursos (modulo=Fiscal) baseia-se majoritariamente no controle:",
     options: [
@@ -190,7 +190,7 @@ const QUESTION_BANK = [
   },
   {
     id: 14,
-    level: "Nível 3 — Intermediário",
+    level: "Nível 3 - Intermediário",
     scenario: "A corporação está madura de tal forma que qualquer senha de ROOT e de Banco de Dados de Produção não fica mais arquivada visível, e precisa ser 'reivindicada ('check-in / check-out')' sob gravação temporal, para o DB Admin agir e depois se auto trocar no fim da janela.",
     text: "Onde tipicamente ocorre isso?",
     options: [
@@ -204,7 +204,7 @@ const QUESTION_BANK = [
   },
   {
     id: 15,
-    level: "Nível 4 — Avançado",
+    level: "Nível 4 - Avançado",
     scenario: "Ao iniciar a depuração de tráfego (Auth), uma afirmação 'SAML' validada não passava da tela final. Visualizar os componentes SAML no tráfego revelou manipulações ou formatações inconsistentes. Na arquitetura descrita de SAML, existem os pacotes curtos utilizados para chamar as verdadeiras Asserções grandes.",
     text: "Como se chama o componente no padrão SAML associado a essas trocas curtas com IdPs?",
     options: [

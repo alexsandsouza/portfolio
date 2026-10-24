@@ -7,7 +7,7 @@ import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 const QUESTIONS = [
   {
-    id: 1, stage: "OBJ.347 — Nível 1", type: "Conceito Fundamental",
+    id: 1, stage: "OBJ.347 - Nível 1", type: "Conceito Fundamental",
     context: "Você está usando seu computador quando ouve o som de notificação de um e-mail chegando. Por baixo dos panos, o sistema operacional acabou de tratar um evento importante.",
     q: "O que é uma INTERRUPÇÃO no contexto de Sistemas Operacionais?",
     opts: [
@@ -21,27 +21,27 @@ const QUESTIONS = [
     xp: 100
   },
   {
-    id: 2, stage: "OBJ.347 — Nível 2", type: "Tipos de Interrupção",
+    id: 2, stage: "OBJ.347 - Nível 2", type: "Tipos de Interrupção",
     context: "Em um servidor Linux, um processo Java está rodando quando o disco SSD conclui uma operação de leitura de arquivo. Ao mesmo tempo, o timer do escalonador chega a zero.",
     q: "Qual é a diferença fundamental entre uma interrupção de HARDWARE e uma interrupção de SOFTWARE (trap)?",
     opts: [
       "Interrupções de hardware são mais rápidas; de software são mais lentas",
       "Hardware: gerada por dispositivos externos, assíncrona. Software: gerada por instrução do programa (ex: SYSCALL/INT), síncrona e intencional",
-      "Não há diferença — ambas funcionam exatamente da mesma forma",
+      "Não há diferença - ambas funcionam exatamente da mesma forma",
       "Hardware ocorre em modo núcleo; software ocorre em modo usuário"
     ],
     ans: 1,
-    feedback: "✅ Exato! Interrupções de hardware são assíncronas — podem ocorrer a qualquer momento, independente do que o programa está fazendo. Traps (interrupções de software) são síncronas — são causadas por instruções específicas do programa, como ao fazer uma system call.",
+    feedback: "✅ Exato! Interrupções de hardware são assíncronas - podem ocorrer a qualquer momento, independente do que o programa está fazendo. Traps (interrupções de software) são síncronas - são causadas por instruções específicas do programa, como ao fazer uma system call.",
     xp: 120
   },
   {
-    id: 3, stage: "OBJ.347 — Nível 3", type: "Exceções",
+    id: 3, stage: "OBJ.347 - Nível 3", type: "Exceções",
     context: "Um programador iniciante escreveu: int resultado = 100 / 0; O programa foi compilado com sucesso, mas ao executar trava instantaneamente com mensagem de erro.",
     q: "O que acontece INTERNAMENTE no SO quando ocorre divisão por zero?",
     opts: [
       "O SO ignora o erro e continua a execução com resultado = 0",
       "A CPU gera uma exceção do tipo FAULT, o SO captura via handler, registra o erro e encerra o processo com sinal (SIGFPE no Linux)",
-      "O compilador deveria ter impedido — é um erro de compilação, não de execução",
+      "O compilador deveria ter impedido - é um erro de compilação, não de execução",
       "O hardware da CPU simplesmente reinicia automaticamente o sistema"
     ],
     ans: 1,
@@ -49,26 +49,26 @@ const QUESTIONS = [
     xp: 130
   },
   {
-    id: 4, stage: "OBJ.347 — Nível 4", type: "Técnicas de E/S",
+    id: 4, stage: "OBJ.347 - Nível 4", type: "Técnicas de E/S",
     context: "Engenheiro deve escolher a técnica de E/S para um sistema de sensor IoT que lê temperatura a cada 100ms. Opção A: CPU verifica o sensor constantemente. Opção B: sensor avisa a CPU quando dado está pronto.",
     q: "Qual técnica de E/S a Opção B descreve, e por que ela é SUPERIOR à Opção A neste cenário?",
     opts: [
-      "Opção B é E/S Programada (Polling) — a CPU precisa esperar ativamente",
-      "Opção B é E/S por DMA — sempre a melhor escolha em qualquer situação",
-      "Opção B é E/S Orientada a Interrupções — superior porque a CPU fica livre para outras tarefas durante os 100ms de espera, aumentando a eficiência",
-      "Opção B é E/S por Buffer — armazena dados temporariamente na memória"
+      "Opção B é E/S Programada (Polling) - a CPU precisa esperar ativamente",
+      "Opção B é E/S por DMA - sempre a melhor escolha em qualquer situação",
+      "Opção B é E/S Orientada a Interrupções - superior porque a CPU fica livre para outras tarefas durante os 100ms de espera, aumentando a eficiência",
+      "Opção B é E/S por Buffer - armazena dados temporariamente na memória"
     ],
     ans: 2,
     feedback: "✅ Correto! E/S por Interrupção libera a CPU durante o período de espera (100ms a cada ciclo). Com Polling, a CPU desperdiçaria processamento verificando continuamente. O sensor gera uma interrupção quando dado está pronto, e a CPU só é envolvida então.",
     xp: 140
   },
   {
-    id: 5, stage: "OBJ.347 — Nível 5", type: "DMA",
+    id: 5, stage: "OBJ.347 - Nível 5", type: "DMA",
     context: "Um servidor precisa copiar 100MB de dados do SSD NVMe para a memória RAM. Com DMA disponível, o processador é envolvido apenas para iniciar a transferência e receber a conclusão.",
     q: "O que torna o DMA (Direct Memory Access) superior à E/S por Interrupção para grandes transferências de dados?",
     opts: [
       "DMA é mais seguro porque usa criptografia automática dos dados",
-      "No DMA, o controlador transfere os dados DIRETAMENTE entre memória e dispositivo sem envolver a CPU a cada byte/bloco — a CPU só é notificada ao FINAL de toda a transferência",
+      "No DMA, o controlador transfere os dados DIRETAMENTE entre memória e dispositivo sem envolver a CPU a cada byte/bloco - a CPU só é notificada ao FINAL de toda a transferência",
       "DMA é mais lento mas consome menos energia elétrica",
       "No DMA, a CPU verifica cada bloco transferido para garantir integridade"
     ],
@@ -77,26 +77,26 @@ const QUESTIONS = [
     xp: 150
   },
   {
-    id: 6, stage: "OBJ.347 — Nível 6", type: "Buffering vs Spooling",
+    id: 6, stage: "OBJ.347 - Nível 6", type: "Buffering vs Spooling",
     context: "Cenário A: placa de som recebendo áudio do microfone. Cenário B: 15 funcionários enviando documentos para a impressora compartilhada do escritório.",
     q: "Qual técnica é mais adequada para CADA cenário e por quê?",
     opts: [
-      "Ambos usam Spooling — é sempre a melhor técnica para qualquer dispositivo",
+      "Ambos usam Spooling - é sempre a melhor técnica para qualquer dispositivo",
       "Cenário A: Buffering (absorve diferença de velocidade CPU/hardware). Cenário B: Spooling (serializa acesso de múltiplos processos a dispositivo compartilhado)",
       "Cenário A: Polling. Cenário B: DMA",
-      "Ambos usam Buffering — Spooling não existe em sistemas modernos"
+      "Ambos usam Buffering - Spooling não existe em sistemas modernos"
     ],
     ans: 1,
-    feedback: "✅ Perfeito! Buffering resolve o problema de velocidades diferentes — a placa de som gera dados mais lentamente que a CPU os consome. Spooling resolve o compartilhamento — múltiplos processos não podem usar a impressora ao mesmo tempo, então cada um entrega para a fila e continua trabalhando.",
+    feedback: "✅ Perfeito! Buffering resolve o problema de velocidades diferentes - a placa de som gera dados mais lentamente que a CPU os consome. Spooling resolve o compartilhamento - múltiplos processos não podem usar a impressora ao mesmo tempo, então cada um entrega para a fila e continua trabalhando.",
     xp: 160
   },
   {
-    id: 7, stage: "OBJ.347 — Nível 7", type: "Reentrância",
+    id: 7, stage: "OBJ.347 - Nível 7", type: "Reentrância",
     context: "Um servidor Linux tem 50 processos abertos simultaneamente usando a função printf() para escrever logs. Apenas uma cópia do código de printf() existe na memória.",
     q: "Por que isso funciona sem que os logs de um processo misturem com os de outro?",
     opts: [
       "O Linux copia o código de printf() para cada processo, mas otimiza com copy-on-write",
-      "printf() é uma função REENTRANTE: usa apenas variáveis locais na pilha de cada processo — cada chamada tem seu próprio conjunto de variáveis, completamente isolado",
+      "printf() é uma função REENTRANTE: usa apenas variáveis locais na pilha de cada processo - cada chamada tem seu próprio conjunto de variáveis, completamente isolado",
       "Os processos usam printf() em sequência, nunca ao mesmo tempo",
       "O SO usa mutex global que impede qualquer execução simultânea de printf()"
     ],
@@ -105,27 +105,27 @@ const QUESTIONS = [
     xp: 170
   },
   {
-    id: 8, stage: "OBJ.348 — Nível 8", type: "Funções do Kernel",
+    id: 8, stage: "OBJ.348 - Nível 8", type: "Funções do Kernel",
     context: "Você abre o Spotify no Windows. Ao iniciar, o aplicativo cria threads, aloca memória, abre arquivos de cache e estabelece conexão de rede.",
     q: "Qual componente do sistema é responsável por TODAS essas operações e por quê?",
     opts: [
-      "O compilador do Spotify — é parte do código do aplicativo",
-      "A BIOS/UEFI — gerencia diretamente o hardware",
-      "O Kernel (Núcleo) do SO — é o único componente com privilégios para criar processos, alocar memória, acessar sistema de arquivos e controlar rede",
-      "O driver da placa de rede — gerencia todas as conexões de todos os programas"
+      "O compilador do Spotify - é parte do código do aplicativo",
+      "A BIOS/UEFI - gerencia diretamente o hardware",
+      "O Kernel (Núcleo) do SO - é o único componente com privilégios para criar processos, alocar memória, acessar sistema de arquivos e controlar rede",
+      "O driver da placa de rede - gerencia todas as conexões de todos os programas"
     ],
     ans: 2,
-    feedback: "✅ Correto! O Kernel é o árbitro central que media TODOS os acessos ao hardware. Nenhum aplicativo pode diretamente criar threads, alocar memória real, abrir arquivos ou usar a rede — tudo passa pelo kernel via system calls. Isso garante proteção e isolamento entre processos.",
+    feedback: "✅ Correto! O Kernel é o árbitro central que media TODOS os acessos ao hardware. Nenhum aplicativo pode diretamente criar threads, alocar memória real, abrir arquivos ou usar a rede - tudo passa pelo kernel via system calls. Isso garante proteção e isolamento entre processos.",
     xp: 180
   },
   {
-    id: 9, stage: "OBJ.348 — Nível 9", type: "Modo de Acesso",
-    context: "Em 2018, a vulnerabilidade Meltdown permitia que código em modo usuário lesse dados da memória do kernel — violando a barreira de proteção entre os modos de acesso.",
+    id: 9, stage: "OBJ.348 - Nível 9", type: "Modo de Acesso",
+    context: "Em 2018, a vulnerabilidade Meltdown permitia que código em modo usuário lesse dados da memória do kernel - violando a barreira de proteção entre os modos de acesso.",
     q: "Por que a separação entre Modo Usuário e Modo Núcleo é CRÍTICA para a segurança dos sistemas operacionais?",
     opts: [
-      "É apenas uma convenção de programação — qualquer programa poderia acessar hardware diretamente se quisesse",
-      "Sem essa separação, qualquer processo poderia ler a memória de outros processos, modificar o kernel, acessar hardware livremente — sem isolamento ou proteção nenhuma",
-      "Modo Usuário e Modo Núcleo são conceitos apenas de sistemas Unix — Windows não usa isso",
+      "É apenas uma convenção de programação - qualquer programa poderia acessar hardware diretamente se quisesse",
+      "Sem essa separação, qualquer processo poderia ler a memória de outros processos, modificar o kernel, acessar hardware livremente - sem isolamento ou proteção nenhuma",
+      "Modo Usuário e Modo Núcleo são conceitos apenas de sistemas Unix - Windows não usa isso",
       "A separação existe apenas para melhorar a performance, não para segurança"
     ],
     ans: 1,
@@ -133,13 +133,13 @@ const QUESTIONS = [
     xp: 200
   },
   {
-    id: 10, stage: "OBJ.348 — Nível 10", type: "System Calls",
+    id: 10, stage: "OBJ.348 - Nível 10", type: "System Calls",
     context: "Um desenvolvedor escreveu em C: FILE *f = fopen('dados.csv', 'r'); Para executar essa linha, a aplicação precisa interagir com o kernel do SO.",
-    q: "O que acontece INTERNAMENTE quando fopen() é chamada — do modo usuário até o hardware?",
+    q: "O que acontece INTERNAMENTE quando fopen() é chamada - do modo usuário até o hardware?",
     opts: [
       "fopen() lê o arquivo diretamente do disco sem envolver o SO, para ser mais rápida",
-      "fopen() chama a system call open() via SYSCALL/INT, CPU muda para modo núcleo, kernel valida permissões, acessa VFS, aciona driver, lê do disco, retorna o descritor — tudo em microssegundos",
-      "fopen() é tratada exclusivamente pelo compilador C — não há interação com o SO",
+      "fopen() chama a system call open() via SYSCALL/INT, CPU muda para modo núcleo, kernel valida permissões, acessa VFS, aciona driver, lê do disco, retorna o descritor - tudo em microssegundos",
+      "fopen() é tratada exclusivamente pelo compilador C - não há interação com o SO",
       "fopen() solicita ao BIOS que leia o arquivo, sem envolver o kernel"
     ],
     ans: 1,
@@ -147,7 +147,7 @@ const QUESTIONS = [
     xp: 200
   },
   {
-    id: 11, stage: "⚔️ BOSS FINAL — OBJ.347+348", type: "Desafio Integrador",
+    id: 11, stage: "⚔️ BOSS FINAL - OBJ.347+348", type: "Desafio Integrador",
     context: "🚀 ÚLTIMO DESAFIO! Um engenheiro de software deve implementar um sistema de monitoramento em tempo real para uma UTI hospitalar. O sistema precisa: (1) receber dados dos monitores cardíacos via USB, (2) processar e exibir em telas, (3) gravar em banco de dados, (4) alertar médicos via rede se houver anomalia. O sistema roda em Linux embarcado.",
     q: "Qual das arquiteturas abaixo representa a implementação MAIS CORRETA e SEGURA para esse sistema crítico?",
     opts: [
@@ -388,7 +388,7 @@ export default function SOActivity() {
             <div style={{ textAlign: 'center', padding: '40px 0' }}>
               <div style={{ fontSize: 12, letterSpacing: 4, color: COLORS.sky, fontWeight: 700, textTransform: 'uppercase', marginBottom: 8 }}>CEUNI-FAMETRO · Sistemas Operacionais · 2026.1</div>
               <h1 style={{ fontSize: 'clamp(2.5rem, 8vw, 4rem)', fontWeight: 800, margin: 0 }}>⚙️ SO Quest</h1>
-              <p style={{ color: '#93C5FD', fontSize: 14 }}>Trilha de Aprendizagem Interativa — OBJ. 347 e 348</p>
+              <p style={{ color: '#93C5FD', fontSize: 14 }}>Trilha de Aprendizagem Interativa - OBJ. 347 e 348</p>
             </div>
 
             <div style={{ 

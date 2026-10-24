@@ -43,7 +43,7 @@
   --bg-secondary: #f1f5f9;
   --surface-color: #e2e8f0;
 
-  /* Enhanced Glassmorphism Cards — visible borders on light bg */
+  /* Enhanced Glassmorphism Cards - visible borders on light bg */
   --card-bg: rgba(255, 255, 255, 0.85);
   --card-border: rgba(148, 163, 184, 0.25);
   --card-shadow: 0 4px 20px rgba(100, 116, 139, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);

@@ -1,4 +1,4 @@
-# Design System — Portfólio Profissional
+# Design System - Portfólio Profissional
 
 Esta documentação detalha a identidade visual, tipografia, escala de espaçamentos e as propriedades CSS personalizadas utilizadas na aplicação.
 
@@ -56,8 +56,8 @@ O portfólio emprega um tema tecnológico escuro (default) de alta sofisticaçã
 ## 2. Tipografia
 
 A hierarquia tipográfica utiliza fontes do Google Fonts otimizadas com fallback para fontes do sistema:
-- **Títulos e Cabeçalhos (`--font-heading`)**: `'Plus Jakarta Sans', sans-serif` — Geometria moderna e cantos amigáveis que conferem autoridade.
-- **Corpo e Leitura (`--font-body`)**: `'Inter', sans-serif` — Leitura altamente legível em telas retroiluminadas de qualquer resolução.
+- **Títulos e Cabeçalhos (`--font-heading`)**: `'Plus Jakarta Sans', sans-serif` - Geometria moderna e cantos amigáveis que conferem autoridade.
+- **Corpo e Leitura (`--font-body`)**: `'Inter', sans-serif` - Leitura altamente legível em telas retroiluminadas de qualquer resolução.
 
 ---
 

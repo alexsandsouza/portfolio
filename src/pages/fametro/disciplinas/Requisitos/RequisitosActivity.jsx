@@ -50,7 +50,7 @@ const QUESTIONS = [
     text: "O que define uma Inconsistência Lógica nos requisitos?",
     answers: [
       "Requisitos redigidos em idiomas diferentes",
-      "Quando um requisito anula o outro — ex: 'sistema rápido' vs 'segurança máxima que o torne lento'",
+      "Quando um requisito anula o outro - ex: 'sistema rápido' vs 'segurança máxima que o torne lento'",
       "Requisitos duplicados com mesmo conteúdo",
       "Requisitos sem identificador único"
     ],
@@ -114,10 +114,10 @@ const QUESTIONS = [
     category: "ANÁLISE DE VIABILIDADE",
     text: "Qual métrica financeira é frequentemente usada para justificar a decisão de seguir em frente com um projeto?",
     answers: [
-      "NPS — Net Promoter Score",
-      "ROI — Retorno sobre o Investimento",
-      "KPI — Key Performance Indicator",
-      "SLA — Service Level Agreement"
+      "NPS - Net Promoter Score",
+      "ROI - Retorno sobre o Investimento",
+      "KPI - Key Performance Indicator",
+      "SLA - Service Level Agreement"
     ],
     correct: 1,
     feedback: "O ROI (Retorno sobre o Investimento) e a análise de custo-benefício são as métricas mais usadas para justificar a decisão de prosseguir com o projeto.",
@@ -140,10 +140,10 @@ const QUESTIONS = [
     category: "PRIORIZAÇÃO",
     text: "O que significa a letra 'M' na técnica MoSCoW?",
     answers: [
-      "Moderado — pode aguardar",
-      "Must — requisito obrigatório",
-      "Mínimo — escopo reduzido",
-      "Melhor — ideal mas não necessário"
+      "Moderado - pode aguardar",
+      "Must - requisito obrigatório",
+      "Mínimo - escopo reduzido",
+      "Melhor - ideal mas não necessário"
     ],
     correct: 1,
     feedback: "Na técnica MoSCoW: M = Must (Obrigatório), S = Should (Importante), C = Could (Desejável), W = Won't (Não essencial agora).",
@@ -578,7 +578,7 @@ function Quiz({ playerName, onFinish }) {
       const updated = [...current, ...newOnes.map(b => b.id)];
       setEarnedBadges(updated);
       newOnes.forEach(b => {
-        showNotif(`🏅 Conquista!`, `${b.emoji} ${b.name} — ${b.desc}`);
+        showNotif(`🏅 Conquista!`, `${b.emoji} ${b.name} - ${b.desc}`);
       });
     }
   }

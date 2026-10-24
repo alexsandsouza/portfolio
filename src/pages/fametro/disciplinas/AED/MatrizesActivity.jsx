@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import { db } from '../../../../firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
-// ─── BANCO DE QUESTÕES ESTILO ENADE — 15 QUESTÕES (Matrizes AED) ─────────────
+// ─── BANCO DE QUESTÕES ESTILO ENADE - 15 QUESTÕES (Matrizes AED) ─────────────
 const QUESTIONS = [
   {
-    id: 1, stage: "Básico — Inicialização", type: "ENADE / C-Concept",
+    id: 1, stage: "Básico - Inicialização", type: "ENADE / C-Concept",
     context: "Um desenvolvedor está iniciando um projeto de controle de estoque para um armazém representado por uma grade de 5 corredores e 10 prateleiras por corredor. No início do turno, todos os registros devem estar zerados para evitar que 'lixos de memória' (valores residuais) causem erros no balanço.",
     q: "Qual declaração em Linguagem C inicializa corretamente a matriz de estoque com zeros sem utilizar diretivas de pré-processamento (#define) ou constantes?",
     opts: [
@@ -21,7 +21,7 @@ const QUESTIONS = [
     xp: 100
   },
   {
-    id: 2, stage: "Básico — Coordenadas", type: "ENADE / Logic",
+    id: 2, stage: "Básico - Coordenadas", type: "ENADE / Logic",
     context: "Em um software de edição de fotos profissionais, os pixels são manipulados via matrizes de cores. Um algoritmo precisa alterar o brilho de um pixel específico localizado na 4ª linha e na 8ª coluna da imagem (em contagem humana, começando de 1).",
     q: "Considerando que a imagem foi declarada como 'int imagem[1024][1024]', qual comando o desenvolvedor deve usar para acessar esse pixel corretamente em C?",
     opts: [
@@ -36,7 +36,7 @@ const QUESTIONS = [
     xp: 110
   },
   {
-    id: 3, stage: "Intermediário — Estrutura de Memória", type: "ENADE / Hardware",
+    id: 3, stage: "Intermediário - Estrutura de Memória", type: "ENADE / Hardware",
     context: "Um engenheiro de performance está otimizando um simulador de satélite. Ele sabe que a eficiência do processador depende da 'localidade espacial' de acesso à memória RAM. Em Linguagem C, as matrizes são armazenadas no padrão 'Row-Major Order' (linha por linha contígua).",
     q: "Para uma matriz 'int m[100][200]', qual estratégia de navegação o engenheiro deve escolher para reduzir 'cache misses' e acelerar a simulação?",
     opts: [
@@ -51,7 +51,7 @@ const QUESTIONS = [
     xp: 130
   },
   {
-    id: 4, stage: "Intermediário — Álgebra Linear", type: "ENADE / Algoritmo",
+    id: 4, stage: "Intermediário - Álgebra Linear", type: "ENADE / Algoritmo",
     context: "Uma biblioteca matemática em C precisa implementar o cálculo do 'Traço' de uma matriz quadrada. O traço é definido como a soma de todos os elementos que compõem a diagonal principal.",
     q: "Dado uma matriz 'float matriz[5][5]', qual trecho de código realiza esse cálculo de forma mais eficiente (com menor complexidade de tempo)?",
     opts: [
@@ -66,7 +66,7 @@ const QUESTIONS = [
     xp: 140
   },
   {
-    id: 5, stage: "Avançado — Operações", type: "ENADE / Análise",
+    id: 5, stage: "Avançado - Operações", type: "ENADE / Análise",
     context: "Um sistema de monitoramento de tráfego aéreo recebe duas matrizes de radares: 'radarA[20][50]' e 'radarB[20][50]'. O objetivo é unir os dados em uma terceira matriz 'radarFinal' somando os sinais ponto a ponto.",
     q: "Qual o procedimento técnico correto para realizar essa soma de matrizes em Linguagem C?",
     opts: [
@@ -81,7 +81,7 @@ const QUESTIONS = [
     xp: 150
   },
   {
-    id: 6, stage: "Intermediário — Simetria", type: "ENADE / Validação",
+    id: 6, stage: "Intermediário - Simetria", type: "ENADE / Validação",
     context: "Em um banco de dados geográfico, uma matriz armazena distâncias entre cidades. Para garantir a integridade dos dados, o sistema deve verificar se a matriz é SIMÉTRICA (a distância de A até B deve ser igual à de B até A).",
     q: "Qual condição lógica (flag) deve ser testada dentro dos laços para invalidar a simetria da matriz?",
     opts: [
@@ -96,7 +96,7 @@ const QUESTIONS = [
     xp: 150
   },
   {
-    id: 7, stage: "Técnico — Passagem de Parâmetros", type: "ENADE / Software Design",
+    id: 7, stage: "Técnico - Passagem de Parâmetros", type: "ENADE / Software Design",
     context: "Você está criando uma função reutilizável para imprimir qualquer relatório em formato de tabela. A assinatura da função foi definida como: 'void mostrarRelatorio(float dados[][12], int totalLinhas)'.",
     q: "Por que, na Linguagem C, é necessário informar explicitamente o valor '12' (colunas) na assinatura, mas não o número de linhas?",
     opts: [
@@ -111,7 +111,7 @@ const QUESTIONS = [
     xp: 160
   },
   {
-    id: 8, stage: "Avançado — Transposição", type: "ENADE / Transformação",
+    id: 8, stage: "Avançado - Transposição", type: "ENADE / Transformação",
     context: "Um algoritmo de reconhecimento facial precisa rotacionar uma foto capturada. O primeiro passo é o cálculo da transposta da matriz original capturada pela câmera.",
     q: "Se a foto original é uma matriz 'M' de 480 linhas por 640 colunas, qual será a configuração da matriz 'T' (sua transposta)?",
     opts: [
@@ -126,7 +126,7 @@ const QUESTIONS = [
     xp: 160
   },
   {
-    id: 9, stage: "Avançado — Multiplicação (Regra)", type: "ENADE / Processamento",
+    id: 9, stage: "Avançado - Multiplicação (Regra)", type: "ENADE / Processamento",
     context: "Um cientista de dados precisa multiplicar a Matriz A (vendas por região) pela Matriz B (preços por categoria). A Matriz A possui dimensões 10x4 e a Matriz B possui dimensões 4x2.",
     q: "Qual será a dimensão da matriz RESULTANTE deste produto matricial e qual a regra fundamental que permite essa operação?",
     opts: [
@@ -141,7 +141,7 @@ const QUESTIONS = [
     xp: 170
   },
   {
-    id: 10, stage: "Básico — Inicialização Parcial", type: "ENADE / Syntax",
+    id: 10, stage: "Básico - Inicialização Parcial", type: "ENADE / Syntax",
     context: "Durante a prova de Algoritmos, um aluno escreve: 'float notas[5][5] = {{10.0, 9.5}, {8.0}};'.",
     q: "Qual será o valor armazenado na posição 'notas[0][2]' e 'notas[1][1]' após essa declaração?",
     opts: [
@@ -156,7 +156,7 @@ const QUESTIONS = [
     xp: 140
   },
   {
-    id: 11, stage: "Intermediário — Limites de Memória", type: "ENADE / Segurança",
+    id: 11, stage: "Intermediário - Limites de Memória", type: "ENADE / Segurança",
     context: "Um programador júnior escreve o seguinte código: 'int mat[2][2]; mat[0][0]=1; mat[0][1]=2; mat[1][0]=3; mat[1][1]=4; printf(\"%d\", mat[2][0]);'.",
     q: "O que o comando 'printf' exibirá ao ser executado em um ambiente de desenvolvimento padrão?",
     opts: [
@@ -171,7 +171,7 @@ const QUESTIONS = [
     xp: 160
   },
   {
-    id: 14, stage: "Técnico — Linearização", type: "ENADE / Memory",
+    id: 14, stage: "Técnico - Linearização", type: "ENADE / Memory",
     context: "Um desenvolvedor sênior decide otimizar a busca de um valor em uma matriz 100x100 tratando-a como um único vetor linear de 10.000 elementos usando ponteiros: 'int *ptr = &mat[0][0];'.",
     q: "Por que essa técnica é possível e segura na Linguagem C para matrizes estáticas?",
     opts: [
@@ -186,7 +186,7 @@ const QUESTIONS = [
     xp: 180
   },
   {
-    id: 12, stage: "Avançado — Rotação 90°", type: "ENADE / Desafio",
+    id: 12, stage: "Avançado - Rotação 90°", type: "ENADE / Desafio",
     context: "Um robô de segurança captura uma imagem (matriz quadrada) e precisa rotacioná-la 90 graus no sentido anti-horário para processar uma placa de veículo inclinada.",
     q: "Qual a fórmula correta de mapeamento para rotacionar um elemento [i][j] de uma matriz quadrada N x N para sua nova posição [novo_i][novo_j] em 90°?",
     opts: [
@@ -201,7 +201,7 @@ const QUESTIONS = [
     xp: 190
   },
   {
-    id: 13, stage: "Operação — Multiplicação Paso a Passo", type: "ENADE / Procedural",
+    id: 13, stage: "Operação - Multiplicação Paso a Passo", type: "ENADE / Procedural",
     context: "Para multiplicar Matriz A (2x3) por B (3x2), o programa executa três laços aninhados (i, j, k). No momento em que i=0, j=0, o programa deve calcular o primeiro elemento da matriz C.",
     q: "Qual a sequência matemática correta que o processador realiza para obter C[0][0]?",
     opts: [
@@ -216,7 +216,7 @@ const QUESTIONS = [
     xp: 170
   },
   {
-    id: 15, stage: "⚔️ BOSS FINAL — Matrizes AED", type: "Desafio Integrador ENADE",
+    id: 15, stage: "⚔️ BOSS FINAL - Matrizes AED", type: "Desafio Integrador ENADE",
     context: "🚀 CENÁRIO FINAL: Você é o Arquiteto Chefe de uma Missão Mars Rover. O Rover capturou uma matriz de temperatura ambiente (360x360). Requisitos: (1) O sistema deve calcular a média da diagonal principal para calibrar o sensor; (2) Deve rotacionar a matriz 90° para alinhar com o horizonte; (3) O código deve rodar em um chip antigo de 8 bits consumindo o mínimo de memória e CPU; (4) Não é permitido o uso de variáveis globais ou #define para evitar erros de escopo.",
     q: "Qual conjunto de decisões técnicas você ordena para sua equipe de desenvolvedores para garantir o sucesso da missão?",
     opts: [

@@ -15,7 +15,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 
-// Analytics is optional — won't crash if unavailable or env vars are missing
+// Analytics is optional - won't crash if unavailable or env vars are missing
 export let analytics = null;
 isSupported().then((supported) => {
     if (supported) {

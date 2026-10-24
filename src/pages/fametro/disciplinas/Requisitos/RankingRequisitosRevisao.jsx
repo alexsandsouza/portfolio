@@ -126,7 +126,7 @@ export default function RankingRequisitosRevisao() {
                 FAMETRO · Requisitos e Projetos · 5º Período
               </div>
               <h1 style={{ margin: "4px 0 0", fontSize: 20, fontWeight: 900, color: "#fff", lineHeight: 1.1 }}>
-                Revisão Avaliação — Placar ao Vivo
+                Revisão Avaliação - Placar ao Vivo
               </h1>
             </div>
           </div>
@@ -158,9 +158,9 @@ export default function RankingRequisitosRevisao() {
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 12, marginBottom: 28 }}>
           {[
             { label: "Participantes", value: stats.total, icon: "👥", color: "#EF4444" },
-            { label: "Média da Turma", value: stats.total ? `${stats.avg} pts` : "—", icon: "📊", color: "#3B82F6" },
+            { label: "Média da Turma", value: stats.total ? `${stats.avg} pts` : "-", icon: "📊", color: "#3B82F6" },
             { label: "Gênios Analíticos", value: stats.perfect, icon: "💯", color: "#FFD700" },
-            { label: "Líder Atual", value: stats.top ? stats.top.name.split(" ")[0] : "—", icon: "🏆", color: "#A78BFA" },
+            { label: "Líder Atual", value: stats.top ? stats.top.name.split(" ")[0] : "-", icon: "🏆", color: "#A78BFA" },
           ].map(card => (
             <div key={card.label} style={{
               background: "rgba(13,19,33,0.4)", border: "1px solid rgba(255,255,255,0.05)",

@@ -118,7 +118,7 @@ export default function SORankingU1() {
         
         <div style={{ textAlign: 'center', marginBottom: 40 }}>
            <div style={{ fontSize: 12, letterSpacing: 4, color: "#0EA5E9", fontWeight: 700, textTransform: 'uppercase', marginBottom: 8 }}>CEUNI-FAMETRO · Sistemas Operacionais · 2026.1</div>
-           <h1 style={{ fontSize: 36, fontWeight: 900, margin: 0 }}>📊 Ranking — SO Quest Unidade I</h1>
+           <h1 style={{ fontSize: 36, fontWeight: 900, margin: 0 }}>📊 Ranking - SO Quest Unidade I</h1>
            <p style={{ color: '#94A3B8' }}>Unidade I · Introdução aos SOs e Conceitos de Hardware</p>
         </div>
 
@@ -127,7 +127,7 @@ export default function SORankingU1() {
           {[
             { label: "Participantes", value: stats.total, icon: "👥" },
             { label: "Média Global", value: stats.avg, icon: "〽️" },
-            { label: "Líder Atual", value: stats.top ? stats.top.name : "—", icon: "👑" },
+            { label: "Líder Atual", value: stats.top ? stats.top.name : "-", icon: "👑" },
           ].map(s => (
             <div key={s.label} style={{ background: '#0A1E5C', border: '1px solid #1E3A6E', borderRadius: 20, padding: 24, textAlign: 'center' }}>
               <div style={{ fontSize: 32, marginBottom: 8 }}>{s.icon}</div>

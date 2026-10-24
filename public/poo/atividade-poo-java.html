@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>POO Java — Atividade Gamificada | CEUNI-FAMETRO</title>
+<title>POO Java - Atividade Gamificada | CEUNI-FAMETRO</title>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -312,7 +312,7 @@
 <header>
   <div class="brand">
     <span class="uni">CEUNI-FAMETRO · Sistemas de Informação · 2026.1</span>
-    <span class="title">POO Java — Atividade Prática</span>
+    <span class="title">POO Java - Atividade Prática</span>
   </div>
   <div class="hud">
     <div class="hud-box">
@@ -321,7 +321,7 @@
     </div>
     <div class="hud-box">
       <span class="hud-label">Rank</span>
-      <span id="rank-display">—</span>
+      <span id="rank-display">-</span>
     </div>
   </div>
 </header>
@@ -407,7 +407,7 @@ Escreva uma classe chamada <strong>HelloWorld</strong> com o método <strong>mai
 • <code>String email</code><br><br>
 Lembre-se: em Java, os atributos ficam dentro do bloco <code>{ }</code> da classe.`,
     placeholder: `// Crie a classe Pessoa com os atributos indicados\n`,
-    hint: "class NomeDaClasse { TipoAtributo nomeAtributo; } — use String para texto e int para número inteiro.",
+    hint: "class NomeDaClasse { TipoAtributo nomeAtributo; } - use String para texto e int para número inteiro.",
     keywords: ["class Pessoa", "String nome", "int idade", "String email"],
     gabarito: `class Pessoa {\n    String nome;\n    int idade;\n    String email;\n}`
   },
@@ -421,7 +421,7 @@ Lembre-se: em Java, os atributos ficam dentro do bloco <code>{ }</code> da class
 • <code>getEmail()</code> → retorna <code>String</code><br><br>
 Escreva a classe completa com atributos + métodos get.`,
     placeholder: `class Pessoa {\n    String nome;\n    int idade;\n    String email;\n\n    // Adicione os métodos get aqui\n\n}`,
-    hint: "String getNome() { return this.nome; } — o tipo de retorno deve corresponder ao tipo do atributo.",
+    hint: "String getNome() { return this.nome; } - o tipo de retorno deve corresponder ao tipo do atributo.",
     keywords: ["getNome", "getIdade", "getEmail", "return this.nome", "return this.idade", "return this.email"],
     gabarito: `class Pessoa {\n    String nome;\n    int idade;\n    String email;\n\n    String getNome() {\n        return this.nome;\n    }\n\n    int getIdade() {\n        return this.idade;\n    }\n\n    String getEmail() {\n        return this.email;\n    }\n}`
   },
@@ -435,7 +435,7 @@ Escreva a classe completa com atributos + métodos get.`,
 • <code>setEmail(String email)</code><br><br>
 Escreva a classe completa: atributos + get + set.`,
     placeholder: `class Pessoa {\n    String nome;\n    int idade;\n    String email;\n\n    // Cole aqui os gets do exercício anterior e adicione os sets\n\n}`,
-    hint: "void setNome(String nome) { this.nome = nome; } — use void pois set não retorna valor. Use this. para diferenciar atributo do parâmetro.",
+    hint: "void setNome(String nome) { this.nome = nome; } - use void pois set não retorna valor. Use this. para diferenciar atributo do parâmetro.",
     keywords: ["setNome", "setIdade", "setEmail", "void", "this.nome = nome", "this.idade = idade", "this.email = email"],
     gabarito: `class Pessoa {\n    String nome;\n    int idade;\n    String email;\n\n    String getNome() { return this.nome; }\n    int getIdade() { return this.idade; }\n    String getEmail() { return this.email; }\n\n    void setNome(String nome) {\n        this.nome = nome;\n    }\n\n    void setIdade(int idade) {\n        this.idade = idade;\n    }\n\n    void setEmail(String email) {\n        this.email = email;\n    }\n}`
   },
@@ -464,7 +464,7 @@ Escreva a classe Pessoa completa com construtor + get + set.`,
 3. Imprima: <code>System.out.println</code> com o nome, idade e email usando os métodos get<br><br>
 <em>Obs: inclua também a definição da classe Pessoa no mesmo arquivo ou assume que ela já existe.</em>`,
     placeholder: `public class Main {\n    public static void main(String[] args) {\n        // Crie o objeto Pessoa aqui\n\n        // Altere o nome\n\n        // Imprima os dados\n    }\n}`,
-    hint: "Pessoa aluno = new Pessoa(\"Maria\", 20, \"maria@email.com\"); — depois: aluno.setNome(\"João Silva\"); e System.out.println(aluno.getNome());",
+    hint: "Pessoa aluno = new Pessoa(\"Maria\", 20, \"maria@email.com\"); - depois: aluno.setNome(\"João Silva\"); e System.out.println(aluno.getNome());",
     keywords: ["new Pessoa(", "aluno.setNome", "João Silva", "aluno.getNome()", "aluno.getIdade()", "aluno.getEmail()", "System.out.println"],
     gabarito: `public class Main {\n    public static void main(String[] args) {\n        // Instanciando objeto com construtor\n        Pessoa aluno = new Pessoa("Maria", 20, "maria@email.com");\n\n        // Alterando o nome com SET\n        aluno.setNome("João Silva");\n\n        // Exibindo os dados com GET\n        System.out.println("Nome: " + aluno.getNome());\n        System.out.println("Idade: " + aluno.getIdade());\n        System.out.println("Email: " + aluno.getEmail());\n    }\n}`
   }
@@ -525,7 +525,7 @@ function buildExercises() {
 
 function buildGabarito() {
   const panel = document.getElementById('gabarito-panel');
-  panel.innerHTML = `<div class="section-title" style="margin-bottom:16px;">📋 Gabarito — Professor Alexsander Farias</div>`;
+  panel.innerHTML = `<div class="section-title" style="margin-bottom:16px;">📋 Gabarito - Professor Alexsander Farias</div>`;
   exercises.forEach(ex => {
     const box = document.createElement('div');
     box.className = 'gab-box';

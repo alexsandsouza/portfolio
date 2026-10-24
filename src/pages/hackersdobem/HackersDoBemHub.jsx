@@ -28,7 +28,7 @@ function MatrixRain() {
     resize();
 
     const draw = () => {
-      // Fading black overlay — controls trail length
+      // Fading black overlay - controls trail length
       ctx.fillStyle = 'rgba(10, 10, 18, 0.055)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -45,7 +45,7 @@ function MatrixRain() {
         ctx.fillStyle = '#CCFFE8';
         ctx.fillText(char, x, y);
 
-        // Body trail — slightly dimmer (drawn on previous frames via fade)
+        // Body trail - slightly dimmer (drawn on previous frames via fade)
         ctx.shadowBlur = 0;
 
         // Reset drop randomly after it passes bottom

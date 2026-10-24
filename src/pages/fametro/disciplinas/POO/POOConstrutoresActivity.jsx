@@ -10,7 +10,7 @@ const STAGES = [
     objective: "Declare a classe Produto com os atributos: String nome, double preco, int estoque.",
     context: `Imagine que você foi contratado como dev Jr em uma loja online. 
 Sua primeira tarefa: criar a estrutura de dados que representa um Produto no estoque.`,
-    placeholder: `// 📦 Etapa 1 — Declare a classe Produto com os 3 atributos
+    placeholder: `// 📦 Etapa 1 - Declare a classe Produto com os 3 atributos
 class Produto {
 
 }`,
@@ -26,7 +26,7 @@ class Produto {
     id: 2,
     points: 15,
     badge: "🔍",
-    title: "Getters — Lendo os Dados",
+    title: "Getters - Lendo os Dados",
     objective: "Adicione os métodos getter para os 3 atributos: getNome(), getPreco() e getEstoque().",
     context: `Outros módulos do sistema precisam ler os dados do Produto.
 Crie os getters para expor os valores de forma controlada.`,
@@ -35,10 +35,10 @@ Crie os getters para expor os valores de forma controlada.`,
     double preco;
     int estoque;
 
-    // 🔍 Etapa 2 — Adicione os 3 métodos get abaixo
+    // 🔍 Etapa 2 - Adicione os 3 métodos get abaixo
 
 }`,
-    hint: "String getNome() { return this.nome; } — repita o padrão para preco (double) e estoque (int).",
+    hint: "String getNome() { return this.nome; } - repita o padrão para preco (double) e estoque (int).",
     keywords: [
       "getNome", "return this.nome",
       "getPreco", "return this.preco",
@@ -66,7 +66,7 @@ Crie os getters para expor os valores de forma controlada.`,
     id: 3,
     points: 15,
     badge: "✏️",
-    title: "Setters — Alterando os Dados",
+    title: "Setters - Alterando os Dados",
     objective: "Adicione os métodos setter: setNome(String nome), setPreco(double preco) e setEstoque(int estoque).",
     context: `O sistema de estoque precisa atualizar os dados de um produto já cadastrado.
 Os setters permitem alterar os valores de forma segura.`,
@@ -77,10 +77,10 @@ Os setters permitem alterar os valores de forma segura.`,
 
     // ... (getters já existem)
 
-    // ✏️ Etapa 3 — Adicione os 3 métodos set abaixo
+    // ✏️ Etapa 3 - Adicione os 3 métodos set abaixo
 
 }`,
-    hint: "void setNome(String nome) { this.nome = nome; } — use void pois setter não retorna valor.",
+    hint: "void setNome(String nome) { this.nome = nome; } - use void pois setter não retorna valor.",
     keywords: [
       "setNome", "void", "this.nome = nome",
       "setPreco", "this.preco = preco",
@@ -121,7 +121,7 @@ Implemente o construtor que recebe nome, preco e estoque como parâmetros.`,
     double preco;
     int estoque;
 
-    // 🏗️ Etapa 4 — Escreva o construtor aqui
+    // 🏗️ Etapa 4 - Escreva o construtor aqui
 
     // ... (getters e setters já existem)
 }`,
@@ -165,7 +165,7 @@ Implemente o toString() para que o println exiba as informações formatadas.`,
 
     // ... (construtor, getters e setters já existem)
 
-    // 🔎 Etapa 5 — Implemente o toString() aqui
+    // 🔎 Etapa 5 - Implemente o toString() aqui
 
 }`,
     hint: "String toString() { return \"Produto: \" + nome + \" | Preço: R$ \" + preco + \" | Estoque: \" + estoque; }",
@@ -207,7 +207,7 @@ Implemente o toString() para que o println exiba as informações formatadas.`,
 Crie um produto "Notebook Gamer" com preço 3500.00 e estoque 10, depois atualize o preço e mostre na tela.`,
     placeholder: `public class Main {
     public static void main(String[] args) {
-        // 🚀 Etapa 6 — Instancie o produto, use o setter e imprima
+        // 🚀 Etapa 6 - Instancie o produto, use o setter e imprima
 
     }
 }`,

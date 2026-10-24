@@ -9,7 +9,7 @@ import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 const QUESTION_BANK = [
   {
     id: 1,
-    level: "Nível 1 — Hardware",
+    level: "Nível 1 - Hardware",
     scenario: "Você está montando um servidor e precisa classificar os dispositivos conectados. Um HD e um SSD precisam ser configurados para leitura por endereços fixos.",
     text: "Qual a principal característica que define esses dispositivos como 'dispositivos de bloco'?",
     options: [
@@ -23,7 +23,7 @@ const QUESTION_BANK = [
   },
   {
     id: 2,
-    level: "Nível 1 — Periféricos",
+    level: "Nível 1 - Periféricos",
     scenario: "Um usuário conecta um mouse USB e um teclado ao computador. O sistema operacional começa a receber um fluxo de dados conforme o usuário se movimenta.",
     text: "Como esses periféricos são classificados tecnicamente no gerenciamento de E/S?",
     options: [
@@ -37,7 +37,7 @@ const QUESTION_BANK = [
   },
   {
     id: 3,
-    level: "Nível 2 — Transmissão",
+    level: "Nível 2 - Transmissão",
     scenario: "Ao analisar um cabo de comunicação antigo para uma impressora térmica, você percebe que os dados são enviados um bit de cada vez por um único fio.",
     text: "Qual tipo de interface de transmissão está sendo utilizada nesse cenário?",
     options: [
@@ -51,7 +51,7 @@ const QUESTION_BANK = [
   },
   {
     id: 4,
-    level: "Nível 2 — Transmissão",
+    level: "Nível 2 - Transmissão",
     scenario: "Um engenheiro decide usar transmissão paralela para conectar dois chips na mesma placa-mãe, visando alta taxa de transferência.",
     text: "Qual a principal limitação da transmissão paralela em longas distâncias?",
     options: [
@@ -65,7 +65,7 @@ const QUESTION_BANK = [
   },
   {
     id: 5,
-    level: "Nível 3 — Drivers",
+    level: "Nível 3 - Drivers",
     scenario: "A empresa comprou uma placa de captura de vídeo de um fabricante desconhecido. Ao conectar, o SO não consegue realizar nenhuma operação com a placa.",
     text: "Qual componente de software está faltando para 'traduzir' os comandos do SO para esse hardware específico?",
     options: [
@@ -79,7 +79,7 @@ const QUESTION_BANK = [
   },
   {
     id: 6,
-    level: "Nível 3 — Software de E/S",
+    level: "Nível 3 - Software de E/S",
     scenario: "Um desenvolvedor quer que seu driver seja o mais seguro possível e não afete o kernel caso ocorra um erro de programação.",
     text: "Onde os drivers de sistemas operacionais modernos geralmente residem para garantir performance, apesar do risco?",
     options: [
@@ -93,7 +93,7 @@ const QUESTION_BANK = [
   },
   {
     id: 7,
-    level: "Nível 4 — Polling",
+    level: "Nível 4 - Polling",
     scenario: "Em um microcontrolador simples, o programador usa um loop 'while' infinito para verificar se um dado no teclado está pronto para ser lido.",
     text: "Qual o termo técnico para esse mecanismo de verificação constante e por que ele é ineficiente?",
     options: [
@@ -107,7 +107,7 @@ const QUESTION_BANK = [
   },
   {
     id: 8,
-    level: "Nível 4 — Interrupções",
+    level: "Nível 4 - Interrupções",
     scenario: "Para evitar que a CPU perca tempo esperando um disco lento, o SO inicia a leitura e passa a executar outro processo de um usuário diferente.",
     text: "Como o hardware avisa à CPU que os dados do disco já foram lidos e estão prontos?",
     options: [
@@ -121,7 +121,7 @@ const QUESTION_BANK = [
   },
   {
     id: 9,
-    level: "Nível 5 — DMA",
+    level: "Nível 5 - DMA",
     scenario: "Em um servidor de streaming, transferir vídeos 4K byte a byte usando interrupções está sobrecarregando a CPU com milhares de trocas de contexto.",
     text: "Qual tecnologia permite mover blocos de dados do disco para a RAM sem a CPU processar cada byte?",
     options: [
@@ -135,7 +135,7 @@ const QUESTION_BANK = [
   },
   {
     id: 10,
-    level: "Nível 5 — DMA",
+    level: "Nível 5 - DMA",
     scenario: "Um controlador de DMA acabou de terminar a transferência de um bloco de 10 MB de um sensor de radar para a memória principal do SO.",
     text: "Qual a ação final realizada pelo DMA para liberar o CPU e avisar sobre a conclusão?",
     options: [
@@ -149,7 +149,7 @@ const QUESTION_BANK = [
   },
   {
     id: 11,
-    level: "Nível 6 — Buffering",
+    level: "Nível 6 - Buffering",
     scenario: "A velocidade da internet oscila muito enquanto você assiste a um vídeo. O player de vídeo reserva uma área na RAM para guardar alguns segundos à frente.",
     text: "Qual técnica de E/S está sendo usada para suavizar essas discrepâncias de velocidade?",
     options: [
@@ -163,7 +163,7 @@ const QUESTION_BANK = [
   },
   {
     id: 12,
-    level: "Nível 6 — Spooling",
+    level: "Nível 6 - Spooling",
     scenario: "Três usuários enviam documentos para a mesma impressora ao mesmo tempo. A impressora só consegue imprimir um documento por vez.",
     text: "Qual mecanismo o SO utiliza para guardar esses pedidos em disco e enviá-los em ordem?",
     options: [
@@ -177,7 +177,7 @@ const QUESTION_BANK = [
   },
   {
     id: 13,
-    level: "Nível 7 — Barramento",
+    level: "Nível 7 - Barramento",
     scenario: "Um técnico precisa conectar uma GPU potente e um SSD NVMe. Ele sabe que a largura de banda desse canal de comunicação física é vital.",
     text: "Como se chama o conjunto de linhas físicas que interliga CPU, Memória e periféricos?",
     options: [
@@ -191,7 +191,7 @@ const QUESTION_BANK = [
   },
   {
     id: 14,
-    level: "Nível 7 — Controladores",
+    level: "Nível 7 - Controladores",
     scenario: "Na arquitetura do computador, o SO não fala 'diretamente' com o motor físico do HD, mas sim com uma placa eletrônica intermediária.",
     text: "Qual o nome dessa unidade eletrônica que interpreta os comandos lógicos do SO?",
     options: [
@@ -219,7 +219,7 @@ const QUESTION_BANK = [
   },
   {
     id: 16,
-    level: "Nível 1 — RAID",
+    level: "Nível 1 - RAID",
     scenario: "Sua empresa precisa que os dados sejam salvos simultaneamente em dois discos diferentes para garantir que, se um falhar, o outro continue funcionando.",
     text: "Qual nível de RAID (espelhamento) deve ser configurado?",
     options: [
@@ -233,7 +233,7 @@ const QUESTION_BANK = [
   },
   {
     id: 17,
-    level: "Nível 1 — Performance",
+    level: "Nível 1 - Performance",
     scenario: "Um editor de vídeo profissional exige que o sistema de armazenamento seja o mais rápido possível para ler arquivos 8K, sem se importar com a perda de dados em caso de falha física.",
     text: "Qual configuração de RAID (Striping) prioriza puramente o desempenho de leitura/escrita?",
     options: [
@@ -247,7 +247,7 @@ const QUESTION_BANK = [
   },
   {
     id: 18,
-    level: "Nível 2 — SSD",
+    level: "Nível 2 - SSD",
     scenario: "Ao comprar um SSD NVMe, você lê no manual que o dispositivo utiliza células de memória Flash que se desgastam conforme são gravadas.",
     text: "Qual técnica interna do controlador do SSD garante que todas as células se desgastem por igual, aumentando a vida útil?",
     options: [
@@ -261,7 +261,7 @@ const QUESTION_BANK = [
   },
   {
     id: 19,
-    level: "Nível 2 — Dispositivos",
+    level: "Nível 2 - Dispositivos",
     scenario: "Você está analisando a placa-mãe de um servidor moderno e percebe que ele não usa mais cabos IDE largos de 40 pinos, mas sim cabos finos para os discos.",
     text: "Qual interface serial substituiu o padrão IDE (PATA) nos computadores modernos?",
     options: [
@@ -275,7 +275,7 @@ const QUESTION_BANK = [
   },
   {
     id: 20,
-    level: "Nível 3 — Escalonamento",
+    level: "Nível 3 - Escalonamento",
     scenario: "O braço de leitura do HD está na trilha 50. Há pedidos para as trilhas 55, 120 e 10. O SO decide atender primeiro o pedido da trilha 55.",
     text: "Qual algoritmo de escalonamento de disco prioriza o pedido com a menor distância física da cabeça de leitura?",
     options: [
@@ -289,7 +289,7 @@ const QUESTION_BANK = [
   },
   {
     id: 21,
-    level: "Nível 3 — Escalonamento",
+    level: "Nível 3 - Escalonamento",
     scenario: "Em um servidor com muitos usuários, o algoritmo de disco SCAN corre o risco de deixar pedidos nas extremidades esperando por muito tempo.",
     text: "Qual variação do algoritmo SCAN volta imediatamente para o início do disco sem atender pedidos na volta, garantindo espera mais uniforme?",
     options: [
@@ -303,7 +303,7 @@ const QUESTION_BANK = [
   },
   {
     id: 22,
-    level: "Nível 4 — RAID",
+    level: "Nível 4 - RAID",
     scenario: "Um servidor possui 4 discos de 1 TB. O gestor quer redundância contra a falha de UM disco, mas deseja usar o máximo de espaço possível.",
     text: "Qual nível de RAID utiliza paridade distribuída entre os discos para oferecer segurança com economia de espaço?",
     options: [
@@ -317,7 +317,7 @@ const QUESTION_BANK = [
   },
   {
     id: 23,
-    level: "Nível 4 — Hardware",
+    level: "Nível 4 - Hardware",
     scenario: "A CPU precisa enviar comandos para a placa de vídeo. Em vez de usar instruções especiais de hardware, ela escreve em endereços que parecem memória RAM, mas são da GPU.",
     text: "Como se chama essa técnica de mapear registradores de hardware no espaço de endereçamento da memória principal?",
     options: [
@@ -331,7 +331,7 @@ const QUESTION_BANK = [
   },
   {
     id: 24,
-    level: "Nível 5 — Cache vs Buffer",
+    level: "Nível 5 - Cache vs Buffer",
     scenario: "O SO mantém uma cópia dos arquivos mais acessados do HD na memória RAM rápida para evitar ler o disco lento novamente.",
     text: "Nesse contexto de otimização de E/S, qual o nome dessa técnica de armazenamento?",
     options: [
@@ -345,7 +345,7 @@ const QUESTION_BANK = [
   },
   {
     id: 25,
-    level: "Nível 5 — Interrupções",
+    level: "Nível 5 - Interrupções",
     scenario: "Um dispositivo envia uma interrupção para a CPU. A CPU consulta uma tabela na memória para saber exatamente qual rotina (handler) deve executar.",
     text: "Qual o nome técnico para o índice fornecido pelo hardware que aponta para o endereço da rotina de tratamento?",
     options: [
@@ -359,7 +359,7 @@ const QUESTION_BANK = [
   },
   {
     id: 26,
-    level: "Nível 6 — Sistema de Arquivos",
+    level: "Nível 6 - Sistema de Arquivos",
     scenario: "Quando um programa em C executa 'fprintf(file_ptr, ...)', ele não fala com o disco, mas usa uma abstração do sistema.",
     text: "Qual camada de software do SO fornece as bibliotecas e chamadas de sistema (system calls) para o usuário manipular E/S?",
     options: [
@@ -373,7 +373,7 @@ const QUESTION_BANK = [
   },
   {
     id: 27,
-    level: "Nível 6 — Buffering Duplo",
+    level: "Nível 6 - Buffering Duplo",
     scenario: "Um player de áudio usa dois buffers na memória. Enquanto a placa de som 'toca' o conteúdo do Buffer A, a CPU preenche o Buffer B com a próxima parte da música.",
     text: "Qual a vantagem principal do Buffering Duplo nesse cenário?",
     options: [
@@ -387,7 +387,7 @@ const QUESTION_BANK = [
   },
   {
     id: 28,
-    level: "Nível 7 — RAID 10",
+    level: "Nível 7 - RAID 10",
     scenario: "Um administrador de redes busca o compromisso entre a velocidade do RAID 0 e a segurança do RAID 1.",
     text: "Qual configuração combina esses dois níveis criando um 'espelhamento de tiras'?",
     options: [
@@ -401,7 +401,7 @@ const QUESTION_BANK = [
   },
   {
     id: 29,
-    level: "Nível 7 — Overrun",
+    level: "Nível 7 - Overrun",
     scenario: "Uma porta serial está recebendo dados. Se a CPU demorar demais para ler o registrador de dados antes que o próximo bit chegue, o dado antigo é sobrescrito.",
     text: "Qual o nome técnico para essa perda de dados por falha de sincronia temporal?",
     options: [

@@ -1,4 +1,4 @@
-# Arquitetura do Software — Portfólio Profissional
+# Arquitetura do Software - Portfólio Profissional
 
 Esta documentação descreve a arquitetura geral da aplicação, padrões de projeto e decisões de design de software.
 

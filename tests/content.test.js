@@ -17,7 +17,7 @@
 import { describe, it, expect } from 'vitest';
 import { portfolioContent } from '../src/data/content';
 
-describe('Camada de Dados — content.js', () => {
+describe('Camada de Dados - content.js', () => {
 
   // ============================================================
   // RF-001: Informações do Hero
