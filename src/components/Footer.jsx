@@ -127,7 +127,7 @@ const Footer = () => {
                     </div>
                 </div>
 
-                <AudienceLive />
+                <AudienceLive compact />
 
                 {/* Divider */}
                 <div style={{
