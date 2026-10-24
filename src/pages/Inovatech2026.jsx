@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { sitePath } from '../utils/sitePath';
 
 const Inovatech2026 = () => {
   useEffect(() => {
@@ -14,7 +15,7 @@ const Inovatech2026 = () => {
     <div style={{ width: '100vw', height: '100vh', margin: 0, padding: 0, overflow: 'hidden', backgroundColor: '#0f3d20' }}>
       {/* Botão de voltar ao portfólio flutuante */}
       <button 
-        onClick={() => window.location.href = "/"}
+        onClick={() => window.location.href = sitePath('/')}
         style={{
           position: 'fixed',
           top: '15px',
@@ -39,7 +40,7 @@ const Inovatech2026 = () => {
       </button>
 
       <iframe 
-        src="/Inovatech2026/inovtech_2026_amazon_tech.html" 
+        src={sitePath('/Inovatech2026/inovtech_2026_amazon_tech.html')} 
         style={{ width: '100%', height: '100%', border: 'none', display: 'block' }}
         title="Inovatech 2026 Amazon Tech"
       />

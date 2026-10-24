@@ -54,6 +54,7 @@ function audienceDevPlugin() {
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: process.env.GITHUB_PAGES === 'true' ? '/portfolio/' : '/',
   plugins: [react(), audienceDevPlugin()],
   test: {
     globals: true,

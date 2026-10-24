@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { portfolioContent } from '../data/content';
 import { Reveal } from '../components/Reveal';
 import { useHoverCard } from '../hooks/useHoverCard';
+import { sitePath } from '../utils/sitePath';
 
 const CyberFrame = () => {
     const { ref, style } = useHoverCard({ maxRotation: 5, scale: 1.01 });
@@ -66,7 +67,7 @@ const CyberFrame = () => {
                 }}></div>
 
                 <img
-                    src="/Foto_Perfil.jpg"
+                    src={sitePath('/Foto_Perfil.jpg')}
                     alt="Prof. Alexsander Farias"
                     loading="lazy"
                     style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 22%' }}

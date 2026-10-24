@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Github, Linkedin, Instagram, Youtube, ExternalLink, ArrowRight } from 'lucide-react';
 import { Reveal } from '../components/Reveal';
+import { sitePath } from '../utils/sitePath';
 
 const Links = () => {
     const mainLinks = [
@@ -96,7 +97,7 @@ const Links = () => {
                     <div style={{ marginBottom: '2rem' }}>
                         <div className="profile-wrapper">
                             <img
-                                src="/Foto_Perfil.jpg"
+                                src={sitePath('/Foto_Perfil.jpg')}
                                 alt="Prof. Alexsander Farias"
                                 style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 22%', borderRadius: '50%' }}
                             />

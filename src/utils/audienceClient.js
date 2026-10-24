@@ -33,7 +33,10 @@ export async function recordVisit(pathname) {
     if (!id) return;
 
     try {
-        const response = await fetch('/api/audience', {
+        const endpoint = window.location.hostname.endsWith('github.io')
+            ? 'https://alexsanderfarias.vercel.app/api/audience'
+            : '/api/audience';
+        const response = await fetch(endpoint, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
             body: JSON.stringify({ id, path: pathname })

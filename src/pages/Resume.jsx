@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { portfolioContent } from '../data/content';
 import { Printer, ArrowLeft, Mail, Globe } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { sitePath } from '../utils/sitePath';
 
 const Resume = () => {
     const { hero, about, professionalExperience, education, skills } = portfolioContent;
@@ -61,7 +62,7 @@ const Resume = () => {
                             borderRadius: '50%', overflow: 'hidden',
                             boxShadow: '0 4px 10px rgba(0,0,0,0.1)'
                         }}>
-                            <img src="/Foto_Perfil.jpg" alt="Prof. Alexsander Farias" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 22%' }} />
+                            <img src={sitePath('/Foto_Perfil.jpg')} alt="Prof. Alexsander Farias" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 22%' }} />
                         </div>
                         <div>
                             <h1 style={{ fontSize: '1.4rem', fontWeight: '800', color: '#000', lineHeight: 1, marginBottom: '0', textTransform: 'uppercase' }}>

@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { portfolioContent } from '../data/content';
 import { Reveal } from '../components/Reveal';
 import { useHoverCard } from '../hooks/useHoverCard';
+import { sitePath } from '../utils/sitePath';
 
 const TechBackground = () => (
     <div style={{
@@ -119,7 +120,7 @@ const GlowingProfile = () => {
 
             {/* Main Image */}
             <img
-                src="/Foto_Perfil.jpg"
+                src={sitePath('/Foto_Perfil.jpg')}
                 alt="Prof. Alexsander Farias"
                 width={320}
                 height={320}
