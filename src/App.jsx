@@ -6,7 +6,8 @@ import MouseSpotlight from './components/MouseSpotlight';
 import ScrollProgress from './components/ScrollProgress';
 import PageLoader from './components/PageLoader';
 
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { recordVisit } from './utils/audienceClient';
 import { useKonamiCode } from './hooks/useKonamiCode';
 import MatrixEffect from './components/MatrixEffect';
 import { usePageTitle } from './hooks/usePageTitle';
@@ -158,9 +159,30 @@ const Home = () => {
   );
 };
 
+function AudienceTracker() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    const send = () => {
+      if (document.visibilityState === 'hidden') return;
+      recordVisit(pathname);
+    };
+    send();
+    const timer = setInterval(send, 60000);
+    document.addEventListener('visibilitychange', send);
+    return () => {
+      clearInterval(timer);
+      document.removeEventListener('visibilitychange', send);
+    };
+  }, [pathname]);
+
+  return null;
+}
+
 function App() {
   return (
     <div className="App">
+      <AudienceTracker />
       <Suspense fallback={<PageLoader />}>
         <Routes>
           <Route path="/" element={<Home />} />

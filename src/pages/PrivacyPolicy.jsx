@@ -94,6 +94,11 @@ const PrivacyPolicy = () => {
                                     <td style={tdStyle}>Salvar escolha do banner de consentimento</td>
                                     <td style={tdStyle}>Consentimento (Art. 7º, I)</td>
                                 </tr>
+                                <tr>
+                                    <td style={tdStyle}>Identificador aleatório da visita</td>
+                                    <td style={tdStyle}>Contar pessoas no portfólio, sem nome, e-mail ou IP</td>
+                                    <td style={tdStyle}>Legítimo Interesse (Art. 7º, IX)</td>
+                                </tr>
                             </tbody>
                         </table>
                     </Section>
@@ -101,8 +106,8 @@ const PrivacyPolicy = () => {
                     <Section title="3. Cookies e Tecnologias">
                         <p>Este site utiliza:</p>
                         <ul style={ulStyle}>
-                            <li><strong style={{ color: 'var(--text-primary)' }}>localStorage</strong> - Para armazenar preferência de tema (claro/escuro), consentimento de cookies e progresso em atividades educacionais. Nenhum dado é enviado a terceiros.</li>
-                            <li><strong style={{ color: 'var(--text-primary)' }}>Firebase Firestore</strong> - Para rankings de atividades acadêmicas. Os dados são armazenados em servidores do Google Cloud com criptografia em trânsito e em repouso.</li>
+                            <li><strong style={{ color: 'var(--text-primary)' }}>localStorage</strong> - Para armazenar preferência de tema (claro/escuro), consentimento de cookies, progresso em atividades educacionais e um identificador aleatório da visita. Esse identificador segue só para o contador do próprio site.</li>
+                            <li><strong style={{ color: 'var(--text-primary)' }}>Firebase Firestore</strong> - Para rankings de atividades acadêmicas e para o contador anônimo de visitas. Os dados são armazenados em servidores do Google Cloud com criptografia em trânsito e em repouso.</li>
                             <li><strong style={{ color: 'var(--text-primary)' }}>FormSubmit.co</strong> - Para processamento do formulário de contato. Os dados são encaminhados por email e não são persistidos em banco de dados.</li>
                         </ul>
                     </Section>
@@ -153,7 +158,7 @@ const PrivacyPolicy = () => {
                         <p>
                             Dados do formulário de contato não são armazenados - são enviados diretamente ao email do titular do site.
                             Dados de rankings acadêmicos são mantidos enquanto o semestre letivo estiver ativo.
-                            A preferência de cookies é armazenada localmente no seu navegador e pode ser apagada a qualquer momento limpando os dados do site.
+                            A preferência de cookies e o identificador aleatório da visita ficam no navegador e podem ser apagados ao limpar os dados do site. O identificador serve para a mesma pessoa não entrar de novo no total.
                         </p>
                     </Section>
 
