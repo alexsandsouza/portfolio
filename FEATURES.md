@@ -16,15 +16,17 @@ Um jogo educativo para validar conhecimento antes de entregar o material rico (E
 - **Vitória**: Libera o download do Ebook e o registro no Ranking.
 
 ## 3. Hall da Fama (Ranking)
-Sistema de leaderboard global conectado ao Firebase.
-- **Exibição**: Top 10 usuários mais rápidos.
-- **Atualização**: Tempo real (`onSnapshot` do Firestore).
-- **Destaque**: Ícones de troféu e medalhas para o Top 3.
+Lista dos tempos do desafio da forca.
+- **Exibição**: Top 10 mais rápidos.
+- **Gravação**: O nome entra na hora neste navegador e também é enviado ao Firestore quando a coleção `quiz_results` aceita a inclusão.
+- **Prêmio**: O ebook baixa em seguida, a partir do PDF publicado no site.
 
-## 4. Sistema de Feedback Real
-Mural de depoimentos que permite aos visitantes deixarem mensagens.
-- **Envio**: Formulário direto no site.
-- **Exibição**: Carrossel misturando depoimentos estáticos (fixos) e dinâmicos (do banco de dados).
+## 4. Blog e newsletter
+- **Eventos**: Arquivo em `/blog`, com a primeira publicação da Imersão IA FAMETRO (2 de outubro de 2026).
+- **Newsletter**: O filtro Newsletter abre a série [Além do Algoritmo](https://www.linkedin.com/newsletters/al%C3%A9m-do-algoritmo-7517955548621811712) no LinkedIn.
+
+## 5. Contato
+O formulário da home envia nome, e-mail e mensagem para `alexsandfarias@gmail.com` pelo FormSubmit. O aviso de sucesso só aparece quando o envio é aceito.
 
 ---
 
@@ -46,4 +48,4 @@ Armazena os recordes do jogo da forca.
 - `createdAt`: Timestamp.
 
 ---
-*Documentação gerada automaticamente pela Antigravity.*
+Site publicado: https://alexsanderfarias.vercel.app

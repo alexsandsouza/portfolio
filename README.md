@@ -1,11 +1,11 @@
 <p align="center">
-  <img src="./public/Foto_Estudio2.png" alt="Prof. Alexsander Farias" width="180" style="border-radius: 50%; background-color: #ffffff; padding: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);" />
+  <img src="./public/Foto_Perfil.jpg" alt="Prof. Alexsander Farias" width="180" style="border-radius: 50%; background-color: #ffffff; padding: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);" />
 </p>
 
 <h1 align="center">🌐 Portfólio Prof. Alexsander Farias</h1>
 
 <p align="center">
-  <strong>Tech Educator · Full Stack Developer · Mentor em Tecnologia</strong>
+  <strong>Palestrante em IA e Cibersegurança · Professor Universitário · Mentor em TI</strong>
 </p>
 
 <p align="center">
@@ -34,18 +34,25 @@
 
 ## 📋 Sobre o Projeto
 
-Portfólio profissional e plataforma educacional completa, desenvolvida com foco em **Alta Performance**, **Design Cyber Tech** e **Experiência do Usuário (UX)**. Além de vitrine profissional, o projeto integra um **sistema de avaliações online interativas** para disciplinas da graduação em Tecnologia.
+Site público do Prof. Alexsander Farias: palestrante em IA e cibersegurança, professor universitário, mentor e orientador em carreira de TI, instrutor Cisco certificado e fundador da AD Academy. Mais de 20 anos de ensino, 10 mil alunos formados e mais de 50 projetos.
+
+O endereço de produção é **[https://alexsanderfarias.vercel.app](https://alexsanderfarias.vercel.app)**.
+
+Além da vitrine profissional, o projeto reúne o blog de eventos, a newsletter **Além do Algoritmo**, o currículo e os hubs de aula.
 
 ### 🎯 Funcionalidades Principais
 
 | Módulo | Descrição |
 |--------|-----------|
-| 🏠 **Portfólio** | Hero section, projetos, skills, trajetória profissional, depoimentos |
-| 📚 **Plataforma FAMETRO** | Sistema de provas online para múltiplas disciplinas da graduação |
-| 🏆 **Rankings** | Classificação em tempo real com Firebase Firestore |
-| 🎓 **Mentoria** | Página de captação, contrato digital e área exclusiva de alunos |
-| 🔗 **Links** | Agregador de links profissionais estilo Linktree |
-| 🛡️ **Hackers do Bem** | Hub dedicado ao programa de segurança cibernética |
+| 🏠 **Portfólio** | Apresentação, áreas de atuação, experiência, projetos e formação |
+| 📝 **Blog** | Eventos e palestras. A newsletter semanal abre a série no LinkedIn |
+| 📄 **Currículo** | Versão para impressão, com e-mail e o endereço do portfólio |
+| ✉️ **Contato** | Formulário enviado para o e-mail profissional |
+| 📚 **Plataforma FAMETRO** | Avaliações online das disciplinas da graduação |
+| 🏆 **Rankings** | Classificações das atividades e Hall da Fama do desafio |
+| 🎓 **Mentoria** | Página da mentoria e lista da próxima turma |
+| 🔗 **Links** | Agregador de links profissionais |
+| 🛡️ **Hackers do Bem** | Hub do programa de segurança cibernética |
 
 ---
 
@@ -206,7 +213,7 @@ O projeto é implantado automaticamente via **Vercel** a cada push na branch `ma
 ## 🤝 Contato
 
 <p align="center">
-  <a href="https://www.linkedin.com/in/alexsander-souza-farias/">
+  <a href="https://www.linkedin.com/in/alexsandfarias">
     <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
   </a>
   <a href="https://github.com/alexsandsouza">
@@ -222,5 +229,6 @@ O projeto é implantado automaticamente via **Vercel** a cada push na branch `ma
 <p align="center">
   Desenvolvido com 💜 por <strong>Prof. Alexsander Farias</strong>
   <br/>
-  <em>Tech Educator & Full Stack Developer — Manaus, AM 🇧🇷</em>
+  <em>Palestrante em IA e Cibersegurança — Manaus, AM 🇧🇷</em><br/>
+  <a href="https://alexsanderfarias.vercel.app">alexsanderfarias.vercel.app</a>
 </p>

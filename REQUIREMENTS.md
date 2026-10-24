@@ -1,15 +1,15 @@
 # 📋 Documento de Requisitos do Sistema
 
 ## Portfolio Profissional - Prof. Alexsander Farias
-**Versão:** 2.0  
-**Data:** Maio/2024  
+**Versão:** 2.1  
+**Data:** Outubro/2026  
 **Autor:** Alexsander Farias  
-**URL Produção:** [alexsanderfarias.vercel.app](https://alexsanderfarias.vercel.app)
+**URL Produção:** [https://alexsanderfarias.vercel.app](https://alexsanderfarias.vercel.app)
 
 ## 1. Visão Geral do Projeto
 
 ### 1.1 Objetivo
-Plataforma digital profissional (portfolio) que centraliza a presença online do Prof. Alexsander Farias, integrando portfólio de projetos, experiência acadêmica, serviços profissionais, hub educacional e ecossistema de plataformas da AD Academy.
+Plataforma digital do Prof. Alexsander Farias, palestrante em IA e cibersegurança, professor universitário e mentor em TI. Reúne a apresentação profissional, o blog de eventos, a newsletter Além do Algoritmo, o currículo, o contato e os hubs de aula da AD Academy e da FAMETRO. O endereço de produção é https://alexsanderfarias.vercel.app.
 
 ### 1.2 Público-alvo
 | Persona | Necessidade |

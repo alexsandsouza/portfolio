@@ -1,5 +1,9 @@
 # Conteúdo e Estratégia do Portfólio
 
+O site publicado é [https://alexsanderfarias.vercel.app](https://alexsanderfarias.vercel.app). O texto em produção está em `src/data/content.js`. O posicionamento atual é: palestrante em IA e cibersegurança, professor universitário, mentor e orientador em carreira de TI, instrutor Cisco certificado e fundador da AD Academy.
+
+O restante deste arquivo é um rascunho antigo e não descreve o site que está no ar.
+
 ## 1. Hero Section (Primeira Dobra)
 **Headline:** Transformando Visão em Realidade Digital e Potencial Humano
 **Subheadline:** Desenvolvedor Front-end Especialista, UX Writer Estratégico e Educador em Tecnologia. Crio soluções web de alto impacto e formo a próxima geração de talentos tech.
