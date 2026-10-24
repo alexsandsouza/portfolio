@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Reveal } from '../components/Reveal';
+import { submitToInbox } from '../utils/formSubmit';
 
 const Feedback = () => {
     const [formData, setFormData] = useState({
@@ -12,24 +13,37 @@ const Feedback = () => {
     const [submitted, setSubmitted] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
 
+    const sendByEmail = async () => {
+        const data = new FormData();
+        data.append('name', formData.name);
+        data.append('role', formData.role);
+        data.append('message', formData.message);
+        data.append('permission', formData.permission ? 'sim' : 'não');
+        data.append('_subject', 'Novo feedback do portfólio');
+        data.append('_template', 'table');
+        data.append('_captcha', 'false');
+        const result = await submitToInbox(data);
+        if (!result.accepted) throw new Error('Falha ao enviar o feedback');
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
         try {
             const response = await fetch('/api/feedback', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)
             });
-            if (!response.ok) {
-                throw new Error(`Server responded with status ${response.status}`);
-            }
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
             setSubmitted(true);
-        } catch (error) {
-            console.error("Erro ao enviar feedback:", error);
-            alert("Erro ao conectar com o servidor. Verifique se o projeto foi configurado corretamente.");
+        } catch {
+            try {
+                await sendByEmail();
+                setSubmitted(true);
+            } catch {
+                alert('Não consegui enviar agora. Tente de novo em instantes ou chame no WhatsApp.');
+            }
         }
         setIsSubmitting(false);
     };
@@ -63,7 +77,7 @@ const Feedback = () => {
                             <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🎉</div>
                             <h3 style={{ color: '#fff' }}>Obrigado pelo seu feedback!</h3>
                             <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem' }}>
-                                Sua mensagem foi recebida com sucesso e aparecerá no site em breve.
+                                Sua mensagem foi recebida. Obrigado pelo retorno.
                             </p>
                             <Link to="/" className="btn btn-primary">
                                 Voltar ao Site

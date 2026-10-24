@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
-import WhatsAppButton from '../components/WhatsAppButton';
 import SEO from '../components/SEO';
 import { Check, Clock, Users, Target, BookOpen, AlertTriangle, QrCode, X } from 'lucide-react';
 
@@ -23,7 +22,7 @@ const MentorshipPage = () => {
                 description="Mentoria estratégica de 2 meses para entrar em TI com direção. Entre na lista da próxima turma: 8 encontros ao vivo, roadmap personalizado e acompanhamento."
                 image="https://alexsanderfarias\.vercel\.app/Marketing_Mentoria/Slide1.JPG"
             />
-            <Navbar />
+            <Navbar whatsappMessage="Olá Alex, quero entrar na lista da próxima turma da Mentoria Carreira TI." />
 
             {/* SEÇÃO 1 – HERO */}
             <section className="section" style={{ minHeight: '90vh', display: 'flex', alignItems: 'center', paddingTop: '120px' }}>
@@ -273,7 +272,6 @@ const MentorshipPage = () => {
                 </div>
             </section>
 
-            <WhatsAppButton message="Olá Alex, quero entrar na lista da próxima turma da Mentoria Carreira TI." />
         </div>
     );
 };

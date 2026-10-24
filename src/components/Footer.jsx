@@ -55,7 +55,7 @@ const Footer = () => {
                             fontFamily: "'Plus Jakarta Sans', sans-serif",
                         }}>Prof. Alexsander Farias</h4>
                         <p style={{ fontSize: '0.82rem', lineHeight: 1.6, color: 'var(--text-secondary)' }}>
-                            Professor Universitário, Dev Full Stack e Instrutor Cisco. Formando talentos em TI desde 2010.
+                            Professor universitário, palestrante em IA e Cibersegurança e mentor em TI. Mais de 20 anos formando talentos.
                         </p>
                     </div>
 
@@ -69,9 +69,10 @@ const Footer = () => {
                             fontFamily: "'Plus Jakarta Sans', sans-serif",
                         }}>Navegação</h4>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                            <a href="#about" style={linkStyle}>Sobre</a>
-                            <a href="#projects" style={linkStyle}>Projetos</a>
-                            <a href="#contact" style={linkStyle}>Contato</a>
+                            <a href="/#about" style={linkStyle}>Sobre</a>
+                            <a href="/blog" style={linkStyle}>Blog</a>
+                            <a href="/#projects" style={linkStyle}>Projetos</a>
+                            <a href="/#contact" style={linkStyle}>Contato</a>
                             <a href="/cv" style={linkStyle}>Currículo</a>
                             <a href="/links" style={linkStyle}>Links (Bio)</a>
                         </div>

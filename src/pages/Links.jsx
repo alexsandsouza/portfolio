@@ -96,16 +96,16 @@ const Links = () => {
                     <div style={{ marginBottom: '2rem' }}>
                         <div className="profile-wrapper">
                             <img
-                                src="/Foto_Perfil_Round.png"
+                                src="/Foto_Perfil.jpg"
                                 alt="Prof. Alexsander Farias"
-                                style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }}
+                                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 22%', borderRadius: '50%' }}
                             />
                         </div>
                         <h1 style={{ fontSize: '2rem', marginBottom: '0.8rem', color: 'var(--text-heading)', fontWeight: '800', letterSpacing: '-0.5px' }}>
                             Prof. Alexsander Farias
                         </h1>
                         <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', marginBottom: '2rem', lineHeight: '1.6' }}>
-                            Prof. Universitário | Dev Full Stack | Avaliador TCC e Projetos<br />
+                            Palestrante em IA e Cibersegurança | Professor Universitário | Mentor & Orientador em Carreira de TI | Instrutor Cisco Certificado | Fundador da AD Academy<br />
                             Transformando carreiras através de mentorias na área da tecnologia da Informação - TI.
                         </p>
 

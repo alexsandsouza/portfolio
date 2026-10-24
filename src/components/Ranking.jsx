@@ -1,22 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import { db } from '../firebase';
 import { collection, query, orderBy, limit, onSnapshot } from 'firebase/firestore';
-import { Trophy, Medal, Clock, User } from 'lucide-react';
+import { Trophy, Medal, Clock } from 'lucide-react';
+import { readLocalScores } from '../utils/quizScores';
 
 const Ranking = () => {
-    const [ranks, setRanks] = useState([]);
+    const [remoteRanks, setRemoteRanks] = useState([]);
+    const [localRanks, setLocalRanks] = useState(() => readLocalScores());
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        const syncLocal = () => setLocalRanks(readLocalScores());
+        window.addEventListener('quiz-scores-updated', syncLocal);
+        window.addEventListener('storage', syncLocal);
+        return () => {
+            window.removeEventListener('quiz-scores-updated', syncLocal);
+            window.removeEventListener('storage', syncLocal);
+        };
+    }, []);
+
+    useEffect(() => {
         try {
-            // Order by time (ascending - faster is better)
             const q = query(collection(db, "quiz_results"), orderBy("timeSeconds", "asc"), limit(10));
             const unsubscribe = onSnapshot(q, (snapshot) => {
-                const results = snapshot.docs.map(doc => ({
+                setRemoteRanks(snapshot.docs.map(doc => ({
                     id: doc.id,
                     ...doc.data()
-                }));
-                setRanks(results);
+                })));
                 setLoading(false);
             }, (error) => {
                 console.error("Ranking error:", error);
@@ -28,6 +38,12 @@ const Ranking = () => {
             setLoading(false);
         }
     }, []);
+
+    const ranks = [...remoteRanks, ...localRanks]
+        .filter((entry) => entry && entry.name && Number.isFinite(Number(entry.timeSeconds)))
+        .sort((a, b) => Number(a.timeSeconds) - Number(b.timeSeconds))
+        .filter((entry, index, list) => list.findIndex((item) => item.name === entry.name && Number(item.timeSeconds) === Number(entry.timeSeconds)) === index)
+        .slice(0, 10);
 
     const formatTime = (seconds) => {
         const m = Math.floor(seconds / 60);
@@ -50,7 +66,7 @@ const Ranking = () => {
             </div>
 
             <div className="ranking-list">
-                {loading ? (
+                {loading && ranks.length === 0 ? (
                     <div style={{ textAlign: 'center', padding: '1rem', color: 'rgba(255,255,255,0.5)' }}>Carregando ranking...</div>
                 ) : ranks.length === 0 ? (
                     <div style={{ textAlign: 'center', padding: '1rem', color: 'rgba(255,255,255,0.5)' }}>Seja o primeiro a vencer!</div>

@@ -1,16 +1,21 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { QrCode, X, Grid } from 'lucide-react';
+import WhatsAppButton from './WhatsAppButton';
+import ThemeToggle from './ThemeToggle';
 
-const Navbar = ({ triggerMatrix }) => {
+const Navbar = ({ triggerMatrix, whatsappMessage }) => {
     const [scrolled, setScrolled] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
     const [showQR, setShowQR] = useState(false);
     const [showApps, setShowApps] = useState(false);
+    const navigate = useNavigate();
+    const location = useLocation();
 
     useEffect(() => {
         // Hamburger antes de os CTAs serem cortados na borda direita
-        const handleResize = () => setIsMobile(window.innerWidth <= 1360);
+        const handleResize = () => setIsMobile(window.innerWidth <= 1100);
         handleResize();
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
@@ -35,11 +40,10 @@ const Navbar = ({ triggerMatrix }) => {
     }, [isOpen]);
 
     const navLinks = [
-        { name: 'Sobre', href: '#about' },
-        { name: 'Expertise', href: '#backend' },
-        { name: 'Experiência', href: '#experience' },
-        { name: 'Projetos', href: '#projects' },
-        { name: 'Diferenciais', href: '#behavioral' },
+        { name: 'Sobre', href: '/#about' },
+        { name: 'Experiência', href: '/#experience' },
+        { name: 'Blog', href: '/blog' },
+        { name: 'Projetos', href: '/#projects' },
     ];
 
     return (
@@ -56,9 +60,14 @@ const Navbar = ({ triggerMatrix }) => {
                 alignItems: 'center'
             }}>
             <div className="container navbar-inner" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '100%', gap: '1rem', overflow: 'visible' }}>
-                <a href="#"
+                <a href="/"
                     onClick={(e) => {
                         e.preventDefault();
+                        if (location.pathname !== '/') {
+                            navigate('/');
+                            setIsOpen(false);
+                            return;
+                        }
                         // Easter Egg Trigger Logic
                         if (!window.clickCount) window.clickCount = 0;
                         window.clickCount++;
@@ -222,43 +231,9 @@ const Navbar = ({ triggerMatrix }) => {
                             <a href="/cv" target="_blank" className="nav-link" style={{ fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '4px' }}>
                                 CV <span style={{ fontSize: '1.1em' }}>↓</span>
                             </a>
-                            <a href="/teste-afinidade" title="Teste de Perfil" className="btn nav-cta" style={{
-                                padding: '0.45rem 0.75rem',
-                                fontSize: '0.78rem',
-                                whiteSpace: 'nowrap',
-                                background: 'linear-gradient(90deg, #3b82f6, #8b5cf6)',
-                                color: 'white',
-                                border: 'none',
-                                fontWeight: 'bold',
-                                boxShadow: '0 4px 15px rgba(59, 130, 246, 0.4)',
-                                flexShrink: 0
-                            }}>
-                                Teste 🧬
-                            </a>
-                            <a href="/formacao-docente" title="Formação Docente" className="btn nav-cta" style={{
-                                padding: '0.45rem 0.75rem',
-                                fontSize: '0.78rem',
-                                whiteSpace: 'nowrap',
-                                background: 'linear-gradient(90deg, #7c3aed, #2563eb)',
-                                color: 'white',
-                                border: 'none',
-                                fontWeight: 'bold',
-                                boxShadow: '0 4px 15px rgba(124, 58, 237, 0.5)',
-                                flexShrink: 0
-                            }}>
-                                Docente 🎓
-                            </a>
-                            <a href="#contact" className="btn btn-primary nav-cta" style={{ padding: '0.45rem 1rem', fontSize: '0.8rem', whiteSpace: 'nowrap', flexShrink: 0 }}>
+                            <a href="/#contact" className="btn btn-primary nav-cta" style={{ padding: '0.45rem 1rem', fontSize: '0.8rem', whiteSpace: 'nowrap', flexShrink: 0 }}>
                                 Contato
                             </a>
-                            <button
-                                onClick={() => setShowQR(true)}
-                                className="nav-link nav-icon-btn"
-                                style={{ background: 'transparent', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', flexShrink: 0, padding: '0.35rem' }}
-                                title="Gerar QR Code"
-                            >
-                                <QrCode size={18} />
-                            </button>
 
                             <div style={{ position: 'relative', flexShrink: 0 }}>
                                 <button
@@ -321,6 +296,14 @@ const Navbar = ({ triggerMatrix }) => {
                                             </div>
                                         </a>
 
+                                        <a href="/formacao-docente" style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '0.8rem', borderRadius: '8px', textDecoration: 'none', transition: 'background 0.2s' }} className="app-link">
+                                            <div style={{ width: '36px', height: '36px', background: 'linear-gradient(135deg, #7c3aed, #2563eb)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 'bold' }}>🎓</div>
+                                            <div>
+                                                <div style={{ color: 'var(--text-heading)', fontWeight: '600', fontSize: '0.9rem' }}>Formação Docente</div>
+                                                <div style={{ color: 'var(--text-secondary)', fontSize: '0.75rem' }}>Turma 2026.2</div>
+                                            </div>
+                                        </a>
+
                                         <a href="/mentoria" style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '0.8rem', borderRadius: '8px', textDecoration: 'none', transition: 'background 0.2s' }} className="app-link">
                                             <div style={{ width: '36px', height: '36px', background: '#a855f7', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 'bold' }}>M</div>
                                             <div>
@@ -353,7 +336,9 @@ const Navbar = ({ triggerMatrix }) => {
                     )
                 }
 
-                {/* Mobile Toggle Button */}
+                <div className="nav-actions">
+                    <WhatsAppButton variant="inline" message={whatsappMessage} />
+                    <ThemeToggle variant="inline" />
                 <button
                     className="mobile-toggle"
                     onClick={() => setIsOpen(!isOpen)}
@@ -365,6 +350,7 @@ const Navbar = ({ triggerMatrix }) => {
                     <div style={{ width: '24px', height: '2px', background: 'var(--text-heading)', opacity: isOpen ? 0 : 1, transition: '0.3s' }}></div>
                     <div style={{ width: '24px', height: '2px', background: 'var(--text-heading)', marginTop: '6px', transform: isOpen ? 'rotate(-45deg) translate(5px, -6px)' : 'none', transition: '0.3s' }}></div>
                 </button>
+                </div>
 
                 {/* Mobile Menu Overlay */}
                 <div id="mobile-navigation-menu" className={`mobile-menu ${isOpen ? 'open' : ''}`} role="navigation" aria-label="Menu mobile">
@@ -382,10 +368,7 @@ const Navbar = ({ triggerMatrix }) => {
                         <a href="/cv" target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)} className="mobile-link" style={{ fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '8px' }}>
                             CV <span style={{ fontSize: '0.8em' }}>↓</span>
                         </a>
-                        <a href="/mentoria" onClick={() => setIsOpen(false)} className="mobile-link" style={{ color: '#a855f7', fontWeight: 'bold' }}>Mentoria — próxima turma</a>
-                        <a href="/formacao-docente" onClick={() => setIsOpen(false)} className="mobile-link" style={{ color: '#8b5cf6', fontWeight: 'bold' }}>Formação Docente 2026.2 🎓</a>
-                        <a href="/teste-afinidade" onClick={() => setIsOpen(false)} className="mobile-link" style={{ color: '#3b82f6' }}>Teste de Perfil 🧬</a>
-                        <a href="#contact" onClick={() => setIsOpen(false)} className="mobile-link" style={{ color: 'var(--primary-color)' }}>Contato</a>
+                        <a href="/#contact" onClick={() => setIsOpen(false)} className="mobile-link" style={{ color: 'var(--primary-color)' }}>Contato</a>
 
                         {/* Mobile Apps Section */}
                         <div style={{ width: '100%', padding: '0 1.25rem', marginTop: '0.5rem', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '1.25rem' }}>
@@ -399,6 +382,10 @@ const Navbar = ({ triggerMatrix }) => {
                                 <a href="https://ad-academy-treinamentos.vercel.app" target="_blank" rel="noopener noreferrer" className="mobile-app-card" style={{ background: 'var(--bg-secondary)', padding: '0.85rem', borderRadius: '12px', textAlign: 'center', textDecoration: 'none', border: '1px solid var(--border-color)' }}>
                                     <div style={{ width: '30px', height: '30px', background: '#ec4899', borderRadius: '6px', margin: '0 auto 0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '0.8rem', fontWeight: 'bold' }}>TR</div>
                                     <span style={{ display: 'block', color: 'var(--text-heading)', fontSize: '0.8rem', fontWeight: 'bold' }}>Treinamentos</span>
+                                </a>
+                                <a href="/formacao-docente" onClick={() => setIsOpen(false)} className="mobile-app-card" style={{ background: 'var(--bg-secondary)', padding: '0.85rem', borderRadius: '12px', textAlign: 'center', textDecoration: 'none', border: '1px solid var(--border-color)' }}>
+                                    <div style={{ width: '30px', height: '30px', background: 'linear-gradient(135deg, #7c3aed, #2563eb)', borderRadius: '6px', margin: '0 auto 0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '0.8rem', fontWeight: 'bold' }}>🎓</div>
+                                    <span style={{ display: 'block', color: 'var(--text-heading)', fontSize: '0.8rem', fontWeight: 'bold' }}>Docente</span>
                                 </a>
                                 <a href="/mentoria" onClick={() => setIsOpen(false)} className="mobile-app-card" style={{ background: 'var(--bg-secondary)', padding: '0.85rem', borderRadius: '12px', textAlign: 'center', textDecoration: 'none', border: '1px solid var(--border-color)' }}>
                                     <div style={{ width: '30px', height: '30px', background: '#a855f7', borderRadius: '6px', margin: '0 auto 0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '0.8rem', fontWeight: 'bold' }}>M</div>
@@ -485,6 +472,13 @@ const Navbar = ({ triggerMatrix }) => {
                 .nav-link:hover {
                     color: var(--text-heading);
                 }
+                .nav-actions {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.35rem;
+                    flex-shrink: 0;
+                    z-index: 10001;
+                }
                 .mobile-toggle {
                     display: none;
                     background: none;
@@ -524,10 +518,24 @@ const Navbar = ({ triggerMatrix }) => {
                     padding: 5.5rem 1rem 2.5rem;
                     overscroll-behavior: contain;
                 }
-                @media (max-width: 1360px) {
+                @media (max-width: 1100px) {
                     .mobile-menu { display: flex; }
                     .desktop-nav { display: none !important; }
                     .mobile-toggle { display: block; }
+                    .nav-actions { margin-left: auto; }
+                }
+                @media (max-width: 520px) {
+                    .dev-logo {
+                        font-size: 0.72rem !important;
+                        padding: 4px 8px !important;
+                        gap: 3px !important;
+                    }
+                    .nav-actions { gap: 0.2rem; }
+                    .whatsapp-inline .whatsapp-float,
+                    .theme-toggle.is-inline {
+                        width: 32px;
+                        height: 32px;
+                    }
                 }
                 [data-theme="light"] .mobile-menu {
                     background: #f8fafc !important;

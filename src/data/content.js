@@ -1,14 +1,14 @@
 export const portfolioContent = {
   seo: {
-    title: "Prof. Alexsander Farias | Especialista em Educação Tecnológica & Full Stack",
-    description: "Portfólio de Alexsander Farias: Professor Universitário, Mentor, Desenvolvedor Full Stack e Especialista em Educação Tecnológica. Atuando na formação de talentos e projetos inovadores.",
-    keywords: "Professor TI, Desenvolvedor Full Stack, Cibersegurança, Educação Tecnológica, Mentoria, React, Redes, Inovação",
-    ogImage: "/Foto_Perfil_Round.png"
+    title: "Prof. Alexsander Farias | Palestrante em IA e Cibersegurança",
+    description: "Professor universitário, palestrante em IA e Cibersegurança, com mais de 20 anos de ensino, 10 mil alunos formados e mais de 50 projetos.",
+    keywords: "Palestrante, Inteligência Artificial, Cibersegurança, Professor Universitário, Mentoria, Cisco, Educação Tecnológica",
+    ogImage: "/Foto_Perfil.jpg"
   },
 
   hero: {
     name: "Prof. Alexsander Farias",
-    title: "Professor Universitário\nDev Full Stack\nAvaliador de TCC e Projetos",
+    title: "Palestrante em IA e Cibersegurança | Professor Universitário | Mentor & Orientador em Carreira de TI | Instrutor Cisco Certificado | Fundador da AD Academy",
     positioning: "Atuação consolidada na formação de talentos, projetos inovadores e soluções tecnológicas reais.",
     ctaPrimary: "Ver Atuação",
     ctaSecondary: "Mentoria"
@@ -16,12 +16,12 @@ export const portfolioContent = {
 
   about: {
     title: "Sobre Mim",
-    headline: "Professor Universitário\nDev Full Stack\nAvaliador de TCC e Projetos",
-    description: "Sou Professor Universitário, Dev Full Stack e Avaliador de TCC e Projetos, com forte atuação na formação de talentos em TI e desenvolvimento de projetos educacionais inovadores. Minha experiência abrange desde a docência em cursos de Computação (Engenharia de Software, Redes, Cibersegurança) até a atuação prática no mercado como Desenvolvedor e Consultor.\n\nAtuo fortemente na capacitação de profissionais em Redes e Cibersegurança (Cisco CCNA, CyberOPS) e sou Fundador da AD Academy. Minha visão é integrada e sistêmica, conectando teoria, prática e as demandas atuais da transformação digital.",
-    resume_focus: "Foco em: Educação Tecnológica, Desenvolvimento Full Stack, Cibersegurança e Mentoria de Carreira.",
+    headline: "Palestrante em IA e Cibersegurança | Professor Universitário | Mentor & Orientador em Carreira de TI | Instrutor Cisco Certificado | Fundador da AD Academy",
+    description: "Sou palestrante em IA e Cibersegurança, professor universitário, mentor e orientador em carreira de TI, instrutor Cisco certificado e fundador da AD Academy. Minha experiência abrange a docência em cursos de Computação - Engenharia de Software, Redes e Cibersegurança - e a atuação prática como desenvolvedor e consultor.\n\nNa capacitação de profissionais, trabalho com Cisco CCNA e CyberOPS. Minha visão é integrada e sistêmica, conectando teoria, prática e as demandas atuais da transformação digital.",
+    resume_focus: "Foco em: Educação Tecnológica, IA e Cibersegurança, Mentoria de Carreira e Formação Cisco.",
     stats: [
-      { label: "Anos de Ensino", value: "14+" },
-      { label: "Alunos Formados", value: "2k+" },
+      { label: "Anos de Ensino", value: "20+" },
+      { label: "Alunos Formados", value: "10k" },
       { label: "Projetos", value: "50+" }
     ]
   },
@@ -98,6 +98,13 @@ export const portfolioContent = {
   professionalExperience: [
     {
       institution: "Centro Universitário Fametro",
+      role: "Desenvolvedor de Sistemas",
+      period: "mai. 2026 - Atual",
+      type: "Híbrido · Meio período",
+      description: "Atuação em meio período, no modelo híbrido, em análise e desenvolvimento de sistemas e engenharia de requisitos."
+    },
+    {
+      institution: "Centro Universitário Fametro",
       role: "Professor de Graduação",
       period: "2023 - Atual",
       type: "Presencial",
@@ -149,7 +156,7 @@ export const portfolioContent = {
       institution: "IFPR",
       course: "Gestão da Educação Profissional e Tecnológica",
       level: "Pós-graduação",
-      period: "Em andamento"
+      period: "Concluído"
     },
     {
       institution: "Faculdade de Minas",
@@ -176,6 +183,55 @@ export const portfolioContent = {
       period: "Concluído"
     }
   ],
+
+  blog: {
+    subtitle: "Blog",
+    title: "Eventos e newsletter",
+    description: "O arquivo das palestras e eventos de que participo, e da newsletter que publico toda semana no LinkedIn.",
+    newsletterUrl: "https://www.linkedin.com/newsletters/al%C3%A9m-do-algoritmo-7517955548621811712",
+    posts: [
+      {
+        slug: "imersao-ia-fametro-2026",
+        category: "evento",
+        date: "2 de outubro de 2026",
+        dateTime: "2026-10-02",
+        kind: "Palestra",
+        title: "Imersão IA FAMETRO",
+        place: "Auditório Dr. Wellington Lins · Centro Universitário FAMETRO",
+        paragraphs: [
+          "Uma experiência para guardar na memória.",
+          "Tive a alegria de subir ao palco do Auditório Dr. Wellington Lins, no Centro Universitário FAMETRO, para compartilhar um tema que faz cada vez mais parte das nossas vidas: Inteligência Artificial, educação, tecnologia e o futuro do trabalho.",
+          "Olhar para um auditório repleto de estudantes e perceber o interesse, a participação e a vontade de compreender as transformações que estamos vivendo tornou esse momento ainda mais especial.",
+          "Mais do que falar sobre ferramentas de IA, procurei provocar uma reflexão: a tecnologia está avançando rapidamente, mas o nosso maior diferencial continuará sendo a capacidade de pensar, aprender, questionar, criar e transformar conhecimento em possibilidades.",
+          "Foram momentos de troca, perguntas, reflexões e muito aprendizado. E é justamente isso que mais me motiva como professor: perceber que uma aula ou uma palestra pode despertar curiosidade e, quem sabe, abrir caminhos que antes alguém ainda não conseguia enxergar.",
+          "Meu agradecimento ao Centro Universitário FAMETRO, à organização do evento, ao prof. Messias Andrade, aos professores, alunos e a todos que estiveram presentes e contribuíram para tornar esse encontro tão significativo.",
+          "Saio dessa experiência ainda mais convicto de que educação, tecnologia e inovação precisam caminhar juntas - não para substituir pessoas, mas para ampliar aquilo que somos capazes de fazer."
+        ],
+        images: [
+          {
+            src: "/carreira/imersao-ia-fametro-auditorio.jpg",
+            alt: "Auditório lotado durante a Imersão IA no Centro Universitário FAMETRO"
+          },
+          {
+            src: "/carreira/imersao-ia-fametro-palco.jpg",
+            alt: "Alexsander Farias palestrando no palco do Auditório Dr. Wellington Lins, com as letras FAMETRO à frente"
+          },
+          {
+            src: "/carreira/imersao-ia-fametro-fala.jpg",
+            alt: "Alexsander Farias falando ao microfone durante a palestra"
+          },
+          {
+            src: "/carreira/imersao-ia-fametro-certificado.jpg",
+            alt: "Alexsander Farias segurando o certificado da Imersão IA ao lado de uma representante da organização"
+          },
+          {
+            src: "/carreira/imersao-ia-fametro-cartaz.jpg",
+            alt: "Cartaz da Imersão IA FAMETRO, realizada em 2 de outubro de 2026"
+          }
+        ]
+      }
+    ]
+  },
 
   highlights: [
     {
@@ -319,7 +375,7 @@ export const portfolioContent = {
       title: "🏆 VOCÊ VENCEU!",
       subtitle: "Sabedoria confirmada.",
       downloadMatch: "Baixar Ebook Agora",
-      link: "/ebook-exclusivo.pdf"
+      link: "/Ebook_Final_TI_Zero_versao_free.pdf"
     },
     failure: {
       title: "☠️ GAME OVER",

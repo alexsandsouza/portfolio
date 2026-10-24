@@ -66,10 +66,10 @@ const CyberFrame = () => {
                 }}></div>
 
                 <img
-                    src="/Foto_Estudio2.png"
+                    src="/Foto_Perfil.jpg"
                     alt="Prof. Alexsander Farias"
                     loading="lazy"
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 22%' }}
                 />
             </div>
             <style>{`
@@ -211,7 +211,7 @@ const About = () => {
                                     {about.headline}
                                 </h3>
 
-                                <p style={{ marginBottom: '2rem', color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: 1.8 }}>
+                                <p style={{ marginBottom: '2rem', color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: 1.8, whiteSpace: 'pre-line' }}>
                                     {about.description.replace(/\*\*/g, '')}
                                 </p>
                             </div>

@@ -4,6 +4,7 @@ import confetti from 'canvas-confetti';
 import { portfolioContent } from '../data/content';
 import { db } from '../firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { saveLocalScore } from '../utils/quizScores';
 
 const HangmanGame = ({ onClose }) => {
     const { quiz } = portfolioContent;
@@ -66,31 +67,30 @@ const HangmanGame = ({ onClose }) => {
 
     const handleSaveScore = async (e) => {
         e.preventDefault();
-        if (!playerName.trim()) return;
+        const name = playerName.trim();
+        if (!name) return;
         setIsSubmitting(true);
+        setSaveFailed(true);
+        saveLocalScore({ name, timeSeconds: elapsedTime });
+        setGameState('saved');
+        setIsSubmitting(false);
 
         try {
-            // Aumentei o timeout para 15s para ser mais resiliente
             const timeout = new Promise((_, reject) =>
-                setTimeout(() => reject(new Error("Timeout")), 15000)
+                setTimeout(() => reject(new Error('Timeout')), 8000)
             );
 
             await Promise.race([
-                addDoc(collection(db, "quiz_results"), {
-                    name: playerName,
+                addDoc(collection(db, 'quiz_results'), {
+                    name,
                     timeSeconds: elapsedTime,
                     createdAt: serverTimestamp()
                 }),
                 timeout
             ]);
-
-            setGameState('saved');
+            setSaveFailed(false);
         } catch (error) {
-            console.error("Erro ao salvar ranking:", error);
-            setSaveFailed(true);
-            setGameState('saved');
-        } finally {
-            setIsSubmitting(false);
+            console.error('Erro ao salvar ranking:', error);
         }
     };
 
@@ -210,13 +210,13 @@ const HangmanGame = ({ onClose }) => {
                 {/* Final Success Screen (Post-Save) */}
                 {gameState === 'saved' && (
                     <div className="game-content saved">
-                        <div style={{ fontSize: '4rem' }}>{saveFailed ? '�' : '�🌟'}</div>
+                        <div style={{ fontSize: '4rem' }}>{saveFailed ? '🏆' : '🌟'}</div>
                         <h2>{saveFailed ? 'Parabéns!' : 'Ranking Atualizado!'}</h2>
                         <p>{saveFailed
-                            ? 'Não conseguimos salvar no ranking agora, mas seu prêmio está garantido.'
+                            ? 'Seu nome entrou no ranking deste navegador e o ebook já pode ser baixado.'
                             : 'Seu nome está no Hall da Fama.'}
                         </p>
-                        <a href={quiz.success.link} target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ marginTop: '2rem' }}>
+                        <a href={quiz.success.link} download="Ebook-Carreira-TI.pdf" className="btn btn-primary" style={{ marginTop: '2rem' }}>
                             {quiz.success.downloadMatch}
                         </a>
                     </div>

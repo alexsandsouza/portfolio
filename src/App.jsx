@@ -2,7 +2,6 @@ import React, { useState, useEffect, lazy, Suspense } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './sections/Hero';
 import About from './sections/About';
-import ThemeToggle from './components/ThemeToggle';
 import MouseSpotlight from './components/MouseSpotlight';
 import ScrollProgress from './components/ScrollProgress';
 import PageLoader from './components/PageLoader';
@@ -12,7 +11,6 @@ import { useKonamiCode } from './hooks/useKonamiCode';
 import MatrixEffect from './components/MatrixEffect';
 import { usePageTitle } from './hooks/usePageTitle';
 import { useSecurity } from './hooks/useSecurity';
-import WhatsAppButton from './components/WhatsAppButton';
 import { ScrollToTop } from './components/ScrollToTop';
 import Terminal from './components/Terminal';
 import SecretChallenge from './components/SecretChallenge';
@@ -22,9 +20,9 @@ import CookieConsent from './components/CookieConsent';
 const Areas = lazy(() => import('./sections/Areas'));
 const BackendExpertise = lazy(() => import('./sections/BackendExpertise'));
 const Experience = lazy(() => import('./sections/Trajectory'));
+const CareerUpdates = lazy(() => import('./sections/CareerUpdates'));
 const Education = lazy(() => import('./sections/Education'));
 const Projects = lazy(() => import('./sections/Projects'));
-const Testimonials = lazy(() => import('./sections/Testimonials'));
 const Journey = lazy(() => import('./sections/Journey'));
 const AcademyHub = lazy(() => import('./sections/AcademyHub'));
 const MentorshipShowcase = lazy(() => import('./sections/MentorshipShowcase'));
@@ -41,6 +39,8 @@ const MentorshipRegistration = lazy(() => import('./pages/MentorshipRegistration
 const MentorshipContract = lazy(() => import('./pages/MentorshipContract'));
 const MentorshipSuccess = lazy(() => import('./pages/MentorshipSuccess'));
 const Links = lazy(() => import('./pages/Links'));
+const Blog = lazy(() => import('./pages/Blog'));
+const BlogPost = lazy(() => import('./pages/BlogPost'));
 const Resume = lazy(() => import('./pages/Resume'));
 const HackersDoBemHub = lazy(() => import('./pages/hackersdobem/HackersDoBemHub'));
 const AtividadeHackersDoBem = lazy(() => import('./pages/hackersdobem/atividade_hackers_do_bem'));
@@ -132,7 +132,6 @@ const Home = () => {
 
       <MouseSpotlight />
       <ScrollProgress />
-      <ThemeToggle />
       <Navbar triggerMatrix={() => setShowMatrix(true)} />
       <main id="main-content">
         <Hero />
@@ -141,8 +140,8 @@ const Home = () => {
           <Areas />
           <BackendExpertise />
           <Experience />
+          <CareerUpdates />
           <Projects />
-          <Testimonials />
           <MentorshipShowcase />
           <AcademyHub />
           <BehavioralDiscovery />
@@ -154,7 +153,6 @@ const Home = () => {
           <Contact />
         </Suspense>
       </main>
-      <WhatsAppButton />
       <ScrollToTop />
     </>
   );
@@ -173,6 +171,8 @@ function App() {
           <Route path="/mentoria/contrato" element={<MentorshipContract />} />
           <Route path="/mentoria/sucesso" element={<MentorshipSuccess />} />
           <Route path="/links" element={<Links />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/cv" element={<Resume />} />
           <Route path="/hackersdobem" element={<HackersDoBemHub />} />
           <Route path="/hackersdobem/atividade" element={<AtividadeHackersDoBem />} />

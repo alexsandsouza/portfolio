@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { portfolioContent } from '../data/content';
-import { Printer, ArrowLeft, Mail, Linkedin, MapPin, Globe, Phone, Users } from 'lucide-react';
+import { Printer, ArrowLeft, Mail, Globe } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Resume = () => {
@@ -14,8 +14,7 @@ const Resume = () => {
         window.print();
     };
 
-    // Filtra apenas as 3 últimas experiências
-    const latestExperience = professionalExperience.slice(0, 3);
+    const latestExperience = professionalExperience.slice(0, 4);
 
     return (
         <div className="resume-wrapper" style={{ background: '#525659', minHeight: '100vh', padding: '2rem 0', display: 'flex', justifyContent: 'center', fontFamily: "'Roboto', sans-serif" }}>
@@ -62,7 +61,7 @@ const Resume = () => {
                             borderRadius: '50%', overflow: 'hidden',
                             boxShadow: '0 4px 10px rgba(0,0,0,0.1)'
                         }}>
-                            <img src="/Foto_Perfil_Round.png" alt="Profile" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                            <img src="/Foto_Perfil.jpg" alt="Prof. Alexsander Farias" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 22%' }} />
                         </div>
                         <div>
                             <h1 style={{ fontSize: '1.4rem', fontWeight: '800', color: '#000', lineHeight: 1, marginBottom: '0', textTransform: 'uppercase' }}>
@@ -76,7 +75,7 @@ const Resume = () => {
                     <section style={{ marginBottom: '1rem' }}>
                         <h3 className="section-title">Resumo Profissional</h3>
                         <p style={{ fontSize: '0.7rem', lineHeight: 1.3, textAlign: 'justify', color: '#000' }}>
-                            Professor Universitário e Desenvolvedor Full Stack com sólida experiência em formação de talentos em TI (Engenharia de Software, Redes, Cibersegurança). Atuo como Avaliador de Projetos/TCC e consultor técnico, conectando teoria acadêmica à prática de mercado com foco em inovação e transformação digital. Fundador da AD Academy.
+                            Palestrante em IA e Cibersegurança, professor universitário, mentor e orientador em carreira de TI, instrutor Cisco certificado e fundador da AD Academy. Atuo na formação de talentos em Engenharia de Software, Redes e Cibersegurança, e também como desenvolvedor, avaliador de projetos e consultor.
                         </p>
                     </section>
 
@@ -112,7 +111,7 @@ const Resume = () => {
                             </div>
                             <div style={{ pageBreakInside: 'avoid' }}>
                                 <div style={{ fontWeight: 'bold', fontSize: '11px', color: '#000', fontFamily: 'Arial, sans-serif' }}>Pós Graduação Lato Sensu em Gestão da Educação Profissional e Tecnológica</div>
-                                <div style={{ fontSize: '11px', color: '#000', fontFamily: 'Arial, sans-serif' }}>Instituto Federal de Educação, Ciência e Tecnologia do Paraná - IFPR <span style={{ fontSize: '10px', color: '#444' }}>- Em andamento</span></div>
+                                <div style={{ fontSize: '11px', color: '#000', fontFamily: 'Arial, sans-serif' }}>Instituto Federal de Educação, Ciência e Tecnologia do Paraná - IFPR <span style={{ fontSize: '10px', color: '#444' }}>- Concluído</span></div>
                             </div>
                             <div style={{ pageBreakInside: 'avoid' }}>
                                 <div style={{ fontWeight: 'bold', fontSize: '11px', color: '#000', fontFamily: 'Arial, sans-serif' }}>Pós Graduação Lato Sensu em Inteligência Artificial</div>
@@ -157,28 +156,12 @@ const Resume = () => {
                         <h3 className="sidebar-title">Dados Pessoais</h3>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem', fontSize: '0.7rem' }}>
                             <div>
-                                <strong style={{ display: 'block', marginBottom: '2px', opacity: 0.7 }}>Endereço</strong>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><MapPin size={12} /> Rua Severiano Nunes nº 943 - Aleixo - CEP: 69060-660</div>
-                            </div>
-                            <div>
-                                <strong style={{ display: 'block', marginBottom: '2px', opacity: 0.7 }}>Contato</strong>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><Phone size={12} /> (92) 98142-5690</div>
-                            </div>
-                            <div>
-                                <strong style={{ display: 'block', marginBottom: '2px', opacity: 0.7 }}>Estado Civil</strong>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><Users size={12} /> Casado - 02 filhos</div>
-                            </div>
-                            <div>
                                 <strong style={{ display: 'block', marginBottom: '2px', opacity: 0.7 }}>E-mail</strong>
                                 <a href="mailto:alexsandfarias@gmail.com" style={{ color: '#fff', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px', wordBreak: 'break-all' }}><Mail size={12} /> alexsandfarias@gmail.com</a>
                             </div>
                             <div>
-                                <strong style={{ display: 'block', marginBottom: '2px', opacity: 0.7 }}>LinkedIn</strong>
-                                <a href="https://www.linkedin.com/in/alexsandfarias/" target="_blank" style={{ color: '#fff', textDecoration: 'none', display: 'flex', alignItems: 'flex-start', gap: '6px', wordBreak: 'break-all', lineHeight: 1.2 }}><Linkedin size={12} /> https://www.linkedin.com/in/alexsandfarias/</a>
-                            </div>
-                            <div>
                                 <strong style={{ display: 'block', marginBottom: '2px', opacity: 0.7 }}>Site</strong>
-                                <a href="https://alexsanderfarias\.vercel\.app" target="_blank" style={{ color: '#fff', textDecoration: 'none', display: 'flex', alignItems: 'flex-start', gap: '6px', wordBreak: 'break-all', lineHeight: 1.2 }}><Globe size={12} /> https://alexsanderfarias\.vercel\.app</a>
+                                <a href="https://alexsanderfarias.vercel.app" target="_blank" rel="noopener noreferrer" style={{ color: '#fff', textDecoration: 'none', display: 'flex', alignItems: 'flex-start', gap: '6px', wordBreak: 'break-all', lineHeight: 1.2 }}><Globe size={12} /> https://alexsanderfarias.vercel.app</a>
                             </div>
                         </div>
                     </section>

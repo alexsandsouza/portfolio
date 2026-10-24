@@ -39,6 +39,19 @@ service cloud.firestore {
       allow update, delete: if false;
     }
 
+    // Recordes do desafio da forca — leitura pública e uma inclusão por partida
+    match /quiz_results/{doc} {
+      allow read: if true;
+      allow create: if request.resource.data.keys().hasAll(['name', 'timeSeconds']) &&
+                       request.resource.data.name is string &&
+                       request.resource.data.name.size() >= 1 &&
+                       request.resource.data.name.size() < 80 &&
+                       request.resource.data.timeSeconds is number &&
+                       request.resource.data.timeSeconds >= 0 &&
+                       request.resource.data.timeSeconds <= 36000;
+      allow update, delete: if false;
+    }
+
     // Coleção de feedbacks de depoimentos — leitores leem, usuários submetem feedback com validação
     match /feedbacks/{doc} {
       allow read: if true;

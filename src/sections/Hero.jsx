@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { portfolioContent } from '../data/content';
 import { Reveal } from '../components/Reveal';
 import { useHoverCard } from '../hooks/useHoverCard';
@@ -119,7 +119,7 @@ const GlowingProfile = () => {
 
             {/* Main Image */}
             <img
-                src="/Foto_Perfil_Round.png"
+                src="/Foto_Perfil.jpg"
                 alt="Prof. Alexsander Farias"
                 width={320}
                 height={320}
@@ -130,6 +130,7 @@ const GlowingProfile = () => {
                     width: '80%',
                     height: '80%',
                     objectFit: 'cover',
+                    objectPosition: 'center 22%',
                     borderRadius: '50%',
                     position: 'relative',
                     zIndex: 2
@@ -166,61 +167,51 @@ const GlowingProfile = () => {
     );
 };
 
-const Typewriter = ({ text, speed = 80, delay = 2000, deleteSpeed = 40 }) => {
+const Typewriter = ({ text, speed = 50, delay = 1500, deleteSpeed = 40 }) => {
     const [currentText, setCurrentText] = useState('');
     const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
     useEffect(() => {
         const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-        setPrefersReducedMotion(mediaQuery.matches);
-        const listener = (e) => setPrefersReducedMotion(e.matches);
-        mediaQuery.addEventListener('change', listener);
-        return () => mediaQuery.removeEventListener('change', listener);
+        const apply = () => setPrefersReducedMotion(mediaQuery.matches);
+        apply();
+        mediaQuery.addEventListener('change', apply);
+        return () => mediaQuery.removeEventListener('change', apply);
     }, []);
 
     useEffect(() => {
-        if (prefersReducedMotion) {
+        if (prefersReducedMotion || text.length === 0) {
             setCurrentText(text.join(' | '));
-            return;
+            return undefined;
         }
 
-        let isMounted = true;
-        let currentWordIndex = 0;
-        let currentCharIndex = 0;
-        let isDeletingWord = false;
+        let active = true;
+        let wordIndex = 0;
+        let charIndex = 0;
+        let deleting = false;
         let timeoutId;
 
-        const type = () => {
-            const currentWord = text[currentWordIndex % text.length];
-            
-            if (isDeletingWord) {
-                currentCharIndex--;
-            } else {
-                currentCharIndex++;
+        const tick = () => {
+            const word = text[wordIndex % text.length];
+            charIndex += deleting ? -1 : 1;
+            if (active) setCurrentText(word.slice(0, Math.max(charIndex, 0)));
+
+            let next = deleting ? deleteSpeed : speed;
+            if (!deleting && charIndex >= word.length) {
+                next = delay;
+                deleting = true;
+            } else if (deleting && charIndex <= 0) {
+                deleting = false;
+                charIndex = 0;
+                wordIndex += 1;
+                next = 400;
             }
-
-            if (isMounted) {
-                setCurrentText(currentWord.substring(0, currentCharIndex));
-            }
-
-            let nextSpeed = isDeletingWord ? deleteSpeed : speed;
-
-            if (!isDeletingWord && currentCharIndex === currentWord.length) {
-                nextSpeed = delay;
-                isDeletingWord = true;
-            } else if (isDeletingWord && currentCharIndex === 0) {
-                isDeletingWord = false;
-                currentWordIndex++;
-                nextSpeed = 500;
-            }
-
-            timeoutId = setTimeout(type, nextSpeed);
+            timeoutId = setTimeout(tick, next);
         };
 
-        timeoutId = setTimeout(type, speed);
-
+        timeoutId = setTimeout(tick, speed);
         return () => {
-            isMounted = false;
+            active = false;
             clearTimeout(timeoutId);
         };
     }, [prefersReducedMotion, text, speed, delay, deleteSpeed]);
@@ -239,6 +230,10 @@ const Typewriter = ({ text, speed = 80, delay = 2000, deleteSpeed = 40 }) => {
 
 const Hero = () => {
     const { hero } = portfolioContent;
+    const roles = useMemo(
+        () => hero.title.split(/\s*\|\s*|\n/).map((part) => part.trim()).filter(Boolean),
+        [hero.title]
+    );
     const hour = new Date().getHours();
     let greeting = 'Olá';
     if (hour < 12) greeting = 'Bom dia';
@@ -251,13 +246,14 @@ const Hero = () => {
             display: 'flex',
             alignItems: 'center',
             paddingTop: '120px',
+            paddingBottom: '6rem',
             position: 'relative',
             overflow: 'hidden'
         }}>
             <TechBackground />
 
             <div className="container grid-2-col hero-container" style={{ position: 'relative', zIndex: 1 }}>
-                <div style={{ textAlign: 'left' }} className="hero-content">
+                <div style={{ textAlign: 'left', minWidth: 0, maxWidth: '100%' }} className="hero-content">
                     <Reveal>
                         <div style={{ position: 'relative', display: 'inline-block', marginBottom: '2rem' }}>
                             {/* Glassmorphism Card */}
@@ -346,23 +342,23 @@ const Hero = () => {
                             borderLeft: '4px solid var(--secondary-color)',
                             paddingLeft: '1.5rem',
                             marginBottom: '2.5rem',
-                            minHeight: '2.4em', // Prevent layout shift
-                            display: 'flex',
-                            alignItems: 'center'
+                            maxWidth: '100%',
+                            minHeight: '2.6em',
+                            whiteSpace: 'normal',
+                            overflowWrap: 'break-word'
                         }}>
-                            <span className="sr-only">{hero.title.split('\n').join(', ')}</span>
-                            <Typewriter text={hero.title.split('\n')} speed={50} delay={1500} />
+                            <span className="sr-only">{roles.join(' | ')}</span>
+                            <Typewriter text={roles} />
                         </h2>
-                    </Reveal>
-
                     <style>{`
                         @keyframes blink { 50% { opacity: 0; } }
                         .cursor { animation: blink 1s step-end infinite; }
                     `}</style>
+                    </Reveal>
 
                     <Reveal delay={400}>
                         <div className="hero-buttons" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'center' }}>
-                            <a href="#projects" className="btn btn-primary">
+                            <a href="#areas" className="btn btn-primary">
                                 {hero.ctaPrimary}
                             </a>
                             <a href="/mentoria" className="btn btn-secondary">
@@ -410,6 +406,8 @@ const Hero = () => {
                 }
                 
                 /* Mobile Specific Overrides controlled by class logic */
+                .hero-container > * { min-width: 0; }
+
                 @media (max-width: 900px) {
                     .hero-container {
                         /* grid-2-col handles column stack */
@@ -433,11 +431,13 @@ const Hero = () => {
                         padding-left: 0 !important;
                         border-bottom: 4px solid var(--secondary-color);
                         padding-bottom: 1rem;
-                        justify-content: center;
                         text-align: center !important;
                         margin-left: auto;
                         margin-right: auto;
-                        display: inline-flex;
+                        display: block;
+                        width: 100%;
+                        max-width: 100%;
+                        white-space: normal;
                     }
                     
                     .hero-buttons {

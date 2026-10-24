@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { portfolioContent } from '../data/content';
+import { submitToInbox } from '../utils/formSubmit';
 import { Reveal } from '../components/Reveal';
 import { useHoverCard } from '../hooks/useHoverCard';
 import Footer from '../components/Footer';
@@ -58,14 +59,12 @@ const Contact = () => {
         const form = e.target;
         const data = new FormData(form);
         try {
-            const res = await fetch('https://formsubmit.co/ajax/alexsandfarias@gmail.com', {
-                method: 'POST',
-                headers: { 'Accept': 'application/json' },
-                body: data
-            });
-            if (res.ok) {
+            const result = await submitToInbox(data);
+            if (result.accepted) {
                 setFormStatus('success');
                 form.reset();
+            } else if (result.needsActivation) {
+                setFormStatus('activation');
             } else {
                 setFormStatus('error');
             }
@@ -105,8 +104,7 @@ const Contact = () => {
                                 {contact.title}
                             </h2>
                             <p style={{ fontSize: '1.2rem', marginBottom: '2rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-                                Estou disponível para novos projetos acadêmicos, consultorias e desenvolvimento Full Stack.
-                                Vamos construir algo incrível juntos?
+                                {contact.text}
                             </p>
 
                             {/* WhatsApp Button */}
@@ -174,13 +172,22 @@ const Contact = () => {
 
                             {formStatus === 'success' && (
                                 <div style={{
-                                    padding: '1.5rem', borderRadius: '12px', marginBottom: '1.5rem',
+                                    padding: '2rem 1.5rem', borderRadius: '12px',
                                     background: 'rgba(34, 197, 94, 0.1)', border: '1px solid rgba(34, 197, 94, 0.3)',
                                     textAlign: 'center'
                                 }}>
                                     <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>✅</div>
-                                    <p style={{ color: '#22c55e', fontWeight: '600', margin: 0 }}>Mensagem enviada com sucesso!</p>
+                                    <p style={{ color: '#22c55e', fontWeight: '600', margin: 0 }}>Mensagem enviada.</p>
                                     <p style={{ color: '#94a3b8', fontSize: '0.85rem', margin: '0.5rem 0 0' }}>Responderei em breve.</p>
+                                </div>
+                            )}
+
+                            {formStatus === 'activation' && (
+                                <div style={{
+                                    padding: '1rem', borderRadius: '12px', marginBottom: '1.5rem',
+                                    background: 'rgba(245, 158, 11, 0.1)', border: '1px solid rgba(245, 158, 11, 0.35)'
+                                }}>
+                                    <p style={{ color: '#fbbf24', margin: 0, fontSize: '0.9rem' }}>O envio ainda não foi entregue. Abra o e-mail “Activate Form” do FormSubmit, clique no botão e envie a mensagem de novo.</p>
                                 </div>
                             )}
 
@@ -193,8 +200,10 @@ const Contact = () => {
                                 </div>
                             )}
 
-                            <form onSubmit={handleSubmit}>
-                                <input type="hidden" name="_subject" value="Novo contato do Portfólio!" />
+                            {formStatus !== 'success' && <form onSubmit={handleSubmit}>
+                                <input type="hidden" name="_subject" value="Novo contato do Portfólio" />
+                                <input type="hidden" name="_template" value="table" />
+                                <input type="hidden" name="_captcha" value="false" />
 
                                 <div style={{ marginBottom: '1.5rem', textAlign: 'left' }}>
                                     <label style={{ display: 'block', color: 'var(--text-secondary)', marginBottom: '0.5rem', fontSize: '0.9rem' }}>Seu Nome</label>
@@ -289,7 +298,7 @@ const Contact = () => {
                                 }}>
                                     {formStatus === 'submitting' ? '⏳ Enviando...' : '🚀 Enviar Mensagem'}
                                 </button>
-                            </form>
+                            </form>}
                         </div>
                     </Reveal>
                 </div>

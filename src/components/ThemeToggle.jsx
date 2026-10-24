@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Sun, Moon } from 'lucide-react';
 
-const ThemeToggle = () => {
+const ThemeToggle = ({ variant = 'fixed' }) => {
+    const inline = variant === 'inline';
     const [theme, setTheme] = useState('light');
 
     useEffect(() => {
@@ -27,10 +28,10 @@ const ThemeToggle = () => {
     return (
         <button
             onClick={toggleTheme}
-            className="theme-toggle"
+            className={inline ? 'theme-toggle is-inline' : 'theme-toggle'}
             aria-label="Alternar Tema"
         >
-            {theme === 'dark' ? <Sun size={24} /> : <Moon size={24} />}
+            {theme === 'dark' ? <Sun size={inline ? 18 : 24} /> : <Moon size={inline ? 18 : 24} />}
 
             <style>{`
                 .theme-toggle {
@@ -65,6 +66,14 @@ const ThemeToggle = () => {
                 [data-theme="light"] .theme-toggle:hover {
                      background: var(--primary-color);
                      color: #fff;
+                }
+                .theme-toggle.is-inline {
+                    position: static;
+                    width: 36px;
+                    height: 36px;
+                    padding: 0;
+                    flex-shrink: 0;
+                    z-index: 10001;
                 }
             `}</style>
         </button>
