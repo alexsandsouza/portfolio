@@ -230,6 +230,26 @@ export const portfolioContent = {
           }
         ]
       }
+,
+      {
+        "slug": "agentes-de-ia",
+        "category": "newsletter",
+        "date": "2 de novembro de 2026",
+        "dateTime": "2026-11-02",
+        "kind": "Newsletter · Edição #02",
+        "title": "Agentes de IA: você confiaria uma tarefa inteira a eles?",
+        "href": "/agentes-de-ia/",
+        "paragraphs": [
+          "Da conversa à ação: o que muda quando uma inteligência artificial pode planejar etapas, usar ferramentas e executar tarefas - e onde a supervisão humana continua essencial.",
+          "Nesta edição, exploramos os níveis de delegação, o que benchmarks recentes mostram sobre agentes de IA e como testar uma tarefa de baixo risco com limites claros."
+        ],
+        "images": [
+          {
+            "src": "/agentes-de-ia/cover.svg",
+            "alt": "Capa da edição 02 de Além do Algoritmo sobre agentes de IA, ferramentas e supervisão humana."
+          }
+        ]
+      }
     ]
   },
 

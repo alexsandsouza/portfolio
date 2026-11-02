@@ -90,13 +90,15 @@ const Blog = () => {
                         <div className="blog-list">
                             {visible.map((post) => {
                                 const cover = post.images?.[0];
+                                const PostLink = post.href ? 'a' : Link;
+                                const postLinkProps = post.href ? { href: post.href } : { to: `/blog/${post.slug}` };
                                 const excerpt = post.paragraphs.slice(0, 2).join(' ');
                                 return (
                                     <article key={post.slug} className="blog-card card-glass">
                                         {cover && (
-                                            <Link to={`/blog/${post.slug}`} className="blog-card-cover" aria-label={cover.alt}>
+                                            <PostLink {...postLinkProps} className="blog-card-cover" aria-label={cover.alt}>
                                                 <img src={cover.src} alt={cover.alt} />
-                                            </Link>
+                                            </PostLink>
                                         )}
                                         <div className="blog-card-body">
                                             <div className="blog-meta">
@@ -104,11 +106,11 @@ const Blog = () => {
                                                 <span className="blog-kind">{post.kind || categoryLabel[post.category]}</span>
                                             </div>
                                             <h2>
-                                                <Link to={`/blog/${post.slug}`}>{post.title}</Link>
+                                                <PostLink {...postLinkProps}>{post.title}</PostLink>
                                             </h2>
                                             {post.place && <p className="blog-place">{post.place}</p>}
                                             <p className="blog-excerpt">{excerpt}</p>
-                                            <Link to={`/blog/${post.slug}`} className="blog-read">Ler publicação</Link>
+                                            <PostLink {...postLinkProps} className="blog-read">Ler publicação</PostLink>
                                         </div>
                                     </article>
                                 );

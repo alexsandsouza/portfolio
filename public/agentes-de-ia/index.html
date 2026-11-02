@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b1224" />
+  <meta name="description" content="Além do Algoritmo, edição 02: entenda o que são agentes de IA, onde ajudam e como delegar tarefas com limites e supervisão humana." />
+  <meta property="og:title" content="Agentes de IA: você confiaria uma tarefa inteira a eles?" />
+  <meta property="og:description" content="Da conversa à ação: descubra como agentes de IA funcionam e participe de uma atividade interativa." />
+  <title>Agentes de IA: você confiaria uma tarefa inteira a eles? | Além do Algoritmo</title>
+  <style>
+    :root{color-scheme:dark;--bg:#080f20;--panel:#101b31;--panel-2:#14233d;--ink:#f4f7fc;--muted:#b5c2d8;--cyan:#4de0e5;--blue:#86a8ff;--line:#263955;--gold:#f4c26d;--max:900px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 80% 0%,#102847 0,transparent 34rem),var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.72}
+    a{color:var(--cyan);text-underline-offset:3px}a:hover{color:#a5ffff}button{font:inherit}.skip{position:absolute;left:-9999px;top:auto}.skip:focus{left:1rem;top:1rem;z-index:10;background:#fff;color:#111;padding:.8rem}
+    .wrap{width:min(calc(100% - 2rem),var(--max));margin-inline:auto}.topbar{border-bottom:1px solid #223550;background:#091326cc}.topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0}.brand{font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#fff;text-decoration:none}.brand span{color:var(--cyan)}.back{font-size:.9rem;text-decoration:none;color:var(--muted)}
+    .hero{padding:clamp(3.5rem,8vw,7rem) 0 3rem}.eyebrow{display:inline-flex;align-items:center;gap:.6rem;border:1px solid #3c607d;border-radius:999px;padding:.38rem .85rem;color:var(--cyan);font-size:.76rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase}.eyebrow:before{content:"";width:.45rem;height:.45rem;border-radius:50%;background:var(--cyan);box-shadow:0 0 14px var(--cyan)}h1{font-size:clamp(2.35rem,6vw,4.65rem);line-height:1.06;letter-spacing:-.045em;max-width:850px;margin:1.3rem 0 1rem}.dek{font-size:clamp(1.05rem,2vw,1.35rem);color:#d3def0;max-width:720px}.byline{display:flex;flex-wrap:wrap;gap:.6rem 1rem;margin-top:1.8rem;color:var(--muted);font-size:.9rem}.byline strong{color:var(--ink)}.hero-rule{margin-top:2.1rem;width:100%;height:1px;background:linear-gradient(90deg,var(--cyan),transparent)}
+    main{padding-bottom:5rem}.article{max-width:760px;margin-inline:auto}.article h2{font-size:clamp(1.45rem,3vw,2rem);line-height:1.2;letter-spacing:-.02em;margin:3rem 0 .9rem}.article h3{font-size:1.2rem;margin:1.5rem 0 .5rem;color:#dbe7fb}.article p{color:#dbe4f2;margin:.9rem 0}.article strong{color:#fff}.lead-question{margin:1.8rem 0;padding:1.15rem 1.3rem;border-left:3px solid var(--cyan);background:linear-gradient(100deg,#142a43,#0f1a2d);border-radius:0 14px 14px 0;font-size:1.1rem;font-weight:650}
+    .poll{margin:2.5rem 0;padding:clamp(1.2rem,4vw,2rem);border:1px solid #34506d;border-radius:22px;background:linear-gradient(145deg,#13233d,#0d1729);box-shadow:0 20px 55px #0004}.poll .tag{font-size:.75rem;color:var(--cyan);font-weight:800;letter-spacing:.12em;text-transform:uppercase}.poll h2{margin:.6rem 0 .45rem;font-size:1.55rem}.poll p{color:var(--muted);margin:.4rem 0 1rem}.options{display:grid;gap:.65rem}.choice{display:flex;gap:.75rem;align-items:flex-start;text-align:left;padding:.9rem 1rem;border:1px solid #334966;border-radius:14px;background:#0c1628;color:#f4f7fc;cursor:pointer;transition:transform .15s,border-color .15s,background .15s}.choice:hover,.choice:focus-visible{border-color:var(--cyan);transform:translateY(-1px);outline:none}.choice[aria-pressed="true"]{border-color:var(--cyan);background:#123047;box-shadow:inset 0 0 0 1px #4de0e555}.choice .n{display:grid;place-items:center;flex:0 0 1.65rem;height:1.65rem;border-radius:50%;background:#1e3553;color:var(--cyan);font-size:.82rem;font-weight:800}.poll-result{display:none;margin-top:1rem;padding:.9rem 1rem;border-radius:12px;background:#0b2636;color:#eafaff;border:1px solid #24536a}.poll-result.is-visible{display:block}.privacy-note{font-size:.78rem!important;margin-top:1rem!important}
+    .framework{display:grid;gap:.75rem;margin:1rem 0 1.5rem}.step{display:grid;grid-template-columns:45px 1fr;gap:1rem;padding:1rem;border:1px solid var(--line);border-radius:16px;background:#0e192a}.step-num{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:#12344a;color:var(--cyan);font-weight:900}.step h3{margin:0 0 .25rem}.step p{margin:.15rem 0;color:var(--muted);font-size:.95rem}
+    .evidence{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.2rem 0}.metric{padding:1rem 1.1rem;border:1px solid var(--line);border-radius:16px;background:#101a2a}.metric strong{display:block;font-size:1.7rem;line-height:1.2;color:var(--cyan)}.metric span{font-size:.9rem;color:var(--muted)}.caveat{border:1px solid #72582f;background:#241e17;color:#f7e5bc;border-radius:14px;padding:1rem 1.1rem;font-size:.9rem}
+    .cta{margin:3rem 0;padding:clamp(1.5rem,4vw,2.2rem);border-radius:24px;background:linear-gradient(130deg,#123651,#13213c 64%,#201c3a);border:1px solid #33516e}.cta h2{margin:.3rem 0 .5rem}.cta p{color:#d3deef}.buttons{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.2rem}.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.82rem 1.1rem;border-radius:999px;text-decoration:none;font-weight:800}.btn.primary{background:var(--cyan);color:#071320}.btn.secondary{border:1px solid #6380a0;color:#fff;background:#0b1425}.btn:hover{transform:translateY(-1px)}
+    .refs{border-top:1px solid var(--line);padding-top:1.5rem;margin-top:3rem}.refs h2{margin-top:0}.refs ol{padding-left:1.3rem}.refs li{color:var(--muted);font-size:.88rem;margin:.7rem 0}.closing{padding:1.4rem;border-radius:18px;background:#101b2d;border:1px solid var(--line);margin-top:2rem}.closing p{margin:.4rem 0}
+    footer{border-top:1px solid #223550;padding:1.5rem 0;color:var(--muted);font-size:.82rem}.footer-inner{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+    @media(max-width:620px){.topbar-inner{align-items:flex-start;flex-direction:column}.evidence{grid-template-columns:1fr}.article h2{margin-top:2.4rem}.hero{padding-top:3.3rem}.back{font-size:.82rem}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+  <header class="topbar"><div class="wrap topbar-inner"><a class="brand" href="/">Além do <span>Algoritmo</span></a><a class="back" href="/blog">← Voltar ao blog do portfólio</a></div></header>
+  <header class="hero wrap">
+    <div class="eyebrow">Edição #02 · Newsletter semanal</div>
+    <h1>Agentes de IA: você confiaria uma tarefa inteira a eles?</h1>
+    <p class="dek">Da conversa à ação: o que muda quando uma inteligência artificial pode planejar etapas, usar ferramentas e executar tarefas — e onde a supervisão humana continua essencial.</p>
+    <div class="byline"><span>Por <strong>Alexsander Farias</strong></span><span>2 de novembro de 2026</span><span>Leitura: 7 minutos</span></div>
+    <div class="hero-rule"></div>
+  </header>
+  <main id="conteudo" class="wrap">
+    <article class="article">
+      <p>Imagine que você peça a uma inteligência artificial: “prepare um roteiro de estudo sobre segurança digital para minha turma”. Um chatbot pode sugerir tópicos. Um agente pode ir além: consultar materiais autorizados, organizar conceitos, criar um rascunho, verificar se cobriu os objetivos e devolver um resultado pronto para sua revisão.</p>
+      <p>Agora acrescente uma permissão: publicar esse material no ambiente virtual da turma. A mesma tecnologia que economiza etapas passou a poder agir em nome de alguém. A pergunta, então, deixa de ser apenas “o que a IA sabe responder?” e passa a ser: <strong>o que estamos dispostos a delegar a ela?</strong></p>
+      <div class="lead-question">Antes de continuar: se um agente pudesse usar suas ferramentas de trabalho, você permitiria que ele apenas sugerisse, preparasse um rascunho ou concluísse ações sem pedir confirmação?</div>
+
+      <section class="poll" aria-labelledby="poll-title">
+        <div class="tag">Sua vez · atividade rápida</div>
+        <h2 id="poll-title">Que autonomia você daria a um agente que organiza materiais de aula?</h2>
+        <p>Escolha uma opção. A resposta fica apenas nesta página; não é enviada nem armazenada.</p>
+        <div class="options" role="group" aria-label="Escolha seu nível de autonomia">
+          <button class="choice" type="button" aria-pressed="false" data-level="1"><span class="n">1</span><span><strong>Só sugerir.</strong> Eu decido e executo cada etapa.</span></button>
+          <button class="choice" type="button" aria-pressed="false" data-level="2"><span class="n">2</span><span><strong>Preparar rascunhos.</strong> Eu reviso antes de usar.</span></button>
+          <button class="choice" type="button" aria-pressed="false" data-level="3"><span class="n">3</span><span><strong>Agir com aprovação.</strong> Ele prepara e espera meu “sim” antes de publicar ou enviar.</span></button>
+          <button class="choice" type="button" aria-pressed="false" data-level="4"><span class="n">4</span><span><strong>Executar tarefas rotineiras.</strong> Com regras restritas, registro e opção de interromper.</span></button>
+        </div>
+        <div id="poll-result" class="poll-result" role="status" aria-live="polite"></div>
+        <p class="privacy-note">A atividade não coleta seu voto. Ela serve para tornar visível uma decisão de projeto: quanto mais impacto uma ação pode ter, mais importante é definir limites e aprovações.</p>
+      </section>
+
+      <h2>Agente não é apenas um chatbot com outro nome</h2>
+      <p>Não existe uma única definição universal de “agente”. Em geral, falamos de sistemas que recebem um objetivo, decidem próximos passos, usam ferramentas e observam o que aconteceu para continuar ou parar. Alguns são quase totalmente guiados por fluxos definidos; outros escolhem caminhos com mais liberdade. Por isso, é mais útil perguntar quais ações o sistema pode realizar do que discutir o rótulo sozinho. [1][2]</p>
+      <p>Uma forma simples de visualizar sua estrutura é: <strong>modelo, instruções, ferramentas e limites</strong>. O modelo interpreta e decide; as instruções explicam o que precisa ser feito; as ferramentas permitem pesquisar, ler arquivos ou operar sistemas; e os limites definem permissões, condições de parada e momentos em que uma pessoa deve revisar.</p>
+      <p>Isso também ajuda a escolher quando usar um agente. Se uma tarefa segue sempre os mesmos passos e regras, uma automação tradicional pode ser mais previsível. Agentes tendem a ser úteis quando há informações não estruturadas, variações de contexto e decisões que dependem de interpretação. Começar pelo sistema mais simples costuma facilitar a avaliação e reduzir falhas. [1][2]</p>
+
+      <h2>O que as avaliações já conseguem nos dizer?</h2>
+      <p>Os resultados mostram potencial, mas também ajudam a manter os pés no chão. No benchmark <em>TheAgentCompany</em>, publicado no NeurIPS em 2025, o agente mais competitivo concluiu autonomamente 30% das tarefas de um ambiente simulado que reproduzia atividades de uma pequena empresa. É um resultado relevante para tarefas digitais estruturadas; não significa que agentes já possam executar 30% de qualquer emprego, nem garante o mesmo desempenho em organizações reais. [3]</p>
+      <div class="evidence" aria-label="Resultados de avaliações de agentes">
+        <div class="metric"><strong>30%</strong><span>das tarefas em um ambiente simulado de empresa foram concluídas pelo agente mais competitivo no estudo TheAgentCompany. [3]</span></div>
+        <div class="metric"><strong>66,3%</strong><span>de acurácia em tarefas de uso de computador no OSWorld, ante uma referência humana de 72,35%, segundo o AI Index 2026. [4]</span></div>
+      </div>
+      <div class="caveat"><strong>Como interpretar:</strong> benchmarks medem tarefas definidas, em condições específicas. São evidências úteis para comparar capacidades; não substituem testes com o seu fluxo, seus dados, suas regras e seus usuários.</div>
+
+      <h2>O caminho prático é delegar por etapas</h2>
+      <p>Autonomia não precisa ser um interruptor entre “não usar” e “deixar fazer tudo”. Podemos construir confiança em degraus:</p>
+      <div class="framework">
+        <div class="step"><div class="step-num">01</div><div><h3>Sugerir</h3><p>O agente consulta e recomenda. Não altera sistemas.</p></div></div>
+        <div class="step"><div class="step-num">02</div><div><h3>Preparar</h3><p>Produz um rascunho; uma pessoa revisa antes do uso.</p></div></div>
+        <div class="step"><div class="step-num">03</div><div><h3>Agir com aprovação</h3><p>Prepara uma ação externa, mas espera autorização explícita.</p></div></div>
+        <div class="step"><div class="step-num">04</div><div><h3>Executar com limites</h3><p>Conclui apenas rotinas de baixo risco, com permissões mínimas, registros e um modo de parar.</p></div></div>
+      </div>
+      <p>Essa progressão importa porque agentes podem interpretar mal instruções, usar uma ferramenta de forma inadequada ou encontrar conteúdo malicioso em páginas, documentos e mensagens. As recomendações de segurança incluem limitar permissões ao necessário, exigir confirmação para ações sensíveis, testar casos adversos e controlar custos e repetições. [5]</p>
+      <p>Na educação, um bom primeiro experimento pode ser pedir ao agente que transforme um texto-base em roteiro de estudo. O professor confere as informações, revisa as fontes e decide o que será compartilhado. Publicar automaticamente, atribuir nota ou acessar dados identificáveis dos estudantes já exige controles muito mais fortes — e pode não ser uma tarefa apropriada para delegar.</p>
+
+      <h2>A confiança precisa ser medida</h2>
+      <p>Antes de ampliar as permissões, teste o agente em situações comuns, incompletas e fora do escopo. Observe se ele pergunta quando falta informação, sinaliza contradições e para antes de uma ação externa. Registre três coisas: <strong>quantos resultados passaram na revisão, quanto tempo foi economizado depois da conferência e quantas intervenções foram necessárias</strong>.</p>
+      <p>Se uma mudança de modelo, instrução ou ferramenta altera o comportamento, teste de novo. A confiança não vem do nome do produto nem de uma demonstração impressionante; ela cresce quando sabemos o que o agente pode fazer, como se sai nos casos reais e quem responde pela decisão final.</p>
+      <p>Talvez a pergunta mais útil não seja “os agentes vão substituir pessoas?”. É: <strong>qual tarefa vale a pena delegar, com que limites e com qual responsabilidade humana?</strong> Para responder, experimente em pequena escala. Dê ao agente uma tarefa de baixo risco, compare o resultado com seu processo atual e só então decida se vale avançar um nível.</p>
+
+      <div class="closing"><p><strong>Agora quero ouvir você:</strong> qual tarefa você confiaria a um agente de IA — e qual ação ainda exigiria sua aprovação? Responda nos comentários da newsletter e conte também qual limite considera indispensável.</p></div>
+      <section class="cta" aria-label="Material complementar gratuito">
+        <div class="tag">Presente da edição #02</div>
+        <h2>Leve a ideia para a prática</h2>
+        <p>Baixe o guia gratuito com mapa de delegação, canvas para planejar um teste, modelo de instrução e checklist de supervisão.</p>
+        <div class="buttons"><a class="btn primary" href="/materiais/guia-pratico-agentes-ia.pdf" download>↓ Baixar o guia em PDF</a><a class="btn secondary" href="https://www.linkedin.com/newsletters/al%C3%A9m-do-algoritmo-7517955548621811712" target="_blank" rel="noopener noreferrer">Ver a newsletter no LinkedIn ↗</a></div>
+      </section>
+
+      <section class="refs" aria-labelledby="refs-title">
+        <h2 id="refs-title">Referências para continuar</h2>
+        <ol>
+          <li>OpenAI. <em>A Practical Guide to Building AI Agents.</em> 15 jan. 2026. <a href="https://openai.com/business/guides-and-resources/a-practical-guide-to-building-agents/" target="_blank" rel="noopener noreferrer">Abrir publicação</a>.</li>
+          <li>Zhang, B.; Shah, A. <em>Building Effective Agents.</em> Anthropic, 19 dez. 2024. O texto diferencia workflows e agentes; recomendações sobre ferramentas devem ser lidas junto à documentação atual. <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener noreferrer">Abrir publicação</a>.</li>
+          <li>Xu, F. et al. <em>TheAgentCompany: Benchmarking LLM Agents on Consequential Real World Tasks.</em> NeurIPS 2025. <a href="https://proceedings.neurips.cc/paper_files/paper/2025/hash/0d744742f6fac4d1134c019b7cef3c8a-Abstract-Datasets_and_Benchmarks_Track.html" target="_blank" rel="noopener noreferrer">Artigo e resultados</a>.</li>
+          <li>Stanford HAI. <em>AI Index Report 2026 — Technical Performance, seção 2.6: AI Agents.</em> <a href="https://hai.stanford.edu/ai-index/2026-ai-index-report/technical-performance" target="_blank" rel="noopener noreferrer">Abrir capítulo</a>.</li>
+          <li>OWASP Gen AI Security Project. <em>AI Agent Security Cheat Sheet.</em> <a href="https://cheatsheetseries.owasp.org/cheatsheets/AI_Agent_Security_Cheat_Sheet.html" target="_blank" rel="noopener noreferrer">Abrir guia de segurança</a>.</li>
+        </ol>
+      </section>
+    </article>
+  </main>
+  <footer><div class="wrap footer-inner"><span>Além do Algoritmo · IA, Educação e Futuro Humano</span><a href="/">Portfólio de Alexsander Farias</a></div></footer>
+  <script>
+    const feedbacks={
+      1:'Boa escolha para fluxos novos ou de maior risco. Você mantém o controle e pode avançar quando tiver exemplos suficientes para avaliar o agente.',
+      2:'É um ótimo ponto de partida: o agente acelera a preparação, e a revisão humana continua antes de o conteúdo chegar aos estudantes.',
+      3:'Funciona bem para ações com efeito externo. Defina exatamente o que será publicado e exija confirmação antes da execução.',
+      4:'Reserve para tarefas repetitivas e de baixo impacto. Use permissões mínimas, histórico de ações, limites de execução e uma forma simples de interromper.'
+    };
+    const buttons=[...document.querySelectorAll('.choice')];
+    const result=document.getElementById('poll-result');
+    buttons.forEach(button=>button.addEventListener('click',()=>{
+      buttons.forEach(item=>item.setAttribute('aria-pressed',String(item===button)));
+      result.textContent=feedbacks[button.dataset.level];
+      result.classList.add('is-visible');
+    }));
+  </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Agentes de IA: do pedido à ação</title>
+  <desc id="desc">Uma pessoa diante de uma interface de inteligência artificial, com ferramentas conectadas e caminhos de decisão em azul e ciano.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#071020"/><stop offset=".58" stop-color="#102747"/><stop offset="1" stop-color="#13213d"/></linearGradient>
+    <linearGradient id="beam" x1="0" x2="1"><stop stop-color="#4de0e5" stop-opacity=".08"/><stop offset=".5" stop-color="#4de0e5" stop-opacity=".72"/><stop offset="1" stop-color="#86a8ff" stop-opacity=".18"/></linearGradient>
+    <radialGradient id="glow"><stop stop-color="#4de0e5" stop-opacity=".42"/><stop offset="1" stop-color="#4de0e5" stop-opacity="0"/></radialGradient>
+    <filter id="soft"><feGaussianBlur stdDeviation="22"/></filter>
+  </defs>
+  <rect width="1200" height="760" rx="34" fill="url(#bg)"/>
+  <circle cx="940" cy="150" r="210" fill="url(#glow)" filter="url(#soft)"/>
+  <g opacity=".18" stroke="#8eb4d8" stroke-width="1">
+    <path d="M0 120H1200M0 220H1200M0 320H1200M0 420H1200M0 520H1200M0 620H1200"/>
+    <path d="M120 0V760M240 0V760M360 0V760M480 0V760M600 0V760M720 0V760M840 0V760M960 0V760M1080 0V760"/>
+  </g>
+  <text x="82" y="104" fill="#4de0e5" font-family="Arial,sans-serif" font-size="23" font-weight="700" letter-spacing="5">ALÉM DO ALGORITMO · EDIÇÃO #02</text>
+  <text x="82" y="220" fill="#f4f7fc" font-family="Arial,sans-serif" font-size="67" font-weight="700">AGENTES DE IA</text>
+  <text x="84" y="278" fill="#b9c9df" font-family="Arial,sans-serif" font-size="29">Do pedido à ação: o que você confiaria a eles?</text>
+  <g fill="none" stroke="url(#beam)" stroke-width="5">
+    <path d="M230 430C390 340 480 386 592 447"/>
+    <path d="M970 430C812 340 720 386 608 447"/>
+    <path d="M600 508C600 584 600 607 600 660"/>
+  </g>
+  <g>
+    <rect x="105" y="370" width="245" height="106" rx="19" fill="#111f36" stroke="#315170" stroke-width="2"/>
+    <circle cx="151" cy="423" r="16" fill="#4de0e5"/><text x="181" y="418" fill="#f4f7fc" font-family="Arial,sans-serif" font-size="22" font-weight="700">INSTRUÇÕES</text><text x="181" y="446" fill="#9eb1ca" font-family="Arial,sans-serif" font-size="16">objetivo + limites</text>
+    <rect x="850" y="370" width="245" height="106" rx="19" fill="#111f36" stroke="#315170" stroke-width="2"/>
+    <circle cx="896" cy="423" r="16" fill="#86a8ff"/><text x="926" y="418" fill="#f4f7fc" font-family="Arial,sans-serif" font-size="22" font-weight="700">FERRAMENTAS</text><text x="926" y="446" fill="#9eb1ca" font-family="Arial,sans-serif" font-size="16">ler + agir</text>
+    <rect x="465" y="394" width="270" height="136" rx="26" fill="#122744" stroke="#4de0e5" stroke-width="3"/>
+    <circle cx="600" cy="450" r="40" fill="#0b1426" stroke="#4de0e5" stroke-width="3"/>
+    <path d="M581 452c11-19 27-19 38 0M586 468h28M600 430v-13" fill="none" stroke="#4de0e5" stroke-width="4" stroke-linecap="round"/>
+    <text x="600" y="510" fill="#f4f7fc" font-family="Arial,sans-serif" font-size="20" font-weight="700" text-anchor="middle">AGENTE DE IA</text>
+  </g>
+  <g transform="translate(470 590)">
+    <rect width="260" height="82" rx="18" fill="#121d32" stroke="#49637e" stroke-width="2"/>
+    <circle cx="43" cy="41" r="23" fill="#1a3750"/><path d="M34 41l7 7 13-15" fill="none" stroke="#4de0e5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="80" y="37" fill="#f4f7fc" font-family="Arial,sans-serif" font-size="20" font-weight="700">APROVAÇÃO</text><text x="80" y="60" fill="#aebdd3" font-family="Arial,sans-serif" font-size="15">supervisão humana</text>
+  </g>
+  <text x="82" y="715" fill="#b8c7dc" font-family="Arial,sans-serif" font-size="18">Guia prático gratuito · limites, teste e supervisão</text>
+</svg>
