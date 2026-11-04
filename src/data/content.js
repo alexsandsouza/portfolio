@@ -153,6 +153,12 @@ export const portfolioContent = {
       period: "Em andamento"
     },
     {
+      institution: "UFAM",
+      course: "Gestão Municipal Inteligente e Sustentável na Amazônia",
+      level: "Pós-graduação",
+      period: "Em andamento · início em 3 de novembro de 2026"
+    },
+    {
       institution: "IFPR",
       course: "Gestão da Educação Profissional e Tecnológica",
       level: "Pós-graduação",
